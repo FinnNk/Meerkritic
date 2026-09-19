@@ -145,7 +145,7 @@ class DatasetTest(unittest.TestCase):
 
     def test_web_escapes_source_text_and_bounds_queries(self):
         self.service.register(self.source.id)
-        with TestClient(create_app(self.service)) as client:
+        with TestClient(create_app(self.service), base_url="http://127.0.0.1") as client:
             self.assertEqual(client.get("/").status_code, 200)
             html = client.get(f"/datasets/{self.source.id}")
             self.assertEqual(html.status_code, 200)

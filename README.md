@@ -19,8 +19,8 @@ Its design centres on three ideas:
 ## Getting started
 
 Meerkritic is in early development. The local harness can register a public sample
-and browse review comments alongside their code context. Model normalisation and
-human annotation are still in development.
+and browse review comments alongside their code context. A local worker can normalise
+an observation into an evidence-linked interpretation. Human annotation is still in development.
 
 With **Python 3.12** and **uv** installed, run these commands from the repository
 root:
@@ -35,6 +35,10 @@ Open [localhost:8000](http://127.0.0.1:8000) to browse the 1,030-record sample.
 Registration downloads about 2.5 MB and verifies the pinned source checksum. Keep
 the data root outside the repository; use the same path for registration and serving.
 The server binds to this computer only.
+
+To run model normalisation, follow the [local workflow guide](docs/development/normalisation.md)
+to start llama.cpp and the worker, then choose **Normalise** beside an observation.
+Inspect results, provenance and failures from **Normalisation jobs** in the harness.
 
 Run `uv run --locked python tools/check.py` for formatting, lint, architecture and
 behaviour checks. See the [dataset guide](docs/development/datasets.md) for source

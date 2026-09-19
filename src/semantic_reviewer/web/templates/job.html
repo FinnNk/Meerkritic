@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Normalisation · Meerkritic{% endblock %}
+{% block refresh %}{% if job.status in ('queued', 'running') %}<meta http-equiv="refresh" content="3">{% endif %}{% endblock %}
+{% block content %}
+<nav><a href="/jobs">Jobs</a><a href="/datasets/{{ job.dataset_id }}?page={{ job.source_index + 1 }}&amp;page_size=1">Source observation</a></nav>
+<h1>Normalisation</h1>
+<p><strong>{{ job.status }}</strong>{% if job.stale %} · Heartbeat overdue; worker state needs inspection.{% endif %}</p>
+{% if job.status == 'queued' %}<p>Waiting for the local worker. This page refreshes automatically.</p>{% endif %}
+{% if job.status == 'running' %}<p>Working · last heartbeat {{ job.heartbeat_at }}. Token counts appear after inference completes.</p>{% endif %}
+{% if job.decision_id %}<p>{{ telemetry }}</p>{% endif %}
+{% if job.error %}<p role="alert">{{ job.error }}</p>{% endif %}
+{% if result %}
+{% if result.interpretation %}
+<h2>Proposed issue</h2>
+<p>Model interpretation · awaiting human assessment. Matching evidence does not establish correctness.</p>
+<p>{{ result.interpretation.issue_statement }}</p>
+<dl>
+  <dt>Actionable concern</dt><dd>{{ result.interpretation.actionable_engineering_concern }}</dd>
+  <dt>Generalisable</dt><dd>{{ result.interpretation.generalisable }}</dd>
+  <dt>Categories</dt><dd>{{ result.interpretation.coarse_categories | join(', ') }}</dd>
+  <dt>Scope</dt><dd>{{ result.interpretation.scope }}</dd>
+  <dt>Proposed invariant</dt><dd>{{ result.interpretation.proposed_invariant or 'None proposed' }}</dd>
+</dl>
+<h3>Evidence</h3>
+{% for span in result.evidence_spans %}<blockquote><pre>{{ span.quote }}</pre><p>{{ span.source }} · characters {{ span.start }}–{{ span.end }}</p></blockquote>{% endfor %}
+{% if result.interpretation.exclusions %}<h3>Exclusions</h3><ul>{% for item in result.interpretation.exclusions %}<li>{{ item }}</li>{% endfor %}</ul>{% endif %}
+{% endif %}
+<details><summary>Provenance and runtime</summary>
+<pre>{{ result | tojson(indent=2) }}</pre>
+</details>
+{% endif %}
+<details><summary>Job identity</summary><dl>
+  <dt>Job</dt><dd>{{ job.id }}</dd>
+  <dt>Source</dt><dd>{{ job.observation_id }}</dd>
+  <dt>Routing decision</dt><dd>{{ job.decision_id or 'Not selected yet' }}</dd>
+  <dt>Result SHA-256</dt><dd>{{ job.artefact_sha256 or 'Not published' }}</dd>
+</dl></details>
+{% endblock %}

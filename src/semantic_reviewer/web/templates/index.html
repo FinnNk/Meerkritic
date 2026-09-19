@@ -14,5 +14,6 @@
 <pre>uv run --locked python tools/run.py --data-root ../extras/runtime register crc-py-manual-4176ac0</pre>
 <p>Then refresh this page.</p>
 {% endfor %}
-<p class="muted">This first increment supports browsing. Normalisation and human annotation are still in development.</p>
+{% if can_normalise %}<p><a href="/jobs">Normalisation jobs</a></p>{% endif %}
+<p class="muted">Human annotation is still in development.</p>
 {% endblock %}

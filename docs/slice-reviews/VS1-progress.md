@@ -2,38 +2,41 @@
 
 Status: in progress. This is a batch reference, not a completed slice review.
 
-The first material batch covers launch → pinned registration → DuckDB/Parquet
-browsing, including metadata/events, provenance and restart/failure behaviour.
-The next candidate batch adds routing selection, usage accounting, immutable SQLite provenance and CLI/Parquet inspection. Live model calls and telemetry capture, the worker, MAF application execution, Accept/Edit/Reject and annotation progress remain outstanding. VS2 remains DRAFT.
+Dataset browsing and routing are integrated. PR #5 was approved and merged as
+`f1478217d43414da6e55599a5bf390c7f957dadb`; all 43 tests passed on main and all four
+integrated proposition trees match the reviewed series. ADR-0005 is implemented
+following owner acceptance and confirmation.
 
-Preflight used Windows, Python 3.12.14 and SQLite 3.53.1. FastAPI 0.141.1, DuckDB
-1.5.5, Yoyo 9.0.0 and Uvicorn 0.53.0 are locked for this batch. MAF core 1.19.0 ran
-an executor graph in an external preflight environment, recording a FrameworkObservation
-from first use. This does not validate model inference or an application workflow.
+The current material candidate, DER pair `vs1-normalisation`, round `r2`, adds
+local llama.cpp inference, real MAF normalisation, a durable single-worker queue
+and browser launch, results and failed-job inspection. ADR-0006 proposes its
+process-lock recovery policy; owner acceptance remains pending.
 
-The owner selected llama.cpp. No model weights or provider compatibility are yet
-validated. llama.cpp was not on PATH; the checked Ollama/LM Studio endpoints were
-unavailable and no provider API keys were present in the session. The machine has
-a 16 GB RTX 4090 Laptop GPU and about 96 GB RAM. Actual model setup remains part
-of the next batch; available memory alone is not compatibility evidence.
+Preflight verified official llama.cpp v0.4.1/b10964 Windows CUDA 12.4 archives and
+pinned Qwen3 4B Q4_K_M weights against published hashes. Template rendering,
+tokenisation, structured streaming, token counts and timings worked on the 16 GB
+RTX 4090 Laptop GPU. Public record 0 completed through MAF core 1.19.0 and a separate
+worker with source spans, immutable provenance, usage and a FrameworkObservation.
+This establishes fixture compatibility, not comparative model quality.
 
-No EDR was opened for these prescribed architecture and operational checks. Future
-comparative model quality/cost decisions must follow the EDR process; incidental
-compatibility measurements need not become experiments.
+The 72-test candidate suite checks provider/context/semantic failures, source grounding,
+route refusal, atomic claims/events, process exclusion and death, recovery without replay,
+old-worker rejection, storage-failure artefacts, provenance and browser host/origin checks.
+Architecture contracts remain unchanged. Exact checkpoint and live/browser results belong
+to the external DER evidence store and the batch PR, not this progress index.
 
-The dataset/browser batch landed from DER pair `vs1-dataset-browser`, round `r5`. The routing candidate uses pair `vs1-routing`, round `r1`, with one history integrator. Canonical
-evidence lives in `../extras/der-evidence` relative to this repository, outside all
-application worktrees. It owns assessment/design notes, the diary, verification,
-architecture before/after/delta, propositions and review/readiness records. This
-document is only a reference; see the batch PR for archive publication. DER readiness,
-owner acceptance and slice state remain separate.
+MAF failure-message copying initially failed. Passing plain failure data mitigated it;
+the failed test is retained. No EDR is needed for prescribed architecture or incidental
+compatibility checks. Comparative quality/cost choices must follow the EDR process.
+ADR-0001 remains accepted pending its first applicable empirical decision; ADRs 0002-0004
+remain implemented. Ordinary tests do not advance the empirical-process ADR.
 
-Routing validation uses synthetic inventories, quotes and measurements, plus real SQLite migrations, DuckDB/Parquet and CLI subprocesses. It checks privacy refusals, override precedence, missing telemetry, historical prices, atomic events, migration preservation, idempotence and concurrent completion. These checks do not establish provider availability, model quality or live token capture. Pydantic 2.13.5 is now an explicit locked dependency for immutable validated records; it was already present through FastAPI. No architecture contracts or ignores were weakened.
+Remaining VS1 work: Accept/Edit/Reject with immediate annotation/events, annotation
+progress, full interaction/restart/failure integration, final slice review and explicit
+review/revision of future slices. VS2 and later slices remain DRAFT. Related semantic
+propositions may share a PR; prefer stacked PRs when splitting dependent batches.
+Candidate readiness, owner acceptance and slice completion remain separate.
 
-The proposed retention decision is [ADR-0005](../adr/ADR-0005-retain-immutable-routing-provenance.md); owner acceptance remains pending. Existing ADR statuses were reviewed without advancing the empirical-process ADR merely because ordinary tests produced data.
-
-Remaining VS1 work is reviewed as a sequence of contracts: operational llama.cpp preflight and model invocation; MAF normalisation through a recoverable worker; annotation and progress; then live integration/failure checks and slice review. These are provisional semantic boundaries, not a requirement for one PR per capability. Group related work into reviewable PRs and normally stack dependent PRs when a split is useful. Later slices remain unchanged and DRAFT until the final VS1 review.
-
-Before completing VS1, finish its remaining contracts, complete the full slice review
-template, record architecture changes and explicitly revise the subsequent slices.
-Do not promote VS2 merely because this batch merges.
+Canonical evidence lives outside application worktrees at `extras/der-evidence`.
+Earlier pairs are `vs1-dataset-browser/r5` and `vs1-routing/r1`. This file only indexes
+progress; evidence owns chronology, verification, propositions and review/readiness.

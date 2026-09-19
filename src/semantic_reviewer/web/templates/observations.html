@@ -26,6 +26,11 @@
     <section><h3>Code context</h3><pre>{{ item.code }}</pre></section>
   </div>
   <p class="muted">Upstream label: {{ item.category }} / {{ item.subcategory }}</p>
+  {% if can_normalise %}
+  <form method="post" action="/datasets/{{ result.dataset.id }}/observations/{{ item.source_index }}/normalise">
+    <button type="submit">Normalise</button>
+  </form>
+  {% endif %}
   <details><summary>Observation provenance</summary><dl>
     <dt>Observation ID</dt><dd><code>{{ item.id }}</code></dd>
     <dt>Source index</dt><dd>{{ item.source_index }} (zero-based)</dd>
