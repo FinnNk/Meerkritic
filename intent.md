@@ -1,0 +1,5 @@
+# R5 authorised scope
+
+Owner accepted the recommended selective Python style policy and requested IEEE references to Google in the relevant ADRs, explicitly excluding wholesale adoption. Continue the existing material PR/pair; documentation alone is routine, no new pair, EDR, architecture relaxation or runtime change is justified. Use the existing ADR skill/project MADR format and DER diary-first revision process.
+
+Apply fuller contracts and class meaning to first-party code in the diary. Existing tools/check.py backfill stays separate. Refine ADR-0003 without superseding the same decision; record the distinct broader policy in ADR-0004. Verify application before marking implemented. Reconstruct capability comments into P1/P2/P3, baseline backfill P4, commenting policy P5, prior ADR-0002 acceptance P6, broader style policy P7. Preserve r4 before any exact-lease rewrite. Keep checks, dependency locks, architecture contracts and imported material unchanged. Existing framework callback inference is not a mandate to change HTTP schemas in a documentation update.

@@ -1,0 +1,10 @@
+{
+  "revision": "3b8822983dc779c498961cc86332a28c07590f64",
+  "source_blob": "d8bd300157be2c1dd174450cc106ad27dc7e28e4",
+  "sha256": "4905b424258ffe7b4dabe133ca3c44de6e404370eadc7369b4532564ce0ff3cb",
+  "url": "https://github.com/google/styleguide/blob/3b8822983dc779c498961cc86332a28c07590f64/pyguide.md",
+  "accessed": "2026-09-19",
+  "revision_date": "2026-09-11",
+  "adoption": "Selected conventions only; not adopted in entirety",
+  "retrieval": "GitHub contents API using project App; decoded blob hash verified"
+}

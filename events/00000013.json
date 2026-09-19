@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "sequence": 13,
+  "pair_id": "vs1-dataset-browser",
+  "recorded_at": "2026-09-19T20:41:30+00:00",
+  "previous_hash": "dab9ef9566be2b54477b362849cb59535a2bf2e1b950f8f3b788ddc7cbbf56e2",
+  "kind": "observation",
+  "round_id": "r4",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "meerkritic-vs1-2026-09-19"
+  },
+  "payload": {
+    "stage": "owner_review_ready",
+    "publication": "complete",
+    "head": "c66dcfe605e00a8b3ea41208647df11bb7be4da6",
+    "base": "3db848bd0992d0686bb5c45ddadd87ec6fbde8d2",
+    "diary": "797d8189ff7194bf025885ab0815b3f301fa21d2",
+    "archive": "cded52fffec05bbfa2b10ec41c917d0e975d67dc",
+    "remote_bundle_blob": "42f2b4d820586ff8bbf5993c5e9f825736e3a709",
+    "remote_bundle_matches_local": true,
+    "semantic_commit_count": 6,
+    "canonical_checks": "passed at all six exact checkpoints",
+    "final_tree_equivalence": "passed",
+    "required_hosted_contexts": [],
+    "hosted_ci": "not configured; empty required set, not a CI pass claim",
+    "review": "complete self-review; no independent review claimed",
+    "review_decision": "REVIEW_REQUIRED",
+    "merge_state": "BLOCKED",
+    "description_updated": true,
+    "reply": "https://github.com/FinnNk/Meerkritic/pull/3#issuecomment-5745142168",
+    "local_worktree": "clean feat/dataset-browser matching origin",
+    "integration": "not performed; owner review and merge outstanding"
+  },
+  "event_hash": "32800e376f3695cbde649f9f9ac6429241ab007993ef85f4d1cf0da5f58c884e"
+}

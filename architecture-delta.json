@@ -1,0 +1,22 @@
+{
+  "changes": {
+    "boundaries": {
+      "added": [],
+      "removed": []
+    },
+    "contracts": {
+      "added": [],
+      "removed": []
+    },
+    "imports": {
+      "added": [],
+      "removed": []
+    },
+    "modules": {
+      "added": [],
+      "removed": []
+    },
+    "settings": {}
+  },
+  "schema_version": 1
+}

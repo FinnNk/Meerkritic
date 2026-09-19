@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "sequence": 14,
+  "pair_id": "vs1-dataset-browser",
+  "recorded_at": "2026-09-19T21:06:23+00:00",
+  "previous_hash": "32800e376f3695cbde649f9f9ac6429241ab007993ef85f4d1cf0da5f58c884e",
+  "kind": "observation",
+  "round_id": "r5",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "meerkritic-vs1-2026-09-19"
+  },
+  "payload": {
+    "stage": "locally_prepared",
+    "authority": "Owner accepted selective style guide, expanded contracts, separate semantic policy and IEEE references in ADRs",
+    "diary": "c12c7c04656c671ca5b42adf52998ad438cb9175",
+    "semantic": "8602e458ec72ef3568192f8c3a832f201e8dd3df",
+    "tree": "f00f64c8826447121132ab61b7f3a34911a2fcc9",
+    "prior_published": "c66dcfe605e00a8b3ea41208647df11bb7be4da6",
+    "checks": "All seven exact checkpoints pass canonical gates: 11/14/15/15/15/15/15 tests; diary final passes; AST, architecture and frozen equivalence pass",
+    "review": "r5/review.md complete self-review; not independent",
+    "google_revision": "3b8822983dc779c498961cc86332a28c07590f64",
+    "adoption": "selected guidance, not entirety",
+    "ADR-0004": "implemented",
+    "publication": "not yet performed"
+  },
+  "event_hash": "380d1853e7018f761250d0da22447f4e1dbac5043e6af4c6f3d87dea3c6b818f"
+}

@@ -1,0 +1,86 @@
+{
+  "sha": "bb19fbc9face20e703b7db1d34049f1c7a13f40c",
+  "tree": "3119b02f4d6c7a41321a074481c7172d0e30548d",
+  "subject": "docs: record commenting convention and ADR lifecycle",
+  "started_at": "2026-09-19T21:03:06.745208+00:00",
+  "cwd": "$WORKSPACE\\extras\\der-checkouts\\vs1-r5-final-p5",
+  "commands": [
+    {
+      "argv": [
+        "uv",
+        "sync",
+        "--locked",
+        "--offline",
+        "--python",
+        "$USER_HOME\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "tools/check.py"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "source_probe_pythonpath": "$WORKSPACE\\extras\\der-checkouts\\vs1-r5-final-p5\\src",
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "sqlite": "3.53.1",
+    "executable": "$WORKSPACE\\extras\\der-checkouts\\vs1-r5-final-p5\\.venv\\Scripts\\python.exe",
+    "source": "$WORKSPACE\\extras\\der-checkouts\\vs1-r5-final-p5\\src\\semantic_reviewer\\__init__.py",
+    "lock_sha256": "d438cd57e1aaf3840fb41febc75de209f26be18cf678f74ed1bf1568d05f7117",
+    "packages": {
+      "annotated-doc": "0.0.5",
+      "annotated-types": "0.8.0",
+      "anyio": "4.15.1",
+      "certifi": "2026.7.22",
+      "click": "8.5.0",
+      "duckdb": "1.5.5",
+      "fastapi": "0.141.1",
+      "gitdb": "4.0.12",
+      "GitPython": "3.1.62",
+      "grimp": "3.17",
+      "h11": "0.16.0",
+      "httpcore": "1.0.9",
+      "httpx": "0.28.1",
+      "idna": "3.20",
+      "importlib_metadata": "9.0.1",
+      "import-linter": "2.15",
+      "Jinja2": "3.1.6",
+      "markdown-it-py": "4.2.0",
+      "MarkupSafe": "3.0.3",
+      "mdurl": "0.1.2",
+      "networkx": "3.6.1",
+      "prompt_toolkit": "3.0.53",
+      "pydantic": "2.13.5",
+      "pydantic_core": "2.46.5",
+      "pydot": "4.0.1",
+      "Pygments": "2.21.0",
+      "pyparsing": "3.3.2",
+      "PyYAML": "6.0.3",
+      "rich": "15.0.0",
+      "ruff": "0.16.8",
+      "smmap": "5.0.3",
+      "sqlparse": "0.6.0",
+      "starlette": "1.6.0",
+      "tabulate": "0.10.0",
+      "tach": "0.35.1",
+      "tomli": "2.4.1",
+      "tomli_w": "1.2.0",
+      "typing_extensions": "4.16.0",
+      "typing-inspection": "0.4.4",
+      "uvicorn": "0.53.0",
+      "wcwidth": "0.8.4",
+      "yoyo-migrations": "9.0.0",
+      "zipp": "4.1.0"
+    }
+  },
+  "clean": true,
+  "completed_at": "2026-09-19T21:03:15.895980+00:00",
+  "outcome": "passed"
+}

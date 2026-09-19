@@ -1,0 +1,557 @@
+1:  2c4f5bb ! 1:  7623c93 feat(datasets): register pinned source evidence
+    @@ src/semantic_reviewer/adapters/observations.py (new)
+     +
+     +
+     +def publish(staged: Path, target: Path) -> None:
+    -+    """Publish complete bytes exclusively, without replacing an existing file."""
+    ++    """Publish complete bytes without replacing an existing artefact.
+    ++
+    ++    An existing target is accepted only when its digest matches the staged file.
+    ++    A new target shares the staged file's bytes: do not modify either after
+    ++    publication. The staged name remains the caller's responsibility to remove.
+    ++
+    ++    Args:
+    ++        staged: Complete file on the same filesystem as the destination.
+    ++        target: Destination whose parent directory already exists.
+    ++
+    ++    Raises:
+    ++        DatasetError: The target already contains different bytes.
+    ++        OSError: Linking or reading files fails, including unsupported hard links.
+    ++    """
+     +    try:
+     +        # Staging shares the target filesystem: expose complete bytes without an overwrite race.
+     +        os.link(staged, target)
+    @@ src/semantic_reviewer/adapters/observations.py (new)
+     +
+     +
+     +class ParquetObservations:
+    ++    """Local immutable source files and canonical CRC-Py observations.
+    ++
+    ++    Attributes:
+    ++        root: Artefact directory; the composition boundary keeps it outside Git.
+    ++    """
+    ++
+     +    def __init__(self, root: Path) -> None:
+     +        """Create the artefact directory without importing or querying datasets."""
+     +        self.root = root
+     +        root.mkdir(parents=True, exist_ok=True)
+     +
+     +    def prepare(self, source: PublicDataset) -> Dataset:
+    -+        """Verify pinned bytes and publish Parquet; return metadata without registering it."""
+    ++        """Verify pinned source bytes and publish immutable Parquet.
+    ++
+    ++        Accept source files up to MAX_SOURCE_BYTES; download from a pinned GitHub
+    ++        URL on a cache miss. Revalidate cached bytes on every call. Download,
+    ++        decoding and storage errors propagate; publication may leave complete
+    ++        unreferenced files.
+    ++
+    ++        Args:
+    ++            source: Catalogue entry identifying the revision, checksum and row count.
+    ++
+    ++        Returns:
+    ++            Metadata ready for registration. Preparation does not write the registry.
+    ++
+    ++        Raises:
+    ++            DatasetError: Source size, checksum or records violate the import contract,
+    ++                or an existing immutable artefact conflicts with the prepared bytes.
+    ++        """
+     +        raw = self.root / (source.source_sha256 + ".json")
+     +        with tempfile.TemporaryDirectory(dir=self.root, prefix="import-") as temporary:
+     +            staging = Path(temporary)
+    @@ src/semantic_reviewer/adapters/registry.py (new)
+     +
+     +
+     +class SQLiteRegistry:
+    ++    """SQLite-backed metadata and append-only events with short transactions."""
+    ++
+     +    def __init__(self, database: Path) -> None:
+     +        """Create or migrate the registry and enable WAL before accepting operations."""
+     +        self.database = database
+    @@ src/semantic_reviewer/adapters/registry.py (new)
+     +
+     +    @contextmanager
+     +    def _connect(self):
+    -+        """Scope a transaction and close its connection on both success and failure."""
+    ++        """Provide a connection whose transaction ends with the context.
+    ++
+    ++        Returns:
+    ++            A context manager yielding a row-mapped SQLite connection. Successful exit
+    ++            commits, exceptional exit rolls back, and either exit closes the handle.
+    ++        """
+     +        connection = sqlite3.connect(self.database, timeout=10)
+     +        connection.row_factory = sqlite3.Row
+     +        connection.execute("PRAGMA foreign_keys=ON")
+    @@ src/semantic_reviewer/adapters/registry.py (new)
+     +            connection.close()
+     +
+     +    def register(self, dataset: Dataset) -> Dataset:
+    -+        """Commit metadata and its event together; reuse identical evidence or reject conflicts."""
+    ++        """Register verified metadata and its event as one transaction.
+    ++
+    ++        Args:
+    ++            dataset: Metadata for artefacts that have already been published.
+    ++
+    ++        Returns:
+    ++            The original metadata on an identical repeat, preserving its registration
+    ++            timestamp without appending another event; otherwise the new metadata.
+    ++
+    ++        Raises:
+    ++            DatasetError: The ID already refers to different evidence.
+    ++        """
+     +        with self._connect() as connection:
+     +            # Serialise identity comparison and insertion so concurrent imports cannot race.
+     +            connection.execute("BEGIN IMMEDIATE")
+    @@ src/semantic_reviewer/application/datasets.py (new)
+     +
+     +@dataclass(frozen=True)
+     +class PublicDataset:
+    ++    """A pinned public source specification, not a registered dataset.
+    ++
+    ++    Attributes:
+    ++        id: Stable catalogue key chosen by the project.
+    ++        revision: Upstream revision from which the source bytes were obtained.
+    ++        source_sha256: Expected SHA-256 of the complete source file.
+    ++        expected_rows: Required source-record count, including repeated comments.
+    ++    """
+    ++
+     +    id: str
+     +    title: str
+     +    revision: str
+    @@ src/semantic_reviewer/application/datasets.py (new)
+     +
+     +
+     +class DatasetRegistry(Protocol):
+    ++    """The operational metadata and atomic registration-event boundary."""
+    ++
+     +    def register(self, dataset: Dataset) -> Dataset:
+    -+        """Atomically register metadata and append one event, or return the existing identity."""
+    ++        """Register verified metadata and its event as one transaction.
+    ++
+    ++        Args:
+    ++            dataset: Metadata for artefacts that have already been published.
+    ++
+    ++        Returns:
+    ++            The original metadata on an identical repeat, preserving its registration
+    ++            timestamp without appending another event; otherwise the new metadata.
+    ++
+    ++        Raises:
+    ++            DatasetError: The ID already refers to different evidence.
+    ++        """
+     +        ...
+     +
+     +    def list(self) -> tuple[Dataset, ...]:
+    @@ src/semantic_reviewer/application/datasets.py (new)
+     +
+     +
+     +class ObservationStore(Protocol):
+    ++    """Immutable dataset evidence behind application-owned storage contracts."""
+    ++
+     +    def prepare(self, source: PublicDataset) -> Dataset:
+    -+        """Verify pinned bytes and publish immutable canonical Parquet before registration."""
+    ++        """Verify pinned source bytes and publish immutable Parquet.
+    ++
+    ++        Args:
+    ++            source: Catalogue entry identifying the revision, checksum and row count.
+    ++
+    ++        Returns:
+    ++            Metadata ready for registration. Preparation does not write the registry.
+    ++
+    ++        Raises:
+    ++            DatasetError: Source size, checksum or records violate the import contract,
+    ++                or an existing immutable artefact conflicts with the prepared bytes.
+    ++        """
+     +        ...
+     +
+     +
+     +class DatasetService:
+    ++    """Dataset use cases coordinating immutable evidence and metadata.
+    ++
+    ++    Attributes:
+    ++        catalogue: Sources available to import; these need not be registered yet.
+    ++    """
+    ++
+     +    def __init__(
+     +        self,
+     +        catalogue: tuple[PublicDataset, ...],
+    @@ src/semantic_reviewer/application/datasets.py (new)
+     +        self._observations = observations
+     +
+     +    def register(self, dataset_id: str) -> Dataset:
+    -+        """Verify and register a catalogue dataset; reject unknown IDs or conflicting evidence."""
+    ++        """Verify and register a source from the public catalogue.
+    ++
+    ++        Preparation may download data and publish files before metadata is committed.
+    ++        A repeat verifies the local artefact and retains the original registration;
+    ++        it does not append another registration event. Failed registration may leave
+    ++        unreferenced, complete artefacts.
+    ++
+    ++        Args:
+    ++            dataset_id: Catalogue identifier to import.
+    ++
+    ++        Returns:
+    ++            Registered metadata with source and Parquet identities.
+    ++
+    ++        Raises:
+    ++            DatasetError: The ID is unknown, evidence fails validation, or registration
+    ++                conflicts with existing content.
+    ++            OSError: Download or filesystem access fails.
+    ++        """
+     +        source = next((item for item in self.catalogue if item.id == dataset_id), None)
+     +        if source is None:
+     +            raise DatasetError("Unknown public dataset; choose an ID from the catalogue.")
+    @@ src/semantic_reviewer/bootstrap.py
+     +
+     +
+     +def build_datasets(data_root: Path) -> DatasetService:
+    -+    """Assemble dataset services and initialise storage; reject data roots inside Git worktrees."""
+    ++    """Assemble dataset services and initialise their storage.
+    ++
+    ++    Args:
+    ++        data_root: Runtime directory outside the application repository and all
+    ++            Git worktrees; relative paths are resolved from the working directory.
+    ++
+    ++    Returns:
+    ++        A service using the project's versioned source manifests and the supplied
+    ++        runtime directory. Missing directories and the migrated registry are
+    ++        created; no dataset is downloaded or registered by this call.
+    ++
+    ++    Raises:
+    ++        ValueError: The resolved data root is inside the repository or a Git worktree.
+    ++        OSError: Manifest or filesystem access fails.
+    ++    """
+     +    root = data_root.expanduser().resolve()
+     +    repository = Path(__file__).resolve().parents[2]
+     +    if root == repository or repository in root.parents:
+    @@ src/semantic_reviewer/domain/datasets.py (new)
+     +
+     +@dataclass(frozen=True)
+     +class Dataset:
+    ++    """Metadata locating immutable imported evidence outside the registry.
+    ++
+    ++    Attributes:
+    ++        id: Catalogue identity under which this evidence was registered.
+    ++        revision: Pinned upstream revision, not an inferred reviewed-code commit.
+    ++        source_sha256: Digest of the original source bytes.
+    ++        parquet_sha256: Digest identifying the canonical Parquet artefact.
+    ++        row_count: Number of source records, including repeated comments.
+    ++        registered_at: UTC ISO 8601 time of the original registration.
+    ++        schema_version: Version of the canonical observation schema.
+    ++    """
+    ++
+     +    id: str
+     +    title: str
+     +    revision: str
+2:  63246f0 ! 2:  6b7e8cb feat(browser): browse registered review observations
+    @@ src/semantic_reviewer/adapters/observations.py: class ParquetObservations:
+              return rows
+     +
+     +    def browse(self, dataset: Dataset, page: int, page_size: int) -> ObservationPage:
+    -+        """Verify stored bytes before reading a source-ordered page with caller-validated bounds."""
+    ++        """Read a page from verified Parquet in source-record order.
+    ++
+    ++        Args:
+    ++            dataset: Registered metadata identifying the immutable Parquet artefact.
+    ++            page: One-based page number, validated by the application.
+    ++            page_size: Positive page size, validated by the application.
+    ++
+    ++        Returns:
+    ++            A page retaining dataset provenance and the registered row count.
+    ++            Items are empty beyond the end of the dataset.
+    ++
+    ++        Raises:
+    ++            DatasetError: The registered Parquet is missing or its checksum has changed.
+    ++        """
+     +        parquet = self.root / (dataset.parquet_sha256 + ".parquet")
+     +        if not parquet.is_file() or digest(parquet) != dataset.parquet_sha256:
+     +            raise DatasetError(
+    @@ src/semantic_reviewer/application/datasets.py
+      
+      @dataclass(frozen=True)
+     @@ src/semantic_reviewer/application/datasets.py: class ObservationStore(Protocol):
+    -         """Verify pinned bytes and publish immutable canonical Parquet before registration."""
+    +         """
+              ...
+      
+     +    def browse(self, dataset: Dataset, page: int, page_size: int) -> ObservationPage:
+    -+        """Read a source-ordered page from verified Parquet; callers supply valid bounds."""
+    ++        """Read a page from verified Parquet in source-record order.
+    ++
+    ++        Args:
+    ++            dataset: Registered metadata identifying the immutable Parquet artefact.
+    ++            page: One-based page number, validated by the application.
+    ++            page_size: Positive page size, validated by the application.
+    ++
+    ++        Returns:
+    ++            A page retaining dataset provenance and the registered row count.
+    ++            Items are empty beyond the end of the dataset.
+    ++
+    ++        Raises:
+    ++            DatasetError: The registered Parquet is missing or its checksum has changed.
+    ++        """
+     +        ...
+     +
+      
+      class DatasetService:
+    -     def __init__(
+    +     """Dataset use cases coordinating immutable evidence and metadata.
+     @@ src/semantic_reviewer/application/datasets.py: class DatasetService:
+          def datasets(self) -> tuple[Dataset, ...]:
+              """List registered metadata without loading observation bodies."""
+              return self._registry.list()
+     +
+     +    def browse(self, dataset_id: str, page: int = 1, page_size: int = 20) -> ObservationPage:
+    -+        """Read a bounded page; reject invalid bounds or raise LookupError for an unknown ID."""
+    ++        """Return registered observations in source order.
+    ++
+    ++        Args:
+    ++            dataset_id: Identifier of a registered dataset.
+    ++            page: One-based page number, from 1 to 1,000,000.
+    ++            page_size: Number of observations per page, from 1 to 100.
+    ++
+    ++        Returns:
+    ++            A page with dataset provenance and the total observation count.
+    ++            Its items are empty beyond the available records.
+    ++
+    ++        Raises:
+    ++            DatasetError: Pagination is invalid or stored evidence fails verification.
+    ++            LookupError: The dataset is not registered.
+    ++        """
+     +        if not 1 <= page <= 1_000_000 or not 1 <= page_size <= 100:
+     +            raise DatasetError("Page must be 1–1000000 and page size must be 1–100.")
+     +        dataset = self._registry.get(dataset_id)
+    @@ src/semantic_reviewer/asgi.py
+     +
+     +
+     +def build_app(data_root: Path):
+    -+    """Initialise external dataset storage and assemble the local web application."""
+    ++    """Initialise dataset storage and assemble the local web application.
+    ++
+    ++    Args:
+    ++        data_root: Runtime directory outside Git worktrees, as required by
+    ++            build_datasets. Creating the app may create directories and migrate SQLite.
+    ++
+    ++    Returns:
+    ++        The FastAPI application; this does not start a server or import datasets.
+    ++    """
+     +    return create_app(build_datasets(data_root))
+     
+      ## src/semantic_reviewer/domain/datasets.py ##
+    @@ src/semantic_reviewer/domain/datasets.py: class Dataset:
+      
+     +@dataclass(frozen=True)
+     +class Observation:
+    ++    """One imported source record, before model interpretation or annotation.
+    ++
+    ++    Attributes:
+    ++        id: Source-file SHA-256 followed by a colon and the zero-based record index.
+    ++        source_index: Original position; repeated comment IDs retain distinct records.
+    ++        comment_id: Upstream identifier, not a unique key for imported observations.
+    ++        category: Source-supplied label, not an independently verified judgement.
+    ++        subcategory: Source-supplied refinement of the category.
+    ++        created_at: Timestamp supplied by the source, preserved as text.
+    ++    """
+    ++
+     +    id: str
+     +    source_index: int
+     +    owner: str
+    @@ src/semantic_reviewer/domain/datasets.py: class Dataset:
+     +
+     +@dataclass(frozen=True)
+     +class ObservationPage:
+    ++    """A source-ordered page and the metadata needed to interpret its records.
+    ++
+    ++    Attributes:
+    ++        dataset: Registered provenance for every item on the page.
+    ++        items: Records on this page; empty when the requested page is beyond the end.
+    ++        page: One-based requested page number.
+    ++        page_size: Requested maximum item count, not necessarily the returned count.
+    ++        total: Total registered record count, not the length of this page.
+    ++    """
+    ++
+     +    dataset: Dataset
+     +    items: tuple[Observation, ...]
+     +    page: int
+    @@ src/semantic_reviewer/web/app.py (new)
+     +
+     +
+     +def create_app(datasets: DatasetService) -> FastAPI:
+    -+    """Build the read-only HTML and JSON interface around the supplied dataset service."""
+    ++    """Build the read-only HTML and JSON interface for a dataset service.
+    ++
+    ++    Args:
+    ++        datasets: Service supplying registration metadata and verified observations.
+    ++
+    ++    Returns:
+    ++        A FastAPI application without starting a server. Observation requests map
+    ++        unknown IDs to 404 and dataset-integrity failures to 409; FastAPI rejects
+    ++        invalid query bounds with 422 before calling the handler.
+    ++    """
+     +    app = FastAPI(title="Meerkritic", version="0.1.0")
+     +    templates = Jinja2Templates(directory=Path(__file__).parent / "templates")
+     +
+3:  b6fa322 ! 3:  4e92cd3 feat(architecture): report typed snapshots and deltas
+    @@ tools/architecture.py (new)
+     +
+     +@dataclass(frozen=True)
+     +class Module:
+    ++    """A Python module and its top-level definitions, with a repository-relative path."""
+    ++
+     +    name: str
+     +    path: str
+     +    package: bool
+    @@ tools/architecture.py (new)
+     +
+     +@dataclass(frozen=True)
+     +class Import:
+    ++    """A static import from a source module to a resolved target module."""
+    ++
+     +    source: str
+     +    target: str
+     +
+     +
+     +@dataclass(frozen=True)
+     +class Boundary:
+    ++    """A declared Tach module and its permitted module dependencies."""
+    ++
+     +    name: str
+     +    allowed_dependencies: tuple[str, ...]
+     +
+     +
+     +@dataclass(frozen=True)
+     +class Contract:
+    ++    """An Import Linter declaration, retaining fields relevant to its contract kind."""
+    ++
+     +    name: str
+     +    kind: str
+     +    modules: tuple[str, ...]
+    @@ tools/architecture.py (new)
+     +
+     +@dataclass(frozen=True)
+     +class Snapshot:
+    ++    """Versioned architecture declarations and static Python metadata.
+    ++
+    ++    Ordering is deterministic for unchanged input. This describes declared rules
+    ++    and syntax; it is not proof that architecture checks have passed.
+    ++    """
+    ++
+     +    schema_version: int
+     +    source_roots: tuple[str, ...]
+     +    root_module: str
+    @@ tools/architecture.py (new)
+     +
+     +
+     +def snapshot(root: Path) -> Snapshot:
+    -+    """Read declared boundaries and static Python structure without importing application code."""
+    ++    """Inspect architecture declarations and Python syntax without imports.
+    ++
+    ++    Args:
+    ++        root: Project checkout containing tach.toml, pyproject.toml and source roots.
+    ++
+    ++    Returns:
+    ++        A deterministic snapshot with repository-relative paths and no capture time.
+    ++        Imports include nested and type-checking blocks; dynamic imports are absent.
+    ++        Reading declarations does not execute or validate their architecture checks.
+    ++    """
+     +    tach = tomllib.loads((root / "tach.toml").read_text(encoding="utf-8"))
+     +    project = tomllib.loads((root / "pyproject.toml").read_text(encoding="utf-8"))
+     +    modules = []
+    @@ tools/architecture.py (new)
+     +
+     +
+     +def delta(before: dict, after: dict) -> dict:
+    -+    """Compare same-schema snapshots; changed records appear as removals and additions."""
+    ++    """Compare architecture snapshots using complete record identity.
+    ++
+    ++    Args:
+    ++        before: Earlier snapshot serialised as a mapping.
+    ++        after: Later snapshot using the same schema version.
+    ++
+    ++    Returns:
+    ++        Sorted removals and additions for changed records, plus old/new settings.
+    ++        A changed record appears in both lists; no rename or move is inferred.
+    ++
+    ++    Raises:
+    ++        ValueError: The snapshot schema versions differ.
+    ++    """
+     +    if before["schema_version"] != after["schema_version"]:
+     +        raise ValueError("Architecture schema versions must match.")
+     +    changes = {}
+4:  dd12b4a ! 4:  a7c0d22 docs: backfill quality runner intent
+    @@ tools/check.py: from pathlib import Path
+      
+      
+      def main() -> int:
+    -+    """Run checkout-local quality gates in order, stopping at the first failure."""
+    ++    """Run checkout-local quality gates, stopping at the first failure.
+    ++
+    ++    Run tools in this interpreter environment against this checkout's source.
+    ++    Progress and tool diagnostics go to the process output streams.
+    ++
+    ++    Returns:
+    ++        Zero when every gate passes, the failing tool's status otherwise, or one
+    ++        when a required executable is missing.
+    ++    """
+          root = Path(__file__).resolve().parents[1]
+          environment = os.environ.copy()
+     +    # Check this checkout even when another worktree has an editable package installed.
+5:  544dcf2 ! 5:  bb19fbc docs: record commenting convention and ADR lifecycle
+    @@ docs/adr/ADR-0003-document-caller-contracts-and-intent.md (new)
+     +its comments in the same semantic commit; backfills of existing code have their
+     +own commit. Guidance and rationale are committed separately from application.
+     +
+    ++The owner refined this decision after reviewing Google's Python guide [1, Sec. 3.8]. Adopt its caller-focused distinction between docstrings and internal comments, structured sections for richer contracts, and class-level meaning. A one-line summary is sufficient only when it fully describes the contract; completeness takes precedence over brevity. Use the project's imperative wording, British English and 100-character limit. **The Google guide has not been adopted in its entirety.** These selected conventions refine the same decision rather than superseding it.
+    ++
+     +### Consequences
+     +
+     +- Callers can see relevant guarantees, side effects and constraints at the boundary.
+    @@ docs/adr/ADR-0003-document-caller-contracts-and-intent.md (new)
+     +or a claim that VS1 is complete. The owner explicitly requested `implemented`
+     +after the backfill; the ADR and index now record that state.
+     +
+    ++The subsequent refinement expanded registration, pagination, publication, composition and architecture contracts and documented provenance records. The quality runner's result contract was backfilled separately. The canonical command passed again with all 15 tests after these edits. R5 evidence, linked from the same PR, records this verification; r4 retains the earlier implementation evidence. The refined convention is implemented in the candidate branch, with PR approval and merge still separate.
+    ++
+     +Review affected comments whenever code changes. Revisit the convention if reviews
+     +find persistent redundancy, stale contracts or important unexplained behaviour.
+     +
+    @@ docs/adr/ADR-0003-document-caller-contracts-and-intent.md (new)
+     +  followed by the owner's agreement and commit-placement instructions in Codex.
+     +- This is an owner-directed development convention, not a data-driven decision;
+     +  no EDR is required.
+    ++
+    ++## References
+    ++
+    ++[1] Google, "Google Python Style Guide," *Google Style Guides*, rev. 3b8822983dc779c498961cc86332a28c07590f64, Sep. 11, 2026. Accessed: Sep. 19, 2026. [Online]. Available: [pinned guide source](https://github.com/google/styleguide/blob/3b8822983dc779c498961cc86332a28c07590f64/pyguide.md).
+     
+      ## docs/adr/README.md ##
+     @@ docs/adr/README.md: agent's proposal or implementation. Record consultation only when it occurred.
+    @@ docs/development/code-comments.md (new)
+     @@
+     +# Code comments and docstrings
+     +
+    -+Use brief Python docstrings on module-exposed functions and methods: interfaces
+    -+consumed by other modules, application entry points and HTTP handlers. State what
+    -+the operation does and what callers may rely on. Mention significant side effects,
+    -+failures or constraints when these are not already clear from the signature.
+    ++Use Python docstrings on module-exposed functions and methods: interfaces consumed by other modules, application entry points and HTTP handlers. Give callers enough information to use an operation without reading its body. Explain relevant side effects, failures and constraints. Prefer the shortest complete explanation; brevity must not hide part of the contract.
+     +
+     +Document internal methods when their intent or implementation is not obvious.
+     +Within an implementation, explain the reason for a choice, an invariant or required
+    @@ docs/development/code-comments.md (new)
+     +registry metadata makes them discoverable. Do not narrate individual statements,
+     +repeat type annotations or add comments to obvious helpers just for coverage.
+     +
+    -+Usually one sentence is enough; use a short paragraph when a contract needs more.
+    -+Use ordinary Python docstrings. There is no mandatory `Args`/`Returns` layout;
+    -+include structured detail only when it helps the caller. Put the shared contract
+    -+on the interface and keep implementation documentation focused on its particular
+    -+behaviour. Comments must describe the code present at that revision.
+    ++Start with an imperative summary such as "Return a page of observations." A single sentence is sufficient for a simple contract. For richer contracts, use Google-style `Args`, `Returns` or `Yields`, and `Raises` sections as applicable, with four-space section indentation. Describe meaning, bounds, units, ordering, empty results and caller-relevant failures; do not repeat annotated types or catalogue incidental implementation exceptions. Omit empty or redundant sections. Describe decorated functions as callers experience them: a context manager returns a managed context rather than exposing a generator API.
+    ++
+    ++Add class docstrings explaining what instances represent and any significant invariants or provenance semantics. Use `Attributes` for fields that need explanation; typed, self-explanatory fields do not need restating. Distinguish expected values from validation actually performed by the class. Test names often suffice; document unusual setup or constraints rather than repeat the test name.
+    ++
+    ++Put the shared contract on the interface and explain implementation-specific behaviour where needed. Comments must describe the code present at that revision. Keep British English and the project's 100-character limit; Google is a source for these selected conventions, not an adopted whole-project standard. The choice and pinned source are recorded in [ADR-0003](../adr/ADR-0003-document-caller-contracts-and-intent.md).
+     +
+     +For new or changed code, include its comments in the same semantic commit as that
+     +code. Backfilling existing code is a separate commit. Keep changes to this guidance
+6:  c66dcfe = 6:  6b60ade docs(adr): record accepted source preservation decision
+-:  ------- > 7:  8602e45 docs: adopt selected Google Python style guidance

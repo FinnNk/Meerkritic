@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "sequence": 11,
+  "pair_id": "vs1-dataset-browser",
+  "recorded_at": "2026-09-19T20:39:43+00:00",
+  "previous_hash": "85df414197e084ba5e0a4bead021ba3dc74b16c7e558045b6b88749d620311ff",
+  "kind": "observation",
+  "round_id": "r4",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "meerkritic-vs1-2026-09-19"
+  },
+  "payload": {
+    "stage": "publication_partial",
+    "completed": "archive pushed",
+    "archive_commit": "cded52fffec05bbfa2b10ec41c917d0e975d67dc",
+    "archive_branch": "evidence/vs1-dataset-browser-r4",
+    "semantic_update": "not yet performed",
+    "last_completed_readiness": "locally_prepared"
+  },
+  "event_hash": "d86c7ee31197e773e1bd890ff744e79f2e96c9f737b1ccdd9956e029c84b79fb"
+}

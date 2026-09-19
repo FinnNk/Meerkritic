@@ -1,0 +1,569 @@
+{
+  "base": "3db848bd0992d0686bb5c45ddadd87ec6fbde8d2",
+  "tip": "8602e458ec72ef3568192f8c3a832f201e8dd3df",
+  "tree": "f00f64c8826447121132ab61b7f3a34911a2fcc9",
+  "commits": [
+    {
+      "commit": "7623c9345fea7c6ae3f3689591e18c5804db63ad",
+      "parents": [
+        "3db848bd0992d0686bb5c45ddadd87ec6fbde8d2"
+      ],
+      "tree": "5c6be78f320c395d5311d24b6ea34b3f0677f1f2",
+      "subject": "feat(datasets): register pinned source evidence",
+      "change": {
+        "files": [
+          {
+            "path": "IMPLEMENTATION_BACKLOG.yaml",
+            "added": 1,
+            "deleted": 1
+          },
+          {
+            "path": "README.md",
+            "added": 13,
+            "deleted": 8
+          },
+          {
+            "path": "config/datasets/crc-py-manual.json",
+            "added": 8,
+            "deleted": 0
+          },
+          {
+            "path": "docs/adr/ADR-0002-preserve-source-record-identity.md",
+            "added": 64,
+            "deleted": 0
+          },
+          {
+            "path": "docs/adr/README.md",
+            "added": 1,
+            "deleted": 0
+          },
+          {
+            "path": "docs/development/README.md",
+            "added": 16,
+            "deleted": 17
+          },
+          {
+            "path": "docs/development/datasets.md",
+            "added": 56,
+            "deleted": 0
+          },
+          {
+            "path": "docs/slice-reviews/VS1-progress.md",
+            "added": 11,
+            "deleted": 0
+          },
+          {
+            "path": "pyproject.toml",
+            "added": 1,
+            "deleted": 1
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/migrations/001_registry.sql",
+            "added": 23,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/observations.py",
+            "added": 181,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/registry.py",
+            "added": 104,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/application/datasets.py",
+            "added": 120,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/bootstrap.py",
+            "added": 38,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/domain/datasets.py",
+            "added": 32,
+            "deleted": 0
+          },
+          {
+            "path": "tests/test_architecture_contracts.py",
+            "added": 2,
+            "deleted": 0
+          },
+          {
+            "path": "tests/test_datasets.py",
+            "added": 132,
+            "deleted": 0
+          },
+          {
+            "path": "tools/run.py",
+            "added": 36,
+            "deleted": 0
+          },
+          {
+            "path": "uv.lock",
+            "added": 75,
+            "deleted": 0
+          }
+        ],
+        "file_count": 19,
+        "added": 914,
+        "deleted": 27,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "6b7e8cb9d4825e9c491dccab363a1df35266d1eb",
+      "parents": [
+        "7623c9345fea7c6ae3f3689591e18c5804db63ad"
+      ],
+      "tree": "e8d1428aa7c63d29783dbcdb334a15606d01d965",
+      "subject": "feat(browser): browse registered review observations",
+      "change": {
+        "files": [
+          {
+            "path": "README.md",
+            "added": 14,
+            "deleted": 11
+          },
+          {
+            "path": "docs/development/README.md",
+            "added": 7,
+            "deleted": 6
+          },
+          {
+            "path": "docs/development/datasets.md",
+            "added": 7,
+            "deleted": 3
+          },
+          {
+            "path": "docs/slice-reviews/VS1-progress.md",
+            "added": 5,
+            "deleted": 4
+          },
+          {
+            "path": "pyproject.toml",
+            "added": 13,
+            "deleted": 2
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/observations.py",
+            "added": 32,
+            "deleted": 1
+          },
+          {
+            "path": "src/semantic_reviewer/application/datasets.py",
+            "added": 41,
+            "deleted": 1
+          },
+          {
+            "path": "src/semantic_reviewer/asgi.py",
+            "added": 19,
+            "deleted": 1
+          },
+          {
+            "path": "src/semantic_reviewer/domain/datasets.py",
+            "added": 46,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/app.py",
+            "added": 74,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/base.html",
+            "added": 27,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/index.html",
+            "added": 18,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/observations.html",
+            "added": 39,
+            "deleted": 0
+          },
+          {
+            "path": "tests/test_datasets.py",
+            "added": 42,
+            "deleted": 0
+          },
+          {
+            "path": "tools/run.py",
+            "added": 17,
+            "deleted": 9
+          },
+          {
+            "path": "uv.lock",
+            "added": 224,
+            "deleted": 0
+          }
+        ],
+        "file_count": 16,
+        "added": 625,
+        "deleted": 38,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "4e92cd3260befaaea0315802235d2b3fd9909fcf",
+      "parents": [
+        "6b7e8cb9d4825e9c491dccab363a1df35266d1eb"
+      ],
+      "tree": "0885e90cc3681735a8f48b5454b18eaffa8c21f8",
+      "subject": "feat(architecture): report typed snapshots and deltas",
+      "change": {
+        "files": [
+          {
+            "path": "docs/architecture/README.md",
+            "added": 15,
+            "deleted": 9
+          },
+          {
+            "path": "docs/development/README.md",
+            "added": 1,
+            "deleted": 2
+          },
+          {
+            "path": "docs/slice-reviews/VS1-progress.md",
+            "added": 32,
+            "deleted": 10
+          },
+          {
+            "path": "tests/test_architecture_snapshot.py",
+            "added": 29,
+            "deleted": 0
+          },
+          {
+            "path": "tools/architecture.py",
+            "added": 194,
+            "deleted": 0
+          }
+        ],
+        "file_count": 5,
+        "added": 271,
+        "deleted": 21,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "a7c0d2293ff6aa39172d3536a453803f586f7e0b",
+      "parents": [
+        "4e92cd3260befaaea0315802235d2b3fd9909fcf"
+      ],
+      "tree": "777f5507a7c1ba9df1dba68282b0391fa1794b25",
+      "subject": "docs: backfill quality runner intent",
+      "change": {
+        "files": [
+          {
+            "path": "tools/check.py",
+            "added": 10,
+            "deleted": 0
+          }
+        ],
+        "file_count": 1,
+        "added": 10,
+        "deleted": 0,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "bb19fbc9face20e703b7db1d34049f1c7a13f40c",
+      "parents": [
+        "a7c0d2293ff6aa39172d3536a453803f586f7e0b"
+      ],
+      "tree": "3119b02f4d6c7a41321a074481c7172d0e30548d",
+      "subject": "docs: record commenting convention and ADR lifecycle",
+      "change": {
+        "files": [
+          {
+            "path": "AGENTS.md",
+            "added": 6,
+            "deleted": 0
+          },
+          {
+            "path": "docs/adr/ADR-0001-record-significant-empirical-decisions.md",
+            "added": 5,
+            "deleted": 0
+          },
+          {
+            "path": "docs/adr/ADR-0003-document-caller-contracts-and-intent.md",
+            "added": 98,
+            "deleted": 0
+          },
+          {
+            "path": "docs/adr/README.md",
+            "added": 15,
+            "deleted": 0
+          },
+          {
+            "path": "docs/development/README.md",
+            "added": 4,
+            "deleted": 0
+          },
+          {
+            "path": "docs/development/code-comments.md",
+            "added": 28,
+            "deleted": 0
+          }
+        ],
+        "file_count": 6,
+        "added": 156,
+        "deleted": 0,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "6b60adeec9069028d0fb8444234a31bb73df5b58",
+      "parents": [
+        "bb19fbc9face20e703b7db1d34049f1c7a13f40c"
+      ],
+      "tree": "16773097c670c1e0231dfb4fa840abb78e92202a",
+      "subject": "docs(adr): record accepted source preservation decision",
+      "change": {
+        "files": [
+          {
+            "path": "docs/adr/ADR-0002-preserve-source-record-identity.md",
+            "added": 15,
+            "deleted": 8
+          },
+          {
+            "path": "docs/adr/README.md",
+            "added": 1,
+            "deleted": 1
+          }
+        ],
+        "file_count": 2,
+        "added": 16,
+        "deleted": 9,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "8602e458ec72ef3568192f8c3a832f201e8dd3df",
+      "parents": [
+        "6b60adeec9069028d0fb8444234a31bb73df5b58"
+      ],
+      "tree": "f00f64c8826447121132ab61b7f3a34911a2fcc9",
+      "subject": "docs: adopt selected Google Python style guidance",
+      "change": {
+        "files": [
+          {
+            "path": "AGENTS.md",
+            "added": 3,
+            "deleted": 0
+          },
+          {
+            "path": "docs/adr/ADR-0004-adopt-selective-python-style.md",
+            "added": 70,
+            "deleted": 0
+          },
+          {
+            "path": "docs/adr/README.md",
+            "added": 1,
+            "deleted": 0
+          },
+          {
+            "path": "docs/development/README.md",
+            "added": 2,
+            "deleted": 0
+          },
+          {
+            "path": "docs/development/python-style.md",
+            "added": 34,
+            "deleted": 0
+          }
+        ],
+        "file_count": 5,
+        "added": 110,
+        "deleted": 0,
+        "binary_files": 0
+      }
+    }
+  ],
+  "linear": true,
+  "final_change": {
+    "files": [
+      {
+        "path": "AGENTS.md",
+        "added": 9,
+        "deleted": 0
+      },
+      {
+        "path": "IMPLEMENTATION_BACKLOG.yaml",
+        "added": 1,
+        "deleted": 1
+      },
+      {
+        "path": "README.md",
+        "added": 14,
+        "deleted": 6
+      },
+      {
+        "path": "config/datasets/crc-py-manual.json",
+        "added": 8,
+        "deleted": 0
+      },
+      {
+        "path": "docs/adr/ADR-0001-record-significant-empirical-decisions.md",
+        "added": 5,
+        "deleted": 0
+      },
+      {
+        "path": "docs/adr/ADR-0002-preserve-source-record-identity.md",
+        "added": 71,
+        "deleted": 0
+      },
+      {
+        "path": "docs/adr/ADR-0003-document-caller-contracts-and-intent.md",
+        "added": 98,
+        "deleted": 0
+      },
+      {
+        "path": "docs/adr/ADR-0004-adopt-selective-python-style.md",
+        "added": 70,
+        "deleted": 0
+      },
+      {
+        "path": "docs/adr/README.md",
+        "added": 17,
+        "deleted": 0
+      },
+      {
+        "path": "docs/architecture/README.md",
+        "added": 15,
+        "deleted": 9
+      },
+      {
+        "path": "docs/development/README.md",
+        "added": 22,
+        "deleted": 17
+      },
+      {
+        "path": "docs/development/code-comments.md",
+        "added": 28,
+        "deleted": 0
+      },
+      {
+        "path": "docs/development/datasets.md",
+        "added": 60,
+        "deleted": 0
+      },
+      {
+        "path": "docs/development/python-style.md",
+        "added": 34,
+        "deleted": 0
+      },
+      {
+        "path": "docs/slice-reviews/VS1-progress.md",
+        "added": 34,
+        "deleted": 0
+      },
+      {
+        "path": "pyproject.toml",
+        "added": 13,
+        "deleted": 2
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/migrations/001_registry.sql",
+        "added": 23,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/observations.py",
+        "added": 212,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/registry.py",
+        "added": 104,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/application/datasets.py",
+        "added": 160,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/asgi.py",
+        "added": 19,
+        "deleted": 1
+      },
+      {
+        "path": "src/semantic_reviewer/bootstrap.py",
+        "added": 38,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/domain/datasets.py",
+        "added": 78,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/web/app.py",
+        "added": 74,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/web/templates/base.html",
+        "added": 27,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/web/templates/index.html",
+        "added": 18,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/web/templates/observations.html",
+        "added": 39,
+        "deleted": 0
+      },
+      {
+        "path": "tests/test_architecture_contracts.py",
+        "added": 2,
+        "deleted": 0
+      },
+      {
+        "path": "tests/test_architecture_snapshot.py",
+        "added": 29,
+        "deleted": 0
+      },
+      {
+        "path": "tests/test_datasets.py",
+        "added": 174,
+        "deleted": 0
+      },
+      {
+        "path": "tools/architecture.py",
+        "added": 194,
+        "deleted": 0
+      },
+      {
+        "path": "tools/check.py",
+        "added": 10,
+        "deleted": 0
+      },
+      {
+        "path": "tools/run.py",
+        "added": 44,
+        "deleted": 0
+      },
+      {
+        "path": "uv.lock",
+        "added": 299,
+        "deleted": 0
+      }
+    ],
+    "file_count": 34,
+    "added": 2043,
+    "deleted": 36,
+    "binary_files": 0
+  },
+  "statistics_note": "No rename detection; merge commit churn uses first parent. Final diff and cumulative per-commit churn are different quantities."
+}

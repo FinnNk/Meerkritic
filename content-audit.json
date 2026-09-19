@@ -1,0 +1,19 @@
+{
+  "prior": "c66dcfe605e00a8b3ea41208647df11bb7be4da6",
+  "current": "8602e458ec72ef3568192f8c3a832f201e8dd3df",
+  "python_files_compared": [
+    "src/semantic_reviewer/adapters/observations.py",
+    "src/semantic_reviewer/adapters/registry.py",
+    "src/semantic_reviewer/application/datasets.py",
+    "src/semantic_reviewer/asgi.py",
+    "src/semantic_reviewer/bootstrap.py",
+    "src/semantic_reviewer/domain/datasets.py",
+    "src/semantic_reviewer/web/app.py",
+    "tools/architecture.py",
+    "tools/check.py"
+  ],
+  "executable_ast_unchanged": true,
+  "tests_lock_contracts_vendor_research_config_unchanged": true,
+  "typed_architecture_unchanged": true,
+  "note": "Docstrings affect introspection and FastAPI API descriptions; executable AST equality excludes documentation metadata."
+}

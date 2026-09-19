@@ -1,0 +1,26 @@
+{
+  "diary": {
+    "tip": "c12c7c04656c671ca5b42adf52998ad438cb9175",
+    "tree": "f00f64c8826447121132ab61b7f3a34911a2fcc9"
+  },
+  "semantic": {
+    "tip": "8602e458ec72ef3568192f8c3a832f201e8dd3df",
+    "tree": "f00f64c8826447121132ab61b7f3a34911a2fcc9"
+  },
+  "trees_equal": true,
+  "direct_diff_exit_code": 0,
+  "equal": true,
+  "scope": "tracked_snapshot_only",
+  "verified_at": "2026-09-19T21:04:23+00:00",
+  "behavioural_verification": "not_run",
+  "approval": "not_checked",
+  "base": {
+    "diary_commit": "3db848bd0992d0686bb5c45ddadd87ec6fbde8d2",
+    "semantic_commit": "3db848bd0992d0686bb5c45ddadd87ec6fbde8d2",
+    "diary_tree": "eb25b93ccffc838bce77db8e520a6806a2801549",
+    "semantic_tree": "eb25b93ccffc838bce77db8e520a6806a2801549",
+    "trees_equal": true,
+    "diary_is_ancestor": true,
+    "semantic_is_ancestor": true
+  }
+}

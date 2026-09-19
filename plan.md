@@ -1,0 +1,11 @@
+# R5 semantic plan
+
+The owner accepted selective adoption of Google's Python guide and requested IEEE references in the relevant ADRs. P1/P2/P3 remain registration, browsing and architecture reporting, with their expanded contracts and class semantics incorporated. P4 is the existing quality-runner backfill. P5 owns the refined commenting convention and ADR-0003, P6 preserves ADR-0002's acceptance, and P7 introduces the broader selective policy and ADR-0004. These boundaries separate policy from its application and keep capability comments with the introducing code.
+
+Frozen diary c12c7c04656c671ca5b42adf52998ad438cb9175 and semantic 8602e458ec72ef3568192f8c3a832f201e8dd3df share final tree f00f64c8826447121132ab61b7f3a34911a2fcc9. Both bases are 3db848bd0992d0686bb5c45ddadd87ec6fbde8d2. See commits.json for all seven checkpoints and range-diff.txt for the prior-round mapping.
+
+The first local candidate passed all seven quality runs, then self-review tightened the accepted-size wording and hard-link mutation contract. It was never published. Its checks and identities remain in initial/. Corrections were committed to the diary before a new freeze/reconstruction and complete checkpoint rerun. No failed test was suppressed and no contract was weakened. The diary records actual application, backfill, guidance, policy, review corrections and confirmation in their original order.
+
+Every final checkpoint has its own source, tests, dependency lock and environment. P1/P2/P3-P7 run 11/14/15 tests respectively. Executable AST, architecture data, dependencies and tests remain unchanged; docstring metadata is intentionally changed. ADR-0003's refined convention and ADR-0004's policy have passed their current-scope confirmation and are implemented in the candidate branch. No claim of complete historical conformance is made.
+
+Previously published r4 remains retained at cded52fffec05bbfa2b10ec41c917d0e975d67dc. R5 retains both r4 and r5 bundles, public discussion and a verified upstream source identity. Rewriting the existing PR is authorised by the owner's accepted recommendations and standing semantic-placement instructions. Require the explicit previous-head lease c66dcfe605e00a8b3ea41208647df11bb7be4da6. Do not merge or claim owner approval.

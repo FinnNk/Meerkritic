@@ -1,0 +1,16 @@
+{
+  "valid": true,
+  "pair_id": "vs1-dataset-browser",
+  "round_id": "r5",
+  "manifest_sha256": "25faa873866e634ed9bd5664a9497e5a8bfa5c3fc916f78fcc0d7ede7c9c7ede",
+  "scope": "archive_identity_and_equivalence_only",
+  "current_checkout": {
+    "repository": "$WORKSPACE\\extras\\der-checkouts\\vs1-dataset-browser",
+    "bare": false,
+    "head": "8602e458ec72ef3568192f8c3a832f201e8dd3df",
+    "branch": "review/vs1-dataset-browser-r5-final",
+    "clean": true,
+    "changes": [],
+    "tree": "f00f64c8826447121132ab61b7f3a34911a2fcc9"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "pair_id": "vs1-dataset-browser",
+  "round_id": "r5",
+  "manifest_sha256": "25faa873866e634ed9bd5664a9497e5a8bfa5c3fc916f78fcc0d7ede7c9c7ede",
+  "semantic_tip": "8602e458ec72ef3568192f8c3a832f201e8dd3df",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "meerkritic-vs1-2026-09-19"
+  },
+  "independence": "self-review",
+  "mode": "full",
+  "status": "complete",
+  "orientation_done": true,
+  "reviewed_commits": [
+    "7623c9345fea7c6ae3f3689591e18c5804db63ad",
+    "6b7e8cb9d4825e9c491dccab363a1df35266d1eb",
+    "4e92cd3260befaaea0315802235d2b3fd9909fcf",
+    "a7c0d2293ff6aa39172d3536a453803f586f7e0b",
+    "bb19fbc9face20e703b7db1d34049f1c7a13f40c",
+    "6b60adeec9069028d0fb8444234a31bb73df5b58",
+    "8602e458ec72ef3568192f8c3a832f201e8dd3df"
+  ],
+  "aggregate_done": true,
+  "findings": [],
+  "check_records": [
+    "p1-checks.log",
+    "p2-checks.log",
+    "p3-checks.log",
+    "p4-checks.log",
+    "p5-checks.log",
+    "p6-checks.log",
+    "p7-checks.log",
+    "content-audit.json",
+    "review.md",
+    "plan.md"
+  ],
+  "limitations": [
+    "Windows/Python 3.12 only",
+    "Self-review, not independent",
+    "No model inference or annotation yet",
+    "No hosted CI checks configured",
+    "Owner approval and merge outstanding"
+  ],
+  "carry_forward_record": null,
+  "platform_approval": false
+}
