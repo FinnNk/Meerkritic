@@ -1,0 +1,37 @@
+Running: ruff format --check .
+45 files already formatted
+Running: ruff check .
+E501 Line too long (101 > 100)
+  --> src\semantic_reviewer\adapters\annotations.py:42:101
+   |
+40 |             )
+41 |             db.execute(
+42 |                 "INSERT INTO event(kind, subject_id, occurred_at, details_json) VALUES (?, ?, ?, ?)",
+   |                                                                                                     ^
+43 |                 (
+44 |                     "annotation_recorded",
+   |
+
+E501 Line too long (114 > 100)
+  --> src\semantic_reviewer\adapters\annotations.py:70:101
+   |
+68 |                 Annotation(**dict(row))
+69 |                 for row in db.execute(
+70 |                     "SELECT * FROM annotation WHERE observation_id=? ORDER BY created_at DESC, id DESC LIMIT 100",
+   |                                                                                                     ^^^^^^^^^^^^^^
+71 |                     (observation_id,),
+72 |                 )
+   |
+
+E501 Line too long (104 > 100)
+  --> src\semantic_reviewer\adapters\annotations.py:95:101
+   |
+93 |             )
+94 |             sources = db.execute(
+95 |                 "SELECT count(DISTINCT a.observation_id) FROM annotation a JOIN job j ON j.id=a.job_id "
+   |                                                                                                     ^^^^
+96 |                 "WHERE j.dataset_id=?",
+97 |                 (dataset_id,),
+   |
+
+Found 3 errors.

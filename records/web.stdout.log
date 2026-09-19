@@ -1,0 +1,5 @@
+INFO:     127.0.0.1:53604 - "GET /jobs/563c3c68-f783-46ca-a0ad-b53bc41ee210 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53604 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54838 - "POST /jobs/563c3c68-f783-46ca-a0ad-b53bc41ee210/annotation HTTP/1.1" 303 See Other
+INFO:     127.0.0.1:54838 - "GET /jobs/563c3c68-f783-46ca-a0ad-b53bc41ee210 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54838 - "GET /datasets/crc-py-manual-4176ac0/progress HTTP/1.1" 200 OK

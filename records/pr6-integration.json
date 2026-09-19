@@ -1,0 +1,42 @@
+{
+  "pr": "https://github.com/FinnNk/Meerkritic/pull/6",
+  "owner_approved_reviewed_head": "fc30a333e950270356d99b29ab06cf84ca91154c",
+  "merged_at": "2026-09-19T23:24:17Z",
+  "integration_head": "b9ffa2ee49b60758dba6832f08b988f797b439af",
+  "ordered_mapping": [
+    {
+      "reviewed": "e4cfb02c8059a2ee33a5bb3f562b98a6adbd6ee2",
+      "integrated": "7d333d9631307427ee1e109676e8213c7f4062d6",
+      "same_tree": true
+    },
+    {
+      "reviewed": "9a9c24cb20a83f031f8f28efceef345c5233a754",
+      "integrated": "0d953d8646a2ca0a77d8099e6dc0d8fc3fb74bd8",
+      "same_tree": true
+    },
+    {
+      "reviewed": "f0d94ca12ffd15af15fc3c19bd437b525e4aed69",
+      "integrated": "3e3dc78e0ecc308eb9041185660d5cdc3d76f334",
+      "same_tree": true
+    },
+    {
+      "reviewed": "0a2a62d61f01e24e48f784f76ee84a793052b923",
+      "integrated": "adefeadb8ad49d4502b48e538e6ee5046e09c636",
+      "same_tree": true
+    },
+    {
+      "reviewed": "fc30a333e950270356d99b29ab06cf84ca91154c",
+      "integrated": "b9ffa2ee49b60758dba6832f08b988f797b439af",
+      "same_tree": true
+    }
+  ],
+  "post_merge_checks": {
+    "status": "passed",
+    "tests": 72,
+    "checkout": "$WORKSPACE\\extras\\der-checkouts\\vs1-annotation",
+    "revision": "b9ffa2ee49b60758dba6832f08b988f797b439af",
+    "log": "clean-main-checks.log",
+    "sha256": "6ecef8df780700111ef7d9a5e20dabe2840ec38be9003f7177446fd237961fe3"
+  },
+  "limitation": "Main workspace Ruff crashed in presence of inaccessible unrelated temporary directories. Retained base-checks.log; unchanged quality gates passed in a clean checkout of exact merged main."
+}

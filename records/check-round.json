@@ -1,0 +1,16 @@
+{
+  "valid": true,
+  "pair_id": "vs1-annotation",
+  "round_id": "r1",
+  "manifest_sha256": "b200b8a52f5ce2ed3255613c52052f5ba7d96c2fd6b5ea262dd935fd32a2ba8d",
+  "scope": "archive_identity_and_equivalence_only",
+  "current_checkout": {
+    "repository": "$WORKSPACE\\extras\\der-checkouts\\vs1-annotation",
+    "bare": false,
+    "head": "9d5124098a79a97d3b88a064e979a0b04451f410",
+    "branch": "change/vs1-annotation-diary",
+    "clean": true,
+    "changes": [],
+    "tree": "9df946e1c9edca5dc488f69c6cd6063b041c6e0a"
+  }
+}

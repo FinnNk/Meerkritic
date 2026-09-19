@@ -1,0 +1,130 @@
+{
+  "changes": {
+    "boundaries": {
+      "added": [],
+      "removed": []
+    },
+    "contracts": {
+      "added": [],
+      "removed": []
+    },
+    "imports": {
+      "added": [
+        {
+          "source": "semantic_reviewer.adapters.annotations",
+          "target": "dataclasses"
+        },
+        {
+          "source": "semantic_reviewer.adapters.annotations",
+          "target": "json"
+        },
+        {
+          "source": "semantic_reviewer.adapters.annotations",
+          "target": "pathlib"
+        },
+        {
+          "source": "semantic_reviewer.adapters.annotations",
+          "target": "semantic_reviewer.adapters.state"
+        },
+        {
+          "source": "semantic_reviewer.adapters.annotations",
+          "target": "semantic_reviewer.application.annotations"
+        },
+        {
+          "source": "semantic_reviewer.application.annotations",
+          "target": "dataclasses"
+        },
+        {
+          "source": "semantic_reviewer.application.annotations",
+          "target": "datetime"
+        },
+        {
+          "source": "semantic_reviewer.application.annotations",
+          "target": "semantic_reviewer.application.jobs"
+        },
+        {
+          "source": "semantic_reviewer.application.annotations",
+          "target": "semantic_reviewer.domain.normalisation"
+        },
+        {
+          "source": "semantic_reviewer.application.annotations",
+          "target": "typing"
+        },
+        {
+          "source": "semantic_reviewer.application.annotations",
+          "target": "uuid"
+        },
+        {
+          "source": "semantic_reviewer.bootstrap",
+          "target": "semantic_reviewer.adapters.annotations"
+        },
+        {
+          "source": "semantic_reviewer.bootstrap",
+          "target": "semantic_reviewer.application.annotations"
+        },
+        {
+          "source": "semantic_reviewer.web.app",
+          "target": "semantic_reviewer.application.annotations"
+        },
+        {
+          "source": "semantic_reviewer.web.app",
+          "target": "starlette.concurrency"
+        },
+        {
+          "source": "semantic_reviewer.web.app",
+          "target": "urllib.parse"
+        }
+      ],
+      "removed": []
+    },
+    "modules": {
+      "added": [
+        {
+          "definitions": [
+            "Annotation",
+            "AnnotationService",
+            "AnnotationStore"
+          ],
+          "name": "semantic_reviewer.application.annotations",
+          "package": false,
+          "path": "src/semantic_reviewer/application/annotations.py"
+        },
+        {
+          "definitions": [
+            "SQLiteAnnotations"
+          ],
+          "name": "semantic_reviewer.adapters.annotations",
+          "package": false,
+          "path": "src/semantic_reviewer/adapters/annotations.py"
+        },
+        {
+          "definitions": [
+            "build_annotations",
+            "build_datasets",
+            "build_jobs",
+            "build_worker",
+            "runtime_path"
+          ],
+          "name": "semantic_reviewer.bootstrap",
+          "package": false,
+          "path": "src/semantic_reviewer/bootstrap.py"
+        }
+      ],
+      "removed": [
+        {
+          "definitions": [
+            "build_datasets",
+            "build_jobs",
+            "build_worker",
+            "runtime_path"
+          ],
+          "name": "semantic_reviewer.bootstrap",
+          "package": false,
+          "path": "src/semantic_reviewer/bootstrap.py"
+        }
+      ]
+    },
+    "settings": {}
+  },
+  "schema_version": 1
+}

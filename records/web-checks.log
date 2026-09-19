@@ -1,0 +1,15 @@
+Running: ruff format --check .
+46 files already formatted
+Running: ruff check .
+E501 Line too long (103 > 100)
+   --> src\semantic_reviewer\web\app.py:152:101
+    |
+150 |             @app.post("/jobs/{job_id}/annotation", response_class=HTMLResponse)
+151 |             async def annotate(request: Request, job_id: str):
+152 |                 """Bound and validate a same-origin decision; preserve invalid edits for correction."""
+    |                                                                                                     ^^^
+153 |                 if request.headers.get("origin") != f"{request.url.scheme}://{request.url.netloc}":
+154 |                     raise HTTPException(403, "Submit decisions from this local harness.")
+    |
+
+Found 1 error.

@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "pair_id": "vs1-annotation",
+  "round_id": "r1",
+  "manifest_sha256": "b200b8a52f5ce2ed3255613c52052f5ba7d96c2fd6b5ea262dd935fd32a2ba8d",
+  "semantic_tip": "843ff161d49e096d1da2a55cacf75acac03e97f3",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "vs1-annotation-2026-09-20"
+  },
+  "independence": "self-review",
+  "mode": "full",
+  "status": "complete",
+  "orientation_done": true,
+  "reviewed_commits": [
+    "3ba1d7dd31a8f932cc92137304b8c5a86f05d158",
+    "32a6e5ab5dc5e39f0f2dcaa6cb19cb93d77ca355",
+    "843ff161d49e096d1da2a55cacf75acac03e97f3"
+  ],
+  "aggregate_done": true,
+  "findings": [],
+  "check_records": [
+    "r1-diary-checks.json",
+    "r1-p0-checks.json",
+    "r1-p1-checks.json",
+    "r1-p2-checks.json",
+    "review-notes.md"
+  ],
+  "limitations": [
+    "Windows/Python 3.12 only",
+    "Self-review; fresh-context challenge scoped",
+    "No hosted CI configured",
+    "Owner approval and integration pending"
+  ],
+  "carry_forward_record": null,
+  "platform_approval": false
+}

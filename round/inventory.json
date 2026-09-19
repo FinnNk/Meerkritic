@@ -1,0 +1,250 @@
+{
+  "base": "b9ffa2ee49b60758dba6832f08b988f797b439af",
+  "tip": "843ff161d49e096d1da2a55cacf75acac03e97f3",
+  "tree": "9df946e1c9edca5dc488f69c6cd6063b041c6e0a",
+  "commits": [
+    {
+      "commit": "3ba1d7dd31a8f932cc92137304b8c5a86f05d158",
+      "parents": [
+        "b9ffa2ee49b60758dba6832f08b988f797b439af"
+      ],
+      "tree": "907ccea19a5b97869d17989245ee101caadd405b",
+      "subject": "docs: confirm process-lock recovery is implemented",
+      "change": {
+        "files": [
+          {
+            "path": "docs/adr/ADR-0006-recover-jobs-under-process-lock.md",
+            "added": 10,
+            "deleted": 6
+          },
+          {
+            "path": "docs/adr/README.md",
+            "added": 1,
+            "deleted": 1
+          }
+        ],
+        "file_count": 2,
+        "added": 11,
+        "deleted": 7,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "32a6e5ab5dc5e39f0f2dcaa6cb19cb93d77ca355",
+      "parents": [
+        "3ba1d7dd31a8f932cc92137304b8c5a86f05d158"
+      ],
+      "tree": "5ba4c80abc535f5c6dd387c21bef6ce1a41745d1",
+      "subject": "feat: persist grounded human decisions and review queries",
+      "change": {
+        "files": [
+          {
+            "path": "docs/development/annotations.md",
+            "added": 26,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/annotations.py",
+            "added": 131,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/migrations/004_annotations.sql",
+            "added": 26,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/application/annotations.py",
+            "added": 115,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/bootstrap.py",
+            "added": 8,
+            "deleted": 0
+          },
+          {
+            "path": "tests/test_annotations.py",
+            "added": 144,
+            "deleted": 0
+          },
+          {
+            "path": "tools/run.py",
+            "added": 23,
+            "deleted": 0
+          }
+        ],
+        "file_count": 7,
+        "added": 473,
+        "deleted": 0,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "843ff161d49e096d1da2a55cacf75acac03e97f3",
+      "parents": [
+        "32a6e5ab5dc5e39f0f2dcaa6cb19cb93d77ca355"
+      ],
+      "tree": "9df946e1c9edca5dc488f69c6cd6063b041c6e0a",
+      "subject": "feat(web): review interpretations and track annotation progress",
+      "change": {
+        "files": [
+          {
+            "path": "IMPLEMENTATION_BACKLOG.yaml",
+            "added": 3,
+            "deleted": 2
+          },
+          {
+            "path": "README.md",
+            "added": 5,
+            "deleted": 1
+          },
+          {
+            "path": "docs/development/annotations.md",
+            "added": 10,
+            "deleted": 0
+          },
+          {
+            "path": "docs/slice-reviews/VS1-progress.md",
+            "added": 10,
+            "deleted": 5
+          },
+          {
+            "path": "src/semantic_reviewer/asgi.py",
+            "added": 4,
+            "deleted": 3
+          },
+          {
+            "path": "src/semantic_reviewer/web/app.py",
+            "added": 99,
+            "deleted": 4
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/job.html",
+            "added": 24,
+            "deleted": 1
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/observations.html",
+            "added": 1,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/progress.html",
+            "added": 17,
+            "deleted": 0
+          },
+          {
+            "path": "tests/test_annotation_web.py",
+            "added": 113,
+            "deleted": 0
+          }
+        ],
+        "file_count": 10,
+        "added": 286,
+        "deleted": 16,
+        "binary_files": 0
+      }
+    }
+  ],
+  "linear": true,
+  "final_change": {
+    "files": [
+      {
+        "path": "IMPLEMENTATION_BACKLOG.yaml",
+        "added": 3,
+        "deleted": 2
+      },
+      {
+        "path": "README.md",
+        "added": 5,
+        "deleted": 1
+      },
+      {
+        "path": "docs/adr/ADR-0006-recover-jobs-under-process-lock.md",
+        "added": 10,
+        "deleted": 6
+      },
+      {
+        "path": "docs/adr/README.md",
+        "added": 1,
+        "deleted": 1
+      },
+      {
+        "path": "docs/development/annotations.md",
+        "added": 36,
+        "deleted": 0
+      },
+      {
+        "path": "docs/slice-reviews/VS1-progress.md",
+        "added": 10,
+        "deleted": 5
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/annotations.py",
+        "added": 131,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/migrations/004_annotations.sql",
+        "added": 26,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/application/annotations.py",
+        "added": 115,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/asgi.py",
+        "added": 4,
+        "deleted": 3
+      },
+      {
+        "path": "src/semantic_reviewer/bootstrap.py",
+        "added": 8,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/web/app.py",
+        "added": 99,
+        "deleted": 4
+      },
+      {
+        "path": "src/semantic_reviewer/web/templates/job.html",
+        "added": 24,
+        "deleted": 1
+      },
+      {
+        "path": "src/semantic_reviewer/web/templates/observations.html",
+        "added": 1,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/web/templates/progress.html",
+        "added": 17,
+        "deleted": 0
+      },
+      {
+        "path": "tests/test_annotation_web.py",
+        "added": 113,
+        "deleted": 0
+      },
+      {
+        "path": "tests/test_annotations.py",
+        "added": 144,
+        "deleted": 0
+      },
+      {
+        "path": "tools/run.py",
+        "added": 23,
+        "deleted": 0
+      }
+    ],
+    "file_count": 18,
+    "added": 770,
+    "deleted": 23,
+    "binary_files": 0
+  },
+  "statistics_note": "No rename detection; merge commit churn uses first parent. Final diff and cumulative per-commit churn are different quantities."
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "sequence": 1,
+  "pair_id": "vs1-annotation",
+  "recorded_at": "2026-09-19T23:54:18+00:00",
+  "previous_hash": null,
+  "kind": "observation",
+  "round_id": "r1",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "vs1-annotation-2026-09-20"
+  },
+  "payload": {
+    "stage": "locally_prepared",
+    "base": "b9ffa2ee49b60758dba6832f08b988f797b439af",
+    "diary": "9d5124098a79a97d3b88a064e979a0b04451f410",
+    "semantic": "843ff161d49e096d1da2a55cacf75acac03e97f3",
+    "commits": [
+      "3ba1d7dd31a8f932cc92137304b8c5a86f05d158",
+      "32a6e5ab5dc5e39f0f2dcaa6cb19cb93d77ca355",
+      "843ff161d49e096d1da2a55cacf75acac03e97f3"
+    ],
+    "checks": [
+      {
+        "record": "r1-diary-checks.json",
+        "revision": "9d5124098a79a97d3b88a064e979a0b04451f410",
+        "tests": 82
+      },
+      {
+        "record": "r1-p0-checks.json",
+        "revision": "3ba1d7dd31a8f932cc92137304b8c5a86f05d158",
+        "tests": 72
+      },
+      {
+        "record": "r1-p1-checks.json",
+        "revision": "32a6e5ab5dc5e39f0f2dcaa6cb19cb93d77ca355",
+        "tests": 78
+      },
+      {
+        "record": "r1-p2-checks.json",
+        "revision": "843ff161d49e096d1da2a55cacf75acac03e97f3",
+        "tests": 82
+      }
+    ],
+    "review": "review.json"
+  },
+  "event_hash": "e4a59b552abc4508a96e603647cb552e441c73985023ccf529dd4f8921981a28"
+}
