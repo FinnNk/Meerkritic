@@ -20,7 +20,7 @@ Its design centres on three ideas:
 
 Meerkritic is in early development. The local harness can register a public sample
 and browse review comments alongside their code context. A local worker can normalise
-an observation into an evidence-linked interpretation. Human annotation is still in development.
+an observation into an evidence-linked interpretation for human assessment.
 
 With **Python 3.12** and **uv** installed, run these commands from the repository
 root:
@@ -39,6 +39,10 @@ The server binds to this computer only.
 To run model normalisation, follow the [local workflow guide](docs/development/normalisation.md)
 to start llama.cpp and the worker, then choose **Normalise** beside an observation.
 Inspect results, provenance and failures from **Normalisation jobs** in the harness.
+Choose **Accept**, **Edit** or **Reject** on a successful result to save your
+assessment immediately. Open **Annotation progress and review queue** to find
+unreviewed results and track source coverage. See the [annotation guide](docs/development/annotations.md)
+for editing and decision-history behaviour.
 
 Run `uv run --locked python tools/check.py` for formatting, lint, architecture and
 behaviour checks. See the [dataset guide](docs/development/datasets.md) for source

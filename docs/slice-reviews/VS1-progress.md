@@ -7,10 +7,10 @@ Dataset browsing and routing are integrated. PR #5 was approved and merged as
 integrated proposition trees match the reviewed series. ADR-0005 is implemented
 following owner acceptance and confirmation.
 
-The current material candidate, DER pair `vs1-normalisation`, round `r2`, adds
+The integrated material batch, DER pair `vs1-normalisation`, round `r2`, adds
 local llama.cpp inference, real MAF normalisation, a durable single-worker queue
-and browser launch, results and failed-job inspection. ADR-0006 proposes its
-process-lock recovery policy; owner acceptance remains pending.
+and browser launch, results and failed-job inspection. PR #6 was approved and
+merged; ADR-0006 now records its confirmed process-lock recovery policy as implemented.
 
 Preflight verified official llama.cpp v0.4.1/b10964 Windows CUDA 12.4 archives and
 pinned Qwen3 4B Q4_K_M weights against published hashes. Template rendering,
@@ -31,8 +31,13 @@ compatibility checks. Comparative quality/cost choices must follow the EDR proce
 ADR-0001 remains accepted pending its first applicable empirical decision; ADRs 0002-0004
 remain implemented. Ordinary tests do not advance the empirical-process ADR.
 
-Remaining VS1 work: Accept/Edit/Reject with immediate annotation/events, annotation
-progress, full interaction/restart/failure integration, final slice review and explicit
+The `vs1-annotation/r1` candidate adds immediate Accept/Edit/Reject, source-grounded
+immutable edits, atomic decision/events, history and snapshot-consistent progress.
+Concurrent identical submissions create one record; conflicting decisions cannot
+overwrite it. The browser exposes only the three VS1 decision actions.
+
+Remaining VS1 work: operational evidence indexing and structured logs, full
+interaction/restart/failure integration, final slice review and explicit
 review/revision of future slices. VS2 and later slices remain DRAFT. Related semantic
 propositions may share a PR; prefer stacked PRs when splitting dependent batches.
 Candidate readiness, owner acceptance and slice completion remain separate.

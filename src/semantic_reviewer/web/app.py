@@ -1,18 +1,25 @@
 """Local source browser, job submission and inspectable normalisation results."""
 
 from pathlib import Path
+from urllib.parse import parse_qs
 
 from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
+from starlette.concurrency import run_in_threadpool
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 
+from semantic_reviewer.application.annotations import AnnotationService
 from semantic_reviewer.application.datasets import DatasetService
 from semantic_reviewer.application.jobs import JobService
 from semantic_reviewer.domain.datasets import DatasetError
 
 
-def create_app(datasets: DatasetService, jobs: JobService | None = None) -> FastAPI:
+def create_app(
+    datasets: DatasetService,
+    jobs: JobService | None = None,
+    annotations: AnnotationService | None = None,
+) -> FastAPI:
     """Build local HTML and JSON interfaces, with optional queue access.
 
     Args:
@@ -64,6 +71,7 @@ def create_app(datasets: DatasetService, jobs: JobService | None = None) -> Fast
             context={
                 "result": observations(dataset_id, page, page_size),
                 "can_normalise": jobs is not None,
+                "can_annotate": annotations is not None,
             },
         )
 
@@ -104,11 +112,12 @@ def create_app(datasets: DatasetService, jobs: JobService | None = None) -> Fast
                 request=request, name="jobs.html", context={"jobs": jobs.jobs.recent()}
             )
 
-        @app.get("/jobs/{job_id}", response_class=HTMLResponse)
-        def job_result(request: Request, job_id: str):
+        def render_job(request: Request, job_id: str, error=None, draft=None, status=200):
             """Render verified results and failures without interpreting model text as HTML."""
             try:
                 job, result = jobs.inspect(job_id)
+                annotation, edited = annotations.review(job_id) if annotations else (None, None)
+                history = annotations.store.history(job.observation_id) if annotations else ()
             except LookupError as error:
                 raise HTTPException(404, str(error)) from error
             except (ValueError, OSError) as error:
@@ -118,7 +127,93 @@ def create_app(datasets: DatasetService, jobs: JobService | None = None) -> Fast
             return templates.TemplateResponse(
                 request=request,
                 name="job.html",
-                context={"job": job, "result": result, "telemetry": jobs.telemetry(job)},
+                status_code=status,
+                context={
+                    "job": job,
+                    "result": result,
+                    "telemetry": jobs.telemetry(job),
+                    "can_annotate": annotations is not None,
+                    "annotation": annotation,
+                    "edited": edited,
+                    "history": history,
+                    "error": error,
+                    "draft": draft,
+                },
             )
+
+        @app.get("/jobs/{job_id}", response_class=HTMLResponse)
+        def job_result(request: Request, job_id: str):
+            """Show the proposed result, human decision and immutable history."""
+            return render_job(request, job_id)
+
+        if annotations is not None:
+
+            @app.post("/jobs/{job_id}/annotation", response_class=HTMLResponse)
+            async def annotate(request: Request, job_id: str):
+                """Validate bounded same-origin input; preserve invalid edits for correction."""
+                if request.headers.get("origin") != f"{request.url.scheme}://{request.url.netloc}":
+                    raise HTTPException(403, "Submit decisions from this local harness.")
+                if (
+                    request.headers.get("content-type", "").split(";")[0]
+                    != "application/x-www-form-urlencoded"
+                ):
+                    raise HTTPException(415, "Submit the annotation form.")
+                body = bytearray()
+                async for chunk in request.stream():
+                    body.extend(chunk)
+                    if len(body) > 1_000_000:
+                        raise HTTPException(413, "Annotation form is too large.")
+                try:
+                    fields = parse_qs(
+                        body.decode("utf-8"),
+                        keep_blank_values=True,
+                        max_num_fields=4,
+                        encoding="utf-8",
+                        errors="strict",
+                    )
+                    if any(len(values) != 1 for values in fields.values()) or set(fields) - {
+                        "decision",
+                        "notes",
+                        "edited_json",
+                    }:
+                        raise ValueError("Invalid annotation fields.")
+                    draft = {key: values[0] for key, values in fields.items()}
+                except (ValueError, UnicodeError) as error:
+                    raise HTTPException(422, "Invalid annotation form.") from error
+                try:
+                    await run_in_threadpool(
+                        annotations.decide,
+                        job_id,
+                        draft.get("decision", ""),
+                        draft.get("notes", ""),
+                        draft.get("edited_json") if draft.get("decision") == "edit" else None,
+                    )
+                except LookupError as error:
+                    raise HTTPException(404, str(error)) from error
+                except (ValueError, OSError) as error:
+                    return await run_in_threadpool(
+                        render_job, request, job_id, str(error), draft, 409
+                    )
+                return RedirectResponse(f"/jobs/{job_id}", status_code=303)
+
+            @app.get("/datasets/{dataset_id}/progress", response_class=HTMLResponse)
+            def progress(
+                request: Request, dataset_id: str, page: int = Query(1, ge=1, le=1_000_000)
+            ):
+                """Expose honest source and result denominators with a paged review queue."""
+                try:
+                    counts = annotations.store.progress(dataset_id)
+                except LookupError as error:
+                    raise HTTPException(404, str(error)) from error
+                return templates.TemplateResponse(
+                    request=request,
+                    name="progress.html",
+                    context={
+                        "dataset_id": dataset_id,
+                        "counts": counts,
+                        "page": page,
+                        "pending": annotations.store.pending(dataset_id, page),
+                    },
+                )
 
     return app
