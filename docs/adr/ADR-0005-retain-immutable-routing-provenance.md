@@ -1,8 +1,8 @@
 ---
-status: proposed
+status: implemented
 date: 2026-09-19
 decision-makers:
-  - Project owner (acceptance pending)
+  - Project owner
 ---
 
 # ADR-0005: Retain immutable routing versions and invocation records
@@ -26,9 +26,9 @@ Normalisation must retain each invocation's inventory and policy, and historical
 
 ## Decision Outcome
 
-Proposed: retain inventory, policy and price snapshots by kind/ID/version. Persist a selected or refused decision and its event atomically, before execution. Retain one immutable completion per invocation; identical retries return the original completion and conflicts fail. Changed configuration needs a new version. SQLite contains small metadata, never prompt or dataset bodies.
+Retain inventory, policy and price snapshots by kind/ID/version. Persist a selected or refused decision and its event atomically, before execution. Retain one immutable completion per invocation; identical retries return the original completion and conflicts fail. Changed configuration needs a new version. SQLite contains small metadata, never prompt or dataset bodies.
 
-Extend event subjects beyond datasets. The migration preserves existing sequences and content, with triggers for known event-subject relationships and append-only behaviour. A shared SQLite adapter owns connection/migration policy for the dataset and routing repositories. This proposal is implemented in the candidate branch; owner acceptance remains outstanding.
+Extend event subjects beyond datasets. The migration preserves existing sequences and content, with triggers for known event-subject relationships and append-only behaviour. A shared SQLite adapter owns connection/migration policy for the dataset and routing repositories. The owner accepted this decision by approving and merging [PR #5](https://github.com/FinnNk/Meerkritic/pull/5).
 
 ### Consequences
 
@@ -39,7 +39,7 @@ Extend event subjects beyond datasets. The migration preserves existing sequence
 
 ### Confirmation
 
-Journal tests check migration preservation, referential triggers, atomic rollback, immutable records, conflicting retries, restarts and concurrent completion. Exact checkpoint results live in DER pair `vs1-routing`. Advance status only after owner acceptance and confirmation; implementation alone does not accept the ADR.
+Journal tests check migration preservation, referential triggers, atomic rollback, immutable records, conflicting retries, restarts and concurrent completion. All 43 canonical tests passed on integrated main `f1478217d43414da6e55599a5bf390c7f957dadb`. All four integrated proposition trees match the reviewed series. Exact checkpoint and integration evidence lives in DER pair `vs1-routing`, round `r1`; its integration record confirms owner acceptance and implementation separately.
 
 ## More Information
 
