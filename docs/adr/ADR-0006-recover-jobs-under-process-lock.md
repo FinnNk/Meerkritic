@@ -1,8 +1,8 @@
 ---
-status: proposed
-date: 2026-09-19
+status: implemented
+date: 2026-09-20
 decision-makers:
-  - Project owner (acceptance pending)
+  - Project owner
 ---
 
 # ADR-0006: Recover interrupted jobs under an exclusive process lock
@@ -28,7 +28,7 @@ transaction with the provider call.
 
 ## Decision Outcome
 
-Proposed and implemented in this candidate: the worker holds an OS lock on the local
+Accepted through the owner's approval and merge of PR #6: the worker holds an OS lock on the local
 data root for its lifetime. On startup, after acquiring it, mark old running jobs failed
 and append interruption events. Preserve existing route, usage and artefact evidence.
 The operator can inspect and explicitly submit a new invocation. Heartbeat age only
@@ -49,8 +49,12 @@ This extends [ADR-0005: immutable routing provenance](ADR-0005-retain-immutable-
 
 The `vs1-normalisation` DER evidence records Windows subprocess lock exclusion/release,
 concurrent claims, restart interruption events, old-worker rejection and artefact integrity.
-Real MAF/inference and browser evidence supplements deterministic tests. Owner acceptance
-is pending; passing candidate tests does not itself advance this ADR to implemented.
+Real MAF/inference and browser evidence supplements deterministic tests. PR #6 was
+approved and merged on 19 September 2026. All five integrated proposition trees
+match the reviewed series, and all 72 tests plus architecture/style gates passed
+on the merged revision in a clean Windows checkout. The integration record is
+indexed by `vs1-annotation/r1/pr6-integration.json` in the external DER store.
+The ordinary workspace's Ruff crash is retained separately; no ignore was added.
 
 ## More Information
 
