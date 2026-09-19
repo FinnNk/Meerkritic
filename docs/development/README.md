@@ -4,8 +4,10 @@
 
 VS1 is in progress. Its first material batch implements public dataset registration,
 the local observation browser, SQLite metadata/events and typed architecture snapshots.
-The worker, model routing, MAF normalisation and human annotation remain the next
-batch. See the [dataset guide](datasets.md) and [VS1 progress](../slice-reviews/VS1-progress.md).
+Routing selection, usage accounting, durable provenance and a [routing inspection CLI](routing-operations.md)
+are available in the next candidate batch. Live model calls, worker execution, MAF
+normalisation and human annotation remain outstanding. See the [dataset guide](datasets.md)
+and [VS1 progress](../slice-reviews/VS1-progress.md).
 
 ## Setup and checks
 

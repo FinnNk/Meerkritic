@@ -5,6 +5,11 @@ slices:
 - id: VS1
   name: Data-to-Annotation
   status: IN_PROGRESS
+  batch_progress:
+  - dataset registration/browser and architecture snapshots integrated (DER vs1-dataset-browser r5)
+  - routing selection/accounting/journal/inspection candidate (DER vs1-routing r1)
+  - live llama.cpp model adapter and MAF worker normalisation remain outstanding
+  - annotation, live integration and final slice review remain outstanding
   entry_conditions:
   - project bootstrap approved
   exit_conditions:

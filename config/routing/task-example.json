@@ -1,0 +1,8 @@
+{
+  "task_id": "example-normalisation",
+  "task_class": "normalisation",
+  "privacy": "local_only",
+  "capabilities": ["structured_output"],
+  "min_input_tokens": 1024,
+  "expected_output_tokens": 256
+}

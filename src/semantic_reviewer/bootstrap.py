@@ -24,12 +24,8 @@ def build_datasets(data_root: Path) -> DatasetService:
         ValueError: The resolved data root is inside the repository or a Git worktree.
         OSError: Manifest or filesystem access fails.
     """
-    root = data_root.expanduser().resolve()
+    root = runtime_path(data_root)
     repository = Path(__file__).resolve().parents[2]
-    if root == repository or repository in root.parents:
-        raise ValueError("Choose a data root outside the application repository.")
-    if any((parent / ".git").exists() for parent in (root, *root.parents)):
-        raise ValueError("Runtime data must be outside Git worktrees.")
     sources = tuple(
         PublicDataset(**json.loads(path.read_text(encoding="utf-8")))
         for path in sorted((repository / "config" / "datasets").glob("*.json"))
@@ -37,3 +33,14 @@ def build_datasets(data_root: Path) -> DatasetService:
     return DatasetService(
         sources, SQLiteRegistry(root / "state.sqlite3"), ParquetObservations(root / "datasets")
     )
+
+
+def runtime_path(path: Path) -> Path:
+    """Resolve an external runtime path; reject application and other Git worktrees."""
+    root = path.expanduser().resolve()
+    repository = Path(__file__).resolve().parents[2]
+    if root == repository or repository in root.parents:
+        raise ValueError("Choose a runtime path outside the application repository.")
+    if any((parent / ".git").exists() for parent in (root, *root.parents)):
+        raise ValueError("Runtime data must be outside Git worktrees.")
+    return root
