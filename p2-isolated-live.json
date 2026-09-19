@@ -1,0 +1,12 @@
+{
+  "outcome": "passed",
+  "semantic_tip": "16a2b9daf89544df4550f53dda41f48f2c921b31",
+  "source_module": "$WORKSPACE\\extras\\der-checkouts\\vs1-r3-p2\\src\\semantic_reviewer\\__init__.py",
+  "executable": "$WORKSPACE\\extras\\der-checkouts\\vs1-r3-p2\\.venv\\Scripts\\python.exe",
+  "rows": 1030,
+  "last_page_items": 10,
+  "event_count_after_repeat_and_reopen": 1,
+  "source_sha256": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83",
+  "parquet_sha256": "9d5b9bd1248b64417f7feff8af62644d1ca8801dcdba88c56a8c4f6f3eabe9bc",
+  "network": "verified previously; this exact checkpoint imports cached pinned bytes"
+}

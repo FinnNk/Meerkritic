@@ -1,0 +1,303 @@
+{
+  "base": "3db848bd0992d0686bb5c45ddadd87ec6fbde8d2",
+  "tip": "6556aa4e784d0713f3029b3140ae87c5c1b55767",
+  "tree": "d75b25159a67a88e375babbd1c6d917476015a91",
+  "commits": [
+    {
+      "commit": "6556aa4e784d0713f3029b3140ae87c5c1b55767",
+      "parents": [
+        "3db848bd0992d0686bb5c45ddadd87ec6fbde8d2"
+      ],
+      "tree": "d75b25159a67a88e375babbd1c6d917476015a91",
+      "subject": "feat(datasets): register and browse pinned review evidence",
+      "change": {
+        "files": [
+          {
+            "path": "IMPLEMENTATION_BACKLOG.yaml",
+            "added": 1,
+            "deleted": 1
+          },
+          {
+            "path": "README.md",
+            "added": 14,
+            "deleted": 6
+          },
+          {
+            "path": "config/datasets/crc-py-manual.json",
+            "added": 8,
+            "deleted": 0
+          },
+          {
+            "path": "docs/adr/ADR-0002-preserve-source-record-identity.md",
+            "added": 64,
+            "deleted": 0
+          },
+          {
+            "path": "docs/adr/README.md",
+            "added": 1,
+            "deleted": 0
+          },
+          {
+            "path": "docs/architecture/README.md",
+            "added": 15,
+            "deleted": 9
+          },
+          {
+            "path": "docs/development/README.md",
+            "added": 16,
+            "deleted": 17
+          },
+          {
+            "path": "docs/development/datasets.md",
+            "added": 60,
+            "deleted": 0
+          },
+          {
+            "path": "docs/slice-reviews/VS1-progress.md",
+            "added": 34,
+            "deleted": 0
+          },
+          {
+            "path": "pyproject.toml",
+            "added": 13,
+            "deleted": 2
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/migrations/001_registry.sql",
+            "added": 23,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/observations.py",
+            "added": 155,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/registry.py",
+            "added": 78,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/application/datasets.py",
+            "added": 64,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/asgi.py",
+            "added": 10,
+            "deleted": 1
+          },
+          {
+            "path": "src/semantic_reviewer/bootstrap.py",
+            "added": 23,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/domain/datasets.py",
+            "added": 45,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/app.py",
+            "added": 58,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/base.html",
+            "added": 27,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/index.html",
+            "added": 18,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/observations.html",
+            "added": 39,
+            "deleted": 0
+          },
+          {
+            "path": "tests/test_architecture_contracts.py",
+            "added": 2,
+            "deleted": 0
+          },
+          {
+            "path": "tests/test_architecture_snapshot.py",
+            "added": 29,
+            "deleted": 0
+          },
+          {
+            "path": "tests/test_datasets.py",
+            "added": 174,
+            "deleted": 0
+          },
+          {
+            "path": "tools/architecture.py",
+            "added": 155,
+            "deleted": 0
+          },
+          {
+            "path": "tools/run.py",
+            "added": 43,
+            "deleted": 0
+          },
+          {
+            "path": "uv.lock",
+            "added": 299,
+            "deleted": 0
+          }
+        ],
+        "file_count": 27,
+        "added": 1468,
+        "deleted": 36,
+        "binary_files": 0
+      }
+    }
+  ],
+  "linear": true,
+  "final_change": {
+    "files": [
+      {
+        "path": "IMPLEMENTATION_BACKLOG.yaml",
+        "added": 1,
+        "deleted": 1
+      },
+      {
+        "path": "README.md",
+        "added": 14,
+        "deleted": 6
+      },
+      {
+        "path": "config/datasets/crc-py-manual.json",
+        "added": 8,
+        "deleted": 0
+      },
+      {
+        "path": "docs/adr/ADR-0002-preserve-source-record-identity.md",
+        "added": 64,
+        "deleted": 0
+      },
+      {
+        "path": "docs/adr/README.md",
+        "added": 1,
+        "deleted": 0
+      },
+      {
+        "path": "docs/architecture/README.md",
+        "added": 15,
+        "deleted": 9
+      },
+      {
+        "path": "docs/development/README.md",
+        "added": 16,
+        "deleted": 17
+      },
+      {
+        "path": "docs/development/datasets.md",
+        "added": 60,
+        "deleted": 0
+      },
+      {
+        "path": "docs/slice-reviews/VS1-progress.md",
+        "added": 34,
+        "deleted": 0
+      },
+      {
+        "path": "pyproject.toml",
+        "added": 13,
+        "deleted": 2
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/migrations/001_registry.sql",
+        "added": 23,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/observations.py",
+        "added": 155,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/registry.py",
+        "added": 78,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/application/datasets.py",
+        "added": 64,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/asgi.py",
+        "added": 10,
+        "deleted": 1
+      },
+      {
+        "path": "src/semantic_reviewer/bootstrap.py",
+        "added": 23,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/domain/datasets.py",
+        "added": 45,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/web/app.py",
+        "added": 58,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/web/templates/base.html",
+        "added": 27,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/web/templates/index.html",
+        "added": 18,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/web/templates/observations.html",
+        "added": 39,
+        "deleted": 0
+      },
+      {
+        "path": "tests/test_architecture_contracts.py",
+        "added": 2,
+        "deleted": 0
+      },
+      {
+        "path": "tests/test_architecture_snapshot.py",
+        "added": 29,
+        "deleted": 0
+      },
+      {
+        "path": "tests/test_datasets.py",
+        "added": 174,
+        "deleted": 0
+      },
+      {
+        "path": "tools/architecture.py",
+        "added": 155,
+        "deleted": 0
+      },
+      {
+        "path": "tools/run.py",
+        "added": 43,
+        "deleted": 0
+      },
+      {
+        "path": "uv.lock",
+        "added": 299,
+        "deleted": 0
+      }
+    ],
+    "file_count": 27,
+    "added": 1468,
+    "deleted": 36,
+    "binary_files": 0
+  },
+  "statistics_note": "No rename detection; merge commit churn uses first parent. Final diff and cumulative per-commit churn are different quantities."
+}

@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "sequence": 1,
+  "pair_id": "vs1-dataset-browser",
+  "recorded_at": "2026-09-19T19:26:50+00:00",
+  "previous_hash": null,
+  "kind": "observation",
+  "round_id": "r1",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "meerkritic-vs1-2026-09-19"
+  },
+  "payload": {
+    "event": "pair established",
+    "assessment": "../../vs1-dataset-browser/assessment.md",
+    "base": "3db848bd0992d0686bb5c45ddadd87ec6fbde8d2",
+    "baseline_quality": "passed; baseline-checks.log",
+    "integrator": "root",
+    "preflight": "MAF 1.19.0 executor graph passed; no model invocation. User selects llama.cpp. Dependency resolution needed network escalation; resolved without policy changes."
+  },
+  "event_hash": "4f50819139109b69a989bab3628c97010858d670084247ef203f8b0d267c5a15"
+}

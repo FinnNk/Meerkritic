@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "sequence": 3,
+  "pair_id": "vs1-dataset-browser",
+  "recorded_at": "2026-09-19T19:47:01+00:00",
+  "previous_hash": "8bcecfd8f54d57a9107003166ed93493e92dc0ccaa22c410a97aae1eb6d72d05",
+  "kind": "observation",
+  "round_id": "r2",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "meerkritic-vs1-2026-09-19"
+  },
+  "payload": {
+    "publication": "partial",
+    "archive_branch": "evidence/vs1-dataset-browser-r2",
+    "archive_commit": "a1d853273c0ede460fc4bb9a806b50b7488fb811",
+    "remote_ref_verified": true,
+    "method": "App-authenticated Git push; ls-remote returned the expected exact head",
+    "application_branch": "not yet published",
+    "notes": "Staged archive blob checksums verified; text exports normalise line endings and redact machine paths; canonical evidence retained. Archive has no ancestry relationship to application main."
+  },
+  "event_hash": "df2bd201e9cd6c8a60c9358fee016bc0efb61fa71d411a035d601bf8efb15072"
+}

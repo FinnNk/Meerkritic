@@ -1,0 +1,8 @@
+{
+  "head": "cc0bca41402601028826865539c819375e23f0b9",
+  "outcome": "passed",
+  "rows": 1030,
+  "repeated_cli_registration": "same metadata, one event, WAL, reopened in separate processes",
+  "source_sha256": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83",
+  "network": "cached pinned public bytes; no new download"
+}

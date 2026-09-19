@@ -1,0 +1,34 @@
+Running: ruff format --check .
+17 files already formatted
+Running: ruff check .
+All checks passed!
+Running: lint-imports --no-cache
+=============
+Import Linter
+=============
+
+
+---------
+Contracts
+---------
+
+Analyzed 26 files, 26 dependencies.
+-----------------------------------
+
+Domain and routing remain independent KEPT
+Core logic does not depend on application or adapters KEPT
+Application owns contracts rather than concrete adapters KEPT
+Web cannot access concrete persistence or composition KEPT
+Worker and shared composition cannot pull in the web KEPT
+
+Contracts: 5 kept, 0 broken.
+Running: tach check
+[OK] All modules validated!
+Running: $WORKSPACE\extras\der-checkouts\vs1-dataset-browser\.venv\Scripts\python.exe -m unittest discover -s tests -p test_*.py
+...$WORKSPACE\extras\der-checkouts\vs1-dataset-browser\.venv\Lib\site-packages\yoyo\backends\base.py:411: DeprecationWarning: The default datetime adapter is deprecated as of Python 3.12; see the sqlite3 documentation for suggested replacement recipes
+  cursor.execute(sql, queryparams)
+........
+----------------------------------------------------------------------
+Ran 11 tests in 3.041s
+
+OK

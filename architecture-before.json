@@ -1,0 +1,216 @@
+{
+  "boundaries": [
+    {
+      "allowed_dependencies": [],
+      "name": "semantic_reviewer"
+    },
+    {
+      "allowed_dependencies": [],
+      "name": "semantic_reviewer.domain"
+    },
+    {
+      "allowed_dependencies": [],
+      "name": "semantic_reviewer.routing"
+    },
+    {
+      "allowed_dependencies": [
+        "semantic_reviewer.domain",
+        "semantic_reviewer.routing"
+      ],
+      "name": "semantic_reviewer.application"
+    },
+    {
+      "allowed_dependencies": [
+        "semantic_reviewer.domain",
+        "semantic_reviewer.application",
+        "semantic_reviewer.routing"
+      ],
+      "name": "semantic_reviewer.adapters"
+    },
+    {
+      "allowed_dependencies": [
+        "semantic_reviewer.application",
+        "semantic_reviewer.domain"
+      ],
+      "name": "semantic_reviewer.web"
+    },
+    {
+      "allowed_dependencies": [
+        "semantic_reviewer.application",
+        "semantic_reviewer.adapters",
+        "semantic_reviewer.routing"
+      ],
+      "name": "semantic_reviewer.bootstrap"
+    },
+    {
+      "allowed_dependencies": [
+        "semantic_reviewer.bootstrap",
+        "semantic_reviewer.web"
+      ],
+      "name": "semantic_reviewer.asgi"
+    },
+    {
+      "allowed_dependencies": [
+        "semantic_reviewer.bootstrap",
+        "semantic_reviewer.application"
+      ],
+      "name": "semantic_reviewer.worker"
+    }
+  ],
+  "contracts": [
+    {
+      "forbidden": [],
+      "kind": "independence",
+      "modules": [
+        "semantic_reviewer.domain",
+        "semantic_reviewer.routing"
+      ],
+      "name": "Domain and routing remain independent",
+      "sources": []
+    },
+    {
+      "forbidden": [
+        "semantic_reviewer.application",
+        "semantic_reviewer.adapters",
+        "semantic_reviewer.web",
+        "semantic_reviewer.bootstrap",
+        "semantic_reviewer.asgi",
+        "semantic_reviewer.worker",
+        "fastapi",
+        "duckdb",
+        "sqlite3",
+        "agent_framework",
+        "openai",
+        "anthropic",
+        "ollama"
+      ],
+      "kind": "forbidden",
+      "modules": [],
+      "name": "Core logic does not depend on application or adapters",
+      "sources": [
+        "semantic_reviewer.domain",
+        "semantic_reviewer.routing"
+      ]
+    },
+    {
+      "forbidden": [
+        "semantic_reviewer.adapters",
+        "semantic_reviewer.web",
+        "semantic_reviewer.bootstrap",
+        "semantic_reviewer.asgi",
+        "semantic_reviewer.worker",
+        "fastapi",
+        "duckdb",
+        "sqlite3",
+        "agent_framework",
+        "openai",
+        "anthropic",
+        "ollama"
+      ],
+      "kind": "forbidden",
+      "modules": [],
+      "name": "Application owns contracts rather than concrete adapters",
+      "sources": [
+        "semantic_reviewer.application"
+      ]
+    },
+    {
+      "forbidden": [
+        "semantic_reviewer.adapters",
+        "semantic_reviewer.bootstrap",
+        "semantic_reviewer.worker",
+        "semantic_reviewer.asgi",
+        "duckdb",
+        "sqlite3",
+        "agent_framework",
+        "openai",
+        "anthropic",
+        "ollama"
+      ],
+      "kind": "forbidden",
+      "modules": [],
+      "name": "Web cannot access concrete persistence or composition",
+      "sources": [
+        "semantic_reviewer.web"
+      ]
+    },
+    {
+      "forbidden": [
+        "semantic_reviewer.web",
+        "semantic_reviewer.asgi"
+      ],
+      "kind": "forbidden",
+      "modules": [],
+      "name": "Worker and shared composition cannot pull in the web",
+      "sources": [
+        "semantic_reviewer.worker",
+        "semantic_reviewer.bootstrap",
+        "semantic_reviewer.adapters"
+      ]
+    }
+  ],
+  "forbid_cycles": true,
+  "ignore_type_checking_imports": false,
+  "imports": [],
+  "modules": [
+    {
+      "definitions": [],
+      "name": "semantic_reviewer",
+      "package": true,
+      "path": "src/semantic_reviewer/__init__.py"
+    },
+    {
+      "definitions": [],
+      "name": "semantic_reviewer.adapters",
+      "package": true,
+      "path": "src/semantic_reviewer/adapters/__init__.py"
+    },
+    {
+      "definitions": [],
+      "name": "semantic_reviewer.application",
+      "package": true,
+      "path": "src/semantic_reviewer/application/__init__.py"
+    },
+    {
+      "definitions": [],
+      "name": "semantic_reviewer.asgi",
+      "package": false,
+      "path": "src/semantic_reviewer/asgi.py"
+    },
+    {
+      "definitions": [],
+      "name": "semantic_reviewer.bootstrap",
+      "package": false,
+      "path": "src/semantic_reviewer/bootstrap.py"
+    },
+    {
+      "definitions": [],
+      "name": "semantic_reviewer.domain",
+      "package": true,
+      "path": "src/semantic_reviewer/domain/__init__.py"
+    },
+    {
+      "definitions": [],
+      "name": "semantic_reviewer.routing",
+      "package": true,
+      "path": "src/semantic_reviewer/routing/__init__.py"
+    },
+    {
+      "definitions": [],
+      "name": "semantic_reviewer.web",
+      "package": true,
+      "path": "src/semantic_reviewer/web/__init__.py"
+    },
+    {
+      "definitions": [],
+      "name": "semantic_reviewer.worker",
+      "package": false,
+      "path": "src/semantic_reviewer/worker.py"
+    }
+  ],
+  "root_module": "forbid",
+  "schema_version": 1,
+  "source_roots": [
+    "src"
+  ]
+}

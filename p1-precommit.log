@@ -1,0 +1,35 @@
+Running: ruff format --check .
+17 files already formatted
+Running: ruff check .
+I001 [*] Import block is un-sorted or un-formatted
+  --> tests\test_datasets.py:3:1
+   |
+ 1 |   """Dataset boundaries tested with synthetic source bytes and real SQLite/DuckDB."""
+ 2 |
+ 3 | / import hashlib
+ 4 | | import json
+ 5 | | import sqlite3
+ 6 | | import tempfile
+ 7 | | import unittest
+ 8 | | from concurrent.futures import ThreadPoolExecutor
+ 9 | | from contextlib import closing
+10 | | from dataclasses import replace
+11 | | from pathlib import Path
+12 | | from unittest.mock import patch
+13 | |
+14 | |
+15 | | from semantic_reviewer.adapters.observations import ParquetObservations
+16 | | from semantic_reviewer.adapters.registry import SQLiteRegistry
+17 | | from semantic_reviewer.application.datasets import DatasetService, PublicDataset
+18 | | from semantic_reviewer.bootstrap import build_datasets
+19 | | from semantic_reviewer.domain.datasets import DatasetError
+   | |__________________________________________________________^
+help: Organize imports
+   |
+13 |
+   -
+14 | from semantic_reviewer.adapters.observations import ParquetObservations
+   |
+
+Found 1 error.
+[*] 1 fixable with the `--fix` option.

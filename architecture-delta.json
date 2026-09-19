@@ -1,0 +1,241 @@
+{
+  "changes": {
+    "boundaries": {
+      "added": [],
+      "removed": []
+    },
+    "contracts": {
+      "added": [],
+      "removed": []
+    },
+    "imports": {
+      "added": [
+        {
+          "source": "semantic_reviewer.adapters.observations",
+          "target": "datetime"
+        },
+        {
+          "source": "semantic_reviewer.adapters.observations",
+          "target": "duckdb"
+        },
+        {
+          "source": "semantic_reviewer.adapters.observations",
+          "target": "hashlib"
+        },
+        {
+          "source": "semantic_reviewer.adapters.observations",
+          "target": "json"
+        },
+        {
+          "source": "semantic_reviewer.adapters.observations",
+          "target": "os"
+        },
+        {
+          "source": "semantic_reviewer.adapters.observations",
+          "target": "pathlib"
+        },
+        {
+          "source": "semantic_reviewer.adapters.observations",
+          "target": "semantic_reviewer.application.datasets"
+        },
+        {
+          "source": "semantic_reviewer.adapters.observations",
+          "target": "semantic_reviewer.domain.datasets"
+        },
+        {
+          "source": "semantic_reviewer.adapters.observations",
+          "target": "tempfile"
+        },
+        {
+          "source": "semantic_reviewer.adapters.observations",
+          "target": "urllib.request"
+        },
+        {
+          "source": "semantic_reviewer.adapters.registry",
+          "target": "contextlib"
+        },
+        {
+          "source": "semantic_reviewer.adapters.registry",
+          "target": "dataclasses"
+        },
+        {
+          "source": "semantic_reviewer.adapters.registry",
+          "target": "json"
+        },
+        {
+          "source": "semantic_reviewer.adapters.registry",
+          "target": "pathlib"
+        },
+        {
+          "source": "semantic_reviewer.adapters.registry",
+          "target": "semantic_reviewer.domain.datasets"
+        },
+        {
+          "source": "semantic_reviewer.adapters.registry",
+          "target": "sqlite3"
+        },
+        {
+          "source": "semantic_reviewer.adapters.registry",
+          "target": "yoyo"
+        },
+        {
+          "source": "semantic_reviewer.application.datasets",
+          "target": "dataclasses"
+        },
+        {
+          "source": "semantic_reviewer.application.datasets",
+          "target": "semantic_reviewer.domain.datasets"
+        },
+        {
+          "source": "semantic_reviewer.application.datasets",
+          "target": "typing"
+        },
+        {
+          "source": "semantic_reviewer.asgi",
+          "target": "pathlib"
+        },
+        {
+          "source": "semantic_reviewer.asgi",
+          "target": "semantic_reviewer.bootstrap"
+        },
+        {
+          "source": "semantic_reviewer.asgi",
+          "target": "semantic_reviewer.web.app"
+        },
+        {
+          "source": "semantic_reviewer.bootstrap",
+          "target": "json"
+        },
+        {
+          "source": "semantic_reviewer.bootstrap",
+          "target": "pathlib"
+        },
+        {
+          "source": "semantic_reviewer.bootstrap",
+          "target": "semantic_reviewer.adapters.observations"
+        },
+        {
+          "source": "semantic_reviewer.bootstrap",
+          "target": "semantic_reviewer.adapters.registry"
+        },
+        {
+          "source": "semantic_reviewer.bootstrap",
+          "target": "semantic_reviewer.application.datasets"
+        },
+        {
+          "source": "semantic_reviewer.domain.datasets",
+          "target": "dataclasses"
+        },
+        {
+          "source": "semantic_reviewer.web.app",
+          "target": "fastapi"
+        },
+        {
+          "source": "semantic_reviewer.web.app",
+          "target": "fastapi.responses"
+        },
+        {
+          "source": "semantic_reviewer.web.app",
+          "target": "fastapi.templating"
+        },
+        {
+          "source": "semantic_reviewer.web.app",
+          "target": "pathlib"
+        },
+        {
+          "source": "semantic_reviewer.web.app",
+          "target": "semantic_reviewer.application.datasets"
+        },
+        {
+          "source": "semantic_reviewer.web.app",
+          "target": "semantic_reviewer.domain.datasets"
+        }
+      ],
+      "removed": []
+    },
+    "modules": {
+      "added": [
+        {
+          "definitions": [
+            "Dataset",
+            "DatasetError",
+            "Observation",
+            "ObservationPage"
+          ],
+          "name": "semantic_reviewer.domain.datasets",
+          "package": false,
+          "path": "src/semantic_reviewer/domain/datasets.py"
+        },
+        {
+          "definitions": [
+            "DatasetRegistry",
+            "DatasetService",
+            "ObservationStore",
+            "PublicDataset"
+          ],
+          "name": "semantic_reviewer.application.datasets",
+          "package": false,
+          "path": "src/semantic_reviewer/application/datasets.py"
+        },
+        {
+          "definitions": [
+            "ParquetObservations",
+            "digest",
+            "publish"
+          ],
+          "name": "semantic_reviewer.adapters.observations",
+          "package": false,
+          "path": "src/semantic_reviewer/adapters/observations.py"
+        },
+        {
+          "definitions": [
+            "SQLiteRegistry"
+          ],
+          "name": "semantic_reviewer.adapters.registry",
+          "package": false,
+          "path": "src/semantic_reviewer/adapters/registry.py"
+        },
+        {
+          "definitions": [
+            "build_app"
+          ],
+          "name": "semantic_reviewer.asgi",
+          "package": false,
+          "path": "src/semantic_reviewer/asgi.py"
+        },
+        {
+          "definitions": [
+            "build_datasets"
+          ],
+          "name": "semantic_reviewer.bootstrap",
+          "package": false,
+          "path": "src/semantic_reviewer/bootstrap.py"
+        },
+        {
+          "definitions": [
+            "create_app"
+          ],
+          "name": "semantic_reviewer.web.app",
+          "package": false,
+          "path": "src/semantic_reviewer/web/app.py"
+        }
+      ],
+      "removed": [
+        {
+          "definitions": [],
+          "name": "semantic_reviewer.asgi",
+          "package": false,
+          "path": "src/semantic_reviewer/asgi.py"
+        },
+        {
+          "definitions": [],
+          "name": "semantic_reviewer.bootstrap",
+          "package": false,
+          "path": "src/semantic_reviewer/bootstrap.py"
+        }
+      ]
+    },
+    "settings": {}
+  },
+  "schema_version": 1
+}

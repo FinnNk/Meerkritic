@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "sequence": 5,
+  "pair_id": "vs1-dataset-browser",
+  "recorded_at": "2026-09-19T19:49:17+00:00",
+  "previous_hash": "f4820636b9c7585aa45bb4853d8be7215de22605825e9f75e62ed0b2611a4c7d",
+  "kind": "observation",
+  "round_id": "r2",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "meerkritic-vs1-2026-09-19"
+  },
+  "payload": {
+    "stage": "owner_review_ready",
+    "publication": "complete",
+    "pr": "https://github.com/FinnNk/Meerkritic/pull/3",
+    "head": "6556aa4e784d0713f3029b3140ae87c5c1b55767",
+    "base": "3db848bd0992d0686bb5c45ddadd87ec6fbde8d2",
+    "archive_commit": "a1d853273c0ede460fc4bb9a806b50b7488fb811",
+    "archive_bundle_access": "GitHub Contents API returned rounds/r2/history.bundle, size 274261, blob 01909d23df2c9e2395515a8bf82e517fbfe404a8",
+    "authorship": "PR app/meerkritic-agent; commit author and committer meerkritic-agent[bot]",
+    "hosted_qualification": {
+      "required_status_checks": [],
+      "observed_status_checks": [],
+      "explanation": "No hosted check contexts configured; not a claim that CI ran. Rules and exact PR head/base rechecked."
+    },
+    "review_state": "REVIEW_REQUIRED",
+    "platform_approval": false,
+    "integration": "not performed; owner merges",
+    "slice_status": "VS1 in progress"
+  },
+  "event_hash": "5586c0a7ead7f480fffdce8a0987c99e61096d00239c6b9a83bf79d70e1d2b26"
+}

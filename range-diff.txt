@@ -1,0 +1,1147 @@
+1:  6556aa4 ! 1:  cc0bca4 feat(datasets): register and browse pinned review evidence
+    @@ Metadata
+     Author: meerkritic-agent[bot] <331366570+meerkritic-agent[bot]@users.noreply.github.com>
+     
+      ## Commit message ##
+    -    feat(datasets): register and browse pinned review evidence
+    +    feat(datasets): register pinned source evidence
+     
+    -    Preserve source records and provenance in immutable Parquet, register metadata and events atomically, and expose bounded local browsing. Include typed architecture evidence and failure/restart checks.
+    +    Introduce the catalogue/register CLI, checksum-verified immutable Parquet and atomic SQLite metadata/events. Preserve source identity and validate import failures, concurrency and runtime data boundaries.
+     
+         Review-Unit: P1
+     
+    @@ README.md: Its design centres on three ideas:
+      
+     -Meerkritic is in early development; there is no runnable review application yet.
+     -You can explore the design and work with the development environment.
+    -+Meerkritic is in early development. The local harness can register a public sample
+    -+and browse review comments alongside their code context. Model normalisation and
+    -+human annotation are still in development.
+    ++Meerkritic is in early development. The data import CLI registers the pinned public
+    ++CRC-Py sample and preserves its source records and provenance. Observation browsing
+    ++is introduced in the next review commit.
+      
+    - With **Python 3.12** and **uv** installed, run these commands from the repository
+    - root:
+    +-With **Python 3.12** and **uv** installed, run these commands from the repository
+    +-root:
+    ++With **Python 3.12** and **uv** installed, run from the repository root:
+      
+      ```sh
+      uv sync --locked
+     -uv run --locked python tools/check.py
+    ++uv run --locked python tools/run.py --data-root ../extras/runtime catalogue
+     +uv run --locked python tools/run.py --data-root ../extras/runtime register crc-py-manual-4176ac0
+    -+uv run --locked python tools/run.py --data-root ../extras/runtime serve
+      ```
+      
+     -This installs the locked development dependencies, checks formatting and
+     -architecture boundaries, runs lint checks and runs the tests. See the
+     -[development guide](docs/development/README.md) for details.
+    -+Open [localhost:8000](http://127.0.0.1:8000) to browse the 1,030-record sample.
+    -+Registration downloads about 2.5 MB and verifies the pinned source checksum. Keep
+    -+the data root outside the repository; use the same path for registration and serving.
+    -+The server binds to this computer only.
+    -+
+    -+Run `uv run --locked python tools/check.py` for formatting, lint, architecture and
+    -+behaviour checks. See the [dataset guide](docs/development/datasets.md) for source
+    -+provenance, storage and recovery, or the [development guide](docs/development/README.md)
+    -+for the contribution workflow.
+    ++Registration downloads about 2.5 MB, verifies its pinned checksum and prints the
+    ++registered metadata for 1,030 records. Repeating it returns the same registration.
+    ++Keep the data root outside the repository.
+    ++
+    ++Run `uv run --locked python tools/check.py` for the quality gates and tests.
+    ++See the [dataset guide](docs/development/datasets.md) for provenance and recovery,
+    ++or the [development guide](docs/development/README.md) for contribution guidance.
+      
+      ## Learn more
+      
+    @@ docs/adr/README.md: Newest first. Status here describes the decision, not the PR
+     +| [ADR-0002](ADR-0002-preserve-source-record-identity.md) | Preserve source records before interpretation | proposed | Awaiting owner decision | 2026-09-19 |
+      | [ADR-0001](ADR-0001-record-significant-empirical-decisions.md) | Record significant empirical decisions | accepted | Project owner | 2026-09-19 |
+     
+    - ## docs/architecture/README.md ##
+    -@@
+    - # Architecture evidence
+    - 
+    --The intended boundaries are described in
+    --[the structure guide](../development/structure.md) and enforced by the root
+    --`pyproject.toml` Import Linter contracts and `tach.toml` module declarations.
+    -+Generate deterministic typed JSON from Tach, Import Linter and Python metadata:
+    - 
+    --VS1 will introduce deterministic typed snapshots from those contracts and Python
+    --module metadata, with before/after/delta at slice boundaries. Selected shareable
+    --snapshots may be committed here with source revision and generator version.
+    --Diagrams are projections, not a second architecture source of truth.
+    -+```sh
+    -+uv run --locked python tools/architecture.py snapshot > ../extras/architecture-after.json
+    -+uv run --locked python tools/architecture.py snapshot --root <baseline-checkout> > ../extras/architecture-before.json
+    -+uv run --locked python tools/architecture.py delta ../extras/architecture-before.json ../extras/architecture-after.json > ../extras/architecture-delta.json
+    -+```
+    - 
+    --No application architecture snapshot generator or runtime is claimed by this
+    --documentation bootstrap. Material-review evidence remains in the external DER store.
+    -+Use pinned clean checkouts and record their Git identities beside the outputs in
+    -+external review evidence. Schema version 1 contains typed module, import, boundary
+    -+and contract records. The delta includes changed settings; changed records appear
+    -+as removed plus added. Ordering is deterministic with no machine paths or timestamps.
+    -+
+    -+Imports are syntax-level dependencies, including external imports and those inside
+    -+functions/type-checking blocks. They are not runtime call paths or exhaustive dynamic
+    -+import resolution. Import Linter and Tach remain the enforced checks. Later diagrams
+    -+are projections of these typed records. No Archify dependency is introduced.
+    -
+      ## docs/development/README.md ##
+     @@
+      # Development
+    @@ docs/development/README.md
+     -quality toolchain and declared package boundaries. Package docstrings establish
+     -importable boundaries for enforcement; no harness, worker, model adapter or
+     -dataset pipeline is implemented. VS1 remains READY.
+    -+VS1 is in progress. Its first material batch implements public dataset registration,
+    -+the local observation browser, SQLite metadata/events and typed architecture snapshots.
+    -+The worker, model routing, MAF normalisation and human annotation remain the next
+    -+batch. See the [dataset guide](datasets.md) and [VS1 progress](../slice-reviews/VS1-progress.md).
+    ++VS1 is in progress. This checkpoint introduces the public dataset import CLI,
+    ++SQLite metadata/events and immutable source/Parquet storage. Observation browsing
+    ++and architecture reporting follow in separate review commits. The worker, routing,
+    ++MAF normalisation and annotation remain future implementation work.
+      
+      ## Setup and checks
+      
+    @@ docs/development/README.md: python -m unittest discover -s tests -p test_*.py
+     -application behaviour tests: that is an explicit bootstrap limitation. Add relevant
+     -behavioural tests with each implementation change, and use the same quality
+     +persistence access. Behaviour tests exercise real SQLite/DuckDB, import failures,
+    -+provenance, restart/idempotence, atomic events and HTML escaping. Use the same quality
+    ++provenance, restart/idempotence, atomic events and runtime data boundaries. Use the same quality
+      command locally, in review worktrees and in future CI.
+      
+      Ruff checks Python source and project TOML; research Markdown is original source
+    @@ docs/development/README.md: reviewable pushes dismiss previous approvals, and th
+     -behaviour, and DER worktree/evidence operations. Toolchain installation in this
+     -batch is not evidence that those integrations work. Do not run paid model work or
+     -download large datasets as part of this documentation bootstrap.
+    -+The public sample, SQLite/DuckDB path and web stack are exercised in the first
+    ++The public sample and SQLite/DuckDB import path are exercised in the first
+     +batch. MAF 1.19.0 completed an executor-only compatibility probe outside the
+     +application; this is not model integration. The owner's local runtime preference
+     +is llama.cpp. Its installation, selected model, inference compatibility and worker
+    @@ docs/development/README.md: reviewable pushes dismiss previous approvals, and th
+     
+      ## docs/development/datasets.md (new) ##
+     @@
+    -+# Public dataset browser
+    ++# Public dataset registration
+     +
+     +Run the root README commands with Python 3.12. `--data-root` must be outside Git
+     +worktrees; a sibling `extras/runtime` keeps runtime files local. Importing runs in
+    @@ docs/development/datasets.md (new)
+     +source bytes, validates records, publishes Parquet and atomically registers metadata
+     +with one event. Repeating registration returns the existing record without a new event.
+     +
+    -+The browser and `/api/datasets/{id}/observations?page=1&page_size=20` read bounded
+    -+pages through DuckDB. Page sizes are limited to 100. `/docs` describes the read API.
+    -+
+     +## Source and interpretation
+     +
+     +The first manifest pins [CRC-Py](https://github.com/busraicoz/crc-py-dataset) revision
+    @@ docs/development/datasets.md (new)
+     +never overwrites it. Back up the runtime directory with the app stopped, including
+     +SQLite WAL files if present.
+     +
+    -+Parquet hashes are checked before browsing. This is suitable for the small sample;
+    -+full-file hashing per page would need revisiting for large datasets. Tests use
+    -+synthetic fixtures and need no network or model server.
+    ++Tests use synthetic fixtures and need no network or model server. Observation
+    ++browsing and its read-time integrity checks are introduced in the next review commit.
+     
+      ## docs/slice-reviews/VS1-progress.md (new) ##
+     @@
+     +# VS1 progress
+     +
+    -+Status: in progress. This is a batch reference, not a completed slice review.
+    -+
+    -+The first material batch covers launch → pinned registration → DuckDB/Parquet
+    -+browsing, including metadata/events, provenance and restart/failure behaviour.
+    -+Routing/telemetry, the worker, MAF application execution, Accept/Edit/Reject and
+    -+annotation progress are outstanding. VS2 remains DRAFT.
+    -+
+    -+Preflight used Windows, Python 3.12.14 and SQLite 3.53.1. FastAPI 0.141.1, DuckDB
+    -+1.5.5, Yoyo 9.0.0 and Uvicorn 0.53.0 are locked for this batch. MAF core 1.19.0 ran
+    -+an executor graph in an external preflight environment, recording a FrameworkObservation
+    -+from first use. This does not validate model inference or an application workflow.
+    -+
+    -+The owner selected llama.cpp. No model weights or provider compatibility are yet
+    -+validated. llama.cpp was not on PATH; the checked Ollama/LM Studio endpoints were
+    -+unavailable and no provider API keys were present in the session. The machine has
+    -+a 16 GB RTX 4090 Laptop GPU and about 96 GB RAM. Actual model setup remains part
+    -+of the next batch; available memory alone is not compatibility evidence.
+    -+
+    -+No EDR was opened for these prescribed architecture and operational checks. Future
+    -+comparative model quality/cost decisions must follow the EDR process; incidental
+    -+compatibility measurements need not become experiments.
+    -+
+    -+DER pair `vs1-dataset-browser`, round `r2`, has one history integrator. Canonical
+    -+evidence lives in `../extras/der-evidence` relative to this repository, outside all
+    -+application worktrees. It owns assessment/design notes, the diary, verification,
+    -+architecture before/after/delta, propositions and review/readiness records. This
+    -+document is only a reference; see the batch PR for archive publication. DER readiness,
+    -+owner acceptance and slice state remain separate.
+    -+
+    -+Before completing VS1, finish its remaining contracts, complete the full slice review
+    -+template, record architecture changes and explicitly revise the subsequent slices.
+    -+Do not promote VS2 merely because this batch merges.
+    ++Status: in progress. This checkpoint registers pinned public evidence through a CLI,
+    ++with immutable Parquet and atomic SQLite metadata/events. Browsing and architecture
+    ++reporting follow as separate review capabilities. Routing, the worker, MAF normalisation
+    ++and human annotation remain outstanding; VS2 stays DRAFT. The owner prefers llama.cpp.
+    ++
+    ++No EDR is needed for prescribed architecture and operational compatibility checks.
+    ++The material DER pair is `vs1-dataset-browser`; current review-round evidence lives
+    ++outside application worktrees and is linked from the PR. This is not a completed
+    ++slice review or a claim of owner acceptance.
+     
+      ## pyproject.toml ##
+     @@ pyproject.toml: version = "0.0.0"
+    @@ pyproject.toml: version = "0.0.0"
+      readme = "README.md"
+      requires-python = ">=3.12,<3.13"
+     -dependencies = []
+    -+dependencies = [
+    -+    "duckdb==1.5.5",
+    -+    "fastapi==0.141.1",
+    -+    "jinja2==3.1.6",
+    -+    "uvicorn==0.53.0",
+    -+    "yoyo-migrations==9.0.0",
+    -+]
+    ++dependencies = ["duckdb==1.5.5", "yoyo-migrations==9.0.0"]
+      
+      [dependency-groups]
+    --dev = ["ruff", "import-linter", "tach"]
+    -+dev = [
+    -+    "ruff",
+    -+    "import-linter",
+    -+    "tach",
+    -+    "httpx==0.28.1",
+    -+]
+    - 
+    - [tool.uv]
+    - package = false
+    + dev = ["ruff", "import-linter", "tach"]
+     
+      ## src/semantic_reviewer/adapters/migrations/001_registry.sql (new) ##
+     @@
+    @@ src/semantic_reviewer/adapters/observations.py (new)
+     +import duckdb
+     +
+     +from semantic_reviewer.application.datasets import PublicDataset
+    -+from semantic_reviewer.domain.datasets import Dataset, DatasetError, Observation, ObservationPage
+    ++from semantic_reviewer.domain.datasets import Dataset, DatasetError
+     +
+     +MAX_SOURCE_BYTES = 16 * 1024 * 1024
+     +
+    @@ src/semantic_reviewer/adapters/observations.py (new)
+     +                }
+     +            )
+     +        return rows
+    -+
+    -+    def browse(self, dataset: Dataset, page: int, page_size: int) -> ObservationPage:
+    -+        parquet = self.root / (dataset.parquet_sha256 + ".parquet")
+    -+        if not parquet.is_file() or digest(parquet) != dataset.parquet_sha256:
+    -+            raise DatasetError(
+    -+                "Registered Parquet is missing or has changed; follow the dataset recovery guide."
+    -+            )
+    -+        with duckdb.connect() as connection:
+    -+            rows = connection.execute(
+    -+                "SELECT id, source_index, owner, repository, pull_request, comment_id, file_path, "
+    -+                "comment, code, category, subcategory, created_at FROM read_parquet(?) "
+    -+                "ORDER BY source_index LIMIT ? OFFSET ?",
+    -+                [str(parquet), page_size, (page - 1) * page_size],
+    -+            ).fetchall()
+    -+        return ObservationPage(
+    -+            dataset, tuple(Observation(*row) for row in rows), page, page_size, dataset.row_count
+    -+        )
+     
+      ## src/semantic_reviewer/adapters/registry.py (new) ##
+     @@
+    @@ src/semantic_reviewer/application/datasets.py (new)
+     +from dataclasses import dataclass
+     +from typing import Protocol
+     +
+    -+from semantic_reviewer.domain.datasets import Dataset, DatasetError, ObservationPage
+    ++from semantic_reviewer.domain.datasets import Dataset, DatasetError
+     +
+     +
+     +@dataclass(frozen=True)
+    @@ src/semantic_reviewer/application/datasets.py (new)
+     +        """Verify pinned bytes and publish immutable canonical Parquet before registration."""
+     +        ...
+     +
+    -+    def browse(self, dataset: Dataset, page: int, page_size: int) -> ObservationPage: ...
+    -+
+     +
+     +class DatasetService:
+     +    def __init__(
+    @@ src/semantic_reviewer/application/datasets.py (new)
+     +
+     +    def datasets(self) -> tuple[Dataset, ...]:
+     +        return self._registry.list()
+    -+
+    -+    def browse(self, dataset_id: str, page: int = 1, page_size: int = 20) -> ObservationPage:
+    -+        if not 1 <= page <= 1_000_000 or not 1 <= page_size <= 100:
+    -+            raise DatasetError("Page must be 1–1000000 and page size must be 1–100.")
+    -+        dataset = self._registry.get(dataset_id)
+    -+        if dataset is None:
+    -+            raise LookupError("Dataset is not registered.")
+    -+        return self._observations.browse(dataset, page, page_size)
+    -
+    - ## src/semantic_reviewer/asgi.py ##
+    -@@
+    --"""Reserved web assembly boundary; the ASGI application is not implemented yet."""
+    -+"""Web assembly kept separate from worker-compatible dependency composition."""
+    -+
+    -+from pathlib import Path
+    -+
+    -+from semantic_reviewer.bootstrap import build_datasets
+    -+from semantic_reviewer.web.app import create_app
+    -+
+    -+
+    -+def build_app(data_root: Path):
+    -+    return create_app(build_datasets(data_root))
+     
+      ## src/semantic_reviewer/bootstrap.py ##
+     @@
+    @@ src/semantic_reviewer/domain/datasets.py (new)
+     +    schema_version: int = 1
+     +
+     +
+    -+@dataclass(frozen=True)
+    -+class Observation:
+    -+    id: str
+    -+    source_index: int
+    -+    owner: str
+    -+    repository: str
+    -+    pull_request: int
+    -+    comment_id: int
+    -+    file_path: str
+    -+    comment: str
+    -+    code: str
+    -+    category: str
+    -+    subcategory: str
+    -+    created_at: str
+    -+
+    -+
+    -+@dataclass(frozen=True)
+    -+class ObservationPage:
+    -+    dataset: Dataset
+    -+    items: tuple[Observation, ...]
+    -+    page: int
+    -+    page_size: int
+    -+    total: int
+    -+
+    -+
+     +class DatasetError(ValueError):
+     +    """An invalid or conflicting dataset cannot be registered or queried."""
+     
+    - ## src/semantic_reviewer/web/app.py (new) ##
+    -@@
+    -+"""Read-only, local observation browser and bounded JSON endpoints."""
+    -+
+    -+from pathlib import Path
+    -+
+    -+from fastapi import FastAPI, HTTPException, Query, Request
+    -+from fastapi.responses import HTMLResponse, JSONResponse
+    -+from fastapi.templating import Jinja2Templates
+    -+
+    -+from semantic_reviewer.application.datasets import DatasetService
+    -+from semantic_reviewer.domain.datasets import DatasetError
+    -+
+    -+
+    -+def create_app(datasets: DatasetService) -> FastAPI:
+    -+    app = FastAPI(title="Meerkritic", version="0.1.0")
+    -+    templates = Jinja2Templates(directory=Path(__file__).parent / "templates")
+    -+
+    -+    @app.exception_handler(DatasetError)
+    -+    async def dataset_error(request: Request, error: DatasetError):
+    -+        return JSONResponse(status_code=409, content={"detail": str(error)})
+    -+
+    -+    def observations(dataset_id: str, page: int, page_size: int):
+    -+        try:
+    -+            return datasets.browse(dataset_id, page, page_size)
+    -+        except LookupError as error:
+    -+            raise HTTPException(404, "Dataset is not registered.") from error
+    -+
+    -+    @app.get("/", response_class=HTMLResponse)
+    -+    def home(request: Request):
+    -+        return templates.TemplateResponse(
+    -+            request=request, name="index.html", context={"datasets": datasets.datasets()}
+    -+        )
+    -+
+    -+    @app.get("/datasets/{dataset_id}", response_class=HTMLResponse)
+    -+    def browse(
+    -+        request: Request,
+    -+        dataset_id: str,
+    -+        page: int = Query(1, ge=1, le=1_000_000),
+    -+        page_size: int = Query(20, ge=1, le=100),
+    -+    ):
+    -+        return templates.TemplateResponse(
+    -+            request=request,
+    -+            name="observations.html",
+    -+            context={"result": observations(dataset_id, page, page_size)},
+    -+        )
+    -+
+    -+    @app.get("/api/datasets")
+    -+    def list_datasets():
+    -+        return datasets.datasets()
+    -+
+    -+    @app.get("/api/datasets/{dataset_id}/observations")
+    -+    def api_observations(
+    -+        dataset_id: str,
+    -+        page: int = Query(1, ge=1, le=1_000_000),
+    -+        page_size: int = Query(20, ge=1, le=100),
+    -+    ):
+    -+        return observations(dataset_id, page, page_size)
+    -+
+    -+    return app
+    -
+    - ## src/semantic_reviewer/web/templates/base.html (new) ##
+    -@@
+    -+<!doctype html>
+    -+<html lang="en-GB">
+    -+<head>
+    -+  <meta charset="utf-8">
+    -+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    -+  <title>{% block title %}Meerkritic{% endblock %}</title>
+    -+  <style>
+    -+    :root { color-scheme: light dark; font-family: system-ui, sans-serif; line-height: 1.55; }
+    -+    body { max-width: 76rem; margin: auto; padding: 1.5rem; }
+    -+    a { color: light-dark(#1255a2, #8bc5ff); }
+    -+    header { border-bottom: 1px solid #8886; padding-bottom: 1rem; }
+    -+    article { border: 1px solid #8886; border-radius: .5rem; padding: 1.2rem; margin: 1.5rem 0; }
+    -+    pre { white-space: pre-wrap; overflow-wrap: anywhere; padding: 1rem; background: #8881; }
+    -+    code { overflow-wrap: anywhere; }
+    -+    .muted { color: light-dark(#50555c, #b8bec7); }
+    -+    .columns { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    -+    nav { display: flex; gap: 2rem; align-items: center; padding: 1rem 0; }
+    -+    dl { display: grid; grid-template-columns: max-content 1fr; gap: .3rem 1rem; }
+    -+    dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+    -+    @media (max-width: 700px) { .columns { grid-template-columns: 1fr; } dl { display: block; } }
+    -+  </style>
+    -+</head>
+    -+<body>
+    -+  <header><a href="/">Meerkritic</a> · Code review grounded in engineering evidence</header>
+    -+  <main>{% block content %}{% endblock %}</main>
+    -+</body>
+    -+</html>
+    -
+    - ## src/semantic_reviewer/web/templates/index.html (new) ##
+    -@@
+    -+{% extends "base.html" %}
+    -+{% block content %}
+    -+<h1>Explore review observations</h1>
+    -+<p>Browse source comments alongside the code they discuss.</p>
+    -+{% for dataset in datasets %}
+    -+<article>
+    -+  <h2><a href="/datasets/{{ dataset.id }}">{{ dataset.title }}</a></h2>
+    -+  <p>{{ dataset.row_count }} observations · Registered {{ dataset.registered_at[:10] }}</p>
+    -+  <p class="muted">Source revision <code>{{ dataset.revision }}</code></p>
+    -+</article>
+    -+{% else %}
+    -+<h2>No datasets registered yet</h2>
+    -+<p>Register the public sample from a terminal, using the same data root as this harness:</p>
+    -+<pre>uv run --locked python tools/run.py --data-root ../extras/runtime register crc-py-manual-4176ac0</pre>
+    -+<p>Then refresh this page.</p>
+    -+{% endfor %}
+    -+<p class="muted">This first increment supports browsing. Normalisation and human annotation are still in development.</p>
+    -+{% endblock %}
+    -
+    - ## src/semantic_reviewer/web/templates/observations.html (new) ##
+    -@@
+    -+{% extends "base.html" %}
+    -+{% block title %}{{ result.dataset.title }} · Meerkritic{% endblock %}
+    -+{% macro pagination() %}
+    -+<nav aria-label="Observation pages">
+    -+  {% if result.page > 1 %}<a href="?page={{ result.page - 1 }}&amp;page_size={{ result.page_size }}">Previous</a>{% endif %}
+    -+  <span>Page {{ result.page }} · {{ result.total }} observations</span>
+    -+  {% if result.page * result.page_size < result.total %}<a href="?page={{ result.page + 1 }}&amp;page_size={{ result.page_size }}">Next</a>{% endif %}
+    -+</nav>
+    -+{% endmacro %}
+    -+{% block content %}
+    -+<h1>{{ result.dataset.title }}</h1>
+    -+<p>Comments and code are preserved as supplied by the dataset. Its labels are upstream classifications, not verified judgements.</p>
+    -+<details><summary>Dataset provenance</summary><dl>
+    -+  <dt>Revision</dt><dd><code>{{ result.dataset.revision }}</code></dd>
+    -+  <dt>Source SHA-256</dt><dd><code>{{ result.dataset.source_sha256 }}</code></dd>
+    -+  <dt>Parquet SHA-256</dt><dd><code>{{ result.dataset.parquet_sha256 }}</code></dd>
+    -+  <dt>Source</dt><dd><a href="{{ result.dataset.source_url }}">Pinned dataset file</a></dd>
+    -+</dl></details>
+    -+{{ pagination() }}
+    -+{% for item in result.items %}
+    -+<article>
+    -+  <h2>{{ item.owner }}/{{ item.repository }} · PR {{ item.pull_request }}</h2>
+    -+  <p><code>{{ item.file_path }}</code></p>
+    -+  <div class="columns">
+    -+    <section><h3>Review comment</h3><pre>{{ item.comment }}</pre></section>
+    -+    <section><h3>Code context</h3><pre>{{ item.code }}</pre></section>
+    -+  </div>
+    -+  <p class="muted">Upstream label: {{ item.category }} / {{ item.subcategory }}</p>
+    -+  <details><summary>Observation provenance</summary><dl>
+    -+    <dt>Observation ID</dt><dd><code>{{ item.id }}</code></dd>
+    -+    <dt>Source index</dt><dd>{{ item.source_index }} (zero-based)</dd>
+    -+    <dt>Comment ID</dt><dd>{{ item.comment_id }}</dd>
+    -+    <dt>Created</dt><dd>{{ item.created_at }}</dd>
+    -+    <dt>Commit SHA</dt><dd>Not supplied by this dataset</dd>
+    -+  </dl></details>
+    -+</article>
+    -+{% else %}<p>No observations on this page.</p>{% endfor %}
+    -+{{ pagination() }}
+    -+{% endblock %}
+    -
+      ## tests/test_architecture_contracts.py ##
+     @@ tests/test_architecture_contracts.py: class ArchitectureContractsTest(unittest.TestCase):
+                      (fixture / "src" / "semantic_reviewer" / path).write_text(content, encoding="utf-8")
+    @@ tests/test_architecture_contracts.py: class ArchitectureContractsTest(unittest.T
+                          )
+                          output = result.stdout + result.stderr
+     
+    - ## tests/test_architecture_snapshot.py (new) ##
+    -@@
+    -+"""Architecture evidence must expose declared contracts and observed dependency changes."""
+    -+
+    -+import importlib.util
+    -+import sys
+    -+import unittest
+    -+from dataclasses import asdict
+    -+from pathlib import Path
+    -+
+    -+ROOT = Path(__file__).resolve().parents[1]
+    -+SPEC = importlib.util.spec_from_file_location("architecture", ROOT / "tools" / "architecture.py")
+    -+architecture = importlib.util.module_from_spec(SPEC)
+    -+sys.modules[SPEC.name] = architecture
+    -+SPEC.loader.exec_module(architecture)
+    -+
+    -+
+    -+class ArchitectureSnapshotTest(unittest.TestCase):
+    -+    def test_snapshot_exposes_contracts_and_adapter_edges(self):
+    -+        value = architecture.snapshot(ROOT)
+    -+        self.assertEqual(value, architecture.snapshot(ROOT))
+    -+        self.assertEqual(len(value.contracts), 5)
+    -+        self.assertTrue(value.forbid_cycles)
+    -+        self.assertIn(
+    -+            architecture.Import("semantic_reviewer.adapters.registry", "sqlite3"), value.imports
+    -+        )
+    -+        old = asdict(value)
+    -+        new = {**old, "imports": (*old["imports"], {"source": "example", "target": "sqlite3"})}
+    -+        changes = architecture.delta(old, new)["changes"]
+    -+        self.assertEqual(changes["imports"]["added"], [{"source": "example", "target": "sqlite3"}])
+    -+        self.assertEqual(changes["contracts"], {"added": [], "removed": []})
+    -
+      ## tests/test_datasets.py (new) ##
+     @@
+     +"""Dataset boundaries tested with synthetic source bytes and real SQLite/DuckDB."""
+    @@ tests/test_datasets.py (new)
+     +from pathlib import Path
+     +from unittest.mock import patch
+     +
+    -+from fastapi.testclient import TestClient
+    -+
+     +from semantic_reviewer.adapters.observations import ParquetObservations
+     +from semantic_reviewer.adapters.registry import SQLiteRegistry
+     +from semantic_reviewer.application.datasets import DatasetService, PublicDataset
+     +from semantic_reviewer.bootstrap import build_datasets
+     +from semantic_reviewer.domain.datasets import DatasetError
+    -+from semantic_reviewer.web.app import create_app
+     +
+     +
+     +class DatasetTest(unittest.TestCase):
+    @@ tests/test_datasets.py (new)
+     +        self.raw.write_bytes(body)
+     +        self.service = DatasetService((self.source,), self.registry, self.store)
+     +
+    -+    def test_round_trip_idempotence_restart_and_pagination(self):
+    -+        first = self.service.register(self.source.id)
+    -+        self.assertEqual(first, self.service.register(self.source.id))
+    -+        service = DatasetService((self.source,), SQLiteRegistry(self.database), self.store)
+    -+        page = service.browse(first.id, page=2, page_size=2)
+    -+        self.assertEqual([item.source_index for item in page.items], [2])
+    -+        self.assertEqual(page.items[0].id, f"{self.source.source_sha256}:2")
+    -+        self.assertEqual(page.items[0].comment, self.rows[2]["comment"])
+    -+        self.assertEqual(page.total, 3)
+    -+        self.assertEqual(service.browse(first.id, page=4).items, ())
+    -+        with closing(sqlite3.connect(self.database)) as db:
+    -+            self.assertEqual(db.execute("PRAGMA journal_mode").fetchone()[0], "wal")
+    -+            self.assertEqual(db.execute("SELECT count(*) FROM event").fetchone()[0], 1)
+    -+            self.assertEqual(
+    -+                db.execute("SELECT kind FROM event").fetchone()[0], "dataset_registered"
+    -+            )
+    -+
+     +    def test_checksum_failure_leaves_registry_empty(self):
+     +        self.raw.write_text("[]")
+     +        with self.assertRaisesRegex(DatasetError, "checksum"):
+    @@ tests/test_datasets.py (new)
+     +        with closing(sqlite3.connect(self.database)) as db:
+     +            self.assertEqual(db.execute("SELECT count(*) FROM event").fetchone()[0], 1)
+     +
+    -+    def test_corrupt_parquet_fails_closed(self):
+    -+        dataset = self.service.register(self.source.id)
+    -+        (self.store.root / (dataset.parquet_sha256 + ".parquet")).write_bytes(b"changed")
+    -+        with self.assertRaisesRegex(DatasetError, "has changed"):
+    -+            self.service.browse(dataset.id)
+    -+
+    -+    def test_web_escapes_source_text_and_bounds_queries(self):
+    -+        self.service.register(self.source.id)
+    -+        with TestClient(create_app(self.service)) as client:
+    -+            self.assertEqual(client.get("/").status_code, 200)
+    -+            html = client.get(f"/datasets/{self.source.id}")
+    -+            self.assertEqual(html.status_code, 200)
+    -+            self.assertIn("&lt;script&gt;", html.text)
+    -+            self.assertNotIn("<script>x()", html.text)
+    -+            url = f"/api/datasets/{self.source.id}/observations"
+    -+            response = client.get(url + "?page=2&page_size=2")
+    -+            self.assertEqual(response.json()["items"][0]["source_index"], 2)
+    -+            self.assertEqual(client.get(url + "?page_size=101").status_code, 422)
+    -+            self.assertEqual(client.get(url + "?page=0").status_code, 422)
+    -+            self.assertEqual(client.get("/datasets/unknown").status_code, 404)
+    -+            self.assertEqual(client.get("/datasets/x' OR '1'='1").status_code, 404)
+    -+
+     +    def test_runtime_data_must_stay_outside_worktrees(self):
+     +        repository = Path(__file__).resolve().parents[1]
+     +        with self.assertRaisesRegex(ValueError, "outside"):
+    @@ tests/test_datasets.py (new)
+     +if __name__ == "__main__":
+     +    unittest.main()
+     
+    - ## tools/architecture.py (new) ##
+    -@@
+    -+"""Deterministic typed architecture data from declared contracts and Python metadata."""
+    -+
+    -+import argparse
+    -+import ast
+    -+import importlib.util
+    -+import json
+    -+import tomllib
+    -+from dataclasses import asdict, dataclass
+    -+from pathlib import Path
+    -+
+    -+
+    -+@dataclass(frozen=True)
+    -+class Module:
+    -+    name: str
+    -+    path: str
+    -+    package: bool
+    -+    definitions: tuple[str, ...]
+    -+
+    -+
+    -+@dataclass(frozen=True)
+    -+class Import:
+    -+    source: str
+    -+    target: str
+    -+
+    -+
+    -+@dataclass(frozen=True)
+    -+class Boundary:
+    -+    name: str
+    -+    allowed_dependencies: tuple[str, ...]
+    -+
+    -+
+    -+@dataclass(frozen=True)
+    -+class Contract:
+    -+    name: str
+    -+    kind: str
+    -+    modules: tuple[str, ...]
+    -+    sources: tuple[str, ...]
+    -+    forbidden: tuple[str, ...]
+    -+
+    -+
+    -+@dataclass(frozen=True)
+    -+class Snapshot:
+    -+    schema_version: int
+    -+    source_roots: tuple[str, ...]
+    -+    root_module: str
+    -+    forbid_cycles: bool
+    -+    ignore_type_checking_imports: bool
+    -+    boundaries: tuple[Boundary, ...]
+    -+    contracts: tuple[Contract, ...]
+    -+    modules: tuple[Module, ...]
+    -+    imports: tuple[Import, ...]
+    -+
+    -+
+    -+def snapshot(root: Path) -> Snapshot:
+    -+    tach = tomllib.loads((root / "tach.toml").read_text(encoding="utf-8"))
+    -+    project = tomllib.loads((root / "pyproject.toml").read_text(encoding="utf-8"))
+    -+    modules = []
+    -+    imports = set()
+    -+    for source_root in tach["source_roots"]:
+    -+        source = root / source_root
+    -+        for path in sorted(source.rglob("*.py")):
+    -+            relative = path.relative_to(source).with_suffix("")
+    -+            package = relative.name == "__init__"
+    -+            name = ".".join(relative.parts[:-1] if package else relative.parts)
+    -+            tree = ast.parse(path.read_text(encoding="utf-8"))
+    -+            modules.append(
+    -+                Module(
+    -+                    name,
+    -+                    path.relative_to(root).as_posix(),
+    -+                    package,
+    -+                    tuple(
+    -+                        sorted(
+    -+                            node.name
+    -+                            for node in tree.body
+    -+                            if isinstance(
+    -+                                node, (ast.ClassDef, ast.FunctionDef, ast.AsyncFunctionDef)
+    -+                            )
+    -+                        )
+    -+                    ),
+    -+                )
+    -+            )
+    -+            for node in ast.walk(tree):
+    -+                if isinstance(node, ast.Import):
+    -+                    imports.update((name, alias.name) for alias in node.names)
+    -+                elif isinstance(node, ast.ImportFrom):
+    -+                    target = "." * node.level + (node.module or "")
+    -+                    if node.level:
+    -+                        target = importlib.util.resolve_name(
+    -+                            target, name if package else name.rpartition(".")[0]
+    -+                        )
+    -+                    imports.add((name, target))
+    -+    return Snapshot(
+    -+        1,
+    -+        tuple(tach["source_roots"]),
+    -+        tach["root_module"],
+    -+        tach["forbid_circular_dependencies"],
+    -+        tach["ignore_type_checking_imports"],
+    -+        tuple(Boundary(item["path"], tuple(item["depends_on"])) for item in tach["modules"]),
+    -+        tuple(
+    -+            Contract(
+    -+                item["name"],
+    -+                item["type"],
+    -+                tuple(item.get("modules", [])),
+    -+                tuple(item.get("source_modules", [])),
+    -+                tuple(item.get("forbidden_modules", [])),
+    -+            )
+    -+            for item in project["tool"]["importlinter"]["contracts"]
+    -+        ),
+    -+        tuple(modules),
+    -+        tuple(Import(*edge) for edge in sorted(imports)),
+    -+    )
+    -+
+    -+
+    -+def delta(before: dict, after: dict) -> dict:
+    -+    if before["schema_version"] != after["schema_version"]:
+    -+        raise ValueError("Architecture schema versions must match.")
+    -+    changes = {}
+    -+    for key in ("boundaries", "contracts", "modules", "imports"):
+    -+        old = {json.dumps(item, sort_keys=True) for item in before[key]}
+    -+        new = {json.dumps(item, sort_keys=True) for item in after[key]}
+    -+        changes[key] = {
+    -+            "removed": [json.loads(item) for item in sorted(old - new)],
+    -+            "added": [json.loads(item) for item in sorted(new - old)],
+    -+        }
+    -+    settings = ("source_roots", "root_module", "forbid_cycles", "ignore_type_checking_imports")
+    -+    changes["settings"] = {
+    -+        key: {"before": before[key], "after": after[key]}
+    -+        for key in settings
+    -+        if before[key] != after[key]
+    -+    }
+    -+    return {"schema_version": 1, "changes": changes}
+    -+
+    -+
+    -+def main() -> None:
+    -+    parser = argparse.ArgumentParser(description=__doc__)
+    -+    commands = parser.add_subparsers(dest="command", required=True)
+    -+    capture = commands.add_parser("snapshot")
+    -+    capture.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
+    -+    compare = commands.add_parser("delta")
+    -+    compare.add_argument("before", type=Path)
+    -+    compare.add_argument("after", type=Path)
+    -+    args = parser.parse_args()
+    -+    result = (
+    -+        asdict(snapshot(args.root))
+    -+        if args.command == "snapshot"
+    -+        else delta(
+    -+            json.loads(args.before.read_text(encoding="utf-8-sig")),
+    -+            json.loads(args.after.read_text(encoding="utf-8-sig")),
+    -+        )
+    -+    )
+    -+    print(json.dumps(result, indent=2, sort_keys=True))
+    -+
+    -+
+    -+if __name__ == "__main__":
+    -+    main()
+    -
+      ## tools/run.py (new) ##
+     @@
+    -+"""Run imports outside HTTP, or serve the local harness from this checkout."""
+    ++"""Import pinned datasets from this checkout, outside web requests."""
+     +
+     +import argparse
+     +import importlib
+    @@ tools/run.py (new)
+     +    commands.add_parser("catalogue")
+     +    register = commands.add_parser("register")
+     +    register.add_argument("dataset_id")
+    -+    serve = commands.add_parser("serve")
+    -+    serve.add_argument("--port", type=int, default=8000)
+     +    args = parser.parse_args()
+     +    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+     +    try:
+    -+        if args.command == "serve":
+    -+            import uvicorn
+    -+
+    -+            assembly = importlib.import_module("semantic_reviewer.asgi")
+    -+            uvicorn.run(assembly.build_app(args.data_root), host="127.0.0.1", port=args.port)
+    -+        else:
+    -+            composition = importlib.import_module("semantic_reviewer.bootstrap")
+    -+            service = composition.build_datasets(args.data_root)
+    -+            result = (
+    -+                [asdict(source) for source in service.catalogue]
+    -+                if args.command == "catalogue"
+    -+                else asdict(service.register(args.dataset_id))
+    -+            )
+    -+            print(json.dumps(result, indent=2))
+    ++        composition = importlib.import_module("semantic_reviewer.bootstrap")
+    ++        service = composition.build_datasets(args.data_root)
+    ++        result = (
+    ++            [asdict(source) for source in service.catalogue]
+    ++            if args.command == "catalogue"
+    ++            else asdict(service.register(args.dataset_id))
+    ++        )
+    ++        print(json.dumps(result, indent=2))
+     +    except (ValueError, OSError) as error:
+     +        parser.exit(1, f"{error}\n")
+     +    return 0
+    @@ tools/run.py (new)
+     +    raise SystemExit(main())
+     
+      ## uv.lock ##
+    -@@ uv.lock: version = 1
+    - revision = 3
+    - requires-python = "==3.12.*"
+    - 
+    -+[[package]]
+    -+name = "annotated-doc"
+    -+version = "0.0.5"
+    -+source = { registry = "https://pypi.org/simple" }
+    -+sdist = { url = "https://files.pythonhosted.org/packages/5a/8e/38aa427ed5402449e226975b649c5dc73ccadfefeb95e6aecb8f8ea4b6b6/annotated_doc-0.0.5.tar.gz", hash = "sha256:c7e58ce09192557605d8bbd92836d7e1d520ac9580096042c0bfd197efacf1bb", size = 10758, upload-time = "2026-07-28T13:50:58.129Z" }
+    -+wheels = [
+    -+    { url = "https://files.pythonhosted.org/packages/3e/30/e900b21425a860e195f32e37657aa1f7c7f2b1bfb26f03ca209b90933c06/annotated_doc-0.0.5-py3-none-any.whl", hash = "sha256:117bac03a25ede5df5440e855b32d556049ca169ead221505badf432fed4b101", size = 5302, upload-time = "2026-07-28T13:50:57.239Z" },
+    -+]
+    -+
+    -+[[package]]
+    -+name = "annotated-types"
+    -+version = "0.8.0"
+    -+source = { registry = "https://pypi.org/simple" }
+    -+sdist = { url = "https://files.pythonhosted.org/packages/5f/56/a8120250d128bed162cd73c76d45f6ef9991f3e068f62a8ee060afa3104a/annotated_types-0.8.0.tar.gz", hash = "sha256:13b2beaad985e05e2d6407ee4c4f35590b11f8d693a258a561055cac8f64cab7", size = 15893, upload-time = "2026-07-23T20:16:13.995Z" }
+    -+wheels = [
+    -+    { url = "https://files.pythonhosted.org/packages/99/91/8acff4f5e50511b911bbccb72b8628a49c68ce14148cd9f6431094859a90/annotated_types-0.8.0-py3-none-any.whl", hash = "sha256:f072f4d804ea359e4eaf198b1af7a8b0943881a87f31bb764f8bf219bb9419e0", size = 13427, upload-time = "2026-07-23T20:16:12.938Z" },
+    -+]
+    -+
+    -+[[package]]
+    -+name = "anyio"
+    -+version = "4.15.1"
+    -+source = { registry = "https://pypi.org/simple" }
+    -+dependencies = [
+    -+    { name = "idna" },
+    -+    { name = "typing-extensions" },
+    -+]
+    -+sdist = { url = "https://files.pythonhosted.org/packages/a9/d2/f4d173e22df740bc37b1db102b386ba719b66e95b0f0d751f556b387e6d2/anyio-4.15.1.tar.gz", hash = "sha256:9f28306018cbd6d329e64a36d58256edff76dd996fe423bc957326e578b82a94", size = 276966, upload-time = "2026-09-05T10:42:39.44Z" }
+    -+wheels = [
+    -+    { url = "https://files.pythonhosted.org/packages/12/b8/4bd346e22b28902df4d651910f5242c28d84e4a5c2435ca5c3f797ed7e2e/anyio-4.15.1-py3-none-any.whl", hash = "sha256:6152fdbbf9a77fdec97731721bebf7c4c44f7c29b424b0065826173efc7ed101", size = 132079, upload-time = "2026-09-05T10:42:37.923Z" },
+    -+]
+    -+
+    -+[[package]]
+    -+name = "certifi"
+    -+version = "2026.7.22"
+    -+source = { registry = "https://pypi.org/simple" }
+    -+sdist = { url = "https://files.pythonhosted.org/packages/a3/c2/24167ea9858356b47a87a50d39908bfdb72ceeefe0041586e704e5376b3a/certifi-2026.7.22.tar.gz", hash = "sha256:741e2c3b351ddf169a738da9f2c048608ff7f2c5cc02f1ebc6b118bb090d5d55", size = 138112, upload-time = "2026-07-22T03:35:12.644Z" }
+    -+wheels = [
+    -+    { url = "https://files.pythonhosted.org/packages/0b/a7/71ac2cff56fec219ed242bb11b8efb69fcc4bec75db06fb7bfe35de520e6/certifi-2026.7.22-py3-none-any.whl", hash = "sha256:62f22742b58a1a33014a2b6b706588a8d7e2a88ae7bd1a6ebe8c992928483775", size = 136983, upload-time = "2026-07-22T03:35:11.276Z" },
+    -+]
+    -+
+    - [[package]]
+    - name = "click"
+    - version = "8.5.0"
+     @@ uv.lock: wheels = [
+          { url = "https://files.pythonhosted.org/packages/58/50/6c0d534c5f134586a8e1ba4e330569e32f057e33372ae556463212fb4cd3/click-8.5.0-py3-none-any.whl", hash = "sha256:255bc9599cf7748b4b1a446ccc735421bd08a2ae529a8b88597d3de5664ee360", size = 125251, upload-time = "2026-08-26T13:33:12.928Z" },
+      ]
+    @@ uv.lock: wheels = [
+     +    { url = "https://files.pythonhosted.org/packages/af/b7/5753b41d3124838f868f9f523362812d9fc45409e9e4dd70dcbb0a25826e/duckdb-1.5.5-cp312-cp312-win_amd64.whl", hash = "sha256:ddfbdb096c11d51ee22492397d342c90a82e62c5d09961477895934d0a25372f", size = 13168544, upload-time = "2026-07-22T10:54:22.789Z" },
+     +    { url = "https://files.pythonhosted.org/packages/5c/28/44b679c7d46245f8398feae7edac959d1b83d4eb143e25b3fce0630b78bd/duckdb-1.5.5-cp312-cp312-win_arm64.whl", hash = "sha256:2725d2b9ace3a4e75d72fc5a239f6a44b502c580edadb8fb2676db772c5f9282", size = 13988684, upload-time = "2026-07-22T10:54:26.003Z" },
+     +]
+    -+
+    -+[[package]]
+    -+name = "fastapi"
+    -+version = "0.141.1"
+    -+source = { registry = "https://pypi.org/simple" }
+    -+dependencies = [
+    -+    { name = "annotated-doc" },
+    -+    { name = "pydantic" },
+    -+    { name = "starlette" },
+    -+    { name = "typing-extensions" },
+    -+    { name = "typing-inspection" },
+    -+]
+    -+sdist = { url = "https://files.pythonhosted.org/packages/8a/02/91e3416a8fdd715abb903a952a6bec7cdd8d14eed55d415fc8595524c319/fastapi-0.141.1.tar.gz", hash = "sha256:e8822fc40db1e1858054d7a949a888695bc9bdce70139178e33bd2871a453ca1", size = 425799, upload-time = "2026-07-29T17:18:05.568Z" }
+    -+wheels = [
+    -+    { url = "https://files.pythonhosted.org/packages/cb/03/10388a42375ee7e4ac9b94eb2c5c569c8b5795e377e701c9ac3ad63de890/fastapi-0.141.1-py3-none-any.whl", hash = "sha256:bfb91aa2d334c61cb35ba9a116fc123b3d3df31640b801cf57a7a78ec3f603b3", size = 131954, upload-time = "2026-07-29T17:18:04.364Z" },
+    -+]
+     +
+      [[package]]
+      name = "gitdb"
+      version = "4.0.12"
+    -@@ uv.lock: wheels = [
+    -     { url = "https://files.pythonhosted.org/packages/dd/9d/9b2da1ff2951e13b636673814ec7df699660f892f284bf2f3d53e991283c/grimp-3.17-cp312-cp312-win_arm64.whl", hash = "sha256:ff161c9aed2ca3db9bc592157a36914ae8440d8d8f3c6986843dec11523cd700", size = 1923198, upload-time = "2026-09-04T11:28:57.051Z" },
+    - ]
+    - 
+    -+[[package]]
+    -+name = "h11"
+    -+version = "0.16.0"
+    -+source = { registry = "https://pypi.org/simple" }
+    -+sdist = { url = "https://files.pythonhosted.org/packages/01/ee/02a2c011bdab74c6fb3c75474d40b3052059d95df7e73351460c8588d963/h11-0.16.0.tar.gz", hash = "sha256:4e35b956cf45792e4caa5885e69fba00bdbc6ffafbfa020300e549b208ee5ff1", size = 101250, upload-time = "2025-04-24T03:35:25.427Z" }
+    -+wheels = [
+    -+    { url = "https://files.pythonhosted.org/packages/04/4b/29cac41a4d98d144bf5f6d33995617b185d14b22401f75ca86f384e87ff1/h11-0.16.0-py3-none-any.whl", hash = "sha256:63cf8bbe7522de3bf65932fda1d9c2772064ffb3dae62d55932da54b31cb6c86", size = 37515, upload-time = "2025-04-24T03:35:24.344Z" },
+    -+]
+    -+
+    -+[[package]]
+    -+name = "httpcore"
+    -+version = "1.0.9"
+    -+source = { registry = "https://pypi.org/simple" }
+    -+dependencies = [
+    -+    { name = "certifi" },
+    -+    { name = "h11" },
+    -+]
+    -+sdist = { url = "https://files.pythonhosted.org/packages/06/94/82699a10bca87a5556c9c59b5963f2d039dbd239f25bc2a63907a05a14cb/httpcore-1.0.9.tar.gz", hash = "sha256:6e34463af53fd2ab5d807f399a9b45ea31c3dfa2276f15a2c3f00afff6e176e8", size = 85484, upload-time = "2025-04-24T22:06:22.219Z" }
+    -+wheels = [
+    -+    { url = "https://files.pythonhosted.org/packages/7e/f5/f66802a942d491edb555dd61e3a9961140fd64c90bce1eafd741609d334d/httpcore-1.0.9-py3-none-any.whl", hash = "sha256:2d400746a40668fc9dec9810239072b40b4484b640a8c38fd654a024c7a1bf55", size = 78784, upload-time = "2025-04-24T22:06:20.566Z" },
+    -+]
+    -+
+    -+[[package]]
+    -+name = "httpx"
+    -+version = "0.28.1"
+    -+source = { registry = "https://pypi.org/simple" }
+    -+dependencies = [
+    -+    { name = "anyio" },
+    -+    { name = "certifi" },
+    -+    { name = "httpcore" },
+    -+    { name = "idna" },
+    -+]
+    -+sdist = { url = "https://files.pythonhosted.org/packages/b1/df/48c586a5fe32a0f01324ee087459e112ebb7224f646c0b5023f5e79e9956/httpx-0.28.1.tar.gz", hash = "sha256:75e98c5f16b0f35b567856f597f06ff2270a374470a5c2392242528e3e3e42fc", size = 141406, upload-time = "2024-12-06T15:37:23.222Z" }
+    -+wheels = [
+    -+    { url = "https://files.pythonhosted.org/packages/2a/39/e50c7c3a983047577ee07d2a9e53faf5a69493943ec3f6a384bdc792deb2/httpx-0.28.1-py3-none-any.whl", hash = "sha256:d909fcccc110f8c7faf814ca82a9a4d816bc5a6dbfea25d6591d6985b8ba59ad", size = 73517, upload-time = "2024-12-06T15:37:21.509Z" },
+    -+]
+    -+
+    -+[[package]]
+    -+name = "idna"
+    -+version = "3.20"
+    -+source = { registry = "https://pypi.org/simple" }
+    -+sdist = { url = "https://files.pythonhosted.org/packages/f5/08/8eea9d4b8302028f3abb2c0813953f7aec26d33b7a8960ed760e65ff29fa/idna-3.20.tar.gz", hash = "sha256:a7db850025b95ded1eae8a46181a1a6c56c92c96f0e2b005d9ff8dc0210cab44", size = 216463, upload-time = "2026-09-17T14:11:04.752Z" }
+    -+wheels = [
+    -+    { url = "https://files.pythonhosted.org/packages/58/a2/bb081bab032533a855d44de1d56f8e8426114ff1ba5d1f07a438a0a654f8/idna-3.20-py3-none-any.whl", hash = "sha256:ab7ae7122974553370f0bdb919e1a960b2cd1bc1ef0276416d896db81c14582c", size = 69583, upload-time = "2026-09-17T14:11:03.168Z" },
+    -+]
+    -+
+    - [[package]]
+    - name = "import-linter"
+    - version = "2.15"
+     @@ uv.lock: wheels = [
+          { url = "https://files.pythonhosted.org/packages/08/31/4571c20652a4002ed9e500046386f3731a77e23d95a608ae8a87f1fbb2da/import_linter-2.15-py3-none-any.whl", hash = "sha256:9aaf16a88ac1e99d5a464cd7f66b6a05f7060bfa761162e0ed441773a267ed3b", size = 640512, upload-time = "2026-09-04T14:47:54.878Z" },
+      ]
+    @@ uv.lock: wheels = [
+     +wheels = [
+     +    { url = "https://files.pythonhosted.org/packages/b3/55/ecca97ae19075f1fac62def77731e7f535e6c1fb8f92ff08160c5e6dade8/importlib_metadata-9.0.1-py3-none-any.whl", hash = "sha256:bba5600596a7e21f3eef53281cf28d6a5195634d2f2b78ff9501a3272c6eaab0", size = 27920, upload-time = "2026-08-28T15:30:33.433Z" },
+     +]
+    -+
+    -+[[package]]
+    -+name = "jinja2"
+    -+version = "3.1.6"
+    -+source = { registry = "https://pypi.org/simple" }
+    -+dependencies = [
+    -+    { name = "markupsafe" },
+    -+]
+    -+sdist = { url = "https://files.pythonhosted.org/packages/df/bf/f7da0350254c0ed7c72f3e33cef02e048281fec7ecec5f032d4aac52226b/jinja2-3.1.6.tar.gz", hash = "sha256:0137fb05990d35f1275a587e9aee6d56da821fc83491a0fb838183be43f66d6d", size = 245115, upload-time = "2025-03-05T20:05:02.478Z" }
+    -+wheels = [
+    -+    { url = "https://files.pythonhosted.org/packages/62/a1/3d680cbfd5f4b8f15abc1d571870c5fc3e594bb582bc3b64ea099db13e56/jinja2-3.1.6-py3-none-any.whl", hash = "sha256:85ece4451f492d0c13c5dd7c13a64681a86afae63a5f347908daf103ce6d2f67", size = 134899, upload-time = "2025-03-05T20:05:00.369Z" },
+    -+]
+     +
+      [[package]]
+      name = "markdown-it-py"
+      version = "4.2.0"
+    -@@ uv.lock: wheels = [
+    -     { url = "https://files.pythonhosted.org/packages/b3/81/4da04ced5a082363ecfa159c010d200ecbd959ae410c10c0264a38cac0f5/markdown_it_py-4.2.0-py3-none-any.whl", hash = "sha256:9f7ebbcd14fe59494226453aed97c1070d83f8d24b6fc3a3bcf9a38092641c4a", size = 91687, upload-time = "2026-05-07T12:08:27.182Z" },
+    - ]
+    - 
+    -+[[package]]
+    -+name = "markupsafe"
+    -+version = "3.0.3"
+    -+source = { registry = "https://pypi.org/simple" }
+    -+sdist = { url = "https://files.pythonhosted.org/packages/7e/99/7690b6d4034fffd95959cbe0c02de8deb3098cc577c67bb6a24fe5d7caa7/markupsafe-3.0.3.tar.gz", hash = "sha256:722695808f4b6457b320fdc131280796bdceb04ab50fe1795cd540799ebe1698", size = 80313, upload-time = "2025-09-27T18:37:40.426Z" }
+    -+wheels = [
+    -+    { url = "https://files.pythonhosted.org/packages/5a/72/147da192e38635ada20e0a2e1a51cf8823d2119ce8883f7053879c2199b5/markupsafe-3.0.3-cp312-cp312-macosx_10_13_x86_64.whl", hash = "sha256:d53197da72cc091b024dd97249dfc7794d6a56530370992a5e1a08983ad9230e", size = 11615, upload-time = "2025-09-27T18:36:30.854Z" },
+    -+    { url = "https://files.pythonhosted.org/packages/9a/81/7e4e08678a1f98521201c3079f77db69fb552acd56067661f8c2f534a718/markupsafe-3.0.3-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:1872df69a4de6aead3491198eaf13810b565bdbeec3ae2dc8780f14458ec73ce", size = 12020, upload-time = "2025-09-27T18:36:31.971Z" },
+    -+    { url = "https://files.pythonhosted.org/packages/1e/2c/799f4742efc39633a1b54a92eec4082e4f815314869865d876824c257c1e/markupsafe-3.0.3-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:3a7e8ae81ae39e62a41ec302f972ba6ae23a5c5396c8e60113e9066ef893da0d", size = 24332, upload-time = "2025-09-27T18:36:32.813Z" },
+    -+    { url = "https://files.pythonhosted.org/packages/3c/2e/8d0c2ab90a8c1d9a24f0399058ab8519a3279d1bd4289511d74e909f060e/markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:d6dd0be5b5b189d31db7cda48b91d7e0a9795f31430b7f271219ab30f1d3ac9d", size = 22947, upload-time = "2025-09-27T18:36:33.86Z" },
+    -+    { url = "https://files.pythonhosted.org/packages/2c/54/887f3092a85238093a0b2154bd629c89444f395618842e8b0c41783898ea/markupsafe-3.0.3-cp312-cp312-manylinux_2_31_riscv64.manylinux_2_39_riscv64.whl", hash = "sha256:94c6f0bb423f739146aec64595853541634bde58b2135f27f61c1ffd1cd4d16a", size = 21962, upload-time = "2025-09-27T18:36:35.099Z" },
+    -+    { url = "https://files.pythonhosted.org/packages/c9/2f/336b8c7b6f4a4d95e91119dc8521402461b74a485558d8f238a68312f11c/markupsafe-3.0.3-cp312-cp312-musllinux_1_2_aarch64.whl", hash = "sha256:be8813b57049a7dc738189df53d69395eba14fb99345e0a5994914a3864c8a4b", size = 23760, upload-time = "2025-09-27T18:36:36.001Z" },
+    -+    { url = "https://files.pythonhosted.org/packages/32/43/67935f2b7e4982ffb50a4d169b724d74b62a3964bc1a9a527f5ac4f1ee2b/markupsafe-3.0.3-cp312-cp312-musllinux_1_2_riscv64.whl", hash = "sha256:83891d0e9fb81a825d9a6d61e3f07550ca70a076484292a70fde82c4b807286f", size = 21529, upload-time = "2025-09-27T18:36:36.906Z" },
+    -+    { url = "https://files.pythonhosted.org/packages/89/e0/4486f11e51bbba8b0c041098859e869e304d1c261e59244baa3d295d47b7/markupsafe-3.0.3-cp312-cp312-musllinux_1_2_x86_64.whl", hash = "sha256:77f0643abe7495da77fb436f50f8dab76dbc6e5fd25d39589a0f1fe6548bfa2b", size = 23015, upload-time = "2025-09-27T18:36:37.868Z" },
+    -+    { url = "https://files.pythonhosted.org/packages/2f/e1/78ee7a023dac597a5825441ebd17170785a9dab23de95d2c7508ade94e0e/markupsafe-3.0.3-cp312-cp312-win32.whl", hash = "sha256:d88b440e37a16e651bda4c7c2b930eb586fd15ca7406cb39e211fcff3bf3017d", size = 14540, upload-time = "2025-09-27T18:36:38.761Z" },
+    -+    { url = "https://files.pythonhosted.org/packages/aa/5b/bec5aa9bbbb2c946ca2733ef9c4ca91c91b6a24580193e891b5f7dbe8e1e/markupsafe-3.0.3-cp312-cp312-win_amd64.whl", hash = "sha256:26a5784ded40c9e318cfc2bdb30fe164bdb8665ded9cd64d500a34fb42067b1c", size = 15105, upload-time = "2025-09-27T18:36:39.701Z" },
+    -+    { url = "https://files.pythonhosted.org/packages/e5/f1/216fc1bbfd74011693a4fd837e7026152e89c4bcf3e77b6692fba9923123/markupsafe-3.0.3-cp312-cp312-win_arm64.whl", hash = "sha256:35add3b638a5d900e807944a078b51922212fb3dedb01633a8defc4b01a3c85f", size = 13906, upload-time = "2025-09-27T18:36:40.689Z" },
+    -+]
+    -+
+    - [[package]]
+    - name = "mdurl"
+    - version = "0.1.2"
+     @@ uv.lock: wheels = [
+      name = "meerkritic"
+      version = "0.0.0"
+      source = { virtual = "." }
+     +dependencies = [
+     +    { name = "duckdb" },
+    -+    { name = "fastapi" },
+    -+    { name = "jinja2" },
+    -+    { name = "uvicorn" },
+     +    { name = "yoyo-migrations" },
+     +]
+      
+      [package.dev-dependencies]
+      dev = [
+    -+    { name = "httpx" },
+    -     { name = "import-linter" },
+    -     { name = "ruff" },
+    -     { name = "tach" },
+    +@@ uv.lock: dev = [
+      ]
+      
+      [package.metadata]
+     +requires-dist = [
+     +    { name = "duckdb", specifier = "==1.5.5" },
+    -+    { name = "fastapi", specifier = "==0.141.1" },
+    -+    { name = "jinja2", specifier = "==3.1.6" },
+    -+    { name = "uvicorn", specifier = "==0.53.0" },
+     +    { name = "yoyo-migrations", specifier = "==9.0.0" },
+     +]
+      
+      [package.metadata.requires-dev]
+      dev = [
+    -+    { name = "httpx", specifier = "==0.28.1" },
+    -     { name = "import-linter" },
+    -     { name = "ruff" },
+    -     { name = "tach" },
+    -@@ uv.lock: wheels = [
+    -     { url = "https://files.pythonhosted.org/packages/54/6f/84908cad2d6aa5144abcf7b42709fe4fdb459bc640ec7ac5786e7693dabc/prompt_toolkit-3.0.53-py3-none-any.whl", hash = "sha256:01c0891d7f9237d5e339f7d3e42cdae80b7534abb1c7c0e3352efba6231492f2", size = 392288, upload-time = "2026-07-26T20:56:12.512Z" },
+    - ]
+    - 
+    -+[[package]]
+    -+name = "pydantic"
+    -+version = "2.13.5"
+    -+source = { registry = "https://pypi.org/simple" }
+    -+dependencies = [
+    -+    { name = "annotated-types" },
+    -+    { name = "pydantic-core" },
+    -+    { name = "typing-extensions" },
+    -+    { name = "typing-inspection" },
+    -+]
+    -+sdist = { url = "https://files.pythonhosted.org/packages/53/ef/fc4f868f4e2cee79f863883abffceff107875f569b848507319842d2a681/pydantic-2.13.5.tar.gz", hash = "sha256:51a9c5f7b2f8e636f04c6cada605d9b6a3bf1348fdf945a3d8869b19bba0ee08", size = 845750, upload-time = "2026-08-28T14:04:00.916Z" }
+    -+wheels = [
+    -+    { url = "https://files.pythonhosted.org/packages/eb/47/c95ffc2009878c7aac0c5e08528022dcb885933252a88b5f170058014464/pydantic-2.13.5-py3-none-any.whl", hash = "sha256:346a034f080da3755d8e9cb5e00e8b07de1d39e4f6e2c87d8ab7cafa0b269a73", size = 472589, upload-time = "2026-08-28T14:03:59.136Z" },
+    -+]
+    -+
+    -+[[package]]
+    -+name = "pydantic-core"
+    -+version = "2.46.5"
+    -+source = { registry = "https://pypi.org/simple" }
+    -+dependencies = [
+    -+    { name = "typing-extensions" },
+    -+]
+    -+sdist = { url = "https://files.pythonhosted.org/packages/af/f9/8a06bea35ef8daf588f707784c973a7046e0034c8d8cfb08828eeffb8b75/pydantic_core-2.46.5.tar.gz", hash = "sha256:10416c15b8839ecc4ef4d0885da76da6fd0f67333a0eb8aff6d93c4b8f2910fc", size = 472262, upload-time = "2026-08-28T10:01:31.677Z" }
+    -+wheels = [
+    -+    { url = "https://files.pythonhosted.org/packages/82/3f/76358795aa7a8c6d4f36e2cb828ad1c90ee118e1393a9281664f5aade9d4/pydantic_core-2.46.5-cp312-cp312-macosx_10_12_x86_64.whl", hash = "sha256:b9fe6fb92520e3fd61f2e49000b6911b188824f089b75973ea06d6267f0b476d", size = 2076516, upload-time = "2026-08-28T09:58:21.576Z" },
+    -+    { url = "https://files.pythonhosted.org/packages/db/50/26b091836076ce4cb2fac264186936acc069e0595772cfd02a563bc4761a/pydantic_core-2.46.5-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:a39ac25a9a2fa4072efdb429833c4a4c8009a51ff9eea3eeae131713cd27991e", size = 1922874, upload-time = "2026-08-28T09:58:23.766Z" },
+    -+    { url = "https://files.pythonhosted.org/packages/09/f0/2a8ce3849e299d44e2d2c196b6082643a3235565a735cb51db7a6261f614/pydantic_core-2.46.5-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:4fdc8b93a41521988916eeaa271173fcca7fa0803d62f87675aac8dcec1c8e29", size = 1951772, upload-time = "2026-08-28T09:58:25.435Z" },
+    -+    { url = "https://files.pythonhosted.org/packages/87/46/ac0dc8bdd9e6048183a14eb127764e7ad9240021c17513074a4711b0e31e/pydantic_core-2.46.5-cp312-cp312-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:b98134087d9de723658d17a42c7d0da8d6e2ef08015dee7dc93889047315f5e4", size = 2031832, upload-time = "2026-08-28T09:58:27.102Z" },
+    -+    { url = "https://files.pythonhosted.org/packages/c4/c2/339de5bef7be36301a2231eaa52e62163742c2281f11b5f4892bc79785cd/pydantic_core-2.46.5-cp312-cp312-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:e652ab17569c94bff5475520f907b7148b8c24036a8ebbe5cf7cf7493d28579a", size = 2208645, upload-time = "2026-08-28T09:58:28.948Z" },
+    -+    { url = "https://files.pythonhosted.org/packages/7b/a0/9ff22b797724262da14427abaed4dd1d864a139693fc5e7809114376a716/pydantic_core-2.46.5-cp312-cp312-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:d925f3d9afd05a8c0fb3a1031463a8d59ebe5e2afad297e29c78be19e13b4e62", size = 2265935, upload-time = "2026-08-28T09:58:30.625Z" },
+    -+    { url = "https://files.pythonhosted.org/packages/c0/a4/eb9409ec0736e50aa70a412f16c204ed149516846912f7e6724d4c73ee53/pydantic_core-2.46.5-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:0fc5be0abd4a407e200d844b404e33639a554e7bd0d448e7b9ae181be4789ac2", size = 2066284, upload-time = "2026-08-28T09:58:32.289Z" },
+    -+    { url = "https://files.pythonhosted.org/packages/c0/02/7f6156ffc926857f1c37c07d9a388682865a81830ab6a1b637082c25e399/pydantic_core-2.46.5-cp312-cp312-manylinux_2_31_riscv64.whl", hash = "sha256:816ff0a6550ffc06c098ccd2e0698600f9aa7da192a79eaa6f9af504a35db869", size = 2105889, upload-time = "2026-08-28T09:58:33.986Z" },
+    -+    { url = "https://files.pythonhosted.org/packages/92/b1/e781d357ebe09fc929f995700f1b3503e8897f1cece183ecb1300d4d67e9/pydantic_core-2.46.5-cp312-cp312-manylinux_2_5_i686.manylinux1_i686.whl", hash = "sha256:c7ea57fc63aa7da93a1bd2d644e6577befae10c52c4e36377635eea1056a74f5", size = 2158006, upload-time = "2026-08-28T09:58:35.647Z" },
+    -+    { url = "https://files.pythonhosted.org/packages/70/0a/644597d84ab400e50609c192120b85c9681c22d3a20461b9060a79be0a7a/pydantic_core-2.46.5-cp312-cp312-musllinux_1_1_aarch64.whl", hash = "sha256:efd62a42486f1bda5d24cb4f63d15a3c7768375fe83d36f9417b4ad7a2fb20b3", size = 2158408, upload-time = "2026-08-28T09:58:37.38Z" },
+    -+    { url = "https://files.pythonhosted.org/packages/1e/ee/ca3b7b3a4b3769ffe9ce9432a7c9be755de9593a46d3b0d54d0409323e44/pydantic_core-2.46.5-cp312-cp312-musllinux_1_1_armv7l.whl", hash = "sha256:2bc9419666990c06d7397831f2126a1ecc3594aaa3ff7de5bf2d066802f4e07b", size = 2309609, upload-time = "2026-08-28T09:58:39.22Z" },
+    -+    { url = "https://files.pythonhosted.org/packages/ce/52/39fa1f451486019524ca685020390e7ca351832fd874530ba30c8628e6dc/pydantic_core-2.46.5-cp312-cp312-musllinux_1_1_x86_64.whl", hash = "sha256:18a09e1e1011b462f2e32774f25859ef1223d5c2b0546a633cf56654710721e0", size = 2342618, upload-time = "2026-08-28T09:58:40.89Z" },
+    -+    { url = "https://files.pythonhosted.org/packages/81/5e/468fc630568c61dcef3cd47ad32ffbeed9af643f49208d1ea86ab4f890c4/pydantic_core-2.46.5-cp312-cp312-win32.whl", hash = "sha256:5cb482e9e84c851f4e623fe4acc1ced89168cf1fe18f7089db4548c8f5bbb65b", size = 1939475, upload-time = "2026-08-28T09:58:42.591Z" },
+    -+    { url = "https://files.pythonhosted.org/packages/cf/c9/4c19f41b84cf6b622a72fbeed7665b25d47a187d68d47d0d430c07f23268/pydantic_core-2.46.5-cp312-cp312-win_amd64.whl", hash = "sha256:5e81740c09e310f5aa5cbd3e434a01c154d4bef93241c7877b39f211d2b78ba8", size = 2043140, upload-time = "2026-08-28T09:58:44.272Z" },
+    -+    { url = "https://files.pythonhosted.org/packages/af/dd/0c1a050299147c746e5256db16d645ab5efd4f78c59937d581a0524e74a2/pydantic_core-2.46.5-cp312-cp312-win_arm64.whl", hash = "sha256:f7b0ec93a2893de856652154d73b7ba622f26fa97726487dcac373de5f4c6084", size = 1997729, upload-time = "2026-08-28T09:58:46.13Z" },
+    -+    { url = "https://files.pythonhosted.org/packages/df/dd/053c2e4303f791f3b8f8a14ab0b22008e8eb21d868c0c90b4f9be705b76a/pydantic_core-2.46.5-graalpy312-graalpy250_312_native-macosx_10_12_x86_64.whl", hash = "sha256:013d6f3483d81e02e7c328831808f336c8596ee33b4bd4026b9ffb1e960b8942", size = 2062540, upload-time = "2026-08-28T10:01:00.318Z" },
+    -+    { url = "https://files.pythonhosted.org/packages/d7/dd/a18df751a5e37dd51bfad7f68e766999125bebe68c9e1d10a493ad01bd63/pydantic_core-2.46.5-graalpy312-graalpy250_312_native-macosx_11_0_arm64.whl", hash = "sha256:e9c134bb666dd54b778b9fc0d2b50cbb7f979b9e3716f26a88c9ab3b6fc1dd0f", size = 1902040, upload-time = "2026-08-28T10:01:02.529Z" },
+    -+    { url = "https://files.pythonhosted.org/packages/b7/13/01d40f9d07ce8a779fd6e0bd8ad4fba91309500dd67b869e2e219d261a6d/pydantic_core-2.46.5-graalpy312-graalpy250_312_native-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:347ec774390c87326a2e4929d58d3f7e8763a104d5d35f4cd595a4c952366433", size = 1967479, upload-time = "2026-08-28T10:01:05.004Z" },
+    -+    { url = "https://files.pythonhosted.org/packages/fa/04/c81d4841331c2178b6fb09ae225425e110ed72d990c9fe556c4ec03d1013/pydantic_core-2.46.5-graalpy312-graalpy250_312_native-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:8e24d8f05fa2d28513d94e877e9c75ad66175376209b3977f916e240e623193c", size = 2111034, upload-time = "2026-08-28T10:01:07.345Z" },
+    -+]
+    -+
+    - [[package]]
+    - name = "pydot"
+    - version = "4.0.1"
+     @@ uv.lock: wheels = [
+          { url = "https://files.pythonhosted.org/packages/c1/d4/59e74daffcb57a07668852eeeb6035af9f32cbfd7a1d2511f17d2fe6a738/smmap-5.0.3-py3-none-any.whl", hash = "sha256:c106e05d5a61449cf6ba9a1e650227ecfb141590d2a98412103ff35d89fc7b2f", size = 24390, upload-time = "2026-03-09T03:43:24.361Z" },
+      ]
+    @@ uv.lock: wheels = [
+     +]
+     +
+     +[[package]]
+    -+name = "starlette"
+    -+version = "1.6.0"
+    -+source = { registry = "https://pypi.org/simple" }
+    -+dependencies = [
+    -+    { name = "anyio" },
+    -+    { name = "typing-extensions" },
+    -+]
+    -+sdist = { url = "https://files.pythonhosted.org/packages/b5/b4/205b0d5241d934e8add0c38aa924c4f9fb7330834ff11e5444db964ec3f9/starlette-1.6.0.tar.gz", hash = "sha256:d4e3ac5e546444960c710297a3c9fc3f7ebae1b7e963f3d36173b49da535be9b", size = 2716969, upload-time = "2026-08-08T18:27:57.512Z" }
+    -+wheels = [
+    -+    { url = "https://files.pythonhosted.org/packages/c8/cb/6a6a47d5b464bd08695d254f3da6e7986cc70c9fa5d778eda57538edfe56/starlette-1.6.0-py3-none-any.whl", hash = "sha256:a86dd39d14bb45f85a3d18525215a9ef0cfd1f192ac793220e72598c90335f0c", size = 75969, upload-time = "2026-08-08T18:27:56.196Z" },
+    -+]
+    -+
+    -+[[package]]
+     +name = "tabulate"
+     +version = "0.10.0"
+     +source = { registry = "https://pypi.org/simple" }
+    @@ uv.lock: wheels = [
+      [[package]]
+      name = "tach"
+      version = "0.35.1"
+    -@@ uv.lock: wheels = [
+    -     { url = "https://files.pythonhosted.org/packages/49/d3/b8441a820a491ddfc024b0b0cf0393375b75ea13866d9c66727e54c2fc80/typing_extensions-4.16.0-py3-none-any.whl", hash = "sha256:481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8", size = 45571, upload-time = "2026-07-02T08:40:04.659Z" },
+    - ]
+    - 
+    -+[[package]]
+    -+name = "typing-inspection"
+    -+version = "0.4.4"
+    -+source = { registry = "https://pypi.org/simple" }
+    -+dependencies = [
+    -+    { name = "typing-extensions" },
+    -+]
+    -+sdist = { url = "https://files.pythonhosted.org/packages/a3/26/b09b8010994eccc3c09092e6b34058f36a460eea2d4c3e8b910c695975a0/typing_inspection-0.4.4.tar.gz", hash = "sha256:547274fa6b0a561ccf549cc9524b999a578e737d015d8709d021f9d0d13bea47", size = 76928, upload-time = "2026-08-12T12:37:25.997Z" }
+    -+wheels = [
+    -+    { url = "https://files.pythonhosted.org/packages/67/81/4add07e5172b7ac40d8ed5ff580409a7801a4fe26d529bdd915401dabfbe/typing_inspection-0.4.4-py3-none-any.whl", hash = "sha256:65b8397ba37ccbce054456aaccddfc91e6e3083c92824df348d96ca832f3f147", size = 14750, upload-time = "2026-08-12T12:37:24.648Z" },
+    -+]
+    -+
+    -+[[package]]
+    -+name = "uvicorn"
+    -+version = "0.53.0"
+    -+source = { registry = "https://pypi.org/simple" }
+    -+dependencies = [
+    -+    { name = "click" },
+    -+    { name = "h11" },
+    -+]
+    -+sdist = { url = "https://files.pythonhosted.org/packages/5d/ad/04bbb797c84fc1f26cb171f7394716f4865ffb8d8c5e1eef42565c2dfa6b/uvicorn-0.53.0.tar.gz", hash = "sha256:a9356f0cb89b3b8621529c5d5eebd69bfe154f4c3f68b4cf2de47e45fa855c2e", size = 110881, upload-time = "2026-09-14T07:44:23.815Z" }
+    -+wheels = [
+    -+    { url = "https://files.pythonhosted.org/packages/76/18/0eea75741ee812e9f598b687619ce2454f6c3a1c5cd21ea990ec6bd26f45/uvicorn-0.53.0-py3-none-any.whl", hash = "sha256:e8dca71ec86dce5f04e333f0d56cdedf942446e6643b9cea1af0d6d3a02cb03e", size = 87081, upload-time = "2026-09-14T07:44:22.179Z" },
+    -+]
+    -+
+    - [[package]]
+    - name = "wcwidth"
+    - version = "0.8.4"
+     @@ uv.lock: sdist = { url = "https://files.pythonhosted.org/packages/3d/7a/f98d4ada7c499565a
+      wheels = [
+          { url = "https://files.pythonhosted.org/packages/39/cc/9c0adc5861020de426ec71716b6c1bef8d90694b7d6d0a16202cdb1647f5/wcwidth-0.8.4-py3-none-any.whl", hash = "sha256:2097bb1d28a0ba8fe177c2eb607317f9b1627b03f33ebebfd3da670b337a65ba", size = 299474, upload-time = "2026-09-17T23:31:43.816Z" },
+-:  ------- > 2:  16a2b9d feat(browser): browse registered review observations
+-:  ------- > 3:  8e5e77f feat(architecture): report typed snapshots and deltas
