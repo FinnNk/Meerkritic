@@ -152,8 +152,9 @@ establish hosted CI checks.
 
 ## Integration preflight
 
-The public sample, SQLite/DuckDB path and web stack are exercised in the first
-batch. MAF 1.19.0 completed an executor-only compatibility probe outside the
-application; this is not model integration. The owner's local runtime preference
-is llama.cpp. Its installation, selected model, inference compatibility and worker
-recovery remain preflight obligations before the next batch can complete.
+The public sample, SQLite/DuckDB path and web stack are integrated. The current
+[normalisation batch](normalisation.md) exercises MAF core 1.19.0 with a real
+llama.cpp b10964 server and pinned Qwen3 4B GGUF fixture on Windows/CUDA. Published
+download hashes were verified. Context rendering, tokenisation, structured streaming,
+usage, result provenance and worker recovery are checked separately. This establishes
+compatibility, not model quality. Comparative model decisions still require an EDR.

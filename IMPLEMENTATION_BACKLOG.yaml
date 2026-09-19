@@ -7,8 +7,8 @@ slices:
   status: IN_PROGRESS
   batch_progress:
   - dataset registration/browser and architecture snapshots integrated (DER vs1-dataset-browser r5)
-  - routing selection/accounting/journal/inspection candidate (DER vs1-routing r1)
-  - live llama.cpp model adapter and MAF worker normalisation remain outstanding
+  - routing selection/accounting/journal/inspection integrated (DER vs1-routing r1, PR 5)
+  - live llama.cpp, MAF normalisation, durable worker and browser results candidate (DER vs1-normalisation r1)
   - annotation, live integration and final slice review remain outstanding
   entry_conditions:
   - project bootstrap approved

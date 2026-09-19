@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Jobs · Meerkritic{% endblock %}
+{% block content %}
+<h1>Normalisation jobs</h1>
+<p><a href="/">Browse datasets</a></p>
+<p>Latest 100 jobs. Each submission is a separate invocation.</p>
+{% for job in jobs %}
+<article>
+  <h2><a href="/jobs/{{ job.id }}">{{ job.dataset_id }} · record {{ job.source_index }}</a></h2>
+  <p>{{ job.status }}{% if job.stale %} · heartbeat overdue{% endif %} · {{ job.queued_at }}</p>
+  {% if job.error %}<p>{{ job.error }}</p>{% endif %}
+</article>
+{% else %}<p>No jobs yet. Open a dataset and choose Normalise.</p>{% endfor %}
+{% endblock %}

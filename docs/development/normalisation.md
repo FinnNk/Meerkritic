@@ -11,10 +11,18 @@ fixture with alias `qwen3-4b-local` and a 4,096-token context. From the reposito
 uv run --locked python tools/run.py --data-root ../extras/runtime worker --routing config/routing/llama-local.json
 ```
 
+In another terminal, start `tools/run.py --data-root ../extras/runtime serve` through
+`uv run --locked python`. Open a registered dataset, choose **Normalise**, then inspect
+the job page. It refreshes every three seconds while queued/running. The telemetry
+line shows available model, input/output tokens, local spend basis and elapsed time;
+unknown counts remain `?` until the provider reports them. Inspect recent and failed
+jobs at `/jobs`. Prompt/source/model text is escaped when displayed.
+
 The supplied routing file is an explicitly identified compatibility fixture, not a
 claim that this model is best. Use a new inventory/policy version for changed content.
 The worker enforces local-only input and literal-loopback inference. A hosted-only
-route fails closed. 
+route fails closed. Browser submission requires a matching Origin and local Host;
+the harness is for a trusted single-user machine, without multi-user authentication.
 
 For a one-job CLI invocation:
 
