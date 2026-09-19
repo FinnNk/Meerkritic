@@ -1,8 +1,12 @@
 """Retain immutable routing provenance and completion metadata in SQLite."""
 
 import json
+import os
 import sqlite3
+import tempfile
 from pathlib import Path
+
+import duckdb
 
 from semantic_reviewer.adapters.state import SQLiteState
 from semantic_reviewer.routing.selection import Record, RoutingConfig, RoutingDecision, Version
@@ -123,3 +127,81 @@ class SQLiteRoutingJournal:
                 ),
             )
             return usage
+
+    def export_usage(self, target: Path) -> int:
+        """Publish a new Parquet history snapshot with typed metrics and full record JSON.
+
+        Use a fresh output path; existing files are never overwritten. Read completed
+        usage from one SQLite snapshot in bounded batches. Publication occurs only
+        after DuckDB closes the complete file; a failed export leaves the target
+        absent. Runtime path policy is enforced by composition/CLI callers.
+
+        Returns:
+            Number of completed invocations exported, including failed invocations.
+        """
+        target.parent.mkdir(parents=True, exist_ok=True)
+        with tempfile.TemporaryDirectory(dir=target.parent) as temporary:
+            staged = Path(temporary) / "history.parquet"
+            with self.state.connect() as sqlite, duckdb.connect() as analytical:
+                analytical.execute(
+                    "CREATE TABLE history (usage_id VARCHAR, decision_id VARCHAR, task_id VARCHAR, "
+                    "task_class VARCHAR, provider VARCHAR, model VARCHAR, outcome VARCHAR, "
+                    "input_tokens BIGINT, output_tokens BIGINT, cached_input_tokens BIGINT, "
+                    "reasoning_tokens BIGINT, total_turnaround_ms DOUBLE, estimated_cost VARCHAR, "
+                    "currency VARCHAR, decision_json VARCHAR, usage_json VARCHAR, "
+                    "inventory_json VARCHAR, policy_json VARCHAR, price_catalogue_json VARCHAR)"
+                )
+                cursor = sqlite.execute(
+                    "SELECT d.payload_json, u.payload_json, i.payload_json, p.payload_json, "
+                    "c.payload_json FROM model_usage u "
+                    "JOIN routing_decision d ON d.id=u.decision_id "
+                    "JOIN routing_version i ON i.kind='inventory' "
+                    "AND i.id=json_extract(d.payload_json,'$.inventory.id') "
+                    "AND i.version=json_extract(d.payload_json,'$.inventory.version') "
+                    "JOIN routing_version p ON p.kind='policy' "
+                    "AND p.id=json_extract(d.payload_json,'$.policy.id') "
+                    "AND p.version=json_extract(d.payload_json,'$.policy.version') "
+                    "LEFT JOIN routing_version c ON c.kind='prices' "
+                    "AND c.id=json_extract(u.payload_json,'$.price_catalogue.id') "
+                    "AND c.version=json_extract(u.payload_json,'$.price_catalogue.version') "
+                    "ORDER BY u.id"
+                )
+                count = 0
+                while batch := cursor.fetchmany(500):
+                    rows = []
+                    for row in batch:
+                        decision = RoutingDecision.model_validate_json(row[0])
+                        usage = ModelUsage.model_validate_json(row[1])
+                        tokens = usage.measurement.tokens
+                        rows.append(
+                            (
+                                usage.id,
+                                decision.id,
+                                decision.requirements.task_id,
+                                decision.requirements.task_class,
+                                decision.selected.provider,
+                                decision.selected.id,
+                                usage.measurement.outcome,
+                                tokens.input_tokens,
+                                tokens.output_tokens,
+                                tokens.cached_input_tokens,
+                                tokens.reasoning_tokens,
+                                usage.measurement.total_turnaround_ms,
+                                str(usage.estimated_cost)
+                                if usage.estimated_cost is not None
+                                else None,
+                                usage.currency,
+                                row[0],
+                                row[1],
+                                row[2],
+                                row[3],
+                                row[4],
+                            )
+                        )
+                    analytical.executemany(
+                        "INSERT INTO history VALUES (" + ",".join(["?"] * 19) + ")", rows
+                    )
+                    count += len(rows)
+                analytical.execute("COPY history TO ? (FORMAT PARQUET)", [str(staged)])
+            os.link(staged, target)
+        return count

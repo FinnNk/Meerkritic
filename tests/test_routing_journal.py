@@ -2,6 +2,8 @@
 
 import json
 import sqlite3
+import subprocess
+import sys
 import tempfile
 import unittest
 from concurrent.futures import ThreadPoolExecutor
@@ -10,6 +12,7 @@ from datetime import UTC, datetime, timedelta
 from decimal import Decimal
 from pathlib import Path
 
+import duckdb
 from test_routing_selection import EXAMPLE
 from yoyo import get_backend, read_migrations
 
@@ -101,7 +104,33 @@ class JournalTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "refused"):
             self.service.complete(decision.id, self.measurement)
 
-    def test_historical_price_identity_reuse_is_rejected(self):
+    def test_export_retains_nulls_failures_and_versions_without_overwrite(self):
+        decision = self.service.route(self.task)
+        measurement = Measurement(
+            **{
+                **self.measurement.model_dump(),
+                "outcome": "provider_failure",
+                "tokens": TokenUsage(),
+            }
+        )
+        usage = self.service.complete(decision.id, measurement)
+        target = self.root / "usage.parquet"
+        self.assertEqual(self.journal.export_usage(target), 1)
+        with duckdb.connect() as db:
+            row = db.execute(
+                "SELECT input_tokens, outcome, decision_json, usage_json FROM read_parquet(?)",
+                [str(target)],
+            ).fetchone()
+            self.assertIsNone(row[0])
+            self.assertEqual(row[1], "provider_failure")
+            self.assertEqual(json.loads(row[2])["inventory"]["version"], "1")
+            self.assertEqual(json.loads(row[3])["id"], usage.id)
+        before = target.read_bytes()
+        with self.assertRaises(FileExistsError):
+            self.journal.export_usage(target)
+        self.assertEqual(target.read_bytes(), before)
+
+    def test_historical_prices_are_exported_and_identity_reuse_is_rejected(self):
         decision = self.service.route(
             TaskRequirements(task_id="remote", task_class="normalisation", privacy="public")
         )
@@ -126,6 +155,24 @@ class JournalTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "different content"):
             self.service.complete(decision.id, self.measurement, changed)
         self.assertEqual(self.journal.get(decision.id)[1], first)
+        target = self.root / "priced.parquet"
+        self.journal.export_usage(target)
+        with duckdb.connect() as db:
+            raw = db.execute(
+                "SELECT price_catalogue_json FROM read_parquet(?)", [str(target)]
+            ).fetchone()[0]
+            self.assertEqual(PriceCatalogue.model_validate_json(raw), catalogue)
+
+    def test_empty_export_has_queryable_schema(self):
+        target = self.root / "empty.parquet"
+        self.assertEqual(self.journal.export_usage(target), 0)
+        with duckdb.connect() as db:
+            self.assertEqual(
+                db.execute(
+                    "SELECT count(input_tokens) FROM read_parquet(?)", [str(target)]
+                ).fetchone()[0],
+                0,
+            )
 
     def test_upgrade_preserves_dataset_events_and_subject_integrity(self):
         old = self.root / "old.sqlite3"
@@ -168,3 +215,35 @@ class JournalTest(unittest.TestCase):
                 ):
                     db.execute(sql)
                 db.rollback()
+
+    def test_cli_preview_record_inspect_and_refusal(self):
+        common = [
+            "--config",
+            str(EXAMPLE),
+            "--task",
+            str(ROOT / "config/routing/task-example.json"),
+        ]
+
+        def run(*args):
+            return subprocess.run(
+                [sys.executable, str(ROOT / "tools/route.py"), *args],
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+
+        preview = run("preview", *common)
+        self.assertEqual(preview.returncode, 0, preview.stderr)
+        self.assertEqual(json.loads(preview.stdout)["selected"]["id"], "example-local")
+        recorded = run("record", *common, "--data-root", str(self.root))
+        self.assertEqual(recorded.returncode, 0, recorded.stderr)
+        decision_id = json.loads(recorded.stdout)["id"]
+        inspected = run("inspect", "--data-root", str(self.root), decision_id)
+        self.assertEqual(inspected.returncode, 0, inspected.stderr)
+        self.assertEqual(json.loads(inspected.stdout)["decision"]["id"], decision_id)
+        refused = run("preview", *common, "--model", "example-remote")
+        self.assertEqual(refused.returncode, 2, refused.stderr)
+        self.assertIsNone(json.loads(refused.stdout)["selected"])
+        unsafe = run("record", *common, "--data-root", str(ROOT / "runtime"))
+        self.assertEqual(unsafe.returncode, 1)
+        self.assertIn("outside the application", unsafe.stderr)
