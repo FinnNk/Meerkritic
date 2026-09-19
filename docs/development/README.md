@@ -3,8 +3,7 @@
 ## Implementation status
 
 VS1 is in progress. Its first material batch implements public dataset registration,
-the local observation browser and SQLite metadata/events. Architecture reporting
-follows in the next review commit.
+the local observation browser, SQLite metadata/events and typed architecture snapshots.
 The worker, model routing, MAF normalisation and human annotation remain the next
 batch. See the [dataset guide](datasets.md) and [VS1 progress](../slice-reviews/VS1-progress.md).
 
