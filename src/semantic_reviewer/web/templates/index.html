@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Explore review observations</h1>
+<p>Browse source comments alongside the code they discuss.</p>
+{% for dataset in datasets %}
+<article>
+  <h2><a href="/datasets/{{ dataset.id }}">{{ dataset.title }}</a></h2>
+  <p>{{ dataset.row_count }} observations · Registered {{ dataset.registered_at[:10] }}</p>
+  <p class="muted">Source revision <code>{{ dataset.revision }}</code></p>
+</article>
+{% else %}
+<h2>No datasets registered yet</h2>
+<p>Register the public sample from a terminal, using the same data root as this harness:</p>
+<pre>uv run --locked python tools/run.py --data-root ../extras/runtime register crc-py-manual-4176ac0</pre>
+<p>Then refresh this page.</p>
+{% endfor %}
+<p class="muted">This first increment supports browsing. Normalisation and human annotation are still in development.</p>
+{% endblock %}

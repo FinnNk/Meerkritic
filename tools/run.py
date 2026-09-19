@@ -1,4 +1,4 @@
-"""Import pinned datasets from this checkout, outside web requests."""
+"""Run imports outside HTTP, or serve the local harness from this checkout."""
 
 import argparse
 import importlib
@@ -16,17 +16,25 @@ def main() -> int:
     commands.add_parser("catalogue")
     register = commands.add_parser("register")
     register.add_argument("dataset_id")
+    serve = commands.add_parser("serve")
+    serve.add_argument("--port", type=int, default=8000)
     args = parser.parse_args()
     sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
     try:
-        composition = importlib.import_module("semantic_reviewer.bootstrap")
-        service = composition.build_datasets(args.data_root)
-        result = (
-            [asdict(source) for source in service.catalogue]
-            if args.command == "catalogue"
-            else asdict(service.register(args.dataset_id))
-        )
-        print(json.dumps(result, indent=2))
+        if args.command == "serve":
+            import uvicorn
+
+            assembly = importlib.import_module("semantic_reviewer.asgi")
+            uvicorn.run(assembly.build_app(args.data_root), host="127.0.0.1", port=args.port)
+        else:
+            composition = importlib.import_module("semantic_reviewer.bootstrap")
+            service = composition.build_datasets(args.data_root)
+            result = (
+                [asdict(source) for source in service.catalogue]
+                if args.command == "catalogue"
+                else asdict(service.register(args.dataset_id))
+            )
+            print(json.dumps(result, indent=2))
     except (ValueError, OSError) as error:
         parser.exit(1, f"{error}\n")
     return 0

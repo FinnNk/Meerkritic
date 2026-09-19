@@ -11,7 +11,7 @@ from urllib.request import urlopen
 import duckdb
 
 from semantic_reviewer.application.datasets import PublicDataset
-from semantic_reviewer.domain.datasets import Dataset, DatasetError
+from semantic_reviewer.domain.datasets import Dataset, DatasetError, Observation, ObservationPage
 
 MAX_SOURCE_BYTES = 16 * 1024 * 1024
 
@@ -179,3 +179,34 @@ class ParquetObservations:
                 }
             )
         return rows
+
+    def browse(self, dataset: Dataset, page: int, page_size: int) -> ObservationPage:
+        """Read a page from verified Parquet in source-record order.
+
+        Args:
+            dataset: Registered metadata identifying the immutable Parquet artefact.
+            page: One-based page number, validated by the application.
+            page_size: Positive page size, validated by the application.
+
+        Returns:
+            A page retaining dataset provenance and the registered row count.
+            Items are empty beyond the end of the dataset.
+
+        Raises:
+            DatasetError: The registered Parquet is missing or its checksum has changed.
+        """
+        parquet = self.root / (dataset.parquet_sha256 + ".parquet")
+        if not parquet.is_file() or digest(parquet) != dataset.parquet_sha256:
+            raise DatasetError(
+                "Registered Parquet is missing or has changed; follow the dataset recovery guide."
+            )
+        with duckdb.connect() as connection:
+            rows = connection.execute(
+                "SELECT id, source_index, owner, repository, pull_request, comment_id, file_path, "
+                "comment, code, category, subcategory, created_at FROM read_parquet(?) "
+                "ORDER BY source_index LIMIT ? OFFSET ?",
+                [str(parquet), page_size, (page - 1) * page_size],
+            ).fetchall()
+        return ObservationPage(
+            dataset, tuple(Observation(*row) for row in rows), page, page_size, dataset.row_count
+        )
