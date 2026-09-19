@@ -3,11 +3,13 @@
 import json
 from pathlib import Path
 
+from semantic_reviewer.adapters.annotations import SQLiteAnnotations
 from semantic_reviewer.adapters.jobs import SQLiteJobs
 from semantic_reviewer.adapters.observations import ParquetObservations
 from semantic_reviewer.adapters.registry import SQLiteRegistry
 from semantic_reviewer.adapters.results import JsonResults
 from semantic_reviewer.adapters.routing_journal import SQLiteRoutingJournal
+from semantic_reviewer.application.annotations import AnnotationService
 from semantic_reviewer.application.datasets import DatasetService, PublicDataset
 from semantic_reviewer.application.jobs import JobService
 
@@ -77,3 +79,9 @@ def build_worker(data_root: Path, routing_file: Path, endpoint: str):
         MafWorkflowRunner(LlamaClient(endpoint)),
         worker_lock(root),
     )
+
+
+def build_annotations(data_root: Path) -> AnnotationService:
+    """Compose human review without loading the model runtime."""
+    root = runtime_path(data_root)
+    return AnnotationService(build_jobs(root), SQLiteAnnotations(root / "state.sqlite3"))
