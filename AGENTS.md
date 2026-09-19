@@ -35,7 +35,11 @@
 
 - Follow the [Python style guide](docs/development/python-style.md), which adopts
   selected Google guidance with explicit project choices, not the entire guide.
-
+- When acting as the App bot, follow the [owner-feedback convention](docs/development/app-bot-feedback.md)
+  for the owner's PR, review and commit comments wherever they occur: add eyes
+  after reading; add thumbs up and reply when agreeing wholly or partly and
+  intending revisions; otherwise reply explaining the disposition. This applies
+  only to the App bot and does not constitute review approval or completed work.
 - Assess routine/material/critical before each software change; use
   [project DER policy](docs/research/research-pack/11_DOUBLE_ENTRY_REVIEW_INTEGRATION.md).
 - Use the pinned [DER skill](.agents/skills/double-entry-review/SKILL.md) for
