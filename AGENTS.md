@@ -33,6 +33,9 @@
 
 ## Software change review
 
+- Follow the [Python style guide](docs/development/python-style.md), which adopts
+  selected Google guidance with explicit project choices, not the entire guide.
+
 - Assess routine/material/critical before each software change; use
   [project DER policy](docs/research/research-pack/11_DOUBLE_ENTRY_REVIEW_INTEGRATION.md).
 - Use the pinned [DER skill](.agents/skills/double-entry-review/SKILL.md) for

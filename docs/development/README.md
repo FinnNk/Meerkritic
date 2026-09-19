@@ -9,6 +9,8 @@ batch. See the [dataset guide](datasets.md) and [VS1 progress](../slice-reviews/
 
 ## Setup and checks
 
+Use the [Python style guide](python-style.md) for the adopted conventions and their project-specific scope. It incorporates selected Google guidance, not the entire upstream guide.
+
 Use Python 3.12 and uv. The tested interpreter patch version and tool versions are
 recorded with batch evidence; `uv.lock` fixes the development dependencies.
 
