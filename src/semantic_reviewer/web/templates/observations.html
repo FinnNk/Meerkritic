@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}{{ result.dataset.title }} · Meerkritic{% endblock %}
+{% macro pagination() %}
+<nav aria-label="Observation pages">
+  {% if result.page > 1 %}<a href="?page={{ result.page - 1 }}&amp;page_size={{ result.page_size }}">Previous</a>{% endif %}
+  <span>Page {{ result.page }} · {{ result.total }} observations</span>
+  {% if result.page * result.page_size < result.total %}<a href="?page={{ result.page + 1 }}&amp;page_size={{ result.page_size }}">Next</a>{% endif %}
+</nav>
+{% endmacro %}
+{% block content %}
+<h1>{{ result.dataset.title }}</h1>
+<p>Comments and code are preserved as supplied by the dataset. Its labels are upstream classifications, not verified judgements.</p>
+<details><summary>Dataset provenance</summary><dl>
+  <dt>Revision</dt><dd><code>{{ result.dataset.revision }}</code></dd>
+  <dt>Source SHA-256</dt><dd><code>{{ result.dataset.source_sha256 }}</code></dd>
+  <dt>Parquet SHA-256</dt><dd><code>{{ result.dataset.parquet_sha256 }}</code></dd>
+  <dt>Source</dt><dd><a href="{{ result.dataset.source_url }}">Pinned dataset file</a></dd>
+</dl></details>
+{{ pagination() }}
+{% for item in result.items %}
+<article>
+  <h2>{{ item.owner }}/{{ item.repository }} · PR {{ item.pull_request }}</h2>
+  <p><code>{{ item.file_path }}</code></p>
+  <div class="columns">
+    <section><h3>Review comment</h3><pre>{{ item.comment }}</pre></section>
+    <section><h3>Code context</h3><pre>{{ item.code }}</pre></section>
+  </div>
+  <p class="muted">Upstream label: {{ item.category }} / {{ item.subcategory }}</p>
+  <details><summary>Observation provenance</summary><dl>
+    <dt>Observation ID</dt><dd><code>{{ item.id }}</code></dd>
+    <dt>Source index</dt><dd>{{ item.source_index }} (zero-based)</dd>
+    <dt>Comment ID</dt><dd>{{ item.comment_id }}</dd>
+    <dt>Created</dt><dd>{{ item.created_at }}</dd>
+    <dt>Commit SHA</dt><dd>Not supplied by this dataset</dd>
+  </dl></details>
+</article>
+{% else %}<p>No observations on this page.</p>{% endfor %}
+{{ pagination() }}
+{% endblock %}

@@ -3,7 +3,7 @@
 from dataclasses import dataclass
 from typing import Protocol
 
-from semantic_reviewer.domain.datasets import Dataset, DatasetError
+from semantic_reviewer.domain.datasets import Dataset, DatasetError, ObservationPage
 
 
 @dataclass(frozen=True)
@@ -70,6 +70,23 @@ class ObservationStore(Protocol):
         """
         ...
 
+    def browse(self, dataset: Dataset, page: int, page_size: int) -> ObservationPage:
+        """Read a page from verified Parquet in source-record order.
+
+        Args:
+            dataset: Registered metadata identifying the immutable Parquet artefact.
+            page: One-based page number, validated by the application.
+            page_size: Positive page size, validated by the application.
+
+        Returns:
+            A page retaining dataset provenance and the registered row count.
+            Items are empty beyond the end of the dataset.
+
+        Raises:
+            DatasetError: The registered Parquet is missing or its checksum has changed.
+        """
+        ...
+
 
 class DatasetService:
     """Dataset use cases coordinating immutable evidence and metadata.
@@ -118,3 +135,26 @@ class DatasetService:
     def datasets(self) -> tuple[Dataset, ...]:
         """List registered metadata without loading observation bodies."""
         return self._registry.list()
+
+    def browse(self, dataset_id: str, page: int = 1, page_size: int = 20) -> ObservationPage:
+        """Return registered observations in source order.
+
+        Args:
+            dataset_id: Identifier of a registered dataset.
+            page: One-based page number, from 1 to 1,000,000.
+            page_size: Number of observations per page, from 1 to 100.
+
+        Returns:
+            A page with dataset provenance and the total observation count.
+            Its items are empty beyond the available records.
+
+        Raises:
+            DatasetError: Pagination is invalid or stored evidence fails verification.
+            LookupError: The dataset is not registered.
+        """
+        if not 1 <= page <= 1_000_000 or not 1 <= page_size <= 100:
+            raise DatasetError("Page must be 1–1000000 and page size must be 1–100.")
+        dataset = self._registry.get(dataset_id)
+        if dataset is None:
+            raise LookupError("Dataset is not registered.")
+        return self._observations.browse(dataset, page, page_size)

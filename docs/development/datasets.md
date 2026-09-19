@@ -1,10 +1,13 @@
-# Public dataset registration
+# Public dataset browser
 
 Run the root README commands with Python 3.12. `--data-root` must be outside Git
 worktrees; a sibling `extras/runtime` keeps runtime files local. Importing runs in
 the CLI, outside HTTP requests. `catalogue` lists manifests; `register <id>` verifies
 source bytes, validates records, publishes Parquet and atomically registers metadata
 with one event. Repeating registration returns the existing record without a new event.
+
+The browser and `/api/datasets/{id}/observations?page=1&page_size=20` read bounded
+pages through DuckDB. Page sizes are limited to 100. `/docs` describes the read API.
 
 ## Source and interpretation
 
@@ -52,5 +55,6 @@ preserve it elsewhere for inspection before restoring/re-registering: the import
 never overwrites it. Back up the runtime directory with the app stopped, including
 SQLite WAL files if present.
 
-Tests use synthetic fixtures and need no network or model server. Observation
-browsing and its read-time integrity checks are introduced in the next review commit.
+Parquet hashes are checked before browsing. This is suitable for the small sample;
+full-file hashing per page would need revisiting for large datasets. Tests use
+synthetic fixtures and need no network or model server.

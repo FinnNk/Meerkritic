@@ -28,5 +28,51 @@ class Dataset:
     schema_version: int = 1
 
 
+@dataclass(frozen=True)
+class Observation:
+    """One imported source record, before model interpretation or annotation.
+
+    Attributes:
+        id: Source-file SHA-256 followed by a colon and the zero-based record index.
+        source_index: Original position; repeated comment IDs retain distinct records.
+        comment_id: Upstream identifier, not a unique key for imported observations.
+        category: Source-supplied label, not an independently verified judgement.
+        subcategory: Source-supplied refinement of the category.
+        created_at: Timestamp supplied by the source, preserved as text.
+    """
+
+    id: str
+    source_index: int
+    owner: str
+    repository: str
+    pull_request: int
+    comment_id: int
+    file_path: str
+    comment: str
+    code: str
+    category: str
+    subcategory: str
+    created_at: str
+
+
+@dataclass(frozen=True)
+class ObservationPage:
+    """A source-ordered page and the metadata needed to interpret its records.
+
+    Attributes:
+        dataset: Registered provenance for every item on the page.
+        items: Records on this page; empty when the requested page is beyond the end.
+        page: One-based requested page number.
+        page_size: Requested maximum item count, not necessarily the returned count.
+        total: Total registered record count, not the length of this page.
+    """
+
+    dataset: Dataset
+    items: tuple[Observation, ...]
+    page: int
+    page_size: int
+    total: int
+
+
 class DatasetError(ValueError):
     """An invalid or conflicting dataset cannot be registered or queried."""

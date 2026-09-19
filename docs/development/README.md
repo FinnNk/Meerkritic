@@ -2,10 +2,11 @@
 
 ## Implementation status
 
-VS1 is in progress. This checkpoint introduces the public dataset import CLI,
-SQLite metadata/events and immutable source/Parquet storage. Observation browsing
-and architecture reporting follow in separate review commits. The worker, routing,
-MAF normalisation and annotation remain future implementation work.
+VS1 is in progress. Its first material batch implements public dataset registration,
+the local observation browser and SQLite metadata/events. Architecture reporting
+follows in the next review commit.
+The worker, model routing, MAF normalisation and human annotation remain the next
+batch. See the [dataset guide](datasets.md) and [VS1 progress](../slice-reviews/VS1-progress.md).
 
 ## Setup and checks
 
@@ -32,7 +33,7 @@ the current interpreter environment, including on Windows. Three architecture
 negative-control tests inject forbidden imports into temporary copies and require
 the appropriate checkers to fail for the intended reason, including direct external
 persistence access. Behaviour tests exercise real SQLite/DuckDB, import failures,
-provenance, restart/idempotence, atomic events and runtime data boundaries. Use the same quality
+provenance, restart/idempotence, atomic events and HTML escaping. Use the same quality
 command locally, in review worktrees and in future CI.
 
 Ruff checks Python source and project TOML; research Markdown is original source
@@ -104,7 +105,7 @@ establish hosted CI checks.
 
 ## Integration preflight
 
-The public sample and SQLite/DuckDB import path are exercised in the first
+The public sample, SQLite/DuckDB path and web stack are exercised in the first
 batch. MAF 1.19.0 completed an executor-only compatibility probe outside the
 application; this is not model integration. The owner's local runtime preference
 is llama.cpp. Its installation, selected model, inference compatibility and worker

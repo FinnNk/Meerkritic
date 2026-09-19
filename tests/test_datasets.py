@@ -11,11 +11,14 @@ from dataclasses import replace
 from pathlib import Path
 from unittest.mock import patch
 
+from fastapi.testclient import TestClient
+
 from semantic_reviewer.adapters.observations import ParquetObservations
 from semantic_reviewer.adapters.registry import SQLiteRegistry
 from semantic_reviewer.application.datasets import DatasetService, PublicDataset
 from semantic_reviewer.bootstrap import build_datasets
 from semantic_reviewer.domain.datasets import DatasetError
+from semantic_reviewer.web.app import create_app
 
 
 class DatasetTest(unittest.TestCase):
@@ -55,6 +58,23 @@ class DatasetTest(unittest.TestCase):
         self.raw = self.store.root / (self.source.source_sha256 + ".json")
         self.raw.write_bytes(body)
         self.service = DatasetService((self.source,), self.registry, self.store)
+
+    def test_round_trip_idempotence_restart_and_pagination(self):
+        first = self.service.register(self.source.id)
+        self.assertEqual(first, self.service.register(self.source.id))
+        service = DatasetService((self.source,), SQLiteRegistry(self.database), self.store)
+        page = service.browse(first.id, page=2, page_size=2)
+        self.assertEqual([item.source_index for item in page.items], [2])
+        self.assertEqual(page.items[0].id, f"{self.source.source_sha256}:2")
+        self.assertEqual(page.items[0].comment, self.rows[2]["comment"])
+        self.assertEqual(page.total, 3)
+        self.assertEqual(service.browse(first.id, page=4).items, ())
+        with closing(sqlite3.connect(self.database)) as db:
+            self.assertEqual(db.execute("PRAGMA journal_mode").fetchone()[0], "wal")
+            self.assertEqual(db.execute("SELECT count(*) FROM event").fetchone()[0], 1)
+            self.assertEqual(
+                db.execute("SELECT kind FROM event").fetchone()[0], "dataset_registered"
+            )
 
     def test_checksum_failure_leaves_registry_empty(self):
         self.raw.write_text("[]")
@@ -116,6 +136,28 @@ class DatasetTest(unittest.TestCase):
         self.assertEqual(results[0], results[1])
         with closing(sqlite3.connect(self.database)) as db:
             self.assertEqual(db.execute("SELECT count(*) FROM event").fetchone()[0], 1)
+
+    def test_corrupt_parquet_fails_closed(self):
+        dataset = self.service.register(self.source.id)
+        (self.store.root / (dataset.parquet_sha256 + ".parquet")).write_bytes(b"changed")
+        with self.assertRaisesRegex(DatasetError, "has changed"):
+            self.service.browse(dataset.id)
+
+    def test_web_escapes_source_text_and_bounds_queries(self):
+        self.service.register(self.source.id)
+        with TestClient(create_app(self.service)) as client:
+            self.assertEqual(client.get("/").status_code, 200)
+            html = client.get(f"/datasets/{self.source.id}")
+            self.assertEqual(html.status_code, 200)
+            self.assertIn("&lt;script&gt;", html.text)
+            self.assertNotIn("<script>x()", html.text)
+            url = f"/api/datasets/{self.source.id}/observations"
+            response = client.get(url + "?page=2&page_size=2")
+            self.assertEqual(response.json()["items"][0]["source_index"], 2)
+            self.assertEqual(client.get(url + "?page_size=101").status_code, 422)
+            self.assertEqual(client.get(url + "?page=0").status_code, 422)
+            self.assertEqual(client.get("/datasets/unknown").status_code, 404)
+            self.assertEqual(client.get("/datasets/x' OR '1'='1").status_code, 404)
 
     def test_runtime_data_must_stay_outside_worktrees(self):
         repository = Path(__file__).resolve().parents[1]
