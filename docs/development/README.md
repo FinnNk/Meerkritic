@@ -96,6 +96,11 @@ opens PRs. Configure both Git attribution and authentication for the App; settin
 a commit author alone does not select the account used to push or open a PR.
 Keep the App's private key and generated tokens outside source control.
 
+For the owner's comments on PRs, reviews and commits, the App bot follows the
+[feedback acknowledgement and reply convention](app-bot-feedback.md): eyes after
+reading; thumbs up plus a reply when agreeing and planning revisions, including
+partial agreement; an explanatory reply otherwise. This convention is bot-only.
+
 The repository's [active rulesets](https://github.com/FinnNk/Meerkritic/rules)
 require PRs into `main`, one approving review and resolved review threads. New
 reviewable pushes dismiss previous approvals, and the latest push needs approval
