@@ -8,8 +8,18 @@ from pathlib import Path
 
 
 def main() -> int:
+    """Run checkout-local quality gates, stopping at the first failure.
+
+    Run tools in this interpreter environment against this checkout's source.
+    Progress and tool diagnostics go to the process output streams.
+
+    Returns:
+        Zero when every gate passes, the failing tool's status otherwise, or one
+        when a required executable is missing.
+    """
     root = Path(__file__).resolve().parents[1]
     environment = os.environ.copy()
+    # Check this checkout even when another worktree has an editable package installed.
     environment["PYTHONPATH"] = str(root / "src")
     environment["PATH"] = str(Path(sys.executable).parent) + os.pathsep + environment["PATH"]
     commands = [
