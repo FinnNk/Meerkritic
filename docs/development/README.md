@@ -84,6 +84,25 @@ The empty initial Git baseline exists only to allow the first documentation bran
 to target `main`. It carries no project files. All substantive files are introduced
 on the review branch, with quality evidence before its first source commit.
 
+### Agent pull requests
+
+The dedicated `meerkritic-agent[bot]` GitHub App pushes work to topic branches and
+opens PRs. Configure both Git attribution and authentication for the App; setting
+a commit author alone does not select the account used to push or open a PR.
+Keep the App's private key and generated tokens outside source control.
+
+The repository's [active rulesets](https://github.com/FinnNk/Meerkritic/rules)
+require PRs into `main`, one approving review and resolved review threads. New
+reviewable pushes dismiss previous approvals, and the latest push needs approval
+from someone other than its pusher. Force pushes and deletion of `main` are blocked.
+
+Only repository administrators may merge through the separate merge gate; the App
+has no bypass. The owner reviews, approves and merges the App's PR. GitHub may ask
+the owner to bypass the administrator-only merge gate, but this does not bypass
+the separate review and history protections. Owner-authored PRs also need another
+reviewer's approval. Local quality checks remain required; these rules do not
+establish hosted CI checks.
+
 ## Integration preflight still required for VS1
 
 Verify provider credentials/connectivity and capability, a pinned public dataset,
