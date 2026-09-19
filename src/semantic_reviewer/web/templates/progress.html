@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Annotation progress · Meerkritic{% endblock %}
+{% block content %}
+<nav><a href="/datasets/{{ dataset_id }}">Source observations</a><a href="/jobs">Jobs and failures</a></nav>
+<h1>Annotation progress</h1>
+<p>{{ dataset_id }}</p>
+<p><strong>{{ counts.reviewed_results }} / {{ counts.successful_results }}</strong> successful results reviewed.</p>
+<p><strong>{{ counts.reviewed_sources }} / {{ counts.source_total }}</strong> source observations have at least one reviewed result. Repeated model runs do not increase source coverage.</p>
+<dl>
+<dt>Accepted</dt><dd>{{ counts.accept }}</dd><dt>Edited</dt><dd>{{ counts.edit }}</dd><dt>Rejected</dt><dd>{{ counts.reject }}</dd>
+<dt>Failed jobs</dt><dd>{{ counts.failed }}</dd><dt>Queued</dt><dd>{{ counts.queued }}</dd><dt>Running</dt><dd>{{ counts.running }}</dd>
+</dl>
+<p>Rejected results count as reviewed. These counts do not measure interpretation quality.</p>
+<h2>Awaiting review</h2>
+<ul>{% for id in pending %}<li><a href="/jobs/{{ id }}">Review {{ id }}</a></li>{% else %}<li>No results on this page.</li>{% endfor %}</ul>
+<nav>{% if page > 1 %}<a href="?page={{ page - 1 }}">Previous</a>{% endif %}{% if pending | length == 20 %}<a href="?page={{ page + 1 }}">Next</a>{% endif %}</nav>
+{% endblock %}

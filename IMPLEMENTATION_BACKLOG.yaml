@@ -8,8 +8,9 @@ slices:
   batch_progress:
   - dataset registration/browser and architecture snapshots integrated (DER vs1-dataset-browser r5)
   - routing selection/accounting/journal/inspection integrated (DER vs1-routing r1, PR 5)
-  - live llama.cpp, MAF normalisation, durable worker and browser results candidate (DER vs1-normalisation r1)
-  - annotation, live integration and final slice review remain outstanding
+  - live llama.cpp, MAF normalisation, durable worker and browser results integrated (DER vs1-normalisation r2, PR 6)
+  - immediate annotation, immutable decision history and progress candidate (DER vs1-annotation r1)
+  - operational evidence indexing, full-path validation and final slice review remain outstanding
   entry_conditions:
   - project bootstrap approved
   exit_conditions:

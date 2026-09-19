@@ -9,6 +9,7 @@
 {% endmacro %}
 {% block content %}
 <h1>{{ result.dataset.title }}</h1>
+{% if can_annotate %}<p><a href="/datasets/{{ result.dataset.id }}/progress">Annotation progress and review queue</a></p>{% endif %}
 <p>Comments and code are preserved as supplied by the dataset. Its labels are upstream classifications, not verified judgements.</p>
 <details><summary>Dataset provenance</summary><dl>
   <dt>Revision</dt><dd><code>{{ result.dataset.revision }}</code></dd>
