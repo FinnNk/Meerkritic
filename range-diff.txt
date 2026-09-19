@@ -1,0 +1,329 @@
+1:  cc0bca4 ! 1:  2c4f5bb feat(datasets): register pinned source evidence
+    @@ Metadata
+      ## Commit message ##
+         feat(datasets): register pinned source evidence
+     
+    -    Introduce the catalogue/register CLI, checksum-verified immutable Parquet and atomic SQLite metadata/events. Preserve source identity and validate import failures, concurrency and runtime data boundaries.
+    -
+    -    Review-Unit: P1
+    -
+      ## IMPLEMENTATION_BACKLOG.yaml ##
+     @@ IMPLEMENTATION_BACKLOG.yaml: current_slice: VS1
+      slices:
+    @@ src/semantic_reviewer/adapters/observations.py (new)
+     +
+     +
+     +def digest(path: Path) -> str:
+    ++    """Compute the file SHA-256 without loading its complete contents into memory."""
+     +    with path.open("rb") as stream:
+     +        return hashlib.file_digest(stream, "sha256").hexdigest()
+     +
+    @@ src/semantic_reviewer/adapters/observations.py (new)
+     +def publish(staged: Path, target: Path) -> None:
+     +    """Publish complete bytes exclusively, without replacing an existing file."""
+     +    try:
+    ++        # Staging shares the target filesystem: expose complete bytes without an overwrite race.
+     +        os.link(staged, target)
+     +    except FileExistsError:
+     +        if digest(staged) != digest(target):
+    @@ src/semantic_reviewer/adapters/observations.py (new)
+     +
+     +class ParquetObservations:
+     +    def __init__(self, root: Path) -> None:
+    ++        """Create the artefact directory without importing or querying datasets."""
+     +        self.root = root
+     +        root.mkdir(parents=True, exist_ok=True)
+     +
+     +    def prepare(self, source: PublicDataset) -> Dataset:
+    ++        """Verify pinned bytes and publish Parquet; return metadata without registering it."""
+     +        raw = self.root / (source.source_sha256 + ".json")
+     +        with tempfile.TemporaryDirectory(dir=self.root, prefix="import-") as temporary:
+     +            staging = Path(temporary)
+    @@ src/semantic_reviewer/adapters/observations.py (new)
+     +            canonical = staging / "observations.json"
+     +            canonical.write_text(json.dumps(rows, ensure_ascii=False), encoding="utf-8")
+     +            parquet = staging / "observations.parquet"
+    ++            # Fix nullable column types so missing context cannot change the Parquet schema.
+     +            with duckdb.connect() as connection:
+     +                connection.execute(
+     +                    "COPY (SELECT * FROM read_json($source, "
+    @@ src/semantic_reviewer/adapters/observations.py (new)
+     +
+     +    @staticmethod
+     +    def _canonical_rows(value: object, source: PublicDataset) -> list[dict]:
+    ++        """Validate source records and preserve their order, including repeated comment IDs."""
+     +        if not isinstance(value, list) or len(value) != source.expected_rows or not value:
+     +            raise DatasetError("Source record count does not match the manifest.")
+     +        string_fields = (
+    @@ src/semantic_reviewer/adapters/observations.py (new)
+     +                datetime.fromisoformat(item["comment_created_at"])
+     +            except ValueError as error:
+     +                raise DatasetError(f"Record {index} has an invalid timestamp.") from error
+    ++            # A comment can occur in several source records; identify each by its source position.
+     +            rows.append(
+     +                {
+     +                    "id": f"{source.source_sha256}:{index}",
+    @@ src/semantic_reviewer/adapters/observations.py (new)
+     +                    "source_sha256": source.source_sha256,
+     +                    "source_revision": source.revision,
+     +                    "source_url": source.source_url,
+    ++                    # The source does not identify a commit; do not infer one from other fields.
+     +                    "commit_sha": None,
+     +                }
+     +            )
+    @@ src/semantic_reviewer/adapters/registry.py (new)
+     +
+     +class SQLiteRegistry:
+     +    def __init__(self, database: Path) -> None:
+    ++        """Create or migrate the registry and enable WAL before accepting operations."""
+     +        self.database = database
+     +        database.parent.mkdir(parents=True, exist_ok=True)
+     +        with self._connect() as connection:
+    @@ src/semantic_reviewer/adapters/registry.py (new)
+     +
+     +    @contextmanager
+     +    def _connect(self):
+    ++        """Scope a transaction and close its connection on both success and failure."""
+     +        connection = sqlite3.connect(self.database, timeout=10)
+     +        connection.row_factory = sqlite3.Row
+     +        connection.execute("PRAGMA foreign_keys=ON")
+    @@ src/semantic_reviewer/adapters/registry.py (new)
+     +            with connection:
+     +                yield connection
+     +        finally:
+    ++            # The SQLite context manager ends the transaction but does not close the handle.
+     +            connection.close()
+     +
+     +    def register(self, dataset: Dataset) -> Dataset:
+    ++        """Commit metadata and its event together; reuse identical evidence or reject conflicts."""
+     +        with self._connect() as connection:
+    ++            # Serialise identity comparison and insertion so concurrent imports cannot race.
+     +            connection.execute("BEGIN IMMEDIATE")
+     +            row = connection.execute("SELECT * FROM dataset WHERE id=?", (dataset.id,)).fetchone()
+     +            if row:
+     +                existing = Dataset(**dict(row))
+     +                old, new = asdict(existing), asdict(dataset)
+    ++                # Re-import time is not part of evidence identity; retain the original timestamp.
+     +                old.pop("registered_at")
+     +                new.pop("registered_at")
+     +                if old != new:
+    @@ src/semantic_reviewer/adapters/registry.py (new)
+     +            return dataset
+     +
+     +    def list(self) -> tuple[Dataset, ...]:
+    ++        """Return registered metadata ordered by dataset ID."""
+     +        with self._connect() as connection:
+     +            return tuple(
+     +                Dataset(**dict(row))
+    @@ src/semantic_reviewer/adapters/registry.py (new)
+     +            )
+     +
+     +    def get(self, dataset_id: str) -> Dataset | None:
+    ++        """Return registered metadata, or None if the ID has not been registered."""
+     +        with self._connect() as connection:
+     +            row = connection.execute("SELECT * FROM dataset WHERE id=?", (dataset_id,)).fetchone()
+     +            return Dataset(**dict(row)) if row else None
+    @@ src/semantic_reviewer/application/datasets.py (new)
+     +        """Atomically register metadata and append one event, or return the existing identity."""
+     +        ...
+     +
+    -+    def list(self) -> tuple[Dataset, ...]: ...
+    ++    def list(self) -> tuple[Dataset, ...]:
+    ++        """Return registered metadata in dataset-ID order."""
+    ++        ...
+     +
+    -+    def get(self, dataset_id: str) -> Dataset | None: ...
+    ++    def get(self, dataset_id: str) -> Dataset | None:
+    ++        """Return registered metadata, or None when the ID is unknown."""
+    ++        ...
+     +
+     +
+     +class ObservationStore(Protocol):
+    @@ src/semantic_reviewer/application/datasets.py (new)
+     +        registry: DatasetRegistry,
+     +        observations: ObservationStore,
+     +    ) -> None:
+    ++        """Bind the public catalogue and storage ports without importing data."""
+     +        self.catalogue = catalogue
+     +        self._registry = registry
+     +        self._observations = observations
+     +
+     +    def register(self, dataset_id: str) -> Dataset:
+    ++        """Verify and register a catalogue dataset; reject unknown IDs or conflicting evidence."""
+     +        source = next((item for item in self.catalogue if item.id == dataset_id), None)
+     +        if source is None:
+     +            raise DatasetError("Unknown public dataset; choose an ID from the catalogue.")
+    -+        # Preparation verifies the local artefact even on a repeated registration.
+    ++        # Publish verified artefacts before metadata can make them discoverable.
+    ++        # Repeated registration still checks the bytes already on disk.
+     +        return self._registry.register(self._observations.prepare(source))
+     +
+     +    def datasets(self) -> tuple[Dataset, ...]:
+    ++        """List registered metadata without loading observation bodies."""
+     +        return self._registry.list()
+     
+      ## src/semantic_reviewer/bootstrap.py ##
+    @@ src/semantic_reviewer/bootstrap.py
+     +
+     +
+     +def build_datasets(data_root: Path) -> DatasetService:
+    ++    """Assemble dataset services and initialise storage; reject data roots inside Git worktrees."""
+     +    root = data_root.expanduser().resolve()
+     +    repository = Path(__file__).resolve().parents[2]
+     +    if root == repository or repository in root.parents:
+    @@ tools/run.py (new)
+     +
+     +
+     +def main() -> int:
+    ++    """Run the selected local command; report import or filesystem errors through the CLI."""
+     +    parser = argparse.ArgumentParser(description=__doc__)
+     +    parser.add_argument("--data-root", type=Path, required=True)
+     +    commands = parser.add_subparsers(dest="command", required=True)
+2:  16a2b9d ! 2:  63246f0 feat(browser): browse registered review observations
+    @@ Metadata
+      ## Commit message ##
+         feat(browser): browse registered review observations
+     
+    -    Add bounded DuckDB pages, a local FastAPI browser and JSON API, and the serve CLI. Include provenance display, HTML escaping, corruption checks and restart/pagination tests with the web dependencies.
+    -
+    -    Review-Unit: P2
+    -
+      ## README.md ##
+     @@ README.md: Its design centres on three ideas:
+      
+    @@ src/semantic_reviewer/adapters/observations.py: class ParquetObservations:
+              return rows
+     +
+     +    def browse(self, dataset: Dataset, page: int, page_size: int) -> ObservationPage:
+    ++        """Verify stored bytes before reading a source-ordered page with caller-validated bounds."""
+     +        parquet = self.root / (dataset.parquet_sha256 + ".parquet")
+     +        if not parquet.is_file() or digest(parquet) != dataset.parquet_sha256:
+     +            raise DatasetError(
+    @@ src/semantic_reviewer/application/datasets.py: class ObservationStore(Protocol):
+              """Verify pinned bytes and publish immutable canonical Parquet before registration."""
+              ...
+      
+    -+    def browse(self, dataset: Dataset, page: int, page_size: int) -> ObservationPage: ...
+    ++    def browse(self, dataset: Dataset, page: int, page_size: int) -> ObservationPage:
+    ++        """Read a source-ordered page from verified Parquet; callers supply valid bounds."""
+    ++        ...
+     +
+      
+      class DatasetService:
+          def __init__(
+     @@ src/semantic_reviewer/application/datasets.py: class DatasetService:
+    - 
+          def datasets(self) -> tuple[Dataset, ...]:
+    +         """List registered metadata without loading observation bodies."""
+              return self._registry.list()
+     +
+     +    def browse(self, dataset_id: str, page: int = 1, page_size: int = 20) -> ObservationPage:
+    ++        """Read a bounded page; reject invalid bounds or raise LookupError for an unknown ID."""
+     +        if not 1 <= page <= 1_000_000 or not 1 <= page_size <= 100:
+     +            raise DatasetError("Page must be 1–1000000 and page size must be 1–100.")
+     +        dataset = self._registry.get(dataset_id)
+    @@ src/semantic_reviewer/asgi.py
+     +
+     +
+     +def build_app(data_root: Path):
+    ++    """Initialise external dataset storage and assemble the local web application."""
+     +    return create_app(build_datasets(data_root))
+     
+      ## src/semantic_reviewer/domain/datasets.py ##
+    @@ src/semantic_reviewer/web/app.py (new)
+     +
+     +
+     +def create_app(datasets: DatasetService) -> FastAPI:
+    ++    """Build the read-only HTML and JSON interface around the supplied dataset service."""
+     +    app = FastAPI(title="Meerkritic", version="0.1.0")
+     +    templates = Jinja2Templates(directory=Path(__file__).parent / "templates")
+     +
+     +    @app.exception_handler(DatasetError)
+     +    async def dataset_error(request: Request, error: DatasetError):
+    ++        """Report invalid or conflicting dataset evidence as HTTP 409."""
+     +        return JSONResponse(status_code=409, content={"detail": str(error)})
+     +
+     +    def observations(dataset_id: str, page: int, page_size: int):
+    ++        """Translate missing dataset identities into HTTP 404 for both browser and API callers."""
+     +        try:
+     +            return datasets.browse(dataset_id, page, page_size)
+     +        except LookupError as error:
+    @@ src/semantic_reviewer/web/app.py (new)
+     +
+     +    @app.get("/", response_class=HTMLResponse)
+     +    def home(request: Request):
+    ++        """Render the registered dataset catalogue."""
+     +        return templates.TemplateResponse(
+     +            request=request, name="index.html", context={"datasets": datasets.datasets()}
+     +        )
+    @@ src/semantic_reviewer/web/app.py (new)
+     +        page: int = Query(1, ge=1, le=1_000_000),
+     +        page_size: int = Query(20, ge=1, le=100),
+     +    ):
+    ++        """Render a bounded observation page with its dataset provenance."""
+     +        return templates.TemplateResponse(
+     +            request=request,
+     +            name="observations.html",
+    @@ src/semantic_reviewer/web/app.py (new)
+     +
+     +    @app.get("/api/datasets")
+     +    def list_datasets():
+    ++        """Return registered dataset metadata as JSON."""
+     +        return datasets.datasets()
+     +
+     +    @app.get("/api/datasets/{dataset_id}/observations")
+    @@ src/semantic_reviewer/web/app.py (new)
+     +        page: int = Query(1, ge=1, le=1_000_000),
+     +        page_size: int = Query(20, ge=1, le=100),
+     +    ):
+    ++        """Return a bounded observation page and its dataset provenance as JSON."""
+     +        return observations(dataset_id, page, page_size)
+     +
+     +    return app
+3:  8e5e77f ! 3:  b6fa322 feat(architecture): report typed snapshots and deltas
+    @@ Metadata
+      ## Commit message ##
+         feat(architecture): report typed snapshots and deltas
+     
+    -    Introduce deterministic architecture records from Tach, Import Linter and Python metadata, with a comparison command, regression test and usage guidance. Record the completed batch capabilities without marking VS1 complete.
+    -
+    -    Review-Unit: P3
+    -
+      ## docs/architecture/README.md ##
+     @@
+      # Architecture evidence
+    @@ tools/architecture.py (new)
+     +
+     +
+     +def snapshot(root: Path) -> Snapshot:
+    ++    """Read declared boundaries and static Python structure without importing application code."""
+     +    tach = tomllib.loads((root / "tach.toml").read_text(encoding="utf-8"))
+     +    project = tomllib.loads((root / "pyproject.toml").read_text(encoding="utf-8"))
+     +    modules = []
+    @@ tools/architecture.py (new)
+     +                    ),
+     +                )
+     +            )
+    ++            # Include nested and type-checking imports; dynamic imports are outside this snapshot.
+     +            for node in ast.walk(tree):
+     +                if isinstance(node, ast.Import):
+     +                    imports.update((name, alias.name) for alias in node.names)
+    @@ tools/architecture.py (new)
+     +
+     +
+     +def delta(before: dict, after: dict) -> dict:
+    ++    """Compare same-schema snapshots; changed records appear as removals and additions."""
+     +    if before["schema_version"] != after["schema_version"]:
+     +        raise ValueError("Architecture schema versions must match.")
+     +    changes = {}
+    @@ tools/architecture.py (new)
+     +
+     +
+     +def main() -> None:
+    ++    """Write an architecture snapshot or a same-schema comparison as JSON to stdout."""
+     +    parser = argparse.ArgumentParser(description=__doc__)
+     +    commands = parser.add_subparsers(dest="command", required=True)
+     +    capture = commands.add_parser("snapshot")
+-:  ------- > 4:  dd12b4a docs: backfill quality runner intent
+-:  ------- > 5:  544dcf2 docs: record commenting convention and ADR lifecycle
+-:  ------- > 6:  c66dcfe docs(adr): record accepted source preservation decision

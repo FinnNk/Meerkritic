@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "sequence": 4,
+  "pair_id": "vs1-dataset-browser",
+  "recorded_at": "2026-09-19T19:47:56+00:00",
+  "previous_hash": "df2bd201e9cd6c8a60c9358fee016bc0efb61fa71d411a035d601bf8efb15072",
+  "kind": "observation",
+  "round_id": "r2",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "meerkritic-vs1-2026-09-19"
+  },
+  "payload": {
+    "publication": "partial",
+    "application_branch": "feat/dataset-browser",
+    "semantic": "6556aa4e784d0713f3029b3140ae87c5c1b55767",
+    "remote_ref_verified": true,
+    "archive_commit": "a1d853273c0ede460fc4bb9a806b50b7488fb811",
+    "pr": "not yet created"
+  },
+  "event_hash": "f4820636b9c7585aa45bb4853d8be7215de22605825e9f75e62ed0b2611a4c7d"
+}

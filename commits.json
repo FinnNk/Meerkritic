@@ -1,0 +1,32 @@
+[
+  {
+    "sha": "2c4f5bb5840a73cc694b16760459277d01529007",
+    "tree": "3f305589ed76b4a3c301f8ff5cc9761c73df8745",
+    "subject": "feat(datasets): register pinned source evidence"
+  },
+  {
+    "sha": "63246f01fb745c1cba887b32e0e0d6f8929b632a",
+    "tree": "1289aeb39240f2d55e9379a12af8718ff41f1568",
+    "subject": "feat(browser): browse registered review observations"
+  },
+  {
+    "sha": "b6fa32204d4b0a1f8e55bd2cbcafac2950037668",
+    "tree": "ae75fd8df6929f5eaba282bbb5bb8a36debfc1f6",
+    "subject": "feat(architecture): report typed snapshots and deltas"
+  },
+  {
+    "sha": "dd12b4aa33c8271130d5729cb8914ecd99dc0fb4",
+    "tree": "7e997c4c20a55a80fdbedde6ece6e1c7b62caf58",
+    "subject": "docs: backfill quality runner intent"
+  },
+  {
+    "sha": "544dcf217a8b361bc7de3e98d5c68201f1f1e2d6",
+    "tree": "57d52c7e7a0e9e010a8b726f7d8f1d506db6c685",
+    "subject": "docs: record commenting convention and ADR lifecycle"
+  },
+  {
+    "sha": "c66dcfe605e00a8b3ea41208647df11bb7be4da6",
+    "tree": "dc03ff60ee94dfbe4dbac25c9f1a7081b97fa3c7",
+    "subject": "docs(adr): record accepted source preservation decision"
+  }
+]

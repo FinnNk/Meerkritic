@@ -1,0 +1,70 @@
+{
+  "sha": "2c4f5bb5840a73cc694b16760459277d01529007",
+  "tree": "3f305589ed76b4a3c301f8ff5cc9761c73df8745",
+  "subject": "feat(datasets): register pinned source evidence",
+  "started_at": "2026-09-19T20:33:54.143047+00:00",
+  "cwd": "$WORKSPACE\\extras\\der-checkouts\\vs1-r4-p1",
+  "commands": [
+    {
+      "argv": [
+        "uv",
+        "sync",
+        "--locked",
+        "--offline",
+        "--python",
+        "$USER_HOME\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "tools/check.py"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "source_probe_pythonpath": "$WORKSPACE\\extras\\der-checkouts\\vs1-r4-p1\\src",
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "sqlite": "3.53.1",
+    "executable": "$WORKSPACE\\extras\\der-checkouts\\vs1-r4-p1\\.venv\\Scripts\\python.exe",
+    "source": "$WORKSPACE\\extras\\der-checkouts\\vs1-r4-p1\\src\\semantic_reviewer\\__init__.py",
+    "lock_sha256": "4ee847009c769b144ef43454688d39fa8c20785772faf19021d2b180c23f7765",
+    "packages": {
+      "click": "8.5.0",
+      "duckdb": "1.5.5",
+      "gitdb": "4.0.12",
+      "GitPython": "3.1.62",
+      "grimp": "3.17",
+      "importlib_metadata": "9.0.1",
+      "import-linter": "2.15",
+      "markdown-it-py": "4.2.0",
+      "mdurl": "0.1.2",
+      "networkx": "3.6.1",
+      "prompt_toolkit": "3.0.53",
+      "pydot": "4.0.1",
+      "Pygments": "2.21.0",
+      "pyparsing": "3.3.2",
+      "PyYAML": "6.0.3",
+      "rich": "15.0.0",
+      "ruff": "0.16.8",
+      "smmap": "5.0.3",
+      "sqlparse": "0.6.0",
+      "tabulate": "0.10.0",
+      "tach": "0.35.1",
+      "tomli": "2.4.1",
+      "tomli_w": "1.2.0",
+      "typing_extensions": "4.16.0",
+      "wcwidth": "0.8.4",
+      "yoyo-migrations": "9.0.0",
+      "zipp": "4.1.0"
+    }
+  },
+  "clean": true,
+  "completed_at": "2026-09-19T20:33:58.553411+00:00",
+  "outcome": "passed"
+}

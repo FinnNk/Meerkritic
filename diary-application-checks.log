@@ -1,0 +1,14 @@
+Running: ruff format --check .
+20 files already formatted
+Running: ruff check .
+E501 Line too long (101 > 100)
+  --> src\semantic_reviewer\adapters\observations.py:42:101
+   |
+41 |     def prepare(self, source: PublicDataset) -> Dataset:
+42 |         """Verify pinned source bytes and publish Parquet; return metadata without registering it."""
+   |                                                                                                     ^
+43 |         raw = self.root / (source.source_sha256 + ".json")
+44 |         with tempfile.TemporaryDirectory(dir=self.root, prefix="import-") as temporary:
+   |
+
+Found 1 error.
