@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "sequence": 2,
+  "pair_id": "vs1-dataset-browser",
+  "recorded_at": "2026-09-19T19:44:52+00:00",
+  "previous_hash": "4f50819139109b69a989bab3628c97010858d670084247ef203f8b0d267c5a15",
+  "kind": "observation",
+  "round_id": "r2",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "meerkritic-vs1-2026-09-19"
+  },
+  "payload": {
+    "stage": "locally_prepared",
+    "diary": "951a28fc3da35160a01c61ba1e310f44b0d6d299",
+    "semantic": "6556aa4e784d0713f3029b3140ae87c5c1b55767",
+    "tree": "d75b25159a67a88e375babbd1c6d917476015a91",
+    "checks": "r2-diary-frozen-checks.log and r2-semantic-checkpoint-checks.log: passed, 15 tests each",
+    "live": "r2-live-checkpoint.json: passed",
+    "review": "r2-self-review.md: full author-session self-review; R1-F1 fixed",
+    "archive": "pairs/vs1-dataset-browser/rounds/r2/manifest.json",
+    "assessment_reference_correction": "vs1-dataset-browser/assessment.md relative to evidence-store root",
+    "limitations": [
+      "model setup and annotation are next batch",
+      "no independent review",
+      "owner approval outstanding"
+    ],
+    "publication": "not yet performed"
+  },
+  "event_hash": "8bcecfd8f54d57a9107003166ed93493e92dc0ccaa22c410a97aae1eb6d72d05"
+}

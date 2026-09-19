@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "pair_id": "vs1-dataset-browser",
+  "round_id": "r2",
+  "manifest_sha256": "e16c58305af2bd361ca503369b5322447c77b34d7463b8e8936092c15a9a4d39",
+  "semantic_tip": "6556aa4e784d0713f3029b3140ae87c5c1b55767",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "meerkritic-vs1-2026-09-19"
+  },
+  "independence": "self-review",
+  "mode": "full",
+  "status": "complete",
+  "orientation_done": true,
+  "reviewed_commits": [
+    "6556aa4e784d0713f3029b3140ae87c5c1b55767"
+  ],
+  "aggregate_done": true,
+  "findings": [],
+  "check_records": [
+    "r2-diary-frozen-checks.log",
+    "r2-semantic-checkpoint-checks.log",
+    "r2-live-checkpoint.json",
+    "checkpoint-environment.json",
+    "r2-self-review.md"
+  ],
+  "limitations": [
+    "Windows/Python 3.12 only",
+    "Self-review, not independent",
+    "No model inference or annotation yet",
+    "No hosted CI checks configured",
+    "Owner approval and merge outstanding"
+  ],
+  "carry_forward_record": "r2-self-review.md",
+  "platform_approval": false
+}
