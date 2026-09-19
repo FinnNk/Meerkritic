@@ -59,6 +59,14 @@ A structured task-state package passed between models when a task changes route,
 ## Provider health
 The current operational availability/degradation state of a provider/model endpoint.
 
+## Model usage
+
+Observed outcome, token counts, timings and spend for one routed invocation; unavailable measurements remain unknown.
+
+## Price catalogue
+
+A versioned set of API rates with an effective interval, retained to reproduce historical spend estimates.
+
 ## Context strategy
 The policy-controlled approach used to construct model context, such as retrieval-first or direct large-context execution.
 
