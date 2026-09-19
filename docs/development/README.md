@@ -89,6 +89,41 @@ The empty initial Git baseline exists only to allow the first documentation bran
 to target `main`. It carries no project files. All substantive files are introduced
 on the review branch, with quality evidence before its first source commit.
 
+### Review boundaries
+
+Semantic commits are the primary units of detailed review. A PR can contain several
+related capabilities and commits; it need not be limited to one capability. Balance
+the overall review burden against the overhead of many small PRs. Neither a fixed
+line limit nor a preferred commit count determines the boundary.
+
+Before implementation, sketch the expected propositions. Revisit them against the
+actual change before reconstructing semantic history, and check the resulting series
+before presenting it for review:
+
+- State what each commit establishes and which earlier contracts it depends on.
+- Challenge commits that bundle independently assessable claims. For a substantial
+  single-commit candidate, compare a plausible split and explain the concrete
+  coupling if keeping it together.
+- Keep the implementation, failure handling, tests and documentation needed by a
+  proposition at the checkpoint where that proposition first becomes available.
+  A checkpoint may depend on earlier commits; it must not borrow correctness from
+  later ones. Preserve the separate guidance and existing-code backfill commits
+  required by the project's commenting convention.
+- Verify each required checkpoint in its own context and provide an ordered commit
+  map in the PR description, proportionate to the change. Do not rewrite the actual
+  DER diary chronology to match the proposed semantic series.
+
+Split PRs when that meaningfully improves review or delivery, rather than merely
+because there are several semantic commits. When splitting dependent work, normally
+use stacked PRs: target each child at its immediate predecessor, link the dependencies
+and state the review/merge order. Independent work need not form an artificial stack.
+After a parent lands, update the child's base and verify the resulting revision;
+follow the DER revision and evidence requirements where applicable. The owner still
+approves and merges each PR.
+
+This makes the existing [DER boundary guidance](../../.agents/skills/double-entry-review/references/guidance/boundaries.md)
+an explicit project review check; it does not replace its qualification requirements.
+
 ### Agent pull requests
 
 The dedicated `meerkritic-agent[bot]` GitHub App pushes work to topic branches and
