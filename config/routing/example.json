@@ -1,0 +1,27 @@
+{
+  "inventory": {
+    "identity": {"id": "synthetic", "version": "1"},
+    "models": [
+      {
+        "id": "example-remote", "provider": "example-host", "family": "remote-family",
+        "locality": "remote", "status": "active_current",
+        "capabilities": ["structured_output"], "practical_input_tokens": 8192,
+        "output_tokens": 1024, "evidence": "Synthetic example; no provider configured or verified."
+      },
+      {
+        "id": "example-local", "provider": "example-runtime", "family": "local-family",
+        "locality": "local", "status": "active_current",
+        "capabilities": ["structured_output"], "practical_input_tokens": 2048,
+        "output_tokens": 512, "evidence": "Synthetic example; no runtime configured or verified."
+      }
+    ]
+  },
+  "policies": [
+    {
+      "identity": {"id": "example", "version": "1"},
+      "inventory": {"id": "synthetic", "version": "1"},
+      "routes": [{"task_class": "normalisation", "models": ["example-remote", "example-local"]}]
+    }
+  ],
+  "system_default": {"id": "example", "version": "1"}
+}
