@@ -1,16 +1,16 @@
-WARN Failed to acquire project environment lock: failed to open file `$USER_HOME\AppData\Local\Temp\uv-61f843f6844eb15f.lock`: Access is denied. (os error 5)
-Running: ruff format --check .
-17 files already formatted
-Running: ruff check .
-E501 Line too long (101 > 100)
-  --> src\semantic_reviewer\adapters\registry.py:57:101
-   |
-55 |             )
-56 |             connection.execute(
-57 |                 "INSERT INTO event(kind, subject_id, occurred_at, details_json) VALUES (?, ?, ?, ?)",
-   |                                                                                                     ^
-58 |                 (
-59 |                     "dataset_registered",
-   |
-
-Found 1 error.
+WARN Failed to acquire project environment lock: failed to open file `$USER_HOME\AppData\Local\Temp\uv-61f843f6844eb15f.lock`: Access is denied. (os error 5)
+Running: ruff format --check .
+17 files already formatted
+Running: ruff check .
+E501 Line too long (101 > 100)
+  --> src\semantic_reviewer\adapters\registry.py:57:101
+   |
+55 |             )
+56 |             connection.execute(
+57 |                 "INSERT INTO event(kind, subject_id, occurred_at, details_json) VALUES (?, ?, ?, ?)",
+   |                                                                                                     ^
+58 |                 (
+59 |                     "dataset_registered",
+   |
+
+Found 1 error.

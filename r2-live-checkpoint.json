@@ -1,12 +1,12 @@
-{
-  "outcome": "passed",
-  "semantic_tip": "6556aa4e784d0713f3029b3140ae87c5c1b55767",
-  "source_module": "$WORKSPACE\\extras\\der-checkouts\\vs1-dataset-browser\\src\\semantic_reviewer\\__init__.py",
-  "executable": "$WORKSPACE\\extras\\der-checkouts\\vs1-dataset-browser\\.venv\\Scripts\\python.exe",
-  "rows": 1030,
-  "last_page_items": 10,
-  "event_count_after_repeat_and_reopen": 1,
-  "source_sha256": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83",
-  "parquet_sha256": "9d5b9bd1248b64417f7feff8af62644d1ca8801dcdba88c56a8c4f6f3eabe9bc",
-  "network": "verified previously; this exact checkpoint imports cached pinned bytes"
-}
+{
+  "outcome": "passed",
+  "semantic_tip": "6556aa4e784d0713f3029b3140ae87c5c1b55767",
+  "source_module": "$WORKSPACE\\extras\\der-checkouts\\vs1-dataset-browser\\src\\semantic_reviewer\\__init__.py",
+  "executable": "$WORKSPACE\\extras\\der-checkouts\\vs1-dataset-browser\\.venv\\Scripts\\python.exe",
+  "rows": 1030,
+  "last_page_items": 10,
+  "event_count_after_repeat_and_reopen": 1,
+  "source_sha256": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83",
+  "parquet_sha256": "9d5b9bd1248b64417f7feff8af62644d1ca8801dcdba88c56a8c4f6f3eabe9bc",
+  "network": "verified previously; this exact checkpoint imports cached pinned bytes"
+}

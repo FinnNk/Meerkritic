@@ -1,108 +1,108 @@
-Running: ruff format --check .
-20 files already formatted
-Running: ruff check .
-All checks passed!
-Running: lint-imports --no-cache
-
-ÔòöÔòÉÔòÉÔòùÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔûÂÔòöÔòù ÔòöÔòù      ÔòöÔòùÔùÇÔöÇÔöÇÔöÇÔöÉ
-ÔòÜÔòúÔòáÔòØÔùÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÉ  ÔòöÔòØÔòÜÔòùÔòæÔòæÔöÇÔöÇÔöÇÔöÇÔûÂÔòöÔòØÔòÜÔòù   Ôöé
- ÔòæÔòæ   ÔòöÔòÉÔòÉÔòªÔòÉÔòÉÔòªÔò®ÔòùÔòöÔòØÔòæÔòæ  ÔòöÔòªÔòÉÔò®ÔòùÔòöÔòØÔòöÔòÉÔòªÔòÉÔòÉÔòù
- ÔòæÔòæÔòöÔòÉÔòÉÔòúÔòöÔòùÔòæÔòöÔòùÔòæÔòöÔòúÔòæ ÔòæÔòæ ÔòöÔò¼ÔòúÔòöÔòùÔòæÔòæ ÔòæÔöéÔòæÔòöÔòÉÔòØ
-ÔòöÔòúÔòáÔòúÔòæÔòæÔòæÔòÜÔòØÔòæÔòÜÔòØÔòæÔòæÔòæÔòÜÔòùÔòæÔòÜÔòÉÔòØÔòæÔòæÔòæÔòæÔòæÔòÜÔòùÔòæÔòÉÔòúÔòæ
-ÔòÜÔòÉÔòÉÔò®Ôò®Ôò®ÔòúÔòöÔòÉÔò®ÔòÉÔòÉÔò®ÔòØÔòÜÔòÉÔòØÔòÜÔòÉÔòÉÔòÉÔò®Ôò®ÔòØÔòÜÔò®ÔòÉÔò®Ôò®ÔòÉÔò®ÔòØ
-  ÔööÔöÇÔöÇÔûÂÔòæÔòæ                    Ôû▓ 
-      ÔòÜÔòØÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÿ
-
-
----------
-Contracts
----------
-
-Analyzed 28 files, 33 dependencies.
------------------------------------
-
-Domain and routing remain independent KEPT
-Core logic does not depend on application or adapters KEPT
-Application owns contracts rather than concrete adapters KEPT
-Web cannot access concrete persistence or composition KEPT
-Worker and shared composition cannot pull in the web KEPT
-
-Contracts: 5 kept, 0 broken.
-Running: tach check
-Ô£à All modules validated!
-Running: $WORKSPACE\working\.venv\Scripts\python.exe -m unittest discover -s tests -p test_*.py
-$WORKSPACE\working\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
-  from starlette.testclient import TestClient as TestClient  # noqa
-Exception in thread Thread-1 (_readerthread):
-Traceback (most recent call last):
-  File "$USER_HOME\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\threading.py", line 1075, in _bootstrap_inner
-    self.run()
-  File "$USER_HOME\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\threading.py", line 1012, in run
-    self._target(*self._args, **self._kwargs)
-  File "$USER_HOME\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\subprocess.py", line 1599, in _readerthread
-    buffer.append(fh.read())
-                  ^^^^^^^^^
-  File "$USER_HOME\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\encodings\cp1252.py", line 23, in decode
-    return codecs.charmap_decode(input,self.errors,decoding_table)[0]
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-UnicodeDecodeError: 'charmap' codec can't decode byte 0x90 in position 7: character maps to <undefined>
-EException in thread Thread-5 (_readerthread):
-Traceback (most recent call last):
-  File "$USER_HOME\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\threading.py", line 1075, in _bootstrap_inner
-    self.run()
-  File "$USER_HOME\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\threading.py", line 1012, in run
-    self._target(*self._args, **self._kwargs)
-  File "$USER_HOME\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\subprocess.py", line 1599, in _readerthread
-    buffer.append(fh.read())
-                  ^^^^^^^^^
-  File "$USER_HOME\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\encodings\cp1252.py", line 23, in decode
-    return codecs.charmap_decode(input,self.errors,decoding_table)[0]
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-UnicodeDecodeError: 'charmap' codec can't decode byte 0x90 in position 7: character maps to <undefined>
-EException in thread Thread-7 (_readerthread):
-Traceback (most recent call last):
-  File "$USER_HOME\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\threading.py", line 1075, in _bootstrap_inner
-    self.run()
-  File "$USER_HOME\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\threading.py", line 1012, in run
-    self._target(*self._args, **self._kwargs)
-  File "$USER_HOME\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\subprocess.py", line 1599, in _readerthread
-    buffer.append(fh.read())
-                  ^^^^^^^^^
-  File "$USER_HOME\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\encodings\cp1252.py", line 23, in decode
-    return codecs.charmap_decode(input,self.errors,decoding_table)[0]
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-UnicodeDecodeError: 'charmap' codec can't decode byte 0x90 in position 7: character maps to <undefined>
-E.$WORKSPACE\working\.venv\Lib\site-packages\yoyo\backends\base.py:411: DeprecationWarning: The default datetime adapter is deprecated as of Python 3.12; see the sqlite3 documentation for suggested replacement recipes
-  cursor.execute(sql, queryparams)
-...........
-======================================================================
-ERROR: test_domain_cannot_import_adapters (test_architecture_contracts.ArchitectureContractsTest.test_domain_cannot_import_adapters) (tool='lint-imports')
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "$WORKSPACE\working\tests\test_architecture_contracts.py", line 40, in assert_rejected
-    output = result.stdout + result.stderr
-             ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
-TypeError: unsupported operand type(s) for +: 'NoneType' and 'str'
-
-======================================================================
-ERROR: test_web_cannot_access_sqlite_directly (test_architecture_contracts.ArchitectureContractsTest.test_web_cannot_access_sqlite_directly) (tool='lint-imports')
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "$WORKSPACE\working\tests\test_architecture_contracts.py", line 40, in assert_rejected
-    output = result.stdout + result.stderr
-             ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
-TypeError: unsupported operand type(s) for +: 'NoneType' and 'str'
-
-======================================================================
-ERROR: test_worker_cannot_reach_web_through_shared_composition (test_architecture_contracts.ArchitectureContractsTest.test_worker_cannot_reach_web_through_shared_composition) (tool='lint-imports')
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "$WORKSPACE\working\tests\test_architecture_contracts.py", line 40, in assert_rejected
-    output = result.stdout + result.stderr
-             ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
-TypeError: unsupported operand type(s) for +: 'NoneType' and 'str'
-
-----------------------------------------------------------------------
-Ran 15 tests in 4.136s
-
-FAILED (errors=3)
+Running: ruff format --check .
+20 files already formatted
+Running: ruff check .
+All checks passed!
+Running: lint-imports --no-cache
+
+ÔòöÔòÉÔòÉÔòùÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔûÂÔòöÔòù ÔòöÔòù      ÔòöÔòùÔùÇÔöÇÔöÇÔöÇÔöÉ
+ÔòÜÔòúÔòáÔòØÔùÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÉ  ÔòöÔòØÔòÜÔòùÔòæÔòæÔöÇÔöÇÔöÇÔöÇÔûÂÔòöÔòØÔòÜÔòù   Ôöé
+ ÔòæÔòæ   ÔòöÔòÉÔòÉÔòªÔòÉÔòÉÔòªÔò®ÔòùÔòöÔòØÔòæÔòæ  ÔòöÔòªÔòÉÔò®ÔòùÔòöÔòØÔòöÔòÉÔòªÔòÉÔòÉÔòù
+ ÔòæÔòæÔòöÔòÉÔòÉÔòúÔòöÔòùÔòæÔòöÔòùÔòæÔòöÔòúÔòæ ÔòæÔòæ ÔòöÔò¼ÔòúÔòöÔòùÔòæÔòæ ÔòæÔöéÔòæÔòöÔòÉÔòØ
+ÔòöÔòúÔòáÔòúÔòæÔòæÔòæÔòÜÔòØÔòæÔòÜÔòØÔòæÔòæÔòæÔòÜÔòùÔòæÔòÜÔòÉÔòØÔòæÔòæÔòæÔòæÔòæÔòÜÔòùÔòæÔòÉÔòúÔòæ
+ÔòÜÔòÉÔòÉÔò®Ôò®Ôò®ÔòúÔòöÔòÉÔò®ÔòÉÔòÉÔò®ÔòØÔòÜÔòÉÔòØÔòÜÔòÉÔòÉÔòÉÔò®Ôò®ÔòØÔòÜÔò®ÔòÉÔò®Ôò®ÔòÉÔò®ÔòØ
+  ÔööÔöÇÔöÇÔûÂÔòæÔòæ                    Ôû▓ 
+      ÔòÜÔòØÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÿ
+
+
+---------
+Contracts
+---------
+
+Analyzed 28 files, 33 dependencies.
+-----------------------------------
+
+Domain and routing remain independent KEPT
+Core logic does not depend on application or adapters KEPT
+Application owns contracts rather than concrete adapters KEPT
+Web cannot access concrete persistence or composition KEPT
+Worker and shared composition cannot pull in the web KEPT
+
+Contracts: 5 kept, 0 broken.
+Running: tach check
+Ô£à All modules validated!
+Running: $WORKSPACE\working\.venv\Scripts\python.exe -m unittest discover -s tests -p test_*.py
+$WORKSPACE\working\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+Exception in thread Thread-1 (_readerthread):
+Traceback (most recent call last):
+  File "$USER_HOME\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\threading.py", line 1075, in _bootstrap_inner
+    self.run()
+  File "$USER_HOME\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\threading.py", line 1012, in run
+    self._target(*self._args, **self._kwargs)
+  File "$USER_HOME\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\subprocess.py", line 1599, in _readerthread
+    buffer.append(fh.read())
+                  ^^^^^^^^^
+  File "$USER_HOME\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\encodings\cp1252.py", line 23, in decode
+    return codecs.charmap_decode(input,self.errors,decoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeDecodeError: 'charmap' codec can't decode byte 0x90 in position 7: character maps to <undefined>
+EException in thread Thread-5 (_readerthread):
+Traceback (most recent call last):
+  File "$USER_HOME\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\threading.py", line 1075, in _bootstrap_inner
+    self.run()
+  File "$USER_HOME\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\threading.py", line 1012, in run
+    self._target(*self._args, **self._kwargs)
+  File "$USER_HOME\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\subprocess.py", line 1599, in _readerthread
+    buffer.append(fh.read())
+                  ^^^^^^^^^
+  File "$USER_HOME\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\encodings\cp1252.py", line 23, in decode
+    return codecs.charmap_decode(input,self.errors,decoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeDecodeError: 'charmap' codec can't decode byte 0x90 in position 7: character maps to <undefined>
+EException in thread Thread-7 (_readerthread):
+Traceback (most recent call last):
+  File "$USER_HOME\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\threading.py", line 1075, in _bootstrap_inner
+    self.run()
+  File "$USER_HOME\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\threading.py", line 1012, in run
+    self._target(*self._args, **self._kwargs)
+  File "$USER_HOME\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\subprocess.py", line 1599, in _readerthread
+    buffer.append(fh.read())
+                  ^^^^^^^^^
+  File "$USER_HOME\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\encodings\cp1252.py", line 23, in decode
+    return codecs.charmap_decode(input,self.errors,decoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeDecodeError: 'charmap' codec can't decode byte 0x90 in position 7: character maps to <undefined>
+E.$WORKSPACE\working\.venv\Lib\site-packages\yoyo\backends\base.py:411: DeprecationWarning: The default datetime adapter is deprecated as of Python 3.12; see the sqlite3 documentation for suggested replacement recipes
+  cursor.execute(sql, queryparams)
+...........
+======================================================================
+ERROR: test_domain_cannot_import_adapters (test_architecture_contracts.ArchitectureContractsTest.test_domain_cannot_import_adapters) (tool='lint-imports')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "$WORKSPACE\working\tests\test_architecture_contracts.py", line 40, in assert_rejected
+    output = result.stdout + result.stderr
+             ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'str'
+
+======================================================================
+ERROR: test_web_cannot_access_sqlite_directly (test_architecture_contracts.ArchitectureContractsTest.test_web_cannot_access_sqlite_directly) (tool='lint-imports')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "$WORKSPACE\working\tests\test_architecture_contracts.py", line 40, in assert_rejected
+    output = result.stdout + result.stderr
+             ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'str'
+
+======================================================================
+ERROR: test_worker_cannot_reach_web_through_shared_composition (test_architecture_contracts.ArchitectureContractsTest.test_worker_cannot_reach_web_through_shared_composition) (tool='lint-imports')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "$WORKSPACE\working\tests\test_architecture_contracts.py", line 40, in assert_rejected
+    output = result.stdout + result.stderr
+             ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'str'
+
+----------------------------------------------------------------------
+Ran 15 tests in 4.136s
+
+FAILED (errors=3)

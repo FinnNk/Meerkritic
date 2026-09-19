@@ -12,4 +12,4 @@ to recovery guidance on the diary, then re-freeze and verify a new candidate.
 Other inspected obligations: retained source indices/repeated IDs/null optional context;
 hash-before-publication; metadata/event transaction; read-only web with bounded
 queries and escaped text; isolated composition; source/runtime separation; unchanged
-architecture contracts. No other blocking findings from this self-review.
+architecture contracts. No other blocking findings from this self-review.

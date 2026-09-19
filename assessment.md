@@ -32,4 +32,4 @@ Before implementation, software-design-clarity assessment:
   application service; CLI import performs potentially slow preparation outside HTTP.
 No EDR: implementing prescribed architecture and operational preflight are incidental
 measurements, not decision-bearing empirical research. Dataset exposure is recorded;
-this subset is an integration fixture, not a validated model evaluation sample.
+this subset is an integration fixture, not a validated model evaluation sample.

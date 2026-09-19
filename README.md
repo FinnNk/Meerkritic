@@ -18,7 +18,7 @@ and lock identity. No hosted CI checks are configured. Self-review is not indepe
 review or owner acceptance. No model invocation or annotation capability is claimed.
 
 This is a replica of the canonical external DER store, not harness-owned evidence.
-Bundles, manifests and events are byte-preserved. Other text copies replace machine
+Bundles, manifests and events are byte-preserved. Other text copies normalise line endings and replace machine
 paths with `$WORKSPACE`/`$USER_HOME`; `export-provenance.json` records original/export
 hashes. This redaction is not a claim of byte equality for logs. No credentials,
 private datasets, model weights or raw dataset bodies are included. Historical failed

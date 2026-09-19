@@ -1,35 +1,35 @@
-WARN Failed to acquire project environment lock: failed to open file `$USER_HOME\AppData\Local\Temp\uv-61f843f6844eb15f.lock`: Access is denied. (os error 5)
-Running: ruff format --check .
-11 files already formatted
-Running: ruff check .
-All checks passed!
-Running: lint-imports --no-cache
-=============
-Import Linter
-=============
-
-
----------
-Contracts
----------
-
-Analyzed 9 files, 0 dependencies.
----------------------------------
-
-Domain and routing remain independent KEPT
-Core logic does not depend on application or adapters KEPT
-Application owns contracts rather than concrete adapters KEPT
-Web cannot access concrete persistence or composition KEPT
-Worker and shared composition cannot pull in the web KEPT
-
-Contracts: 5 kept, 0 broken.
-Running: tach check
-Configuration
-[WARN] Warning: No first-party imports were found. You may need to use 'tach mod' to update your Python source roots. Docs: https://docs.gauge.sh/usage/configuration#source-roots
-[OK] All modules validated!
-Running: $WORKSPACE\working\.venv\Scripts\python.exe -m unittest discover -s tests -p test_*.py
-...
-----------------------------------------------------------------------
-Ran 3 tests in 1.990s
-
-OK
+WARN Failed to acquire project environment lock: failed to open file `$USER_HOME\AppData\Local\Temp\uv-61f843f6844eb15f.lock`: Access is denied. (os error 5)
+Running: ruff format --check .
+11 files already formatted
+Running: ruff check .
+All checks passed!
+Running: lint-imports --no-cache
+=============
+Import Linter
+=============
+
+
+---------
+Contracts
+---------
+
+Analyzed 9 files, 0 dependencies.
+---------------------------------
+
+Domain and routing remain independent KEPT
+Core logic does not depend on application or adapters KEPT
+Application owns contracts rather than concrete adapters KEPT
+Web cannot access concrete persistence or composition KEPT
+Worker and shared composition cannot pull in the web KEPT
+
+Contracts: 5 kept, 0 broken.
+Running: tach check
+Configuration
+[WARN] Warning: No first-party imports were found. You may need to use 'tach mod' to update your Python source roots. Docs: https://docs.gauge.sh/usage/configuration#source-roots
+[OK] All modules validated!
+Running: $WORKSPACE\working\.venv\Scripts\python.exe -m unittest discover -s tests -p test_*.py
+...
+----------------------------------------------------------------------
+Ran 3 tests in 1.990s
+
+OK

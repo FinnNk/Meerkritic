@@ -1,168 +1,168 @@
-Running: ruff format --check .
-18 files already formatted
-Running: ruff check .
-All checks passed!
-Running: lint-imports --no-cache
-=============
-Import Linter
-=============
-
-
----------
-Contracts
----------
-
-Analyzed 28 files, 33 dependencies.
------------------------------------
-
-Domain and routing remain independent KEPT
-Core logic does not depend on application or adapters KEPT
-Application owns contracts rather than concrete adapters KEPT
-Web cannot access concrete persistence or composition KEPT
-Worker and shared composition cannot pull in the web KEPT
-
-Contracts: 5 kept, 0 broken.
-Running: tach check
-[OK] All modules validated!
-Running: $WORKSPACE\working\.venv\Scripts\python.exe -m unittest discover -s tests -p test_*.py
-$WORKSPACE\working\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
-  from starlette.testclient import TestClient as TestClient  # noqa
-...$WORKSPACE\working\.venv\Lib\site-packages\yoyo\backends\base.py:411: DeprecationWarning: The default datetime adapter is deprecated as of Python 3.12; see the sqlite3 documentation for suggested replacement recipes
-  cursor.execute(sql, queryparams)
-.EEE.EEE..E
-======================================================================
-ERROR: test_concurrent_registration_appends_one_event (test_datasets.DatasetTest.test_concurrent_registration_appends_one_event)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "$WORKSPACE\working\tests\test_datasets.py", line 126, in test_concurrent_registration_appends_one_event
-    dataset = self.store.prepare(self.source)
-              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "$WORKSPACE\working\src\semantic_reviewer\adapters\observations.py", line 60, in prepare
-    with duckdb.connect() as connection:
-         ^^^^^^^^^^^^^^^^
-  File "$WORKSPACE\working\src\semantic_reviewer\adapters\observations.py", line 61, in prepare
-    connection.execute(
-_duckdb.IOException: IO Error: No files found that match the pattern "$WORKSPACE\working\tmpzs262cud\datasets\import-rh1xbqkc\observations.parquet"
-
-LINE 1: COPY (SELECT * FROM read_json(?, columns={id:'VARCHAR', source_index:'BIGINT...
-                            ^
-
-======================================================================
-ERROR: test_conflicting_identity_is_rejected (test_datasets.DatasetTest.test_conflicting_identity_is_rejected)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "$WORKSPACE\working\tests\test_datasets.py", line 102, in test_conflicting_identity_is_rejected
-    dataset = self.service.register(self.source.id)
-              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "$WORKSPACE\working\src\semantic_reviewer\application\datasets.py", line 53, in register
-    return self._registry.register(self._observations.prepare(source))
-                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "$WORKSPACE\working\src\semantic_reviewer\adapters\observations.py", line 60, in prepare
-    with duckdb.connect() as connection:
-         ^^^^^^^^^^^^^^^^
-  File "$WORKSPACE\working\src\semantic_reviewer\adapters\observations.py", line 61, in prepare
-    connection.execute(
-_duckdb.IOException: IO Error: No files found that match the pattern "$WORKSPACE\working\tmpc6yywvxi\datasets\import-s_niuh9x\observations.parquet"
-
-LINE 1: COPY (SELECT * FROM read_json(?, columns={id:'VARCHAR', source_index:'BIGINT...
-                            ^
-
-======================================================================
-ERROR: test_corrupt_parquet_fails_closed (test_datasets.DatasetTest.test_corrupt_parquet_fails_closed)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "$WORKSPACE\working\tests\test_datasets.py", line 134, in test_corrupt_parquet_fails_closed
-    dataset = self.service.register(self.source.id)
-              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "$WORKSPACE\working\src\semantic_reviewer\application\datasets.py", line 53, in register
-    return self._registry.register(self._observations.prepare(source))
-                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "$WORKSPACE\working\src\semantic_reviewer\adapters\observations.py", line 60, in prepare
-    with duckdb.connect() as connection:
-         ^^^^^^^^^^^^^^^^
-  File "$WORKSPACE\working\src\semantic_reviewer\adapters\observations.py", line 61, in prepare
-    connection.execute(
-_duckdb.IOException: IO Error: No files found that match the pattern "$WORKSPACE\working\tmp9czm33pf\datasets\import-4tcye0an\observations.parquet"
-
-LINE 1: COPY (SELECT * FROM read_json(?, columns={id:'VARCHAR', source_index:'BIGINT...
-                            ^
-
-======================================================================
-ERROR: test_events_cannot_be_changed_or_deleted (test_datasets.DatasetTest.test_events_cannot_be_changed_or_deleted)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "$WORKSPACE\working\tests\test_datasets.py", line 119, in test_events_cannot_be_changed_or_deleted
-    self.service.register(self.source.id)
-  File "$WORKSPACE\working\src\semantic_reviewer\application\datasets.py", line 53, in register
-    return self._registry.register(self._observations.prepare(source))
-                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "$WORKSPACE\working\src\semantic_reviewer\adapters\observations.py", line 60, in prepare
-    with duckdb.connect() as connection:
-         ^^^^^^^^^^^^^^^^
-  File "$WORKSPACE\working\src\semantic_reviewer\adapters\observations.py", line 61, in prepare
-    connection.execute(
-_duckdb.IOException: IO Error: No files found that match the pattern "$WORKSPACE\working\tmplpafcjwd\datasets\import-4jcba4ke\observations.parquet"
-
-LINE 1: COPY (SELECT * FROM read_json(?, columns={id:'VARCHAR', source_index:'BIGINT...
-                            ^
-
-======================================================================
-ERROR: test_registration_and_event_are_one_transaction (test_datasets.DatasetTest.test_registration_and_event_are_one_transaction)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "$WORKSPACE\working\tests\test_datasets.py", line 108, in test_registration_and_event_are_one_transaction
-    dataset = self.store.prepare(self.source)
-              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "$WORKSPACE\working\src\semantic_reviewer\adapters\observations.py", line 60, in prepare
-    with duckdb.connect() as connection:
-         ^^^^^^^^^^^^^^^^
-  File "$WORKSPACE\working\src\semantic_reviewer\adapters\observations.py", line 61, in prepare
-    connection.execute(
-_duckdb.IOException: IO Error: No files found that match the pattern "$WORKSPACE\working\tmp8kmr5t0v\datasets\import-3nrno55r\observations.parquet"
-
-LINE 1: COPY (SELECT * FROM read_json(?, columns={id:'VARCHAR', source_index:'BIGINT...
-                            ^
-
-======================================================================
-ERROR: test_round_trip_idempotence_restart_and_pagination (test_datasets.DatasetTest.test_round_trip_idempotence_restart_and_pagination)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "$WORKSPACE\working\tests\test_datasets.py", line 62, in test_round_trip_idempotence_restart_and_pagination
-    first = self.service.register(self.source.id)
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "$WORKSPACE\working\src\semantic_reviewer\application\datasets.py", line 53, in register
-    return self._registry.register(self._observations.prepare(source))
-                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "$WORKSPACE\working\src\semantic_reviewer\adapters\observations.py", line 60, in prepare
-    with duckdb.connect() as connection:
-         ^^^^^^^^^^^^^^^^
-  File "$WORKSPACE\working\src\semantic_reviewer\adapters\observations.py", line 61, in prepare
-    connection.execute(
-_duckdb.IOException: IO Error: No files found that match the pattern "$WORKSPACE\working\tmps90vsq1i\datasets\import-tszt0pi0\observations.parquet"
-
-LINE 1: COPY (SELECT * FROM read_json(?, columns={id:'VARCHAR', source_index:'BIGINT...
-                            ^
-
-======================================================================
-ERROR: test_web_escapes_source_text_and_bounds_queries (test_datasets.DatasetTest.test_web_escapes_source_text_and_bounds_queries)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "$WORKSPACE\working\tests\test_datasets.py", line 140, in test_web_escapes_source_text_and_bounds_queries
-    self.service.register(self.source.id)
-  File "$WORKSPACE\working\src\semantic_reviewer\application\datasets.py", line 53, in register
-    return self._registry.register(self._observations.prepare(source))
-                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "$WORKSPACE\working\src\semantic_reviewer\adapters\observations.py", line 60, in prepare
-    with duckdb.connect() as connection:
-         ^^^^^^^^^^^^^^^^
-  File "$WORKSPACE\working\src\semantic_reviewer\adapters\observations.py", line 61, in prepare
-    connection.execute(
-_duckdb.IOException: IO Error: No files found that match the pattern "$WORKSPACE\working\tmpfdp8yqcs\datasets\import-aensir9x\observations.parquet"
-
-LINE 1: COPY (SELECT * FROM read_json(?, columns={id:'VARCHAR', source_index:'BIGINT...
-                            ^
-
-----------------------------------------------------------------------
-Ran 14 tests in 3.967s
-
-FAILED (errors=7)
+Running: ruff format --check .
+18 files already formatted
+Running: ruff check .
+All checks passed!
+Running: lint-imports --no-cache
+=============
+Import Linter
+=============
+
+
+---------
+Contracts
+---------
+
+Analyzed 28 files, 33 dependencies.
+-----------------------------------
+
+Domain and routing remain independent KEPT
+Core logic does not depend on application or adapters KEPT
+Application owns contracts rather than concrete adapters KEPT
+Web cannot access concrete persistence or composition KEPT
+Worker and shared composition cannot pull in the web KEPT
+
+Contracts: 5 kept, 0 broken.
+Running: tach check
+[OK] All modules validated!
+Running: $WORKSPACE\working\.venv\Scripts\python.exe -m unittest discover -s tests -p test_*.py
+$WORKSPACE\working\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+...$WORKSPACE\working\.venv\Lib\site-packages\yoyo\backends\base.py:411: DeprecationWarning: The default datetime adapter is deprecated as of Python 3.12; see the sqlite3 documentation for suggested replacement recipes
+  cursor.execute(sql, queryparams)
+.EEE.EEE..E
+======================================================================
+ERROR: test_concurrent_registration_appends_one_event (test_datasets.DatasetTest.test_concurrent_registration_appends_one_event)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "$WORKSPACE\working\tests\test_datasets.py", line 126, in test_concurrent_registration_appends_one_event
+    dataset = self.store.prepare(self.source)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "$WORKSPACE\working\src\semantic_reviewer\adapters\observations.py", line 60, in prepare
+    with duckdb.connect() as connection:
+         ^^^^^^^^^^^^^^^^
+  File "$WORKSPACE\working\src\semantic_reviewer\adapters\observations.py", line 61, in prepare
+    connection.execute(
+_duckdb.IOException: IO Error: No files found that match the pattern "$WORKSPACE\working\tmpzs262cud\datasets\import-rh1xbqkc\observations.parquet"
+
+LINE 1: COPY (SELECT * FROM read_json(?, columns={id:'VARCHAR', source_index:'BIGINT...
+                            ^
+
+======================================================================
+ERROR: test_conflicting_identity_is_rejected (test_datasets.DatasetTest.test_conflicting_identity_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "$WORKSPACE\working\tests\test_datasets.py", line 102, in test_conflicting_identity_is_rejected
+    dataset = self.service.register(self.source.id)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "$WORKSPACE\working\src\semantic_reviewer\application\datasets.py", line 53, in register
+    return self._registry.register(self._observations.prepare(source))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "$WORKSPACE\working\src\semantic_reviewer\adapters\observations.py", line 60, in prepare
+    with duckdb.connect() as connection:
+         ^^^^^^^^^^^^^^^^
+  File "$WORKSPACE\working\src\semantic_reviewer\adapters\observations.py", line 61, in prepare
+    connection.execute(
+_duckdb.IOException: IO Error: No files found that match the pattern "$WORKSPACE\working\tmpc6yywvxi\datasets\import-s_niuh9x\observations.parquet"
+
+LINE 1: COPY (SELECT * FROM read_json(?, columns={id:'VARCHAR', source_index:'BIGINT...
+                            ^
+
+======================================================================
+ERROR: test_corrupt_parquet_fails_closed (test_datasets.DatasetTest.test_corrupt_parquet_fails_closed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "$WORKSPACE\working\tests\test_datasets.py", line 134, in test_corrupt_parquet_fails_closed
+    dataset = self.service.register(self.source.id)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "$WORKSPACE\working\src\semantic_reviewer\application\datasets.py", line 53, in register
+    return self._registry.register(self._observations.prepare(source))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "$WORKSPACE\working\src\semantic_reviewer\adapters\observations.py", line 60, in prepare
+    with duckdb.connect() as connection:
+         ^^^^^^^^^^^^^^^^
+  File "$WORKSPACE\working\src\semantic_reviewer\adapters\observations.py", line 61, in prepare
+    connection.execute(
+_duckdb.IOException: IO Error: No files found that match the pattern "$WORKSPACE\working\tmp9czm33pf\datasets\import-4tcye0an\observations.parquet"
+
+LINE 1: COPY (SELECT * FROM read_json(?, columns={id:'VARCHAR', source_index:'BIGINT...
+                            ^
+
+======================================================================
+ERROR: test_events_cannot_be_changed_or_deleted (test_datasets.DatasetTest.test_events_cannot_be_changed_or_deleted)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "$WORKSPACE\working\tests\test_datasets.py", line 119, in test_events_cannot_be_changed_or_deleted
+    self.service.register(self.source.id)
+  File "$WORKSPACE\working\src\semantic_reviewer\application\datasets.py", line 53, in register
+    return self._registry.register(self._observations.prepare(source))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "$WORKSPACE\working\src\semantic_reviewer\adapters\observations.py", line 60, in prepare
+    with duckdb.connect() as connection:
+         ^^^^^^^^^^^^^^^^
+  File "$WORKSPACE\working\src\semantic_reviewer\adapters\observations.py", line 61, in prepare
+    connection.execute(
+_duckdb.IOException: IO Error: No files found that match the pattern "$WORKSPACE\working\tmplpafcjwd\datasets\import-4jcba4ke\observations.parquet"
+
+LINE 1: COPY (SELECT * FROM read_json(?, columns={id:'VARCHAR', source_index:'BIGINT...
+                            ^
+
+======================================================================
+ERROR: test_registration_and_event_are_one_transaction (test_datasets.DatasetTest.test_registration_and_event_are_one_transaction)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "$WORKSPACE\working\tests\test_datasets.py", line 108, in test_registration_and_event_are_one_transaction
+    dataset = self.store.prepare(self.source)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "$WORKSPACE\working\src\semantic_reviewer\adapters\observations.py", line 60, in prepare
+    with duckdb.connect() as connection:
+         ^^^^^^^^^^^^^^^^
+  File "$WORKSPACE\working\src\semantic_reviewer\adapters\observations.py", line 61, in prepare
+    connection.execute(
+_duckdb.IOException: IO Error: No files found that match the pattern "$WORKSPACE\working\tmp8kmr5t0v\datasets\import-3nrno55r\observations.parquet"
+
+LINE 1: COPY (SELECT * FROM read_json(?, columns={id:'VARCHAR', source_index:'BIGINT...
+                            ^
+
+======================================================================
+ERROR: test_round_trip_idempotence_restart_and_pagination (test_datasets.DatasetTest.test_round_trip_idempotence_restart_and_pagination)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "$WORKSPACE\working\tests\test_datasets.py", line 62, in test_round_trip_idempotence_restart_and_pagination
+    first = self.service.register(self.source.id)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "$WORKSPACE\working\src\semantic_reviewer\application\datasets.py", line 53, in register
+    return self._registry.register(self._observations.prepare(source))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "$WORKSPACE\working\src\semantic_reviewer\adapters\observations.py", line 60, in prepare
+    with duckdb.connect() as connection:
+         ^^^^^^^^^^^^^^^^
+  File "$WORKSPACE\working\src\semantic_reviewer\adapters\observations.py", line 61, in prepare
+    connection.execute(
+_duckdb.IOException: IO Error: No files found that match the pattern "$WORKSPACE\working\tmps90vsq1i\datasets\import-tszt0pi0\observations.parquet"
+
+LINE 1: COPY (SELECT * FROM read_json(?, columns={id:'VARCHAR', source_index:'BIGINT...
+                            ^
+
+======================================================================
+ERROR: test_web_escapes_source_text_and_bounds_queries (test_datasets.DatasetTest.test_web_escapes_source_text_and_bounds_queries)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "$WORKSPACE\working\tests\test_datasets.py", line 140, in test_web_escapes_source_text_and_bounds_queries
+    self.service.register(self.source.id)
+  File "$WORKSPACE\working\src\semantic_reviewer\application\datasets.py", line 53, in register
+    return self._registry.register(self._observations.prepare(source))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "$WORKSPACE\working\src\semantic_reviewer\adapters\observations.py", line 60, in prepare
+    with duckdb.connect() as connection:
+         ^^^^^^^^^^^^^^^^
+  File "$WORKSPACE\working\src\semantic_reviewer\adapters\observations.py", line 61, in prepare
+    connection.execute(
+_duckdb.IOException: IO Error: No files found that match the pattern "$WORKSPACE\working\tmpfdp8yqcs\datasets\import-aensir9x\observations.parquet"
+
+LINE 1: COPY (SELECT * FROM read_json(?, columns={id:'VARCHAR', source_index:'BIGINT...
+                            ^
+
+----------------------------------------------------------------------
+Ran 14 tests in 3.967s
+
+FAILED (errors=7)

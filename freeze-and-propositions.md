@@ -54,4 +54,4 @@ not performed. A same-owner isolated clone allows the unmodified helper to run.
 The initial ledger entry was appended after these mechanical failures, not backdated;
 assessment.md was written before implementation. Its relative assessment reference
 is clarified here: ../vs1-dataset-browser/assessment.md from the evidence-store root.
-Canonical diary commits, logs and this explanation preserve actual chronology.
+Canonical diary commits, logs and this explanation preserve actual chronology.

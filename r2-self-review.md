@@ -68,4 +68,4 @@ large-scale performance qualification. Upstream Starlette/httpx and Yoyo datetim
 adapter deprecations are observed but checks pass; no warnings suppressed. MAF executor
 preflight is not model inference. llama.cpp and annotation are outstanding. No hosted
 CI status checks are configured or required at the checked target base; that is an
-empty hosted check set, not a CI pass. The owner must still approve and merge.
+empty hosted check set, not a CI pass. The owner must still approve and merge.
