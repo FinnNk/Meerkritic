@@ -60,7 +60,7 @@ Newest first. Status here describes the decision, not the PR or vertical slice.
 
 | Record | Title | Status | Decision-makers | Date |
 | --- | --- | --- | --- | --- |
-| [ADR-0006](ADR-0006-recover-jobs-under-process-lock.md) | Recover interrupted jobs under an exclusive process lock | proposed | Project owner (acceptance pending) | 2026-09-19 |
+| [ADR-0006](ADR-0006-recover-jobs-under-process-lock.md) | Recover interrupted jobs under an exclusive process lock | implemented | Project owner | 2026-09-20 |
 | [ADR-0005](ADR-0005-retain-immutable-routing-provenance.md) | Retain immutable routing versions and invocation records | implemented | Project owner | 2026-09-19 |
 | [ADR-0004](ADR-0004-adopt-selective-python-style.md) | Adopt a selective Python style guide | implemented | Project owner | 2026-09-19 |
 | [ADR-0003](ADR-0003-document-caller-contracts-and-intent.md) | Document caller contracts and non-obvious intent | implemented | Project owner | 2026-09-19 |
