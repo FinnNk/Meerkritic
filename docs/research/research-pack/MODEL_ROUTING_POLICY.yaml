@@ -1,0 +1,200 @@
+version: 2026-09-19-v1
+purpose: Pragmatic coding-agent model routing; not a model-evaluation programme
+task_classes:
+  T0: mechanical edits / trivial docs
+  T1: small bounded implementation
+  T2: routine multi-file feature or bug fix
+  T3: difficult debugging/refactor
+  T4: architecture/high-risk
+  T5: independent material review
+  T6: planning/decomposition
+  T7: long-context repository analysis
+  T8: docs/reports/test scaffolding
+  T9: private/local-only
+list1:
+  scope: public Anthropic + OpenAI coding/reasoning-capable models
+  recommendation: cloud_balanced_cross_provider_review
+  routes:
+    T0:
+      model: gpt-5.6-luna
+      effort: low
+    T1:
+      model: claude-sonnet-5
+      effort: medium
+    T2:
+      model: claude-sonnet-5
+      effort: medium_or_high
+    T3:
+      model: gpt-5.6-sol
+      effort: high
+    T4:
+      model: gpt-6-astra
+      effort: high_or_xhigh
+    T6:
+      model: claude-sonnet-5
+      effort: medium
+    T7:
+      model: gpt-5.6-terra
+      effort: medium
+    T8:
+      model: gpt-5.6-luna
+      effort: low
+  review:
+    anthropic_generator: gpt-5.6-sol
+    openai_generator: claude-opus-5
+    mechanical_changes: deterministic_gates_may_suffice
+  escalation:
+  - deterministic failure -> same generator once with exact evidence
+  - material semantic failure -> next tier immediately
+  - Sonnet 5 -> GPT-5.6 Sol for difficult work
+  - GPT-5.6 Sol -> GPT-6 Astra for highest-risk or second material failure
+  - second material failure at high tier -> human review
+list2:
+  scope: list1 plus comfortable local models for 96GB RAM / 16GB RTX 4090 Laptop GPU
+  recommendation: local_first_hybrid
+  routes:
+    T0:
+      model: qwen3.5:9b
+      location: local
+    T1:
+      model: devstral-small-2:24b
+      location: local
+    T2:
+      model: devstral-small-2:24b
+      location: local
+    T3:
+      model: glm-4.7-flash
+      location: local
+    T4:
+      model: gpt-5.6-sol
+      location: remote_if_allowed
+    T6:
+      model: gpt-oss:20b
+      location: local
+    T7:
+      model: qwen3-coder:30b
+      location: local_hybrid_gpu_ram
+    T8:
+      model: qwen3.5:9b
+      location: local
+    T9:
+      model: devstral-small-2:24b
+      alternates:
+      - qwen3-coder:30b
+      - glm-4.7-flash
+      location: local_only
+  review:
+    local_devstral_generator: gpt-oss:20b
+    anthropic_cloud_generator: gpt-5.6-sol
+    openai_cloud_generator: claude-opus-5
+    local_review_escalation: gpt-5.6-sol if cloud allowed; otherwise human
+  escalation:
+  - Devstral failure due repo understanding -> Qwen3-Coder 30B
+  - Devstral failure due hard reasoning/debugging -> GLM-4.7-Flash
+  - material local failure -> Claude Sonnet 5 if cloud allowed
+  - cloud routine failure -> GPT-5.6 Sol
+  - architecture/high-risk -> GPT-5.6 Sol directly when cloud allowed
+  - private_local_only -> never silently use cloud
+  local_context_policy:
+    default: 16k-32k
+    expand: up to ~64k when justified
+    principle: retrieval before context stuffing
+shared_rules:
+  same_tier_semantic_retries_max: 1
+  material_review_cross_provider_or_family: true
+  reviewer_rewrites_by_default: false
+  private_local_only_fail_closed: true
+  route_changes_require_model_bakeoff: false
+refresh:
+- refresh official provider inventories/status
+- remove deprecated/retired models from new defaults
+- refresh local hardware-fit candidates
+- map candidates into stable task classes
+- change defaults only for clear engineering advantage
+- avoid benchmark campaigns unless ambiguity is material
+- version and date the policy
+decision_method:
+  purpose: engineering routing policy, not model benchmarking
+  criteria:
+  - coding/agentic capability
+  - tool-use reliability
+  - reasoning depth
+  - independence for review
+  - latency
+  - token price
+  - context handling
+  - local hardware fit
+  - privacy/locality
+  - lifecycle stability
+  evidence_levels:
+  - DOCUMENTED
+  - SUPPORTED
+  - INFERRED
+  - OPERATIONAL
+  policy: Prefer a small active subset; keep the full inventory for refresh/fallback.
+telemetry:
+  model_usage:
+    capture:
+    - provider
+    - model
+    - task_class
+    - policy_version
+    - route_reason
+    - input_tokens
+    - cached_input_tokens
+    - output_tokens
+    - reasoning_tokens
+    - queue_ms
+    - time_to_first_token_ms
+    - generation_ms
+    - total_turnaround_ms
+    - estimated_total_cost
+    - provider_reported_cost
+    - price_catalog_version
+    - outcome
+    usage_preference:
+    - provider_reported
+    - runtime_reported
+    - tokenizer_estimated
+  price_catalog:
+    versioned: true
+    historical_estimates_immutable: true
+    local_api_spend: 0
+  persistence:
+    live: SQLite
+    analytics: Parquet + DuckDB
+  ui_summary:
+    running_example: Sonnet 5 · 12.8k in / 1.4k out · ~$0.05 · 18s
+    local_example: Devstral 24B · 12.8k in / 1.4k out · local · 18s
+    fields:
+    - model
+    - input_tokens
+    - output_tokens
+    - estimated_spend_or_local
+    - elapsed
+    detail_on_demand: true
+    target_refresh_seconds: 1-2 when streaming/lifecycle data permits
+routing_architecture:
+  canonical_design: 10_MODEL_ROUTING_SUBSYSTEM_DESIGN.md
+  domain_code_model_names: forbidden
+  entities:
+  - ModelInventory
+  - TaskRequirements
+  - RoutingPolicy
+  - RoutingDecision
+  - RoutingPolicyTransition
+  - AgentHandoff
+  - ProviderHealth
+  - BudgetConstraint
+  - ContextStrategy
+  policy_resolution:
+  - invocation_override
+  - task_override
+  - project_default
+  - system_default
+  hard_constraints_first: true
+  provider_failure_is_not_reasoning_escalation: true
+  mid_task_switching:
+    supported: true
+    requires_transition_record: true
+    requires_structured_handoff: true

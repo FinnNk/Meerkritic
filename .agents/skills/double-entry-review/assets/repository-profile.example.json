@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "method_revision": 7,
+  "evidence_store": "/absolute/path/outside/application-worktrees",
+  "pair_id": "example-change",
+  "diary_branch": "feature/example-change-diary",
+  "semantic_branch": "feature/example-change-semantic",
+  "base_ref": "main",
+  "verification": {
+    "baseline": [],
+    "per_commit": [],
+    "tip": [],
+    "external_state": []
+  },
+  "publication": {
+    "host": "github",
+    "policy": "versioned-rounds",
+    "merge_method": "rebase",
+    "remote_operations_authorised": false
+  },
+  "notes": "Populate reviewed command argv lists and execution environment; this file is not execution authority. Use a team-specific ignored local profile for absolute paths.",
+  "materiality": {
+    "default_requirement": "material-only",
+    "reassess_on_scope_change": true,
+    "hard_triggers": [],
+    "strong_indicators": [],
+    "critical_change_extra_gates": []
+  },
+  "host_integration": {
+    "routing_provenance": "optional",
+    "effort_telemetry": "optional",
+    "architecture_evidence": "optional"
+  }
+}

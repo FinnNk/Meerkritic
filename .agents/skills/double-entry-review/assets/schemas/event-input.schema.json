@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Double-Entry Review event-input v1",
+  "type": "object",
+  "properties": {
+    "kind": {
+      "enum": [
+        "observation",
+        "verification",
+        "review",
+        "feedback",
+        "test-disposition",
+        "publication",
+        "approval",
+        "integration",
+        "handoff"
+      ]
+    },
+    "round_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "actor": {
+      "type": "object",
+      "properties": {
+        "client": {
+          "type": "string",
+          "minLength": 1
+        },
+        "cli_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "model": {
+          "type": "string",
+          "minLength": 1
+        },
+        "session": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "client",
+        "cli_version",
+        "model",
+        "session"
+      ],
+      "additionalProperties": false
+    },
+    "payload": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "kind",
+    "round_id",
+    "actor",
+    "payload"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,8 @@
+* text=auto eol=lf
+# Imported source snapshots/skills retain exact bytes for provenance verification.
+docs/research/research-pack/** -text
+docs/research/CODING_AGENT_INITIAL_HANDOVER_PROMPT_V3_DER.md -text
+.agents/skills/** -text
+*.png binary
+*.jpg binary
+*.pdf binary

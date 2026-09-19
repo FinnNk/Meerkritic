@@ -1,0 +1,300 @@
+version: 1
+delivery_model: progressive_vertical_slices
+current_slice: VS1
+slices:
+- id: VS1
+  name: Data-to-Annotation
+  status: READY
+  entry_conditions:
+  - project bootstrap approved
+  exit_conditions:
+  - dataset registered
+  - observation browsable
+  - normalisation job runs outside web process
+  - structured output persisted with provenance
+  - annotation persisted
+  - progress visible
+  - restart/failure behaviour tested
+  - Ruff format check passes
+  - Ruff lint passes
+  - Import Linter contracts pass
+  - Tach architecture checks pass
+  - coding-agent definition of done includes canonical quality command
+  - initial architecture snapshot generated deterministically
+  - slice review template records decision trace and architecture delta
+  - VS1 normalisation workflow executes through MAF default orchestration path
+  - FrameworkObservation records can be persisted and inspected
+  - model usage telemetry captured for VS1 normalisation workflow
+  - versioned hosted-model cost estimate available when applicable
+  - near-real-time UI summary remains terse and secondary
+  - application/research-domain code contains no concrete model-name routing logic
+  - every VS1 model invocation records inventory and policy versions
+  - local-only privacy routing fails closed
+  - provider failure can be distinguished from semantic model failure
+  - selected model/provider availability and authentication/connectivity verified
+  - selected public dataset access and pinned revision verified
+  - dependency/runtime compatibility verified and locked
+  - VS1 annotation UI exposes only accept/edit/reject; uncertainty remains schema/metadata
+    only
+  - every material/critical VS1 software change has a recorded DER materiality assessment
+    and required DER pair
+  - material DER changes reach the DER readiness required by their publication/integration
+    scope before slice completion
+  - DER semantic final tree matches its frozen diary final tree for every completed
+    material pair
+  - slice status and DER revision readiness remain separate
+  tasks:
+  - verify VS1 annotation UI exposes only accept/edit/reject actions
+  - run and record VS1 integration preflight for model/provider, dataset access, and
+    dependency compatibility
+  - bootstrap FastAPI application
+  - configure Ruff formatter and linter
+  - define initial Import Linter architecture contracts
+  - define initial Tach module boundaries and dependency rules
+  - create canonical quality command running Ruff, Import Linter, Tach and tests
+  - add SQLite migrations and WAL configuration
+  - implement dataset registry
+  - implement canonical Parquet sample
+  - implement DuckDB observation queries
+  - implement SQLite-backed job model
+  - implement local worker process
+  - implement local model adapter
+  - implement normalisation job
+  - build observation browser
+  - build annotation controls
+  - add progress view
+  - add integration tests
+  - write slice review
+  - create CONTEXT.md glossary scaffold
+  - create ADR and slice-review directories/templates
+  - add append-only Event table
+  - generate typed architecture snapshot from Tach, Import Linter and module metadata
+  - wire project documentation and agent guidance to independent software-design-clarity
+    skill
+  - implement Microsoft Agent Framework workflow/runtime adapter as default orchestration
+    path
+  - route VS1 normalisation workflow through MAF
+  - persist FrameworkObservation records from first MAF workflow use
+  - implement ModelUsage and RoutingDecision operational telemetry
+  - implement versioned model price catalog
+  - capture token usage and queue/TTFT/generation/turnaround timings
+  - add terse near-real-time model/tokens/spend-or-local/elapsed UI summary
+  - implement versioned ModelInventory identifier and RoutingPolicy
+  - implement TaskRequirements and RoutingDecision
+  - implement project default policy and task-level policy override
+  - implement hard privacy/locality routing constraint
+  - implement provider-failure classification separate from semantic failure
+  - implement model-independent context-builder interface
+  - reserve schema for RoutingPolicyTransition and AgentHandoff
+  - install/use Double-Entry Review alpha.2 tooling before freezing material-change
+    baselines
+  - assess materiality for each PR/change-sized VS1 implementation unit
+  - for each material/critical VS1 change create DER pair with external evidence store
+    and one history integrator
+  - surface DER pair/round/readiness references in harness operational state without
+    duplicating DER evidence
+  out_of_scope:
+  - rules
+  - clustering
+  - repair agents
+  - mutation testing
+  - PostgreSQL
+  - Redis
+  - multi-user support
+  interaction_model:
+    ui: simple immediate accept/edit/reject
+    foundation:
+    - append-only Event table
+    - stable subject/object identifiers
+    - annotation history
+    - generic decision provenance
+    explicitly_deferred_to_VS2:
+    - staging
+    - defer/reopen/supersede states
+    - per-object discussion
+    - batched send-to-agent
+- id: VS2
+  name: Annotation-to-Rule Discovery
+  status: DRAFT
+  revision_after: VS1
+  maf_evaluation: continue MAF usage; evaluate rule-discovery workflow fit
+  interaction_patterns:
+  - pending/answered/deferred/reopened/superseded states
+  - staged rule decisions
+  - per-rule discussion threads
+  - batched coherent send-to-agent
+  - architecture before/delta/after view
+- id: VS3
+  name: Rule-to-Historical-Replay
+  status: DRAFT
+  revision_after: VS2
+  maf_evaluation: evaluate workflow fan-out/fan-in for historical replay
+  interaction_patterns:
+  - staged gate decisions
+  - versioned generated visuals
+  - stale visual detection
+- id: VS4
+  name: Finding-to-Agent-Repair
+  status: DRAFT
+  revision_after: VS3
+  maf_evaluation: evaluate durable entity/actor-style agent sessions for long-running
+    repair
+  interaction_patterns:
+  - staged agent guidance
+  - explicit resume/retry after interruption
+  - append-only agent interaction events
+  - render/report subagent where beneficial
+- id: VS5
+  name: Repair-to-Behavioural-Evaluation
+  status: DRAFT
+  revision_after: VS4
+- id: VS6
+  name: Programme Operations and Comparative Analysis
+  status: DRAFT
+  revision_after: VS5
+- id: VS7
+  name: Public-to-Internal Transfer
+  status: DRAFT
+  revision_after: VS6
+- id: VS8
+  name: Operational Hardening
+  status: CONDITIONAL
+  revision_after: VS7
+  triggers:
+  - multiple regular human users
+  - distributed workers
+  - persistent queue contention
+  - remote artefact access required
+  - research harness becomes long-lived operational service
+slice_review_required: true
+review_fields:
+- delivered
+- deviations
+- architecture_observations
+- research_observations
+- performance_observations
+- framework_observations
+- technical_debt
+- decisions
+- changes_to_remaining_slices
+baseline_quality_gates:
+  ruff:
+    purpose: Python formatting, linting, imports and code conventions
+    required_commands:
+    - ruff format --check .
+    - ruff check .
+  import_linter:
+    purpose: authoritative high-level architecture contracts
+    required_command: lint-imports
+    expected_contract_types:
+    - layers
+    - forbidden
+    - protected
+    - independence
+    - acyclic siblings
+  tach:
+    purpose: module dependencies, public interfaces, layers and cycle enforcement
+    required_command: tach check
+    enable_when_stable:
+    - forbid_circular_dependencies = true
+  policy: Agents must not weaken or ignore gates without explicit human approval.
+knowledge_continuity:
+  context_file: CONTEXT.md
+  adr_directory: docs/adr/
+  slice_review_directory: docs/slice-reviews/
+  policy: Vocabulary goes to CONTEXT.md; durable architectural choices go to ADRs;
+    ordinary evidence and revisions go to slice reviews.
+architecture_observability:
+  source_tools:
+  - tach
+  - import-linter
+  - python module metadata
+  artifacts:
+  - ArchitectureSnapshot
+  - ArchitectureDelta
+  rendering_policy: visuals are projections of typed architecture IR and become stale
+    when source snapshots change
+  archify: optional later renderer/validator evaluation; not a mandatory dependency
+interaction_model:
+  current_state: SQLite relational tables
+  event_history: append-only Event table
+  full_event_sourcing: false
+  decision_states:
+  - pending
+  - answered
+  - deferred
+  - reopened
+  - superseded
+  supports_staging: true
+  supports_per_object_discussion: true
+  activation_boundary: VS1 foundation only; VS2 rich staged interaction
+design_review_skill:
+  name: software-design-clarity
+  distribution: independent project-agnostic skill
+  required_modes:
+    design:
+    - new architectural boundary
+    - material API/module abstraction
+    review:
+    - before completing material structural changes
+    - during slice review when architecture changed
+    refactoring:
+    - when complexity reduction is the primary objective
+  relationship_to_tools:
+    ruff: code conventions
+    import_linter_and_tach: architecture/dependency enforcement
+    software_design_clarity: abstraction and design quality
+microsoft_agent_framework:
+  role: default orchestration/runtime substrate from VS1 onward
+  evaluation_goal: collect longitudinal evidence to judge suitability for this and
+    future projects
+  architecture_policy: MAF remains behind project-owned WorkflowRunner and AgentRuntime
+    interfaces; no domain leakage
+  observations_start: VS1
+  removal_policy: remove only after repeated, material, unresolved friction remains
+    after reasonable mitigation; removal requires ADR
+  questions_at_end:
+  - Was MAF suitable for this project?
+  - Is MAF a good default for other agentic software projects?
+model_usage_telemetry:
+  live_store: SQLite
+  analytics_store: Parquet + DuckDB
+  capture_from: VS1
+  fields:
+  - policy_version
+  - task_class
+  - provider
+  - model
+  - route_reason
+  - input_tokens
+  - cached_input_tokens
+  - output_tokens
+  - reasoning_tokens
+  - queue_ms
+  - time_to_first_token_ms
+  - generation_ms
+  - total_turnaround_ms
+  - price_catalog_version
+  - estimated_total_cost
+  - provider_reported_cost
+  - outcome
+  local_cost_policy: zero API spend; do not estimate electricity/hardware amortisation
+  live_summary: Model · input/output tokens · estimated spend/local · elapsed
+  detail_on_demand: true
+routing_subsystem:
+  design: 10_MODEL_ROUTING_SUBSYSTEM_DESIGN.md
+  implementation_scope_vs1: core abstractions/versioning/provenance; rich switching
+    UI deferred until multiple policies configured
+double_entry_review:
+  skill: double-entry-review-core-0.3.0-alpha.2
+  method_revision: 7
+  unit: one pair per material PR/change inside a slice
+  pre_1_0_policy: mandatory for material/critical; routine ordinary workflow; borderline
+    encouraged/default-to-yes with host waiver rationale
+  materiality:
+    hard_trigger: DER required
+    two_or_more_strong_indicators: DER default required
+    reassess_on_scope_change: true
+  parallel_agents: separate worktrees/contributor branches; one history integrator
+    owns canonical pair
+  evidence_store: outside application worktrees; harness indexes references only

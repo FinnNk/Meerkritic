@@ -1,0 +1,45 @@
+# Local environment and credentials
+.venv/
+.env
+.env.*
+!.env.example
+*.local.toml
+*.local.json
+double-entry-review.profile.json
+
+# Generated Python/tool state
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ruff_cache/
+.import_linter_cache/
+.tach/
+.pytest_cache/
+.coverage
+htmlcov/
+build/
+dist/
+
+# Runtime/research bulk data belong outside application worktrees
+/extras/
+/data/
+/runtime/
+/outputs/
+/der-evidence/
+*.sqlite
+*.sqlite3
+*.sqlite-wal
+*.sqlite-shm
+*.db
+*.db-wal
+*.db-shm
+*.zip
+*.parquet
+*.arrow
+*.gguf
+*.safetensors
+
+# OS/editor scratch
+.DS_Store
+Thumbs.db
+*.tmp

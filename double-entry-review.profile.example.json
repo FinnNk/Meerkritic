@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "method_revision": 7,
+  "evidence_store": "/absolute/path/outside/all/application-worktrees",
+  "pair_id": "replace-with-material-change-id",
+  "diary_branch": "change/example-diary",
+  "semantic_branch": "change/example",
+  "base_ref": "main",
+  "verification": {
+    "baseline": [],
+    "per_commit": [],
+    "tip": [],
+    "external_state": []
+  },
+  "publication": {
+    "host": "github",
+    "policy": "versioned-rounds",
+    "remote_operations_authorised": false
+  },
+  "notes": "Template only. Populate each pair's exact approved commands, identities and contexts locally. Run the canonical quality command at every semantic checkpoint. This file grants no remote authority; the owner merges on GitHub."
+}

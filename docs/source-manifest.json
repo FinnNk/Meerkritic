@@ -1,0 +1,316 @@
+{
+  "schema_version": 1,
+  "imported_on": "2026-09-19",
+  "purpose": "Immutable supplied-source and pinned-skill provenance, not runtime data",
+  "archives": [
+    {
+      "name": "evidence_grounded_code_review_research_pack_der_alpha2.zip",
+      "sha256": "1edfbec21664166c36d22c0fcde9e7ca49feb5be8120f0675418951d38fded9d"
+    },
+    {
+      "name": "double-entry-review-core-0.3.0-alpha.2.zip",
+      "sha256": "0165bfef40145ba494fe3591785edf4d4debdd094c55ca06b278d828d8c2a41c"
+    },
+    {
+      "name": "software-design-clarity.zip",
+      "sha256": "e96aa0fc8663b62fd5e5b11ea4d2edcef0f730cc66ca7499a5483abaae242ea2"
+    }
+  ],
+  "files": [
+    {
+      "path": "docs/research/research-pack/01_SYSTEM_DESIGN.md",
+      "source": "research-pack/01_SYSTEM_DESIGN.md",
+      "sha256": "b6aefe196d6adc3845cc23f637390e2066486dd76393e7a48fb0ff1e55eec864"
+    },
+    {
+      "path": "docs/research/research-pack/02_EXPERIMENTAL_PLAN.md",
+      "source": "research-pack/02_EXPERIMENTAL_PLAN.md",
+      "sha256": "d249a5d4545b5b73b2f187cd0ef41bff2178093a0bfb3e15861a616a0409e330"
+    },
+    {
+      "path": "docs/research/research-pack/03_LOCAL_DATASET_STORAGE.md",
+      "source": "research-pack/03_LOCAL_DATASET_STORAGE.md",
+      "sha256": "373ab1d1d9adccd940e694916b06877e47f5157221164189f30991534378cba9"
+    },
+    {
+      "path": "docs/research/research-pack/04_COST_MODEL_AND_BUDGET_SCENARIOS.md",
+      "source": "research-pack/04_COST_MODEL_AND_BUDGET_SCENARIOS.md",
+      "sha256": "2494a591a046295b514196122e78a7b710db6a80410c9baf36e16143d8c99d75"
+    },
+    {
+      "path": "docs/research/research-pack/05_PROJECT_HARNESS_PLAN.md",
+      "source": "research-pack/05_PROJECT_HARNESS_PLAN.md",
+      "sha256": "25f80dfbe0748566a39b698b5d907aa82de9428b4c4f930267ca801e84fe216d"
+    },
+    {
+      "path": "docs/research/research-pack/06_IMPLEMENTATION_HANDOVER.md",
+      "source": "research-pack/06_IMPLEMENTATION_HANDOVER.md",
+      "sha256": "7fd34b21396083c6fdf2548b2ccccb5b223566c703e69db2a054bfa441d66854"
+    },
+    {
+      "path": "docs/research/research-pack/07_SOFTWARE_DESIGN_CLARITY_SKILL.md",
+      "source": "research-pack/07_SOFTWARE_DESIGN_CLARITY_SKILL.md",
+      "sha256": "7c177cf04c76b5de3dcfef8a3cd10d4bcdb7af053b95f78ed664697bdaa05e6c"
+    },
+    {
+      "path": "docs/research/research-pack/08_AGENTIC_SOFTWARE_FACTORY_FRAMING.md",
+      "source": "research-pack/08_AGENTIC_SOFTWARE_FACTORY_FRAMING.md",
+      "sha256": "73441c55604406bd53d6bce8a215680262821541d21d85985a16e51282a697be"
+    },
+    {
+      "path": "docs/research/research-pack/09_MODEL_ROUTING_POLICY.md",
+      "source": "research-pack/09_MODEL_ROUTING_POLICY.md",
+      "sha256": "eb06dbec100223a8c9e71b8cd91d57574bd92d5c09493aebf3cf0d78ff90674a"
+    },
+    {
+      "path": "docs/research/research-pack/10_MODEL_ROUTING_SUBSYSTEM_DESIGN.md",
+      "source": "research-pack/10_MODEL_ROUTING_SUBSYSTEM_DESIGN.md",
+      "sha256": "17331c8cd3d3bbdbd19bcbb8866f97ba63ac4717ea50eb1a00787313a8a98145"
+    },
+    {
+      "path": "docs/research/research-pack/11_DOUBLE_ENTRY_REVIEW_INTEGRATION.md",
+      "source": "research-pack/11_DOUBLE_ENTRY_REVIEW_INTEGRATION.md",
+      "sha256": "78ec167e12e225857c8e7f14f7719a36e0ec2b4a26e3c580f809dfab87a08506"
+    },
+    {
+      "path": "docs/research/research-pack/CONTEXT.md",
+      "source": "research-pack/CONTEXT.md",
+      "sha256": "9121b98067d9d0ff2297f4227d215259e5b9aa729e5ebf51e0f38d7c59a7cd53"
+    },
+    {
+      "path": "docs/research/research-pack/IMPLEMENTATION_BACKLOG.yaml",
+      "source": "research-pack/IMPLEMENTATION_BACKLOG.yaml",
+      "sha256": "c1d378ce40d2c6ba8b369dfd8a28a20569cae0eacac234041cd3f83767d1597c"
+    },
+    {
+      "path": "docs/research/research-pack/MODEL_ROUTING_POLICY.yaml",
+      "source": "research-pack/MODEL_ROUTING_POLICY.yaml",
+      "sha256": "2d1f389c8bafc189252ba9f7a9732ae7fd730d40d0aee20e0148daceb1778807"
+    },
+    {
+      "path": "docs/research/research-pack/README.md",
+      "source": "research-pack/README.md",
+      "sha256": "7269cfd4bc0bc4d70a2273f6acc2edd2545fa1552ccfa47d9c3dbe71e280c126"
+    },
+    {
+      "path": "docs/research/research-pack/SLICE_REVIEW_TEMPLATE.yaml",
+      "source": "research-pack/SLICE_REVIEW_TEMPLATE.yaml",
+      "sha256": "369714f894689099380855cc43fc882d6fb22060d0e0c4953c4e7f07a04d577f"
+    },
+    {
+      "path": "docs/research/CODING_AGENT_INITIAL_HANDOVER_PROMPT_V3_DER.md",
+      "source": "CODING_AGENT_INITIAL_HANDOVER_PROMPT_V3_DER.md",
+      "sha256": "2882306bcafd9f64e3c98e95d3630d2974900257aee6bf7214e5205895e408b8"
+    },
+    {
+      "path": ".agents/skills/double-entry-review/agents/openai.yaml",
+      "source": "external-skills/double-entry-review/agents/openai.yaml",
+      "sha256": "f2217a47f22bbcc71d9a0f5e642dc9e3d93520d4e0b0acbe3cd9ba3a080c142d"
+    },
+    {
+      "path": ".agents/skills/double-entry-review/assets/handoff.md",
+      "source": "external-skills/double-entry-review/assets/handoff.md",
+      "sha256": "6862f1d949c3532065ffcf8887d8f4bcf517c0f047bb89b4a76ca8e786fcc799"
+    },
+    {
+      "path": ".agents/skills/double-entry-review/assets/integration-record.md",
+      "source": "external-skills/double-entry-review/assets/integration-record.md",
+      "sha256": "f9bdf08a60288e346d485ac0e3643e8959f0d522487244c678c661b5a087fcef"
+    },
+    {
+      "path": ".agents/skills/double-entry-review/assets/materiality-assessment.md",
+      "source": "external-skills/double-entry-review/assets/materiality-assessment.md",
+      "sha256": "77aa046100031ebd27401fba70639c82cd4f2fbe616866725cc9c7d25c1554df"
+    },
+    {
+      "path": ".agents/skills/double-entry-review/assets/proposition.md",
+      "source": "external-skills/double-entry-review/assets/proposition.md",
+      "sha256": "6435563ed8a580f1e5f6ffbfffbe0f540a1b0802574642b52f873ed50c0c301c"
+    },
+    {
+      "path": ".agents/skills/double-entry-review/assets/repository-profile.example.json",
+      "source": "external-skills/double-entry-review/assets/repository-profile.example.json",
+      "sha256": "1d2a3c86cb46ab5f7755c372137ae9602a629d2ab09d875fb60c65f0d9843984"
+    },
+    {
+      "path": ".agents/skills/double-entry-review/assets/review-report.md",
+      "source": "external-skills/double-entry-review/assets/review-report.md",
+      "sha256": "f958f4f763c898e578eae31c034ca32321e1a351d086d20a3ce8a54f9b01ac44"
+    },
+    {
+      "path": ".agents/skills/double-entry-review/assets/schemas/event-input.schema.json",
+      "source": "external-skills/double-entry-review/assets/schemas/event-input.schema.json",
+      "sha256": "9b2b5177c437e06f25d565afbefa6d3a8b5846289b7f0aff2be9bfafd9703e4b"
+    },
+    {
+      "path": ".agents/skills/double-entry-review/assets/schemas/event.schema.json",
+      "source": "external-skills/double-entry-review/assets/schemas/event.schema.json",
+      "sha256": "1b318ffa429e03e1809d4b2262d26b96e82051b6c29cb2dc1bb4713a2288016f"
+    },
+    {
+      "path": ".agents/skills/double-entry-review/assets/schemas/review.schema.json",
+      "source": "external-skills/double-entry-review/assets/schemas/review.schema.json",
+      "sha256": "2b6011076ccc2db85c258093e13ddaa5929e368faa8233d9121c8414ea1af61c"
+    },
+    {
+      "path": ".agents/skills/double-entry-review/assets/schemas/round.schema.json",
+      "source": "external-skills/double-entry-review/assets/schemas/round.schema.json",
+      "sha256": "61e5dc6c07c8db126eaa8d38959b273537f1a1d8da5a38cc07370cc9b334b975"
+    },
+    {
+      "path": ".agents/skills/double-entry-review/LICENSE",
+      "source": "external-skills/double-entry-review/LICENSE",
+      "sha256": "e021af15f5e9912721ba0ba8683d479f51b34c510c27191a32112f82e54e305a"
+    },
+    {
+      "path": ".agents/skills/double-entry-review/references/boundary-design.md",
+      "source": "external-skills/double-entry-review/references/boundary-design.md",
+      "sha256": "de359fa586b5936aebe3c5c73ba4ced28935fb10dfffdfce7b476b0da2be52b3"
+    },
+    {
+      "path": ".agents/skills/double-entry-review/references/guidance/boundaries.md",
+      "source": "external-skills/double-entry-review/references/guidance/boundaries.md",
+      "sha256": "584707e0f3ba18aa692174a032817fb3d42c5338569e8a708e504c6999a71b3b"
+    },
+    {
+      "path": ".agents/skills/double-entry-review/references/guidance/context.md",
+      "source": "external-skills/double-entry-review/references/guidance/context.md",
+      "sha256": "06be46ecb39e6cd817ff8331724c6ed842b8b9bf51592d18f245bd4806d36b34"
+    },
+    {
+      "path": ".agents/skills/double-entry-review/references/guidance/design.md",
+      "source": "external-skills/double-entry-review/references/guidance/design.md",
+      "sha256": "fa8918fdfc6d1903d360e65a09a9d4cf2be092ce6198becdea786586a5111b6c"
+    },
+    {
+      "path": ".agents/skills/double-entry-review/references/guidance/structure.md",
+      "source": "external-skills/double-entry-review/references/guidance/structure.md",
+      "sha256": "561c4effcfb31ec7f53fcc42fc298389abfe07822103ea7dd0171ac614e267d6"
+    },
+    {
+      "path": ".agents/skills/double-entry-review/references/guidance/writing.md",
+      "source": "external-skills/double-entry-review/references/guidance/writing.md",
+      "sha256": "11083854ad768502cd039ceeb6ce1c7538bd7797aac530ad5d8f64e4c243be08"
+    },
+    {
+      "path": ".agents/skills/double-entry-review/references/helper-usage.md",
+      "source": "external-skills/double-entry-review/references/helper-usage.md",
+      "sha256": "bb9fc65d89cf07b696837e3e4f2cd10cecfada1722cea38eda0af07e7276b80c"
+    },
+    {
+      "path": ".agents/skills/double-entry-review/references/host-integration.md",
+      "source": "external-skills/double-entry-review/references/host-integration.md",
+      "sha256": "e5ce40b31749dd160cd9a6bc79b0d976e0e20f8c8c247dcb6e715b2c13dba220"
+    },
+    {
+      "path": ".agents/skills/double-entry-review/references/host-operations.md",
+      "source": "external-skills/double-entry-review/references/host-operations.md",
+      "sha256": "9b1f09058a57041ec31cc5d2971810d814d102a751381d8fc867f75f5d0fa434"
+    },
+    {
+      "path": ".agents/skills/double-entry-review/references/integration.md",
+      "source": "external-skills/double-entry-review/references/integration.md",
+      "sha256": "2c2179b0f6176a7f01db9b334996ccc1db7c81d95dde11ecfa62c4d24d8a5ea1"
+    },
+    {
+      "path": ".agents/skills/double-entry-review/references/materiality.md",
+      "source": "external-skills/double-entry-review/references/materiality.md",
+      "sha256": "d62c6bf29589d53e740705213977b5a8e6640b56b2d96bc1ce78b75a5b964c8b"
+    },
+    {
+      "path": ".agents/skills/double-entry-review/references/reconstruction.md",
+      "source": "external-skills/double-entry-review/references/reconstruction.md",
+      "sha256": "008786a1ce30f6c4a4082205ec46c771fb8425128edcc7b5b5701c96ef525111"
+    },
+    {
+      "path": ".agents/skills/double-entry-review/references/review-rounds.md",
+      "source": "external-skills/double-entry-review/references/review-rounds.md",
+      "sha256": "1016ad12358f6b2ecaf421dede4146c93354bf3f35e1a5c99d67d76f15d43252"
+    },
+    {
+      "path": ".agents/skills/double-entry-review/references/reviewing.md",
+      "source": "external-skills/double-entry-review/references/reviewing.md",
+      "sha256": "e0486b2e522c301b25feeeb7026e38adb91c1a03a285f8b79a39b5e7302fb099"
+    },
+    {
+      "path": ".agents/skills/double-entry-review/references/setup-and-diary.md",
+      "source": "external-skills/double-entry-review/references/setup-and-diary.md",
+      "sha256": "ec2c61c1e70b44250f818ed254dfa49783581e81d7b9b013af7adec7de9c8c8e"
+    },
+    {
+      "path": ".agents/skills/double-entry-review/references/sources.md",
+      "source": "external-skills/double-entry-review/references/sources.md",
+      "sha256": "b7e18dbff3348eac4bb7d8e50ccec35777cc150d6a3518920a2babc8d32f61ba"
+    },
+    {
+      "path": ".agents/skills/double-entry-review/references/state-and-evidence.md",
+      "source": "external-skills/double-entry-review/references/state-and-evidence.md",
+      "sha256": "77797023a006457ac4d1cb8c3de816e0a4d96b32d75aee5ba7fd8ad3d55fa9f1"
+    },
+    {
+      "path": ".agents/skills/double-entry-review/references/test-evidence.md",
+      "source": "external-skills/double-entry-review/references/test-evidence.md",
+      "sha256": "ecff4a8f348429d091d3bd3ad4b7e3462f149f08f47c9438b63ba66fcf8e6626"
+    },
+    {
+      "path": ".agents/skills/double-entry-review/references/verification.md",
+      "source": "external-skills/double-entry-review/references/verification.md",
+      "sha256": "c1f7a3debf9d49ce9205a863fd943d7e5171ced9a0d29e40359c8444f4091948"
+    },
+    {
+      "path": ".agents/skills/double-entry-review/scripts/der.py",
+      "source": "external-skills/double-entry-review/scripts/der.py",
+      "sha256": "eb7313c164d7c2fc58969930dd6a0a79eab9f2cb26575b0dbf0bd3e1637d1330"
+    },
+    {
+      "path": ".agents/skills/double-entry-review/SKILL.md",
+      "source": "external-skills/double-entry-review/SKILL.md",
+      "sha256": "bfd03d359d7271b30597d19a6661eb772bc854c598312b6949752b6d09ead68c"
+    },
+    {
+      "path": ".agents/skills/software-design-clarity/LICENSE",
+      "source": "external-skills/software-design-clarity/LICENSE",
+      "sha256": "3ec85ae86c11eb3b2dde2aa1206e7baac67d3776ed30f4932ec71e0259da80a1"
+    },
+    {
+      "path": ".agents/skills/software-design-clarity/README.md",
+      "source": "external-skills/software-design-clarity/README.md",
+      "sha256": "e6b2910d224ada869a2cbd55c7ee1c76cd931c34b0628d735814390767d3e293"
+    },
+    {
+      "path": ".agents/skills/software-design-clarity/references/bibliography.md",
+      "source": "external-skills/software-design-clarity/references/bibliography.md",
+      "sha256": "94d239b517b25d55d4dc9e9e944c1418d962af1ecb9988d644d951d90a958fab"
+    },
+    {
+      "path": ".agents/skills/software-design-clarity/references/design-smells.md",
+      "source": "external-skills/software-design-clarity/references/design-smells.md",
+      "sha256": "7d941168f190a5125b37f8943438e3b260d1fd2e5f2d72174c6bbcf1c8384f53"
+    },
+    {
+      "path": ".agents/skills/software-design-clarity/references/examples.md",
+      "source": "external-skills/software-design-clarity/references/examples.md",
+      "sha256": "e50cabeba278ae34deddcf73b528760678f3ffb13753342eb87ed2e765ac8c4b"
+    },
+    {
+      "path": ".agents/skills/software-design-clarity/references/principles.md",
+      "source": "external-skills/software-design-clarity/references/principles.md",
+      "sha256": "badc2b6767a460f314cc413709dc557963ccf55316a698a9d5a480d357d619a0"
+    },
+    {
+      "path": ".agents/skills/software-design-clarity/references/review-questions.md",
+      "source": "external-skills/software-design-clarity/references/review-questions.md",
+      "sha256": "22e4c493438db4ff82320f3f884630e65e6311c9dbf284299e97d44eaae4870f"
+    },
+    {
+      "path": ".agents/skills/software-design-clarity/SKILL.md",
+      "source": "external-skills/software-design-clarity/SKILL.md",
+      "sha256": "6b6d6fdb8f7ad35fe1f6bd3fb17835283ff7df743608bae0947a4aeecdad260d"
+    },
+    {
+      "path": ".agents/skills/software-design-clarity/templates/design-review.md",
+      "source": "external-skills/software-design-clarity/templates/design-review.md",
+      "sha256": "37d76c253dfbad5ddc3a11a69baab2bdc91b3af6e55a85f62340c37634f5c98c"
+    }
+  ]
+}

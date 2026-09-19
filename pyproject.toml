@@ -1,0 +1,58 @@
+[project]
+name = "meerkritic"
+version = "0.0.0"
+description = "Evidence-grounded semantic code review research harness"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = []
+
+[dependency-groups]
+dev = ["ruff", "import-linter", "tach"]
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+# These are Python code-convention gates; research Markdown remains source material.
+include = ["*.py", "*.pyi", "**/pyproject.toml"]
+# Pinned, byte-verified upstream skills are not first-party Python source.
+# This is a vendor boundary, not an exception to an application architecture rule.
+extend-exclude = [".agents/skills"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.importlinter]
+root_packages = ["semantic_reviewer"]
+include_external_packages = true
+
+[[tool.importlinter.contracts]]
+name = "Domain and routing remain independent"
+type = "independence"
+modules = ["semantic_reviewer.domain", "semantic_reviewer.routing"]
+
+[[tool.importlinter.contracts]]
+name = "Core logic does not depend on application or adapters"
+type = "forbidden"
+source_modules = ["semantic_reviewer.domain", "semantic_reviewer.routing"]
+forbidden_modules = ["semantic_reviewer.application", "semantic_reviewer.adapters", "semantic_reviewer.web", "semantic_reviewer.bootstrap", "semantic_reviewer.asgi", "semantic_reviewer.worker", "fastapi", "duckdb", "sqlite3", "agent_framework", "openai", "anthropic", "ollama"]
+
+[[tool.importlinter.contracts]]
+name = "Application owns contracts rather than concrete adapters"
+type = "forbidden"
+source_modules = ["semantic_reviewer.application"]
+forbidden_modules = ["semantic_reviewer.adapters", "semantic_reviewer.web", "semantic_reviewer.bootstrap", "semantic_reviewer.asgi", "semantic_reviewer.worker", "fastapi", "duckdb", "sqlite3", "agent_framework", "openai", "anthropic", "ollama"]
+
+[[tool.importlinter.contracts]]
+name = "Web cannot access concrete persistence or composition"
+type = "forbidden"
+source_modules = ["semantic_reviewer.web"]
+forbidden_modules = ["semantic_reviewer.adapters", "semantic_reviewer.bootstrap", "semantic_reviewer.worker", "semantic_reviewer.asgi", "duckdb", "sqlite3", "agent_framework", "openai", "anthropic", "ollama"]
+
+[[tool.importlinter.contracts]]
+name = "Worker and shared composition cannot pull in the web"
+type = "forbidden"
+source_modules = ["semantic_reviewer.worker", "semantic_reviewer.bootstrap", "semantic_reviewer.adapters"]
+forbidden_modules = ["semantic_reviewer.web", "semantic_reviewer.asgi"]
