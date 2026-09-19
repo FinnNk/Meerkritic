@@ -1,0 +1,59 @@
+{
+  "label": "final-p2",
+  "revision": "55ee4bb88a1d09e3cecf6fda9899655152780a1d",
+  "checkout": "$WORKSPACE\\extras\\der-checkouts\\vs1-routing-final-p2",
+  "started_at": "2026-09-19T21:59:39.579795+00:00",
+  "commands": [
+    {
+      "argv": [
+        "uv",
+        "sync",
+        "--locked",
+        "--offline",
+        "--python",
+        "$USER_HOME/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "tools/check.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "$WORKSPACE\\extras\\der-checkouts\\vs1-routing-final-p2\\.venv\\Scripts\\python.exe",
+        "-c",
+        "import semantic_reviewer,sys,sqlite3,json,importlib.metadata as m; print(json.dumps({\"source\":semantic_reviewer.__file__,\"python\":sys.version,\"sqlite\":sqlite3.sqlite_version,\"versions\":{p:m.version(p) for p in [\"pydantic\",\"duckdb\",\"fastapi\",\"yoyo-migrations\",\"ruff\",\"import-linter\",\"tach\"]}},indent=2))"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--porcelain"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "required_context": "Windows/Python 3.12/locked checkpoint environment",
+  "tree": "dcecd42ab467fabc6c27c8c737cf9069d85ea02b",
+  "clean": true,
+  "lock_sha256": "e93f6b55f31e5cd4c368f4dac76f2c67fe98096399d01f4b837b97e50d5f0124",
+  "ended_at": "2026-09-19T21:59:51.169401+00:00",
+  "status": "passed"
+}

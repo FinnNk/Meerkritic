@@ -1,0 +1,31 @@
+{
+  "label": "p3",
+  "revision": "3e7ad1ced1b7e0b754f9e2196fcc968afbaf0f20",
+  "checkout": "$WORKSPACE\\extras\\der-checkouts\\vs1-routing-p3",
+  "started_at": "2026-09-19T21:58:06.504480+00:00",
+  "commands": [
+    {
+      "argv": [
+        "uv",
+        "sync",
+        "--locked",
+        "--offline",
+        "--python",
+        "$USER_HOME/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "tools/check.py"
+      ],
+      "exit_code": 1
+    }
+  ],
+  "required_context": "Windows/Python 3.12/locked checkpoint environment",
+  "status": "failed"
+}

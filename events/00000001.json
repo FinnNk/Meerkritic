@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "sequence": 1,
+  "pair_id": "vs1-routing",
+  "recorded_at": "2026-09-19T22:03:13+00:00",
+  "previous_hash": null,
+  "kind": "observation",
+  "round_id": "r1",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "meerkritic-vs1-routing-2026-09-19"
+  },
+  "payload": {
+    "stage": "locally_prepared",
+    "materiality": "material",
+    "assessment": "r1/setup.md",
+    "diary": "a75249671f6a7f90c2a772e5b05fd52d1b93ac2c",
+    "semantic": "66431eeb2cde53803fdbe61db3d41c1954fd25ca",
+    "manifest_sha256": "5d07c0004926a25180ab994436e6d9b913c55da61f1fd7136d87b743b170a11c",
+    "checks": "All four exact semantic checkpoints and frozen diary pass canonical gates; counts 26/33/40/43 and 43.",
+    "review": "r1/review.md; boundary-only fresh-context challenge in r1/boundary-review.md",
+    "failed_attempts": "r1/discoveries.md and r1/finalisation.md; retained logs and failed-candidate.bundle",
+    "publication": "not yet performed",
+    "approval": false
+  },
+  "event_hash": "f058d1d7900ff9a9d575b46b9441f501d58a626fe547644525b6716d2267008b"
+}

@@ -1,0 +1,37 @@
+Running: ruff format --check .
+29 files already formatted
+Running: ruff check .
+E501 Line too long (101 > 100)
+  --> src\semantic_reviewer\adapters\routing_journal.py:65:101
+   |
+63 |             connection.execute("INSERT INTO routing_decision VALUES (?, ?)", (decision.id, payload))
+64 |             connection.execute(
+65 |                 "INSERT INTO event(kind, subject_id, occurred_at, details_json) VALUES (?, ?, ?, ?)",
+   |                                                                                                     ^
+66 |                 (
+67 |                     "routing_decision_recorded",
+   |
+
+E501 Line too long (101 > 100)
+   --> src\semantic_reviewer\adapters\routing_journal.py:119:101
+    |
+117 |             )
+118 |             connection.execute(
+119 |                 "INSERT INTO event(kind, subject_id, occurred_at, details_json) VALUES (?, ?, ?, ?)",
+    |                                                                                                     ^
+120 |                 (
+121 |                     "model_usage_recorded",
+    |
+
+E501 Line too long (105 > 100)
+   --> tests\test_routing_journal.py:143:101
+    |
+141 |         with closing(sqlite3.connect(old)) as db:
+142 |             db.execute(
+143 |                 "INSERT INTO dataset VALUES ('source', 'title', 'rev', 'url', 'sha', 'sha', 1, 'now', 1)"
+    |                                                                                                     ^^^^^
+144 |             )
+145 |             db.execute("INSERT INTO event VALUES (7, 'dataset_registered', 'source', 'now', '{}')")
+    |
+
+Found 3 errors.

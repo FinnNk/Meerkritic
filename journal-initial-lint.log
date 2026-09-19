@@ -1,0 +1,109 @@
+E501 Line too long (102 > 100)
+  --> src\semantic_reviewer\adapters\routing_journal.py:29:101
+   |
+28 |     @staticmethod
+29 |     def _version(connection: sqlite3.Connection, kind: str, identity: Version, value: Record) -> None:
+   |                                                                                                     ^^
+30 |         payload = _payload(value)
+31 |         row = connection.execute(
+   |
+
+E501 Line too long (101 > 100)
+  --> src\semantic_reviewer\adapters\routing_journal.py:63:101
+   |
+61 |             connection.execute("INSERT INTO routing_decision VALUES (?, ?)", (decision.id, payload))
+62 |             connection.execute(
+63 |                 "INSERT INTO event(kind, subject_id, occurred_at, details_json) VALUES (?, ?, ?, ?)",
+   |                                                                                                     ^
+64 |                 ("routing_decision_recorded", decision.id, decision.created_at.isoformat(),
+65 |                  json.dumps({"schema_version": 1, "selected": decision.selected is not None})),
+   |
+
+E501 Line too long (101 > 100)
+   --> src\semantic_reviewer\adapters\routing_journal.py:100:101
+    |
+ 98 |                 "SELECT payload_json FROM routing_decision WHERE id=?", (usage.decision_id,)
+ 99 |             ).fetchone()
+100 |             if decision is None or RoutingDecision.model_validate_json(decision[0]).selected is None:
+    |                                                                                                     ^
+101 |                 raise ValueError("Usage requires a recorded selected decision.")
+102 |             connection.execute(
+    |
+
+E501 Line too long (101 > 100)
+   --> src\semantic_reviewer\adapters\routing_journal.py:107:101
+    |
+105 |             )
+106 |             connection.execute(
+107 |                 "INSERT INTO event(kind, subject_id, occurred_at, details_json) VALUES (?, ?, ?, ?)",
+    |                                                                                                     ^
+108 |                 ("model_usage_recorded", usage.id, usage.measurement.completed_at.isoformat(),
+109 |                  json.dumps({"schema_version": 1, "decision_id": usage.decision_id})),
+    |
+
+E501 Line too long (107 > 100)
+   --> src\semantic_reviewer\adapters\routing_journal.py:149:101
+    |
+147 | ÔÇª                     decision.requirements.task_class, decision.selected.provider,
+148 | ÔÇª                     decision.selected.id, usage.measurement.outcome,
+149 | ÔÇª                     tokens.input_tokens, tokens.output_tokens, tokens.cached_input_tokens,
+    |                                                                                      ^^^^^^^
+150 | ÔÇª                     tokens.reasoning_tokens, usage.measurement.total_turnaround_ms,
+151 | ÔÇª                     str(usage.estimated_cost) if usage.estimated_cost is not None else None,
+    |
+
+E501 Line too long (109 > 100)
+   --> src\semantic_reviewer\adapters\routing_journal.py:151:101
+    |
+149 |                                      tokens.input_tokens, tokens.output_tokens, tokens.cached_input_tokens,
+150 |                                      tokens.reasoning_tokens, usage.measurement.total_turnaround_ms,
+151 |                                      str(usage.estimated_cost) if usage.estimated_cost is not None else None,
+    |                                                                                                     ^^^^^^^^^
+152 |                                      usage.currency, row[0], row[1]))
+153 |                     analytical.executemany("INSERT INTO history VALUES (" + ",".join(["?"] * 16) + ")", rows)
+    |
+
+E501 Line too long (109 > 100)
+   --> src\semantic_reviewer\adapters\routing_journal.py:153:101
+    |
+151 |                                      str(usage.estimated_cost) if usage.estimated_cost is not None else None,
+152 |                                      usage.currency, row[0], row[1]))
+153 |                     analytical.executemany("INSERT INTO history VALUES (" + ",".join(["?"] * 16) + ")", rows)
+    |                                                                                                     ^^^^^^^^^
+154 |                     count += len(rows)
+155 |                 analytical.execute("COPY history TO ? (FORMAT PARQUET)", [str(staged)])
+    |
+
+E501 Line too long (110 > 100)
+  --> tests\test_routing_journal.py:88:101
+   |
+86 |         decision = self.service.route(self.task)
+87 |         with ThreadPoolExecutor(max_workers=4) as pool:
+88 |             results = list(pool.map(lambda _: self.service.complete(decision.id, self.measurement), range(8)))
+   |                                                                                                     ^^^^^^^^^^
+89 |         self.assertEqual(len({usage.id for usage in results}), 1)
+90 |         with closing(sqlite3.connect(self.database)) as db:
+   |
+
+E501 Line too long (113 > 100)
+   --> tests\test_routing_journal.py:130:101
+    |
+128 |             backend.connection.close()
+129 |         with closing(sqlite3.connect(old)) as db:
+130 |             db.execute("INSERT INTO dataset VALUES ('source', 'title', 'rev', 'url', 'sha', 'sha', 1, 'now', 1)")
+    |                                                                                                     ^^^^^^^^^^^^^
+131 |             db.execute("INSERT INTO event VALUES (7, 'dataset_registered', 'source', 'now', '{}')")
+132 |             db.commit()
+    |
+
+E501 Line too long (101 > 100)
+   --> tests\test_routing_journal.py:144:101
+    |
+143 |     def test_cli_preview_record_inspect_and_refusal(self):
+144 |         common = ["--config", str(EXAMPLE), "--task", str(ROOT / "config/routing/task-example.json")]
+    |                                                                                                     ^
+145 |         def run(*args):
+146 |             return subprocess.run([sys.executable, str(ROOT / "tools/route.py"), *args],
+    |
+
+Found 13 errors (3 fixed, 10 remaining).

@@ -1,0 +1,6 @@
+Running: ruff format --check .
+20 files already formatted
+Running: ruff check .
+All checks passed!
+Running: lint-imports --no-cache
+Missing tool: lint-imports; run uv sync --locked.

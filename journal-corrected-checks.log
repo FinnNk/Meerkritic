@@ -1,0 +1,49 @@
+Running: ruff format --check .
+29 files already formatted
+Running: ruff check .
+All checks passed!
+Running: lint-imports --no-cache
+=============
+Import Linter
+=============
+
+
+---------
+Contracts
+---------
+
+Analyzed 37 files, 58 dependencies.
+-----------------------------------
+
+Domain and routing remain independent KEPT
+Core logic does not depend on application or adapters KEPT
+Application owns contracts rather than concrete adapters KEPT
+Web cannot access concrete persistence or composition KEPT
+Worker and shared composition cannot pull in the web KEPT
+
+Contracts: 5 kept, 0 broken.
+Running: tach check
+[OK] All modules validated!
+Running: $WORKSPACE\extras\der-checkouts\vs1-routing\.venv\Scripts\python.exe -m unittest discover -s tests -p test_*.py
+$WORKSPACE\extras\der-checkouts\vs1-routing\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+....$WORKSPACE\extras\der-checkouts\vs1-routing\.venv\Lib\site-packages\yoyo\backends\base.py:411: DeprecationWarning: The default datetime adapter is deprecated as of Python 3.12; see the sqlite3 documentation for suggested replacement recipes
+  cursor.execute(sql, queryparams)
+..................E..................
+======================================================================
+ERROR: test_upgrade_preserves_dataset_events_and_subject_integrity (test_routing_journal.JournalTest.test_upgrade_preserves_dataset_events_and_subject_integrity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "$WORKSPACE\extras\der-checkouts\vs1-routing\tests\test_routing_journal.py", line 138, in test_upgrade_preserves_dataset_events_and_subject_integrity
+    backend.apply_migrations([item for item in migrations if item.id == "001_registry"])
+  File "$WORKSPACE\extras\der-checkouts\vs1-routing\.venv\Lib\site-packages\yoyo\backends\base.py", line 473, in apply_migrations
+    self.run_post_apply(migrations, force=force)
+  File "$WORKSPACE\extras\der-checkouts\vs1-routing\.venv\Lib\site-packages\yoyo\backends\base.py", line 492, in run_post_apply
+    for m in migrations.post_apply:
+             ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'post_apply'
+
+----------------------------------------------------------------------
+Ran 41 tests in 9.951s
+
+FAILED (errors=1)

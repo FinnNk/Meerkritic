@@ -1,0 +1,57 @@
+Running: ruff format --check .
+29 files already formatted
+Running: ruff check .
+All checks passed!
+Running: lint-imports --no-cache
+=============
+Import Linter
+=============
+
+
+---------
+Contracts
+---------
+
+Analyzed 37 files, 58 dependencies.
+-----------------------------------
+
+Domain and routing remain independent KEPT
+Core logic does not depend on application or adapters KEPT
+Application owns contracts rather than concrete adapters KEPT
+Web cannot access concrete persistence or composition KEPT
+Worker and shared composition cannot pull in the web KEPT
+
+Contracts: 5 kept, 0 broken.
+Running: tach check
+[OK] All modules validated!
+Running: $WORKSPACE\extras\der-checkouts\vs1-routing\.venv\Scripts\python.exe -m unittest discover -s tests -p test_*.py
+$WORKSPACE\extras\der-checkouts\vs1-routing\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+...F$WORKSPACE\extras\der-checkouts\vs1-routing\.venv\Lib\site-packages\yoyo\backends\base.py:411: DeprecationWarning: The default datetime adapter is deprecated as of Python 3.12; see the sqlite3 documentation for suggested replacement recipes
+  cursor.execute(sql, queryparams)
+..................E..................
+======================================================================
+ERROR: test_upgrade_preserves_dataset_events_and_subject_integrity (test_routing_journal.JournalTest.test_upgrade_preserves_dataset_events_and_subject_integrity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "$WORKSPACE\extras\der-checkouts\vs1-routing\tests\test_routing_journal.py", line 138, in test_upgrade_preserves_dataset_events_and_subject_integrity
+    backend.apply_migrations([item for item in migrations if item.id == "001_registry"])
+  File "$WORKSPACE\extras\der-checkouts\vs1-routing\.venv\Lib\site-packages\yoyo\backends\base.py", line 473, in apply_migrations
+    self.run_post_apply(migrations, force=force)
+  File "$WORKSPACE\extras\der-checkouts\vs1-routing\.venv\Lib\site-packages\yoyo\backends\base.py", line 492, in run_post_apply
+    for m in migrations.post_apply:
+             ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'post_apply'
+
+======================================================================
+FAIL: test_snapshot_exposes_contracts_and_adapter_edges (test_architecture_snapshot.ArchitectureSnapshotTest.test_snapshot_exposes_contracts_and_adapter_edges)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "$WORKSPACE\extras\der-checkouts\vs1-routing\tests\test_architecture_snapshot.py", line 22, in test_snapshot_exposes_contracts_and_adapter_edges
+    self.assertIn(
+AssertionError: Import(source='semantic_reviewer.adapters.registry', target='sqlite3') not found in (Import(source='semantic_reviewer.adapters.observations', target='datetime'), Import(source='semantic_reviewer.adapters.observations', target='duckdb'), Import(source='semantic_reviewer.adapters.observations', target='hashlib'), Import(source='semantic_reviewer.adapters.observations', target='json'), Import(source='semantic_reviewer.adapters.observations', target='os'), Import(source='semantic_reviewer.adapters.observations', target='pathlib'), Import(source='semantic_reviewer.adapters.observations', target='semantic_reviewer.application.datasets'), Import(source='semantic_reviewer.adapters.observations', target='semantic_reviewer.domain.datasets'), Import(source='semantic_reviewer.adapters.observations', target='tempfile'), Import(source='semantic_reviewer.adapters.observations', target='urllib.request'), Import(source='semantic_reviewer.adapters.registry', target='dataclasses'), Import(source='semantic_reviewer.adapters.registry', target='json'), Import(source='semantic_reviewer.adapters.registry', target='pathlib'), Import(source='semantic_reviewer.adapters.registry', target='semantic_reviewer.adapters.state'), Import(source='semantic_reviewer.adapters.registry', target='semantic_reviewer.domain.datasets'), Import(source='semantic_reviewer.adapters.routing_journal', target='duckdb'), Import(source='semantic_reviewer.adapters.routing_journal', target='json'), Import(source='semantic_reviewer.adapters.routing_journal', target='os'), Import(source='semantic_reviewer.adapters.routing_journal', target='pathlib'), Import(source='semantic_reviewer.adapters.routing_journal', target='semantic_reviewer.adapters.state'), Import(source='semantic_reviewer.adapters.routing_journal', target='semantic_reviewer.routing.selection'), Import(source='semantic_reviewer.adapters.routing_journal', target='semantic_reviewer.routing.usage'), Import(source='semantic_reviewer.adapters.routing_journal', target='sqlite3'), Import(source='semantic_reviewer.adapters.routing_journal', target='tempfile'), Import(source='semantic_reviewer.adapters.state', target='collections.abc'), Import(source='semantic_reviewer.adapters.state', target='contextlib'), Import(source='semantic_reviewer.adapters.state', target='pathlib'), Import(source='semantic_reviewer.adapters.state', target='sqlite3'), Import(source='semantic_reviewer.adapters.state', target='yoyo'), Import(source='semantic_reviewer.application.datasets', target='dataclasses'), Import(source='semantic_reviewer.application.datasets', target='semantic_reviewer.domain.datasets'), Import(source='semantic_reviewer.application.datasets', target='typing'), Import(source='semantic_reviewer.application.routing', target='semantic_reviewer.routing.selection'), Import(source='semantic_reviewer.application.routing', target='semantic_reviewer.routing.usage'), Import(source='semantic_reviewer.application.routing', target='typing'), Import(source='semantic_reviewer.asgi', target='pathlib'), Import(source='semantic_reviewer.asgi', target='semantic_reviewer.bootstrap'), Import(source='semantic_reviewer.asgi', target='semantic_reviewer.web.app'), Import(source='semantic_reviewer.bootstrap', target='json'), Import(source='semantic_reviewer.bootstrap', target='pathlib'), Import(source='semantic_reviewer.bootstrap', target='semantic_reviewer.adapters.observations'), Import(source='semantic_reviewer.bootstrap', target='semantic_reviewer.adapters.registry'), Import(source='semantic_reviewer.bootstrap', target='semantic_reviewer.application.datasets'), Import(source='semantic_reviewer.domain.datasets', target='dataclasses'), Import(source='semantic_reviewer.routing.selection', target='datetime'), Import(source='semantic_reviewer.routing.selection', target='decimal'), Import(source='semantic_reviewer.routing.selection', target='pydantic'), Import(source='semantic_reviewer.routing.selection', target='typing'), Import(source='semantic_reviewer.routing.selection', target='uuid'), Import(source='semantic_reviewer.routing.usage', target='decimal'), Import(source='semantic_reviewer.routing.usage', target='pydantic'), Import(source='semantic_reviewer.routing.usage', target='semantic_reviewer.routing.selection'), Import(source='semantic_reviewer.routing.usage', target='typing'), Import(source='semantic_reviewer.routing.usage', target='uuid'), Import(source='semantic_reviewer.web.app', target='fastapi'), Import(source='semantic_reviewer.web.app', target='fastapi.responses'), Import(source='semantic_reviewer.web.app', target='fastapi.templating'), Import(source='semantic_reviewer.web.app', target='pathlib'), Import(source='semantic_reviewer.web.app', target='semantic_reviewer.application.datasets'), Import(source='semantic_reviewer.web.app', target='semantic_reviewer.domain.datasets'))
+
+----------------------------------------------------------------------
+Ran 41 tests in 11.265s
+
+FAILED (failures=1, errors=1)

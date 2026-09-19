@@ -1,0 +1,15 @@
+Running: ruff format --check .
+29 files already formatted
+Running: ruff check .
+E501 Line too long (102 > 100)
+   --> src\semantic_reviewer\adapters\routing_journal.py:156:101
+    |
+154 |                 cursor = sqlite.execute(
+155 |                     "SELECT d.payload_json, u.payload_json, i.payload_json, p.payload_json, "
+156 |                     "c.payload_json FROM model_usage u JOIN routing_decision d ON d.id=u.decision_id "
+    |                                                                                                     ^^
+157 |                     "JOIN routing_version i ON i.kind='inventory' "
+158 |                     "AND i.id=json_extract(d.payload_json,'$.inventory.id') "
+    |
+
+Found 1 error.

@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "pair_id": "vs1-routing",
+  "round_id": "r1",
+  "manifest_sha256": "5d07c0004926a25180ab994436e6d9b913c55da61f1fd7136d87b743b170a11c",
+  "semantic_tip": "66431eeb2cde53803fdbe61db3d41c1954fd25ca",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "meerkritic-vs1-routing-2026-09-19"
+  },
+  "independence": "self-review",
+  "mode": "full",
+  "status": "complete",
+  "orientation_done": true,
+  "reviewed_commits": [
+    "910b5d8d8d1aeb48d96f1daade4ce60df57855ba",
+    "55ee4bb88a1d09e3cecf6fda9899655152780a1d",
+    "638e85222ad59ce27163fa7f34a3501d198c5498",
+    "66431eeb2cde53803fdbe61db3d41c1954fd25ca"
+  ],
+  "aggregate_done": true,
+  "findings": [],
+  "check_records": [
+    "final-p1-checks.json",
+    "final-p2-checks.json",
+    "final-p3-checks.json",
+    "final-p4-checks.json",
+    "final-diary-checks.json",
+    "review.md",
+    "boundary-review.md",
+    "plan.md",
+    "finalisation.md"
+  ],
+  "limitations": [
+    "Windows/Python 3.12 only",
+    "Full review is self-review; independent context covers boundaries only",
+    "No live provider or MAF invocation",
+    "No hosted CI configured",
+    "Owner approval and merge outstanding"
+  ],
+  "carry_forward_record": null,
+  "platform_approval": false
+}

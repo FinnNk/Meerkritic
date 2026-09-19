@@ -1,0 +1,229 @@
+{
+  "changes": {
+    "boundaries": {
+      "added": [],
+      "removed": []
+    },
+    "contracts": {
+      "added": [],
+      "removed": []
+    },
+    "imports": {
+      "added": [
+        {
+          "source": "semantic_reviewer.adapters.registry",
+          "target": "semantic_reviewer.adapters.state"
+        },
+        {
+          "source": "semantic_reviewer.adapters.routing_journal",
+          "target": "duckdb"
+        },
+        {
+          "source": "semantic_reviewer.adapters.routing_journal",
+          "target": "json"
+        },
+        {
+          "source": "semantic_reviewer.adapters.routing_journal",
+          "target": "os"
+        },
+        {
+          "source": "semantic_reviewer.adapters.routing_journal",
+          "target": "pathlib"
+        },
+        {
+          "source": "semantic_reviewer.adapters.routing_journal",
+          "target": "semantic_reviewer.adapters.state"
+        },
+        {
+          "source": "semantic_reviewer.adapters.routing_journal",
+          "target": "semantic_reviewer.routing.selection"
+        },
+        {
+          "source": "semantic_reviewer.adapters.routing_journal",
+          "target": "semantic_reviewer.routing.usage"
+        },
+        {
+          "source": "semantic_reviewer.adapters.routing_journal",
+          "target": "sqlite3"
+        },
+        {
+          "source": "semantic_reviewer.adapters.routing_journal",
+          "target": "tempfile"
+        },
+        {
+          "source": "semantic_reviewer.adapters.state",
+          "target": "collections.abc"
+        },
+        {
+          "source": "semantic_reviewer.adapters.state",
+          "target": "contextlib"
+        },
+        {
+          "source": "semantic_reviewer.adapters.state",
+          "target": "pathlib"
+        },
+        {
+          "source": "semantic_reviewer.adapters.state",
+          "target": "sqlite3"
+        },
+        {
+          "source": "semantic_reviewer.adapters.state",
+          "target": "yoyo"
+        },
+        {
+          "source": "semantic_reviewer.application.routing",
+          "target": "semantic_reviewer.routing.selection"
+        },
+        {
+          "source": "semantic_reviewer.application.routing",
+          "target": "semantic_reviewer.routing.usage"
+        },
+        {
+          "source": "semantic_reviewer.application.routing",
+          "target": "typing"
+        },
+        {
+          "source": "semantic_reviewer.routing.selection",
+          "target": "datetime"
+        },
+        {
+          "source": "semantic_reviewer.routing.selection",
+          "target": "decimal"
+        },
+        {
+          "source": "semantic_reviewer.routing.selection",
+          "target": "pydantic"
+        },
+        {
+          "source": "semantic_reviewer.routing.selection",
+          "target": "typing"
+        },
+        {
+          "source": "semantic_reviewer.routing.selection",
+          "target": "uuid"
+        },
+        {
+          "source": "semantic_reviewer.routing.usage",
+          "target": "decimal"
+        },
+        {
+          "source": "semantic_reviewer.routing.usage",
+          "target": "pydantic"
+        },
+        {
+          "source": "semantic_reviewer.routing.usage",
+          "target": "semantic_reviewer.routing.selection"
+        },
+        {
+          "source": "semantic_reviewer.routing.usage",
+          "target": "typing"
+        },
+        {
+          "source": "semantic_reviewer.routing.usage",
+          "target": "uuid"
+        }
+      ],
+      "removed": [
+        {
+          "source": "semantic_reviewer.adapters.registry",
+          "target": "contextlib"
+        },
+        {
+          "source": "semantic_reviewer.adapters.registry",
+          "target": "sqlite3"
+        },
+        {
+          "source": "semantic_reviewer.adapters.registry",
+          "target": "yoyo"
+        }
+      ]
+    },
+    "modules": {
+      "added": [
+        {
+          "definitions": [
+            "BudgetConstraint",
+            "Candidate",
+            "ContextStrategy",
+            "CostQuote",
+            "Model",
+            "ModelInventory",
+            "ProviderHealth",
+            "Record",
+            "Route",
+            "RoutingConfig",
+            "RoutingDecision",
+            "RoutingPolicy",
+            "TaskRequirements",
+            "Version",
+            "select_route"
+          ],
+          "name": "semantic_reviewer.routing.selection",
+          "package": false,
+          "path": "src/semantic_reviewer/routing/selection.py"
+        },
+        {
+          "definitions": [
+            "Measurement",
+            "ModelUsage",
+            "Price",
+            "PriceCatalogue",
+            "TokenUsage",
+            "account_usage",
+            "usage_summary"
+          ],
+          "name": "semantic_reviewer.routing.usage",
+          "package": false,
+          "path": "src/semantic_reviewer/routing/usage.py"
+        },
+        {
+          "definitions": [
+            "RoutingJournal",
+            "RoutingService"
+          ],
+          "name": "semantic_reviewer.application.routing",
+          "package": false,
+          "path": "src/semantic_reviewer/application/routing.py"
+        },
+        {
+          "definitions": [
+            "SQLiteRoutingJournal",
+            "_payload"
+          ],
+          "name": "semantic_reviewer.adapters.routing_journal",
+          "package": false,
+          "path": "src/semantic_reviewer/adapters/routing_journal.py"
+        },
+        {
+          "definitions": [
+            "SQLiteState"
+          ],
+          "name": "semantic_reviewer.adapters.state",
+          "package": false,
+          "path": "src/semantic_reviewer/adapters/state.py"
+        },
+        {
+          "definitions": [
+            "build_datasets",
+            "runtime_path"
+          ],
+          "name": "semantic_reviewer.bootstrap",
+          "package": false,
+          "path": "src/semantic_reviewer/bootstrap.py"
+        }
+      ],
+      "removed": [
+        {
+          "definitions": [
+            "build_datasets"
+          ],
+          "name": "semantic_reviewer.bootstrap",
+          "package": false,
+          "path": "src/semantic_reviewer/bootstrap.py"
+        }
+      ]
+    },
+    "settings": {}
+  },
+  "schema_version": 1
+}

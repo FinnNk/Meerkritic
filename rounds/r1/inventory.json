@@ -1,0 +1,351 @@
+{
+  "base": "2a7b118042c087dc0ed58f7068bee7f1433c64c0",
+  "tip": "66431eeb2cde53803fdbe61db3d41c1954fd25ca",
+  "tree": "1acdd57eff90c641d655e7582fa1c0cf365bf285",
+  "commits": [
+    {
+      "commit": "910b5d8d8d1aeb48d96f1daade4ce60df57855ba",
+      "parents": [
+        "2a7b118042c087dc0ed58f7068bee7f1433c64c0"
+      ],
+      "tree": "7c2138995aa58e81e4abf20e2489693ba91cf768",
+      "subject": "feat(routing): select eligible models with explicit provenance",
+      "change": {
+        "files": [
+          {
+            "path": "config/routing/example.json",
+            "added": 27,
+            "deleted": 0
+          },
+          {
+            "path": "docs/development/routing.md",
+            "added": 11,
+            "deleted": 0
+          },
+          {
+            "path": "pyproject.toml",
+            "added": 1,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/routing/selection.py",
+            "added": 310,
+            "deleted": 0
+          },
+          {
+            "path": "tests/test_routing_selection.py",
+            "added": 161,
+            "deleted": 0
+          },
+          {
+            "path": "uv.lock",
+            "added": 2,
+            "deleted": 0
+          }
+        ],
+        "file_count": 6,
+        "added": 512,
+        "deleted": 0,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "55ee4bb88a1d09e3cecf6fda9899655152780a1d",
+      "parents": [
+        "910b5d8d8d1aeb48d96f1daade4ce60df57855ba"
+      ],
+      "tree": "dcecd42ab467fabc6c27c8c737cf9069d85ea02b",
+      "subject": "feat(routing): account for usage with historical price versions",
+      "change": {
+        "files": [
+          {
+            "path": "CONTEXT.md",
+            "added": 8,
+            "deleted": 0
+          },
+          {
+            "path": "docs/development/routing.md",
+            "added": 6,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/routing/usage.py",
+            "added": 201,
+            "deleted": 0
+          },
+          {
+            "path": "tests/test_routing_usage.py",
+            "added": 128,
+            "deleted": 0
+          }
+        ],
+        "file_count": 4,
+        "added": 343,
+        "deleted": 0,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "638e85222ad59ce27163fa7f34a3501d198c5498",
+      "parents": [
+        "55ee4bb88a1d09e3cecf6fda9899655152780a1d"
+      ],
+      "tree": "cc2df2f466d42cae2a930a97353aa5cb800f5a7d",
+      "subject": "feat(routing): persist immutable decisions and completion events",
+      "change": {
+        "files": [
+          {
+            "path": "docs/adr/ADR-0005-retain-immutable-routing-provenance.md",
+            "added": 46,
+            "deleted": 0
+          },
+          {
+            "path": "docs/adr/README.md",
+            "added": 1,
+            "deleted": 0
+          },
+          {
+            "path": "docs/development/routing.md",
+            "added": 8,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/migrations/002_routing.sql",
+            "added": 60,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/registry.py",
+            "added": 5,
+            "deleted": 36
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/routing_journal.py",
+            "added": 125,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/state.py",
+            "added": 40,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/application/routing.py",
+            "added": 74,
+            "deleted": 0
+          },
+          {
+            "path": "tests/test_architecture_snapshot.py",
+            "added": 1,
+            "deleted": 1
+          },
+          {
+            "path": "tests/test_routing_journal.py",
+            "added": 170,
+            "deleted": 0
+          }
+        ],
+        "file_count": 10,
+        "added": 530,
+        "deleted": 37,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "66431eeb2cde53803fdbe61db3d41c1954fd25ca",
+      "parents": [
+        "638e85222ad59ce27163fa7f34a3501d198c5498"
+      ],
+      "tree": "1acdd57eff90c641d655e7582fa1c0cf365bf285",
+      "subject": "feat(routing): expose route inspection and Parquet history",
+      "change": {
+        "files": [
+          {
+            "path": "IMPLEMENTATION_BACKLOG.yaml",
+            "added": 5,
+            "deleted": 0
+          },
+          {
+            "path": "config/routing/task-example.json",
+            "added": 8,
+            "deleted": 0
+          },
+          {
+            "path": "docs/development/README.md",
+            "added": 4,
+            "deleted": 2
+          },
+          {
+            "path": "docs/development/routing-operations.md",
+            "added": 28,
+            "deleted": 0
+          },
+          {
+            "path": "docs/slice-reviews/VS1-progress.md",
+            "added": 8,
+            "deleted": 3
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/routing_journal.py",
+            "added": 82,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/bootstrap.py",
+            "added": 12,
+            "deleted": 5
+          },
+          {
+            "path": "tests/test_routing_journal.py",
+            "added": 80,
+            "deleted": 1
+          },
+          {
+            "path": "tools/route.py",
+            "added": 92,
+            "deleted": 0
+          }
+        ],
+        "file_count": 9,
+        "added": 319,
+        "deleted": 11,
+        "binary_files": 0
+      }
+    }
+  ],
+  "linear": true,
+  "final_change": {
+    "files": [
+      {
+        "path": "CONTEXT.md",
+        "added": 8,
+        "deleted": 0
+      },
+      {
+        "path": "IMPLEMENTATION_BACKLOG.yaml",
+        "added": 5,
+        "deleted": 0
+      },
+      {
+        "path": "config/routing/example.json",
+        "added": 27,
+        "deleted": 0
+      },
+      {
+        "path": "config/routing/task-example.json",
+        "added": 8,
+        "deleted": 0
+      },
+      {
+        "path": "docs/adr/ADR-0005-retain-immutable-routing-provenance.md",
+        "added": 46,
+        "deleted": 0
+      },
+      {
+        "path": "docs/adr/README.md",
+        "added": 1,
+        "deleted": 0
+      },
+      {
+        "path": "docs/development/README.md",
+        "added": 4,
+        "deleted": 2
+      },
+      {
+        "path": "docs/development/routing-operations.md",
+        "added": 28,
+        "deleted": 0
+      },
+      {
+        "path": "docs/development/routing.md",
+        "added": 25,
+        "deleted": 0
+      },
+      {
+        "path": "docs/slice-reviews/VS1-progress.md",
+        "added": 8,
+        "deleted": 3
+      },
+      {
+        "path": "pyproject.toml",
+        "added": 1,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/migrations/002_routing.sql",
+        "added": 60,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/registry.py",
+        "added": 5,
+        "deleted": 36
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/routing_journal.py",
+        "added": 207,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/state.py",
+        "added": 40,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/application/routing.py",
+        "added": 74,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/bootstrap.py",
+        "added": 12,
+        "deleted": 5
+      },
+      {
+        "path": "src/semantic_reviewer/routing/selection.py",
+        "added": 310,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/routing/usage.py",
+        "added": 201,
+        "deleted": 0
+      },
+      {
+        "path": "tests/test_architecture_snapshot.py",
+        "added": 1,
+        "deleted": 1
+      },
+      {
+        "path": "tests/test_routing_journal.py",
+        "added": 249,
+        "deleted": 0
+      },
+      {
+        "path": "tests/test_routing_selection.py",
+        "added": 161,
+        "deleted": 0
+      },
+      {
+        "path": "tests/test_routing_usage.py",
+        "added": 128,
+        "deleted": 0
+      },
+      {
+        "path": "tools/route.py",
+        "added": 92,
+        "deleted": 0
+      },
+      {
+        "path": "uv.lock",
+        "added": 2,
+        "deleted": 0
+      }
+    ],
+    "file_count": 25,
+    "added": 1703,
+    "deleted": 47,
+    "binary_files": 0
+  },
+  "statistics_note": "No rename detection; merge commit churn uses first parent. Final diff and cumulative per-commit churn are different quantities."
+}
