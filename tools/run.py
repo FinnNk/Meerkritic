@@ -26,6 +26,13 @@ def main() -> int:
     normalise.add_argument("dataset_id")
     normalise.add_argument("source_index", type=int)
     commands.add_parser("jobs")
+    annotate = commands.add_parser("annotate")
+    annotate.add_argument("job_id")
+    annotate.add_argument("decision", choices=("accept", "edit", "reject"))
+    annotate.add_argument("--notes", default="")
+    annotate.add_argument("--edited-json", type=Path)
+    progress = commands.add_parser("progress")
+    progress.add_argument("dataset_id")
     args = parser.parse_args()
     sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
     try:
@@ -37,6 +44,22 @@ def main() -> int:
         elif args.command == "worker":
             execution = importlib.import_module("semantic_reviewer.worker")
             execution.run(args.data_root, args.routing, args.endpoint, once=args.once)
+        elif args.command in ("annotate", "progress"):
+            composition = importlib.import_module("semantic_reviewer.bootstrap")
+            annotations = composition.build_annotations(args.data_root)
+            result = (
+                annotations.store.progress(args.dataset_id)
+                if args.command == "progress"
+                else asdict(
+                    annotations.decide(
+                        args.job_id,
+                        args.decision,
+                        args.notes,
+                        args.edited_json.read_text(encoding="utf-8") if args.edited_json else None,
+                    )
+                )
+            )
+            print(json.dumps(result, indent=2))
         elif args.command in ("normalise", "jobs"):
             composition = importlib.import_module("semantic_reviewer.bootstrap")
             jobs = composition.build_jobs(args.data_root)
