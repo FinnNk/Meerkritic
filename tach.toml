@@ -1,0 +1,40 @@
+source_roots = ["src"]
+root_module = "forbid"
+forbid_circular_dependencies = true
+ignore_type_checking_imports = false
+
+[[modules]]
+path = "semantic_reviewer"
+depends_on = []
+
+[[modules]]
+path = "semantic_reviewer.domain"
+depends_on = []
+
+[[modules]]
+path = "semantic_reviewer.routing"
+depends_on = []
+
+[[modules]]
+path = "semantic_reviewer.application"
+depends_on = ["semantic_reviewer.domain", "semantic_reviewer.routing"]
+
+[[modules]]
+path = "semantic_reviewer.adapters"
+depends_on = ["semantic_reviewer.domain", "semantic_reviewer.application", "semantic_reviewer.routing"]
+
+[[modules]]
+path = "semantic_reviewer.web"
+depends_on = ["semantic_reviewer.application", "semantic_reviewer.domain"]
+
+[[modules]]
+path = "semantic_reviewer.bootstrap"
+depends_on = ["semantic_reviewer.application", "semantic_reviewer.adapters", "semantic_reviewer.routing"]
+
+[[modules]]
+path = "semantic_reviewer.asgi"
+depends_on = ["semantic_reviewer.bootstrap", "semantic_reviewer.web"]
+
+[[modules]]
+path = "semantic_reviewer.worker"
+depends_on = ["semantic_reviewer.bootstrap", "semantic_reviewer.application"]

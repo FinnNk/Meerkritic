@@ -1,0 +1,100 @@
+# Project Context Glossary
+
+This file defines stable project vocabulary only. Keep definitions concise; put design rationale in ADRs or design documents.
+
+## Observation
+A normalised record derived from a review comment, PR description, issue, commit message, or code comment.
+
+## Weak negative
+An example where no relevant issue was observed, but correctness/non-violation has not been explicitly established.
+
+## Verified negative
+An example explicitly adjudicated as not violating the target rule.
+
+## Rule
+A versioned, inspectable statement describing an engineering condition, its applicability, violation definition, and exclusions.
+
+## Detector
+A concrete implementation used to evaluate a rule against code or repository context.
+
+## Finding
+A detector result asserting that a particular rule appears to be violated in a specific code context.
+
+## Replay
+Historical evaluation of a rule/detector against held-out code and review history.
+
+## Repair attempt
+An agent-generated candidate change intended to resolve a finding.
+
+## Behavioural acceptance
+Acceptance based on executable or otherwise independently verifiable evidence that the intended issue is resolved without unacceptable regression.
+
+## Framework observation
+An evidence-backed observation about Microsoft Agent Framework collected during normal programme use.
+
+## Architecture snapshot
+A typed representation of modules, dependency edges, contracts, interfaces, and violations at a specific commit/slice point.
+
+## Architecture delta
+The typed difference between two architecture snapshots.
+
+## Model inventory
+A versioned catalogue of models/providers/runtimes available to the routing subsystem. It describes availability and capabilities but does not choose a route.
+
+## Task requirements
+A model-independent statement of what a task needs, including reasoning, tools, context, risk and privacy constraints.
+
+## Routing policy
+A versioned set of rules that maps task requirements and an inventory onto preferred routes, fallbacks, review rules and constraints.
+
+## Routing decision
+The concrete provider/model selection made for one invocation under a specific policy and inventory version.
+
+## Routing policy transition
+An explicit mid-task switch from one routing policy/version to another.
+
+## Agent handoff
+A structured task-state package passed between models when a task changes route, avoiding a requirement to replay an entire transcript.
+
+## Provider health
+The current operational availability/degradation state of a provider/model endpoint.
+
+## Context strategy
+The policy-controlled approach used to construct model context, such as retrieval-first or direct large-context execution.
+
+## Double-Entry Review (DER)
+The paired-history review method used for material software PRs/changes in the factory.
+
+## DER diary
+The canonical chronological implementation history for a material change.
+
+## DER semantic history
+A reconstructed Git history of the frozen diary result, organised as complete review propositions. This is distinct from the project's semantic code-review system.
+
+## DER pair
+The diary and semantic histories for one material PR/change and its review rounds.
+
+## Materiality assessment
+A host-policy classification of a software change as routine, material or critical for deciding whether DER is required.
+
+## Review proposition / Review-Unit
+A bounded, complete claim established by one DER semantic checkpoint.
+
+## DER readiness
+The revision state tracked separately from slice status: locally prepared, published for qualification, hosted-qualified, owner-review-ready or integrated.
+
+## History integrator
+The single authorised role that owns integration into the canonical DER diary/semantic pair while contributors/agents may work concurrently in separate worktrees or branches.
+
+
+## Empirical Decision Record (EDR)
+
+A pre-registered record of a significant evidence-dependent decision, its hypothesis, method, results, limitations and decision status.
+
+## Pre-registration
+
+An identified, committed plan recorded before decision-bearing data collection or analysis; subsequent amendments preserve the original plan and disclose evidence already seen.
+
+## Architecture Decision Record (ADR)
+
+A MADR-formatted record of a consequential architecture choice, its rationale and consequences; it may cite EDRs as supporting evidence.

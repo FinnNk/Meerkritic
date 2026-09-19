@@ -1,0 +1,43 @@
+slice_review:
+  slice: null
+  completed_at: null
+  delivered: []
+  deviations: []
+  architecture_observations: []
+  research_observations: []
+  performance_observations: []
+  framework_observations: []
+  technical_debt: []
+  decisions: []
+  decision_trace: []
+  architecture_before: null
+  architecture_after: null
+  architecture_delta: null
+  context_updates: []
+  adrs_created_or_updated: []
+  changes_to_remaining_slices: []
+  design_clarity_review:
+    complexity: null
+    module_depth: null
+    knowledge_leakage: null
+    layer_quality: null
+    strategic_quality: null
+    configuration_exposure: null
+    vocabulary_consistency: null
+  routing_observations:
+    policy_versions_used: []
+    policy_transitions: []
+    routing_failures: []
+    provider_health_issues: []
+    context_strategy_issues: []
+    budget_constraint_issues: []
+  double_entry_review:
+    materiality_assessments: []
+    material_pairs: []
+    critical_pairs: []
+    routine_waivers_or_borderline_decisions: []
+    readiness_at_slice_completion: []
+    equivalence_failures_or_reconstructions: []
+    review_rounds: []
+    observed_preparation_review_overhead: []
+    threshold_lessons_for_future_slices: []

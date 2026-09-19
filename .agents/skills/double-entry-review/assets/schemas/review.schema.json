@@ -1,0 +1,361 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Double-Entry Review review v1",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "pair_id": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._-]{0,79}$"
+    },
+    "round_id": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._-]{0,79}$"
+    },
+    "manifest_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "semantic_tip": {
+      "type": "string",
+      "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$"
+    },
+    "actor": {
+      "type": "object",
+      "properties": {
+        "client": {
+          "type": "string",
+          "minLength": 1
+        },
+        "cli_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "model": {
+          "type": "string",
+          "minLength": 1
+        },
+        "session": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "client",
+        "cli_version",
+        "model",
+        "session"
+      ],
+      "additionalProperties": false
+    },
+    "independence": {
+      "enum": [
+        "self-review",
+        "fresh-session",
+        "external",
+        "unknown"
+      ]
+    },
+    "mode": {
+      "enum": [
+        "full",
+        "next",
+        "commit",
+        "aggregate",
+        "boundaries",
+        "tests",
+        "changes"
+      ]
+    },
+    "status": {
+      "enum": [
+        "complete",
+        "partial",
+        "blocked"
+      ]
+    },
+    "orientation_done": {
+      "type": "boolean"
+    },
+    "reviewed_commits": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$"
+      },
+      "uniqueItems": true
+    },
+    "aggregate_done": {
+      "type": "boolean"
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._-]{0,79}$"
+          },
+          "category": {
+            "enum": [
+              "bug",
+              "design",
+              "boundary",
+              "test-evidence",
+              "hypothesis"
+            ]
+          },
+          "severity": {
+            "enum": [
+              "critical",
+              "high",
+              "medium",
+              "low",
+              "info"
+            ]
+          },
+          "confidence": {
+            "enum": [
+              "verified",
+              "supported",
+              "suspected"
+            ]
+          },
+          "commit": {
+            "type": "string",
+            "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$"
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "line": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
+          },
+          "summary": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          }
+        },
+        "required": [
+          "id",
+          "category",
+          "severity",
+          "confidence",
+          "commit",
+          "path",
+          "line",
+          "summary",
+          "evidence"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "check_records": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "carry_forward_record": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "platform_approval": {
+      "const": false
+    },
+    "independence_dimensions": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "session": {
+          "enum": [
+            "same",
+            "fresh",
+            "external",
+            "unknown"
+          ]
+        },
+        "provider": {
+          "enum": [
+            "same",
+            "different",
+            "human",
+            "unknown"
+          ]
+        },
+        "model_family": {
+          "enum": [
+            "same",
+            "different",
+            "human",
+            "unknown"
+          ]
+        },
+        "human": {
+          "enum": [
+            "same",
+            "different",
+            "none",
+            "unknown"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "routing_provenance": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "inventory_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "policy_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "decision_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "provider": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "model_family": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "model": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "role": {
+          "enum": [
+            "author",
+            "reviewer",
+            "analyst",
+            "human",
+            "unknown"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "operational_observations": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "input_tokens": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "output_tokens": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "estimated_cost": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "currency": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "turnaround_ms": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "architecture_evidence": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schema_version",
+    "pair_id",
+    "round_id",
+    "manifest_sha256",
+    "semantic_tip",
+    "actor",
+    "independence",
+    "mode",
+    "status",
+    "orientation_done",
+    "reviewed_commits",
+    "aggregate_done",
+    "findings",
+    "check_records",
+    "limitations",
+    "carry_forward_record",
+    "platform_approval"
+  ],
+  "additionalProperties": false
+}

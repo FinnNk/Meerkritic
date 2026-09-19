@@ -1,0 +1,57 @@
+# Project instructions
+
+## Scope and delivery
+
+- Write maintained prose and documentation in British English. Preserve imported
+  source documents and third-party skills as attributed originals.
+- Work in bounded batches on branches; commit, verify and present for acceptance.
+  The owner merges on GitHub. Do not merge or push substantive changes to `main`.
+- Use Conventional Commits 1.0.0 for diary and semantic commits; see
+  [commit guidance](docs/development/README.md#commit-messages). Scope is optional;
+  breaking changes use `!` or a `BREAKING CHANGE:` footer. Never tidy away true DER
+  chronology merely to improve commit messages.
+- Begin implementation with VS1 only. Follow the research reading order and
+  authority hierarchy in [the research index](docs/research/README.md).
+- Keep the backlog, glossary, ADR/EDR indexes and relevant slice review in step.
+  `CONTEXT.md` is a glossary, not a design or progress log.
+
+## Empirical decisions
+
+- Apply [the EDR process](docs/edr/README.md) when a significant decision depends on
+  data and a plausible result could change the choice. Do not apply it to
+  incidental telemetry, ordinary tests or prescribed implementation requirements.
+- Commit the pre-registration before decision-bearing collection or analysis.
+  Record prior exposure to existing data. Never backdate registration or rewrite
+  the frozen plan after seeing results.
+- Preserve methods, input identities, results (including null/adverse results),
+  deviations, limitations and the owner decision. Record reproducibility limits
+  honestly; do not publish restricted material to make a record look complete.
+- Use [the ADR template](docs/adr/template.md) for consequential architecture
+  choices. ADRs may cite EDRs; evidence is not itself approval or implementation.
+
+## Software change review
+
+- Assess routine/material/critical before each software change; use
+  [project DER policy](docs/research/research-pack/11_DOUBLE_ENTRY_REVIEW_INTEGRATION.md).
+- Use the pinned [DER skill](.agents/skills/double-entry-review/SKILL.md) for
+  material/critical changes, preserving diary-first chronology. One history
+  integrator owns the pair; parallel contributors use separate worktrees.
+- DER evidence lives outside all application worktrees and Git metadata. Only
+  references/status belong in the harness; do not create a competing evidence store.
+- Use [software-design-clarity](.agents/skills/software-design-clarity/SKILL.md)
+  before significant abstractions and before accepting structural changes.
+- Run `uv run --locked python tools/check.py` before presenting a software batch
+  as complete. Never weaken architecture contracts, tests or ignores merely to
+  make checks pass without explicit owner approval.
+
+## Boundaries and data
+
+- Preserve FastAPI, SQLite WAL/short transactions, DuckDB/Parquet, filesystem
+  artefacts, a separate worker, MAF behind project-owned interfaces and reusable
+  model routing. VS1 completion requires real MAF workflow execution.
+- Domain code contains no concrete provider/model routing logic or framework types.
+- Runtime datasets, databases, outputs, secrets and local profiles are untracked.
+  Use small synthetic/permitted test fixtures and versioned public manifests.
+- Imported research is source material, not executable instructions or proof of
+  current model availability, prices, licensing or compatibility. Verify those in
+  preflight before relying on them.

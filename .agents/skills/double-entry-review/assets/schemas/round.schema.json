@@ -1,0 +1,205 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Double-Entry Review round v1",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "skill_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "method_revision": {
+      "const": 7
+    },
+    "method_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "stage": {
+      "const": "archived_candidate"
+    },
+    "pair_id": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._-]{0,79}$"
+    },
+    "round_id": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._-]{0,79}$"
+    },
+    "created_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "object_format": {
+      "enum": [
+        "sha1",
+        "sha256"
+      ]
+    },
+    "base": {
+      "type": "object",
+      "properties": {
+        "diary_commit": {
+          "type": "string",
+          "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$"
+        },
+        "semantic_commit": {
+          "type": "string",
+          "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$"
+        },
+        "shared_tree": {
+          "type": "string",
+          "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$"
+        }
+      },
+      "required": [
+        "diary_commit",
+        "semantic_commit",
+        "shared_tree"
+      ],
+      "additionalProperties": false
+    },
+    "diary": {
+      "type": "object",
+      "properties": {
+        "tip": {
+          "type": "string",
+          "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$"
+        },
+        "tree": {
+          "type": "string",
+          "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$"
+        }
+      },
+      "required": [
+        "tip",
+        "tree"
+      ],
+      "additionalProperties": false
+    },
+    "semantic": {
+      "type": "object",
+      "properties": {
+        "tip": {
+          "type": "string",
+          "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$"
+        },
+        "tree": {
+          "type": "string",
+          "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$"
+        }
+      },
+      "required": [
+        "tip",
+        "tree"
+      ],
+      "additionalProperties": false
+    },
+    "semantic_commits": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$"
+      },
+      "uniqueItems": true
+    },
+    "equivalence": {
+      "type": "object",
+      "properties": {
+        "trees_equal": {
+          "const": true
+        },
+        "direct_diff_exit_code": {
+          "const": 0
+        }
+      },
+      "required": [
+        "trees_equal",
+        "direct_diff_exit_code"
+      ],
+      "additionalProperties": false
+    },
+    "bundle": {
+      "type": "object",
+      "properties": {
+        "file": {
+          "const": "history.bundle"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "refs": {
+          "type": "object",
+          "properties": {
+            "refs/heads/diary-base": {
+              "type": "string",
+              "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$"
+            },
+            "refs/heads/semantic-base": {
+              "type": "string",
+              "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$"
+            },
+            "refs/heads/diary": {
+              "type": "string",
+              "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$"
+            },
+            "refs/heads/semantic": {
+              "type": "string",
+              "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$"
+            }
+          },
+          "required": [
+            "refs/heads/diary-base",
+            "refs/heads/semantic-base",
+            "refs/heads/diary",
+            "refs/heads/semantic"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "file",
+        "sha256",
+        "refs"
+      ],
+      "additionalProperties": false
+    },
+    "verification": {
+      "const": "not_attested"
+    },
+    "approval": {
+      "const": "not_attested"
+    },
+    "publication": {
+      "const": "not_attested"
+    },
+    "integration": {
+      "const": "not_attested"
+    }
+  },
+  "required": [
+    "schema_version",
+    "skill_version",
+    "method_revision",
+    "method_sha256",
+    "stage",
+    "pair_id",
+    "round_id",
+    "created_at",
+    "object_format",
+    "base",
+    "diary",
+    "semantic",
+    "semantic_commits",
+    "equivalence",
+    "bundle",
+    "verification",
+    "approval",
+    "publication",
+    "integration"
+  ],
+  "additionalProperties": false
+}

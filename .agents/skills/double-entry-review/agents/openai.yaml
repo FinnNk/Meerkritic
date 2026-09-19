@@ -1,0 +1,6 @@
+interface:
+  display_name: "Double-Entry Review"
+  short_description: "Intent-led review with paired Git histories"
+  default_prompt: "Use $double-entry-review status to inspect the current pair and next gate."
+policy:
+  allow_implicit_invocation: false
