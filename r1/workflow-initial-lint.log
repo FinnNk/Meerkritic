@@ -1,0 +1,37 @@
+WARN Retry attempt #0. Sleeping 1.5035854s before the next attempt
+WARN Retry attempt #0. Sleeping 1.4090608s before the next attempt
+WARN Retry attempt #0. Sleeping 1.7534581s before the next attempt
+WARN Retry attempt #0. Sleeping 1.7433814s before the next attempt
+WARN Retry attempt #0. Sleeping 1.3299706s before the next attempt
+WARN Retry attempt #0. Sleeping 1.1344808s before the next attempt
+WARN Retry attempt #0. Sleeping 1.4951907s before the next attempt
+WARN Retry attempt #0. Sleeping 1.3988747s before the next attempt
+WARN Retry attempt #0. Sleeping 1.1386103s before the next attempt
+WARN Retry attempt #0. Sleeping 1.0095193s before the next attempt
+WARN Retry attempt #0. Sleeping 1.8296535s before the next attempt
+WARN Retry attempt #1. Sleeping 2.4807502s before the next attempt
+WARN Retry attempt #1. Sleeping 3.8043621s before the next attempt
+WARN Retry attempt #1. Sleeping 2.4088931s before the next attempt
+WARN Retry attempt #1. Sleeping 2.7929696s before the next attempt
+WARN Retry attempt #1. Sleeping 1.5696099s before the next attempt
+WARN Retry attempt #1. Sleeping 2.5150858s before the next attempt
+WARN Retry attempt #1. Sleeping 1.308144s before the next attempt
+WARN Retry attempt #1. Sleeping 1.1469308s before the next attempt
+WARN Retry attempt #1. Sleeping 2.5211783s before the next attempt
+WARN Retry attempt #1. Sleeping 1.8661834s before the next attempt
+WARN Retry attempt #1. Sleeping 3.9438032s before the next attempt
+WARN Retry attempt #2. Sleeping 2.7436878s before the next attempt
+WARN Retry attempt #2. Sleeping 1.7588246s before the next attempt
+WARN Retry attempt #2. Sleeping 5.5512278s before the next attempt
+WARN Retry attempt #2. Sleeping 3.1164289s before the next attempt
+WARN Retry attempt #2. Sleeping 6.8595173s before the next attempt
+WARN Retry attempt #2. Sleeping 3.0762823s before the next attempt
+WARN Retry attempt #2. Sleeping 1.6266236s before the next attempt
+WARN Retry attempt #2. Sleeping 3.5581604s before the next attempt
+WARN Retry attempt #2. Sleeping 5.7912236s before the next attempt
+error: Request failed after 3 retries in 4.6s
+  Caused by: Failed to fetch: `https://pypi.org/simple/jinja2/`
+  Caused by: error sending request for url (https://pypi.org/simple/jinja2/)
+  Caused by: client error (Connect)
+  Caused by: tcp connect error
+  Caused by: An attempt was made to access a socket in a way forbidden by its access permissions. (os error 10013)

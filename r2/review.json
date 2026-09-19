@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "pair_id": "vs1-normalisation",
+  "round_id": "r2",
+  "manifest_sha256": "4468a8f8ea5d15a97b6f09cfc96ec04b4d2cdaefadb520b37a153adafa4ed8cb",
+  "semantic_tip": "fc30a333e950270356d99b29ab06cf84ca91154c",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "meerkritic-vs1-normalisation-2026-09-19"
+  },
+  "independence": "self-review",
+  "mode": "full",
+  "status": "complete",
+  "orientation_done": true,
+  "reviewed_commits": [
+    "e4cfb02c8059a2ee33a5bb3f562b98a6adbd6ee2",
+    "9a9c24cb20a83f031f8f28efceef345c5233a754",
+    "f0d94ca12ffd15af15fc3c19bd437b525e4aed69",
+    "0a2a62d61f01e24e48f784f76ee84a793052b923",
+    "fc30a333e950270356d99b29ab06cf84ca91154c"
+  ],
+  "aggregate_done": true,
+  "findings": [],
+  "check_records": [
+    "r2-p0-checks.json",
+    "r2-p1-checks.json",
+    "r2-p2-checks.json",
+    "r2-p3-checks.json",
+    "r2-p4-checks.json",
+    "r2-diary-checks.json",
+    "review.md",
+    "plan.md",
+    "live.json",
+    "discoveries.md"
+  ],
+  "limitations": [
+    "Windows/Python 3.12 only",
+    "Self-review; fresh-context challenge scoped",
+    "No model-quality or full VS1 completion claim",
+    "Synchronous I/O deadline limitation documented",
+    "No hosted CI configured",
+    "Owner approval pending"
+  ],
+  "carry_forward_record": null,
+  "platform_approval": false
+}

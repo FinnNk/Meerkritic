@@ -1,0 +1,497 @@
+{
+  "base": "f1478217d43414da6e55599a5bf390c7f957dadb",
+  "tip": "fc30a333e950270356d99b29ab06cf84ca91154c",
+  "tree": "710950a8cfa9dcc68f0f94a4ff9ba05bfe9c59d9",
+  "commits": [
+    {
+      "commit": "e4cfb02c8059a2ee33a5bb3f562b98a6adbd6ee2",
+      "parents": [
+        "f1478217d43414da6e55599a5bf390c7f957dadb"
+      ],
+      "tree": "bc05d1555085e091ef1c9b8816ae0a447f735268",
+      "subject": "docs: confirm routing provenance decision is implemented",
+      "change": {
+        "files": [
+          {
+            "path": "docs/adr/ADR-0005-retain-immutable-routing-provenance.md",
+            "added": 5,
+            "deleted": 5
+          },
+          {
+            "path": "docs/adr/README.md",
+            "added": 1,
+            "deleted": 1
+          }
+        ],
+        "file_count": 2,
+        "added": 6,
+        "deleted": 6,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "9a9c24cb20a83f031f8f28efceef345c5233a754",
+      "parents": [
+        "e4cfb02c8059a2ee33a5bb3f562b98a6adbd6ee2"
+      ],
+      "tree": "0b2cae575118bbc9d8e9bbf77b15970deb3921f4",
+      "subject": "feat: bound local model transport and capture usage",
+      "change": {
+        "files": [
+          {
+            "path": "docs/development/local-inference.md",
+            "added": 34,
+            "deleted": 0
+          },
+          {
+            "path": "pyproject.toml",
+            "added": 1,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/llama.py",
+            "added": 208,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/application/model.py",
+            "added": 48,
+            "deleted": 0
+          },
+          {
+            "path": "tests/test_llama.py",
+            "added": 209,
+            "deleted": 0
+          },
+          {
+            "path": "uv.lock",
+            "added": 2,
+            "deleted": 0
+          }
+        ],
+        "file_count": 6,
+        "added": 502,
+        "deleted": 0,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "f0d94ca12ffd15af15fc3c19bd437b525e4aed69",
+      "parents": [
+        "9a9c24cb20a83f031f8f28efceef345c5233a754"
+      ],
+      "tree": "ed23d3e022914c9138cbdcda2e94fa5115760ce0",
+      "subject": "feat: ground model interpretations through MAF",
+      "change": {
+        "files": [
+          {
+            "path": "docs/development/normalisation-contract.md",
+            "added": 28,
+            "deleted": 0
+          },
+          {
+            "path": "pyproject.toml",
+            "added": 1,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/maf.py",
+            "added": 136,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/application/normalisation.py",
+            "added": 102,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/domain/normalisation.py",
+            "added": 68,
+            "deleted": 0
+          },
+          {
+            "path": "tests/test_normalisation.py",
+            "added": 112,
+            "deleted": 0
+          },
+          {
+            "path": "uv.lock",
+            "added": 56,
+            "deleted": 0
+          }
+        ],
+        "file_count": 7,
+        "added": 503,
+        "deleted": 0,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "0a2a62d61f01e24e48f784f76ee84a793052b923",
+      "parents": [
+        "f0d94ca12ffd15af15fc3c19bd437b525e4aed69"
+      ],
+      "tree": "6499ba54509eee28b2a7f389d8104e02472fea5d",
+      "subject": "feat: persist normalisation jobs with crash-aware recovery",
+      "change": {
+        "files": [
+          {
+            "path": "config/routing/llama-local.json",
+            "added": 21,
+            "deleted": 0
+          },
+          {
+            "path": "docs/adr/ADR-0006-recover-jobs-under-process-lock.md",
+            "added": 59,
+            "deleted": 0
+          },
+          {
+            "path": "docs/adr/README.md",
+            "added": 1,
+            "deleted": 0
+          },
+          {
+            "path": "docs/development/normalisation.md",
+            "added": 52,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/jobs.py",
+            "added": 132,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/migrations/003_jobs.sql",
+            "added": 25,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/results.py",
+            "added": 47,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/worker_lock.py",
+            "added": 40,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/application/jobs.py",
+            "added": 214,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/bootstrap.py",
+            "added": 33,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/worker.py",
+            "added": 25,
+            "deleted": 1
+          },
+          {
+            "path": "tests/test_jobs.py",
+            "added": 264,
+            "deleted": 0
+          },
+          {
+            "path": "tools/run.py",
+            "added": 21,
+            "deleted": 1
+          }
+        ],
+        "file_count": 13,
+        "added": 934,
+        "deleted": 2,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "fc30a333e950270356d99b29ab06cf84ca91154c",
+      "parents": [
+        "0a2a62d61f01e24e48f784f76ee84a793052b923"
+      ],
+      "tree": "710950a8cfa9dcc68f0f94a4ff9ba05bfe9c59d9",
+      "subject": "feat(web): queue normalisation and inspect grounded results",
+      "change": {
+        "files": [
+          {
+            "path": "IMPLEMENTATION_BACKLOG.yaml",
+            "added": 2,
+            "deleted": 2
+          },
+          {
+            "path": "README.md",
+            "added": 6,
+            "deleted": 2
+          },
+          {
+            "path": "docs/development/README.md",
+            "added": 6,
+            "deleted": 5
+          },
+          {
+            "path": "docs/development/normalisation.md",
+            "added": 9,
+            "deleted": 1
+          },
+          {
+            "path": "docs/slice-reviews/VS1-progress.md",
+            "added": 38,
+            "deleted": 35
+          },
+          {
+            "path": "src/semantic_reviewer/asgi.py",
+            "added": 3,
+            "deleted": 2
+          },
+          {
+            "path": "src/semantic_reviewer/web/app.py",
+            "added": 56,
+            "deleted": 6
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/base.html",
+            "added": 1,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/index.html",
+            "added": 2,
+            "deleted": 1
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/job.html",
+            "added": 38,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/jobs.html",
+            "added": 14,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/observations.html",
+            "added": 5,
+            "deleted": 0
+          },
+          {
+            "path": "tests/test_datasets.py",
+            "added": 1,
+            "deleted": 1
+          },
+          {
+            "path": "tests/test_job_web.py",
+            "added": 65,
+            "deleted": 0
+          }
+        ],
+        "file_count": 14,
+        "added": 246,
+        "deleted": 55,
+        "binary_files": 0
+      }
+    }
+  ],
+  "linear": true,
+  "final_change": {
+    "files": [
+      {
+        "path": "IMPLEMENTATION_BACKLOG.yaml",
+        "added": 2,
+        "deleted": 2
+      },
+      {
+        "path": "README.md",
+        "added": 6,
+        "deleted": 2
+      },
+      {
+        "path": "config/routing/llama-local.json",
+        "added": 21,
+        "deleted": 0
+      },
+      {
+        "path": "docs/adr/ADR-0005-retain-immutable-routing-provenance.md",
+        "added": 5,
+        "deleted": 5
+      },
+      {
+        "path": "docs/adr/ADR-0006-recover-jobs-under-process-lock.md",
+        "added": 59,
+        "deleted": 0
+      },
+      {
+        "path": "docs/adr/README.md",
+        "added": 2,
+        "deleted": 1
+      },
+      {
+        "path": "docs/development/README.md",
+        "added": 6,
+        "deleted": 5
+      },
+      {
+        "path": "docs/development/local-inference.md",
+        "added": 34,
+        "deleted": 0
+      },
+      {
+        "path": "docs/development/normalisation-contract.md",
+        "added": 28,
+        "deleted": 0
+      },
+      {
+        "path": "docs/development/normalisation.md",
+        "added": 60,
+        "deleted": 0
+      },
+      {
+        "path": "docs/slice-reviews/VS1-progress.md",
+        "added": 38,
+        "deleted": 35
+      },
+      {
+        "path": "pyproject.toml",
+        "added": 2,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/jobs.py",
+        "added": 132,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/llama.py",
+        "added": 208,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/maf.py",
+        "added": 136,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/migrations/003_jobs.sql",
+        "added": 25,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/results.py",
+        "added": 47,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/worker_lock.py",
+        "added": 40,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/application/jobs.py",
+        "added": 214,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/application/model.py",
+        "added": 48,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/application/normalisation.py",
+        "added": 102,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/asgi.py",
+        "added": 3,
+        "deleted": 2
+      },
+      {
+        "path": "src/semantic_reviewer/bootstrap.py",
+        "added": 33,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/domain/normalisation.py",
+        "added": 68,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/web/app.py",
+        "added": 56,
+        "deleted": 6
+      },
+      {
+        "path": "src/semantic_reviewer/web/templates/base.html",
+        "added": 1,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/web/templates/index.html",
+        "added": 2,
+        "deleted": 1
+      },
+      {
+        "path": "src/semantic_reviewer/web/templates/job.html",
+        "added": 38,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/web/templates/jobs.html",
+        "added": 14,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/web/templates/observations.html",
+        "added": 5,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/worker.py",
+        "added": 25,
+        "deleted": 1
+      },
+      {
+        "path": "tests/test_datasets.py",
+        "added": 1,
+        "deleted": 1
+      },
+      {
+        "path": "tests/test_job_web.py",
+        "added": 65,
+        "deleted": 0
+      },
+      {
+        "path": "tests/test_jobs.py",
+        "added": 264,
+        "deleted": 0
+      },
+      {
+        "path": "tests/test_llama.py",
+        "added": 209,
+        "deleted": 0
+      },
+      {
+        "path": "tests/test_normalisation.py",
+        "added": 112,
+        "deleted": 0
+      },
+      {
+        "path": "tools/run.py",
+        "added": 21,
+        "deleted": 1
+      },
+      {
+        "path": "uv.lock",
+        "added": 58,
+        "deleted": 0
+      }
+    ],
+    "file_count": 38,
+    "added": 2190,
+    "deleted": 62,
+    "binary_files": 0
+  },
+  "statistics_note": "No rename detection; merge commit churn uses first parent. Final diff and cumulative per-commit churn are different quantities."
+}

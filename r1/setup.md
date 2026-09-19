@@ -1,0 +1,18 @@
+# Normalisation implementation setup
+
+Materiality: material, assessed before implementation on 2026-09-19. Hard triggers: provider/runtime boundary, persistent job state and recovery semantics, filesystem artefact provenance and web mutation. Follow project DER policy and pinned alpha.2 method 7. One integrator: Codex desktop, GPT-6, session meerkritic-vs1-normalisation-2026-09-19. Pair vs1-normalisation, round r1, canonical external store extras/der-evidence.
+
+Base f1478217d43414da6e55599a5bf390c7f957dadb is PR #5's verified owner-approved merge. The four ordered mainline trees equal the reviewed routing trees. Canonical gates and 43 tests pass on actual main; evidence is in vs1-routing/r1/integration.json and integrated-main-checks.log. The owner authorised continued implementation and accepts ADR-0005 through approval/merge; update its status and confirmation on this branch.
+
+Scope: local llama.cpp adapter with output validation and telemetry, MAF normalisation behind a project-owned runtime, recoverable single-job worker, UI launch/result/failed-job inspection. Annotation remains a following batch. Actual source records remain unchanged; output and raw prompt/response provenance live in immutable filesystem artefacts. No paid hosted calls or comparative model selection.
+
+Operational preflight: official llama.cpp stable v0.4.1 points to b10964 Windows CUDA 12.4; Qwen/Qwen3-4B-GGUF revision bc640142c66e1fdd12af0bd68f40445458f3869b, Q4_K_M, is a compatibility fixture. Published SHA-256 checks verify archives and weights under extras/preflight/vs1-inference. Selection is a bounded engineering fixture, not evidence of model quality; no EDR is required. Record actual inference and MAF observations before claiming live integration. Model name and endpoint remain runtime configuration.
+
+Design-clarity contracts:
+
+- Local model adapter hides HTTP/schema/tokenisation and timing conventions. Callers supply project-owned prompt/schema/context budget and receive validated content plus observations, without provider SDK types. Restrict local transport to literal loopback, disable proxies and redirects, validate selected model identity and response locally; server grammar alone is not semantic validation.
+- WorkflowRunner hides MAF graph/context types. It orchestrates context preparation, inference and validation as explicit workflow steps; domain output does not depend on MAF. Framework observations record version, activity, outcome and mitigation/evidence from first application use.
+- Job store hides atomic claims, ownership fencing, short transactions and events. One worker runs one job; heartbeat loss marks stale, never silently re-executes possibly completed inference. Old owners cannot commit after losing ownership. No distributed runtime or speculative durable actors.
+- Artefact store publishes complete immutable JSON before metadata references it. Failed database completion may leave an orphan artefact, not a visible partial result. Bodies stay out of SQLite. Worker process owns long-running execution; requests enqueue or inspect only.
+
+Provisional semantic propositions: provider boundary; MAF normalisation contract; durable job/artefact worker; browser launch/inspection. Tests and comments/docs accompany each guarantee. Review actual frozen boundaries before reconstruction; a single large commit or mechanical code/test split is not acceptable. Quality context: isolated Windows/Python 3.12 locked environments, canonical command at each checkpoint, real loopback inference and MAF integration, failure/restart controls, architecture snapshots/delta. Full review is self-review unless separately recorded.

@@ -1,0 +1,37 @@
+Running: ruff format --check .
+42 files already formatted
+Running: ruff check .
+B023 Function definition does not bind loop variable `failure`
+   --> tests\test_jobs.py:207:33
+    |
+205 |                         started_at=queued_at,
+206 |                         completed_at=datetime.now(UTC),
+207 |                         outcome=failure if failure == "provider_failure" else "success",
+    |                                 ^^^^^^^
+208 |                     )
+209 |                     if failure == "provider_failure":
+    |
+
+B023 Function definition does not bind loop variable `failure`
+   --> tests\test_jobs.py:207:44
+    |
+205 |                         started_at=queued_at,
+206 |                         completed_at=datetime.now(UTC),
+207 |                         outcome=failure if failure == "provider_failure" else "success",
+    |                                            ^^^^^^^
+208 |                     )
+209 |                     if failure == "provider_failure":
+    |
+
+B023 Function definition does not bind loop variable `failure`
+   --> tests\test_jobs.py:209:24
+    |
+207 |                         outcome=failure if failure == "provider_failure" else "success",
+208 |                     )
+209 |                     if failure == "provider_failure":
+    |                        ^^^^^^^
+210 |                         raise ModelFailure("Unavailable", measured)
+211 |                     return ModelReply("{}", measured, "request", "response")
+    |
+
+Found 3 errors.

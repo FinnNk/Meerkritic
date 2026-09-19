@@ -1,0 +1,160 @@
+{
+  "semantic": "fc30a333e950270356d99b29ab06cf84ca91154c",
+  "job": {
+    "id": "563c3c68-f783-46ca-a0ad-b53bc41ee210",
+    "dataset_id": "crc-py-manual-4176ac0",
+    "source_index": 2,
+    "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:2",
+    "status": "succeeded",
+    "queued_at": "2026-09-19T23:13:37.751254+00:00",
+    "started_at": "2026-09-19T23:13:38.164698+00:00",
+    "heartbeat_at": "2026-09-19T23:13:38.164698+00:00",
+    "completed_at": "2026-09-19T23:13:42.241951+00:00",
+    "worker_id": "1e5b7e85-ca50-4240-ab97-eb8522a34d26",
+    "decision_id": "59d12da5-1239-4b71-8215-9acd482268e1",
+    "artefact_sha256": "bd0c6d991b9d2c380386c175bf6e896ac30c8712a3e9fc7bead7b60e211d1d2b",
+    "error": null
+  },
+  "usage": {
+    "currency": null,
+    "decision_id": "59d12da5-1239-4b71-8215-9acd482268e1",
+    "estimated_cost": "0",
+    "id": "ee4793a3-607e-4769-bc19-10a917796228",
+    "measurement": {
+      "completed_at": "2026-09-19T23:13:42.228830Z",
+      "generation_ms": 3250.548,
+      "outcome": "success",
+      "provider_currency": null,
+      "provider_reported_cost": null,
+      "queue_ms": 455.58700000000005,
+      "started_at": "2026-09-19T23:13:37.751254Z",
+      "time_to_first_token_ms": 765.0000000139698,
+      "tokens": {
+        "cached_input_tokens": 0,
+        "input_tokens": 212,
+        "output_tokens": 328,
+        "reasoning_tokens": null
+      }
+    },
+    "price_catalogue": null,
+    "spend_basis": "local"
+  },
+  "framework": {
+    "activity": "source preparation -> inference -> evidence validation",
+    "component": "WorkflowBuilder/executors",
+    "framework": "Microsoft Agent Framework",
+    "mitigation": "none",
+    "observation": "Three-step graph returned a typed outcome.",
+    "outcome": "completed",
+    "reproducibility": "Repeat with the retained prompt, source and runtime versions.",
+    "severity": "info",
+    "version": "1.19.0"
+  },
+  "routing": {
+    "budget": null,
+    "candidates": [
+      {
+        "model_id": "qwen3-4b-local",
+        "over_soft_budget": false,
+        "rejected_by": []
+      }
+    ],
+    "context": {
+      "id": "direct-v1",
+      "include_raw_transcript": false,
+      "max_fraction_of_context": 1.0,
+      "mode": "direct_large_context",
+      "reserve_output_tokens": 768
+    },
+    "created_at": "2026-09-19T23:13:38.187813Z",
+    "escalation_from": null,
+    "health": [],
+    "id": "59d12da5-1239-4b71-8215-9acd482268e1",
+    "inventory": {
+      "id": "llama-local",
+      "version": "2026-09-19.1"
+    },
+    "max_input_tokens": 3072,
+    "model_override": null,
+    "policy": {
+      "id": "local-normalisation",
+      "version": "1"
+    },
+    "policy_source": "system",
+    "project_local_only": true,
+    "quotes": [],
+    "reasons": [
+      "policy_order"
+    ],
+    "requirements": {
+      "capabilities": [
+        "structured_output"
+      ],
+      "excluded_families": [],
+      "expected_output_tokens": 512,
+      "min_input_tokens": 0,
+      "policy_override": null,
+      "privacy": "local_only",
+      "task_class": "normalisation",
+      "task_id": "563c3c68-f783-46ca-a0ad-b53bc41ee210"
+    },
+    "selected": {
+      "capabilities": [
+        "structured_output"
+      ],
+      "evidence": "Compatibility fixture only: llama.cpp b10964-b29c606e2, Qwen/Qwen3-4B-GGUF revision bc640142c66e1fdd12af0bd68f40445458f3869b, Qwen3-4B-Q4_K_M.gguf SHA256 7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5, context 4096. Local schema/stream/token preflight passed 2026-09-19; no comparative quality assessment.",
+      "family": "qwen3",
+      "id": "qwen3-4b-local",
+      "locality": "local",
+      "output_tokens": 768,
+      "practical_input_tokens": 3072,
+      "provider": "llama.cpp",
+      "status": "active_current"
+    }
+  },
+  "prompt_version": "normalisation-v1",
+  "dataset": {
+    "id": "crc-py-manual-4176ac0",
+    "parquet_sha256": "9d5b9bd1248b64417f7feff8af62644d1ca8801dcdba88c56a8c4f6f3eabe9bc",
+    "registered_at": "2026-09-19T22:45:10.940504+00:00",
+    "revision": "4176ac0013136ae3c8283fcdaf087d27159050cf",
+    "row_count": 1030,
+    "schema_version": 1,
+    "source_sha256": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83",
+    "source_url": "https://raw.githubusercontent.com/busraicoz/crc-py-dataset/4176ac0013136ae3c8283fcdaf087d27159050cf/data/manual/manual_labeled_data.json",
+    "title": "CRC-Py manual subset"
+  },
+  "verified_span_count": 2,
+  "events": [
+    {
+      "sequence": 14,
+      "kind": "job_queued",
+      "subject_id": "563c3c68-f783-46ca-a0ad-b53bc41ee210",
+      "occurred_at": "2026-09-19T23:13:37.752322+00:00",
+      "details_json": "{\"schema_version\": 1}"
+    },
+    {
+      "sequence": 15,
+      "kind": "job_started",
+      "subject_id": "563c3c68-f783-46ca-a0ad-b53bc41ee210",
+      "occurred_at": "2026-09-19T23:13:38.164698+00:00",
+      "details_json": "{\"worker_id\": \"1e5b7e85-ca50-4240-ab97-eb8522a34d26\"}"
+    },
+    {
+      "sequence": 17,
+      "kind": "job_routed",
+      "subject_id": "563c3c68-f783-46ca-a0ad-b53bc41ee210",
+      "occurred_at": "2026-09-19T23:13:38.194852+00:00",
+      "details_json": "{\"decision_id\": \"59d12da5-1239-4b71-8215-9acd482268e1\"}"
+    },
+    {
+      "sequence": 19,
+      "kind": "job_succeeded",
+      "subject_id": "563c3c68-f783-46ca-a0ad-b53bc41ee210",
+      "occurred_at": "2026-09-19T23:13:42.241951+00:00",
+      "details_json": "{\"artefact_sha256\": \"bd0c6d991b9d2c380386c175bf6e896ac30c8712a3e9fc7bead7b60e211d1d2b\", \"error\": null}"
+    }
+  ],
+  "browser": "Real IAB Normalise form returned queued job; worker subsequently completed.",
+  "limitations": "Exact source quotes are verified, not judgement quality. Earlier same-record output inferred unsupported possible bugs. Human annotation remains next batch. Raw public-source/prompt/result bodies retained locally, not replicated in this archive."
+}

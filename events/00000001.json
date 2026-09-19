@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "sequence": 1,
+  "pair_id": "vs1-normalisation",
+  "recorded_at": "2026-09-19T23:16:23+00:00",
+  "previous_hash": null,
+  "kind": "observation",
+  "round_id": "r2",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "meerkritic-vs1-normalisation-2026-09-19"
+  },
+  "payload": {
+    "stage": "locally_prepared",
+    "materiality": "material",
+    "assessment": "../r1/setup.md",
+    "diary": "3da9af4a2c04fecb1bd18fee309af0411c8a9894",
+    "semantic": "fc30a333e950270356d99b29ab06cf84ca91154c",
+    "manifest_sha256": "4468a8f8ea5d15a97b6f09cfc96ec04b4d2cdaefadb520b37a153adafa4ed8cb",
+    "checks": "verification-summary.json; all own-source/lock checkpoint gates passed",
+    "review": "review.md; scoped fresh-context dispositions in discoveries.md",
+    "publication": "not yet performed",
+    "approval": false
+  },
+  "event_hash": "276b750c902096fa35180289f83e8a0c1ba2dc8e8faf9ae757d81c3e43f0e61e"
+}

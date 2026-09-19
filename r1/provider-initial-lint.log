@@ -1,0 +1,89 @@
+E501 Line too long (105 > 100)
+  --> src\semantic_reviewer\adapters\llama.py:34:101
+   |
+32 |         if (not local or parsed.scheme != "http" or parsed.username or parsed.password
+33 |                 or parsed.query or parsed.fragment or parsed.path not in {"", "/"}):
+34 |             raise ValueError("llama.cpp requires an HTTP literal-loopback endpoint without credentials.")
+   |                                                                                                     ^^^^^
+35 |         if not math.isfinite(timeout) or timeout <= 0 or timeout > 600:
+36 |             raise ValueError("Model timeout must be between zero and 600 seconds.")
+   |
+
+E501 Line too long (101 > 100)
+  --> src\semantic_reviewer\adapters\llama.py:74:101
+   |
+72 |         try:
+73 |             with httpx.Client(
+74 |                 base_url=self.endpoint, timeout=self.timeout, trust_env=False, follow_redirects=False
+   |                                                                                                     ^
+75 |             ) as client:
+76 |                 def post(path: str, data: dict) -> dict:
+   |
+
+E501 Line too long (105 > 100)
+  --> src\semantic_reviewer\adapters\llama.py:83:101
+   |
+81 |                 available = client.get("/v1/models")
+82 |                 available.raise_for_status()
+83 |                 entry = next((item for item in available.json()["data"] if item["id"] == model.id), None)
+   |                                                                                                     ^^^^^
+84 |                 if entry is None:
+85 |                     raise fail("Selected model is not served by this endpoint.")
+   |
+
+E501 Line too long (106 > 100)
+  --> src\semantic_reviewer\adapters\llama.py:92:101
+   |
+90 |                     "chat_template_kwargs": {"enable_thinking": False},
+91 |                 })["prompt"]
+92 |                 token_count = len(post("/tokenize", {"content": rendered, "add_special": True})["tokens"])
+   |                                                                                                     ^^^^^^
+93 |                 actual_context = entry["meta"]["n_ctx"]
+94 |                 if token_count > decision.max_input_tokens or (
+   |
+
+E501 Line too long (108 > 100)
+  --> tests\test_llama.py:19:101
+   |
+17 |     def setUp(self):
+18 |         self.config = RoutingConfig.model_validate_json(EXAMPLE.read_bytes())
+19 |         self.decision = select_route(self.config, TaskRequirements(task_id="1", task_class="normalisation"))
+   |                                                                                                     ^^^^^^^^
+20 |         self.request = ModelRequest("system", "source", {"type": "object"}, "test-v1", 100)
+21 |         self.queued = datetime.now(UTC) - timedelta(seconds=1)
+   |
+
+E501 Line too long (125 > 100)
+  --> tests\test_llama.py:33:101
+   |
+31 |             self.calls.append(request.url.path)
+32 |             if request.url.path == "/v1/models":
+33 |                 return httpx.Response(self.status, json={"data": [{"id": "example-local", "meta": {"n_ctx": self.context}}]})
+   |                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+34 |             if request.url.path == "/apply-template":
+35 |                 return httpx.Response(200, json={"prompt": "rendered prompt"})
+   |
+
+E501 Line too long (131 > 100)
+  --> tests\test_llama.py:41:101
+   |
+39 |             self.assertEqual(data["prompt"], "rendered prompt")
+40 |             self.assertFalse(data["cache_prompt"])
+41 |             return httpx.Response(200, text='data: {"content":"{}","stop":false}\n\n' + "data: " + json.dumps(self.final) + "\n\n")
+   |                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+42 |         original = httpx.Client
+43 |         def factory(**kwargs):
+   |
+
+E501 Line too long (106 > 100)
+  --> tests\test_llama.py:48:101
+   |
+46 |             return original(**kwargs, transport=httpx.MockTransport(handler))
+47 |         with patch("semantic_reviewer.adapters.llama.httpx.Client", side_effect=factory):
+48 |             return LlamaClient("http://127.0.0.1:8081").generate(self.decision, self.request, self.queued)
+   |                                                                                                     ^^^^^^
+49 |
+50 |     def test_only_literal_loopback_without_credentials_or_redirects(self):
+   |
+
+Found 9 errors (1 fixed, 8 remaining).
