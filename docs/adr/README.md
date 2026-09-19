@@ -31,6 +31,20 @@ agent's proposal or implementation. Record consultation only when it occurred.
 Include a link and short title whenever referencing another ADR, including a
 successor or retirement record. Do not silently delete a historical decision.
 
+## Lifecycle review
+
+Review affected ADRs during each implementation batch and at slice completion.
+Advance an accepted decision to `implemented` once its application and stated
+confirmation are complete; record the evidence and update the date and index in
+the same change. A decision implemented in a candidate branch may be recorded as
+such before merge: identify that scope without claiming owner approval of the PR.
+
+Code presence does not accept a proposed decision. If acceptance or confirmation
+is outstanding, retain the appropriate status and state what remains. Do not
+silently narrow confirmation criteria to advance a status. When implementation
+changes an accepted decision, revisit its rationale and use a linked successor
+if it is a different decision. Check post-merge status against what actually landed.
+
 ## Relationship to empirical decisions
 
 An [empirical decision record](../edr/README.md) owns the pre-registered question,
@@ -46,5 +60,6 @@ Newest first. Status here describes the decision, not the PR or vertical slice.
 
 | Record | Title | Status | Decision-makers | Date |
 | --- | --- | --- | --- | --- |
+| [ADR-0003](ADR-0003-document-caller-contracts-and-intent.md) | Document caller contracts and non-obvious intent | implemented | Project owner | 2026-09-19 |
 | [ADR-0002](ADR-0002-preserve-source-record-identity.md) | Preserve source records before interpretation | proposed | Awaiting owner decision | 2026-09-19 |
 | [ADR-0001](ADR-0001-record-significant-empirical-decisions.md) | Record significant empirical decisions | accepted | Project owner | 2026-09-19 |

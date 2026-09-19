@@ -28,6 +28,8 @@
   honestly; do not publish restricted material to make a record look complete.
 - Use [the ADR template](docs/adr/template.md) for consequential architecture
   choices. ADRs may cite EDRs; evidence is not itself approval or implementation.
+- Review affected ADR statuses with each implementation batch. Update the record,
+  confirmation evidence and index together under [the ADR lifecycle](docs/adr/README.md).
 
 ## Software change review
 
@@ -43,6 +45,10 @@
 - Run `uv run --locked python tools/check.py` before presenting a software batch
   as complete. Never weaken architecture contracts, tests or ignores merely to
   make checks pass without explicit owner approval.
+- Follow [the code commenting convention](docs/development/code-comments.md):
+  concise exposed-operation docstrings and explanations of non-obvious intent.
+  Keep comments with their code in semantic history; separate existing-code
+  backfills and guidance changes into their own commits.
 
 ## Boundaries and data
 

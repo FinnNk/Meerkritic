@@ -79,6 +79,10 @@ evidence-policy changes are material; use the installed DER skill with one histo
 integrator. Keep external evidence, exact identities and required qualification
 separate from a branch name. The owner merges on GitHub after reviewing the branch.
 
+Follow the [code commenting convention](code-comments.md) when implementing and
+reviewing Python code. Review affected [ADR statuses](../adr/README.md#lifecycle-review)
+with the batch, including confirmation evidence and matching index entries.
+
 The empty initial Git baseline exists only to allow the first documentation branch
 to target `main`. It carries no project files. All substantive files are introduced
 on the review branch, with quality evidence before its first source commit.

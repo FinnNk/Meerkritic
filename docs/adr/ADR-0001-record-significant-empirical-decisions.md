@@ -86,6 +86,11 @@ methods, data provenance, results and the decision. Revisit this process if
 actual use reveals disproportionate overhead or insufficient reproducibility.
 No such empirical decision has been completed by this ADR.
 
+Status reviewed on 2026-09-19: the process documentation is present, but the
+first-use confirmation above remains outstanding. Retain `accepted` until that
+confirmation is recorded; incidental integration measurements and ordinary tests
+do not constitute an empirical decision under this process.
+
 ## Pros and Cons of the Options
 
 ### Informal notes
