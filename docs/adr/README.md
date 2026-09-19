@@ -61,5 +61,5 @@ Newest first. Status here describes the decision, not the PR or vertical slice.
 | Record | Title | Status | Decision-makers | Date |
 | --- | --- | --- | --- | --- |
 | [ADR-0003](ADR-0003-document-caller-contracts-and-intent.md) | Document caller contracts and non-obvious intent | implemented | Project owner | 2026-09-19 |
-| [ADR-0002](ADR-0002-preserve-source-record-identity.md) | Preserve source records before interpretation | proposed | Awaiting owner decision | 2026-09-19 |
+| [ADR-0002](ADR-0002-preserve-source-record-identity.md) | Preserve source records before interpretation | implemented | Project owner | 2026-09-19 |
 | [ADR-0001](ADR-0001-record-significant-empirical-decisions.md) | Record significant empirical decisions | accepted | Project owner | 2026-09-19 |
