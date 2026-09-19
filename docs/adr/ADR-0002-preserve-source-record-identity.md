@@ -1,7 +1,8 @@
 ---
-status: proposed
+status: implemented
 date: 2026-09-19
-decision-makers: []
+decision-makers:
+  - Project owner
 ---
 
 # ADR-0002: Preserve source records before interpretation
@@ -24,9 +25,10 @@ and later human annotation need stable references to the evidence actually impor
 
 ## Decision Outcome
 
-Proposed: retain each supplied record with source-hash/index identity in immutable
+Retain each supplied record with source-hash/index identity in immutable
 Parquet. SQLite registers metadata and an event atomically after publication. This
-is implemented in the candidate batch, pending owner decision and merge.
+is implemented in the candidate batch. The owner selected **Preserve source records**
+in Codex on 2026-09-19; PR approval and merge remain separate.
 
 ### Consequences
 
@@ -39,10 +41,15 @@ is implemented in the candidate batch, pending owner decision and merge.
 
 ### Confirmation
 
-Candidate tests cover repeated identities, checksum rejection, restart/idempotence,
-transaction rollback and immutable-event enforcement. The pinned 1,030-record sample
-registers successfully. The owner reviews this proposal with the batch. Revisit when
-cross-source matching or retention requirements become concrete.
+The [dataset tests](../../tests/test_datasets.py) pass for repeated identities,
+checksum rejection, restart/idempotence, transaction rollback and immutable-event
+enforcement. All 15 tests and the canonical static checks passed again after the
+commenting backfill. The pinned 1,030-record sample also registered and reopened
+successfully, with one event after repeated registration, in the retained
+[r3 registration evidence](https://github.com/FinnNk/Meerkritic/blob/2d8cd8d3024eeb70ef35f1afcbff8279141c71b6/p1-isolated-live.json).
+The owner has now accepted the decision; implementation and confirmation are
+complete in the candidate branch. Revisit when cross-source matching or retention
+requirements become concrete.
 
 ## Pros and Cons of the Options
 
