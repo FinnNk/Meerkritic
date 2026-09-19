@@ -4,7 +4,7 @@ current_slice: VS1
 slices:
 - id: VS1
   name: Data-to-Annotation
-  status: READY
+  status: IN_PROGRESS
   entry_conditions:
   - project bootstrap approved
   exit_conditions:

@@ -23,6 +23,7 @@ class ArchitectureContractsTest(unittest.TestCase):
                 (fixture / "src" / "semantic_reviewer" / path).write_text(content, encoding="utf-8")
             environment = os.environ.copy()
             environment["PYTHONPATH"] = str(fixture / "src")
+            environment["PYTHONIOENCODING"] = "utf-8"
             tool_path = str(Path(sys.executable).parent) + os.pathsep + environment["PATH"]
             arguments_by_tool = {"lint-imports": ["--no-cache"], "tach": ["check"]}
             for tool, diagnostic in diagnostics.items():
@@ -35,6 +36,7 @@ class ArchitectureContractsTest(unittest.TestCase):
                         env=environment,
                         capture_output=True,
                         text=True,
+                        encoding="utf-8",
                         check=False,
                     )
                     output = result.stdout + result.stderr
