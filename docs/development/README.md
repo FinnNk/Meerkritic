@@ -1,11 +1,11 @@
 # Development
 
-## Bootstrap status
+## Implementation status
 
-The repository has documentation, pinned independent skills, a locked Python
-quality toolchain and declared package boundaries. Package docstrings establish
-importable boundaries for enforcement; no harness, worker, model adapter or
-dataset pipeline is implemented. VS1 remains READY.
+VS1 is in progress. This checkpoint introduces the public dataset import CLI,
+SQLite metadata/events and immutable source/Parquet storage. Observation browsing
+and architecture reporting follow in separate review commits. The worker, routing,
+MAF normalisation and annotation remain future implementation work.
 
 ## Setup and checks
 
@@ -31,9 +31,8 @@ python -m unittest discover -s tests -p test_*.py
 the current interpreter environment, including on Windows. Three architecture
 negative-control tests inject forbidden imports into temporary copies and require
 the appropriate checkers to fail for the intended reason, including direct external
-persistence access. There are currently zero
-application behaviour tests: that is an explicit bootstrap limitation. Add relevant
-behavioural tests with each implementation change, and use the same quality
+persistence access. Behaviour tests exercise real SQLite/DuckDB, import failures,
+provenance, restart/idempotence, atomic events and runtime data boundaries. Use the same quality
 command locally, in review worktrees and in future CI.
 
 Ruff checks Python source and project TOML; research Markdown is original source
@@ -97,16 +96,16 @@ reviewable pushes dismiss previous approvals, and the latest push needs approval
 from someone other than its pusher. Force pushes and deletion of `main` are blocked.
 
 Only repository administrators may merge through the separate merge gate; the App
-has no bypass. The owner reviews, approves and merges the App's PR. GitHub may ask
-the owner to bypass the administrator-only merge gate, but this does not bypass
-the separate review and history protections. Owner-authored PRs also need another
+has no bypass. The owner reviews, approves and merges the App's PR. The administrator
+exemption applies to the separate update restriction; review and history protections
+still apply. Owner-authored PRs also need another
 reviewer's approval. Local quality checks remain required; these rules do not
 establish hosted CI checks.
 
-## Integration preflight still required for VS1
+## Integration preflight
 
-Verify provider credentials/connectivity and capability, a pinned public dataset,
-runtime dependency compatibility (FastAPI, SQLite, DuckDB and MAF), worker/recovery
-behaviour, and DER worktree/evidence operations. Toolchain installation in this
-batch is not evidence that those integrations work. Do not run paid model work or
-download large datasets as part of this documentation bootstrap.
+The public sample and SQLite/DuckDB import path are exercised in the first
+batch. MAF 1.19.0 completed an executor-only compatibility probe outside the
+application; this is not model integration. The owner's local runtime preference
+is llama.cpp. Its installation, selected model, inference compatibility and worker
+recovery remain preflight obligations before the next batch can complete.

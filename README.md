@@ -18,20 +18,25 @@ Its design centres on three ideas:
 
 ## Getting started
 
-Meerkritic is in early development; there is no runnable review application yet.
-You can explore the design and work with the development environment.
+Meerkritic is in early development. The data import CLI registers the pinned public
+CRC-Py sample and preserves its source records and provenance. Observation browsing
+is introduced in the next review commit.
 
-With **Python 3.12** and **uv** installed, run these commands from the repository
-root:
+With **Python 3.12** and **uv** installed, run from the repository root:
 
 ```sh
 uv sync --locked
-uv run --locked python tools/check.py
+uv run --locked python tools/run.py --data-root ../extras/runtime catalogue
+uv run --locked python tools/run.py --data-root ../extras/runtime register crc-py-manual-4176ac0
 ```
 
-This installs the locked development dependencies, checks formatting and
-architecture boundaries, runs lint checks and runs the tests. See the
-[development guide](docs/development/README.md) for details.
+Registration downloads about 2.5 MB, verifies its pinned checksum and prints the
+registered metadata for 1,030 records. Repeating it returns the same registration.
+Keep the data root outside the repository.
+
+Run `uv run --locked python tools/check.py` for the quality gates and tests.
+See the [dataset guide](docs/development/datasets.md) for provenance and recovery,
+or the [development guide](docs/development/README.md) for contribution guidance.
 
 ## Learn more
 

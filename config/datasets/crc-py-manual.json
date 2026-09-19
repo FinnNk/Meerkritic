@@ -1,0 +1,8 @@
+{
+  "id": "crc-py-manual-4176ac0",
+  "title": "CRC-Py manual subset",
+  "revision": "4176ac0013136ae3c8283fcdaf087d27159050cf",
+  "source_url": "https://raw.githubusercontent.com/busraicoz/crc-py-dataset/4176ac0013136ae3c8283fcdaf087d27159050cf/data/manual/manual_labeled_data.json",
+  "source_sha256": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83",
+  "expected_rows": 1030
+}
