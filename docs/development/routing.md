@@ -15,3 +15,11 @@ Context limits describe usable input and output capacities separately. The selec
 `Measurement` records completion outcome, token counts and observed timings. Input totals include cached tokens; output totals include reasoning tokens. Provider adapters must normalise that convention. Unknown counts remain `null`; they are never displayed as zero. Provider failures and semantic failures are distinct outcomes. Selection does not retry or escalate either automatically.
 
 `account_usage` uses a supplied price catalogue effective at invocation start. Rates and currency are versioned, cached input is billed once and reasoning is already part of output. A missing catalogue, rate or necessary token count leaves the estimate unknown. Different cache rates require a known cached count. Provider-reported spend remains a separate observation. Local execution reports zero API spend without estimating hardware or electricity costs. The compact summary shows model, input/output tokens, estimated spend or local, and elapsed time; this is available to callers before the live workflow UI is implemented.
+
+## Durable provenance
+
+`RoutingService.route` persists a decision and exact inventory/policy snapshots before returning. A future executor must only act on that successfully returned decision. Refusals are recorded too. Each call represents a distinct invocation. The journal accepts identical record retries without duplicate events and rejects conflicting identities.
+
+`RoutingService.complete` retains one completion per decision. Identical concurrent retries return the original completion ID. Changed metrics, outcomes or price-version contents are rejected without partial writes. The event migration preserves dataset history while adding routing and usage subjects; [ADR-0005](../adr/ADR-0005-retain-immutable-routing-provenance.md) records the proposed retention decision.
+
+Policy transitions and structured handoffs remain later additive records linked to decisions, not implemented switching actions. Health, budgets, context strategies and escalation references are selection inputs now. The live adapter must refresh observations, construct context, invoke the provider and persist completion. No current routing API invokes a model.

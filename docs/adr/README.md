@@ -60,6 +60,7 @@ Newest first. Status here describes the decision, not the PR or vertical slice.
 
 | Record | Title | Status | Decision-makers | Date |
 | --- | --- | --- | --- | --- |
+| [ADR-0005](ADR-0005-retain-immutable-routing-provenance.md) | Retain immutable routing versions and invocation records | proposed | Project owner (acceptance pending) | 2026-09-19 |
 | [ADR-0004](ADR-0004-adopt-selective-python-style.md) | Adopt a selective Python style guide | implemented | Project owner | 2026-09-19 |
 | [ADR-0003](ADR-0003-document-caller-contracts-and-intent.md) | Document caller contracts and non-obvious intent | implemented | Project owner | 2026-09-19 |
 | [ADR-0002](ADR-0002-preserve-source-record-identity.md) | Preserve source records before interpretation | implemented | Project owner | 2026-09-19 |

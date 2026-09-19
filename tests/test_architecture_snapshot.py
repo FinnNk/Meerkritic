@@ -20,7 +20,7 @@ class ArchitectureSnapshotTest(unittest.TestCase):
         self.assertEqual(len(value.contracts), 5)
         self.assertTrue(value.forbid_cycles)
         self.assertIn(
-            architecture.Import("semantic_reviewer.adapters.registry", "sqlite3"), value.imports
+            architecture.Import("semantic_reviewer.adapters.state", "sqlite3"), value.imports
         )
         old = asdict(value)
         new = {**old, "imports": (*old["imports"], {"source": "example", "target": "sqlite3"})}
