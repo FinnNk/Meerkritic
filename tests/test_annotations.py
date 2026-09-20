@@ -11,6 +11,7 @@ import test_jobs
 
 from semantic_reviewer.adapters.annotations import SQLiteAnnotations
 from semantic_reviewer.application.annotations import AnnotationService
+from semantic_reviewer.application.artefacts import Publication
 
 
 class AnnotationsTest(unittest.TestCase):
@@ -32,7 +33,9 @@ class AnnotationsTest(unittest.TestCase):
     def complete(self, index=0):
         job = self.queue.enqueue(self.source.id, index)
         claimed = self.jobs.claim("test")
-        digest = self.results.publish({"job_id": job.id, "interpretation": self.issue})
+        digest = self.results.publish(
+            {"job_id": job.id, "interpretation": self.issue}, Publication(job.id, "normalisation")
+        )
         self.jobs.finish(claimed, digest, None)
         return job
 

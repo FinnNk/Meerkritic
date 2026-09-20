@@ -6,6 +6,7 @@ from threading import Event, Thread
 from typing import Literal, Protocol
 from uuid import uuid4
 
+from semantic_reviewer.application.artefacts import ArtefactMetadata, Publication, ResultStore
 from semantic_reviewer.application.datasets import DatasetService
 from semantic_reviewer.application.normalisation import NormalisationInput, WorkflowRunner
 from semantic_reviewer.application.routing import RoutingJournal, RoutingService
@@ -64,7 +65,7 @@ class JobStore(Protocol):
         """Read at most the latest 100 jobs in reverse queue order."""
         ...
 
-    def log(self, job_id: str) -> dict:
+    def log(self, job_id: str) -> ArtefactMetadata:
         """Export a structured snapshot of committed events and return artefact metadata."""
         ...
 
@@ -94,18 +95,6 @@ class JobStore(Protocol):
 
         Never call on the basis of heartbeat age alone. Do not retry uncertain calls.
         """
-        ...
-
-
-class ResultStore(Protocol):
-    """Publish and verify immutable JSON bundles outside the operational database."""
-
-    def publish(self, value: dict) -> str:
-        """Atomically retain a complete bundle and return its SHA-256 identity."""
-        ...
-
-    def read(self, digest: str) -> dict:
-        """Read a verified bundle; reject missing or changed evidence."""
         ...
 
 
@@ -221,7 +210,7 @@ class JobService:
                 "response": outcome.reply.response_json if outcome.reply else None,
                 "error": outcome.error,
             }
-            digest = self.results.publish(bundle)
+            digest = self.results.publish(bundle, Publication(job.id, "normalisation"))
             if heartbeat_errors:
                 raise RuntimeError("Worker heartbeat failed.") from heartbeat_errors[0]
             self.jobs.finish(job, digest, outcome.error)

@@ -10,6 +10,7 @@ from pathlib import Path
 
 from semantic_reviewer.adapters.results import JsonResults
 from semantic_reviewer.adapters.state import SQLiteState
+from semantic_reviewer.application.artefacts import ArtefactMetadata, Publication
 from semantic_reviewer.application.jobs import Job
 
 
@@ -152,7 +153,7 @@ class SQLiteJobs:
             self._export_log(row[0])
         return len(rows)
 
-    def log(self, job_id: str) -> dict:
+    def log(self, job_id: str) -> ArtefactMetadata:
         """Publish a structured snapshot of committed job events; return its metadata."""
         with self.state.connect() as db:
             if not db.execute("SELECT 1 FROM job WHERE id=?", (job_id,)).fetchone():
@@ -172,7 +173,10 @@ class SQLiteJobs:
             }
             for row in rows
         ]
-        digest = self.logs.publish({"schema_version": 1, "job_id": job_id, "log_events": events})
+        digest = self.logs.publish(
+            {"schema_version": 1, "job_id": job_id, "log_events": events},
+            Publication(job_id, "job_log"),
+        )
         with self.state.connect() as db:
             db.execute(
                 "INSERT INTO job_log VALUES (?, ?, ?) ON CONFLICT(job_id) DO UPDATE SET "

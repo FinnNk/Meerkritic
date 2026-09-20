@@ -1,5 +1,6 @@
 """Check immutable metadata, old-runtime indexing and regenerable structured job logs."""
 
+import hashlib
 import json
 import sqlite3
 import unittest
@@ -8,6 +9,7 @@ from unittest.mock import patch
 import test_annotations
 
 from semantic_reviewer.adapters.results import JsonResults
+from semantic_reviewer.application.artefacts import Publication
 
 
 class ArtefactsTest(unittest.TestCase):
@@ -15,10 +17,21 @@ class ArtefactsTest(unittest.TestCase):
         test_annotations.AnnotationsTest.setUp(self)
 
     def test_existing_results_and_new_edits_gain_verified_metadata(self):
-        job = test_annotations.AnnotationsTest.complete(self)
+        # Simulate a pre-catalogue runtime; its immutable bytes have no routing keys.
+        job = self.queue.enqueue(self.source.id, 0)
+        claimed = self.jobs.claim("legacy")
+        body = json.dumps({"interpretation": self.issue}).encode()
+        digest = hashlib.sha256(body).hexdigest()
+        (self.results.root / (digest + ".json")).write_bytes(body)
+        self.jobs.finish(claimed, digest, None)
         indexed = JsonResults(self.results.root, self.database)
         self.assertEqual(indexed.index_referenced(), 1)
         self.assertEqual(indexed.index_referenced(), 1)
+        self.assertEqual((self.results.root / (digest + ".json")).read_bytes(), body)
+        with indexed.state.connect() as db:
+            self.assertIsNotNone(
+                db.execute("SELECT 1 FROM artefact WHERE sha256=?", (digest,)).fetchone()
+            )
         self.queue.results = indexed
         annotation = self.annotations.decide(job.id, "edit", edited_json=json.dumps(self.issue))
         with self.store.state.connect() as db:
@@ -28,6 +41,19 @@ class ArtefactsTest(unittest.TestCase):
             self.assertIn(annotation.interpretation_sha256, {row["sha256"] for row in rows})
             with self.assertRaises(sqlite3.IntegrityError):
                 db.execute("DELETE FROM artefact")
+
+    def test_payload_keys_do_not_select_catalogue_kind_or_owner(self):
+        job = self.queue.enqueue(self.source.id, 0)
+        body = {"log_events": [], "original_result_sha256": "arbitrary", "job_id": "not-owner"}
+        digest = self.results.publish(body, Publication(job.id, "normalisation"))
+        with self.results.state.connect() as db:
+            row = db.execute(
+                "SELECT job_id, type FROM artefact WHERE sha256=?", (digest,)
+            ).fetchone()
+        self.assertEqual(tuple(row), (job.id, "normalisation"))
+        self.assertEqual(self.results.read(digest), body)
+        with self.assertRaises(ValueError):
+            Publication(job.id, "unsupported")
 
     def test_logs_derive_from_committed_events_and_remain_regenerable(self):
         job = self.queue.enqueue(self.source.id, 0)
@@ -75,7 +101,9 @@ class ArtefactsTest(unittest.TestCase):
         indexed.index_referenced()
         bundle = indexed.read(self.jobs.get(job.id).artefact_sha256)
         with self.assertRaisesRegex(ValueError, "conflicting catalogue"):
-            JsonResults(self.root / "another-root", self.database).publish(bundle)
+            JsonResults(self.root / "another-root", self.database).publish(
+                bundle, Publication(job.id, "normalisation")
+            )
         self.queue.results = indexed
         before = set(self.results.root.glob("*.json"))
         with self.store.state.connect() as db:
@@ -95,12 +123,12 @@ class ArtefactsTest(unittest.TestCase):
         publish = self.jobs.logs.publish
         interleaved = False
 
-        def delay_old_snapshot(value):
+        def delay_old_snapshot(value, publication):
             nonlocal interleaved
             if not interleaved:
                 interleaved = True
                 self.jobs.claim("concurrent-worker")
-            return publish(value)
+            return publish(value, publication)
 
         with patch.object(self.jobs.logs, "publish", delay_old_snapshot):
             old = self.jobs.log(job.id)

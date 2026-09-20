@@ -11,6 +11,7 @@ from semantic_reviewer.adapters.results import JsonResults
 from semantic_reviewer.adapters.reviews import SQLiteReviewIndex
 from semantic_reviewer.adapters.routing_journal import SQLiteRoutingJournal
 from semantic_reviewer.application.annotations import AnnotationService
+from semantic_reviewer.application.artefacts import ArtefactIndex
 from semantic_reviewer.application.datasets import DatasetService, PublicDataset
 from semantic_reviewer.application.jobs import JobService
 
@@ -91,3 +92,9 @@ def build_annotations(data_root: Path) -> AnnotationService:
 def build_review_index(data_root: Path) -> SQLiteReviewIndex:
     """Compose read-only harness references to an external DER evidence store."""
     return SQLiteReviewIndex(runtime_path(data_root) / "state.sqlite3")
+
+
+def build_artefact_index(data_root: Path) -> ArtefactIndex:
+    """Initialise external storage and expose explicit result/edit indexing maintenance."""
+    root = runtime_path(data_root)
+    return JsonResults(root / "results", root / "state.sqlite3")

@@ -6,6 +6,14 @@ immutable filesystem JSON. Normalisation and human edits are registered before
 their references are committed. Files can be orphaned by a partial failure;
 retain them for diagnosis rather than assuming they were accepted results.
 
+Publication supplies a separate `Publication(job_id, kind)` contract; JSON keys
+never select catalogue behaviour. The catalogue is always present in the runtime
+store. An explicit `ArtefactIndex` maintenance interface indexes old result/edit
+references using their relational owners and kinds, preserving original bytes and
+hashes. Existing schema-version-1 bundles remain readable; no payload rewrite or
+type inference is needed. Conflicting metadata still fails rather than overwriting
+evidence. See [ADR-0008](../adr/ADR-0008-own-artefact-publication-metadata.md).
+
 Each committed queue/start/route/completion/recovery transition produces a new
 structured job-log snapshot under `logs/`. It includes event sequence, timestamp,
 job identity, level, event and small operational details. Logs omit source/prompt
