@@ -60,7 +60,7 @@ Newest first. Status here describes the decision, not the PR or vertical slice.
 
 | Record | Title | Status | Decision-makers | Date |
 | --- | --- | --- | --- | --- |
-| [ADR-0011](ADR-0011-preserve-rule-evidence-across-revisions.md) | Preserve rule evidence across immutable revisions | proposed | Project owner | 2026-09-20 |
+| [ADR-0011](ADR-0011-preserve-rule-evidence-across-revisions.md) | Preserve rule evidence across immutable revisions | implemented | Project owner | 2026-09-20 |
 | [ADR-0010](ADR-0010-own-discovery-runs-under-one-worker.md) | Own immutable discovery runs under the shared worker | implemented | Project owner | 2026-09-20 |
 | [ADR-0009](ADR-0009-freeze-explicit-annotation-selections.md) | Freeze explicit annotation selections before discovery | implemented | Project owner | 2026-09-20 |
 | [ADR-0008](ADR-0008-own-artefact-publication-metadata.md) | Make artefact publication metadata explicit | implemented | Project owner | 2026-09-20 |

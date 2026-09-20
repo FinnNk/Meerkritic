@@ -1,5 +1,5 @@
 ---
-status: proposed
+status: implemented
 date: 2026-09-20
 decision-makers: [Project owner]
 ---
@@ -27,7 +27,7 @@ approval to a different rule, or imply that model output establishes validity.
 
 ## Decision Outcome
 
-Proposed and implemented in this candidate: content-addressed rule bodies live
+Accepted through owner review and merge of PR #12: content-addressed rule bodies live
 outside SQLite. The registry owns current version/revision, evidence links and
 decisions in short transactions. A revision carries all evidence classifications
 and parent links but resets inherited verification to weak. Old claims remain
@@ -60,7 +60,9 @@ rollback, immutable history, source identity, revision bounds and stale browser
 submissions. `tests/test_synthesis.py` challenges real MAF orchestration with
 controlled provider outputs, invalid references, provider/context failures and
 interruption after publication. External DER `vs2-rules/r1` records exact checks
-and live local compatibility. Owner acceptance remains pending. Revisit on a
+and live local compatibility. PR #12 was approved and merged on 20 September 2026
+at `ff9af2e68d989590ebe030002e2e3789c35efef0`; its tree equals reviewed semantic
+head `dc6ba77119b2cf148cf014c54a7748953bd9735d`. Revisit on a
 demonstrated evidence bound or a need for different review authority.
 
 ## Pros and Cons of the Options

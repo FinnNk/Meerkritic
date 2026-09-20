@@ -125,11 +125,12 @@ slices:
   name: Annotation-to-Rule Discovery
   status: ACTIVE
   plan: docs/plans/VS2-plan.md
-  frozen_batch: B evidence-grounded rule synthesis and versioned registry
+  frozen_batch: C staged research interaction and slice validation
   batch_progress:
   - A1 frozen selections integrated via PR 10; ADR-0009 implemented
   - A2/A3 approved and integrated via PR 11; exact reviewed tree verified; ADR-0010 implemented
-  - B frozen against PR 11; candidate registry and routed synthesis implemented, DER preparation ongoing
+  - B approved and integrated via PR 12; exact reviewed tree verified; ADR-0011 implemented
+  - C frozen against exact PR 12 head; staged decisions, guidance and milestone review
   remaining_gates:
   - human-rated development corpus before empirical method adoption
   - EDR registration before decision-bearing comparison
