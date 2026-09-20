@@ -2,7 +2,7 @@
 
 from pathlib import Path
 
-from semantic_reviewer.bootstrap import build_annotations, build_review_index
+from semantic_reviewer.bootstrap import build_annotations, build_jobs, build_review_index
 from semantic_reviewer.web.app import create_app
 
 
@@ -16,6 +16,6 @@ def build_app(data_root: Path):
     Returns:
         The FastAPI application; this does not start a server or import datasets.
     """
-    annotations = build_annotations(data_root)
-    jobs = annotations.jobs
+    jobs = build_jobs(data_root)
+    annotations = build_annotations(data_root, jobs)
     return create_app(jobs.datasets, jobs, annotations, build_review_index(data_root))

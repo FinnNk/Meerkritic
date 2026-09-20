@@ -42,6 +42,12 @@ process lock for its lifetime; a second process refuses to start. Queue claims u
 short SQLite WAL transactions and a single-running-job constraint. A background
 heartbeat refreshes every five seconds; overdue means inspect, not retry.
 
+Application `Worker.run()` owns lock acquisition, interruption recovery and queue
+execution as one lifecycle. Composition returns an idle worker, not a tuple that
+requires caller-managed ordering. All normal execution, including one-job runs,
+uses this entry point. Lower-level store recovery remains an internal worker
+operation; it must never be used to evict a live process.
+
 On restart, obtaining the OS lock establishes that the previous cooperating worker
 no longer owns this root. Previously running jobs become failed with an interruption
 event. They are never automatically retried. Inspect any recorded route, usage and

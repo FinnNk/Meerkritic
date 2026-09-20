@@ -1,6 +1,7 @@
 """Shared dependency composition; must not import the web application."""
 
 import json
+from functools import partial
 from pathlib import Path
 
 from semantic_reviewer.adapters.annotations import SQLiteAnnotations
@@ -13,7 +14,7 @@ from semantic_reviewer.adapters.routing_journal import SQLiteRoutingJournal
 from semantic_reviewer.application.annotations import AnnotationService
 from semantic_reviewer.application.artefacts import ArtefactIndex
 from semantic_reviewer.application.datasets import DatasetService, PublicDataset
-from semantic_reviewer.application.jobs import JobService
+from semantic_reviewer.application.jobs import JobService, Worker
 
 
 def build_datasets(data_root: Path) -> DatasetService:
@@ -65,8 +66,12 @@ def build_jobs(data_root: Path) -> JobService:
     )
 
 
-def build_worker(data_root: Path, routing_file: Path, endpoint: str):
-    """Compose a configured local workflow; the caller must hold the returned process lock."""
+def build_worker(data_root: Path, routing_file: Path, endpoint: str) -> Worker:
+    """Compose an idle worker owning exclusivity/recovery; run it outside HTTP.
+
+    Initialise external storage and validate routing configuration without invoking
+    a model. Invalid paths/configuration raise ValueError; storage errors propagate.
+    """
     from semantic_reviewer.adapters.llama import LlamaClient
     from semantic_reviewer.adapters.maf import MafWorkflowRunner
     from semantic_reviewer.adapters.worker_lock import worker_lock
@@ -75,18 +80,20 @@ def build_worker(data_root: Path, routing_file: Path, endpoint: str):
 
     root = runtime_path(data_root)
     config = RoutingConfig.model_validate_json(routing_file.read_bytes())
-    return (
+    return Worker(
         build_jobs(root),
         RoutingService(config, SQLiteRoutingJournal(root / "state.sqlite3")),
         MafWorkflowRunner(LlamaClient(endpoint)),
-        worker_lock(root),
+        partial(worker_lock, root),
     )
 
 
-def build_annotations(data_root: Path) -> AnnotationService:
+def build_annotations(data_root: Path, jobs: JobService) -> AnnotationService:
     """Compose human review without loading the model runtime."""
     root = runtime_path(data_root)
-    return AnnotationService(build_jobs(root), SQLiteAnnotations(root / "state.sqlite3"))
+    return AnnotationService(
+        jobs, SQLiteAnnotations(root / "state.sqlite3"), jobs.datasets, jobs.results
+    )
 
 
 def build_review_index(data_root: Path) -> SQLiteReviewIndex:

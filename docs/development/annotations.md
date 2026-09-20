@@ -21,6 +21,12 @@ containing a complete interpretation, optionally with `--notes`. The `progress
 distinct source coverage. History and pending queries are bounded and do not
 depend on the recent-jobs limit.
 
+The service receives an explicit job reader, dataset access and result store;
+it does not navigate another service's dependencies. Source lookup uses the
+zero-based record identity independently of browser pagination. The review-query
+port returns `AnnotationProgress`, whose named counts distinguish source coverage
+from model-result decisions; consumers need not know SQL or dictionary conventions.
+
 These are correctness requirements, not an empirical comparison of annotation
 policies. No annotation quality or inter-rater reliability claim follows from
 the functional tests. Later research choices require pre-registered EDRs.

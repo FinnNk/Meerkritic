@@ -3,7 +3,7 @@
 from dataclasses import dataclass
 from typing import Protocol
 
-from semantic_reviewer.domain.datasets import Dataset, DatasetError, ObservationPage
+from semantic_reviewer.domain.datasets import Dataset, DatasetError, Observation, ObservationPage
 
 
 @dataclass(frozen=True)
@@ -87,6 +87,14 @@ class ObservationStore(Protocol):
         """
         ...
 
+    def get(self, dataset: Dataset, source_index: int) -> Observation:
+        """Read one verified source record by zero-based identity, independent of paging.
+
+        Raise LookupError for an absent record, DatasetError for unavailable or
+        changed evidence, and OSError for other filesystem failures.
+        """
+        ...
+
 
 class DatasetService:
     """Dataset use cases coordinating immutable evidence and metadata.
@@ -158,3 +166,17 @@ class DatasetService:
         if dataset is None:
             raise LookupError("Dataset is not registered.")
         return self._observations.browse(dataset, page, page_size)
+
+    def observation(self, dataset_id: str, source_index: int) -> tuple[Dataset, Observation]:
+        """Return registered provenance and one verified zero-based source record.
+
+        Unknown datasets or indices outside the source count raise LookupError.
+        Integrity failures raise DatasetError; filesystem errors propagate. No
+        pagination limit applies and no writes or downloads occur.
+        """
+        dataset = self._registry.get(dataset_id)
+        if dataset is None:
+            raise LookupError("Dataset is not registered.")
+        if not 0 <= source_index < dataset.row_count:
+            raise LookupError("Source record does not exist.")
+        return dataset, self._observations.get(dataset, source_index)

@@ -18,7 +18,7 @@ class AnnotationsTest(unittest.TestCase):
     def setUp(self):
         test_jobs.JobsTest.setUp(self)
         self.store = SQLiteAnnotations(self.database)
-        self.annotations = AnnotationService(self.queue, self.store)
+        self.annotations = AnnotationService(self.queue, self.store, self.service, self.results)
         self.issue = {
             "actionable_engineering_concern": "uncertain",
             "issue_statement": "Needs assessment",
@@ -77,6 +77,19 @@ class AnnotationsTest(unittest.TestCase):
             self.annotations.decide(other.id, "edit", edited_json=json.dumps(self.issue))
         self.assertIsNone(self.store.get(other.id))
 
+    def test_annotation_uses_only_the_declared_job_reader_contract(self):
+        job = self.complete()
+        inspect = self.queue.inspect
+
+        class Reader:
+            def inspect(self, job_id):
+                return inspect(job_id)
+
+        service = AnnotationService(Reader(), self.store, self.service, self.results)
+        result = service.decide(job.id, "edit", edited_json=json.dumps(self.issue))
+        self.assertEqual(result.decision, "edit")
+        self.assertEqual(service.review(job.id)[1]["interpretation"], self.issue)
+
     def test_progress_distinguishes_runs_from_sources_and_reject_is_reviewed(self):
         for decision in ("accept", "edit", "reject"):
             job = self.complete()
@@ -123,7 +136,9 @@ class AnnotationsTest(unittest.TestCase):
 
     def test_progress_uses_one_snapshot_while_new_decisions_commit(self):
         job = self.complete()
-        separate = AnnotationService(self.queue, SQLiteAnnotations(self.database))
+        separate = AnnotationService(
+            self.queue, SQLiteAnnotations(self.database), self.service, self.results
+        )
         original_connect = self.store.state.connect
 
         class Interleave:
