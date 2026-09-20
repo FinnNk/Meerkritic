@@ -165,7 +165,7 @@ class JobService:
         if usage:
             return usage_summary(decision, usage)
         elapsed = (datetime.now(UTC) - datetime.fromisoformat(job.queued_at)).total_seconds()
-        return f"{decision.selected.id} · ? in / ? out · local · {elapsed:.1f}s"
+        return f"{decision.selected.id} | ? in / ? out | local | {elapsed:.1f}s"
 
     def _run_once(self, routing: RoutingService, workflow: WorkflowRunner, worker_id: str) -> bool:
         """Run at most one queued item, under the caller's exclusive worker process lock.
@@ -239,8 +239,8 @@ class JobService:
             pulse.join()
 
 
-class CorpusQueue(Protocol):
-    """Expose corpus execution to the shared worker without importing selection internals."""
+class WorkQueue(Protocol):
+    """Expose bounded queue execution without leaking task-specific orchestration."""
 
     def recover_interrupted(self) -> int:
         """Fail interrupted work under the caller's exclusive lock, without replay."""
@@ -266,14 +266,15 @@ class Worker:
         routing: RoutingService,
         workflow: WorkflowRunner,
         lock: Callable[[], AbstractContextManager[None]],
-        discovery: CorpusQueue | None = None,
+        discovery: WorkQueue | None = None,
+        guidance: WorkQueue | None = None,
     ) -> None:
         """Bind execution and an exclusive-lock factory without starting or recovering work."""
         self._jobs = jobs
         self._routing = routing
         self._workflow = workflow
         self._lock = lock
-        self._discovery = discovery
+        self._queues = tuple(queue for queue in (discovery, guidance) if queue is not None)
 
     def run(self, *, once: bool = False) -> int:
         """Recover under exclusivity, then process work; return the number completed.
@@ -286,20 +287,23 @@ class Worker:
         completed = 0
         with self._lock():
             self._jobs.jobs.recover_interrupted()
-            if self._discovery:
-                self._discovery.recover_interrupted()
+            for queue in self._queues:
+                queue.recover_interrupted()
             worker_id = str(uuid4())
-            prefer_discovery = True
+            operations = [queue.run_once for queue in self._queues]
+            operations.append(
+                lambda owner: self._jobs._run_once(self._routing, self._workflow, owner)
+            )
+            cursor = 0
             while True:
-                # Alternate queues, preserving one lock and avoiding starvation in either queue.
+                # Rotate after each claimed item so no continuously populated queue starves another.
                 worked = False
-                if prefer_discovery and self._discovery:
-                    worked = self._discovery.run_once(worker_id)
-                if not worked:
-                    worked = self._jobs._run_once(self._routing, self._workflow, worker_id)
-                if not worked and not prefer_discovery and self._discovery:
-                    worked = self._discovery.run_once(worker_id)
-                prefer_discovery = not prefer_discovery
+                for offset in range(len(operations)):
+                    index = (cursor + offset) % len(operations)
+                    if operations[index](worker_id):
+                        worked = True
+                        cursor = (index + 1) % len(operations)
+                        break
                 completed += int(worked)
                 if once:
                     return completed

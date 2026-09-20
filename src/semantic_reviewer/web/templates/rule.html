@@ -41,7 +41,7 @@
 <label>Your name <input name="actor" maxlength="200" required></label><label>Rationale <textarea name="rationale" maxlength="2000" required></textarea></label><button>Create new version</button></form></details>
 {% endif %}
 <details><summary>Version provenance</summary><p>Version SHA-256 <code>{{ version_id }}</code></p><pre>{{ body.model_dump_json(indent=2) }}</pre></details>
-{% if task %}<h2>Discussion of this version</h2><p>Messages stay attached to this exact definition. Adding a message does not send it to an agent or change a decision.</p>
+{% if task %}<h2>Discussion of this version</h2>{% if has_guidance %}<p><a href="/guidance?version={{ version_id }}">Compose guidance for this version</a></p>{% endif %}<p>Messages stay attached to this exact definition. Adding a message does not send it to an agent or change a decision.</p>
 {% for note in discussion %}<article><p>{{ note.actor }}: {{ note.text }}</p><small>Message {{ note.id }}</small></article>{% else %}<p>No discussion yet.</p>{% endfor %}
 <form action="/review-workspace/discuss" method="post"><input type="hidden" name="note_id" value="{{ note_id }}"><input type="hidden" name="version_id" value="{{ version_id }}"><label>Your name <input name="actor" maxlength="200" required></label><label>Message <textarea name="text" maxlength="2000" required></textarea></label><button>Add discussion message</button></form>{% endif %}
 {% endblock %}

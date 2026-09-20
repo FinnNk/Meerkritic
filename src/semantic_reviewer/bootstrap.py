@@ -16,6 +16,7 @@ from semantic_reviewer.application.annotations import AnnotationService
 from semantic_reviewer.application.artefacts import ArtefactIndex
 from semantic_reviewer.application.datasets import DatasetService, PublicDataset
 from semantic_reviewer.application.discovery import DiscoveryService
+from semantic_reviewer.application.guidance import GuidanceService
 from semantic_reviewer.application.interaction import ReviewWorkspace
 from semantic_reviewer.application.jobs import JobService, Worker
 from semantic_reviewer.application.rules import RuleService
@@ -92,7 +93,9 @@ def build_worker(
     """
     from semantic_reviewer.adapters.llama import LlamaClient
     from semantic_reviewer.adapters.maf import MafWorkflowRunner
+    from semantic_reviewer.adapters.maf_guidance import MafGuidanceRuntime
     from semantic_reviewer.adapters.worker_lock import worker_lock
+    from semantic_reviewer.application.guidance import GuidanceExecution
     from semantic_reviewer.application.routing import RoutingService
     from semantic_reviewer.routing.selection import RoutingConfig
 
@@ -130,6 +133,7 @@ def build_worker(
         MafWorkflowRunner(LlamaClient(endpoint)),
         partial(worker_lock, root),
         discovery,
+        GuidanceExecution(build_guidance(root), routing, MafGuidanceRuntime(LlamaClient(endpoint))),
     )
 
 
@@ -204,3 +208,17 @@ def build_workspace(data_root: Path) -> ReviewWorkspace:
 
     root = runtime_path(data_root)
     return SQLiteReviewWorkspace(root / "state.sqlite3", build_discovery(root).files)
+
+
+def build_guidance(data_root: Path) -> GuidanceService:
+    """Compose frozen guidance submission and inspection without starting agent work."""
+    from semantic_reviewer.adapters.guidance import SQLiteGuidance
+
+    root = runtime_path(data_root)
+    return GuidanceService(
+        build_rules(root),
+        build_workspace(root),
+        SQLiteGuidance(root / "state.sqlite3"),
+        build_discovery(root).files,
+        SQLiteRoutingJournal(root / "state.sqlite3"),
+    )

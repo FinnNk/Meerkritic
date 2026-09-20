@@ -12,6 +12,7 @@ from starlette.middleware.trustedhost import TrustedHostMiddleware
 from semantic_reviewer.application.annotations import AnnotationService
 from semantic_reviewer.application.datasets import DatasetService
 from semantic_reviewer.application.discovery import DiscoveryService
+from semantic_reviewer.application.guidance import GuidanceService
 from semantic_reviewer.application.interaction import ReviewWorkspace
 from semantic_reviewer.application.jobs import JobService
 from semantic_reviewer.application.reviews import ReviewIndex
@@ -19,6 +20,7 @@ from semantic_reviewer.application.rules import RuleService
 from semantic_reviewer.application.selections import SelectionStore
 from semantic_reviewer.domain.datasets import DatasetError
 from semantic_reviewer.web.discovery import add_discovery_routes
+from semantic_reviewer.web.guidance import add_guidance_routes
 from semantic_reviewer.web.interaction import add_interaction_routes
 from semantic_reviewer.web.rules import add_rule_routes
 
@@ -32,6 +34,7 @@ def create_app(
     discovery: DiscoveryService | None = None,
     rules: RuleService | None = None,
     workspace: ReviewWorkspace | None = None,
+    guidance: GuidanceService | None = None,
 ) -> FastAPI:
     """Build local HTML and JSON interfaces, with optional queue access.
 
@@ -61,6 +64,9 @@ def create_app(
     templates.env.globals["has_discovery"] = discovery is not None
     templates.env.globals["has_rules"] = rules is not None
     templates.env.globals["has_workspace"] = workspace is not None
+    templates.env.globals["has_guidance"] = guidance is not None
+    if guidance is not None:
+        add_guidance_routes(app, templates, guidance)
     if workspace is not None and rules is not None:
         add_interaction_routes(app, templates, workspace, rules)
     if rules is not None:
