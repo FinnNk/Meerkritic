@@ -35,6 +35,13 @@ The earlier batch narratives below retain their historical candidate status.
 Software delivery is complete. The human-reviewed corpus, registered comparison
 and owner empirical decision remain outstanding; VS2 stays ACTIVE.
 
+The next bounded batch is study preparation: agree the concrete proposal in
+[EDR-0001](../edr/0001-discovery-grouping-method.md#concrete-proposal-for-owner-review),
+qualify and human-review inputs, and implement the small comparison/rating tools
+using synthetic fixtures. Tooling requires a fresh materiality assessment and DER;
+this documentation proposal does not freeze its implementation contract or register
+the experiment. Follow the [human/agent preparation steps](../development/study-preparation.md).
+
 ## Activation and first batch
 
 Main `fa6856bff52efecba55700572cb10e67f9a8f3c0` equals the reviewed PR #9 tree.

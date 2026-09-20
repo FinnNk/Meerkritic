@@ -15,6 +15,7 @@ how to use the code in this checkout. The [glossary](../CONTEXT.md) explains pro
 | Group concerns and inspect their sources | [Discovery](development/discovery.md) |
 | Propose, challenge and revise rules | [Candidate rules](development/rules.md) |
 | Save decisions or send selected discussion for advice | [Research interaction](development/research-interaction.md) |
+| Prepare and human-review inputs for a grouping study | [Study preparation](development/study-preparation.md) |
 
 ## Operate and inspect
 
