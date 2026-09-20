@@ -10,7 +10,7 @@ from pydantic import BaseModel, ConfigDict, Field, model_validator
 from semantic_reviewer.application.embeddings import EmbeddingInput, EmbeddingRuntime
 from semantic_reviewer.application.routing import RoutingJournal, RoutingService
 from semantic_reviewer.application.selections import SelectionStore
-from semantic_reviewer.domain.grouping import cluster_vectors, validate_vectors
+from semantic_reviewer.domain.grouping import cluster_vectors, interpretation_text, validate_vectors
 from semantic_reviewer.routing.selection import TaskRequirements
 from semantic_reviewer.routing.usage import Measurement, usage_summary
 
@@ -271,16 +271,7 @@ class DiscoveryExecution:
                 eligible=summary.included, excluded=summary.excluded, purpose=summary.purpose
             )
             if run.request.kind == "embedding":
-                texts = tuple(
-                    "\n".join(
-                        (
-                            item.interpretation.issue_statement,
-                            item.interpretation.proposed_invariant or "",
-                            ", ".join(item.interpretation.coarse_categories),
-                        )
-                    )
-                    for item in records
-                )
+                texts = tuple(interpretation_text(item.interpretation) for item in records)
                 if any(len(text) > 12000 for text in texts):
                     raise ValueError("An embedding input exceeds the 12,000-character bound.")
                 decision = self.routing.route(
