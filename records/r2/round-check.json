@@ -1,0 +1,16 @@
+{
+  "valid": true,
+  "pair_id": "vs2-study-tools",
+  "round_id": "r2",
+  "manifest_sha256": "f2c6082e379fe0b1a948af42fb8f8e29f5dec8dec72fed991876e378661fde81",
+  "scope": "archive_identity_and_equivalence_only",
+  "current_checkout": {
+    "repository": "WORKSPACE\\extras\\der-checkouts\\vs2-study-tools-semantic-r2",
+    "bare": false,
+    "head": "1d56877f0ccc434344a0e67b42859f4744524767",
+    "branch": "feat/vs2-study-tools",
+    "clean": true,
+    "changes": [],
+    "tree": "8da2d34fc36dc897f08486c7b7350094e9b5704d"
+  }
+}

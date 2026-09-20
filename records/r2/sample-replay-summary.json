@@ -1,0 +1,15 @@
+{
+  "record_sha256": "bef06bf63a6f3f4f8842aa0dc0714dc8accceb18fbc36111acbcbcd80aa13cf2",
+  "state": "pending",
+  "attempted": 0,
+  "usable": 0,
+  "annotation_ids": [],
+  "usable_by_repository": {},
+  "next_candidate": {
+    "source_index": 850,
+    "repository": "analytics-team/data-pipeline",
+    "pull_request": 202,
+    "comment_id": 4002
+  },
+  "registration": "not established by preparation"
+}

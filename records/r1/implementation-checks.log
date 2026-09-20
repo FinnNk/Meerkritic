@@ -1,0 +1,152 @@
+$ ['uv', 'sync', '--locked', '--offline', '--python', 'HOST_USER/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe']
+Using CPython 3.12.14 interpreter at: HOST_USER\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe
+Creating virtual environment at: .venv
+Resolved 48 packages in 0.98ms
+Installed 47 packages in 899ms
+ + agent-framework-core==1.19.0
+ + annotated-doc==0.0.5
+ + annotated-types==0.8.0
+ + anyio==4.15.1
+ + certifi==2026.7.22
+ + click==8.5.0
+ + duckdb==1.5.5
+ + fastapi==0.141.1
+ + gitdb==4.0.12
+ + gitpython==3.1.62
+ + grimp==3.17
+ + h11==0.16.0
+ + httpcore==1.0.9
+ + httpx==0.28.1
+ + idna==3.20
+ + import-linter==2.15
+ + importlib-metadata==9.0.1
+ + jinja2==3.1.6
+ + markdown-it-py==4.2.0
+ + markupsafe==3.0.3
+ + mdurl==0.1.2
+ + msgspec==0.21.1
+ + networkx==3.6.1
+ + opentelemetry-api==1.44.0
+ + prompt-toolkit==3.0.53
+ + pydantic==2.13.5
+ + pydantic-core==2.46.5
+ + pydot==4.0.1
+ + pygments==2.21.0
+ + pyparsing==3.3.2
+ + python-dotenv==1.2.3
+ + pyyaml==6.0.3
+ + rich==15.0.0
+ + ruff==0.16.8
+ + smmap==5.0.3
+ + sqlparse==0.6.0
+ + starlette==1.6.0
+ + tabulate==0.10.0
+ + tach==0.35.1
+ + tomli==2.4.1
+ + tomli-w==1.2.0
+ + typing-extensions==4.16.0
+ + typing-inspection==0.4.4
+ + uvicorn==0.53.0
+ + wcwidth==0.8.4
+ + yoyo-migrations==9.0.0
+ + zipp==4.1.0
+$ ['uv', 'run', '--locked', 'python', 'tools/check.py']
+Running: ruff format --check .
+95 files already formatted
+Running: ruff check .
+All checks passed!
+Running: lint-imports --no-cache
+
+╔══╗─────────▶╔╗ ╔╗      ╔╗◀───┐
+╚╣╠╝◀─────┐  ╔╝╚╗║║────▶╔╝╚╗   │
+ ║║   ╔══╦══╦╩╗╔╝║║  ╔╦═╩╗╔╝╔═╦══╗
+ ║║╔══╣╔╗║╔╗║╔╣║ ║║ ╔╬╣╔╗║║ ║│║╔═╝
+╔╣╠╣║║║╚╝║╚╝║║║╚╗║╚═╝║║║║║╚╗║═╣║
+╚══╩╩╩╣╔═╩══╩╝╚═╝╚═══╩╩╝╚╩═╩╩═╩╝
+  └──▶║║                    ▲ 
+      ╚╝────────────────────┘
+
+
+---------
+Contracts
+---------
+
+Analyzed 97 files, 415 dependencies.
+------------------------------------
+
+Domain and routing remain independent KEPT
+Core logic does not depend on application or adapters KEPT
+Application owns contracts rather than concrete adapters KEPT
+Web cannot access concrete persistence or composition KEPT
+Worker and shared composition cannot pull in the web KEPT
+
+Contracts: 5 kept, 0 broken.
+Running: tach check
+✅ All modules validated!
+Running: WORKSPACE\extras\der-checkouts\vs2-study-tools-check-implementation\.venv\Scripts\python.exe -m unittest discover -s tests -p test_*.py
+WORKSPACE\extras\der-checkouts\vs2-study-tools-check-implementation\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+WORKSPACE\extras\der-checkouts\vs2-study-tools-check-implementation\.venv\Lib\site-packages\yoyo\backends\base.py:411: DeprecationWarning: The default datetime adapter is deprecated as of Python 3.12; see the sqlite3 documentation for suggested replacement recipes
+  cursor.execute(sql, queryparams)
+.....................................................................................................................................................................................
+----------------------------------------------------------------------
+Ran 181 tests in 79.916s
+
+OK
+$ ['WORKSPACE\\extras\\der-checkouts\\vs2-study-tools-check-implementation\\.venv\\Scripts\\python.exe', '-c', 'import semantic_reviewer,sys,sqlite3,json,importlib.metadata as m; print(json.dumps({"source":semantic_reviewer.__file__,"python":sys.version,"sqlite":sqlite3.sqlite_version,"versions":{d.metadata["Name"]:d.version for d in m.distributions()}},indent=2))']
+{
+  "source": "WORKSPACE\\extras\\der-checkouts\\vs2-study-tools-check-implementation\\src\\semantic_reviewer\\__init__.py",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "sqlite": "3.53.1",
+  "versions": {
+    "agent-framework-core": "1.19.0",
+    "annotated-doc": "0.0.5",
+    "annotated-types": "0.8.0",
+    "anyio": "4.15.1",
+    "certifi": "2026.7.22",
+    "click": "8.5.0",
+    "duckdb": "1.5.5",
+    "fastapi": "0.141.1",
+    "gitdb": "4.0.12",
+    "GitPython": "3.1.62",
+    "grimp": "3.17",
+    "h11": "0.16.0",
+    "httpcore": "1.0.9",
+    "httpx": "0.28.1",
+    "idna": "3.20",
+    "importlib_metadata": "9.0.1",
+    "import-linter": "2.15",
+    "Jinja2": "3.1.6",
+    "markdown-it-py": "4.2.0",
+    "MarkupSafe": "3.0.3",
+    "mdurl": "0.1.2",
+    "msgspec": "0.21.1",
+    "networkx": "3.6.1",
+    "opentelemetry-api": "1.44.0",
+    "prompt_toolkit": "3.0.53",
+    "pydantic": "2.13.5",
+    "pydantic_core": "2.46.5",
+    "pydot": "4.0.1",
+    "Pygments": "2.21.0",
+    "pyparsing": "3.3.2",
+    "python-dotenv": "1.2.3",
+    "PyYAML": "6.0.3",
+    "rich": "15.0.0",
+    "ruff": "0.16.8",
+    "smmap": "5.0.3",
+    "sqlparse": "0.6.0",
+    "starlette": "1.6.0",
+    "tabulate": "0.10.0",
+    "tach": "0.35.1",
+    "tomli": "2.4.1",
+    "tomli_w": "1.2.0",
+    "typing_extensions": "4.16.0",
+    "typing-inspection": "0.4.4",
+    "uvicorn": "0.53.0",
+    "wcwidth": "0.8.4",
+    "yoyo-migrations": "9.0.0",
+    "zipp": "4.1.0"
+  }
+}
+$ ['git', 'diff', '--check']
+$ ['git', 'status', '--porcelain']

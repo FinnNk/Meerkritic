@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "sequence": 3,
+  "pair_id": "vs2-study-tools",
+  "recorded_at": "2026-09-20T12:35:32+00:00",
+  "previous_hash": "5b0d022fd5716ec66c0833fd70d7d956e9c494b1ad7756e08c87046a71432f46",
+  "kind": "verification",
+  "round_id": "r2",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "/root"
+  },
+  "payload": {
+    "stage": "locally_prepared",
+    "base": "cd0a4d8c9a254e3027513274b39ce3f65cf227d2",
+    "diary": "9e47863265c21f27ac07b4b3613d0b1aec2fe3c1",
+    "semantic": "1d56877f0ccc434344a0e67b42859f4744524767",
+    "summary": "All exact semantic checkpoints pass; unchanged P1 identity uses exact r1 check, all changed identities checked afresh. Diary/final tracked trees equal; full author self-review complete. r1 failed reconstruction retained. Canonical archive verified.",
+    "records": [
+      "vs2-study-tools/r2/verification-summary.json",
+      "vs2-study-tools/r2/review.json",
+      "vs2-study-tools/r2/equivalence.json"
+    ]
+  },
+  "event_hash": "a4c53229a100b9c778cd41027d489ae707c0ec80934e33d616198016a663dc0d"
+}

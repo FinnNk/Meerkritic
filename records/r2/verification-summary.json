@@ -1,0 +1,212 @@
+{
+  "status": "passed",
+  "head": "1d56877f0ccc434344a0e67b42859f4744524767",
+  "base": "cd0a4d8c9a254e3027513274b39ce3f65cf227d2",
+  "environment": "Windows/Python 3.12/each checkpoint owns locked dependencies and source",
+  "checkpoints": [
+    {
+      "proposition": "p1",
+      "revision": "eeaf5b21464bbb10c264a5048984c9a9d0cedf95",
+      "tree": "3e53881af3fc844c5f9ee48d2bdb510549911aec",
+      "status": "passed",
+      "tests": 172,
+      "skipped": 0,
+      "expected_checks": [
+        [
+          "ruff",
+          "format",
+          "--check",
+          "."
+        ],
+        [
+          "ruff",
+          "check",
+          "."
+        ],
+        [
+          "lint-imports",
+          "--no-cache"
+        ],
+        [
+          "tach",
+          "check"
+        ],
+        [
+          "<python>",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_*.py"
+        ]
+      ],
+      "observed_checks": [
+        "ruff format --check .",
+        "ruff check .",
+        "lint-imports --no-cache",
+        "tach check",
+        "WORKSPACE\\extras\\der-checkouts\\vs2-study-tools-check-p1\\.venv\\Scripts\\python.exe -m unittest discover -s tests -p test_*.py"
+      ],
+      "evidence": "r1/p1-checks.json",
+      "log": "r1/p1-checks.log"
+    },
+    {
+      "proposition": "p2",
+      "revision": "c3a2c546ec441a278eae27e8332c9d695a46252b",
+      "tree": "29fcd28d429b827df850fc54ba8aa560ba8ef2de",
+      "status": "passed",
+      "tests": 175,
+      "skipped": 0,
+      "expected_checks": [
+        [
+          "ruff",
+          "format",
+          "--check",
+          "."
+        ],
+        [
+          "ruff",
+          "check",
+          "."
+        ],
+        [
+          "lint-imports",
+          "--no-cache"
+        ],
+        [
+          "tach",
+          "check"
+        ],
+        [
+          "<python>",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_*.py"
+        ]
+      ],
+      "observed_checks": [
+        "ruff format --check .",
+        "ruff check .",
+        "lint-imports --no-cache",
+        "tach check",
+        "WORKSPACE\\extras\\der-checkouts\\vs2-study-tools-r2-check-p2\\.venv\\Scripts\\python.exe -m unittest discover -s tests -p test_*.py"
+      ],
+      "evidence": "r2/p2-checks.json",
+      "log": "r2/p2-checks.log"
+    },
+    {
+      "proposition": "p3",
+      "revision": "1deab3c6f9e50ed5518e6b129562930df8b3a248",
+      "tree": "53c87c533e05e18dc6688446b68fd32a6a0856ee",
+      "status": "passed",
+      "tests": 181,
+      "skipped": 0,
+      "expected_checks": [
+        [
+          "ruff",
+          "format",
+          "--check",
+          "."
+        ],
+        [
+          "ruff",
+          "check",
+          "."
+        ],
+        [
+          "lint-imports",
+          "--no-cache"
+        ],
+        [
+          "tach",
+          "check"
+        ],
+        [
+          "<python>",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_*.py"
+        ]
+      ],
+      "observed_checks": [
+        "ruff format --check .",
+        "ruff check .",
+        "lint-imports --no-cache",
+        "tach check",
+        "WORKSPACE\\extras\\der-checkouts\\vs2-study-tools-r2-check-p3\\.venv\\Scripts\\python.exe -m unittest discover -s tests -p test_*.py"
+      ],
+      "evidence": "r2/p3-checks.json",
+      "log": "r2/p3-checks.log"
+    },
+    {
+      "proposition": "p4",
+      "revision": "1d56877f0ccc434344a0e67b42859f4744524767",
+      "tree": "8da2d34fc36dc897f08486c7b7350094e9b5704d",
+      "status": "passed",
+      "tests": 181,
+      "skipped": 0,
+      "expected_checks": [
+        [
+          "ruff",
+          "format",
+          "--check",
+          "."
+        ],
+        [
+          "ruff",
+          "check",
+          "."
+        ],
+        [
+          "lint-imports",
+          "--no-cache"
+        ],
+        [
+          "tach",
+          "check"
+        ],
+        [
+          "<python>",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_*.py"
+        ]
+      ],
+      "observed_checks": [
+        "ruff format --check .",
+        "ruff check .",
+        "lint-imports --no-cache",
+        "tach check",
+        "WORKSPACE\\extras\\der-checkouts\\vs2-study-tools-r2-check-p4\\.venv\\Scripts\\python.exe -m unittest discover -s tests -p test_*.py"
+      ],
+      "evidence": "r2/p4-checks.json",
+      "log": "r2/p4-checks.log"
+    }
+  ],
+  "test_changes": {
+    "source_sampling_added": 3,
+    "attempt_and_publication_added": 6,
+    "existing_tests_removed": 0,
+    "existing_tests_altered": 0
+  },
+  "diary_evidence": [
+    "r1/diary-checks.json",
+    "r1/bound-check-identities.json"
+  ],
+  "earlier_failed_reconstruction": "r1/p2-checks.json",
+  "same_host_plan_replay_sha256": "bef06bf63a6f3f4f8842aa0dc0714dc8accceb18fbc36111acbcbcd80aa13cf2"
+}

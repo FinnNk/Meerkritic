@@ -1,0 +1,20 @@
+{
+  "classification": "material",
+  "hard_triggers": [
+    "Changes experiment, masking and rating evidence contracts"
+  ],
+  "indicators": [
+    "Multiple complete propositions",
+    "Non-obvious empirical context",
+    "Failure checks beyond a deterministic happy path"
+  ],
+  "rationale": "A bounded registered-study workflow must preserve input identity, masking and rating completeness; failure could invalidate a research decision.",
+  "assessed_at": "2026-09-20",
+  "reassess_on_scope_change": true,
+  "host_policy": "docs/research/research-pack/11_DOUBLE_ENTRY_REVIEW_INTEGRATION.md",
+  "base": "cd0a4d8c9a254e3027513274b39ce3f65cf227d2",
+  "pair_id": "vs2-study-tools",
+  "round_id": "r1",
+  "integrator": "Codex /root",
+  "evidence_store": "WORKSPACE\\extras\\der-evidence"
+}

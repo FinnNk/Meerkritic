@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "pair_id": "vs2-study-tools",
+  "round_id": "r2",
+  "manifest_sha256": "f2c6082e379fe0b1a948af42fb8f8e29f5dec8dec72fed991876e378661fde81",
+  "semantic_tip": "1d56877f0ccc434344a0e67b42859f4744524767",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "/root"
+  },
+  "independence": "self-review",
+  "mode": "full",
+  "status": "complete",
+  "orientation_done": true,
+  "reviewed_commits": [
+    "eeaf5b21464bbb10c264a5048984c9a9d0cedf95",
+    "c3a2c546ec441a278eae27e8332c9d695a46252b",
+    "1deab3c6f9e50ed5518e6b129562930df8b3a248",
+    "1d56877f0ccc434344a0e67b42859f4744524767"
+  ],
+  "aggregate_done": true,
+  "findings": [],
+  "check_records": [
+    "verification-summary.json",
+    "review-notes.md",
+    "docs-check.json",
+    "equivalence.json",
+    "architecture-delta.json"
+  ],
+  "limitations": [
+    "Author self-review, not independent review",
+    "Windows/Python 3.12 only",
+    "No source qualification, human study labels, registration or comparative results",
+    "Record fields are attestations; operator verifies source evidence and annotation versions"
+  ],
+  "carry_forward_record": null,
+  "platform_approval": false
+}

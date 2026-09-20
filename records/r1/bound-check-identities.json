@@ -1,0 +1,23 @@
+[
+  {
+    "label": "baseline",
+    "recorded_revision_argument": "cd0a4d8c9a254e3027513274b39ce3f65cf227d2",
+    "observed_detached_head": "cd0a4d8c9a254e3027513274b39ce3f65cf227d2",
+    "tree": "118eb7bcc449e0bbfea3c24028dfbd4923bc70d6",
+    "record": "baseline-checks.json"
+  },
+  {
+    "label": "implementation",
+    "recorded_revision_argument": "b90fd12",
+    "observed_detached_head": "b90fd12e51ee4dbf6f1b3f5a3782a02e8c437225",
+    "tree": "b19ac40a487b2e1637d85eda7ad8f6d9212997d7",
+    "record": "implementation-checks.json"
+  },
+  {
+    "label": "diary",
+    "recorded_revision_argument": "change/vs2-study-tools-diary",
+    "observed_detached_head": "9e47863265c21f27ac07b4b3613d0b1aec2fe3c1",
+    "tree": "8da2d34fc36dc897f08486c7b7350094e9b5704d",
+    "record": "diary-checks.json"
+  }
+]

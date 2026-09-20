@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "sequence": 1,
+  "pair_id": "vs2-study-tools",
+  "recorded_at": "2026-09-20T12:08:31+00:00",
+  "previous_hash": null,
+  "kind": "observation",
+  "round_id": "r1",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "/root"
+  },
+  "payload": {
+    "event": "setup-and-scope",
+    "base": "cd0a4d8c9a254e3027513274b39ce3f65cf227d2",
+    "diary": "change/vs2-study-tools-diary",
+    "materiality": "material",
+    "baseline_tests": 172,
+    "baseline_status": "passed",
+    "scope": "reproducible study input preparation; comparison tooling subsequent",
+    "owner_agreement": "EDR-0001 proposed workload and criteria explicitly accepted; not registration",
+    "evidence": [
+      "vs2-study-tools/r1/materiality.json",
+      "vs2-study-tools/r1/design.md",
+      "vs2-study-tools/r1/baseline-checks.json",
+      "vs2-study-tools/r1/owner-agreement.md",
+      "vs2-study-tools/r1/pr14-integration.json"
+    ],
+    "chronology": "Agreement recorded first in ce7bb20; application implementation not started."
+  },
+  "event_hash": "92c6eabf0b80a5ccf74d0e6c56541748a6bcc342604063e120bb2de7aaef1c95"
+}

@@ -1,0 +1,140 @@
+{
+  "changes": {
+    "boundaries": {
+      "added": [],
+      "removed": []
+    },
+    "contracts": {
+      "added": [],
+      "removed": []
+    },
+    "imports": {
+      "added": [
+        {
+          "source": "semantic_reviewer.domain.study_preparation",
+          "target": "collections"
+        },
+        {
+          "source": "semantic_reviewer.domain.study_preparation",
+          "target": "hashlib"
+        },
+        {
+          "source": "semantic_reviewer.domain.study_preparation",
+          "target": "json"
+        },
+        {
+          "source": "semantic_reviewer.domain.study_preparation",
+          "target": "math"
+        },
+        {
+          "source": "semantic_reviewer.domain.study_preparation",
+          "target": "pydantic"
+        },
+        {
+          "source": "semantic_reviewer.domain.study_preparation",
+          "target": "re"
+        },
+        {
+          "source": "semantic_reviewer.domain.study_preparation",
+          "target": "typing"
+        }
+      ],
+      "removed": []
+    },
+    "interfaces": {
+      "added": [
+        {
+          "declaration": "annotation_id: Text | None = None",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.study_preparation.PreparationAttempt.annotation_id"
+        },
+        {
+          "declaration": "class PreparationAttempt(BaseModel)",
+          "kind": "class",
+          "name": "semantic_reviewer.domain.study_preparation.PreparationAttempt"
+        },
+        {
+          "declaration": "def content_digest(value: dict) -> str",
+          "kind": "callable",
+          "name": "semantic_reviewer.domain.study_preparation.content_digest"
+        },
+        {
+          "declaration": "def preparation_progress(plan: dict, attempts: tuple[PreparationAttempt, ...]) -> dict",
+          "kind": "callable",
+          "name": "semantic_reviewer.domain.study_preparation.preparation_progress"
+        },
+        {
+          "declaration": "def prepare_sample(source: bytes, expected_digest: str, exposed: tuple[str, ...]=()) -> dict",
+          "kind": "callable",
+          "name": "semantic_reviewer.domain.study_preparation.prepare_sample"
+        },
+        {
+          "declaration": "human_reviewer: Text | None = None",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.study_preparation.PreparationAttempt.human_reviewer"
+        },
+        {
+          "declaration": "job_id: Text | None = None",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.study_preparation.PreparationAttempt.job_id"
+        },
+        {
+          "declaration": "outcome: Literal['source_unresolved', 'context_unusable', 'normalisation_failed', 'reject', 'accept', 'edit', 'repository_quota']",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.study_preparation.PreparationAttempt.outcome"
+        },
+        {
+          "declaration": "reason: Text",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.study_preparation.PreparationAttempt.reason"
+        },
+        {
+          "declaration": "recorded_by: Text",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.study_preparation.PreparationAttempt.recorded_by"
+        },
+        {
+          "declaration": "source_check: Text | None = None",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.study_preparation.PreparationAttempt.source_check"
+        },
+        {
+          "declaration": "source_evidence_sha256: Digest | None = None",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.study_preparation.PreparationAttempt.source_evidence_sha256"
+        },
+        {
+          "declaration": "source_index: int = Field(ge=0, strict=True)",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.study_preparation.PreparationAttempt.source_index"
+        },
+        {
+          "declaration": "source_reference: Text | None = None",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.study_preparation.PreparationAttempt.source_reference"
+        }
+      ],
+      "removed": []
+    },
+    "modules": {
+      "added": [
+        {
+          "definitions": [
+            "PreparationAttempt",
+            "_hash",
+            "_repository",
+            "content_digest",
+            "preparation_progress",
+            "prepare_sample"
+          ],
+          "name": "semantic_reviewer.domain.study_preparation",
+          "package": false,
+          "path": "src/semantic_reviewer/domain/study_preparation.py"
+        }
+      ],
+      "removed": []
+    },
+    "settings": {}
+  },
+  "schema_version": 3
+}

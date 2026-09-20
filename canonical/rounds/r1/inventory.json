@@ -1,0 +1,206 @@
+{
+  "base": "cd0a4d8c9a254e3027513274b39ce3f65cf227d2",
+  "tip": "0bdfc9799d7af1b288ebe3bb0e86683f18bffb05",
+  "tree": "8da2d34fc36dc897f08486c7b7350094e9b5704d",
+  "commits": [
+    {
+      "commit": "eeaf5b21464bbb10c264a5048984c9a9d0cedf95",
+      "parents": [
+        "cd0a4d8c9a254e3027513274b39ce3f65cf227d2"
+      ],
+      "tree": "3e53881af3fc844c5f9ee48d2bdb510549911aec",
+      "subject": "docs: record study agreement and freeze input preparation",
+      "change": {
+        "files": [
+          {
+            "path": "IMPLEMENTATION_BACKLOG.yaml",
+            "added": 4,
+            "deleted": 2
+          },
+          {
+            "path": "docs/edr/0001-discovery-grouping-method.md",
+            "added": 9,
+            "deleted": 5
+          },
+          {
+            "path": "docs/edr/README.md",
+            "added": 3,
+            "deleted": 1
+          },
+          {
+            "path": "docs/plans/VS2-plan.md",
+            "added": 18,
+            "deleted": 7
+          }
+        ],
+        "file_count": 4,
+        "added": 34,
+        "deleted": 15,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "2a4f3570fd4ec91fb9e267c9b2c5eced685d4c33",
+      "parents": [
+        "eeaf5b21464bbb10c264a5048984c9a9d0cedf95"
+      ],
+      "tree": "a600a375dbea2fc0ea2f1a5c56ed051d2b076a69",
+      "subject": "feat: freeze reproducible study candidates and exclusions",
+      "change": {
+        "files": [
+          {
+            "path": "src/semantic_reviewer/domain/study_preparation.py",
+            "added": 128,
+            "deleted": 0
+          },
+          {
+            "path": "tests/test_study_preparation.py",
+            "added": 69,
+            "deleted": 0
+          }
+        ],
+        "file_count": 2,
+        "added": 197,
+        "deleted": 0,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "a1425a3d624f80d8ac0fb6ec651479065dc6bdfe",
+      "parents": [
+        "2a4f3570fd4ec91fb9e267c9b2c5eced685d4c33"
+      ],
+      "tree": "53c87c533e05e18dc6688446b68fd32a6a0856ee",
+      "subject": "feat: retain bounded human input-review attempts",
+      "change": {
+        "files": [
+          {
+            "path": "docs/development/study-preparation.md",
+            "added": 95,
+            "deleted": 1
+          },
+          {
+            "path": "src/semantic_reviewer/domain/study_preparation.py",
+            "added": 99,
+            "deleted": 11
+          },
+          {
+            "path": "tests/test_study_preparation.py",
+            "added": 190,
+            "deleted": 1
+          },
+          {
+            "path": "tools/study_inputs.py",
+            "added": 147,
+            "deleted": 0
+          }
+        ],
+        "file_count": 4,
+        "added": 531,
+        "deleted": 13,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "0bdfc9799d7af1b288ebe3bb0e86683f18bffb05",
+      "parents": [
+        "a1425a3d624f80d8ac0fb6ec651479065dc6bdfe"
+      ],
+      "tree": "8da2d34fc36dc897f08486c7b7350094e9b5704d",
+      "subject": "docs: record input preparation and remaining study gates",
+      "change": {
+        "files": [
+          {
+            "path": "IMPLEMENTATION_BACKLOG.yaml",
+            "added": 1,
+            "deleted": 0
+          },
+          {
+            "path": "docs/edr/0001-discovery-grouping-method.md",
+            "added": 27,
+            "deleted": 0
+          },
+          {
+            "path": "docs/plans/VS2-plan.md",
+            "added": 6,
+            "deleted": 0
+          },
+          {
+            "path": "docs/slice-reviews/VS2-integration.md",
+            "added": 12,
+            "deleted": 0
+          },
+          {
+            "path": "tests/README.md",
+            "added": 1,
+            "deleted": 0
+          }
+        ],
+        "file_count": 5,
+        "added": 47,
+        "deleted": 0,
+        "binary_files": 0
+      }
+    }
+  ],
+  "linear": true,
+  "final_change": {
+    "files": [
+      {
+        "path": "IMPLEMENTATION_BACKLOG.yaml",
+        "added": 5,
+        "deleted": 2
+      },
+      {
+        "path": "docs/development/study-preparation.md",
+        "added": 95,
+        "deleted": 1
+      },
+      {
+        "path": "docs/edr/0001-discovery-grouping-method.md",
+        "added": 36,
+        "deleted": 5
+      },
+      {
+        "path": "docs/edr/README.md",
+        "added": 3,
+        "deleted": 1
+      },
+      {
+        "path": "docs/plans/VS2-plan.md",
+        "added": 24,
+        "deleted": 7
+      },
+      {
+        "path": "docs/slice-reviews/VS2-integration.md",
+        "added": 12,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/domain/study_preparation.py",
+        "added": 216,
+        "deleted": 0
+      },
+      {
+        "path": "tests/README.md",
+        "added": 1,
+        "deleted": 0
+      },
+      {
+        "path": "tests/test_study_preparation.py",
+        "added": 258,
+        "deleted": 0
+      },
+      {
+        "path": "tools/study_inputs.py",
+        "added": 147,
+        "deleted": 0
+      }
+    ],
+    "file_count": 10,
+    "added": 797,
+    "deleted": 16,
+    "binary_files": 0
+  },
+  "statistics_note": "No rename detection; merge commit churn uses first parent. Final diff and cumulative per-commit churn are different quantities."
+}

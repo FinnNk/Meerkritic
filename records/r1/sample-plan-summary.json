@@ -1,0 +1,45 @@
+{
+  "record_sha256": "bef06bf63a6f3f4f8842aa0dc0714dc8accceb18fbc36111acbcbcd80aa13cf2",
+  "plan_sha256": "de2a70fbbf1510389627e68fce37b1d49389c82bf0eb2138901fcab78a33458c",
+  "source_sha256": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83",
+  "source_rows": 1030,
+  "candidate_count": 80,
+  "candidate_repositories": 45,
+  "holdout_repositories": [
+    "karpathy/nanogpt",
+    "huggingface/transformers",
+    "perf-team/performance-lib",
+    "backend-team/data-service",
+    "psf/requests",
+    "psf/black",
+    "tiangolo/fastapi",
+    "open-mmlab/mmcv",
+    "infra-team/network-utils",
+    "oca/server-tools",
+    "pytorch/pytorch",
+    "pandas-dev/pandas"
+  ],
+  "exclusions_by_reason": {
+    "prior_exposure": 92,
+    "holdout": 130,
+    "outside_candidate_budget": 724,
+    "duplicate": 4
+  },
+  "attempts": 0,
+  "code_revision": "f027a95765c5309d863392509ca4594c0951b811",
+  "command": [
+    "uv",
+    "run",
+    "--locked",
+    "python",
+    "tools/study_inputs.py",
+    "--source",
+    "<source-sha256>.json",
+    "plan",
+    "--source-sha256",
+    "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83",
+    "--output",
+    "<external-research>/preparation/0000.json"
+  ],
+  "claim": "Metadata-only plan. No origins verified, interpretations generated, human labels recorded or comparison run. Automatic text hashing only for exact duplicates; bodies not displayed."
+}

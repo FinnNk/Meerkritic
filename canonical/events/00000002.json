@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "sequence": 2,
+  "pair_id": "vs2-study-tools",
+  "recorded_at": "2026-09-20T12:30:07+00:00",
+  "previous_hash": "92c6eabf0b80a5ccf74d0e6c56541748a6bcc342604063e120bb2de7aaef1c95",
+  "kind": "verification",
+  "round_id": "r1",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "/root"
+  },
+  "payload": {
+    "result": "failed",
+    "checkpoint": "2a4f3570fd4ec91fb9e267c9b2c5eced685d4c33",
+    "reason": "Reconstruction inserted non-canonical import spacing; Ruff I001. Diary already has correct content.",
+    "disposition": "Retain r1; reconstruct same frozen diary as r2, reverify all changed checkpoint identities.",
+    "diary": "9e47863265c21f27ac07b4b3613d0b1aec2fe3c1",
+    "record": "vs2-study-tools/r1/p2-checks.log"
+  },
+  "event_hash": "5b0d022fd5716ec66c0833fd70d7d956e9c494b1ad7756e08c87046a71432f46"
+}

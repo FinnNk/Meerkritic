@@ -1,0 +1,31 @@
+{
+  "label": "p2",
+  "revision": "2a4f3570fd4ec91fb9e267c9b2c5eced685d4c33",
+  "checkout": "WORKSPACE\\extras\\der-checkouts\\vs2-study-tools-check-p2",
+  "started_at": "2026-09-20T12:27:52.661987+00:00",
+  "commands": [
+    {
+      "argv": [
+        "uv",
+        "sync",
+        "--locked",
+        "--offline",
+        "--python",
+        "HOST_USER/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "tools/check.py"
+      ],
+      "exit_code": 1
+    }
+  ],
+  "required_context": "Windows/Python 3.12/locked checkpoint environment",
+  "status": "failed"
+}

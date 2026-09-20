@@ -1,0 +1,51 @@
+{
+  "status": "passed",
+  "revision": "0bdfc9799d7af1b288ebe3bb0e86683f18bffb05",
+  "links": 316,
+  "tables": 74,
+  "imported_files_verified": 59,
+  "errors": [],
+  "cli_help": [
+    {
+      "arguments": [
+        "--help"
+      ],
+      "output": "usage: study_inputs.py [-h] --source SOURCE {plan,record,progress} ...\n\nPrepare and record the fixed study input sequence in external, immutable JSON\nfiles.\n\npositional arguments:\n  {plan,record,progress}\n\noptions:\n  -h, --help            show this help message and exit\n  --source SOURCE\n",
+      "exit_code": 0
+    },
+    {
+      "arguments": [
+        "--source",
+        "source.json",
+        "plan",
+        "--help"
+      ],
+      "output": "usage: study_inputs.py plan [-h] --source-sha256 SOURCE_SHA256\n                            [--exposed-repository EXPOSED_REPOSITORY] --output\n                            OUTPUT\n\noptions:\n  -h, --help            show this help message and exit\n  --source-sha256 SOURCE_SHA256\n  --exposed-repository EXPOSED_REPOSITORY\n  --output OUTPUT\n",
+      "exit_code": 0
+    },
+    {
+      "arguments": [
+        "--source",
+        "source.json",
+        "record",
+        "--help"
+      ],
+      "output": "usage: study_inputs.py record [-h] --output OUTPUT previous attempt\n\npositional arguments:\n  previous\n  attempt\n\noptions:\n  -h, --help       show this help message and exit\n  --output OUTPUT\n",
+      "exit_code": 0
+    },
+    {
+      "arguments": [
+        "--source",
+        "source.json",
+        "progress",
+        "--help"
+      ],
+      "output": "usage: study_inputs.py progress [-h] record\n\npositional arguments:\n  record\n\noptions:\n  -h, --help  show this help message and exit\n",
+      "exit_code": 0
+    }
+  ],
+  "rendered": [
+    "study-preparation.html",
+    "0001-discovery-grouping-method.html"
+  ]
+}

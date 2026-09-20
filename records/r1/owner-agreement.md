@@ -1,0 +1,1 @@
+On 20 September 2026 the owner stated: "I agree with Edr-0001’s proposed workload and criteria". This accepts the proposed protocol; it does not create human annotations, register the study, or adopt a grouping method.
