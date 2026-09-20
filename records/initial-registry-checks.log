@@ -1,0 +1,50 @@
+Running: ruff format --check .
+73 files already formatted
+Running: ruff check .
+All checks passed!
+Running: lint-imports --no-cache
+=============
+Import Linter
+=============
+
+
+---------
+Contracts
+---------
+
+Analyzed 81 files, 309 dependencies.
+------------------------------------
+
+Domain and routing remain independent KEPT
+Core logic does not depend on application or adapters KEPT
+Application owns contracts rather than concrete adapters KEPT
+Web cannot access concrete persistence or composition KEPT
+Worker and shared composition cannot pull in the web KEPT
+
+Contracts: 5 kept, 0 broken.
+Running: tach check
+[OK] All modules validated!
+Running: WORKSPACE\extras\der-checkouts\vs2-rules\.venv\Scripts\python.exe -m unittest discover -s tests -p test_*.py
+WORKSPACE\extras\der-checkouts\vs2-rules\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+WORKSPACE\extras\der-checkouts\vs2-rules\.venv\Lib\site-packages\yoyo\backends\base.py:411: DeprecationWarning: The default datetime adapter is deprecated as of Python 3.12; see the sqlite3 documentation for suggested replacement recipes
+  cursor.execute(sql, queryparams)
+..........................................E.........................................................................................
+======================================================================
+ERROR: test_local_only_route_refuses_remote_embedding_without_a_model_call (test_discovery.DiscoveryTest.test_local_only_route_refuses_remote_embedding_without_a_model_call)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "WORKSPACE\extras\der-checkouts\vs2-rules\tests\test_discovery.py", line 227, in test_local_only_route_refuses_remote_embedding_without_a_model_call
+    RoutingConfig.model_validate_json(json.dumps(config)),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "WORKSPACE\extras\der-checkouts\vs2-rules\.venv\Lib\site-packages\pydantic\main.py", line 782, in model_validate_json
+    return cls.__pydantic_validator__.validate_json(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for RoutingConfig
+  Value error, Policy inventory version does not match. [type=value_error, input_value={'inventory': {'identity'...one, 'local_only': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/value_error
+
+----------------------------------------------------------------------
+Ran 132 tests in 33.285s
+
+FAILED (errors=1)

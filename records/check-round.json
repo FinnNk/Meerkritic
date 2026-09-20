@@ -1,0 +1,16 @@
+{
+  "valid": true,
+  "pair_id": "vs2-rules",
+  "round_id": "r1",
+  "manifest_sha256": "25ecd22a825fd1dedf8c2541c2852c2774aebc02787072e7fa947ecba8171811",
+  "scope": "archive_identity_and_equivalence_only",
+  "current_checkout": {
+    "repository": "WORKSPACE\\extras\\der-checkouts\\vs2-rules-archive",
+    "bare": false,
+    "head": "ebd6d9eff6d74340ba15266217b6d9ce063d4dbf",
+    "branch": "change/vs2-rules-diary",
+    "clean": true,
+    "changes": [],
+    "tree": "4a7956b86edd51c73f9e9cbb1c28c6747cdda7a9"
+  }
+}

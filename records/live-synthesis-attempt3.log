@@ -1,0 +1,8 @@
+WORKSPACE\extras\der-checkouts\vs2-rules\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+Traceback (most recent call last):
+{"scope": "Synthetic API/MAF compatibility only; fixture decisions are not human labels.", "source_revision": "3adfda5d923b1d2433baea5a3439dc9a630574cf", "embedding_run": "8f9b1814-b99e-423a-b54d-41ef4d90e61b", "cluster_run": "4f442720-139c-440a-b2d8-6b398e737820", "synthesis_run": "f887ffe0-9a50-4bad-81f7-f88a4988167b", "status": "succeeded", "result_digest": "cc3e509cfc9d4a3eac338acf4f677094203b6b2bcc606960e51818be7f29a7a0", "retained_runtime": "WORKSPACE\\extras\\preflight\\vs2-synthesis\\runtime-f887ffe0-9a50-4bad-81f7-f88a4988167b"}
+  File "WORKSPACE\extras\der-evidence\vs2-rules\r1\live_synthesis.py", line 64, in <module>
+    assert body.get('rule_version'), body.get('insufficiency_reason')
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: The provided interpretations do not share a distinct engineering rule that can be proposed as a generalisable invariant. Both interpretations focus on resource management concerns related to file handles and the need for proper closure, but they do not explicitly share a unique engineering rule that can be derived from the evidence. The proposed invariants are the same in both cases, but this does not constitute a shared engineering rule that can be generalized beyond the specific context of the examples. Therefore, there is insufficient evidence to propose a distinct engineering rule shared by the interpretations.

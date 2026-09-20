@@ -1,0 +1,22 @@
+{
+  "kind": "verification",
+  "round_id": "r1",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "vs2-rules-2026-09-20"
+  },
+  "payload": {
+    "stage": "locally_prepared",
+    "base": "e81c2e867e714f2fed72d235eb44ba035b4bf302",
+    "diary": "ebd6d9eff6d74340ba15266217b6d9ce063d4dbf",
+    "semantic": "dc6ba77119b2cf148cf014c54a7748953bd9735d",
+    "records": [
+      "verification-summary.json",
+      "review.json",
+      "equivalence.json"
+    ],
+    "summary": "Checkpoint-owned checks, live synthetic compatibility, full self-review, exact final tree equality and canonical local snapshot complete. Remote replication and owner acceptance pending."
+  }
+}

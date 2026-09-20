@@ -1,0 +1,385 @@
+{
+  "base": "e81c2e867e714f2fed72d235eb44ba035b4bf302",
+  "tip": "dc6ba77119b2cf148cf014c54a7748953bd9735d",
+  "tree": "4a7956b86edd51c73f9e9cbb1c28c6747cdda7a9",
+  "commits": [
+    {
+      "commit": "dd2a1ff5d5e2b620c2b37c22362623320d1bfeee",
+      "parents": [
+        "e81c2e867e714f2fed72d235eb44ba035b4bf302"
+      ],
+      "tree": "d4c9bdf2bbd0f4e8732c137a118215e708259c67",
+      "subject": "docs: activate rule discovery against the integrated grouping prerequisite",
+      "change": {
+        "files": [
+          {
+            "path": "IMPLEMENTATION_BACKLOG.yaml",
+            "added": 3,
+            "deleted": 2
+          },
+          {
+            "path": "docs/adr/ADR-0010-own-discovery-runs-under-one-worker.md",
+            "added": 6,
+            "deleted": 4
+          },
+          {
+            "path": "docs/adr/README.md",
+            "added": 1,
+            "deleted": 1
+          },
+          {
+            "path": "docs/plans/VS2-plan.md",
+            "added": 10,
+            "deleted": 1
+          }
+        ],
+        "file_count": 4,
+        "added": 20,
+        "deleted": 8,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "45683c9359db803b4911467dddb6e9344af242d7",
+      "parents": [
+        "dd2a1ff5d5e2b620c2b37c22362623320d1bfeee"
+      ],
+      "tree": "ad40e83830f1190639eab74530a9222d5c07fdee",
+      "subject": "feat: preserve immutable rule versions and fenced research decisions",
+      "change": {
+        "files": [
+          {
+            "path": "CONTEXT.md",
+            "added": 15,
+            "deleted": 0
+          },
+          {
+            "path": "docs/adr/ADR-0011-preserve-rule-evidence-across-revisions.md",
+            "added": 75,
+            "deleted": 0
+          },
+          {
+            "path": "docs/adr/README.md",
+            "added": 1,
+            "deleted": 0
+          },
+          {
+            "path": "docs/development/rules.md",
+            "added": 26,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/migrations/010_rules.sql",
+            "added": 41,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/rules.py",
+            "added": 272,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/application/rules.py",
+            "added": 200,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/asgi.py",
+            "added": 2,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/bootstrap.py",
+            "added": 12,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/domain/rules.py",
+            "added": 107,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/app.py",
+            "added": 6,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/rules.py",
+            "added": 134,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/base.html",
+            "added": 1,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/rule.html",
+            "added": 42,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/rule_conflict.html",
+            "added": 4,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/rules.html",
+            "added": 7,
+            "deleted": 0
+          },
+          {
+            "path": "tests/test_rules.py",
+            "added": 242,
+            "deleted": 0
+          }
+        ],
+        "file_count": 17,
+        "added": 1187,
+        "deleted": 0,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "dc6ba77119b2cf148cf014c54a7748953bd9735d",
+      "parents": [
+        "45683c9359db803b4911467dddb6e9344af242d7"
+      ],
+      "tree": "4a7956b86edd51c73f9e9cbb1c28c6747cdda7a9",
+      "subject": "feat: synthesise traceable rule candidates through routed MAF workflows",
+      "change": {
+        "files": [
+          {
+            "path": "config/routing/discovery-local.json",
+            "added": 37,
+            "deleted": 1
+          },
+          {
+            "path": "docs/adr/ADR-0011-preserve-rule-evidence-across-revisions.md",
+            "added": 4,
+            "deleted": 2
+          },
+          {
+            "path": "docs/development/README.md",
+            "added": 3,
+            "deleted": 1
+          },
+          {
+            "path": "docs/development/rules.md",
+            "added": 59,
+            "deleted": 4
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/maf_synthesis.py",
+            "added": 150,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/application/discovery.py",
+            "added": 89,
+            "deleted": 8
+          },
+          {
+            "path": "src/semantic_reviewer/application/synthesis.py",
+            "added": 184,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/bootstrap.py",
+            "added": 11,
+            "deleted": 1
+          },
+          {
+            "path": "src/semantic_reviewer/web/discovery.py",
+            "added": 22,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/discovery_run.html",
+            "added": 5,
+            "deleted": 1
+          },
+          {
+            "path": "tests/test_discovery.py",
+            "added": 9,
+            "deleted": 1
+          },
+          {
+            "path": "tests/test_synthesis.py",
+            "added": 170,
+            "deleted": 0
+          },
+          {
+            "path": "tools/run.py",
+            "added": 23,
+            "deleted": 1
+          }
+        ],
+        "file_count": 13,
+        "added": 766,
+        "deleted": 20,
+        "binary_files": 0
+      }
+    }
+  ],
+  "linear": true,
+  "final_change": {
+    "files": [
+      {
+        "path": "CONTEXT.md",
+        "added": 15,
+        "deleted": 0
+      },
+      {
+        "path": "IMPLEMENTATION_BACKLOG.yaml",
+        "added": 3,
+        "deleted": 2
+      },
+      {
+        "path": "config/routing/discovery-local.json",
+        "added": 37,
+        "deleted": 1
+      },
+      {
+        "path": "docs/adr/ADR-0010-own-discovery-runs-under-one-worker.md",
+        "added": 6,
+        "deleted": 4
+      },
+      {
+        "path": "docs/adr/ADR-0011-preserve-rule-evidence-across-revisions.md",
+        "added": 77,
+        "deleted": 0
+      },
+      {
+        "path": "docs/adr/README.md",
+        "added": 2,
+        "deleted": 1
+      },
+      {
+        "path": "docs/development/README.md",
+        "added": 3,
+        "deleted": 1
+      },
+      {
+        "path": "docs/development/rules.md",
+        "added": 81,
+        "deleted": 0
+      },
+      {
+        "path": "docs/plans/VS2-plan.md",
+        "added": 10,
+        "deleted": 1
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/maf_synthesis.py",
+        "added": 150,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/migrations/010_rules.sql",
+        "added": 41,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/rules.py",
+        "added": 272,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/application/discovery.py",
+        "added": 89,
+        "deleted": 8
+      },
+      {
+        "path": "src/semantic_reviewer/application/rules.py",
+        "added": 200,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/application/synthesis.py",
+        "added": 184,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/asgi.py",
+        "added": 2,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/bootstrap.py",
+        "added": 23,
+        "deleted": 1
+      },
+      {
+        "path": "src/semantic_reviewer/domain/rules.py",
+        "added": 107,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/web/app.py",
+        "added": 6,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/web/discovery.py",
+        "added": 22,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/web/rules.py",
+        "added": 134,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/web/templates/base.html",
+        "added": 1,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/web/templates/discovery_run.html",
+        "added": 5,
+        "deleted": 1
+      },
+      {
+        "path": "src/semantic_reviewer/web/templates/rule.html",
+        "added": 42,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/web/templates/rule_conflict.html",
+        "added": 4,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/web/templates/rules.html",
+        "added": 7,
+        "deleted": 0
+      },
+      {
+        "path": "tests/test_discovery.py",
+        "added": 9,
+        "deleted": 1
+      },
+      {
+        "path": "tests/test_rules.py",
+        "added": 242,
+        "deleted": 0
+      },
+      {
+        "path": "tests/test_synthesis.py",
+        "added": 170,
+        "deleted": 0
+      },
+      {
+        "path": "tools/run.py",
+        "added": 23,
+        "deleted": 1
+      }
+    ],
+    "file_count": 30,
+    "added": 1967,
+    "deleted": 22,
+    "binary_files": 0
+  },
+  "statistics_note": "No rename detection; merge commit churn uses first parent. Final diff and cumulative per-commit churn are different quantities."
+}

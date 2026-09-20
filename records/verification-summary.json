@@ -1,0 +1,300 @@
+{
+  "checks": [
+    {
+      "label": "integrated-base",
+      "revision": "e81c2e867e714f2fed72d235eb44ba035b4bf302",
+      "checkout": "WORKSPACE\\extras\\der-checkouts\\vs2-rules-integrated-base",
+      "started_at": "2026-09-20T08:39:19.949740+00:00",
+      "commands": [
+        {
+          "argv": [
+            "uv",
+            "sync",
+            "--locked",
+            "--offline",
+            "--python",
+            "HOST_USER/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "uv",
+            "run",
+            "--locked",
+            "python",
+            "tools/check.py"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "WORKSPACE\\extras\\der-checkouts\\vs2-rules-integrated-base\\.venv\\Scripts\\python.exe",
+            "-c",
+            "import semantic_reviewer,sys,sqlite3,json,importlib.metadata as m; print(json.dumps({\"source\":semantic_reviewer.__file__,\"python\":sys.version,\"sqlite\":sqlite3.sqlite_version,\"versions\":{d.metadata[\"Name\"]:d.version for d in m.distributions()}},indent=2))"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "git",
+            "diff",
+            "--check"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "git",
+            "status",
+            "--porcelain"
+          ],
+          "exit_code": 0
+        }
+      ],
+      "required_context": "Windows/Python 3.12/locked checkpoint environment",
+      "tree": "ad60c533d489f3bd590884d53e90165449c39104",
+      "clean": true,
+      "lock_sha256": "df5791b0623310186c5c5d2b971c2968c15a70f42636dbb6118b59e99ae2dad9",
+      "ended_at": "2026-09-20T08:40:00.186579+00:00",
+      "status": "passed"
+    },
+    {
+      "label": "diary-final2",
+      "revision": "ebd6d9eff6d74340ba15266217b6d9ce063d4dbf",
+      "checkout": "WORKSPACE\\extras\\der-checkouts\\vs2-rules-diary-final2",
+      "started_at": "2026-09-20T08:38:36.656067+00:00",
+      "commands": [
+        {
+          "argv": [
+            "uv",
+            "sync",
+            "--locked",
+            "--offline",
+            "--python",
+            "HOST_USER/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "uv",
+            "run",
+            "--locked",
+            "python",
+            "tools/check.py"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "WORKSPACE\\extras\\der-checkouts\\vs2-rules-diary-final2\\.venv\\Scripts\\python.exe",
+            "-c",
+            "import semantic_reviewer,sys,sqlite3,json,importlib.metadata as m; print(json.dumps({\"source\":semantic_reviewer.__file__,\"python\":sys.version,\"sqlite\":sqlite3.sqlite_version,\"versions\":{d.metadata[\"Name\"]:d.version for d in m.distributions()}},indent=2))"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "git",
+            "diff",
+            "--check"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "git",
+            "status",
+            "--porcelain"
+          ],
+          "exit_code": 0
+        }
+      ],
+      "required_context": "Windows/Python 3.12/locked checkpoint environment",
+      "tree": "4a7956b86edd51c73f9e9cbb1c28c6747cdda7a9",
+      "clean": true,
+      "lock_sha256": "df5791b0623310186c5c5d2b971c2968c15a70f42636dbb6118b59e99ae2dad9",
+      "ended_at": "2026-09-20T08:39:36.425103+00:00",
+      "status": "passed"
+    },
+    {
+      "label": "p1",
+      "revision": "dd2a1ff5d5e2b620c2b37c22362623320d1bfeee",
+      "checkout": "WORKSPACE\\extras\\der-checkouts\\vs2-rules-p1",
+      "started_at": "2026-09-20T08:40:18.909251+00:00",
+      "commands": [
+        {
+          "argv": [
+            "uv",
+            "sync",
+            "--locked",
+            "--offline",
+            "--python",
+            "HOST_USER/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "uv",
+            "run",
+            "--locked",
+            "python",
+            "tools/check.py"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "WORKSPACE\\extras\\der-checkouts\\vs2-rules-p1\\.venv\\Scripts\\python.exe",
+            "-c",
+            "import semantic_reviewer,sys,sqlite3,json,importlib.metadata as m; print(json.dumps({\"source\":semantic_reviewer.__file__,\"python\":sys.version,\"sqlite\":sqlite3.sqlite_version,\"versions\":{d.metadata[\"Name\"]:d.version for d in m.distributions()}},indent=2))"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "git",
+            "diff",
+            "--check"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "git",
+            "status",
+            "--porcelain"
+          ],
+          "exit_code": 0
+        }
+      ],
+      "required_context": "Windows/Python 3.12/locked checkpoint environment",
+      "tree": "d4c9bdf2bbd0f4e8732c137a118215e708259c67",
+      "clean": true,
+      "lock_sha256": "df5791b0623310186c5c5d2b971c2968c15a70f42636dbb6118b59e99ae2dad9",
+      "ended_at": "2026-09-20T08:41:00.035323+00:00",
+      "status": "passed"
+    },
+    {
+      "label": "p2",
+      "revision": "45683c9359db803b4911467dddb6e9344af242d7",
+      "checkout": "WORKSPACE\\extras\\der-checkouts\\vs2-rules-p2",
+      "started_at": "2026-09-20T08:40:31.573173+00:00",
+      "commands": [
+        {
+          "argv": [
+            "uv",
+            "sync",
+            "--locked",
+            "--offline",
+            "--python",
+            "HOST_USER/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "uv",
+            "run",
+            "--locked",
+            "python",
+            "tools/check.py"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "WORKSPACE\\extras\\der-checkouts\\vs2-rules-p2\\.venv\\Scripts\\python.exe",
+            "-c",
+            "import semantic_reviewer,sys,sqlite3,json,importlib.metadata as m; print(json.dumps({\"source\":semantic_reviewer.__file__,\"python\":sys.version,\"sqlite\":sqlite3.sqlite_version,\"versions\":{d.metadata[\"Name\"]:d.version for d in m.distributions()}},indent=2))"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "git",
+            "diff",
+            "--check"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "git",
+            "status",
+            "--porcelain"
+          ],
+          "exit_code": 0
+        }
+      ],
+      "required_context": "Windows/Python 3.12/locked checkpoint environment",
+      "tree": "ad40e83830f1190639eab74530a9222d5c07fdee",
+      "clean": true,
+      "lock_sha256": "df5791b0623310186c5c5d2b971c2968c15a70f42636dbb6118b59e99ae2dad9",
+      "ended_at": "2026-09-20T08:41:23.626398+00:00",
+      "status": "passed"
+    },
+    {
+      "label": "p3",
+      "revision": "dc6ba77119b2cf148cf014c54a7748953bd9735d",
+      "checkout": "WORKSPACE\\extras\\der-checkouts\\vs2-rules-p3",
+      "started_at": "2026-09-20T08:41:02.730112+00:00",
+      "commands": [
+        {
+          "argv": [
+            "uv",
+            "sync",
+            "--locked",
+            "--offline",
+            "--python",
+            "HOST_USER/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "uv",
+            "run",
+            "--locked",
+            "python",
+            "tools/check.py"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "WORKSPACE\\extras\\der-checkouts\\vs2-rules-p3\\.venv\\Scripts\\python.exe",
+            "-c",
+            "import semantic_reviewer,sys,sqlite3,json,importlib.metadata as m; print(json.dumps({\"source\":semantic_reviewer.__file__,\"python\":sys.version,\"sqlite\":sqlite3.sqlite_version,\"versions\":{d.metadata[\"Name\"]:d.version for d in m.distributions()}},indent=2))"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "git",
+            "diff",
+            "--check"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "git",
+            "status",
+            "--porcelain"
+          ],
+          "exit_code": 0
+        }
+      ],
+      "required_context": "Windows/Python 3.12/locked checkpoint environment",
+      "tree": "4a7956b86edd51c73f9e9cbb1c28c6747cdda7a9",
+      "clean": true,
+      "lock_sha256": "df5791b0623310186c5c5d2b971c2968c15a70f42636dbb6118b59e99ae2dad9",
+      "ended_at": "2026-09-20T08:42:02.751543+00:00",
+      "status": "passed"
+    }
+  ],
+  "scope": "Windows/Python 3.12; no other platform claim"
+}

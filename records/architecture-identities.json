@@ -1,0 +1,9 @@
+{
+  "before": "e81c2e867e714f2fed72d235eb44ba035b4bf302",
+  "after": "dc6ba77119b2cf148cf014c54a7748953bd9735d",
+  "hashes": {
+    "architecture-before.json": "c3a7ffbd4121840d8e205438a78f7dadaf0f92c608418be03702d06ad454f9f5",
+    "architecture-after.json": "d86b5e7c57a676b1fe96644d49261535fb2ea8c2948335f3277dcea620f7db55",
+    "architecture-delta.json": "5a0928ea08bdc28d52f6b398f0483531527592247a845b8d035ed8c5e0e77d93"
+  }
+}

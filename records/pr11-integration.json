@@ -1,0 +1,29 @@
+{
+  "pr": 11,
+  "integrated": "e81c2e867e714f2fed72d235eb44ba035b4bf302",
+  "ordered_tree_mapping": [
+    {
+      "reviewed": "ab010c451f98c41f22c95dc49e078d787aac6ce3",
+      "integrated": "2688da6cdae8b1ae62747b2052dda053c6a53b4f",
+      "tree": "4c7fa502847403650d85866597fd77ddeec0f024"
+    },
+    {
+      "reviewed": "12f166acf9ba1a68027b38695ac19381805277b3",
+      "integrated": "32e120864493320b779f20140f4c95888a208b1f",
+      "tree": "8f047ddbfa5ce5c0c3f2e55bf9665925e2ef78cd"
+    },
+    {
+      "reviewed": "a2150f7a0470f6e8f5aa8018a487018f24aa6923",
+      "integrated": "c17a7a29daeefa7096691fd5ce01f915fe4ca53e",
+      "tree": "ea297f4d08410fa054a17cc46b456a8e315dc32d"
+    },
+    {
+      "reviewed": "125fd8c055b9c110efa1c4dd31dcc661358b32bc",
+      "integrated": "e81c2e867e714f2fed72d235eb44ba035b4bf302",
+      "tree": "ad60c533d489f3bd590884d53e90165449c39104"
+    }
+  ],
+  "owner_statement": "Approved and merged PR11; continue autonomously",
+  "post_merge_checks": "integrated-base-checks.json",
+  "old_checks_remain_bound_to_reviewed_shas": true
+}

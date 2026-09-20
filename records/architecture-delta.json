@@ -1,0 +1,977 @@
+{
+  "changes": {
+    "boundaries": {
+      "added": [],
+      "removed": []
+    },
+    "contracts": {
+      "added": [],
+      "removed": []
+    },
+    "imports": {
+      "added": [
+        {
+          "source": "semantic_reviewer.adapters.maf_synthesis",
+          "target": "agent_framework"
+        },
+        {
+          "source": "semantic_reviewer.adapters.maf_synthesis",
+          "target": "asyncio"
+        },
+        {
+          "source": "semantic_reviewer.adapters.maf_synthesis",
+          "target": "dataclasses"
+        },
+        {
+          "source": "semantic_reviewer.adapters.maf_synthesis",
+          "target": "datetime"
+        },
+        {
+          "source": "semantic_reviewer.adapters.maf_synthesis",
+          "target": "importlib.metadata"
+        },
+        {
+          "source": "semantic_reviewer.adapters.maf_synthesis",
+          "target": "semantic_reviewer.application.model"
+        },
+        {
+          "source": "semantic_reviewer.adapters.maf_synthesis",
+          "target": "semantic_reviewer.application.normalisation"
+        },
+        {
+          "source": "semantic_reviewer.adapters.maf_synthesis",
+          "target": "semantic_reviewer.application.synthesis"
+        },
+        {
+          "source": "semantic_reviewer.adapters.maf_synthesis",
+          "target": "semantic_reviewer.domain.rules"
+        },
+        {
+          "source": "semantic_reviewer.adapters.maf_synthesis",
+          "target": "semantic_reviewer.routing.usage"
+        },
+        {
+          "source": "semantic_reviewer.adapters.rules",
+          "target": "datetime"
+        },
+        {
+          "source": "semantic_reviewer.adapters.rules",
+          "target": "json"
+        },
+        {
+          "source": "semantic_reviewer.adapters.rules",
+          "target": "pathlib"
+        },
+        {
+          "source": "semantic_reviewer.adapters.rules",
+          "target": "semantic_reviewer.adapters.state"
+        },
+        {
+          "source": "semantic_reviewer.adapters.rules",
+          "target": "semantic_reviewer.application.discovery"
+        },
+        {
+          "source": "semantic_reviewer.adapters.rules",
+          "target": "semantic_reviewer.application.rules"
+        },
+        {
+          "source": "semantic_reviewer.adapters.rules",
+          "target": "semantic_reviewer.domain.rules"
+        },
+        {
+          "source": "semantic_reviewer.adapters.rules",
+          "target": "uuid"
+        },
+        {
+          "source": "semantic_reviewer.application.rules",
+          "target": "dataclasses"
+        },
+        {
+          "source": "semantic_reviewer.application.rules",
+          "target": "semantic_reviewer.application.discovery"
+        },
+        {
+          "source": "semantic_reviewer.application.rules",
+          "target": "semantic_reviewer.application.selections"
+        },
+        {
+          "source": "semantic_reviewer.application.rules",
+          "target": "semantic_reviewer.domain.rules"
+        },
+        {
+          "source": "semantic_reviewer.application.rules",
+          "target": "typing"
+        },
+        {
+          "source": "semantic_reviewer.application.rules",
+          "target": "uuid"
+        },
+        {
+          "source": "semantic_reviewer.application.synthesis",
+          "target": "dataclasses"
+        },
+        {
+          "source": "semantic_reviewer.application.synthesis",
+          "target": "datetime"
+        },
+        {
+          "source": "semantic_reviewer.application.synthesis",
+          "target": "json"
+        },
+        {
+          "source": "semantic_reviewer.application.synthesis",
+          "target": "semantic_reviewer.application.discovery"
+        },
+        {
+          "source": "semantic_reviewer.application.synthesis",
+          "target": "semantic_reviewer.application.model"
+        },
+        {
+          "source": "semantic_reviewer.application.synthesis",
+          "target": "semantic_reviewer.application.normalisation"
+        },
+        {
+          "source": "semantic_reviewer.application.synthesis",
+          "target": "semantic_reviewer.application.routing"
+        },
+        {
+          "source": "semantic_reviewer.application.synthesis",
+          "target": "semantic_reviewer.application.rules"
+        },
+        {
+          "source": "semantic_reviewer.application.synthesis",
+          "target": "semantic_reviewer.application.selections"
+        },
+        {
+          "source": "semantic_reviewer.application.synthesis",
+          "target": "semantic_reviewer.domain.rules"
+        },
+        {
+          "source": "semantic_reviewer.application.synthesis",
+          "target": "semantic_reviewer.routing.selection"
+        },
+        {
+          "source": "semantic_reviewer.application.synthesis",
+          "target": "semantic_reviewer.routing.usage"
+        },
+        {
+          "source": "semantic_reviewer.application.synthesis",
+          "target": "typing"
+        },
+        {
+          "source": "semantic_reviewer.bootstrap",
+          "target": "semantic_reviewer.adapters.maf_synthesis"
+        },
+        {
+          "source": "semantic_reviewer.bootstrap",
+          "target": "semantic_reviewer.adapters.rules"
+        },
+        {
+          "source": "semantic_reviewer.bootstrap",
+          "target": "semantic_reviewer.application.rules"
+        },
+        {
+          "source": "semantic_reviewer.bootstrap",
+          "target": "semantic_reviewer.application.synthesis"
+        },
+        {
+          "source": "semantic_reviewer.domain.rules",
+          "target": "pydantic"
+        },
+        {
+          "source": "semantic_reviewer.domain.rules",
+          "target": "typing"
+        },
+        {
+          "source": "semantic_reviewer.web.app",
+          "target": "semantic_reviewer.application.rules"
+        },
+        {
+          "source": "semantic_reviewer.web.app",
+          "target": "semantic_reviewer.web.rules"
+        },
+        {
+          "source": "semantic_reviewer.web.rules",
+          "target": "fastapi"
+        },
+        {
+          "source": "semantic_reviewer.web.rules",
+          "target": "fastapi.responses"
+        },
+        {
+          "source": "semantic_reviewer.web.rules",
+          "target": "json"
+        },
+        {
+          "source": "semantic_reviewer.web.rules",
+          "target": "semantic_reviewer.application.rules"
+        },
+        {
+          "source": "semantic_reviewer.web.rules",
+          "target": "semantic_reviewer.domain.rules"
+        },
+        {
+          "source": "semantic_reviewer.web.rules",
+          "target": "semantic_reviewer.web.discovery"
+        },
+        {
+          "source": "semantic_reviewer.web.rules",
+          "target": "starlette.concurrency"
+        },
+        {
+          "source": "semantic_reviewer.web.rules",
+          "target": "uuid"
+        }
+      ],
+      "removed": []
+    },
+    "interfaces": {
+      "added": [
+        {
+          "declaration": "@model_validator(mode='after') def distinct_support(self) -> Self",
+          "kind": "callable",
+          "name": "semantic_reviewer.domain.rules.RuleDefinition.distinct_support"
+        },
+        {
+          "declaration": "@model_validator(mode='after') def exclusive_outcome(self) -> Self",
+          "kind": "callable",
+          "name": "semantic_reviewer.domain.rules.RuleProposal.exclusive_outcome"
+        },
+        {
+          "declaration": "@model_validator(mode='after') def model_trace(self) -> Self",
+          "kind": "callable",
+          "name": "semantic_reviewer.domain.rules.RuleOrigin.model_trace"
+        },
+        {
+          "declaration": "action: Literal['promote', 'reject']",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.rules.RuleDecisionRequest.action"
+        },
+        {
+          "declaration": "actor: Identity",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.rules.RuleDecisionRequest.actor"
+        },
+        {
+          "declaration": "actor: Identity",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.rules.RuleEvidence.actor"
+        },
+        {
+          "declaration": "actor: Identity",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.rules.RuleOrigin.actor"
+        },
+        {
+          "declaration": "annotation_id: Identity",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.rules.RuleEvidence.annotation_id"
+        },
+        {
+          "declaration": "applicability: Text",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.rules.RuleDefinition.applicability"
+        },
+        {
+          "declaration": "candidate: RuleDefinition | None",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.rules.RuleProposal.candidate"
+        },
+        {
+          "declaration": "class Inferred()",
+          "kind": "class",
+          "name": "semantic_reviewer.adapters.maf_synthesis.Inferred"
+        },
+        {
+          "declaration": "class MafSynthesisRuntime()",
+          "kind": "class",
+          "name": "semantic_reviewer.adapters.maf_synthesis.MafSynthesisRuntime"
+        },
+        {
+          "declaration": "class Prepared()",
+          "kind": "class",
+          "name": "semantic_reviewer.adapters.maf_synthesis.Prepared"
+        },
+        {
+          "declaration": "class RuleDecisionRequest(BaseModel)",
+          "kind": "class",
+          "name": "semantic_reviewer.domain.rules.RuleDecisionRequest"
+        },
+        {
+          "declaration": "class RuleDefinition(BaseModel)",
+          "kind": "class",
+          "name": "semantic_reviewer.domain.rules.RuleDefinition"
+        },
+        {
+          "declaration": "class RuleEvidence(BaseModel)",
+          "kind": "class",
+          "name": "semantic_reviewer.domain.rules.RuleEvidence"
+        },
+        {
+          "declaration": "class RuleHead()",
+          "kind": "class",
+          "name": "semantic_reviewer.application.rules.RuleHead"
+        },
+        {
+          "declaration": "class RuleOrigin(BaseModel)",
+          "kind": "class",
+          "name": "semantic_reviewer.domain.rules.RuleOrigin"
+        },
+        {
+          "declaration": "class RuleProposal(BaseModel)",
+          "kind": "class",
+          "name": "semantic_reviewer.domain.rules.RuleProposal"
+        },
+        {
+          "declaration": "class RuleService()",
+          "kind": "class",
+          "name": "semantic_reviewer.application.rules.RuleService"
+        },
+        {
+          "declaration": "class RuleStore(Protocol)",
+          "kind": "class",
+          "name": "semantic_reviewer.application.rules.RuleStore"
+        },
+        {
+          "declaration": "class RuleSynthesisExecution()",
+          "kind": "class",
+          "name": "semantic_reviewer.application.synthesis.RuleSynthesisExecution"
+        },
+        {
+          "declaration": "class RuleVersionBody(BaseModel)",
+          "kind": "class",
+          "name": "semantic_reviewer.domain.rules.RuleVersionBody"
+        },
+        {
+          "declaration": "class SQLiteRules()",
+          "kind": "class",
+          "name": "semantic_reviewer.adapters.rules.SQLiteRules"
+        },
+        {
+          "declaration": "class SynthesisExecutor(Protocol)",
+          "kind": "class",
+          "name": "semantic_reviewer.application.discovery.SynthesisExecutor"
+        },
+        {
+          "declaration": "class SynthesisInput()",
+          "kind": "class",
+          "name": "semantic_reviewer.application.synthesis.SynthesisInput"
+        },
+        {
+          "declaration": "class SynthesisOutcome()",
+          "kind": "class",
+          "name": "semantic_reviewer.application.synthesis.SynthesisOutcome"
+        },
+        {
+          "declaration": "class SynthesisPublication()",
+          "kind": "class",
+          "name": "semantic_reviewer.application.discovery.SynthesisPublication"
+        },
+        {
+          "declaration": "class SynthesisRuntime(Protocol)",
+          "kind": "class",
+          "name": "semantic_reviewer.application.synthesis.SynthesisRuntime"
+        },
+        {
+          "declaration": "cluster: int = Field(ge=0, strict=True)",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.rules.RuleVersionBody.cluster"
+        },
+        {
+          "declaration": "cluster: int | None = Field(default=None, ge=0, strict=True)",
+          "kind": "field",
+          "name": "semantic_reviewer.application.discovery.DiscoveryRequest.cluster"
+        },
+        {
+          "declaration": "cluster_digest: Digest | None = None",
+          "kind": "field",
+          "name": "semantic_reviewer.application.discovery.DiscoveryRequest.cluster_digest"
+        },
+        {
+          "declaration": "cluster_digest: Digest",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.rules.RuleVersionBody.cluster_digest"
+        },
+        {
+          "declaration": "cluster_run: Identity",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.rules.RuleVersionBody.cluster_run"
+        },
+        {
+          "declaration": "cluster_run: str | None = Field(default=None, min_length=1, max_length=200)",
+          "kind": "field",
+          "name": "semantic_reviewer.application.discovery.DiscoveryRequest.cluster_run"
+        },
+        {
+          "declaration": "created_at: str",
+          "kind": "field",
+          "name": "semantic_reviewer.application.rules.RuleHead.created_at"
+        },
+        {
+          "declaration": "decision: RoutingDecision",
+          "kind": "field",
+          "name": "semantic_reviewer.application.synthesis.SynthesisInput.decision"
+        },
+        {
+          "declaration": "def __init__(self, database: Path, files: DiscoveryFiles) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.rules.SQLiteRules.__init__"
+        },
+        {
+          "declaration": "def __init__(self, discovery: DiscoveryService, rules: RuleService, routing: RoutingService, runtime: SynthesisRuntime) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.synthesis.RuleSynthesisExecution.__init__"
+        },
+        {
+          "declaration": "def __init__(self, discovery: DiscoveryService, store: RuleStore, files: DiscoveryFiles) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.rules.RuleService.__init__"
+        },
+        {
+          "declaration": "def __init__(self, model: ModelClient) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.maf_synthesis.MafSynthesisRuntime.__init__"
+        },
+        {
+          "declaration": "def __init__(self, selections: SelectionStore, store: DiscoveryStore, files: DiscoveryFiles, journal: RoutingJournal | None=None) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.discovery.DiscoveryService.__init__"
+        },
+        {
+          "declaration": "def __init__(self, service: DiscoveryService, routing: RoutingService, runtime: EmbeddingRuntime, synthesis: SynthesisExecutor | None=None) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.discovery.DiscoveryExecution.__init__"
+        },
+        {
+          "declaration": "def add_evidence(self, evidence: RuleEvidence, expected_revision: int) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.rules.SQLiteRules.add_evidence"
+        },
+        {
+          "declaration": "def add_evidence(self, evidence: RuleEvidence, expected_revision: int) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.rules.RuleService.add_evidence"
+        },
+        {
+          "declaration": "def add_evidence(self, evidence: RuleEvidence, expected_revision: int) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.rules.RuleStore.add_evidence"
+        },
+        {
+          "declaration": "def add_rule_routes(app, templates, service: RuleService) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.web.rules.add_rule_routes"
+        },
+        {
+          "declaration": "def build_rules(data_root: Path) -> RuleService",
+          "kind": "callable",
+          "name": "semantic_reviewer.bootstrap.build_rules"
+        },
+        {
+          "declaration": "def cluster_inputs(self, run_id: str, cluster: int) -> tuple[DiscoveryRun, dict, SelectionSnapshot, tuple[SelectedAnnotation, ...]]",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.rules.RuleService.cluster_inputs"
+        },
+        {
+          "declaration": "def create_app(datasets: DatasetService, jobs: JobService | None=None, annotations: AnnotationService | None=None, reviews: ReviewIndex | None=None, selections: SelectionStore | None=None, discovery: DiscoveryService | None=None, rules: RuleService | None=None) -> FastAPI",
+          "kind": "callable",
+          "name": "semantic_reviewer.web.app.create_app"
+        },
+        {
+          "declaration": "def decide(self, request: RuleDecisionRequest) -> dict",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.rules.SQLiteRules.decide"
+        },
+        {
+          "declaration": "def decide(self, request: RuleDecisionRequest) -> dict",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.rules.RuleStore.decide"
+        },
+        {
+          "declaration": "def execute(self, run: DiscoveryRun) -> SynthesisPublication",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.discovery.SynthesisExecutor.execute"
+        },
+        {
+          "declaration": "def execute(self, run: DiscoveryRun) -> SynthesisPublication",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.synthesis.RuleSynthesisExecution.execute"
+        },
+        {
+          "declaration": "def propose(self, cluster_run: str, cluster: int, definition: RuleDefinition, origin: RuleOrigin) -> str",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.rules.RuleService.propose"
+        },
+        {
+          "declaration": "def publish(self, body: RuleVersionBody, expected_revision: int | None) -> str",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.rules.SQLiteRules.publish"
+        },
+        {
+          "declaration": "def publish(self, body: RuleVersionBody, expected_revision: int | None) -> str",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.rules.RuleStore.publish"
+        },
+        {
+          "declaration": "def read(self, version_id: str) -> tuple",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.rules.SQLiteRules.read"
+        },
+        {
+          "declaration": "def read(self, version_id: str) -> tuple[RuleHead, RuleVersionBody, tuple[RuleEvidence, ...], tuple[dict, ...]]",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.rules.RuleStore.read"
+        },
+        {
+          "declaration": "def recent(self) -> tuple[RuleHead, ...]",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.rules.SQLiteRules.recent"
+        },
+        {
+          "declaration": "def recent(self) -> tuple[RuleHead, ...]",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.rules.RuleStore.recent"
+        },
+        {
+          "declaration": "def revise(self, version_id: str, definition: RuleDefinition, actor: str, rationale: str, expected_revision: int) -> str",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.rules.RuleService.revise"
+        },
+        {
+          "declaration": "def run(self, value: SynthesisInput) -> SynthesisOutcome",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.maf_synthesis.MafSynthesisRuntime.run"
+        },
+        {
+          "declaration": "def run(self, value: SynthesisInput) -> SynthesisOutcome",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.synthesis.SynthesisRuntime.run"
+        },
+        {
+          "declaration": "def synthesis_request(value: SynthesisInput) -> ModelRequest",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.synthesis.synthesis_request"
+        },
+        {
+          "declaration": "def synthesise(self, cluster_run: str, cluster: int) -> DiscoveryRun",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.discovery.DiscoveryService.synthesise"
+        },
+        {
+          "declaration": "def telemetry(self, run: DiscoveryRun) -> str",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.discovery.DiscoveryService.telemetry"
+        },
+        {
+          "declaration": "def validate_support(self, supplied: tuple[str, ...]) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.domain.rules.RuleProposal.validate_support"
+        },
+        {
+          "declaration": "definition: RuleDefinition",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.rules.RuleVersionBody.definition"
+        },
+        {
+          "declaration": "error: str | None",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.maf_synthesis.Inferred.error"
+        },
+        {
+          "declaration": "error: str | None",
+          "kind": "field",
+          "name": "semantic_reviewer.application.discovery.SynthesisPublication.error"
+        },
+        {
+          "declaration": "error: str | None",
+          "kind": "field",
+          "name": "semantic_reviewer.application.synthesis.SynthesisOutcome.error"
+        },
+        {
+          "declaration": "exclusions: tuple[Text, ...] = Field(max_length=10)",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.rules.RuleDefinition.exclusions"
+        },
+        {
+          "declaration": "expected_revision: int = Field(ge=1, strict=True)",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.rules.RuleDecisionRequest.expected_revision"
+        },
+        {
+          "declaration": "failure: Measurement | None",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.maf_synthesis.Inferred.failure"
+        },
+        {
+          "declaration": "framework: FrameworkObservation | None = None",
+          "kind": "field",
+          "name": "semantic_reviewer.application.synthesis.SynthesisOutcome.framework"
+        },
+        {
+          "declaration": "id: Identity",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.rules.RuleEvidence.id"
+        },
+        {
+          "declaration": "inherited_from: Identity | None = None",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.rules.RuleEvidence.inherited_from"
+        },
+        {
+          "declaration": "insufficiency_reason: Text | None",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.rules.RuleProposal.insufficiency_reason"
+        },
+        {
+          "declaration": "insufficiency_reason: str | None",
+          "kind": "field",
+          "name": "semantic_reviewer.application.discovery.SynthesisPublication.insufficiency_reason"
+        },
+        {
+          "declaration": "kind: Literal['embedding', 'clustering', 'synthesis']",
+          "kind": "field",
+          "name": "semantic_reviewer.application.discovery.DiscoveryRequest.kind"
+        },
+        {
+          "declaration": "kind: Literal['human', 'model']",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.rules.RuleOrigin.kind"
+        },
+        {
+          "declaration": "kind: Literal['positive', 'counterexample', 'false_positive', 'false_negative', 'unresolved']",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.rules.RuleEvidence.kind"
+        },
+        {
+          "declaration": "measurement: Measurement",
+          "kind": "field",
+          "name": "semantic_reviewer.application.synthesis.SynthesisOutcome.measurement"
+        },
+        {
+          "declaration": "operation_id: Identity",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.rules.RuleDecisionRequest.operation_id"
+        },
+        {
+          "declaration": "origin: RuleOrigin",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.rules.RuleVersionBody.origin"
+        },
+        {
+          "declaration": "parent_version: Digest | None",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.rules.RuleVersionBody.parent_version"
+        },
+        {
+          "declaration": "prepared: Prepared",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.maf_synthesis.Inferred.prepared"
+        },
+        {
+          "declaration": "proposal: RuleProposal | None",
+          "kind": "field",
+          "name": "semantic_reviewer.application.synthesis.SynthesisOutcome.proposal"
+        },
+        {
+          "declaration": "purpose: Literal['fixture', 'research']",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.rules.RuleVersionBody.purpose"
+        },
+        {
+          "declaration": "queued_at: datetime",
+          "kind": "field",
+          "name": "semantic_reviewer.application.synthesis.SynthesisInput.queued_at"
+        },
+        {
+          "declaration": "rationale: Text",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.rules.RuleDecisionRequest.rationale"
+        },
+        {
+          "declaration": "rationale: Text",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.rules.RuleEvidence.rationale"
+        },
+        {
+          "declaration": "rationale: Text",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.rules.RuleOrigin.rationale"
+        },
+        {
+          "declaration": "records: tuple[SelectedAnnotation, ...]",
+          "kind": "field",
+          "name": "semantic_reviewer.application.synthesis.SynthesisInput.records"
+        },
+        {
+          "declaration": "reply: ModelReply | None",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.maf_synthesis.Inferred.reply"
+        },
+        {
+          "declaration": "reply: ModelReply | None",
+          "kind": "field",
+          "name": "semantic_reviewer.application.synthesis.SynthesisOutcome.reply"
+        },
+        {
+          "declaration": "request: ModelRequest | None = None",
+          "kind": "field",
+          "name": "semantic_reviewer.application.synthesis.SynthesisOutcome.request"
+        },
+        {
+          "declaration": "request: ModelRequest",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.maf_synthesis.Prepared.request"
+        },
+        {
+          "declaration": "revision: int",
+          "kind": "field",
+          "name": "semantic_reviewer.application.rules.RuleHead.revision"
+        },
+        {
+          "declaration": "rule_id: Identity",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.rules.RuleVersionBody.rule_id"
+        },
+        {
+          "declaration": "rule_id: str",
+          "kind": "field",
+          "name": "semantic_reviewer.application.rules.RuleHead.rule_id"
+        },
+        {
+          "declaration": "rule_version: str | None",
+          "kind": "field",
+          "name": "semantic_reviewer.application.discovery.SynthesisPublication.rule_version"
+        },
+        {
+          "declaration": "schema_version: Literal[1] = 1",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.rules.RuleVersionBody.schema_version"
+        },
+        {
+          "declaration": "scope: Literal['expression', 'statement', 'function', 'class', 'file', 'module', 'repository']",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.rules.RuleDefinition.scope"
+        },
+        {
+          "declaration": "selection_id: Digest",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.rules.RuleVersionBody.selection_id"
+        },
+        {
+          "declaration": "source: SynthesisInput",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.maf_synthesis.Prepared.source"
+        },
+        {
+          "declaration": "statement: Text",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.rules.RuleDefinition.statement"
+        },
+        {
+          "declaration": "status: Literal['candidate', 'promoted', 'rejected']",
+          "kind": "field",
+          "name": "semantic_reviewer.application.rules.RuleHead.status"
+        },
+        {
+          "declaration": "supporting_annotations: tuple[Identity, ...] = Field(min_length=1, max_length=6)",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.rules.RuleDefinition.supporting_annotations"
+        },
+        {
+          "declaration": "telemetry: str",
+          "kind": "field",
+          "name": "semantic_reviewer.application.discovery.SynthesisPublication.telemetry"
+        },
+        {
+          "declaration": "trace_digest: Digest | None = None",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.rules.RuleOrigin.trace_digest"
+        },
+        {
+          "declaration": "trace_digest: str",
+          "kind": "field",
+          "name": "semantic_reviewer.application.discovery.SynthesisPublication.trace_digest"
+        },
+        {
+          "declaration": "verification: Literal['weak', 'verified']",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.rules.RuleEvidence.verification"
+        },
+        {
+          "declaration": "version_id: Digest",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.rules.RuleDecisionRequest.version_id"
+        },
+        {
+          "declaration": "version_id: Digest",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.rules.RuleEvidence.version_id"
+        },
+        {
+          "declaration": "version_id: str",
+          "kind": "field",
+          "name": "semantic_reviewer.application.rules.RuleHead.version_id"
+        },
+        {
+          "declaration": "violation: Text",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.rules.RuleDefinition.violation"
+        }
+      ],
+      "removed": [
+        {
+          "declaration": "def __init__(self, selections: SelectionStore, store: DiscoveryStore, files: DiscoveryFiles) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.discovery.DiscoveryService.__init__"
+        },
+        {
+          "declaration": "def __init__(self, service: DiscoveryService, routing: RoutingService, runtime: EmbeddingRuntime) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.discovery.DiscoveryExecution.__init__"
+        },
+        {
+          "declaration": "def create_app(datasets: DatasetService, jobs: JobService | None=None, annotations: AnnotationService | None=None, reviews: ReviewIndex | None=None, selections: SelectionStore | None=None, discovery: DiscoveryService | None=None) -> FastAPI",
+          "kind": "callable",
+          "name": "semantic_reviewer.web.app.create_app"
+        },
+        {
+          "declaration": "kind: Literal['embedding', 'clustering']",
+          "kind": "field",
+          "name": "semantic_reviewer.application.discovery.DiscoveryRequest.kind"
+        }
+      ]
+    },
+    "modules": {
+      "added": [
+        {
+          "definitions": [
+            "DiscoveryExecution",
+            "DiscoveryFiles",
+            "DiscoveryRequest",
+            "DiscoveryRun",
+            "DiscoveryService",
+            "DiscoveryStore",
+            "SynthesisExecutor",
+            "SynthesisPublication"
+          ],
+          "name": "semantic_reviewer.application.discovery",
+          "package": false,
+          "path": "src/semantic_reviewer/application/discovery.py"
+        },
+        {
+          "definitions": [
+            "Inferred",
+            "MafSynthesisRuntime",
+            "Prepared"
+          ],
+          "name": "semantic_reviewer.adapters.maf_synthesis",
+          "package": false,
+          "path": "src/semantic_reviewer/adapters/maf_synthesis.py"
+        },
+        {
+          "definitions": [
+            "RuleDecisionRequest",
+            "RuleDefinition",
+            "RuleEvidence",
+            "RuleOrigin",
+            "RuleProposal",
+            "RuleVersionBody"
+          ],
+          "name": "semantic_reviewer.domain.rules",
+          "package": false,
+          "path": "src/semantic_reviewer/domain/rules.py"
+        },
+        {
+          "definitions": [
+            "RuleHead",
+            "RuleService",
+            "RuleStore"
+          ],
+          "name": "semantic_reviewer.application.rules",
+          "package": false,
+          "path": "src/semantic_reviewer/application/rules.py"
+        },
+        {
+          "definitions": [
+            "RuleSynthesisExecution",
+            "SynthesisInput",
+            "SynthesisOutcome",
+            "SynthesisRuntime",
+            "synthesis_request"
+          ],
+          "name": "semantic_reviewer.application.synthesis",
+          "package": false,
+          "path": "src/semantic_reviewer/application/synthesis.py"
+        },
+        {
+          "definitions": [
+            "SQLiteRules",
+            "_event",
+            "_now"
+          ],
+          "name": "semantic_reviewer.adapters.rules",
+          "package": false,
+          "path": "src/semantic_reviewer/adapters/rules.py"
+        },
+        {
+          "definitions": [
+            "add_rule_routes"
+          ],
+          "name": "semantic_reviewer.web.rules",
+          "package": false,
+          "path": "src/semantic_reviewer/web/rules.py"
+        },
+        {
+          "definitions": [
+            "build_annotations",
+            "build_artefact_index",
+            "build_datasets",
+            "build_discovery",
+            "build_jobs",
+            "build_review_index",
+            "build_rules",
+            "build_selections",
+            "build_worker",
+            "runtime_path"
+          ],
+          "name": "semantic_reviewer.bootstrap",
+          "package": false,
+          "path": "src/semantic_reviewer/bootstrap.py"
+        }
+      ],
+      "removed": [
+        {
+          "definitions": [
+            "DiscoveryExecution",
+            "DiscoveryFiles",
+            "DiscoveryRequest",
+            "DiscoveryRun",
+            "DiscoveryService",
+            "DiscoveryStore"
+          ],
+          "name": "semantic_reviewer.application.discovery",
+          "package": false,
+          "path": "src/semantic_reviewer/application/discovery.py"
+        },
+        {
+          "definitions": [
+            "build_annotations",
+            "build_artefact_index",
+            "build_datasets",
+            "build_discovery",
+            "build_jobs",
+            "build_review_index",
+            "build_selections",
+            "build_worker",
+            "runtime_path"
+          ],
+          "name": "semantic_reviewer.bootstrap",
+          "package": false,
+          "path": "src/semantic_reviewer/bootstrap.py"
+        }
+      ]
+    },
+    "settings": {}
+  },
+  "schema_version": 2
+}
