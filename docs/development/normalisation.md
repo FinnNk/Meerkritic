@@ -26,13 +26,14 @@ You review the result; a successful model call does not establish that it is cor
 3. Open the resulting job page. It refreshes every three seconds while queued or running.
 4. Read the interpretation, quoted evidence and available model usage. Unknown token
    counts display as `?`; local spend describes API spend, not hardware costs.
-5. [Accept, edit or reject](annotations.md) a successful interpretation.
+5. [Accept, edit or reject](annotations.md) a successful interpretation, or
+   [correct or reject a retained failed draft](failed-drafts.md).
    **Normalisation jobs** lists recent and failed jobs.
 
 Refreshing a result page does not submit another job. Pressing **Normalise** again
 creates a separate model run.
 
-![A proposed issue, its quoted source evidence and Human assessment controls on a result page.](../images/annotation-result.png)
+![A proposed issue and its quoted source evidence on a result page.](../images/annotation-result.png)
 
 Read the proposed issue and its evidence before choosing Accept, Edit or Reject.
 The interpretation shown here was [prepared for the demonstration](../images/README.md);

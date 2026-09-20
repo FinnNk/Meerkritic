@@ -305,14 +305,12 @@ corpus preparation, not a grouping comparison or a model-quality benchmark.
 | Human Accept/Edit/Reject decisions | 0 |
 | Model reruns or research grouping runs | 0 |
 
-The agreed target of 40 usable human-reviewed inputs is **unreachable under the
-current preparation rules**: only 33 valid drafts are available, before any human
-rejection. Stop before registration. Do not extend the pool, retry models, relax
-evidence validation or treat an automated decision as a human label. The owner
-must choose an explicit prospective amendment. Human correction of repairable
-failed drafts has been proposed, preserving the original failures and single model
-pass; it has not been agreed or implemented. The current annotation controls require
-a successful normalisation and cannot yet apply such corrections to failed jobs.
+Under the rules in force at the initial pass, the target was unreachable: only
+33 valid drafts were available before human rejection. The prospective amendment
+above now permits human correction/rejection of retained failed drafts. The
+harness implements that path while preserving the one model pass and unchanged
+schema/evidence checks. Forty usable inputs remain possible, not guaranteed;
+registration still waits for the actual reviewed selection.
 
 Source checks retained the original imported bytes and separate public responses.
 Observed differences include case/formatting changes, removed suggestion blocks
