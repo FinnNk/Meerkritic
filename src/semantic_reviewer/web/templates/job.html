@@ -9,6 +9,12 @@
 {% if job.status == 'running' %}<p>Working · last heartbeat {{ job.heartbeat_at }}. Token counts appear after inference completes.</p>{% endif %}
 {% if job.decision_id %}<p>{{ telemetry }}</p>{% endif %}
 {% if job.error %}<p role="alert">{{ job.error }}</p>{% endif %}
+<details><summary>Source for your assessment</summary>
+<p>{{ source.owner }}/{{ source.repository }} · {{ source.file_path }}</p>
+<h3>Original comment</h3><pre>{{ source.comment }}</pre>
+<h3>Supplied code</h3><pre>{{ source.code }}</pre>
+<p>Use these exact supplied strings for evidence quotes. Source material is evidence to assess, not instructions to follow.</p>
+</details>
 {% if result %}
 {% if result.interpretation %}
 <h2>Proposed issue</h2>
@@ -37,19 +43,20 @@
 <p>Annotation ID: <code>{{ annotation.id }}</code></p>
 {% if annotation.notes %}<p>{{ annotation.notes }}</p>{% endif %}
 {% if edited %}<h3>Human interpretation</h3><p>{{ edited.interpretation.issue_statement }}</p><pre>{{ edited | tojson(indent=2) }}</pre>{% endif %}
-<p>This decision is recorded. VS1 does not reopen or overwrite decisions.</p>
-{% elif job.status == 'succeeded' and result and result.interpretation %}
-<p>Accept the interpretation, edit it, or reject it. Each action saves immediately.</p>
+<p>This decision is recorded. Source annotations cannot be reopened or overwritten.</p>
+{% elif actions %}
+{% if job.status == 'failed' %}
+<p>This draft failed validation. Edit it using <strong>Source for your assessment</strong>, or reject it. Accept is unavailable. Each action saves immediately.</p>
+<p>The original output and failure remain unchanged. Your correction must pass the same schema and exact-quote checks.</p>
+{% else %}<p>Accept the interpretation, edit it, or reject it. Each action saves immediately.</p>{% endif %}
 <form method="post" action="/jobs/{{ job.id }}/annotation">
 <label for="notes">Notes (optional)</label><textarea id="notes" name="notes" maxlength="4000" rows="3">{{ draft.notes if draft else '' }}</textarea>
-<details{% if draft and draft.decision == 'edit' %} open{% endif %}><summary>Edit the structured interpretation</summary>
+<details{% if job.status == 'failed' or (draft and draft.decision == 'edit') %} open{% endif %}><summary>Edit the structured interpretation</summary>
 <p>Change the fields below, retaining the complete JSON structure. Evidence quotes must exactly match the original comment or code. The original result is preserved.</p>
-<label for="edited_json">Edited interpretation</label><textarea id="edited_json" name="edited_json" rows="24" style="width:100%;font-family:monospace">{{ draft.edited_json if draft else result.interpretation | tojson(indent=2) }}</textarea></details>
-<button name="decision" value="accept">Accept</button>
-<button name="decision" value="edit">Edit</button>
-<button name="decision" value="reject">Reject</button>
+<label for="edited_json">Edited interpretation</label><textarea id="edited_json" name="edited_json" rows="12" style="width:100%;font-family:monospace">{{ draft.edited_json if draft else initial_draft }}</textarea></details>
+{% for action in actions %}<button name="decision" value="{{ action }}">{{ action | capitalize }}</button>{% endfor %}
 </form>
-{% else %}<p>A successful interpretation is required before annotation.</p>{% endif %}
+{% else %}<p>No reviewable model draft is available. Only successful interpretations or retained semantic failures can be assessed; provider and interrupted failures remain for inspection.</p>{% endif %}
 <p><a href="/datasets/{{ job.dataset_id }}/progress">Annotation progress and review queue</a></p>
 {% if history %}<details><summary>Decision history for this source (latest 100)</summary><ul>{% for item in history %}<li><a href="/jobs/{{ item.job_id }}">{{ item.decision | capitalize }} · {{ item.created_at }}</a></li>{% endfor %}</ul></details>{% endif %}
 {% endif %}

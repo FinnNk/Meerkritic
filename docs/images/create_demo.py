@@ -136,6 +136,24 @@ def main():
                     "Synthetic screenshot decision; not human research",
                 )
             )
+    failed = jobs.enqueue(source.id, 0)
+    claimed = jobs.jobs.claim("documentation-fixture")
+    failed_issue = issue | {
+        "evidence_quotes": [{"source": "comment", "quote": "Always close the stream."}]
+    }
+    failure = "Evidence quote is missing or ambiguous in the source."
+    failed_digest = jobs.results.publish(
+        {
+            "job_id": failed.id,
+            "interpretation": None,
+            "model_output": json.dumps(failed_issue, indent=2),
+            "error": failure,
+            "usage": {"measurement": {"outcome": "semantic_failure"}},
+            "fixture": "Synthetic failed draft; no model call or human research judgement",
+        },
+        Publication(failed.id, "normalisation"),
+    )
+    jobs.jobs.finish(claimed, failed_digest, failure)
     selection = build_selections(root).freeze(
         SelectionRequest(
             dataset_id=source.id,
@@ -202,6 +220,7 @@ def main():
     routes = {
         "observations": f"/datasets/{source.id}?page_size=1",
         "annotation": f"/jobs/{job.id}",
+        "failed_annotation": f"/jobs/{failed.id}",
         "progress": f"/datasets/{source.id}/progress",
         "selection": f"/selections/{selection.id}",
         "discovery": f"/discovery/{grouped.id}",
