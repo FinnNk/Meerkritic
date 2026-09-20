@@ -1,34 +1,52 @@
 # Code comments and docstrings
 
-Use Python docstrings on module-exposed functions and methods: interfaces consumed by other modules, application entry points and HTTP handlers. Give callers enough information to use an operation without reading its body. Explain relevant side effects, failures and constraints. Prefer the shortest complete explanation; brevity must not hide part of the contract.
+Give callers enough information to use an operation without reading its body.
+Explain relevant effects, failures and constraints. Prefer the shortest complete
+explanation; brevity must not hide part of the contract.
 
-Document internal methods when their intent or implementation is not obvious.
-Within an implementation, explain the reason for a choice, an invariant or required
-ordering. For example, explain why verified artefacts must be published before
-registry metadata makes them discoverable. Do not narrate individual statements,
-repeat type annotations or add comments to obvious helpers just for coverage.
+## What to document
 
-Start with an imperative summary such as "Return a page of observations." A single sentence is sufficient for a simple contract. For richer contracts, use Google-style `Args`, `Returns` or `Yields`, and `Raises` sections as applicable, with four-space section indentation. Describe meaning, bounds, units, ordering, empty results and caller-relevant failures; do not repeat annotated types or catalogue incidental implementation exceptions. Omit empty or redundant sections. Describe decorated functions as callers experience them: a context manager returns a managed context rather than exposing a generator API.
+| Location | Explain |
+| --- | --- |
+| Exposed functions/methods, entry points and HTTP handlers | What callers can rely on, including effects, bounds and expected failures |
+| Classes | What instances represent and significant state or evidence rules |
+| Internal logic | Non-obvious intent, required ordering and reasons for choices |
+| Interfaces | The shared caller contract; concrete implementations add only their specific behaviour |
+| Tests | Unusual setup or constraints when the test name is insufficient |
 
-Add class docstrings explaining what instances represent and any significant invariants or provenance semantics. Use `Attributes` for fields that need explanation; typed, self-explanatory fields do not need restating. Distinguish expected values from validation actually performed by the class. Test names often suffice; document unusual setup or constraints rather than repeat the test name.
+Do not narrate statements, repeat obvious annotations or add comments solely for
+coverage. For example, explain why files must be published before metadata makes
+them discoverable, rather than saying that the next line writes a file.
 
-Put the shared contract on the interface and explain implementation-specific behaviour where needed. Comments must describe the code present at that revision. Keep British English and the project's 100-character limit; Google is a source for these selected conventions, not an adopted whole-project standard. The choice and pinned source are recorded in [ADR-0003](../adr/ADR-0003-document-caller-contracts-and-intent.md).
+## Write a docstring
 
-For new or changed code, include its comments in the same semantic commit as that
-code. Backfilling existing code is a separate commit. Keep changes to this guidance
-and its rationale separate from their application. Preserve actual chronology on
-the DER diary before reconstructing those semantic boundaries.
+1. Start with an imperative summary, such as “Return a page of observations.”
+   A single sentence is enough for a simple contract.
+2. For richer contracts, use Google-style `Args`, `Returns` or `Yields`, and `Raises`
+   sections where needed, with four-space section indentation.
+3. Describe meaning, bounds, units, ordering, empty results and caller-relevant
+   failures. Omit empty/redundant sections and incidental implementation exceptions.
+4. Describe decorated functions as callers experience them. A context manager
+   returns a managed context; callers need not see a generator API.
+5. For class fields that need explanation, use `Attributes`. Distinguish expected
+   values from validation actually performed by the class.
 
-During review, check exposed operations and non-obvious internal logic, and update
-stale comments alongside implementation changes. This is a judgement-based review,
-not a docstring-count target or a new lint exemption. Existing quality gates still
-apply. Do not change imported research or third-party skill files to impose this
-first-party convention.
+Keep British English and the project's 100-character limit. Google is a source
+for selected conventions, not an adopted whole-project standard. See
+[ADR-0003: Document caller contracts and non-obvious intent](../adr/ADR-0003-document-caller-contracts-and-intent.md)
+and the [Python style guide](python-style.md).
 
-Compare changed interfaces with their implementations and actual consumers.
-Check return meaning, bounds, side effects, failures, payload conventions and
-configuration-dependent requirements. A present docstring is not evidence that
-the caller contract is complete. Follow the concrete contract challenges in the
-[milestone review method](milestone-review.md).
+## Review and maintain
 
-See [ADR-0003: Document caller contracts and non-obvious intent](../adr/ADR-0003-document-caller-contracts-and-intent.md).
+- Compare interfaces with implementations and real consumers: return meaning,
+  bounds, side effects, failure conditions, payload conventions and configuration.
+- Update stale comments when behaviour changes. A present docstring does not prove
+  that its contract is complete.
+- Keep comments for new/changed code in that code's semantic commit. Existing-code
+  backfills and changes to guidance have separate commits.
+- Preserve actual diary chronology before reconstructing review commits.
+- Keep imported research and third-party skill files intact.
+
+Use the [milestone contract challenges](milestone-review.md) and
+[documentation checklist](documentation-style.md#author-and-reviewer-checks).
+These are judgement checks, not docstring-count targets or new lint exemptions.

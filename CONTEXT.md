@@ -1,14 +1,50 @@
-# Project Context Glossary
+# Project glossary
 
-This file defines stable project vocabulary only. Keep definitions concise; put design rationale in ADRs or design documents.
+Stable vocabulary only. Guides explain terms at the point of use; design rationale belongs in ADRs.
+
+## Harness
+The local web application used to browse source material, run workflows and review results.
+
+## Normalisation
+Turning a source comment and code excerpt into a structured proposed interpretation.
+
+## Interpretation
+A model's or reviewer's account of a concern, its supporting evidence and possible wider use.
+
+## Annotation
+A human Accept, Edit or Reject decision on a particular model result. An edit retains a corrected interpretation alongside the original.
+
+## Fixture
+Synthetic or permitted example data/configuration used to check software behaviour; it is not a human-labelled research sample.
+
+## Frozen selection
+A saved copy of explicitly chosen annotations and source material. Later decisions cannot change its inputs. See annotation selection for the recorded fields.
+
+## Embedding
+A numerical representation of text used to compare examples for similarity.
+
+## Holdout
+Material reserved from the current development/discovery work for later evaluation. Reading it is still data exposure and must be recorded where relevant.
+
+## Immutable
+Stored content that is never edited in place. Corrections create a new version and retain the old one.
+
+## Atomic
+A group of state changes that is saved entirely or not at all; a failed batch cannot leave some decisions applied.
+
+## Idempotent retry
+Repeating the same request identity and content returns the existing result without applying the operation again.
+
+## Provenance
+The retained source, versions, transformations and decisions that explain where a result came from.
 
 ## Embedding run
-One explicit invocation over a frozen selection, retaining ordered annotation
-identities, a pinned model profile and immutable vectors.
+One requested conversion of selected text into vectors, retaining input order,
+annotation identities and the exact model profile.
 
 ## Cluster run
-Deterministic grouping over one pinned embedding artefact, with explicit algorithm
-parameters, membership, representatives and outliers.
+Grouping one saved set of embedding vectors using recorded parameters. Results
+identify members, representatives and ungrouped examples (outliers).
 
 ## Observation
 A preserved source record from a review comment, PR description, issue, commit message or code comment, identified before model interpretation. An interpretation is a separate, evidence-linked output.
@@ -41,7 +77,7 @@ Acceptance based on executable or otherwise independently verifiable evidence th
 An evidence-backed observation about Microsoft Agent Framework collected during normal programme use.
 
 ## Architecture snapshot
-A typed representation of declared modules, dependency edges, contracts and static public interfaces at a specific commit/slice point. Checker results are separate evidence; the snapshot does not establish compliance.
+A typed representation of declared modules, dependency edges, contracts and static public interfaces at a specific code revision. Checker results are separate evidence; the snapshot does not establish compliance.
 
 ## Architecture delta
 The typed difference between two architecture snapshots.
@@ -79,7 +115,8 @@ A versioned set of API rates with an effective interval, retained to reproduce h
 The policy-controlled approach used to construct model context, such as retrieval-first or direct large-context execution.
 
 ## Double-Entry Review (DER)
-The paired-history review method used for material software PRs/changes in the factory.
+A software review method retaining both actual implementation chronology and a
+reconstructed sequence of commits organised for review.
 
 ## DER diary
 The canonical chronological implementation history for a material change.
@@ -134,7 +171,8 @@ purpose. A curator attestation records a claim of human review, not authenticati
 ## Rule version
 
 An immutable candidate definition with source selection, cluster, origin and parent
-identity. A separate current pointer and revision counter fence operational writes.
+identity. A separate current-version record and counter let writes reject changes made since
+the caller read the rule.
 
 ## Rule evidence
 
@@ -164,5 +202,5 @@ can leave external completion unknown without automatic replay.
 
 ## Architecture projection
 
-A hash-bound view of typed before/after snapshots and their delta. Its source
-fingerprint detects stale source content; it is not a quality-check or DER verdict.
+A saved view of before/after architecture records and their differences. A source
+checksum detects code/configuration changes; the view does not certify quality or review readiness.

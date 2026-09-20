@@ -41,7 +41,7 @@ The integrated `vs1-validation/r1` batch (PR #8, merged through PR #7) adds arte
 committed-event log snapshots, reserved routing-continuity schemas and a read-only
 DER reference page. Full-path tests and live isolated public-data verification
 exercise all three annotation actions, restart, failed-provider inspection and
-Parquet/DuckDB usage analysis. See the [verification guide](../development/vs1-verification.md).
+Parquet/DuckDB usage analysis. See the [verification guide](VS1-verification.md).
 
 The final stack is integrated at `0bf957bcb0ae47e2c525f5f652830c06d5b8b9c9`.
 The milestone architecture review is now integrated via PR #9 at

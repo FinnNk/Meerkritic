@@ -79,7 +79,7 @@
 
 - Preserve FastAPI, SQLite WAL/short transactions, DuckDB/Parquet, filesystem
   artefacts, a separate worker, MAF behind project-owned interfaces and reusable
-  model routing. VS1 completion requires real MAF workflow execution.
+  model routing. Validate agentic workflows through real MAF execution.
 - Domain code contains no concrete provider/model routing logic or framework types.
 - Keep model-specific prompt controls behind explicit runtime/provider boundaries;
   model-independent task prompts must not contain hidden execution conventions.

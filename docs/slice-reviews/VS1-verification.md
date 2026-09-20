@@ -1,3 +1,6 @@
+> Historical verification account. Its status statements describe the recorded milestone.
+> For current instructions, use [workflow verification](../development/verification.md).
+
 # VS1 verification and reproduction
 
 The integrated VS1 implementation exercises the complete Data-to-Annotation path.
@@ -34,8 +37,8 @@ security. It does not replace the separate-process, real-model live check.
 
 1. Use Python 3.12 and `uv sync --locked` in an isolated checkout of the reviewed
    semantic SHA. Run `uv run --locked python tools/check.py`.
-2. Follow [local inference](local-inference.md) to verify/start the pinned llama.cpp
-   and model fixture, and [normalisation](normalisation.md) for the worker.
+2. Follow [local inference](../development/local-inference.md) to verify/start the pinned llama.cpp
+   and model fixture, and [normalisation](../development/normalisation.md) for the worker.
 3. Choose a fresh external runtime. Register `crc-py-manual-4176ac0`, launch the
    harness and browse the public sample. Keep all commands on that same runtime.
 4. Normalise an observation, verify that HTTP returns a queued job before the
@@ -53,7 +56,7 @@ security. It does not replace the separate-process, real-model live check.
 7. Export completed usage with `tools/route.py`, query it using DuckDB, and verify
    that unavailable counts remain null. Run `job-log` and, after an upgrade,
    `index-artefacts`. Index an explicitly qualified DER event and inspect its
-   separate readiness page as described in [operational evidence](operational-evidence.md).
+   separate readiness page as described in [operational evidence](../development/operational-evidence.md).
 
 External `vs1-validation/r1` evidence retains the executable live method, actual
 job/result identities, counts, usage/framework observations and logs. The public

@@ -8,5 +8,7 @@ without copying the external DER evidence store.
 
 [VS1 is complete](VS1-review.md), including its
 [milestone architecture review](VS1-milestone-architecture-review.md).
-[VS2 is active](../plans/VS2-plan.md); its first frozen-input batch is under review.
+[VS2 has a final software candidate](VS2-review.md), including its
+[milestone review](VS2-milestone-architecture-review.md). Owner acceptance and the
+human-labelled empirical comparison remain outstanding; see the [plan](../plans/VS2-plan.md).
 Slice status, DER readiness and owner approval remain separate.

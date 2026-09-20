@@ -60,7 +60,7 @@ maintained report with the slice review (or another named milestone report under
 Produce this document for every future milestone review, including reviews with
 no findings. For each finding, preserve a trace from discovery to resolution and
 to the earlier development/review practice intended to catch the general problem.
-Use the VS1 review as an example, not a required number or catalogue of findings.
+Use a prior completed review as an example, not a required number or catalogue of findings.
 Update future work and relevant ADRs/EDRs when warranted. Do not invent empirical
 claims from review judgement or rewrite a frozen EDR plan after seeing results.
 
