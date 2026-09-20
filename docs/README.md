@@ -23,7 +23,7 @@ how to use the code in this checkout. The [glossary](../CONTEXT.md) explains pro
 | Inspect model selection or export usage | [Routing commands](development/routing-operations.md) |
 | Inspect logs, stored outputs and change-review references | [Operational evidence](development/operational-evidence.md) |
 | Compare architecture and recognise stale views | [Architecture evidence](architecture/README.md) |
-| Check an installation from input to reviewed result | [Workflow verification](development/vs1-verification.md) |
+| Check an installation from input to reviewed result | [Workflow verification](development/verification.md) |
 
 ## Develop and review
 

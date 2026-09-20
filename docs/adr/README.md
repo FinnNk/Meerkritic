@@ -1,20 +1,18 @@
 # Architecture decision records
 
-The active format is the project's [MADR template](template.md), adopted on
-2026-09-19. It follows the [MADR template at revision
-ba75bb1b20d42af5746b246ad348c202419ae681](https://github.com/adr/madr/blob/ba75bb1b20d42af5746b246ad348c202419ae681/template/adr-template.md).
-MADR is available under `MIT OR CC0-1.0`; this adaptation uses CC0-1.0.
-
 Record a decision when it materially constrains future architecture or when its
 reasoning is significant and would not be evident from the implementation. Do
 not create ADRs for routine edits, dependency maintenance or every implementation
 choice. One decision has one ADR; evolve that record when the same decision is
 refined, and create a linked successor when a different decision replaces it.
 
-Use sequential filenames `ADR-NNNN-kebab-title.md`. Copy the template and keep the
-index below in step with each status change. The date records the latest status
-change. Name the actual decision-makers; distinguish their decision from an
-agent's proposal or implementation. Record consultation only when it occurred.
+## Create or update a record
+
+1. Copy the [MADR template](template.md) to `ADR-NNNN-kebab-title.md`, using the next number.
+2. Name the actual decision-makers. Distinguish their decision from an agent's
+   proposal or implementation; record consultation only when it occurred.
+3. Keep the index in step with each status change. The date is the latest status-change date.
+4. Include a linked identifier and short title for related records; retain history.
 
 ## Statuses
 
@@ -53,6 +51,13 @@ durable architectural rationale and consequences. An ADR may cite one or more
 EDRs using their identifiers and short titles, without duplicating their evidence.
 Explain which claims are observations and which are judgement or constraints.
 An EDR is not required merely because incidental data accompanies a decision.
+
+## Format and attribution
+
+The active format is the project's [MADR template](template.md), adopted on
+2026-09-19. It follows the [MADR template at revision
+ba75bb1b20d42af5746b246ad348c202419ae681](https://github.com/adr/madr/blob/ba75bb1b20d42af5746b246ad348c202419ae681/template/adr-template.md).
+MADR is available under `MIT OR CC0-1.0`; this adaptation uses CC0-1.0.
 
 ## Index
 

@@ -1,6 +1,10 @@
 # Python style
 
-This is Meerkritic's style policy for maintained first-party Python. It adopts selected ideas from the Google Python Style Guide, not the guide in its entirety. Unlisted upstream rules are reference material, not additional project requirements. The adopted scope and rationale are recorded in [ADR-0004: Adopt a selective Python style guide](../adr/ADR-0004-adopt-selective-python-style.md).
+This policy applies to maintained first-party Python. It adopts selected ideas
+from Google's Python Style Guide, not the entire guide. Unlisted upstream rules
+are reference material, not additional requirements. See
+[ADR-0004: Adopt a selective Python style guide](../adr/ADR-0004-adopt-selective-python-style.md)
+for scope and rationale.
 
 ## Adopted scope
 
@@ -27,8 +31,14 @@ These explicit project choices take precedence over the selected upstream advice
 
 ## Applying and maintaining the policy
 
-Review the rules relevant to each change and run `uv run --locked python tools/check.py`. Comments on new or changed code belong with that code in semantic history; existing-code backfills have their own commit. Guidance updates remain separate from application. Imported research and third-party skills retain their original form.
+1. Review the rules relevant to the change and its actual callers.
+2. Keep comments for new/changed code with that code in semantic history.
+3. Separate existing-code backfills and guidance updates from application.
+4. Preserve imported research and third-party skills in their original form.
+5. Run `uv run --locked python tools/check.py`.
 
-The initial application was the caller-contract and provenance-docstring update in merged PR #3. The VS1 milestone review adds a separately scoped backfill for later public operations. It changes documentation metadata, including API descriptions, while preserving executable logic, tests and dependency contracts. It does not claim that every historical style choice or annotation gap has been eliminated. Review existing code when it is materially changed; make broader cleanup a bounded, separately reviewable change when warranted.
+When materially changing existing code, review the relevant style and caller
+contracts. Broader cleanup should be bounded and separately reviewable; do not
+claim that every historical style choice has been eliminated.
 
 Reference baseline: Google's guide at revision [`3b8822983dc779c498961cc86332a28c07590f64`](https://github.com/google/styleguide/blob/3b8822983dc779c498961cc86332a28c07590f64/pyguide.md), dated 11 September 2026 and accessed 19 September 2026. The [rendered guide](https://google.github.io/styleguide/pyguide.html) is convenient for reading; later upstream edits do not automatically change this policy. Review and record any future changes to the adopted scope.

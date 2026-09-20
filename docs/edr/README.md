@@ -1,73 +1,121 @@
-# Empirical Decision Records
+# Record an evidence-dependent decision
 
-An Empirical Decision Record (EDR) captures a significant choice whose outcome depends on evidence. Register the question and method before collecting or analysing the evidence that will decide it; then retain the results, interpretation and decision together.
+An Empirical Decision Record (EDR) keeps a significant question, hypothesis, method,
+results and decision together. Commit the plan before collecting or analysing the
+evidence that will decide the choice. This is *pre-registration*.
 
-Use one Markdown record per decision, copied from [the template](template.md) and named `NNNN-short-decision-name.md`. An EDR is a record, not a new application subsystem. Keep straightforward records short; expand the method only where the stakes or uncertainty justify it.
+Use one Markdown file per decision, copied from [the template](template.md) and
+named `NNNN-short-decision-name.md`. Keep it proportionate to the question.
 
-## When an EDR is needed
+## Decide whether an EDR is needed
 
-Use an EDR when both conditions hold:
+Both conditions must hold:
 
-1. The choice materially affects research validity, product behaviour, cost, performance or a durable design direction.
-2. A plausible empirical result could change which option we choose.
+1. The choice materially affects research validity, product behaviour, cost,
+   performance or a lasting design direction.
+2. A plausible result could change which option you choose.
 
-Examples include selecting a normalisation method based on held-out quality, changing a routing default based on measured quality and cost, or replacing a component because measured operational friction remains unacceptable.
+| Example | EDR needed? |
+| --- | --- |
+| Record token counts during a run | No; this is incidental telemetry. |
+| Change a routing default based on measured quality and cost | Yes. |
+| Run ordinary correctness tests or implement a prescribed architecture | No. |
+| Select an interpretation/grouping method based on evaluation results | Yes. |
+| Replace a component because measured operational problems remain unacceptable | Yes. |
 
-Do not require an EDR for incidental metrics, ordinary correctness tests, routine implementation choices, or implementing an architecture already prescribed by the project. Recording token counts does not itself need an EDR. Using those counts to justify a consequential policy change might. Existing programme hypotheses in the research documents are starting points, not pre-registered experiments.
+Research-pack hypotheses are starting points, not already registered experiments.
 
-## Lightweight process
+## Follow the process
 
-1. **Frame.** State the choice, why evidence matters, the alternatives and a falsifiable hypothesis. Identify the smallest useful investigation. Record what is already known, including any pilot work or exposure to the proposed evaluation data.
-2. **Register.** Complete the plan sections in the template before decision-bearing collection or analysis. Agree the comparator, sample, metrics, decision thresholds, stopping rule and method. Commit this filled plan on the working branch. Record that commit's full SHA as the registered plan reference in a subsequent update; the registration commit cannot contain its own SHA. Commit that reference, registration date and `registered` status before the first run. A Git commit retained locally or on the project remote is sufficient; no external registry is required.
-3. **Run.** Execute the registered method. Record the code revision, exact commands and configuration, dependency versions, data identity and run artefacts. Keep the method reproducible where possible and state limits where it is not. Record failures and exclusions as well as successful runs.
-4. **Analyse.** Report all planned primary results against the registered rule, including negative or inconclusive outcomes. Separate any exploratory analysis. State uncertainty and threats to validity proportionately.
-5. **Decide.** Record the chosen action, who decided and why. An evidence outcome does not automatically constitute a product or architecture decision. Explain any departure from the registered decision rule; do not change the hypothesis to make the result look successful.
-6. **Link.** Link the implementation batch and relevant slice review when they exist. A durable architectural decision belongs in an ADR, which may cite this EDR. Update the index and retain the record even if the decision is to make no change.
+| Step | Action | Record |
+| --- | --- | --- |
+| Frame | Identify the choice, alternatives, testable prediction and smallest useful investigation. | Prior knowledge, pilot work and data already seen |
+| Register | Agree the comparison, sample, measures, thresholds, stopping rule and method. Commit the plan before decision-bearing work. | Exact registered-plan reference, as described below |
+| Run | Execute the registered method. | Code, commands, configuration, environment, data identities, failures and exclusions |
+| Analyse | Report all planned primary results, including negative or inconclusive outcomes. | Uncertainty, limits and separately labelled exploratory analysis |
+| Decide | Record the chosen action, decision-maker and rationale. | Any departure from the registered decision rule |
+| Link | Connect the implementation and relevant reviews; use an ADR for a lasting architecture decision. | Updated index and retained history, even if no change is chosen |
 
-Do not impose statistical significance tests, power calculations or large benchmark grids on every investigation. Use them where the claim needs them. A small reproducible measurement can be sufficient for a bounded decision; a claim of generalisation needs stronger sampling and validation. Preserve the research plan's repository-level holdouts for headline generalisation results and its distinction between weak and verified negatives.
+To register the plan:
 
-## Status and outcomes
+1. Fill and commit the template's plan sections before decision-bearing collection or analysis.
+2. Copy that commit's full SHA into the record's registered-plan field. A commit
+   cannot contain its own SHA.
+3. Commit the reference, registration date and `registered` status **before the first run**.
+   A retained local or project-remote commit is sufficient; no external registry is required.
 
-The current status belongs in the record header and index. Append a dated entry whenever it changes.
+Use statistical significance tests, power calculations or large comparisons when
+the claim needs them, not for every investigation. A bounded decision may need only
+a small reproducible measurement. Generalisation claims require stronger sampling
+and validation, including prescribed repository holdouts and careful negative labels.
+
+## Status and outcome
+
+Update the header and index together, and append a dated history entry.
 
 | Status | Meaning |
 | --- | --- |
-| `draft` | The question or method is still being prepared. No registered evaluation has begun. |
-| `registered` | A committed plan is identified and frozen before decision-bearing work. |
-| `running` | Collection or analysis is under way against the registered plan. |
-| `analysed` | Results and limitations are recorded; the decision remains open. |
-| `decided` | An explicit decision and rationale are recorded. This does not imply implementation. |
-| `withdrawn` | The investigation has stopped without a decision; retain the reason and any evidence. |
-| `superseded` | A linked later EDR replaces this record; retain its history and results. |
+| `draft` | Question/method still being prepared; no registered evaluation has begun |
+| `registered` | Committed plan identified before decision-bearing work |
+| `running` | Collection or analysis under way against that plan |
+| `analysed` | Results and limitations recorded; decision still open |
+| `decided` | Explicit decision and rationale recorded; implementation is separate |
+| `withdrawn` | Stopped without a decision; retain reasons and evidence |
+| `superseded` | Replaced by a linked later record; retain history/results |
 
-The usual path is `draft → registered → running → analysed → decided`. A stopped investigation may become `withdrawn`; a replacement links both records. Record evidence outcomes separately as `supports`, `does not support` or `inconclusive`. Record implementation separately as `not planned`, `pending` or `implemented`, with a reference where applicable. Neither a successful experiment nor a decided EDR marks a vertical slice or DER review complete.
+The usual order is draft, registered, running, analysed, decided. Record these
+separately from status:
 
-## Amendments and prior exposure
+- Evidence outcome: `supports`, `does not support` or `inconclusive`.
+- Implementation: `not planned`, `pending` or `implemented`, with a reference.
 
-Once registered, leave the original plan sections unchanged. Append dated amendments stating the reason, affected plan clauses, evidence already seen and whether the change affects validity. For a prospective amendment, commit it and record its revision before the affected work. Use a new EDR for a materially different question or decision.
+A successful experiment or decided EDR does not itself complete a milestone or
+Double-Entry Review (DER) review.
 
-Unexpected implementation failures may require a method correction. Preserve the failed run, explain the correction and record whether outcomes were visible when it was made. Unplanned analyses and changes made after observing relevant results are exploratory; they cannot retrospectively become pre-registered. If new confirmatory evidence is needed, register its plan before collecting or examining it.
+## Amend a plan honestly
 
-Existing datasets are allowed: registration must precede the decision-bearing analysis, not the original creation of the dataset. Disclose prior access, summaries, pilot results and any overlap. Separate pilot and evaluation material when needed. If the relevant results were already inspected, say so explicitly; record the evidence and decision honestly without claiming retrospective pre-registration.
+- Leave registered plan sections unchanged. Append a dated amendment naming the
+  affected clauses, reason, evidence already seen and implications for validity.
+- For a prospective change, commit and identify the amendment before affected work.
+- Preserve failed runs when correcting an implementation/method error; record whether
+  outcomes were visible before the correction.
+- Label unplanned analysis or changes made after seeing relevant results as exploratory.
+  They cannot become retrospectively pre-registered.
+- Register new confirmatory work before collecting or examining its evidence.
+  Use a new EDR for a materially different question.
 
-## Evidence and independent reproduction
+Existing datasets are allowed: registration precedes the deciding analysis, not
+necessarily dataset creation. Disclose earlier access, summaries, pilots and overlap.
+If results were already inspected, record that honestly instead of claiming registration.
 
-Keep a compact evidence inventory in each EDR. Include enough information for another person to repeat the method without relying on the author's memory:
+## Make the work reproducible
 
-- Exact code commit, commands, configuration, dependency lock/version information, relevant environment details and seeds.
-- Dataset source, pinned revision, selection/query, identifiers or hashes, licence/access conditions, and preprocessing. Record evaluation units, splits, duplicate/contamination controls and adjudication where applicable.
-- Identified run outputs, raw measurements and analysis outputs, with checksums or immutable references. Keep original run outputs; corrections produce new versions rather than overwriting evidence.
-- An expected result or tolerance and a short reproduction procedure. For stochastic hosted models, also record provider/model/version where exposed, prompt and routing-policy revisions, request settings and timestamps. Exact output replay may be impossible; state what can be reproduced.
+Keep a compact evidence inventory with enough information for another person:
 
-Small, shareable methods and result summaries may be committed. Large or private datasets, credentials and raw artefacts stay outside Git at configured storage locations, normally under `extras`. Use a durable public location for shareable evidence where available. A local path alone is a recording location, not an independent reproduction package. Record access restrictions and the reason reproduction or sharing is difficult, together with the closest feasible substitute, such as permitted aggregates, hashes, synthetic examples or an executable method. Do not claim independent reproduction until it has actually been checked.
+| Item | Include |
+| --- | --- |
+| Code/environment | Exact commit, commands, configuration, lock/versions, relevant platform and seeds |
+| Data | Source/revision, selection/query, identities or hashes, access/licence and preprocessing |
+| Design | Evaluation units, splits, duplicates, related-source contamination controls and label review where relevant |
+| Results | Original measurements/outputs, analysis and immutable references/checksums |
+| Reproduction | Procedure, expected result or tolerance and explicit limits |
+| Variable model services | Exposed model/provider version, prompt/routing revision, settings and timestamps |
 
-EDRs own empirical plans, results and decision rationale. ADRs own architectural decisions. DER owns review chronology and review evidence outside application worktrees. Link to these records rather than duplicating their evidence stores.
+Commit small shareable methods and summaries. Keep large/private datasets, credentials
+and raw artefacts outside Git. Use durable public evidence locations where possible;
+a local path alone is not an independently reproducible package. When sharing is
+restricted, record why and provide the closest permitted substitute, such as hashes,
+aggregates, synthetic examples or an executable method. Claim independent reproduction
+only after it has actually occurred.
+
+EDRs own empirical plans/results/decisions. [ADRs](../adr/README.md) own architectural
+rationale. DER owns review chronology/evidence outside worktrees. Link their records
+rather than duplicating evidence stores.
 
 ## Index
 
-No EDRs have been registered. Create the first record when a qualifying empirical decision is proposed; bootstrapping these documents is not itself an empirical investigation.
+No EDR is registered yet. The current draft is:
 
-| EDR | Decision | Status | Evidence outcome | Related ADR |
-| --- | --- | --- | --- | --- |
-
-- [EDR-0001: discovery grouping method](0001-discovery-grouping-method.md) — draft; no registered study or adoption decision.
+| EDR | Decision | Status | Evidence outcome |
+| --- | --- | --- | --- |
+| [EDR-0001](0001-discovery-grouping-method.md) | Choose an initial discovery grouping method | draft | pending |

@@ -1,53 +1,74 @@
-# Architecture evidence
+# Compare architecture and recognise stale views
 
-Generate deterministic typed JSON from Tach, Import Linter and Python metadata:
+An architecture snapshot records declared modules, imports, dependency rules and
+public interfaces. A comparison shows what was added or removed. The web view also
+warns if the current code differs from the saved snapshot.
 
-```sh
-uv run --locked python tools/architecture.py snapshot > ../extras/architecture-after.json
-uv run --locked python tools/architecture.py snapshot --root <baseline-checkout> > ../extras/architecture-before.json
-uv run --locked python tools/architecture.py delta ../extras/architecture-before.json ../extras/architecture-after.json > ../extras/architecture-delta.json
-```
+## Capture and publish a comparison
 
-Use pinned clean checkouts and record their Git identities beside the outputs in
-external review evidence. Schema version 3 contains typed module, import, boundary,
-contract and public interface records. Interfaces include declared callable signatures
-(annotations, defaults, decorators and async), class bases and annotated fields.
-The delta includes changed settings; changed records appear
-as removed plus added. Ordering is deterministic with no machine paths or timestamps.
+You need Python 3.12, the locked environment and two clean checkouts with known Git
+commits. Run from the **after** checkout's repository root. Use its generator for
+both snapshots; `<baseline-checkout>` is the path to the earlier checkout.
 
-Imports are syntax-level dependencies, including external imports and those inside
-functions/type-checking blocks. They are not runtime call paths or exhaustive dynamic
-import resolution. Import Linter and Tach remain the enforced checks. Later diagrams
-are projections of these typed records. No Archify dependency is introduced.
+1. Create the external output directory if needed, for example with
+   `New-Item -ItemType Directory -Force ../extras` in PowerShell.
+2. Capture both snapshots:
 
-Interface records describe syntax, not inferred types or behavioural compatibility.
-Inherited/dynamic members and undocumented runtime conventions need manual review.
-Constructors are included; other underscore-prefixed declarations are omitted.
-For a before/after comparison use the same generator and Python version on both
-checkouts: regenerate both sides with schema 3 rather than mixing schema versions.
-Archived pairs of schema-1 or schema-2 snapshots can still be compared. Preserve the
-original evidence and record the newer generator's revision alongside regenerated data.
+   ```text
+   uv run --locked python tools/architecture.py snapshot --root <baseline-checkout> > ../extras/architecture-before.json
+   uv run --locked python tools/architecture.py snapshot > ../extras/architecture-after.json
+   ```
 
-## Harness view and freshness
+3. Generate the difference (called a *delta*):
 
-Publish a pair explicitly to an external runtime, then open **Architecture**:
+   ```text
+   uv run --locked python tools/architecture.py delta ../extras/architecture-before.json ../extras/architecture-after.json > ../extras/architecture-delta.json
+   ```
 
-```text
-uv run --locked python tools/architecture.py publish-view <before.json> <after.json> --data-root ../extras/runtime
-```
+4. Record both Git commit IDs and the generator's commit with the external evidence.
+5. Publish the pair to the same data directory as your web application:
 
-The canonical generator now lives in `adapters/architecture.py`; the command and
-harness use that implementation. Schema 3 adds a deterministic source fingerprint
-over declared Python sources, SQL/templates/web assets, configuration files and
-the dependency lock. File names and contents participate; checkout newlines are
-normalised. A behaviour-only edit can therefore mark the projection stale even
-when static imports and public signatures are unchanged.
+   ```text
+   uv run --locked python tools/architecture.py publish-view ../extras/architecture-before.json ../extras/architecture-after.json --data-root ../extras/runtime
+   ```
 
-The view identifies its immutable projection hash and both source fingerprints,
-shows before/removed/added/after counts and the full typed records. Reads verify
-the stored hash and recompute the delta, then compare the current source fingerprint.
-They never silently regenerate review evidence. A stale warning means recapture is
-needed; matching fingerprints do not prove the quality checks passed. Documentation,
-tests, model weights and runtime datasets are outside this source fingerprint.
-DER retains canonical review evidence; this local view is a projection, not a
-second readiness ledger or a replacement for exact Git/checkpoint identities.
+6. Open **Architecture**. Expect before/removed/added/after counts, expandable records
+   and an indication of whether the saved after-snapshot matches the current source.
+
+Use PowerShell 7 or another shell that writes UTF-8 for these redirections. When
+using Windows PowerShell 5.1, pipe output to `Set-Content -Encoding utf8` instead.
+
+## Interpret the view
+
+| Item | Meaning |
+| --- | --- |
+| Source fingerprint | A checksum of relevant filenames and contents, including Python, SQL, templates/assets, configuration and the dependency lock |
+| Stale warning | Code or configuration differs from the saved after-snapshot. Recapture explicitly before relying on it. |
+| Matching fingerprint | The recorded source matches; it does not prove checks passed. |
+| Changed record | Represented as a removal plus an addition |
+| Projection hash | Identity of the stored before/after/delta view |
+| No published view | Run the explicit publish command for this runtime. |
+
+Reads verify the stored content and recompute its delta; they never silently
+regenerate evidence. Body-only edits can make a view stale even if imports and
+signatures are unchanged. Newline differences between checkouts are normalised.
+Documentation, tests, model weights and runtime datasets are outside the fingerprint.
+
+## Reference and limits
+
+- Schema 3 contains modules, imports, boundaries, contracts and public interfaces.
+  Interface records include signatures, annotations, defaults, decorators, async,
+  class bases and annotated fields. Constructors are included; other underscore-prefixed
+  declarations are omitted.
+- Imports are syntax-level records, including function-local and type-checking
+  imports. They are not runtime call paths or exhaustive dynamic dependency analysis.
+- Snapshots describe syntax, not inferred types or behavioural compatibility.
+  Check inherited/dynamic members and runtime conventions separately.
+- Use the same generator and Python version for a comparison. The harness requires
+  schema 3 on both sides; archived pairs of schema 1 or 2 remain comparable by the CLI.
+  Preserve originals when regenerating evidence with a newer generator.
+- Import Linter and Tach remain the enforced checks. Diagrams and this view are
+  presentations of typed data; DER retains the authoritative review evidence.
+
+The shared generator is `src/semantic_reviewer/adapters/architecture.py`;
+`tools/architecture.py` is its command-line entry point.
