@@ -13,6 +13,8 @@ from semantic_reviewer.application.model import ModelFailure, ModelReply, ModelR
 from semantic_reviewer.routing.selection import RoutingDecision
 from semantic_reviewer.routing.usage import Measurement, TokenUsage
 
+REQUEST_VERSION = "llama-native-v2"
+
 
 class LlamaClient:
     """Keep local-only routes on loopback, with proxies and redirects disabled.
@@ -132,18 +134,16 @@ class LlamaClient:
                 entry = next((item for item in available["data"] if item["id"] == model.id), None)
                 if entry is None:
                     raise fail("Selected model is not served by this endpoint.")
+                # Qwen's execution control belongs to this adapter, not the task prompt.
+                system = request.system + (" /no_think" if model.family == "qwen3" else "")
                 messages = [
-                    {"role": "system", "content": request.system},
+                    {"role": "system", "content": system},
                     {"role": "user", "content": request.user},
                 ]
-                rendered = post(
-                    "/apply-template",
-                    {
-                        "messages": messages,
-                        "add_generation_prompt": True,
-                        "chat_template_kwargs": {"enable_thinking": False},
-                    },
-                )["prompt"]
+                template = {"messages": messages, "add_generation_prompt": True}
+                if model.family == "qwen3":
+                    template["chat_template_kwargs"] = {"enable_thinking": False}
+                rendered = post("/apply-template", template)["prompt"]
                 token_count = len(
                     post("/tokenize", {"content": rendered, "add_special": True})["tokens"]
                 )
@@ -196,7 +196,14 @@ class LlamaClient:
                 return ModelReply(
                     "".join(fragments),
                     measurement("success"),
-                    json.dumps({"prompt_version": request.prompt_version, "request": payload}),
+                    json.dumps(
+                        {
+                            "prompt_version": request.prompt_version,
+                            "adapter_version": REQUEST_VERSION,
+                            "template_request": template,
+                            "request": payload,
+                        }
+                    ),
                     json.dumps(final),
                 )
         except ModelFailure:

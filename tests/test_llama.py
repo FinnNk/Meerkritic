@@ -102,6 +102,21 @@ class LlamaTest(unittest.TestCase):
         self.assertIsNotNone(reply.measurement.time_to_first_token_ms)
         self.assertEqual(json.loads(reply.request_json)["prompt_version"], "test-v1")
 
+    def test_model_controls_are_adapter_owned_and_retained_in_provenance(self):
+        ordinary = json.loads(self.generate().request_json)
+        self.assertEqual(ordinary["template_request"]["messages"][0]["content"], "system")
+        self.assertNotIn("chat_template_kwargs", ordinary["template_request"])
+        self.decision = self.decision.model_copy(
+            update={"selected": self.decision.selected.model_copy(update={"family": "qwen3"})}
+        )
+        controlled = json.loads(self.generate().request_json)
+        self.assertEqual(
+            controlled["template_request"]["messages"][0]["content"], "system /no_think"
+        )
+        self.assertFalse(controlled["template_request"]["chat_template_kwargs"]["enable_thinking"])
+        self.assertEqual(controlled["adapter_version"], "llama-native-v2")
+        self.assertEqual(self.request.system, "system")
+
     def test_context_refusal_happens_before_generation(self):
         self.context = 50
         with self.assertRaises(ModelFailure) as raised:
