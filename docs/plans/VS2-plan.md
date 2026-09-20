@@ -247,3 +247,14 @@ remaining-slice revision. PR acceptance, ADR/EDR state and slice state remain di
 The planning-only pause is lifted by the owner. Continue through A2/A3, B and C,
 publishing each completed batch for review without waiting for preceding merges.
 Comparative work remains gated and EDR-0001 stays draft until genuinely registered.
+
+## Candidate milestone review
+
+Batch C implementation is complete for software review: staged atomic decisions,
+version-bound discussion, frozen advisory guidance and typed architecture freshness.
+The [slice review](../slice-reviews/VS2-review.md) records delivery, limitations and
+separate owner/empirical gates. The [milestone architecture review](../slice-reviews/VS2-milestone-architecture-review.md)
+records actual findings, how they were found/fixed and intended earlier detection.
+[VS3 preparation and remaining-slice revision](VS3-plan.md) leaves later slices
+unfrozen. No comparative quality claim or full slice closure is made while the
+human-labelled corpus and EDR registration/decision remain outstanding.

@@ -13,10 +13,18 @@
 ## Registered plan
 
 This section is a prospective draft. Registration is blocked on the concrete
-candidate's operational preflight, a permitted human-labelled sample and agreement
-on the bounded comparison. Do not collect or analyse decision-bearing results
+permitted human-labelled sample and agreement on the bounded comparison. Synthetic
+local model/runtime compatibility preflight has passed; the exact evaluation method
+and sample remain unfrozen. Do not collect or analyse decision-bearing results
 until these details and the registration commit are recorded. No selection decision
 has been made from the functional VS1 data.
+
+VS2 software compatibility also exercised pinned local embeddings, exploratory
+grouping, provisional rule synthesis and advisory guidance on explicitly synthetic
+interpretations. Insufficiency outputs and a prompt-contract clarification are
+retained in DER `vs2-rules/r1`; neither they nor automated fixture decisions are
+evaluation labels or evidence of comparative quality. This draft has not been
+registered, and no decision-bearing comparison has been run.
 
 ### Decision and hypothesis
 

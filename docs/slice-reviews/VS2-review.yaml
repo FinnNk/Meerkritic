@@ -1,0 +1,83 @@
+slice_review:
+  slice: VS2
+  completed_at: null
+  delivered:
+  - Frozen annotation selections and explicit eligibility
+  - Local routed MAF embeddings and reproducible grouping
+  - Immutable rule registry, evidence and research decisions
+  - Saved atomic decision batches and version-bound discussion
+  - Frozen advisory guidance with explicit unknown completion
+  - Typed architecture before/delta/after with stale-source warning
+  deviations:
+  - Software candidate complete; empirical method comparison remains unregistered
+    and unrun
+  architecture_observations:
+  - One worker and canonical registry decisions retained; see milestone review
+  research_observations:
+  - Synthetic compatibility is not human-labelled quality evidence
+  performance_observations:
+  - No comparative performance claim; known token/turnaround telemetry retained
+  framework_observations:
+  - Real MAF local synthesis and guidance completed; no durable entities needed
+  technical_debt:
+  - Existing dependency deprecation warnings
+  - Operational bounds require reconsideration only on demonstrated needs
+  decisions:
+  - ADR0010/0011 implemented after owner merges
+  - ADR0012 proposed
+  decision_trace: []
+  architecture_before: external DER vs2-interaction/r1/architecture-before.json
+  architecture_after: external DER vs2-interaction/r1/architecture-after.json
+  architecture_delta: external DER vs2-interaction/r1/architecture-delta.json
+  context_updates: []
+  adrs_created_or_updated: []
+  changes_to_remaining_slices:
+  - 'docs/plans/VS3-plan.md: explicit VS3-VS8 revision; none READY'
+  design_clarity_review:
+    complexity: null
+    module_depth: null
+    knowledge_leakage: null
+    layer_quality: null
+    strategic_quality: null
+    configuration_exposure: null
+    vocabulary_consistency: null
+    state_and_error_design: null
+    caller_contract_completeness: null
+  milestone_guidance_assessment: []
+  contract_challenges: []
+  finding_dispositions:
+  - 'VS2-F1: addressed; discovery, remedy and earlier detection in milestone review'
+  - 'VS2-F2: addressed; discovery, remedy and earlier detection in milestone review'
+  - 'VS2-F3: addressed; discovery, remedy and earlier detection in milestone review'
+  - 'VS2-F4: addressed; discovery, remedy and earlier detection in milestone review'
+  - 'VS2-F5: addressed; discovery, remedy and earlier detection in milestone review'
+  - 'VS2-F6: addressed; discovery, remedy and earlier detection in milestone review'
+  maintained_documentation_reconciliation:
+  - README, operation guides, glossary, ADR/EDR index/status, backlog and future plans
+    updated
+  routing_observations:
+    policy_versions_used:
+    - local-discovery-fixture versions 1, 2, 3
+    policy_transitions: []
+    routing_failures: []
+    provider_health_issues: []
+    context_strategy_issues: []
+    budget_constraint_issues: []
+  double_entry_review:
+    materiality_assessments: []
+    material_pairs:
+    - vs2-inputs/r1
+    - vs2-grouping/r1
+    - vs2-rules/r1
+    - vs2-interaction/r1
+    critical_pairs: []
+    routine_waivers_or_borderline_decisions: []
+    readiness_at_slice_completion:
+    - First three batches owner-merged; final candidate requires DER publication and
+      owner acceptance
+    equivalence_failures_or_reconstructions: []
+    review_rounds: []
+    observed_preparation_review_overhead: []
+    threshold_lessons_for_future_slices: []
+  empirical_decision_records:
+  - EDR0001 draft; human sample, registration and owner decision pending

@@ -130,11 +130,13 @@ slices:
   - A1 frozen selections integrated via PR 10; ADR-0009 implemented
   - A2/A3 approved and integrated via PR 11; exact reviewed tree verified; ADR-0010 implemented
   - B approved and integrated via PR 12; exact reviewed tree verified; ADR-0011 implemented
-  - C frozen against exact PR 12 head; staged decisions, guidance and milestone review
+  - C software candidate implemented; staged decisions, guidance, architecture view and milestone review
+  - full VS2 closure pending owner acceptance and empirical gate
   remaining_gates:
   - human-rated development corpus before empirical method adoption
   - EDR registration before decision-bearing comparison
-  - B/C contracts elaborated before implementation
+  - final Batch C owner acceptance and integration verification
+  - recorded empirical outcome and owner decision before full slice closure
   revision_after: VS1
   maf_evaluation: continue MAF usage; evaluate rule-discovery workflow fit
   interaction_patterns:
@@ -147,6 +149,8 @@ slices:
   name: Rule-to-Historical-Replay
   status: DRAFT
   revision_after: VS2
+  plan: docs/plans/VS3-plan.md
+  entry_gate: final VS2 software acceptance and explicit empirical disposition
   maf_evaluation: evaluate workflow fan-out/fan-in for historical replay
   interaction_patterns:
   - staged gate decisions
@@ -154,6 +158,7 @@ slices:
   - stale visual detection
 - id: VS4
   name: Finding-to-Agent-Repair
+  vs2_revision: Bind guidance to exact finding/rule/source versions; preserve unknown completion and explicit apply.
   status: DRAFT
   revision_after: VS3
   maf_evaluation: evaluate durable entity/actor-style agent sessions for long-running
@@ -165,18 +170,22 @@ slices:
   - render/report subagent where beneficial
 - id: VS5
   name: Repair-to-Behavioural-Evaluation
+  vs2_revision: Separate provenance from expected correctness; retain baseline and adverse outcomes.
   status: DRAFT
   revision_after: VS4
 - id: VS6
   name: Programme Operations and Comparative Analysis
+  vs2_revision: Use immutable run identities and pre-register significant comparisons before analysis.
   status: DRAFT
   revision_after: VS5
 - id: VS7
   name: Public-to-Internal Transfer
+  vs2_revision: Require authorised internal access, fail-closed locality and explicit reproduction limits.
   status: DRAFT
   revision_after: VS6
 - id: VS8
   name: Operational Hardening
+  vs2_revision: Retain simple storage and one worker until measured operational triggers justify change.
   status: CONDITIONAL
   revision_after: VS7
   triggers:
@@ -298,7 +307,7 @@ model_usage_telemetry:
   - provider_reported_cost
   - outcome
   local_cost_policy: zero API spend; do not estimate electricity/hardware amortisation
-  live_summary: Model · input/output tokens · estimated spend/local · elapsed
+  live_summary: Model Â· input/output tokens Â· estimated spend/local Â· elapsed
   detail_on_demand: true
 routing_subsystem:
   design: 10_MODEL_ROUTING_SUBSYSTEM_DESIGN.md

@@ -22,7 +22,8 @@
   </style>
 </head>
 <body>
-  {% if has_guidance %}<a href="/guidance">Guidance</a>{% endif %}
+  {% if has_architecture %}<a href="/architecture">Architecture</a>{% endif %}
+{% if has_guidance %}<a href="/guidance">Guidance</a>{% endif %}
 {% if has_workspace %}<a href="/review-workspace">Review workspace</a>{% endif %}
 {% if has_rules %}<nav><a href="/rules">Rule registry</a></nav>{% endif %}
   {% if has_discovery %}<nav><a href="/discovery">Discovery</a></nav>{% endif %}

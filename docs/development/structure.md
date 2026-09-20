@@ -17,7 +17,7 @@ needs them. Documentation replaces empty placeholder directory trees.
 | `src/semantic_reviewer/resources/` | Packaged, versioned prompts when introduced |
 | `config/datasets/` | Small public source/revision/hash/licence manifests |
 | `config/routing/` | Validated versioned inventories, policies, prices and contexts |
-| `tools/` | Canonical checks and later preflight/architecture generators |
+| `tools/` | Canonical checks and explicit maintenance/generation entry points |
 | `tests/` | Unit, integration and critical-flow tests; small permitted fixtures |
 | `docs/research/` | Attributed original research and handover snapshot |
 | `docs/edr/` | Pre-registered empirical plans, results and decisions |
