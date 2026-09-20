@@ -24,7 +24,7 @@ slice_review:
   - Operational bounds require reconsideration only on demonstrated needs
   decisions:
   - ADR0010/0011 implemented after owner merges
-  - ADR0012 proposed
+  - ADR0012 accepted by owner on 2026-09-20; PR 13 integration confirmation pending
   decision_trace: []
   architecture_before: external DER vs2-interaction/r1/architecture-before.json
   architecture_after: external DER vs2-interaction/r1/architecture-after.json

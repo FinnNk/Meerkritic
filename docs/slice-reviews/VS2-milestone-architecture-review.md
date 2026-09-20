@@ -30,6 +30,11 @@ synthetic fixtures and copied compatibility state.
 
 ## Findings and dispositions
 
+Subsequent decision update, 20 September 2026: the owner accepted ADR-0012 in the
+project conversation. Its `proposed` status in the assessment above describes the
+inspection at that time. PR #13 acceptance, merge and integrated confirmation
+remain separate from this architectural acceptance.
+
 These findings span build-time inspection, live compatibility and the final
 milestone pass. Their discovery stages are explicit; regression tests added later
 are not presented as the original discovery method.
