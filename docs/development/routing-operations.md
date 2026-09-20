@@ -25,4 +25,6 @@ uv run --locked python tools/route.py export-usage --data-root ../extras/data/ro
 
 Empty history produces typed, empty Parquet. Existing files are never overwritten. Snapshots include successful and failed invocations, nullable tokens, elapsed time, exact decimal spend as text, full decision/usage JSON and retained inventory/policy/price snapshots. DuckDB can query these independently; cast spend to the analysis's required decimal precision. Export copies records without deleting SQLite history; automatic retention is deferred. Runtime paths must be outside Git worktrees.
 
-See the [routing contracts](routing.md). Live llama.cpp calls, MAF orchestration, worker recovery and annotation remain subsequent VS1 work.
+See the [routing contracts](routing.md), [live normalisation](normalisation.md) and
+[annotation guide](annotations.md). The inspection commands remain useful independently
+of the delivered VS1 worker and UI.

@@ -1,9 +1,9 @@
 # VS1 verification and reproduction
 
-The candidate exercises the complete Data-to-Annotation path. Owner acceptance
-and integration of the final PR stack remain separate from local verification.
-The final slice review and VS2 plan are prepared on a separate branch after these
-software batches; this document is an operational verification guide.
+The integrated VS1 implementation exercises the complete Data-to-Annotation path.
+PRs #7 and #8 have been approved and merged. The milestone architecture follow-up
+has its own verification and owner-review gate. The final slice review and VS2
+plan remain on their separate local branch; this is an operational verification guide.
 
 ## Acceptance map
 
