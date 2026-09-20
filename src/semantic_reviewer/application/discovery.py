@@ -3,14 +3,14 @@
 import hashlib
 from dataclasses import asdict, dataclass, replace
 from datetime import UTC, datetime
-from typing import Annotated, Literal, Protocol
+from typing import Annotated, Literal, Protocol, Self
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from semantic_reviewer.application.embeddings import EmbeddingInput, EmbeddingRuntime
 from semantic_reviewer.application.routing import RoutingService
 from semantic_reviewer.application.selections import SelectionStore
-from semantic_reviewer.domain.grouping import validate_vectors
+from semantic_reviewer.domain.grouping import cluster_vectors, validate_vectors
 from semantic_reviewer.routing.selection import TaskRequirements
 from semantic_reviewer.routing.usage import Measurement, usage_summary
 
@@ -21,8 +21,21 @@ class DiscoveryRequest(BaseModel):
     """Pin one selection and, for clustering, its exact successful vector artefact."""
 
     model_config = ConfigDict(extra="forbid", frozen=True)
-    kind: Literal["embedding"]
+    kind: Literal["embedding", "clustering"]
     selection_id: Digest
+    embedding_run: str | None = None
+    embedding_digest: Digest | None = None
+    threshold: float = Field(default=0.85, ge=-1, le=1, allow_inf_nan=False)
+    minimum_size: int = Field(default=2, ge=2, le=100, strict=True)
+
+    @model_validator(mode="after")
+    def coherent(self) -> Self:
+        """Reject incomplete or irrelevant upstream references."""
+        if (self.kind == "clustering") != bool(self.embedding_run and self.embedding_digest):
+            raise ValueError("Clustering requires an exact embedding run and digest.")
+        if self.kind == "embedding" and (self.embedding_run or self.embedding_digest):
+            raise ValueError("Embedding inputs cannot reference another embedding run.")
+        return self
 
 
 @dataclass(frozen=True)
@@ -96,6 +109,14 @@ class DiscoveryFiles(Protocol):
         """Verify analytical bytes, identity/order and shape before returning bounded rows."""
         ...
 
+    def write_members(self, members: tuple[dict, ...]) -> str:
+        """Publish 1..100 distinct ordered annotation/cluster/representative assignments."""
+        ...
+
+    def read_members(self, digest: str) -> tuple[dict, ...]:
+        """Return verified ordered memberships; missing/corrupt evidence fails closed."""
+        ...
+
 
 class DiscoveryService:
     """Hide input identity checks and queue publication behind explicit user operations."""
@@ -112,6 +133,23 @@ class DiscoveryService:
         if summary.included == 0:
             raise ValueError("Selection has no eligible inputs.")
         return self.store.enqueue(DiscoveryRequest(kind="embedding", selection_id=selection_id))
+
+    def cluster(self, embedding_run: str, threshold: float, minimum_size: int = 2) -> DiscoveryRun:
+        """Pin a successful embedding result; explicit parameters are exploratory, not adopted."""
+        run, body = self.inspect(embedding_run)
+        if run.status != "succeeded" or run.request.kind != "embedding":
+            raise ValueError("Clustering requires a successful embedding run.")
+        self.files.read_vectors(body["vectors_digest"])
+        return self.store.enqueue(
+            DiscoveryRequest(
+                kind="clustering",
+                selection_id=run.request.selection_id,
+                embedding_run=run.id,
+                embedding_digest=run.result_digest,
+                threshold=threshold,
+                minimum_size=minimum_size,
+            )
+        )
 
     def inspect(self, run_id: str) -> tuple[DiscoveryRun, dict | None]:
         """Read metadata and verified result; no source selection or model call occurs."""
@@ -157,64 +195,88 @@ class DiscoveryExecution:
             body.update(
                 eligible=summary.included, excluded=summary.excluded, purpose=summary.purpose
             )
-            texts = tuple(
-                "\n".join(
-                    (
-                        item.interpretation.issue_statement,
-                        item.interpretation.proposed_invariant or "",
-                        ", ".join(item.interpretation.coarse_categories),
+            if run.request.kind == "embedding":
+                texts = tuple(
+                    "\n".join(
+                        (
+                            item.interpretation.issue_statement,
+                            item.interpretation.proposed_invariant or "",
+                            ", ".join(item.interpretation.coarse_categories),
+                        )
+                    )
+                    for item in records
+                )
+                if any(len(text) > 12000 for text in texts):
+                    raise ValueError("An embedding input exceeds the 12,000-character bound.")
+                decision = self.routing.route(
+                    TaskRequirements(
+                        task_id=run.id,
+                        task_class="embedding",
+                        capabilities=("embeddings",),
+                        privacy="local_only",
                     )
                 )
-                for item in records
-            )
-            if any(len(text) > 12000 for text in texts):
-                raise ValueError("An embedding input exceeds the 12,000-character bound.")
-            decision = self.routing.route(
-                TaskRequirements(
-                    task_id=run.id,
-                    task_class="embedding",
-                    capabilities=("embeddings",),
-                    privacy="local_only",
+                service.store.bind_route(run, decision.id)
+                body["routing"] = decision.model_dump(mode="json")
+                if decision.selected is None:
+                    raise ValueError("Routing refused: " + ", ".join(decision.reasons))
+                outcome = self.runtime.run(
+                    EmbeddingInput(texts, decision, datetime.fromisoformat(run.queued_at))
                 )
-            )
-            service.store.bind_route(run, decision.id)
-            body["routing"] = decision.model_dump(mode="json")
-            if decision.selected is None:
-                raise ValueError("Routing refused: " + ", ".join(decision.reasons))
-            outcome = self.runtime.run(
-                EmbeddingInput(texts, decision, datetime.fromisoformat(run.queued_at))
-            )
-            if outcome.error is None:
-                try:
-                    vectors = validate_vectors(outcome.vectors, len(ids))
-                    if outcome.measurement.outcome != "success":
-                        raise ValueError("Success disagrees with runtime measurement.")
-                except (ValueError, TypeError):
-                    outcome = replace(
-                        outcome,
-                        error="Embedding runtime returned invalid vectors.",
-                        measurement=Measurement(
-                            **{
-                                **outcome.measurement.model_dump(),
-                                "outcome": "semantic_failure",
-                            }
-                        ),
-                    )
-            usage = self.routing.complete(decision.id, outcome.measurement)
-            body.update(
-                usage=usage.model_dump(mode="json"),
-                telemetry=usage_summary(decision, usage),
-                framework=asdict(outcome.framework) if outcome.framework else None,
-                model_provenance=outcome.provenance,
-                preprocessing="issue-invariant-categories-v1",
-                text_sha256=[hashlib.sha256(t.encode()).hexdigest() for t in texts],
-            )
-            error = outcome.error
-            if error is None:
+                if outcome.error is None:
+                    try:
+                        vectors = validate_vectors(outcome.vectors, len(ids))
+                        if outcome.measurement.outcome != "success":
+                            raise ValueError("Success disagrees with runtime measurement.")
+                    except (ValueError, TypeError):
+                        outcome = replace(
+                            outcome,
+                            error="Embedding runtime returned invalid vectors.",
+                            measurement=Measurement(
+                                **{
+                                    **outcome.measurement.model_dump(),
+                                    "outcome": "semantic_failure",
+                                }
+                            ),
+                        )
+                usage = self.routing.complete(decision.id, outcome.measurement)
                 body.update(
-                    vectors_digest=service.files.write_vectors(ids, texts, vectors),
-                    dimensions=len(vectors[0]),
-                    normalisation="l2-v1",
+                    usage=usage.model_dump(mode="json"),
+                    telemetry=usage_summary(decision, usage),
+                    framework=asdict(outcome.framework) if outcome.framework else None,
+                    model_provenance=outcome.provenance,
+                    preprocessing="issue-invariant-categories-v1",
+                    text_sha256=[hashlib.sha256(t.encode()).hexdigest() for t in texts],
+                )
+                error = outcome.error
+                if error is None:
+                    body.update(
+                        vectors_digest=service.files.write_vectors(ids, texts, vectors),
+                        dimensions=len(vectors[0]),
+                        normalisation="l2-v1",
+                    )
+            else:
+                parent, embedding = service.inspect(run.request.embedding_run)
+                if (
+                    parent.status != "succeeded"
+                    or parent.result_digest != run.request.embedding_digest
+                ):
+                    raise ValueError("Embedding result differs from the pinned input.")
+                rows = service.files.read_vectors(embedding["vectors_digest"])
+                if tuple(row[0] for row in rows) != ids:
+                    raise ValueError("Vector identities differ from selected annotations.")
+                members = cluster_vectors(
+                    ids,
+                    tuple(row[2] for row in rows),
+                    run.request.threshold,
+                    run.request.minimum_size,
+                )
+                body.update(
+                    members_digest=service.files.write_members(members),
+                    algorithm="cosine-components-v1",
+                    seed=None,
+                    outliers=sum(row["cluster"] == -1 for row in members),
+                    clusters=len({row["cluster"] for row in members if row["cluster"] >= 0}),
                 )
         except (ValueError, LookupError, OSError) as failure:
             # Do not leak filesystem paths or source/provider payloads into operational errors.

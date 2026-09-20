@@ -22,6 +22,7 @@ from semantic_reviewer.application.discovery import (
 from semantic_reviewer.application.embeddings import EmbeddingOutcome
 from semantic_reviewer.application.jobs import Worker
 from semantic_reviewer.application.routing import RoutingService
+from semantic_reviewer.domain.grouping import cluster_vectors, validate_vectors
 from semantic_reviewer.routing.selection import RoutingConfig
 from semantic_reviewer.routing.usage import Measurement
 from semantic_reviewer.web.app import create_app
@@ -95,6 +96,29 @@ class DiscoveryTest(unittest.TestCase):
         self.assertEqual(rows[0][2], (1, 0))
         self.assertEqual(SQLiteDiscovery(self.database).get(run.id).status, "succeeded")
 
+    def test_clustering_replay_preserves_membership_and_terminal_state(self):
+        run, _ = self.embed()
+        first = self.discovery.cluster(run.id, 0.9)
+        self.worker.run(once=True)
+        _, clustered = self.discovery.inspect(first.id)
+        self.assertEqual((clustered["clusters"], clustered["outliers"]), (1, 0))
+        members = self.files.read_members(clustered["members_digest"])
+        self.assertEqual(sum(m["representative"] for m in members), 1)
+        repeated = self.discovery.cluster(run.id, 0.9)
+        self.worker.run(once=True)
+        self.assertNotEqual(first.id, repeated.id)
+        self.assertEqual(
+            self.discovery.inspect(repeated.id)[1]["members_digest"], clustered["members_digest"]
+        )
+        self.assertEqual(SQLiteDiscovery(self.database).get(first.id).status, "succeeded")
+        with self.discovery_store.state.connect() as db:
+            self.assertLess(
+                max(len(row[0]) for row in db.execute("SELECT request_json FROM discovery_run")),
+                4096,
+            )
+            with self.assertRaises(sqlite3.IntegrityError):
+                db.execute("UPDATE discovery_run SET status='queued' WHERE id=?", (first.id,))
+
     def test_provider_failure_is_terminal_without_automatic_replay(self):
         self.model.failure = True
         run, body = self.embed()
@@ -103,6 +127,12 @@ class DiscoveryTest(unittest.TestCase):
         self.assertNotIn("vectors_digest", body)
         self.worker.run(once=True)
         self.assertEqual(self.model.calls, 1)
+
+    def test_failed_embedding_cannot_supply_clustering(self):
+        self.model.failure = True
+        run, _ = self.embed()
+        with self.assertRaises(ValueError):
+            self.discovery.cluster(run.id, 0.9)
 
     def test_bad_runtime_vectors_are_semantic_failures_before_usage_is_completed(self):
         def malformed(value):
@@ -143,6 +173,13 @@ class DiscoveryTest(unittest.TestCase):
         self.worker.run(once=True)
         self.assertEqual(self.discovery_store.get(run.id).status, "failed")
         self.assertEqual(self.model.calls, 0)
+
+    def test_vector_checksum_fails_before_clustering(self):
+        run, body = self.embed()
+        path = self.files.root / (body["vectors_digest"] + ".parquet")
+        path.write_bytes(b"corrupt")
+        with self.assertRaises(ValueError):
+            self.discovery.cluster(run.id, 0.8)
 
     def test_request_manifest_disagreement_fails_closed(self):
         run, body = self.embed()
@@ -194,6 +231,20 @@ class DiscoveryTest(unittest.TestCase):
         self.assertEqual(run.status, "failed")
         self.assertEqual(self.model.calls, 0)
 
+    def test_browser_submits_only_same_origin_and_shows_verified_groups(self):
+        run, _ = self.embed()
+        clustered = self.discovery.cluster(run.id, 0.8)
+        self.worker.run(once=True)
+        client = TestClient(
+            create_app(self.service, selections=self.selection_store, discovery=self.discovery),
+            base_url="http://localhost",
+        )
+        response = client.get("/discovery/" + clustered.id)
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("2 eligible", response.text)
+        self.assertIn("Representative", response.text)
+        self.assertIn("not human research labels", response.text)
+
     def test_embedding_browser_preserves_same_origin_submission_boundary(self):
         run, _ = self.embed()
         client = TestClient(
@@ -214,3 +265,14 @@ class DiscoveryTest(unittest.TestCase):
             follow_redirects=False,
         )
         self.assertEqual(response.status_code, 303)
+
+
+class VectorTest(unittest.TestCase):
+    def test_shape_finiteness_zero_norm_and_outliers(self):
+        for vectors in ((), ((0, 0),), ((float("nan"), 1),), ((True, 1),), ((1, 0), (1,))):
+            with self.subTest(vectors=vectors), self.assertRaises(ValueError):
+                validate_vectors(vectors, max(1, len(vectors)))
+        vectors = ((1, 0), (1, 0), (0, 1))
+        members = cluster_vectors(("a", "b", "c"), vectors, 0.9, 2)
+        self.assertEqual([r["cluster"] for r in members], [0, 0, -1])
+        self.assertEqual([r["representative"] for r in members], [True, False, False])

@@ -3,7 +3,7 @@
 import json
 from urllib.parse import parse_qs
 
-from fastapi import HTTPException, Request
+from fastapi import HTTPException, Query, Request
 from fastapi.responses import HTMLResponse, RedirectResponse
 from starlette.concurrency import run_in_threadpool
 
@@ -50,11 +50,34 @@ def add_discovery_routes(app, templates, service: DiscoveryService):
             ) from error
         return RedirectResponse(f"/discovery/{run.id}", status_code=303)
 
+    @app.post("/discovery/cluster")
+    async def cluster(request: Request):
+        fields = await local_form(request)
+        try:
+            run = await run_in_threadpool(
+                service.cluster,
+                fields.get("embedding_run", ""),
+                float(fields.get("threshold", "")),
+                int(fields.get("minimum_size", "2")),
+            )
+        except (ValueError, LookupError, OSError) as error:
+            raise HTTPException(
+                409, "Clustering parameters or embedding evidence are invalid."
+            ) from error
+        return RedirectResponse(f"/discovery/{run.id}", status_code=303)
+
     @app.get("/discovery/{run_id}", response_class=HTMLResponse)
-    def detail(request: Request, run_id: str):
+    def detail(request: Request, run_id: str, page: int = Query(1, ge=1, le=10)):
         try:
             run, body = service.inspect(run_id)
-            summary, _ = service.selections.read(run.request.selection_id)
+            summary, snapshot = service.selections.read(run.request.selection_id)
+            records = {item.annotation.id: item for item in snapshot.records}
+            members = (
+                service.files.read_members(body["members_digest"])
+                if body and body.get("members_digest")
+                else ()
+            )
+            rows = [(member, records[member["annotation_id"]]) for member in members]
         except LookupError as error:
             raise HTTPException(404, "Discovery run or input does not exist.") from error
         except (ValueError, OSError, KeyError) as error:
@@ -66,6 +89,9 @@ def add_discovery_routes(app, templates, service: DiscoveryService):
                 "run": run,
                 "body": body,
                 "summary": summary,
+                "rows": rows[(page - 1) * 10 : page * 10],
+                "page": page,
+                "total": len(rows),
                 "manifest": json.dumps(body, indent=2, ensure_ascii=False),
             },
         )

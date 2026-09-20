@@ -22,3 +22,43 @@ def validate_vectors(vectors: tuple, count: int) -> tuple[tuple[float, ...], ...
             raise ValueError("Embedding norm is zero or non-finite.")
         result.append(tuple(x / norm for x in row))
     return tuple(result)
+
+
+def cluster_vectors(ids: tuple[str, ...], vectors: tuple, threshold: float, minimum: int) -> tuple:
+    """Prototype cosine connected components; stable medoids, explicit small-group outliers.
+
+    Edges are inclusive at threshold. Transitive chaining is intentional and does
+    not assert semantic coherence. Seed is not used. Ties follow frozen input order.
+    """
+    vectors = validate_vectors(vectors, len(ids))
+    if len(set(ids)) != len(ids) or not -1 <= threshold <= 1 or not 2 <= minimum <= 100:
+        raise ValueError("Invalid clustering identities or parameters.")
+    similarities = [
+        [sum(a * b for a, b in zip(x, y, strict=True)) for y in vectors] for x in vectors
+    ]
+    remaining = set(range(len(ids)))
+    result = []
+    group = 0
+    while remaining:
+        component = {min(remaining)}
+        frontier = list(component)
+        remaining -= component
+        while frontier:
+            index = frontier.pop()
+            neighbours = {j for j in remaining if similarities[index][j] >= threshold}
+            remaining -= neighbours
+            component |= neighbours
+            frontier.extend(sorted(neighbours))
+        ordered = sorted(component)
+        eligible = len(ordered) >= minimum
+        representative = max(ordered, key=lambda i: (sum(similarities[i][j] for j in ordered), -i))
+        for i in ordered:
+            result.append(
+                {
+                    "annotation_id": ids[i],
+                    "cluster": group if eligible else -1,
+                    "representative": eligible and i == representative,
+                }
+            )
+        group += int(eligible)
+    return tuple(sorted(result, key=lambda row: ids.index(row["annotation_id"])))

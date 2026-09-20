@@ -27,6 +27,10 @@ def main() -> int:
     worker.add_argument("--embedding-model", type=Path)
     embed = commands.add_parser("embed")
     embed.add_argument("selection_id")
+    cluster = commands.add_parser("cluster")
+    cluster.add_argument("embedding_run")
+    cluster.add_argument("--threshold", type=float, required=True)
+    cluster.add_argument("--minimum-size", type=int, default=2)
     discovery = commands.add_parser("discovery")
     discovery.add_argument("run_id", nargs="?")
     normalise = commands.add_parser("normalise")
@@ -69,11 +73,15 @@ def main() -> int:
                 embedding_profile=args.embedding_profile,
                 embedding_model=args.embedding_model,
             )
-        elif args.command in ("embed", "discovery"):
+        elif args.command in ("embed", "cluster", "discovery"):
             composition = importlib.import_module("semantic_reviewer.bootstrap")
             service = composition.build_discovery(args.data_root)
             if args.command == "embed":
                 result = asdict(service.embed(args.selection_id))
+            elif args.command == "cluster":
+                result = asdict(
+                    service.cluster(args.embedding_run, args.threshold, args.minimum_size)
+                )
             elif args.run_id:
                 run, body = service.inspect(args.run_id)
                 result = {"run": asdict(run), "result": body}

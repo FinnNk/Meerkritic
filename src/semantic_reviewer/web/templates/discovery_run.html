@@ -10,5 +10,16 @@
 {% if run.error %}<p><strong>{{ run.error }}</strong> An explicit new submission is required to retry.</p>{% endif %}
 {% if body and body.telemetry %}<p>{{ body.telemetry }}</p>{% endif %}
 {% if run.status in ('queued','running') %}<p>Waiting for the discovery-enabled worker. This page refreshes every five seconds. Recovery requires the exclusive worker lock; elapsed time does not trigger replay.</p>{% endif %}
+{% if run.status == 'succeeded' and run.request.kind == 'embedding' %}
+<h2>Explore a grouping</h2><p>Choose parameters explicitly. No empirical default has been adopted.</p>
+<form action="/discovery/cluster" method="post"><input type="hidden" name="embedding_run" value="{{ run.id }}">
+<label>Cosine threshold <input name="threshold" type="number" min="-1" max="1" step="0.01" required></label>
+<label>Minimum group size <input name="minimum_size" type="number" min="2" max="100" value="2" required></label>
+<button type="submit">Queue clustering</button></form>{% endif %}
+{% for member, item in rows %}<article><h2>{% if member.cluster == -1 %}Outlier{% else %}Group {{ member.cluster }}{% endif %}{% if member.representative %} · Representative{% endif %}</h2>
+<p>{{ item.interpretation.issue_statement }}</p><p>{{ item.interpretation.proposed_invariant or 'No proposed invariant' }}</p>
+<p>Generalisable: {{ item.interpretation.generalisable }} · <a href="/jobs/{{ item.annotation.job_id }}">Original result and annotation</a></p>
+<details><summary>Source and version</summary><p>Annotation <code>{{ item.annotation.id }}</code> · {{ item.source.owner }}/{{ item.source.repository }}</p><pre>{{ item.source.comment }}</pre><pre>{{ item.source.code }}</pre></details></article>{% endfor %}
+{% if total %}<nav>{% if page > 1 %}<a href="?page={{ page-1 }}">Previous</a>{% endif %}{% if page*10 < total %}<a href="?page={{ page+1 }}">Next</a>{% endif %}</nav>{% endif %}
 <details><summary>Exact run provenance</summary><p>Run <code>{{ run.id }}</code></p><p>Result SHA-256 <code>{{ run.result_digest or 'Pending' }}</code></p><pre>{{ manifest }}</pre></details>
 {% endblock %}
