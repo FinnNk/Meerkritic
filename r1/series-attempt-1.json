@@ -1,0 +1,27 @@
+{
+  "base": "0bf957bcb0ae47e2c525f5f652830c06d5b8b9c9",
+  "diary": "45c29fcfea43c99026a9ae54051df61d905e30fc",
+  "semantic": "4dd2fdf22e5f2a02a753824567766434999bce5e",
+  "commits": [
+    "471445a226dedbecca9eee09b648c333c1c3f125",
+    "52f8caca0d6adf34fc437931d9fb35305e77beb1",
+    "66e3e6eff0032559dd1f64caedad27be583c1fe0",
+    "cf4c085c1a2ec1e4f5a0347857887ef08fcbbc05",
+    "bbeb2b8141964d1b1b0573920bcb6e61e48cda8b",
+    "878861bda45f8c95d7ae8fa663812606d740d7aa",
+    "bac29b1479a3be8b570d9016cfbdcbfa018a2607",
+    "246b3a9fd0d61e74d70bad745fc7793b314f5923",
+    "4dd2fdf22e5f2a02a753824567766434999bce5e"
+  ],
+  "titles": [
+    "docs: define milestone architecture and contract reviews",
+    "fix: reject contradictory normalisation completions",
+    "refactor: make artefact metadata and maintenance explicit",
+    "refactor: own source lookup and exclusive worker execution",
+    "refactor: isolate model controls from task context",
+    "feat: expose public contracts in architecture snapshots",
+    "docs: complete existing public operation contracts",
+    "docs: reconcile maintained guidance with delivered VS1",
+    "docs: record VS1 milestone findings and confirmations"
+  ]
+}

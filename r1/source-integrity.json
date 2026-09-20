@@ -1,0 +1,12 @@
+{
+  "revision": "036ff45827370f62d798b92ce10c9a52b6ed6330",
+  "manifest_files_verified": 59,
+  "unchanged_paths": [
+    ".agents",
+    "docs/research",
+    "config",
+    "pyproject.toml",
+    "tach.toml",
+    "uv.lock"
+  ]
+}
