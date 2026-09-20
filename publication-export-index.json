@@ -1,0 +1,62 @@
+[
+  {
+    "source": "ready-event.json",
+    "source_sha256": "59e02d1759e62ccd7afa942d2ae89bc8c4f223f0259f9002caa3d8fbe2716fc5",
+    "export_sha256": "59e02d1759e62ccd7afa942d2ae89bc8c4f223f0259f9002caa3d8fbe2716fc5",
+    "transformation": "Local paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "ready-ledger.json",
+    "source_sha256": "8c7a63bc5e2d99dbf302ec72d169f258e623f1b85ed5867533d3001e9acc94b7",
+    "export_sha256": "21fc1cceb48257def3d0b95b564a8a621102e1751a3720f54842fa15ddae7a68",
+    "transformation": "Local paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "qualification-pr.json",
+    "source_sha256": "264918139c48db28aa782735b18d50a6901dcd0f39c701e5cd9e6fb14fc2e762",
+    "export_sha256": "264918139c48db28aa782735b18d50a6901dcd0f39c701e5cd9e6fb14fc2e762",
+    "transformation": "Local paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "host-rules.json",
+    "source_sha256": "f918f4cdc06d63f0091e41adc362670929f586771e525e172a528340ee7e9180",
+    "export_sha256": "f918f4cdc06d63f0091e41adc362670929f586771e525e172a528340ee7e9180",
+    "transformation": "Local paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "published-pr.json",
+    "source_sha256": "2058694dcf8c62fac8dd0f2065ea98539d51010664ecf6d4dfcb6e168aca282c",
+    "export_sha256": "2058694dcf8c62fac8dd0f2065ea98539d51010664ecf6d4dfcb6e168aca282c",
+    "transformation": "Local paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "published-refs.txt",
+    "source_sha256": "f814d1f7ea45f19b30988b37438ff2826b290206c010a7567e6c44715d66e523",
+    "export_sha256": "f814d1f7ea45f19b30988b37438ff2826b290206c010a7567e6c44715d66e523",
+    "transformation": "Local paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "pr-body.md",
+    "source_sha256": "06d8283b006f131bf938b8f9c10d0ea2fbef5808b928abbdc01f9db9e4a89808",
+    "export_sha256": "06d8283b006f131bf938b8f9c10d0ea2fbef5808b928abbdc01f9db9e4a89808",
+    "transformation": "Local paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "publication-pr.log",
+    "source_sha256": "7aa752c7627da10bdf7ece8c8464a40223074ec3aef573320f21d11d3f38a7f3",
+    "export_sha256": "7aa752c7627da10bdf7ece8c8464a40223074ec3aef573320f21d11d3f38a7f3",
+    "transformation": "Local paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "publication-archive.log",
+    "source_sha256": "30fa88bae4c72975b4d268ab46c1c6b334b7c1263133ada2f04a82a10965a80f",
+    "export_sha256": "30fa88bae4c72975b4d268ab46c1c6b334b7c1263133ada2f04a82a10965a80f",
+    "transformation": "Local paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "publication-branch.log",
+    "source_sha256": "bdf5b0f6b58de1679b84a8e064ddaf5f383e4abee885d85b37888f360d4b722e",
+    "export_sha256": "bdf5b0f6b58de1679b84a8e064ddaf5f383e4abee885d85b37888f360d4b722e",
+    "transformation": "Local paths replaced; UTF-8 BOM removed if present"
+  }
+]

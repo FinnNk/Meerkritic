@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "sequence": 2,
+  "pair_id": "vs2-interaction",
+  "recorded_at": "2026-09-20T09:42:38+00:00",
+  "previous_hash": "637707b160aaa3cb069cc58c5e0433dee38d69b6c4f48b79c646a365c9461c8f",
+  "kind": "publication",
+  "round_id": "r1",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "vs2-interaction-2026-09-20"
+  },
+  "payload": {
+    "stage": "owner_review_ready",
+    "pr": "https://github.com/FinnNk/Meerkritic/pull/13",
+    "head": "eaeecaafd37883f2cb6da09d2845886413a9a530",
+    "base": "ff9af2e68d989590ebe030002e2e3789c35efef0",
+    "archive_commit": "3f1d14c030d080fefc82982aa79603323265a759",
+    "archive_branch": "evidence/vs2-interaction-r1",
+    "hosted_qualification": {
+      "required_status_contexts": [],
+      "observed_rollup": [],
+      "note": "Current repository rules require owner review/resolution, not hosted CI; no hosted CI execution is claimed."
+    },
+    "owner_approval": false,
+    "integrated": false,
+    "records": [
+      "published-pr.json",
+      "published-refs.txt",
+      "host-rules.json",
+      "qualification-pr.json",
+      "verification-summary.json",
+      "review.json",
+      "equivalence.json"
+    ]
+  },
+  "event_hash": "2cc962441d843ea255206f253b28972852a92c4894bc0587029cc6b2a6a16f96"
+}

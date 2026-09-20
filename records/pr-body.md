@@ -1,0 +1,29 @@
+Researchers can now save decisions across rule candidates, inspect the draft, then apply the complete batch atomically. Exact-version discussion can be sent as one immutable guidance request; the worker returns advisory responses without changing rules or decisions. The harness also shows source-bound architecture before/delta/after data and warns when it is stale.
+
+This is the final software batch for **VS2 (Annotation-to-Rule Discovery)**. PR #12 is merged, so this PR targets `main`; no unmerged prerequisite remains.
+
+## Semantic review sequence
+
+| Commit | Review proposition | Tests |
+| --- | --- | ---: |
+| `186bff3` | Strengthen boundary review, activate the final batch and record the integrated prerequisite. | 150 |
+| `89d5fca` | Backfill existing discovery/rule HTTP caller contracts separately. | 150 |
+| `55001b6` | Save/apply version-fenced decisions, explicit defer/reopen, immutable discussion and atomic history. | 158 |
+| `ee351d3` | Freeze submitted guidance context; route real MAF advice through the shared worker with explicit uncertain completion. | 168 |
+| `eaeecaa` | Inspect architecture freshness and record the milestone review, slice status and remaining-slice revisions. | 172 |
+
+Each checkpoint passed Ruff formatting/lint, Import Linter, Tach and its tests in a clean checkout with its own locked Windows/Python 3.12 environment. The frozen diary also passed all 172 tests. Negative controls cover stale/concurrent drafts, later-target rollback, event failure, corrupt evidence, invalid model output, interrupted completion and stale architecture.
+
+Real llama.cpp/MAF guidance returned a structured response on the final revision and left the rule unchanged. Twelve loopback HTTP checks covered rendered pages, explicit draft application, restart retention and historical-advice warnings. These are synthetic compatibility checks, not evidence of model quality; no visual-layout test is claimed.
+
+## Review and evidence
+
+- [Milestone architecture review](https://github.com/FinnNk/Meerkritic/blob/eaeecaafd37883f2cb6da09d2845886413a9a530/docs/slice-reviews/VS2-milestone-architecture-review.md): all-guidance assessment, six findings with discovery/remedy/earlier-detection traces, and the final presentation repair.
+- [ADR-0012 (Apply review intent in explicit batches)](https://github.com/FinnNk/Meerkritic/blob/eaeecaafd37883f2cb6da09d2845886413a9a530/docs/adr/ADR-0012-apply-review-intent-in-explicit-batches.md) remains proposed for owner acceptance.
+- [DER archive](https://github.com/FinnNk/Meerkritic/tree/3f1d14c030d080fefc82982aa79603323265a759): canonical bundle/manifest, checkpoint logs, full author self-review, architecture data, live methods/results and retained failed/superseded attempts. Frozen diary `6bf1544` and semantic tip `eaeecaa` have exactly equal tracked trees. Review is self-review, not independent approval.
+
+## Remaining gates
+
+The software candidate is complete; full slice closure is not claimed. **EDR-0001 (Choose an initial discovery grouping method)** remains draft: human-labelled data, pre-registration before comparison, results and the owner adoption decision are outstanding. No human labels or empirical result were fabricated. **VS3 (Rule-to-Historical-Replay)** is drafted but not frozen or started; all later slices remain inactive.
+
+No dependency changes or architecture ignores were introduced. Existing dependency deprecation warnings remain visible. Review/merge remains with the owner; rebase merge preserves the semantic sequence.
