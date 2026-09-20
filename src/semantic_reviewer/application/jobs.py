@@ -69,11 +69,19 @@ class JobStore(Protocol):
         ...
 
     def log(self, job_id: str) -> ArtefactMetadata:
-        """Export a structured snapshot of committed events and return artefact metadata."""
+        """Publish an immutable committed-event snapshot and return catalogue metadata.
+
+        Raise LookupError for an unknown job; integrity/publication errors propagate.
+        This writes a content-addressed log and catalogue row, not a new job event.
+        """
         ...
 
     def claim(self, worker_id: str) -> Job | None:
-        """Atomically claim the oldest queued job, only when no job is running."""
+        """Atomically claim the oldest queued job, only when no job is running.
+
+        Return None when no claim is available. The Worker must hold its process
+        lock across recovery, claims and execution; a claim is not that lock.
+        """
         ...
 
     def heartbeat(self, job: Job) -> None:
@@ -118,7 +126,12 @@ class JobService:
         self.journal = journal
 
     def enqueue(self, dataset_id: str, source_index: int) -> Job:
-        """Validate a registered source and enqueue one explicit invocation; never run it here."""
+        """Validate a registered source and enqueue one explicit invocation.
+
+        source_index is zero-based and must identify a stored row. Missing dataset
+        or row raises LookupError; source integrity/storage errors propagate. Each
+        call creates a distinct job and event; inference never runs in this call.
+        """
         _, source = self.datasets.observation(dataset_id, source_index)
         return self.jobs.enqueue(
             Job(
@@ -131,8 +144,13 @@ class JobService:
             )
         )
 
-    def inspect(self, job_id: str) -> tuple[Job, dict | None]:
-        """Return metadata and verified output, raising LookupError for an unknown job."""
+    def inspect(self, job_id: str) -> tuple[Job, dict[str, object] | None]:
+        """Return metadata and verified output, raising LookupError for an unknown job.
+
+        Output is None when no artefact is attached, including early failures.
+        Corrupt output raises ValueError; filesystem failures propagate. Reading
+        does not change state or trigger model work.
+        """
         job = self.jobs.get(job_id)
         if job is None:
             raise LookupError("Job does not exist.")

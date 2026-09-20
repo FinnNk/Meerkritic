@@ -56,7 +56,12 @@ def runtime_path(path: Path) -> Path:
 
 
 def build_jobs(data_root: Path) -> JobService:
-    """Assemble queue and result access without loading the inference runtime."""
+    """Assemble queue and result access without loading the inference runtime.
+
+    data_root follows runtime_path's external-directory rules. This creates missing
+    directories and migrates shared SQLite state, but does not register datasets,
+    recover jobs or invoke a model. Invalid paths raise ValueError; I/O errors propagate.
+    """
     root = runtime_path(data_root)
     return JobService(
         build_datasets(root),
@@ -89,7 +94,12 @@ def build_worker(data_root: Path, routing_file: Path, endpoint: str) -> Worker:
 
 
 def build_annotations(data_root: Path, jobs: JobService) -> AnnotationService:
-    """Compose human review without loading the model runtime."""
+    """Compose human review without loading the model runtime.
+
+    jobs must have been composed for the same external data_root. Initialise/migrate
+    the annotation store without making a decision. Invalid paths raise ValueError;
+    storage errors propagate. The service exposes its bounded store query interface.
+    """
     root = runtime_path(data_root)
     return AnnotationService(
         jobs, SQLiteAnnotations(root / "state.sqlite3"), jobs.datasets, jobs.results
