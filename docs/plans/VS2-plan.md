@@ -1,7 +1,12 @@
 # VS2 — Annotation-to-Rule Discovery
 
-Plan revision: 2, 20 September 2026. VS2 ACTIVE after owner integration of PR #9.
-Only A1 is frozen for implementation; later contracts retain their dependent gates.
+Plan revision: 3, 20 September 2026. VS2 ACTIVE. A1 is integrated in PR #10 at
+`c9ef38f48b10d7876fe26babee36f2f15f258bf3`; its tree equals the reviewed head and
+the locked Windows baseline passes all checks and 115 tests.
+A2/A3 are frozen for implementation with synthetic compatibility inputs. The owner
+authorises autonomous work through the remaining batches, always using stacked PRs
+at dependent batch boundaries. Freeze B and C after their software prerequisites
+pass; the empirical comparison remains separately gated.
 
 ## Activation and first batch
 
@@ -88,7 +93,8 @@ software-design-clarity before introducing it; avoid one class per backlog noun.
 ## Batches and semantic propositions
 
 Use the substantial batches below, with A1 separated as explained above. Each may contain several complete semantic commits. Prefer stacked
-PRs when later work depends on an unmerged predecessor; avoid many tiny PRs.
+PRs when later work depends on an unmerged predecessor; this is mandatory at batch
+boundaries. Avoid many tiny PRs.
 Assess materiality before each unit, keep true chronology in one external DER pair
 per material PR, and challenge semantic boundaries before freezing.
 
@@ -220,5 +226,6 @@ reproducible artefact identities, all quality gates, completed material DER revi
 an honest EDR outcome/decision where applicable, a slice review and explicit
 remaining-slice revision. PR acceptance, ADR/EDR state and slice state remain distinct.
 
-The planning-only pause is lifted by the owner. Present A1 for PR acceptance;
-comparative work remains gated and EDR-0001 stays draft.
+The planning-only pause is lifted by the owner. Continue through A2/A3, B and C,
+publishing each completed batch for review without waiting for preceding merges.
+Comparative work remains gated and EDR-0001 stays draft until genuinely registered.

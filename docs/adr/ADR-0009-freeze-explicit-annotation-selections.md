@@ -1,5 +1,5 @@
 ---
-status: proposed
+status: implemented
 date: 2026-09-20
 decision-makers: [Project owner]
 ---
@@ -28,7 +28,7 @@ and earlier functional tests created decisions which are not research labels.
 
 ## Decision Outcome
 
-Proposed: freeze bounded explicit versions and policy in content-addressed filesystem
+Freeze bounded explicit versions and policy in content-addressed filesystem
 snapshots, with only summary metadata and an atomic event in SQLite. The selection
 service owns input resolution/eligibility; its store owns publication/idempotence.
 Each source appears at most once; repeated upstream comment IDs remain distinct
@@ -50,10 +50,12 @@ the old records, and the design deliberately makes that limitation visible.
 
 ### Confirmation
 
-The candidate implements the proposal; owner acceptance remains pending. The author
+The owner approved and merged PR #10 on 20 September 2026. Main
+`c9ef38f48b10d7876fe26babee36f2f15f258bf3` has the reviewed head's exact tracked
+tree; integrated canonical checks and 115 tests pass. The author
 checks effective edits, exclusions, retained uncertainty, duplicate rejection,
 corrupt/missing evidence, concurrent retries, failed-event rollback and restart in
-`tests/test_selections.py`, with canonical evidence in DER `vs2-inputs/r1`.
+`tests/test_selections.py`, with final canonical evidence in DER `vs2-inputs/r3`.
 Review exact results with the PR. Revisit on authenticated multi-user requirements,
 a demonstrated corpus-size limit or richer version-selection needs; do not silently
 upgrade fixture records to human evidence.
