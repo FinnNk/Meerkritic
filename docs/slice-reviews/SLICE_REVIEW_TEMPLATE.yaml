@@ -24,6 +24,12 @@ slice_review:
     strategic_quality: null
     configuration_exposure: null
     vocabulary_consistency: null
+    state_and_error_design: null
+    caller_contract_completeness: null
+  milestone_guidance_assessment: []
+  contract_challenges: []
+  finding_dispositions: []
+  maintained_documentation_reconciliation: []
   routing_observations:
     policy_versions_used: []
     policy_transitions: []

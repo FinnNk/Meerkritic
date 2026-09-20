@@ -25,4 +25,10 @@ not a docstring-count target or a new lint exemption. Existing quality gates sti
 apply. Do not change imported research or third-party skill files to impose this
 first-party convention.
 
+Compare changed interfaces with their implementations and actual consumers.
+Check return meaning, bounds, side effects, failures, payload conventions and
+configuration-dependent requirements. A present docstring is not evidence that
+the caller contract is complete. Follow the concrete contract challenges in the
+[milestone review method](milestone-review.md).
+
 See [ADR-0003: Document caller contracts and non-obvious intent](../adr/ADR-0003-document-caller-contracts-and-intent.md).
