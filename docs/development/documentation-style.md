@@ -59,7 +59,45 @@ Before publishing a procedure:
 Use tables when they make information easier to compare, not to disguise long
 paragraphs inside cells. A state table should explain the meaning and next action.
 For a complex workflow, use a small diagram only if it clarifies relationships
-better than a short list. Avoid screenshots that will quickly become stale.
+better than a short list. Use screenshots where recognising the interface helps;
+follow the capture and maintenance guidance below.
+
+## Screenshots that help readers act
+
+Use a screenshot to orient readers, locate a control or recognise a meaningful
+result. Keep the steps, commands and essential explanation in text. A screenshot
+illustrates the interface; it does not prove the underlying behaviour works.
+
+- Prefer a few useful views to an image for every click. A README usually needs
+  one overview; a PR may need one illustration or a before/after pair when the
+  visible difference matters. Reuse the same asset across relevant guides.
+- Capture the actual application using shareable demonstration data in a separate
+  runtime. Label synthetic examples and manually prepared outputs clearly. Do not
+  create research judgements or invoke models merely to furnish an illustration.
+- Crop case by case, retaining the heading, control labels and enough context to
+  orient the reader. Prefer two types: an overview of a workflow and a focused
+  panel. Reuse a small set of capture widths where practical; vary height to fit
+  the content. Keep text legible at the document's normal display width.
+- Preserve the interface faithfully. Do not redraw controls, alter displayed
+  results or use generated images as application screenshots. Exclude private
+  data, credentials, personal browser chrome and irrelevant desktop content at
+  capture time. If redaction is unavoidable, mark it and record what was redacted.
+- Store modestly sized PNGs under `docs/images/`, with descriptive filenames.
+  Use relative image links in repository documents and immutable revision URLs
+  in PR descriptions. Add useful alt text and a short caption explaining the
+  state or action; neither should merely repeat the filename.
+- Keep capture notes beside the images: source revision, fixture and setup steps,
+  route, browser/viewport, scroll or crop, and any reproducibility limits. Retain
+  a small deterministic fixture when it makes recapture practical; keep runtime
+  databases and raw captures outside the application repository.
+- Review affected images when UI labels, layout or workflows change. Recapture
+  or remove misleading images; unrelated changes do not require new captures.
+  Preserve historical evidence and imported originals rather than backfilling them.
+
+Before publication, inspect each image at its intended display size and in the
+rendered document. Check that captions match the captured state, links work, no
+controls needed by the instructions are cut off, and the instructions still work
+without seeing the image.
 
 ## Describe the current system
 
@@ -154,6 +192,8 @@ Apply these before presenting a change, at semantic review and at aggregate revi
 - [ ] Can a reader recover from likely failures without reading implementation code?
 - [ ] Is current guidance free of unnecessary milestone history and duplicated policy?
 - [ ] Do links work, and does the rendered Markdown remain easy to scan?
+- [ ] Do screenshots clarify a task, use shareable data, have alt text/captions and
+      capture notes, and remain legible and consistent with the current interface?
 - [ ] Are evidence claims and limitations precise without overwhelming the task?
 - [ ] Does the PR validation summary match retained evidence for its stated revision,
       account for every expected standard check and expose missing or skipped checks?

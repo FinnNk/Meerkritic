@@ -4,6 +4,11 @@ Retain owner amendments when updating an existing description. -->
 
 Describe what changes for the reader and why it matters.
 
+<!-- Where a screenshot clarifies the workflow or visible change, include one
+illustration or a useful before/after pair. Follow the writing guide's screenshot
+guidance: shareable data, descriptive alt text/caption, immutable image URL and
+capture notes. Screenshots supplement instructions and validation evidence. -->
+
 ## Review sequence
 
 <!-- For a substantial series, list commits in order and the complete promise each

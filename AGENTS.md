@@ -47,6 +47,8 @@
   Populate PR validation summaries from retained evidence for the stated revision;
   confirm every expected standard check ran and passed, and use tables only for
   useful breakdowns. Follow the guide's [validation method](docs/development/documentation-style.md#validation-summary).
+  Use its [screenshot guidance](docs/development/documentation-style.md#screenshots-that-help-readers-act)
+  where a view helps readers act; review affected images as well as text after UI changes.
 - Follow the [Python style guide](docs/development/python-style.md), which adopts
   selected Google guidance with explicit project choices, not the entire guide.
 - When acting as the App bot, follow the [owner-feedback convention](docs/development/app-bot-feedback.md)
