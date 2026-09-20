@@ -1,0 +1,82 @@
+[
+  {
+    "height": 252.80209350585935,
+    "tag": "ASIDE",
+    "text": "Your task: assess the interpretation\nCreate trustworthy descriptions of engineering concer",
+    "width": 1216,
+    "x": 24.33333396911621,
+    "y": 469.2395935058594
+  },
+  {
+    "height": 37.19791793823242,
+    "tag": "H2",
+    "text": "Your task: assess the interpretation",
+    "width": 1176.2708740234375,
+    "x": 44.19791793823242,
+    "y": 489.1041870117187
+  },
+  {
+    "height": 419.4375,
+    "tag": "DETAILS",
+    "text": "Source for your assessment",
+    "width": 1216,
+    "x": 24.33333396911621,
+    "y": 794.8333740234375
+  },
+  {
+    "height": 37.19791793823242,
+    "tag": "H2",
+    "text": "Proposed issue",
+    "width": 1216,
+    "x": 24.33333396911621,
+    "y": 1238.2708740234375
+  },
+  {
+    "height": 24.791667938232425,
+    "tag": "DETAILS",
+    "text": "Provenance and runtime",
+    "width": 1216,
+    "x": 24.33333396911621,
+    "y": 1736.2708740234375
+  },
+  {
+    "height": 37.19791793823242,
+    "tag": "H2",
+    "text": "Human assessment",
+    "width": 1216,
+    "x": 24.33333396911621,
+    "y": 1780.979248046875
+  },
+  {
+    "height": 64.52083587646484,
+    "tag": "DETAILS",
+    "text": "How to assess the fields",
+    "width": 1216,
+    "x": 24.33333396911621,
+    "y": 1842.1771240234375
+  },
+  {
+    "height": 266.79168701171875,
+    "tag": "FORM",
+    "text": "Edit the structured interpretation",
+    "width": 1216,
+    "x": 24.33333396911621,
+    "y": 1971.4896240234375
+  },
+  {
+    "height": 24.791667938232425,
+    "tag": "DETAILS",
+    "text": "Edit the structured interpretation",
+    "width": 1216,
+    "x": 24.33333396911621,
+    "y": 2188.48974609375
+  },
+  {
+    "height": 24.791667938232425,
+    "tag": "DETAILS",
+    "text": "Job identity",
+    "width": 1216,
+    "x": 24.33333396911621,
+    "y": 2295.072998046875
+  }
+]

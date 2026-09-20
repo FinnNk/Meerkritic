@@ -1,0 +1,58 @@
+{
+  "changes": {
+    "boundaries": {
+      "added": [],
+      "removed": []
+    },
+    "contracts": {
+      "added": [],
+      "removed": []
+    },
+    "imports": {
+      "added": [],
+      "removed": []
+    },
+    "interfaces": {
+      "added": [
+        {
+          "declaration": "exclusions: Annotated[tuple[Text, ...], Field(max_length=16)] = Field(description='Known exceptions or conditions limiting applicability of the concern or candidate rule; not missing evidence or investigation tasks. Empty means none identified, not that no exceptions exist.')",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.normalisation.IssueInterpretation.exclusions"
+        },
+        {
+          "declaration": "proposed_invariant: Text | None = Field(description='Candidate condition suggested by this source, not a validated general rule. Use null if the supplied evidence does not justify one.')",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.normalisation.IssueInterpretation.proposed_invariant"
+        },
+        {
+          "declaration": "scope: Literal['expression', 'statement', 'function', 'class', 'file', 'module', 'repository', 'unknown'] = Field(description='Smallest affected code unit established by the supplied evidence, not the area needed for investigation. Use unknown when impact extent is not established.')",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.normalisation.IssueInterpretation.scope"
+        }
+      ],
+      "removed": [
+        {
+          "declaration": "exclusions: Annotated[tuple[Text, ...], Field(max_length=16)]",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.normalisation.IssueInterpretation.exclusions"
+        },
+        {
+          "declaration": "proposed_invariant: Text | None",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.normalisation.IssueInterpretation.proposed_invariant"
+        },
+        {
+          "declaration": "scope: Literal['expression', 'statement', 'function', 'class', 'file', 'module', 'repository']",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.normalisation.IssueInterpretation.scope"
+        }
+      ]
+    },
+    "modules": {
+      "added": [],
+      "removed": []
+    },
+    "settings": {}
+  },
+  "schema_version": 3
+}

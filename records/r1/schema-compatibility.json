@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "old_required_fields_preserved": true,
+  "only_validation_change": "scope gains unknown; descriptions added",
+  "legacy_successful_outputs_roundtrip_unchanged": 33,
+  "original_files_verified": 55,
+  "source_artefacts_rewritten": 0,
+  "new_model_calls": 0
+}

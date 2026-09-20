@@ -1,0 +1,209 @@
+{
+  "status": "passed",
+  "base": "86a839341787e986dae6870673efeaf8251a41d0",
+  "head": "796db0edc2032ed7ff0c518eecadd718b91c3e22",
+  "checkpoints": [
+    {
+      "label": "diary",
+      "revision": "b72beb10e80889c00e5ed69f82f7a5da5204d33f",
+      "tree": "f94fe87868dd7be64e18e2473e8898104b9991b2",
+      "tests": 233,
+      "skipped": 0,
+      "status": "passed",
+      "expected_checks": [
+        [
+          "ruff",
+          "format",
+          "--check",
+          "."
+        ],
+        [
+          "ruff",
+          "check",
+          "."
+        ],
+        [
+          "lint-imports",
+          "--no-cache"
+        ],
+        [
+          "tach",
+          "check"
+        ],
+        [
+          "<python>",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_*.py"
+        ]
+      ],
+      "observed_checks": [
+        "ruff format --check .",
+        "ruff check .",
+        "lint-imports --no-cache",
+        "tach check",
+        "WORKSPACE\\extras\\der-checkouts\\assessment-clarity-check-diary\\.venv\\Scripts\\python.exe -m unittest discover -s tests -p test_*.py"
+      ],
+      "evidence": "diary-checks.json"
+    },
+    {
+      "label": "p1",
+      "revision": "46fec936e3305c4fab7e6fd47f9855d4fdf81d8d",
+      "tree": "0fe6c75e3b23f29cca0ff80832c31e52b9f8d9e3",
+      "tests": 229,
+      "skipped": 0,
+      "status": "passed",
+      "expected_checks": [
+        [
+          "ruff",
+          "format",
+          "--check",
+          "."
+        ],
+        [
+          "ruff",
+          "check",
+          "."
+        ],
+        [
+          "lint-imports",
+          "--no-cache"
+        ],
+        [
+          "tach",
+          "check"
+        ],
+        [
+          "<python>",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_*.py"
+        ]
+      ],
+      "observed_checks": [
+        "ruff format --check .",
+        "ruff check .",
+        "lint-imports --no-cache",
+        "tach check",
+        "WORKSPACE\\extras\\der-checkouts\\assessment-clarity-check-p1\\.venv\\Scripts\\python.exe -m unittest discover -s tests -p test_*.py"
+      ],
+      "evidence": "p1-checks.json"
+    },
+    {
+      "label": "p2",
+      "revision": "81d5ee307ca39857ae69d6f3052f2138bf92d8dd",
+      "tree": "5c818d3ae40c07eb75b2c86998a52edffc17afbe",
+      "tests": 233,
+      "skipped": 0,
+      "status": "passed",
+      "expected_checks": [
+        [
+          "ruff",
+          "format",
+          "--check",
+          "."
+        ],
+        [
+          "ruff",
+          "check",
+          "."
+        ],
+        [
+          "lint-imports",
+          "--no-cache"
+        ],
+        [
+          "tach",
+          "check"
+        ],
+        [
+          "<python>",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_*.py"
+        ]
+      ],
+      "observed_checks": [
+        "ruff format --check .",
+        "ruff check .",
+        "lint-imports --no-cache",
+        "tach check",
+        "WORKSPACE\\extras\\der-checkouts\\assessment-clarity-check-p2\\.venv\\Scripts\\python.exe -m unittest discover -s tests -p test_*.py"
+      ],
+      "evidence": "p2-checks.json"
+    },
+    {
+      "label": "p3",
+      "revision": "796db0edc2032ed7ff0c518eecadd718b91c3e22",
+      "tree": "f94fe87868dd7be64e18e2473e8898104b9991b2",
+      "tests": 233,
+      "skipped": 0,
+      "status": "passed",
+      "expected_checks": [
+        [
+          "ruff",
+          "format",
+          "--check",
+          "."
+        ],
+        [
+          "ruff",
+          "check",
+          "."
+        ],
+        [
+          "lint-imports",
+          "--no-cache"
+        ],
+        [
+          "tach",
+          "check"
+        ],
+        [
+          "<python>",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_*.py"
+        ]
+      ],
+      "observed_checks": [
+        "ruff format --check .",
+        "ruff check .",
+        "lint-imports --no-cache",
+        "tach check",
+        "WORKSPACE\\extras\\der-checkouts\\assessment-clarity-check-p3\\.venv\\Scripts\\python.exe -m unittest discover -s tests -p test_*.py"
+      ],
+      "evidence": "p3-checks.json"
+    }
+  ],
+  "test_changes": {
+    "added": [
+      "tests/test_annotation_web.py::AnnotationWebTest::test_review_explains_field_meanings_without_changing_original_draft",
+      "tests/test_annotation_web.py::AnnotationWebTest::test_unknown_scope_and_separate_notes_survive_edit_and_restart",
+      "tests/test_normalisation.py::WorkflowTest::test_investigation_label_is_not_an_impact_scope",
+      "tests/test_normalisation.py::WorkflowTest::test_unknown_impact_passes_real_workflow_with_grounded_evidence"
+    ],
+    "removed": [],
+    "altered": [
+      "tests/test_jobs.py::JobsTest::test_failures_retain_prompt_usage_and_framework_observation"
+    ]
+  },
+  "retained_failure": "implementation-checks.json",
+  "failure_disposition": "Existing provenance test expected v2; deliberate prompt update requires v3. Expectation corrected diary-first, remaining assertions preserved. All final checkpoints passed afresh."
+}

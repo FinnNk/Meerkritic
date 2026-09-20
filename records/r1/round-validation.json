@@ -1,0 +1,7 @@
+{
+  "valid": true,
+  "pair_id": "assessment-clarity",
+  "round_id": "r1",
+  "manifest_sha256": "4555d30150b69e885a941c9deb99b742005b7fc2ac8c3dec992c0b4bed9465e6",
+  "scope": "archive_identity_and_equivalence_only"
+}

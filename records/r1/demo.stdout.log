@@ -1,0 +1,6 @@
+INFO:     127.0.0.1:61621 - "GET /jobs/5921b21b-d80f-4cad-a20e-8c5558a3c4da HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61621 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64067 - "GET /jobs/71748b88-ae7d-43ae-9fbc-9bb4a0f079b4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51102 - "GET /jobs/5921b21b-d80f-4cad-a20e-8c5558a3c4da HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59226 - "GET /jobs/71748b88-ae7d-43ae-9fbc-9bb4a0f079b4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62840 - "GET /jobs/71748b88-ae7d-43ae-9fbc-9bb4a0f079b4 HTTP/1.1" 200 OK

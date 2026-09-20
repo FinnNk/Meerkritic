@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "application_revision": "5efdc2e",
+  "data": "synthetic documentation fixture only",
+  "successful_draft": {
+    "source_open_by_default": true,
+    "task_purpose_present": true,
+    "field_help_expands": true,
+    "actions": ["accept", "edit", "reject"]
+  },
+  "failed_draft": {
+    "source_open_by_default": true,
+    "editor_open_by_default": true,
+    "field_help_expands": true,
+    "actions": ["edit", "reject"]
+  },
+  "responsive_css_widths": [1000, 600],
+  "responsive_evidence": "responsive-check.json",
+  "viewport_override_reset": true,
+  "decisions_submitted": 0,
+  "screenshots": "docs/images/captures-assessment-clarity.json",
+  "limitations": ["Author UI inspection, not independent usability evaluation", "Earlier full-page capture artefacts were rejected after visual inspection"]
+}

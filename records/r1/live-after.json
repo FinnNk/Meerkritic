@@ -1,0 +1,34 @@
+{
+  "status": "passed",
+  "server": {
+    "checkout": "WORKSPACE/extras/der-checkouts/assessment-clarity-semantic",
+    "pid": 62896,
+    "verified_equivalent_diary": "b72beb10e80889c00e5ed69f82f7a5da5204d33f",
+    "port": 8010,
+    "code": "796db0edc2032ed7ff0c518eecadd718b91c3e22",
+    "runtime": "WORKSPACE/extras/research/edr-0001/runtime"
+  },
+  "counts": {
+    "job": 55,
+    "event": 331,
+    "annotation": 0,
+    "discovery_run": 0
+  },
+  "unchanged_original_outputs": 55,
+  "research_decisions_added": 0,
+  "model_calls_added": 0,
+  "pages": [
+    {
+      "job_id": "97251567-5b87-4ff6-87dd-5f8773e17683",
+      "http_status": 200,
+      "original_status": "succeeded",
+      "clarified_fields": true
+    },
+    {
+      "job_id": "e5cf7f2f-574d-4d93-beb9-18b3f42b6c9c",
+      "http_status": 200,
+      "original_status": "failed",
+      "clarified_fields": true
+    }
+  ]
+}

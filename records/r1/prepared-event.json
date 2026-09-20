@@ -1,0 +1,21 @@
+{
+  "kind": "verification",
+  "round_id": "r1",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "/root"
+  },
+  "payload": {
+    "stage": "locally_prepared",
+    "base": "86a839341787e986dae6870673efeaf8251a41d0",
+    "diary": "b72beb10e80889c00e5ed69f82f7a5da5204d33f",
+    "semantic": "796db0edc2032ed7ff0c518eecadd718b91c3e22",
+    "records": [
+      "assessment-clarity/r1/verification-summary.json",
+      "assessment-clarity/r1/review.json"
+    ],
+    "note": "Chronology is retained by materiality.md, discoveries.md and diary commits; this event records completed preparation, not an earlier setup time."
+  }
+}

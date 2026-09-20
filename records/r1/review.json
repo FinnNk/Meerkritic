@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "pair_id": "assessment-clarity",
+  "round_id": "r1",
+  "manifest_sha256": "4555d30150b69e885a941c9deb99b742005b7fc2ac8c3dec992c0b4bed9465e6",
+  "semantic_tip": "796db0edc2032ed7ff0c518eecadd718b91c3e22",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "/root"
+  },
+  "independence": "self-review",
+  "mode": "full",
+  "status": "complete",
+  "orientation_done": true,
+  "reviewed_commits": [
+    "46fec936e3305c4fab7e6fd47f9855d4fdf81d8d",
+    "81d5ee307ca39857ae69d6f3052f2138bf92d8dd",
+    "796db0edc2032ed7ff0c518eecadd718b91c3e22"
+  ],
+  "aggregate_done": true,
+  "findings": [],
+  "check_records": [
+    "review-notes.md",
+    "propositions.md",
+    "verification-summary.json",
+    "test-change-identities.json",
+    "equivalence.json",
+    "docs-check.json",
+    "architecture-delta.json",
+    "browser-check.json",
+    "schema-compatibility.json",
+    "live-before.json"
+  ],
+  "limitations": [
+    "Author self-review, not independent approval",
+    "Windows/Python 3.12 only",
+    "No model rerun or human research judgement",
+    "Earlier screenshot exports and failed prompt-version expectation retained"
+  ],
+  "carry_forward_record": null,
+  "platform_approval": false
+}
