@@ -130,3 +130,18 @@ A MADR-formatted record of a consequential architecture choice, its rationale an
 An immutable snapshot of explicitly chosen annotation versions, source and effective
 interpretation content, eligibility policy, exclusions and declared research or fixture
 purpose. A curator attestation records a claim of human review, not authentication.
+
+## Rule version
+
+An immutable candidate definition with source selection, cluster, origin and parent
+identity. A separate current pointer and revision counter fence operational writes.
+
+## Rule evidence
+
+A typed source annotation link with a named weak or verified claim for an exact
+rule version. Inherited claims retain classification but require fresh verification.
+
+## Rule promotion
+
+A recorded human decision to retain a reviewed research candidate; it is not
+validation, enforcement, deployment or demonstrated generalisation.

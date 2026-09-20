@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Rule candidate · Meerkritic{% endblock %}
+{% block content %}
+<p><a href="/rules">Rule registry</a> · <a href="/discovery/{{ body.cluster_run }}">Source cluster</a> · <a href="/selections/{{ body.selection_id }}">Frozen selection</a></p>
+<h1>{{ definition.statement }}</h1><p>{{ body.purpose | capitalize }} · {{ body.origin.kind | capitalize }} proposal by {{ body.origin.actor }}</p>
+{% if body.purpose == 'fixture' %}<p>Software fixture; these decisions are not human research labels.</p>{% endif %}
+{% if head.version_id != version_id %}<p><strong>Historical version.</strong> <a href="/rules/{{ head.version_id }}">Open the current version</a>.</p>{% else %}<p>{{ head.status | capitalize }} · revision {{ head.revision }}</p>{% endif %}
+<p>Promotion means a reviewed research candidate. It is not validation, enforcement or deployment.</p>
+<dl><dt>Scope</dt><dd>{{ definition.scope }}</dd><dt>Applies when</dt><dd>{{ definition.applicability }}</dd><dt>Violation</dt><dd>{{ definition.violation }}</dd><dt>Exclusions</dt><dd>{{ definition.exclusions | join('; ') or 'None proposed' }}</dd></dl>
+{% if body.parent_version %}<p><a href="/rules/{{ body.parent_version }}">Previous version and its evidence</a>. Inherited verification is weak here until reassessed for this definition.</p>{% endif %}
+<h2>Evidence and counterexamples</h2><p>A matching source link proves provenance, not correctness. Verification is an explicit named claim.</p>
+{% if trace %}<details><summary>Original synthesis trace and raw output</summary><pre>{{ trace }}</pre></details>{% endif %}
+{% for evidence, source in examples %}<article><h3>{{ evidence.kind | replace('_',' ') | capitalize }} · {{ evidence.verification }}</h3>
+<p>{{ evidence.rationale }} — {{ evidence.actor }}</p><p>Annotation <code>{{ evidence.annotation_id }}</code> · <a href="/jobs/{{ source.annotation.job_id }}">Original result and decision</a></p>
+{% if evidence.inherited_from %}<p>Inherited from evidence <code>{{ evidence.inherited_from }}</code> on the previous version.</p>{% endif %}
+<details><summary>Source and interpretation</summary><pre>{{ source.source.comment }}</pre><pre>{{ source.source.code }}</pre><p>{{ source.interpretation.issue_statement }}</p><p>Generalisable: {{ source.interpretation.generalisable }} · Original decision: {{ source.annotation.decision }}</p></details></article>{% endfor %}
+<h2>Decision history for this version</h2>
+{% for decision in decisions %}<p>{{ decision.request.action | capitalize }} — {{ decision.request.actor }} — {{ decision.occurred_at }} — {{ decision.request.rationale }}</p>{% else %}<p>No human decision recorded.</p>{% endfor %}
+{% if decisions and head.version_id == version_id and head.revision > decisions[-1].resulting_revision %}<p>Evidence changed after the last decision. Review the newer evidence before relying on that judgement.</p>{% endif %}
+{% if head.version_id == version_id %}
+{% if head.status == 'candidate' %}<h2>Record a research decision</h2><form action="/rules/{{ version_id }}/decide" method="post">
+<input type="hidden" name="operation_id" value="{{ operation_id }}"><input type="hidden" name="revision" value="{{ head.revision }}">
+<label>Your name <input name="actor" maxlength="200" required></label><label>Rationale <textarea name="rationale" maxlength="2000" required></textarea></label>
+<button name="action" value="promote">Promote research candidate</button> <button name="action" value="reject">Reject candidate</button></form>{% endif %}
+<h2>Attach evidence</h2><form action="/rules/{{ version_id }}/evidence" method="post">
+<input type="hidden" name="evidence_id" value="{{ evidence_id }}"><input type="hidden" name="revision" value="{{ head.revision }}">
+<label>Source <select name="annotation_id">{% for source in sources %}<option value="{{ source.annotation.id }}">{{ source.source.source_index }} · {{ source.annotation.decision }} · {{ source.interpretation.issue_statement[:100] }}</option>{% endfor %}</select></label>
+<label>Kind <select name="kind">{% for kind in ['counterexample','positive','false_positive','false_negative','unresolved'] %}<option value="{{ kind }}">{{ kind | replace('_',' ') }}</option>{% endfor %}</select></label>
+<label>Verification <select name="verification"><option value="weak">Weak / not verified</option><option value="verified">I attest verification for this rule version</option></select></label>
+<label>Your name <input name="actor" maxlength="200" required></label><label>Rationale <textarea name="rationale" maxlength="2000" required></textarea></label><button>Attach evidence</button></form>
+<details><summary>Revise this rule</summary><p>Create a new candidate version. Prior decisions remain historical; counterexamples carry forward as weak evidence until reassessed.</p>
+<form action="/rules/{{ version_id }}/revise" method="post"><input type="hidden" name="revision" value="{{ head.revision }}">
+<label>Statement <textarea name="statement" maxlength="2000" required>{{ definition.statement }}</textarea></label>
+<label>Scope <select name="scope">{% for scope in ['expression','statement','function','class','file','module','repository'] %}<option value="{{ scope }}" {% if scope == definition.scope %}selected{% endif %}>{{ scope }}</option>{% endfor %}</select></label>
+<label>Applies when <textarea name="applicability" maxlength="2000" required>{{ definition.applicability }}</textarea></label>
+<label>Violation <textarea name="violation" maxlength="2000" required>{{ definition.violation }}</textarea></label>
+<label>Exclusions (one per line) <textarea name="exclusions">{{ exclusions }}</textarea></label>
+<label>Supporting annotation IDs (one per line, at most six) <textarea name="support" required>{{ support }}</textarea></label>
+<label>Your name <input name="actor" maxlength="200" required></label><label>Rationale <textarea name="rationale" maxlength="2000" required></textarea></label><button>Create new version</button></form></details>
+{% endif %}
+<details><summary>Version provenance</summary><p>Version SHA-256 <code>{{ version_id }}</code></p><pre>{{ body.model_dump_json(indent=2) }}</pre></details>
+{% endblock %}

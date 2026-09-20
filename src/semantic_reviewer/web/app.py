@@ -14,9 +14,11 @@ from semantic_reviewer.application.datasets import DatasetService
 from semantic_reviewer.application.discovery import DiscoveryService
 from semantic_reviewer.application.jobs import JobService
 from semantic_reviewer.application.reviews import ReviewIndex
+from semantic_reviewer.application.rules import RuleService
 from semantic_reviewer.application.selections import SelectionStore
 from semantic_reviewer.domain.datasets import DatasetError
 from semantic_reviewer.web.discovery import add_discovery_routes
+from semantic_reviewer.web.rules import add_rule_routes
 
 
 def create_app(
@@ -26,6 +28,7 @@ def create_app(
     reviews: ReviewIndex | None = None,
     selections: SelectionStore | None = None,
     discovery: DiscoveryService | None = None,
+    rules: RuleService | None = None,
 ) -> FastAPI:
     """Build local HTML and JSON interfaces, with optional queue access.
 
@@ -53,6 +56,9 @@ def create_app(
     templates.env.globals["has_reviews"] = reviews is not None
     templates.env.globals["has_selections"] = selections is not None
     templates.env.globals["has_discovery"] = discovery is not None
+    templates.env.globals["has_rules"] = rules is not None
+    if rules is not None:
+        add_rule_routes(app, templates, rules)
     if discovery is not None:
         add_discovery_routes(app, templates, discovery)
 

@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}Rule registry · Meerkritic{% endblock %}
+{% block content %}<h1>Rule registry</h1>
+<p>These are research candidates. Promotion records a human judgement; it does not establish validation, enforcement or deployment.</p>
+{% for head in heads %}<article><h2><a href="/rules/{{ head.version_id }}">{{ head.rule_id }}</a></h2><p>{{ head.status | capitalize }} · revision {{ head.revision }}</p></article>
+{% else %}<p>No candidates yet. Open a <a href="/discovery">successful cluster run</a> to queue synthesis.</p>{% endfor %}
+{% endblock %}
