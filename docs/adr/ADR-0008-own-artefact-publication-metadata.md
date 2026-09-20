@@ -57,3 +57,7 @@ this candidate; owner PR approval and integration remain separate.
 This implements an authorised design correction, not an empirical choice.
 See [operational evidence](../development/operational-evidence.md) and
 [ADR-0006](ADR-0006-recover-jobs-under-process-lock.md) for completion ordering.
+
+Integration confirmation, 20 September 2026: owner-approved PR #9 landed at
+`fa6856bff52efecba55700572cb10e67f9a8f3c0`, with exactly the reviewed tree and
+a fresh canonical run passing 102 tests. Decision status remains implemented.

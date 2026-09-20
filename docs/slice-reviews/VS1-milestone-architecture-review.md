@@ -1,5 +1,14 @@
 # VS1 milestone architecture review
 
+Integration update, 20 September 2026: the owner approved and merged PR #9 at
+`fa6856bff52efecba55700572cb10e67f9a8f3c0`; its tracked tree exactly matches the
+reviewed `f353cfed1299608234f21e7159c6b0331e5b0660`. Fresh canonical checks pass
+102 tests. The [VS1 review](VS1-review.md) reconciles completion and the
+[VS2 plan](../plans/VS2-plan.md) is now active. The candidate assessment below is
+retained as historical review evidence; its pending-integration statements are
+superseded by this update.
+
+
 Reviewed the integrated VS1 implementation at
 `0bf957bcb0ae47e2c525f5f652830c06d5b8b9c9`, tree
 `c642ecd33eb8c22d27ccb7cf3012be22ed652116`, on 20 September 2026. The owner requested

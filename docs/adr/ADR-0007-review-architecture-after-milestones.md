@@ -63,3 +63,7 @@ This is an owner-prescribed workflow decision, not an empirical result. The
 milestone review complements DER and does not confer platform approval or merge
 authority. Relevant decisions: [ADR-0003](ADR-0003-document-caller-contracts-and-intent.md)
 and [ADR-0004](ADR-0004-adopt-selective-python-style.md).
+
+Integration confirmation, 20 September 2026: owner-approved PR #9 landed at
+`fa6856bff52efecba55700572cb10e67f9a8f3c0`, with exactly the reviewed tree and
+a fresh canonical run passing 102 tests. Decision status remains implemented.

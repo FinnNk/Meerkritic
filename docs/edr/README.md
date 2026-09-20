@@ -69,3 +69,5 @@ No EDRs have been registered. Create the first record when a qualifying empirica
 
 | EDR | Decision | Status | Evidence outcome | Related ADR |
 | --- | --- | --- | --- | --- |
+
+- [EDR-0001: discovery grouping method](0001-discovery-grouping-method.md) — draft; no registered study or adoption decision.

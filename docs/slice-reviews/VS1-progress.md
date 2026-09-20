@@ -44,12 +44,12 @@ exercise all three annotation actions, restart, failed-provider inspection and
 Parquet/DuckDB usage analysis. See the [verification guide](../development/vs1-verification.md).
 
 The final stack is integrated at `0bf957bcb0ae47e2c525f5f652830c06d5b8b9c9`.
-The owner requested a milestone architecture/all-guidance review and authorised
-its fixes in one follow-up PR. The final slice review and detailed future-slice
-plan already exist on a separate local branch without a PR; reconcile that plan
-with the milestone findings before activating VS2. VS2 and later slices remain DRAFT. Related semantic
-propositions may share a PR; prefer stacked PRs when splitting dependent batches.
-Candidate readiness, owner acceptance and slice completion remain separate.
+The milestone architecture review is now integrated via PR #9 at
+`fa6856bff52efecba55700572cb10e67f9a8f3c0`. The [final slice review](VS1-review.md)
+and [VS2 plan](../plans/VS2-plan.md) are reconciled with its findings. VS1 is
+complete; VS2 A1 is active after the owner's instruction. Later batches retain
+their model/corpus/empirical entry gates. Related semantic propositions may share
+one PR; prefer stacked PRs when splitting dependent batches.
 
 Canonical evidence lives outside application worktrees at `extras/der-evidence`.
 Earlier pairs are `vs1-dataset-browser/r5` and `vs1-routing/r1`. This file only indexes
@@ -57,4 +57,5 @@ progress; evidence owns chronology, verification, propositions and review/readin
 
 The [milestone architecture review](VS1-milestone-architecture-review.md) records
 the all-guidance assessment, authorised fixes and verification limits. Its material
-follow-up uses DER pair `vs1-architecture-review/r1` in one owner-reviewed PR.
+follow-up uses DER pair `vs1-architecture-review/r2` (retaining r1 runtime evidence)
+in owner-approved and merged PR #9.
