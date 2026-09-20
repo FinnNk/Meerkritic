@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Change review references · Meerkritic{% endblock %}
+{% block content %}
+<h1>Change review references</h1>
+<p>Readiness is an indexed assertion from the external DER evidence store, separate from slice status and owner approval. Unchanged files do not prove that the asserted review or checks passed. New external events appear only after explicit re-indexing.</p>
+{% for record, integrity in references %}
+<article>
+<h2>{{ record.pair_id }} · {{ record.round_id }}</h2>
+<p>Last indexed stage: <strong>{{ record.stage }}</strong> · evidence files: <strong>{{ integrity }}</strong></p>
+{% if integrity != 'unchanged' %}<p role="alert">Do not rely on this recorded readiness: inspect the canonical evidence and re-index a valid event.</p>{% endif %}
+<dl><dt>Diary</dt><dd><code>{{ record.diary }}</code></dd><dt>Semantic head</dt><dd><code>{{ record.semantic }}</code></dd><dt>Event sequence</dt><dd>{{ record.sequence }}</dd><dt>Indexed</dt><dd>{{ record.indexed_at }}</dd></dl>
+<details><summary>Canonical evidence references</summary><dl><dt>Manifest</dt><dd><code>{{ record.manifest_path }}</code></dd><dt>Manifest SHA-256</dt><dd><code>{{ record.manifest_sha256 }}</code></dd><dt>Event</dt><dd><code>{{ record.event_path }}</code></dd><dt>Event SHA-256</dt><dd><code>{{ record.event_sha256 }}</code></dd></dl></details>
+</article>
+{% else %}<p>No change reviews have been indexed.</p>{% endfor %}
+{% endblock %}

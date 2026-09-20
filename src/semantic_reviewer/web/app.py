@@ -12,6 +12,7 @@ from starlette.middleware.trustedhost import TrustedHostMiddleware
 from semantic_reviewer.application.annotations import AnnotationService
 from semantic_reviewer.application.datasets import DatasetService
 from semantic_reviewer.application.jobs import JobService
+from semantic_reviewer.application.reviews import ReviewIndex
 from semantic_reviewer.domain.datasets import DatasetError
 
 
@@ -19,6 +20,7 @@ def create_app(
     datasets: DatasetService,
     jobs: JobService | None = None,
     annotations: AnnotationService | None = None,
+    reviews: ReviewIndex | None = None,
 ) -> FastAPI:
     """Build local HTML and JSON interfaces, with optional queue access.
 
@@ -35,6 +37,16 @@ def create_app(
         TrustedHostMiddleware, allowed_hosts=["127.0.0.1", "localhost"], www_redirect=False
     )
     templates = Jinja2Templates(directory=Path(__file__).parent / "templates")
+    templates.env.globals["has_reviews"] = reviews is not None
+
+    if reviews is not None:
+
+        @app.get("/reviews", response_class=HTMLResponse)
+        def review_references(request: Request):
+            """Display indexed readiness separately from slice status and owner approval."""
+            return templates.TemplateResponse(
+                request=request, name="reviews.html", context={"references": reviews.references()}
+            )
 
     @app.exception_handler(DatasetError)
     async def dataset_error(request: Request, error: DatasetError):

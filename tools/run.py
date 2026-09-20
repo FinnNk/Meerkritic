@@ -29,6 +29,9 @@ def main() -> int:
     log = commands.add_parser("job-log")
     log.add_argument("job_id")
     commands.add_parser("index-artefacts")
+    review = commands.add_parser("index-review")
+    review.add_argument("manifest", type=Path)
+    review.add_argument("event", type=Path)
     annotate = commands.add_parser("annotate")
     annotate.add_argument("job_id")
     annotate.add_argument("decision", choices=("accept", "edit", "reject"))
@@ -63,6 +66,10 @@ def main() -> int:
                 )
             )
             print(json.dumps(result, indent=2))
+        elif args.command == "index-review":
+            composition = importlib.import_module("semantic_reviewer.bootstrap")
+            result = composition.build_review_index(args.data_root).index(args.manifest, args.event)
+            print(json.dumps(asdict(result), indent=2))
         elif args.command in ("job-log", "index-artefacts"):
             composition = importlib.import_module("semantic_reviewer.bootstrap")
             jobs = composition.build_jobs(args.data_root)

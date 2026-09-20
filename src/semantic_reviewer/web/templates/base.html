@@ -23,6 +23,7 @@
 </head>
 <body>
   <header><a href="/">Meerkritic</a> · Code review grounded in engineering evidence</header>
+  {% if has_reviews %}<nav><a href="/reviews">Change review references</a></nav>{% endif %}
   <main>{% block content %}{% endblock %}</main>
 </body>
 </html>
