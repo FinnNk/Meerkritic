@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Architecture · Meerkritic{% endblock %}
+{% block content %}
+<h1>Architecture before, delta and after</h1>
+<p>This view projects typed source, Tach and Import Linter records. It does not certify that checks pass or describe every dynamic runtime dependency.</p>
+{% if view %}
+{% if view.stale %}<p role="alert"><strong>Stale projection:</strong> current source or configuration differs from the captured after snapshot. Regenerate explicitly before relying on it.</p>{% else %}<p>The captured after snapshot matches the current source fingerprint.</p>{% endif %}
+<p>Projection SHA-256 <code>{{ view.digest }}</code></p>
+<table><thead><tr><th>Records</th><th>Before</th><th>Removed</th><th>Added</th><th>After</th></tr></thead><tbody>
+{% for kind in ['modules','imports','interfaces','boundaries','contracts'] %}<tr><th>{{ kind | capitalize }}</th><td>{{ view.body.before[kind] | length }}</td><td>{{ view.body.delta.changes[kind].removed | length }}</td><td>{{ view.body.delta.changes[kind].added | length }}</td><td>{{ view.body.after[kind] | length }}</td></tr>{% endfor %}</tbody></table>
+<details><summary>Typed delta</summary><pre>{{ delta }}</pre></details>
+<details><summary>Before snapshot · {{ view.body.before.source_digest }}</summary><pre>{{ before }}</pre></details>
+<details><summary>After snapshot · {{ view.body.after.source_digest }}</summary><pre>{{ after }}</pre></details>
+{% else %}<p>No architecture projection has been published for this runtime. Use the documented architecture maintenance command to capture and publish a pair.</p>{% endif %}
+{% endblock %}

@@ -11,8 +11,11 @@ See the [dataset guide](datasets.md), [normalisation guide](normalisation.md),
 The milestone review is integrated through PR #9 at
 `fa6856bff52efecba55700572cb10e67f9a8f3c0`. The [VS2 plan](../plans/VS2-plan.md)
 activates [frozen annotation inputs](selections.md). [Grouping](discovery.md) is
-integrated through PR #11. The current candidate adds [rule synthesis and a
-versioned registry](rules.md); empirical adoption remains gated by draft EDR-0001.
+integrated through PR #11; [rule synthesis and the versioned registry](rules.md)
+are integrated through PR #12. The current candidate adds the
+[review workspace and guidance](research-interaction.md), architecture view and
+[VS2 milestone review](../slice-reviews/VS2-milestone-architecture-review.md).
+Empirical adoption remains gated by draft EDR-0001.
 
 ## Setup and checks
 

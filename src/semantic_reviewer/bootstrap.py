@@ -13,6 +13,7 @@ from semantic_reviewer.adapters.reviews import SQLiteReviewIndex
 from semantic_reviewer.adapters.routing_journal import SQLiteRoutingJournal
 from semantic_reviewer.adapters.selections import JsonSelections
 from semantic_reviewer.application.annotations import AnnotationService
+from semantic_reviewer.application.architecture import ArchitectureView
 from semantic_reviewer.application.artefacts import ArtefactIndex
 from semantic_reviewer.application.datasets import DatasetService, PublicDataset
 from semantic_reviewer.application.discovery import DiscoveryService
@@ -221,4 +222,13 @@ def build_guidance(data_root: Path) -> GuidanceService:
         SQLiteGuidance(root / "state.sqlite3"),
         build_discovery(root).files,
         SQLiteRoutingJournal(root / "state.sqlite3"),
+    )
+
+
+def build_architecture(data_root: Path) -> ArchitectureView:
+    """Compose verified architecture inspection without generating or refreshing evidence."""
+    from semantic_reviewer.adapters.architecture_projection import ArchitectureProjection
+
+    return ArchitectureProjection(
+        runtime_path(data_root) / "architecture", Path(__file__).resolve().parents[2]
     )

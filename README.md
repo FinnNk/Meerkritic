@@ -52,6 +52,13 @@ Explore those inputs through the harness's **Discovery** view. See
 [discovery setup](docs/development/discovery.md) for the local embedding worker,
 reproducible grouping and the limits of the current exploratory method.
 
+From a group, queue a provisional rule and inspect its evidence in **Rule registry**.
+Use [rule review](docs/development/rules.md) to challenge or revise a candidate.
+The [review workspace](docs/development/research-interaction.md) saves coherent
+decision drafts, applies them explicitly and sends selected discussion as guidance.
+Agent responses are advice; they do not apply edits or decisions. **Architecture**
+shows published before/after evidence and warns when its source snapshot is stale.
+
 Run `uv run --locked python tools/check.py` for formatting, lint, architecture and
 behaviour checks. See the [dataset guide](docs/development/datasets.md) for source
 provenance, storage and recovery, or the [development guide](docs/development/README.md)

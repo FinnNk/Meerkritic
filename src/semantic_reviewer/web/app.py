@@ -1,5 +1,6 @@
 """Local source browser, job submission and inspectable normalisation results."""
 
+import json
 from pathlib import Path
 from urllib.parse import parse_qs
 
@@ -10,6 +11,7 @@ from starlette.concurrency import run_in_threadpool
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 
 from semantic_reviewer.application.annotations import AnnotationService
+from semantic_reviewer.application.architecture import ArchitectureView
 from semantic_reviewer.application.datasets import DatasetService
 from semantic_reviewer.application.discovery import DiscoveryService
 from semantic_reviewer.application.guidance import GuidanceService
@@ -35,6 +37,7 @@ def create_app(
     rules: RuleService | None = None,
     workspace: ReviewWorkspace | None = None,
     guidance: GuidanceService | None = None,
+    architecture: ArchitectureView | None = None,
 ) -> FastAPI:
     """Build local HTML and JSON interfaces, with optional queue access.
 
@@ -65,6 +68,32 @@ def create_app(
     templates.env.globals["has_rules"] = rules is not None
     templates.env.globals["has_workspace"] = workspace is not None
     templates.env.globals["has_guidance"] = guidance is not None
+    templates.env.globals["has_architecture"] = architecture is not None
+    if architecture is not None:
+
+        @app.get("/architecture", response_class=HTMLResponse)
+        def architecture_page(request: Request):
+            """Render verified architecture evidence and stale-source status; never
+            refresh it implicitly.
+            """
+            try:
+                view = architecture.read()
+            except (ValueError, OSError) as error:
+                raise HTTPException(
+                    409, "Architecture evidence is unavailable or changed."
+                ) from error
+            return templates.TemplateResponse(
+                request=request,
+                name="architecture.html",
+                context={
+                    "view": view,
+                    **{
+                        name: json.dumps(view["body"][name], indent=2) if view else None
+                        for name in ("before", "after", "delta")
+                    },
+                },
+            )
+
     if guidance is not None:
         add_guidance_routes(app, templates, guidance)
     if workspace is not None and rules is not None:

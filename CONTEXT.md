@@ -162,3 +162,7 @@ An immutable explicit submission of selected rule versions, discussion and human
 instruction. An advisory response is distinct from an applied decision; interruption
 can leave external completion unknown without automatic replay.
 
+## Architecture projection
+
+A hash-bound view of typed before/after snapshots and their delta. Its source
+fingerprint detects stale source content; it is not a quality-check or DER verdict.

@@ -60,8 +60,8 @@ python tools/run.py --data-root <external-runtime> rules
 python tools/run.py --data-root <external-runtime> rule <version-sha256>
 ```
 
-This batch supports immediate research decisions. Staging, defer/reopen/supersede,
-discussion and coherent guidance submission are the next batch. Fixture selections
+Immediate research decisions and the [staged review workspace](research-interaction.md)
+share the same decision contract. Fixture selections
 and automated decisions remain labelled software tests, never human study labels.
 EDR-0001 remains draft; no comparative method adoption is implied.
 
