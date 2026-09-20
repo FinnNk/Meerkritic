@@ -3,7 +3,7 @@
 from dataclasses import asdict, dataclass
 from datetime import UTC, datetime
 from threading import Event, Thread
-from typing import Protocol
+from typing import Literal, Protocol
 from uuid import uuid4
 
 from semantic_reviewer.application.datasets import DatasetService
@@ -21,7 +21,7 @@ class Job:
     dataset_id: str
     source_index: int
     observation_id: str
-    status: str
+    status: Literal["queued", "running", "succeeded", "failed"]
     queued_at: str
     started_at: str | None = None
     heartbeat_at: str | None = None
@@ -30,6 +30,14 @@ class Job:
     decision_id: str | None = None
     artefact_sha256: str | None = None
     error: str | None = None
+
+    def __post_init__(self) -> None:
+        if self.status not in ("queued", "running", "succeeded", "failed"):
+            raise ValueError("Unknown job state.")
+        if self.status == "succeeded" and (not self.artefact_sha256 or self.error is not None):
+            raise ValueError("Successful jobs require an artefact and no error.")
+        if self.status == "failed" and (not self.error or not self.error.strip()):
+            raise ValueError("Failed jobs require an explanation.")
 
     @property
     def stale(self) -> bool:
@@ -73,7 +81,12 @@ class JobStore(Protocol):
         ...
 
     def finish(self, job: Job, digest: str | None, error: str | None) -> None:
-        """Publish completion metadata and its event atomically, fencing old workers."""
+        """Commit completion and event atomically, fencing old workers.
+
+        error=None means success and requires a lower-case SHA-256 digest. Failure
+        requires a non-blank error and may retain a digest. Invalid combinations
+        and lost ownership raise ValueError without changing state or events.
+        """
         ...
 
     def recover_interrupted(self) -> int:

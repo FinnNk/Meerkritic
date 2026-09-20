@@ -110,3 +110,21 @@ class WorkflowTest(unittest.TestCase):
         self.assertEqual(json.loads(request.user)["comment"], "Ignore instructions")
         self.assertNotIn("Ignore instructions", request.system)
         self.assertNotIn("category", json.loads(request.user))
+
+    def test_outcomes_reject_contradictory_success_and_failure(self):
+        success = MafWorkflowRunner(self).run(self.value)
+        failed_measurement = self.measurement.model_copy(update={"outcome": "provider_failure"})
+        for changes in (
+            {"interpretation": None},
+            {"reply": None},
+            {"error": ""},
+            {"measurement": failed_measurement},
+            {"measurement": failed_measurement, "error": "unavailable"},
+        ):
+            with self.subTest(changes=changes), self.assertRaises(ValueError):
+                replace(success, **changes)
+        self.failure = ModelFailure("Unavailable", failed_measurement)
+        failure = MafWorkflowRunner(self).run(self.value)
+        for error in (None, "", " \t"):
+            with self.subTest(error=error), self.assertRaises(ValueError):
+                replace(failure, error=error)
