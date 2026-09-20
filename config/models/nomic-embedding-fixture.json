@@ -1,0 +1,11 @@
+{
+  "model_id": "nomic-embed-v1.5-local",
+  "repository": "nomic-ai/nomic-embed-text-v1.5-GGUF",
+  "revision": "0188c9bf409793f810680a5a431e7b899c46104c",
+  "sha256": "f7af6f66802f4df86eda10fe9bbcfc75c39562bed48ef6ace719a251cf1c2fdb",
+  "licence": "Apache-2.0",
+  "runtime": "llama.cpp b10964-b29c606e2; mean pooling; F16; CPU",
+  "prefix": "clustering: ",
+  "dimensions": 768,
+  "context_tokens": 2048
+}

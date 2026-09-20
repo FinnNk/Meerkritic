@@ -1,14 +1,12 @@
 """Use a literal-loopback llama.cpp endpoint with bounded context and streamed telemetry."""
 
-import ipaddress
 import json
-import math
 import time
 from datetime import UTC, datetime
-from urllib.parse import urlsplit
 
 import httpx
 
+from semantic_reviewer.adapters.local_http import local_endpoint
 from semantic_reviewer.application.model import ModelFailure, ModelReply, ModelRequest
 from semantic_reviewer.routing.selection import RoutingDecision
 from semantic_reviewer.routing.usage import Measurement, TokenUsage
@@ -26,26 +24,7 @@ class LlamaClient:
 
     def __init__(self, endpoint: str, timeout: float = 120) -> None:
         """Validate the endpoint before accepting prompts; never resolve hostnames."""
-        parsed = urlsplit(endpoint)
-        try:
-            local = ipaddress.ip_address(parsed.hostname or "").is_loopback
-        except ValueError:
-            local = False
-        if (
-            not local
-            or parsed.scheme != "http"
-            or parsed.username
-            or parsed.password
-            or parsed.query
-            or parsed.fragment
-            or parsed.path not in {"", "/"}
-        ):
-            raise ValueError(
-                "llama.cpp requires an HTTP literal-loopback endpoint without credentials."
-            )
-        if not math.isfinite(timeout) or timeout <= 0 or timeout > 600:
-            raise ValueError("Model timeout must be between zero and 600 seconds.")
-        self.endpoint = endpoint.rstrip("/")
+        self.endpoint = local_endpoint(endpoint, timeout)
         self.timeout = timeout
 
     def generate(

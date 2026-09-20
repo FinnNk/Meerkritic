@@ -1,0 +1,73 @@
+{
+  "inventory": {
+    "identity": {
+      "id": "llama-discovery-fixture",
+      "version": "1"
+    },
+    "models": [
+      {
+        "id": "qwen3-4b-local",
+        "provider": "llama.cpp",
+        "family": "qwen3",
+        "locality": "local",
+        "status": "active_current",
+        "capabilities": [
+          "structured_output"
+        ],
+        "practical_input_tokens": 3072,
+        "output_tokens": 768,
+        "evidence": "Compatibility fixture only: llama.cpp b10964-b29c606e2, Qwen/Qwen3-4B-GGUF revision bc640142c66e1fdd12af0bd68f40445458f3869b, Qwen3-4B-Q4_K_M.gguf SHA256 7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5, context 4096. Local schema/stream/token preflight passed 2026-09-19; no comparative quality assessment."
+      },
+      {
+        "id": "nomic-embed-v1.5-local",
+        "provider": "llama.cpp",
+        "family": "nomic-bert",
+        "locality": "local",
+        "status": "active_current",
+        "capabilities": [
+          "embeddings"
+        ],
+        "practical_input_tokens": 2048,
+        "output_tokens": 0,
+        "evidence": "Synthetic compatibility fixture only; see config/models/nomic-embedding-fixture.json. No comparative quality or empirical adoption claim."
+      }
+    ]
+  },
+  "policies": [
+    {
+      "identity": {
+        "id": "local-discovery-fixture",
+        "version": "1"
+      },
+      "inventory": {
+        "id": "llama-discovery-fixture",
+        "version": "1"
+      },
+      "local_only": true,
+      "routes": [
+        {
+          "task_class": "normalisation",
+          "models": [
+            "qwen3-4b-local"
+          ]
+        },
+        {
+          "task_class": "embedding",
+          "models": [
+            "nomic-embed-v1.5-local"
+          ]
+        }
+      ],
+      "context": {
+        "id": "direct-v1",
+        "mode": "direct_large_context",
+        "reserve_output_tokens": 0
+      }
+    }
+  ],
+  "system_default": {
+    "id": "local-discovery-fixture",
+    "version": "1"
+  },
+  "local_only": true
+}
