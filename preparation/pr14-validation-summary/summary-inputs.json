@@ -1,0 +1,27 @@
+{
+  "revision": "8d456962f0bd410b4a548969cfb547f39ede9f18",
+  "status": "passed",
+  "expected_commands": [
+    "ruff format --check .",
+    "ruff check .",
+    "lint-imports --no-cache",
+    "tach check",
+    "WORKSPACE\\extras\\der-checkouts\\pr14-validation-summary-final\\.venv\\Scripts\\python.exe -m unittest discover -s tests -p test_*.py"
+  ],
+  "observed_commands": [
+    "ruff format --check .",
+    "ruff check .",
+    "lint-imports --no-cache",
+    "tach check",
+    "WORKSPACE\\extras\\der-checkouts\\pr14-validation-summary-final\\.venv\\Scripts\\python.exe -m unittest discover -s tests -p test_*.py"
+  ],
+  "canonical_runner_exit_code": 0,
+  "tests": {
+    "run": 172,
+    "passed": 172,
+    "skipped": 0
+  },
+  "runner_sha256": "83cd869479c7e8c9342d13974b0bc4b3cfcf003b9af1b83b703f6c049bdb47d0",
+  "documentation_links": 282,
+  "imported_hashes": 59
+}

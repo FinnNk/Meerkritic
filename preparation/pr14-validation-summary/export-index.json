@@ -1,0 +1,44 @@
+[
+  {
+    "name": "final-checks.json",
+    "source_sha256": "08584bb661ed941c2076b278dd4a971a1b1839db62e34c4a2859aeb47e5defff",
+    "export_sha256": "3049f973a856b2b8e5be70090904b1922b5a9a826e1ee3086d767649b0168bfe",
+    "transformation": "Local paths replaced; UTF-8 BOM removed where present"
+  },
+  {
+    "name": "final-checks.log",
+    "source_sha256": "e19c76d465f3f09c5a59152f88be854802cad067e4269bffd447f688cf1a39bd",
+    "export_sha256": "d261a54e171709fcbcdba8dd6130450a8a6248cd6ad3ba00334a63ea830e9e57",
+    "transformation": "Local paths replaced; UTF-8 BOM removed where present"
+  },
+  {
+    "name": "docs-check.json",
+    "source_sha256": "02f8c096edde42dfda06209d7ac81c8249abc902c8767aba3e2d8255b689682f",
+    "export_sha256": "02f8c096edde42dfda06209d7ac81c8249abc902c8767aba3e2d8255b689682f",
+    "transformation": "Local paths replaced; UTF-8 BOM removed where present"
+  },
+  {
+    "name": "summary-inputs.json",
+    "source_sha256": "95c38b7fd053758584d2c9f102295019f5a9dc09435095c59b5ab1c19b355489",
+    "export_sha256": "e20d2814c373cf2f6c8c1c19a8f04e8e7777bd193d8af117f0c0e650206e3b3f",
+    "transformation": "Local paths replaced; UTF-8 BOM removed where present"
+  },
+  {
+    "name": "verify.py",
+    "source_sha256": "46619e19c6494ae87c43cb91e16215664c621f3ce2184ae23c56a46b8c48aeef",
+    "export_sha256": "544f61c068b865d56e428835e83baae67b6601d83ef74993e1658a19f6fdd0e5",
+    "transformation": "Local paths replaced; UTF-8 BOM removed where present"
+  },
+  {
+    "name": "docs_check.py",
+    "source_sha256": "41001ecc03173fba92bb084e30139155141583c5f918a9d0bcf09fb803e5a088",
+    "export_sha256": "6b66380c7132b3ccf75eab5c2f1465d5b5aaf058d37aacaab5e0f64287f0867d",
+    "transformation": "Local paths replaced; UTF-8 BOM removed where present"
+  },
+  {
+    "name": "update_pr.py",
+    "source_sha256": "1651c366f0119c7f926e4fa79a644031e9d53633e60cae40f3e64d4c60e1a2eb",
+    "export_sha256": "d9d085e2a47e1b74b15cb97e76c5c431773e3bcbb672be1d0808565e1f3e2b32",
+    "transformation": "Local paths replaced; UTF-8 BOM removed where present"
+  }
+]
