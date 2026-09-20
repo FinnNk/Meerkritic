@@ -1,42 +1,83 @@
-# Local inference
+# Start a local model server
 
-`LlamaClient` implements the project-owned `ModelClient` contract. It accepts a persisted local routing decision and a versioned prompt/schema; it does not select a model or write routing history. Literal loopback HTTP endpoints are required. Hostnames, credentials in URLs, redirects and environment proxies are rejected or disabled. Operate a trusted local llama.cpp process: loopback alone cannot prove what a separately configured proxy does internally.
+The application sends model requests to a separate llama.cpp server on this
+computer. This guide starts the tested Qwen generation model used to interpret
+comments, propose rules and answer guidance. [Discovery](discovery.md) also needs
+an embedding server to turn text into numerical representations for comparison.
 
-Before generation, the adapter verifies the served model identity, renders its chat template and tokenises that exact prompt. It checks the selected input budget and the server's reported context capacity, including requested output. Oversized prompts fail instead of silently dropping evidence. Native streaming completion captures first-token time, input/output/cached tokens and generation duration where available. Cached-input counts come from `timings.cache_n`, not the server's post-generation cache size. Unknown reasoning tokens remain unknown. Input/output and raw request/response provenance return to the caller for immutable filesystem storage; bodies do not belong in SQLite.
+## Prepare the generation model
 
-Provider HTTP failures, malformed streams and identity mismatches remain infrastructure failures. Context overflow/truncation is a context failure. The consumer must validate schema and evidence grounding before treating content as an interpretation. Grammar-constrained JSON alone cannot establish semantic correctness.
+The tested setup uses Windows, an NVIDIA GPU and CUDA 12.4. It needs about 3.1 GB
+of downloads. Other hardware or builds need their own compatibility check.
 
-Operational preflight used official llama.cpp v0.4.1's b10964 Windows CUDA 12.4 binaries and Qwen/Qwen3-4B-GGUF Q4_K_M at revision `bc640142c66e1fdd12af0bd68f40445458f3869b`. Published digests were checked before execution. These are compatibility fixtures, not evidence of preferred model quality. Local runtime configuration, weights and detailed preflight logs stay outside source control under `extras/preflight/vs1-inference`.
+1. From the [llama.cpp b10964 release](https://github.com/ggml-org/llama.cpp/releases/tag/b10964),
+   download `llama-b10964-bin-win-cuda-12.4-x64.zip` and its matching CUDA runtime archive.
+2. Compare each archive's SHA-256 checksum with the published release checksum.
+   In PowerShell, use `Get-FileHash <downloaded-file> -Algorithm SHA256`.
+3. Extract both archives into the same directory outside the repository, for example
+   `../extras/llama`. Keep their existing licences and notices.
+4. Download `Qwen3-4B-Q4_K_M.gguf` from the
+   [pinned model revision](https://huggingface.co/Qwen/Qwen3-4B-GGUF/tree/bc640142c66e1fdd12af0bd68f40445458f3869b)
+   into `../extras/models`.
+5. Check its SHA-256 against:
 
-## Start the compatibility fixture
+   ```text
+   7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5
+   ```
 
-The task prompt is model-independent (`normalisation-v2`). Adapter request version
-`llama-native-v2` owns Qwen3's `/no_think` and `enable_thinking=False` controls;
-other families receive neither convention. The provider request evidence retains
-the actual template request, rendered completion payload and both versions. This
-preserves the compatibility fixture's rendered instructions while removing model
-behaviour knowledge from application context construction. Historical v1 bundles
-remain immutable and readable; this is not a comparative model-quality decision.
+## Start the server
 
-Download the official `llama-b10964-bin-win-cuda-12.4-x64.zip` and matching CUDA runtime
-archive from the b10964 release. Verify their published SHA-256 digests before
-extracting to the same directory. Obtain `Qwen3-4B-Q4_K_M.gguf` from the pinned model
-revision above; its SHA-256 is
-`7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5`.
-Keep binaries and weights outside the repository. This fixture needs about 3.1 GB
-of downloads; other hardware/builds need their own compatibility verification.
+Run this from the repository root in PowerShell. Substitute your actual executable
+and model paths if you used different directories:
 
-Run the extracted server with the downloaded model path:
-
-```sh
-llama-server.exe --model PATH/TO/Qwen3-4B-Q4_K_M.gguf --alias qwen3-4b-local --host 127.0.0.1 --port 8081 --ctx-size 4096 --parallel 1 --n-gpu-layers 99 --threads 8 --jinja --cors-origins http://127.0.0.1:8081 --no-cors-credentials --no-webui
+```powershell
+& ../extras/llama/llama-server.exe `
+  --model ../extras/models/Qwen3-4B-Q4_K_M.gguf `
+  --alias qwen3-4b-local --host 127.0.0.1 --port 8081 `
+  --ctx-size 4096 --parallel 1 --n-gpu-layers 99 --threads 8 `
+  --jinja --cors-origins http://127.0.0.1:8081 --no-cors-credentials --no-webui
 ```
 
-The adapter checks one elapsed-time budget across preparation, arriving chunks and
-completion EOF; a late completion is never accepted as success. Pending network I/O
-uses the remaining budget at request start, so an individual blocked read may return
-after the elapsed deadline. This is bounded transport waiting, not hard real-time
-cancellation. Raw chunks are bounded before line parsing, so unterminated lines cannot
-bypass the 2 MiB limit. Failures may leave unknown usage; no retry is automatic.
+- Keep the server terminal running. Wait for the model to finish loading.
+- Check readiness with `Invoke-RestMethod http://127.0.0.1:8081/health`; expect an
+  OK status once loading completes.
+- Start the [normalisation worker](normalisation.md) or [discovery worker](discovery.md).
+  Starting the server alone does not process application jobs.
 
-Sources: [llama.cpp stable release](https://github.com/ggml-org/llama.cpp/releases/tag/v0.4.1), [binary release](https://github.com/ggml-org/llama.cpp/releases/tag/b10964), [pinned Qwen model card](https://huggingface.co/Qwen/Qwen3-4B-GGUF/tree/bc640142c66e1fdd12af0bd68f40445458f3869b), and [server API](https://github.com/ggml-org/llama.cpp/blob/b10964/tools/server/README.md). Accessed 19 September 2026.
+The model alias and context size must match the supplied routing configuration.
+This is a tested configuration, not evidence that Qwen is the best model for research.
+
+## Diagnose connection and request failures
+
+| Problem | Check or next action |
+| --- | --- |
+| Server cannot load | Inspect its terminal, downloaded files, CUDA runtime and available GPU memory. |
+| Port already in use | Inspect the existing process. Reuse a verified server or stop it deliberately before starting another. |
+| Identity/context mismatch | Check model alias, served model and context size against the routing configuration. |
+| Prompt exceeds capacity | Reduce the selected input or deliberately configure a compatible larger context. The adapter does not silently drop evidence. |
+| Call times out or stream is malformed | Inspect the retained job error and server log before a new submission. Usage may be unknown; retries are not automatic. |
+
+The adapter accepts literal loopback addresses only; hostnames, URL credentials,
+redirects and environment proxies are refused or disabled. Operate a trusted local
+server: an address alone cannot prove which model bytes a separate process loaded.
+
+## Adapter reference
+
+| Responsibility | Behaviour |
+| --- | --- |
+| Model selection | Supplied by a saved routing decision; `LlamaClient` does not choose the model. |
+| Context checks | Render the actual chat template, count tokens and reserve output space before generation. |
+| Model controls | Adapter request `llama-native-v2` owns Qwen3's `/no_think` and `enable_thinking=False`; other families receive neither. |
+| Timing and tokens | Streaming captures first-token time, input/output/cache counts and generation time when exposed. Cached input uses `timings.cache_n`; unknown reasoning counts stay unknown. |
+| Retained evidence | Return the prompt/schema version, actual provider request/response and usage to the caller for file storage. |
+| Validation | The caller validates the interpretation and its evidence; grammatical JSON alone is insufficient. |
+
+One elapsed-time budget covers preparation and completion. A blocked read can
+return after the deadline, but a late completion is refused. Raw chunks are bounded
+before parsing, including unterminated lines, to enforce the 2 MiB response limit.
+HTTP/identity/stream failures are infrastructure failures; context overflow is a
+context failure. See the [interpretation contract](normalisation-contract.md).
+
+The [pinned server API](https://github.com/ggml-org/llama.cpp/blob/b10964/tools/server/README.md)
+and model revision above identify the tested interface. Earlier stored request
+versions remain readable; do not rewrite historical evidence during an upgrade.

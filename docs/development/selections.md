@@ -1,76 +1,96 @@
-# Frozen annotation inputs
+# Save fixed inputs for discovery
 
-Freeze explicitly chosen annotation versions before discovery. This first VS2
-capability creates reproducible inputs; it does not run grouping or establish model
-quality. Existing Accept/Edit/Reject decisions and their events remain unchanged.
+A *selection* is a saved copy of explicitly chosen annotations and their source
+material. It records which interpretation to use and which records to exclude.
+Later annotations cannot change an existing selection.
 
-Open a reviewed job to copy its displayed annotation ID. Create an external JSON
-request using the exact versions you intend to include:
+## Create a selection
+
+You need reviewed results from the [annotation workflow](annotations.md). No model
+server or worker is needed for these commands.
+
+1. Open each reviewed job and copy its annotation ID. Choose one annotation version
+   per source record, all from the same dataset.
+2. Save a request outside the repository, for example `../extras/selection-request.json`:
+
+   ```json
+   {
+     "dataset_id": "crc-py-manual-4176ac0",
+     "annotation_ids": ["replace-with-an-actual-annotation-id"],
+     "purpose": "fixture",
+     "holdout_repositories": []
+   }
+   ```
+
+   `fixture` means software-test data. Use it while trying the workflow; do not
+   describe these inputs as a human-labelled research sample.
+3. From the repository root, register the selection using the annotation data directory:
+
+   ```text
+   uv run --locked python tools/run.py --data-root ../extras/runtime freeze-selection ../extras/selection-request.json
+   ```
+
+4. Copy the returned selection ID. The response also gives included/excluded totals
+   and the first registration time. Inspect the complete saved content with:
+
+   ```text
+   uv run --locked python tools/run.py --data-root ../extras/runtime selection <selection-id>
+   ```
+
+5. Open **Frozen annotation inputs** in the web application and select that ID.
+   It checks the stored content and displays ten records per page. The catalogue
+   itself lists metadata; opening a selection verifies its body.
+
+## Understand inclusion and exclusion
+
+| Input | Treatment |
+| --- | --- |
+| Accepted annotation | Include the original model interpretation. |
+| Edited annotation | Include the verified edit and retain the original result hash. |
+| Rejected annotation | Exclude the interpretation. Rejection does not prove the source is a valid negative example. |
+| Repository listed as a holdout | Exclude it even if accepted; repository matching ignores case. |
+| Rejected and held out | Show the holdout exclusion and retain the Reject decision. |
+
+A *holdout* is material reserved from the current discovery work for later evaluation.
+The request declares holdouts; the application does not discover them for you.
+Selecting a holdout still reads and retains its source, so record that exposure.
+An all-excluded selection can be saved but cannot supply discovery inputs.
+
+## Use human-reviewed data
+
+For a research selection, set these fields in addition to the dataset and annotation IDs:
 
 ```json
 {
-  "dataset_id": "crc-py-manual-4176ac0",
-  "annotation_ids": ["replace-with-an-actual-annotation-id"],
-  "purpose": "fixture",
-  "holdout_repositories": []
+  "purpose": "research",
+  "curator": "Name of the person confirming review",
+  "human_review_attested": true
 }
 ```
 
-Run from the repository, with the same external runtime used for annotation:
+- This records the curator's claim that the included decisions were human-reviewed.
+  The application does not authenticate that claim.
+- Do not attest automated test decisions. Fixture selections cannot carry this attestation.
+- Before a decision-bearing comparison, register its sample, splits, methods and
+  contamination controls using the [EDR process](../edr/README.md).
 
-```text
-uv run --locked python tools/run.py --data-root ../extras/runtime freeze-selection ../extras/selection-request.json
-uv run --locked python tools/run.py --data-root ../extras/runtime selection <returned-id>
-```
+## Limits and recovery
 
-Open **Frozen annotation inputs** in the harness to browse metadata, then select
-a snapshot to verify its content and inspect ten records per page. Included and
-excluded totals, fixture/research purpose, uncertainty and original/edit hashes
-remain visible. Unknown snapshots return 404; unavailable/changed bodies return 409.
-The catalogue lists metadata only and does not certify body integrity.
+| Condition | Behaviour or action |
+| --- | --- |
+| Request exceeds 256 KB, 100 distinct annotations or one dataset | Reduce or correct the request. |
+| Saved snapshot exceeds 32 MB | Reduce the explicit selection; nothing is silently truncated. |
+| Same request is retried | Return the first identity/time without a duplicate event. Input order and curator details are part of identity. |
+| Request content changes | Create a different selection; existing content is not replaced. |
+| Source evidence is missing or corrupt | Freezing fails. Restore verified evidence before retrying. |
+| Saved snapshot is missing or corrupt | Inspection/retry fails; restore trusted bytes rather than editing it in place. |
 
-The first command returns the frozen identity, included/excluded counts and first
-registration time. The second verifies and prints the complete snapshot. Freezing
-runs outside HTTP; hashing source files may take time. No model or worker is needed.
-Requests are limited to 256 KB and 100 distinct annotation IDs from one dataset;
-the resulting snapshot is limited to 32 MB. Choose exactly one version per source.
+Bodies live at `<data-root>/selections/<sha256>.json`; SQLite contains small metadata
+and events. Files are published before the metadata transaction, so interruption
+may leave a complete unreferenced file. Retry registration rather than overwriting it.
 
-Accept selects the original interpretation. Edit selects its verified replacement,
-retaining the original result hash. Reject is an excluded interpretation, never a
-verified negative. A source in the explicit `owner/repository` holdout list is
-excluded (case-insensitively), even if accepted. If both reasons apply, the holdout
-reason takes precedence and the Reject decision remains visible. No automatic
-"latest" selection, deduplication of repeated comment IDs, uncertainty conversion
-or removal of exclusions occurs. All-excluded snapshots are permitted and report
-zero included records; they are not usable discovery corpora.
-
-For research, use `"purpose": "research"`, a non-blank `"curator"` name and
-`"human_review_attested": true`. This is an explicit claim by the curator that
-included decisions were human-reviewed. VS1 has no authenticated actor record:
-the software cannot independently establish that claim. Do not attest automated
-test decisions. Fixture requests cannot carry this attestation. Holdouts are
-declared, not discovered. Freezing/inspecting an explicitly selected holdout still
-reads and retains its source; record that exposure and do not describe it as
-untouched evaluation data. The applicable EDR must still freeze the full sample,
-split, contamination controls and methods before decision-bearing analysis.
-
-The snapshot contains registered dataset metadata, source records, exact decisions,
-effective interpretations, exclusions and policy version. Ordered inputs, curator
-and holdouts are part of content identity. Identical retries return the first
-identity/time and create no new event; changed content creates a new identity.
-Later annotations cannot enter an existing selection. Keep original source/result/
-edit artefacts alongside the snapshot to reproduce its full provenance trail.
-
-Bodies live at `<data-root>/selections/<sha256>.json`. SQLite contains only small
-metadata and append-only events. Files are published completely before an atomic
-metadata/event transaction. A crash can leave an unreferenced complete file; retry
-registration rather than overwriting it. Missing/corrupt evidence fails freezing;
-missing/corrupt snapshots fail reading or retrying. Restore verified bytes from a
-trusted backup, never edit a content-addressed file in place. Reading a snapshot
-checks its own bytes/schema/metadata, not ongoing availability of the original
-artefacts. The selected source and effective interpretation remain inspectable
-even when originals are offline; that does not prove full independent reproduction.
-
-See [ADR-0009](../adr/ADR-0009-freeze-explicit-annotation-selections.md) for the
-proposed durable provenance contract and [EDR-0001](../edr/0001-discovery-grouping-method.md)
-for the separate, still-draft empirical decision.
+Keep original source, result and edit files for full reproduction. A selection can
+still show its copied content if originals are offline; that does not establish
+that every original artefact remains available. See
+[ADR-0009: Freeze explicit annotation selections before discovery](../adr/ADR-0009-freeze-explicit-annotation-selections.md)
+for the implemented retention decision.

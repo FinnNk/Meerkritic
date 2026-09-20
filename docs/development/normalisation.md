@@ -1,73 +1,78 @@
-# Normalisation workflow
+# Interpret a review comment with a local model
 
-See the [interpretation contract](normalisation-contract.md) for schema, evidence and MAF boundaries.
+Normalisation turns a comment and its code excerpt into a structured interpretation:
+what concern was raised, which evidence supports it and whether it might apply elsewhere.
+You review the result; a successful model call does not establish that it is correct.
 
-## Run locally
+## Before you start
 
-First follow [local inference](local-inference.md) to start the verified llama.cpp
-fixture with alias `qwen3-4b-local` and a 4,096-token context. From the repository:
+- Install Python 3.12 and run `uv sync --locked` from the repository root.
+- [Register a dataset and start the web application](../../README.md#browse-the-sample).
+- [Start the local generation server](local-inference.md) on port 8081.
+- Use the same external data directory for the web application and worker.
 
-```sh
-uv run --locked python tools/run.py --data-root ../extras/runtime worker --routing config/routing/llama-local.json
-```
+## Submit and review a job
 
-In another terminal, start `tools/run.py --data-root ../extras/runtime serve` through
-`uv run --locked python`. Open a registered dataset, choose **Normalise**, then inspect
-the job page. It refreshes every three seconds while queued/running. The telemetry
-line shows available model, input/output tokens, local spend basis and elapsed time;
-unknown counts remain `?` until the provider reports them. Inspect recent and failed
-jobs at `/jobs`. Prompt/source/model text is escaped when displayed.
+1. Start the worker in a separate terminal:
 
-The supplied routing file is an explicitly identified compatibility fixture, not a
-claim that this model is best. Use a new inventory/policy version for changed content.
-The worker enforces local-only input and literal-loopback inference. A hosted-only
-route fails closed. Browser submission requires a matching Origin and local Host;
-the harness is for a trusted single-user machine, without multi-user authentication.
+   ```text
+   uv run --locked python tools/run.py --data-root ../extras/runtime worker --routing config/routing/llama-local.json
+   ```
 
-For a one-job CLI invocation:
+   Keep this terminal running. Use the [discovery worker](discovery.md#start-the-worker)
+   instead if you also need grouping and rule synthesis; run only one worker per data directory.
 
-```sh
+2. In the web application, open a dataset and choose **Normalise** beside a record.
+3. Open the resulting job page. It refreshes every three seconds while queued or running.
+4. Read the interpretation, quoted evidence and available model usage. Unknown token
+   counts display as `?`; local spend describes API spend, not hardware costs.
+5. [Accept, edit or reject](annotations.md) a successful interpretation.
+   **Normalisation jobs** lists recent and failed jobs.
+
+Refreshing a result page does not submit another job. Pressing **Normalise** again
+creates a separate model run.
+
+## Process one job from the command line
+
+Stop the continuous worker first. These commands queue the first source record,
+process at most one available job and list job results:
+
+```text
 uv run --locked python tools/run.py --data-root ../extras/runtime normalise crc-py-manual-4176ac0 0
 uv run --locked python tools/run.py --data-root ../extras/runtime worker --routing config/routing/llama-local.json --once
 uv run --locked python tools/run.py --data-root ../extras/runtime jobs
 ```
 
-`source_index` is zero-based. Each explicit submission creates a new invocation;
-refreshing a redirected result page does not resubmit it. A repeated button press can.
+Source indexes start at zero. If other work is already queued, `--once` may process
+that work first; inspect the returned job ID rather than assuming which job ran.
 
-## Persistence and recovery
+## Diagnose a problem
 
-Use the same **local-disk** data root for server and worker. The worker owns an OS
-process lock for its lifetime; a second process refuses to start. Queue claims use
-short SQLite WAL transactions and a single-running-job constraint. A background
-heartbeat refreshes every five seconds; overdue means inspect, not retry.
+| Symptom | Meaning and next action |
+| --- | --- |
+| Job stays queued | Check that a worker uses the same data directory and a compatible routing file. |
+| Another worker owns the directory | Use the existing worker, or stop it before starting another. Do not remove its lock to force recovery. |
+| Provider or context failure | Inspect the job error, server and context limits. Fix the cause before a new explicit submission. |
+| Worker interrupted | Restart only after the old process has stopped. Previously running jobs become failed; calls are not automatically repeated. |
+| Worker is still alive but appears hung | Inspect and stop that process before recovery. An overdue heartbeat alone does not authorise a second worker. |
+| Result is missing or has changed | Preserve the evidence and restore verified bytes from backup; do not edit a checksummed result in place. |
 
-Application `Worker.run()` owns lock acquisition, interruption recovery and queue
-execution as one lifecycle. Composition returns an idle worker, not a tuple that
-requires caller-managed ordering. All normal execution, including one-job runs,
-uses this entry point. Lower-level store recovery remains an internal worker
-operation; it must never be used to evict a live process.
+A provider may have completed a call before the worker stopped. Inspect its route,
+usage and stored output before submitting again. Use a local disk; network shares
+are not a verified runtime environment.
 
-On restart, obtaining the OS lock establishes that the previous cooperating worker
-no longer owns this root. Previously running jobs become failed with an interruption
-event. They are never automatically retried. Inspect any recorded route, usage and
-artefacts before submitting again: the provider may have finished before the crash.
-A hung live worker retains its lock and must be stopped by the operator before recovery.
-See [ADR-0006](../adr/ADR-0006-recover-jobs-under-process-lock.md).
+## Storage and developer detail
 
-Complete result bundles live at `results/<sha256>.json`, published atomically before
-SQLite references them. SQLite contains job metadata and references, not prompt or
-result bodies. Files can be orphaned if a later database write fails. They are retained
-for inspection. Checksums are verified on read; a damaged result returns an explicit
-error. SQLite events accompany queue/start/route/completion/interruption transitions;
-heartbeats do not flood the event stream. This remains operational history, not event sourcing.
+- Results are complete JSON files under `results/<sha256>.json`. SQLite stores job
+  metadata and references, and records each state change with its event.
+- A failed database write can leave an unreferenced result file. Keep it for inspection.
+- Checksums are verified when results are read. A successful job must have a result
+  and no error; a failed job must have an explanation.
+- [Operational evidence](operational-evidence.md) covers logs and indexing;
+  [routing commands](routing-operations.md) cover usage export.
+- [The interpretation contract](normalisation-contract.md) describes schema,
+  evidence validation and Microsoft Agent Framework boundaries.
 
-Completed usage can use the existing [routing export](routing-operations.md) for Parquet/DuckDB.
-No network queue, distributed worker or full MAF durable runtime is introduced.
-
-Completion has one meaning: a successful job has a result digest and no error;
-a failed job has a non-blank explanation. The store rejects contradictory requests
-before any state/event change, and database triggers protect new terminal writes.
-Workflow outcomes also reject disagreements between usage status, interpretation
-and error. Existing immutable history is not rewritten by migration; a previously
-corrupt terminal record requires explicit investigation, not silent repair.
+The supplied model configuration is a tested compatibility example, not an empirical
+model recommendation. The adapter permits local loopback inference only; the web
+application expects same-origin submissions on a trusted single-user computer.

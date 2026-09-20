@@ -1,88 +1,106 @@
-# Reproducible discovery
+# Group similar review concerns
 
-Start with **Frozen inputs** in the harness. A selection names exact annotation
-versions, preserves edits and labels exclusions. **Queue embeddings** submits work;
-it never calls a model in the HTTP request. Inspect the run, then choose a cosine
-threshold and minimum group size to **Queue clustering**. The result shows every
-member, representative and outlier, linked to its original source and annotation.
+Discovery compares the interpretations in a [saved selection](selections.md).
+It first converts their text into numerical representations called *embeddings*,
+then groups sufficiently similar representations. Open any group to inspect its
+members and original evidence; similarity alone does not establish a shared rule.
 
-The current cosine connected-component algorithm is an exploratory prototype,
-version `cosine-components-v1`. Edges include equality at the chosen threshold;
-transitive chains may join examples that are not pairwise similar. Small components
-are outliers (`-1`). Representatives maximise within-component cosine sum, with
-ties resolved by frozen input order. No seed is used. These are reproducibility
-rules, not a claim of semantic coherence or superiority. EDR-0001 (Choose an initial
-discovery grouping method) remains draft; human evaluation and adoption are pending.
+## Prepare the embedding server
 
-## Local worker
+You need the locked Python environment, a saved selection with included records,
+and the llama.cpp executable from [local inference setup](local-inference.md).
+Keep the generation server on port 8081 for normalisation, synthesis and guidance.
 
-Use an external runtime directory and the existing locked environment. Start the
-pinned llama.cpp embedding server separately, bound to `127.0.0.1:8082`, using
-`--embedding --pooling mean --ctx-size 2048 --batch-size 2048 --ubatch-size 2048`.
-The compatibility fixture uses CPU execution (`--n-gpu-layers 0`). Keep the existing
-normalisation server on port 8081. Use the model file named in the profile:
+1. Download `nomic-embed-text-v1.5.f16.gguf` from the
+   [pinned Nomic distribution](https://huggingface.co/nomic-ai/nomic-embed-text-v1.5-GGUF/tree/0188c9bf409793f810680a5a431e7b899c46104c).
+   Save it outside Git, for example `../extras/models/nomic-embed-text-v1.5.f16.gguf`.
+2. In PowerShell, run `Get-FileHash <model-file> -Algorithm SHA256` and compare with
+   `sha256` in `config/models/nomic-embedding-fixture.json`.
+3. Start a separate server from the repository root. Adjust the executable/model paths:
+
+   ```powershell
+   & ../extras/llama/llama-server.exe `
+     --model ../extras/models/nomic-embed-text-v1.5.f16.gguf `
+     --alias nomic-embed-v1.5-local --host 127.0.0.1 --port 8082 `
+     --embedding --pooling mean --ctx-size 2048 `
+     --batch-size 2048 --ubatch-size 2048 --n-gpu-layers 0
+   ```
+
+4. Keep it running and check `Invoke-RestMethod http://127.0.0.1:8082/health`.
+   This tested setup uses CPU execution and 768-dimensional vectors.
+
+The worker checks the model file's digest and the server's alias, dimensions and
+context. The server API cannot prove the hash of its loaded bytes; launch the
+verified file yourself. The profile retains Nomic's `clustering: ` input prefix.
+
+## Start the worker
+
+Stop any previous worker using the same data directory. Run from the repository
+root in PowerShell after `uv sync --locked`:
 
 ```powershell
 uv run --locked python tools/run.py --data-root ../extras/runtime worker `
   --routing config/routing/discovery-local.json `
+  --endpoint http://127.0.0.1:8081 `
   --embedding-endpoint http://127.0.0.1:8082 `
   --embedding-profile config/models/nomic-embedding-fixture.json `
-  --embedding-model ../extras/preflight/vs2-embedding/nomic-embed-text-v1.5.f16.gguf
+  --embedding-model ../extras/models/nomic-embed-text-v1.5.f16.gguf
 ```
 
-Stop the old worker before starting this one. Both queues use the same exclusive
-process lock and alternate to avoid starvation. A second worker cannot recover or
-claim work while the first owns the lock. On restart, unfinished calls fail with
-unknown external completion; nothing automatically replays. Normalisation-only
-worker invocations remain supported and leave discovery jobs queued.
+This one worker handles normalisation, discovery (including synthesis) and guidance.
+It takes turns between available work types. A second worker cannot claim or recover
+work while the first owns the data directory's process lock.
 
-Equivalent explicit submission/inspection commands:
+## Embed and group a selection
+
+1. Open **Frozen annotation inputs** and choose the selection.
+2. Choose **Queue embeddings**, then inspect the resulting run.
+3. After embeddings succeed, enter a cosine threshold and minimum group size and
+   choose **Queue clustering**. The threshold controls which vector pairs count as similar.
+4. Inspect each group's members, representative and outliers. Follow source links
+   before deciding whether a group expresses a useful shared concern.
+5. To propose a reusable check, continue with [candidate rules](rules.md).
+
+Equivalent commands print a run ID or a run's stored request/result:
 
 ```text
-python tools/run.py --data-root <external-runtime> embed <selection-sha256>
-python tools/run.py --data-root <external-runtime> cluster <embedding-run-id> --threshold 0.85
-python tools/run.py --data-root <external-runtime> discovery <run-id>
+uv run --locked python tools/run.py --data-root ../extras/runtime embed <selection-id>
+uv run --locked python tools/run.py --data-root ../extras/runtime cluster <embedding-run-id> --threshold 0.85 --minimum-size 2
+uv run --locked python tools/run.py --data-root ../extras/runtime discovery <run-id>
 ```
 
-The threshold above is an example, not an adopted default. Changing the selection,
-model profile, preprocessing or parameters creates a separate invocation. Results
-do not overwrite earlier runs. A rerun may have different model vectors; only the
-deterministic grouping of the same pinned vectors/parameters has a replay claim.
+The threshold `0.85` is an example, not an adopted research default.
 
-## Evidence and limits
+## How grouping works
 
-Each run retains its exact request, selection, inventory/policy versions, model
-profile, preprocessing, usage, framework observation and result hashes. Texts and
-vectors are ordered Parquet rows; memberships are another immutable Parquet file.
-SQLite holds small queue metadata and append-only events. JSON manifests, raw
-invalid embedding responses and analytical bodies remain outside source control.
-Files publish completely before terminal state; interrupted registration can leave
-a complete orphan file, which is not a successful run.
+| Choice | Current behaviour |
+| --- | --- |
+| Algorithm | `cosine-components-v1`, an exploratory connected-component method |
+| Pair connection | Cosine similarity meets or exceeds the supplied threshold |
+| Group membership | Transitive connections join a group; not every pair need be similar |
+| Outlier | A component smaller than the minimum group size, labelled `-1` |
+| Representative | Member with the greatest summed within-group similarity; ties use saved input order |
+| Reproduction | Same vectors and parameters give the same grouping; new model calls may produce different vectors |
 
-The selected model file is SHA-256 checked. The server API verifies alias,
-dimensions and context; it cannot prove the hash of the server's loaded bytes.
-The operator must launch the verified file. No source goes to a hostname, remote
-address, proxy or redirect through the supplied adapter. Inputs are bounded at
-100 eligible records, 12,000 characters per text and the actual token budget; no
-silent truncation occurs. Request preparation combines issue, invariant and coarse
-categories. The model-specific clustering prefix belongs to the deployment profile.
+No random seed is used by grouping. Method adoption still needs a registered
+comparison under the [EDR process](../edr/README.md); this prototype does not establish
+semantic coherence or superiority.
 
-Unknown provider token counts remain null. Embeddings generate zero output tokens;
-known input tokens accumulate over completed calls. Live API spend is local, with
-no electricity/hardware estimate. Provider failure, invalid vectors and routing
-refusal are distinct; a failed run cannot supply a clustering input.
+## Limits and troubleshooting
 
-Compatibility on 20 September 2026 used llama.cpp `b10964-b29c606e2`, the pinned
-Nomic F16 model and the project's locked MAF runtime. Real MAF execution produced
-768-dimensional vectors and a cluster from synthetic interpretations. Automated
-fixture decisions are not human research labels. Canonical method/log/result
-references are in external DER `vs2-grouping/r1`; this is not an empirical EDR run.
+| Condition | Meaning and next action |
+| --- | --- |
+| Job remains queued | Check worker configuration and data directory. A normalisation-only worker leaves discovery jobs queued. |
+| Embedding run fails | Read its error/retained response. Failed embeddings cannot feed clustering. |
+| Input exceeds a limit | Reduce the selection: at most 100 included records, 12,000 characters per text and the actual token budget. Input is not truncated. |
+| Worker interrupted | Completion may be unknown; inspect stored evidence before a new explicit request. Restart never automatically repeats the call. |
+| File exists without a completed run | It may be an unreferenced file from interrupted registration, not a successful result. Preserve it for diagnosis. |
 
-## Sources
+Each run retains its request, selection, model/profile, input preparation, routing
+versions, usage and framework observation. Texts, vectors and memberships are
+ordered Parquet files; JSON manifests and invalid raw responses remain external.
+SQLite stores queue metadata and events. Unknown token counts remain unknown;
+embeddings have zero generated output tokens. Local spend excludes hardware costs.
 
-- [Pinned llama.cpp server documentation](https://github.com/ggml-org/llama.cpp/blob/b10964/tools/server/README.md)
-  defines the embedding endpoint and pooling requirement.
-- [Nomic's model card](https://huggingface.co/nomic-ai/nomic-embed-text-v1.5)
-  specifies task prefixes; the compatibility profile retains full dimensionality.
-- [Pinned GGUF distribution](https://huggingface.co/nomic-ai/nomic-embed-text-v1.5-GGUF/tree/0188c9bf409793f810680a5a431e7b899c46104c)
-  supplies the Apache-2.0 F16 file. Its exact digest and revision are in the profile.
+Sources: [pinned server API](https://github.com/ggml-org/llama.cpp/blob/b10964/tools/server/README.md)
+and [Nomic model card](https://huggingface.co/nomic-ai/nomic-embed-text-v1.5).

@@ -1,81 +1,78 @@
 # Inspect and challenge candidate rules
 
-Open a successful clustering run and **Queue rule synthesis for this group**.
-The discovery-enabled worker uses the generation endpoint as well as the embedding
-configuration described in [discovery operations](discovery.md). The request pins
-the cluster result and frozen selection. It sends the representative followed by
-up to five other eligible interpretations, in frozen order, retaining uncertainty.
-The exact supplied IDs are in the trace; selection totals are not the number sent.
+A rule candidate describes a concern that might become a reusable code check.
+Its evidence is inspectable, but proposing or promoting it does not prove that
+it generalises or deploy a detector.
 
-Inspect the resulting candidate in **Rule registry**. Its statement, scope,
-applicability, violation and exclusions are a proposal. Evidence links open the
-original observations and interpretations; the synthesis trace retains prompt,
-schema, route, usage, framework observation and raw output. Insufficient evidence
-is a useful successful result with no invented candidate. Invalid JSON or invented
-support fails visibly and preserves raw output. Provider failure is distinct.
+## Propose a candidate
 
-## Evidence and research decisions
+You need a successful [clustering run and discovery-enabled worker](discovery.md).
 
-Attach positive, counterexample, false-positive, false-negative or unresolved
-evidence from the same frozen selection. Repository holdouts remain excluded.
-Rejected interpretations may be weak evidence; they are not verified negatives.
-Choose verified only when explicitly attesting that claim for this rule version,
-with your name and rationale. A source match establishes provenance, not validity.
+1. Open a group and choose **Queue rule synthesis for this group**.
+2. Wait for the worker, then inspect the result. It may propose a rule or explain
+   that the supplied examples are insufficient; both are legitimate outcomes.
+3. Open the candidate in **Rule registry**. Read its statement, scope, applicability,
+   violation definition and exclusions.
+4. Follow evidence links back to the original observations and interpretations.
+   The model sees the representative and up to five other included examples, not
+   necessarily the whole group. Its trace identifies exactly what was supplied.
 
-Promote or reject a current candidate with a rationale. Promotion means a reviewed
-research candidate; it does not validate, enforce or deploy the rule. Concurrent
-changes produce a conflict and preserve submitted values for correction. Decision
-retries with the same identity and content return the original decision.
+The synthesis trace retains the prompt, schema, model selection, usage, framework
+observation and raw output. Invalid JSON or invented support is refused and retained
+for inspection. A provider failure is reported separately from invalid model output.
 
-Revise to create an immutable child version. Prior decisions remain historical.
-Every evidence classification carries forward with a parent link and weak status;
-verification must be reassessed against the new definition. A revision cannot
-silently discard counterexamples. Each version is bounded at 1,000 links, and a
-revision exceeding that limit fails without changing the current version.
+## Challenge and decide
 
-## Failures, provenance and limits
+| Action | Effect and responsibility |
+| --- | --- |
+| Add evidence | Choose positive, counterexample, false-positive, false-negative or unresolved evidence from the same saved selection. |
+| Mark evidence verified | Attest that classification for this exact rule version with your name and rationale. A source match alone does not establish validity. |
+| Promote | Retain a reviewed research candidate. This does not validate, enforce or deploy it. |
+| Reject | Record why the current candidate should not be retained. |
+| Revise | Create a new definition version; keep the original and its decisions. |
+| Stage several actions | Use the [review workspace](research-interaction.md) to save a draft and apply it explicitly. |
 
-The workflow bounds context to six examples and 12,000 characters; the concrete
-adapter also checks real template/token budgets before inference. No truncation
-or automatic stronger-model fallback occurs. Routing policy version 2 introduces
-the synthesis task while retaining version 1 for historical resolution. Model
-names and deployment controls remain outside the domain and task prompt.
+Repository holdouts remain excluded. Rejected interpretations can supply weak
+(unverified) evidence; rejection does not establish a verified negative example.
+A false positive is a reported violation judged incorrect; a false negative is a
+missed violation. State why the classification applies to this rule.
 
-The detail page refreshes running telemetry every five seconds. Unknown counts
-remain unknown; local spend excludes hardware/electricity accounting. Completed
-usage retains inventory/policy versions and provider measurements where exposed.
+When revising:
 
-Files, rule registration and job finalisation are deliberately separate steps.
-An interruption may leave an orphan complete file or a complete candidate whose
-job reports interrupted/unknown completion. Inspect the registry and original
-trace before explicitly submitting again. Recovery never automatically repeats
-the call. Historical rule bodies and claims remain unchanged.
+- Evidence classifications carry forward with parent links and **weak** status.
+  Reassess verification against the changed definition.
+- Counterexamples cannot be silently discarded. Each version has a 1,000-link limit;
+  a revision exceeding it is refused without changing the current version.
+- Changes made after you prepared a decision cause a conflict. Submitted values
+  remain available for correction; identical decision retries return the original.
+- Reopen an answered or deferred rule review before another decision.
 
-Equivalent commands use the same operational services:
+## Inspect failures and usage
+
+| Condition | Next action |
+| --- | --- |
+| Insufficient evidence | Inspect the explanation; a successful run may produce no candidate. |
+| Context too large | Reduce selected material. Synthesis permits six examples and 12,000 characters; the model's actual token budget is checked too. |
+| Invalid output or references | Inspect the retained raw output and supplied IDs; no candidate is accepted from invalid support. |
+| Interrupted job | Check the registry and original trace before submitting again: a complete candidate may exist even if final job registration failed. |
+| Unknown token count | Treat it as unavailable, not zero. Running telemetry refreshes every five seconds. |
+
+Recovery never automatically repeats the call or selects a stronger model. Current
+routing configuration is `config/routing/discovery-local.json`; older policy versions
+remain available to interpret stored runs. Model controls stay outside rule logic.
+
+## Command-line equivalents
+
+Run from the repository root using the same data directory as the web application.
+Copy a cluster run ID/group number from discovery, or a version ID from the rule page.
 
 ```text
-python tools/run.py --data-root <external-runtime> synthesise <cluster-run-id> <group-number>
-python tools/run.py --data-root <external-runtime> discovery <run-id>
-python tools/run.py --data-root <external-runtime> rules
-python tools/run.py --data-root <external-runtime> rule <version-sha256>
+uv run --locked python tools/run.py --data-root ../extras/runtime synthesise <cluster-run-id> <group-number>
+uv run --locked python tools/run.py --data-root ../extras/runtime discovery <run-id>
+uv run --locked python tools/run.py --data-root ../extras/runtime rules
+uv run --locked python tools/run.py --data-root ../extras/runtime rule <version-id>
 ```
 
-Immediate research decisions and the [staged review workspace](research-interaction.md)
-share the same decision contract. Fixture selections
-and automated decisions remain labelled software tests, never human study labels.
-EDR-0001 remains draft; no comparative method adoption is implied.
-
-## Compatibility observations
-
-On 20 September 2026, the pinned Nomic/llama.cpp embedding fixture and Qwen3-4B
-generation fixture completed selection, real MAF embedding, clustering, real MAF
-synthesis and candidate publication on isolated synthetic interpretations. The
-trace retained exact supplied references, policy version 2, framework version and
-known input/output tokens. External DER `vs2-rules/r1` retains methods and results.
-
-Earlier live runs returned valid insufficiency results. Inspection exposed an
-ambiguous task instruction forbidding generalisation while requesting a prospective
-rule. Prompt version `rule-synthesis-v2` distinguishes a provisional shared invariant
-from demonstrated generalisability and makes clear that novelty is not required.
-Both earlier outputs are retained; this is a functional contract clarification,
-not a comparative quality assessment or a claim that the new prompt is better.
+The first command queues work. The others inspect runs, the registry or a specific
+version. Test selections and automated decisions remain test data; significant
+method choices follow the [empirical decision process](../edr/README.md).

@@ -1,51 +1,83 @@
-# Operational evidence
+# Inspect stored outputs and logs
 
-Runtime evidence stays outside Git. SQLite's `artefact` catalogue stores job,
-kind, content hash, absolute path, byte size and publication time; bodies remain
-immutable filesystem JSON. Normalisation and human edits are registered before
-their references are committed. Files can be orphaned by a partial failure;
-retain them for diagnosis rather than assuming they were accepted results.
+The runtime retains outputs and history outside Git. Use these records to understand
+what happened, investigate a failure or reproduce a result. A file's presence alone
+does not prove that the corresponding operation completed successfully.
 
-Publication supplies a separate `Publication(job_id, kind)` contract; JSON keys
-never select catalogue behaviour. The catalogue is always present in the runtime
-store. An explicit `ArtefactIndex` maintenance interface indexes old result/edit
-references using their relational owners and kinds, preserving original bytes and
-hashes. Existing schema-version-1 bundles remain readable; no payload rewrite or
-type inference is needed. Conflicting metadata still fails rather than overwriting
-evidence. See [ADR-0008](../adr/ADR-0008-own-artefact-publication-metadata.md).
+## Find the right record
 
-Each committed queue/start/route/completion/recovery transition produces a new
-structured job-log snapshot under `logs/`. It includes event sequence, timestamp,
-job identity, level, event and small operational details. Logs omit source/prompt
-bodies and derive from committed events, so they do not compete with event history.
-The `job_log` table points at the latest snapshot and event; older snapshots remain
-immutable. Filesystem work happens after the short state transaction. A log disk
-failure emits a warning and cannot roll back or disguise a committed transition.
+| Record | Contains | Authority or limit |
+| --- | --- | --- |
+| Result/edit JSON | Immutable normalisation output or human edit, identified by checksum | Read through the application to verify its bytes. |
+| Artefact catalogue | Job, kind, hash, path, size and publication time | Small SQLite metadata; not the body itself. |
+| Operational events | Committed state changes | Append-only database history. |
+| Job log snapshot | Event sequence, timestamps, job, level and small details | Derived from committed events; not a second history. |
+| Discovery/guidance files | Saved input, model trace and result bodies | Their own manifests/registrations identify successful results. |
+| Change-review reference | Path/hash and last indexed Double-Entry Review status | A reference to external review evidence, not approval. |
 
-After upgrading a runtime, run `uv run --locked python tools/run.py --data-root
-<external-directory> index-artefacts` to verify and index existing referenced
-results and edits. A corrupted file fails verification. Regenerate or inspect a
-job's current structured log with `job-log <job-id>` using the same command prefix.
-This reports its verified artefact path and checksum. These are basic lifecycle
-logs; detailed model request/response evidence remains in the result bundle.
-Catalogue paths bind this runtime to its configured location. Moving a populated
-runtime requires a deliberate migration; conflicting paths for an existing hash
-are rejected rather than silently recorded as successful indexing.
+## Inspect a job log
 
-## DER references
+Run from the repository root after `uv sync --locked`, using the application's data directory.
+Copy the job ID from its page or the `jobs` command.
 
-Run `index-review <manifest.json> <event.json>` with the same CLI prefix to index
-an explicit canonical DER readiness event. Both files must live outside Git
-worktrees. The event must identify the same pair, round and exact diary/semantic
-heads as the manifest, with a positive sequence and recognised readiness stage.
-The index stores only paths, identities, stage and hashes. Re-indexing the same
-record is idempotent; changed evidence cannot replace its old identity. A later
-event advances the displayed reference without deleting earlier records.
+```text
+uv run --locked python tools/run.py --data-root ../extras/runtime job-log <job-id>
+```
 
-Open **Change review references** in the harness. It rechecks file hashes and flags
-changed or unavailable evidence. Status is an assertion from the last explicitly
-indexed event, not a live subscription: later external events require re-indexing.
-The index does not verify the DER ledger chain or Git bundle, approve a change,
-infer readiness from branch names, or claim slice completion. Use the pinned DER
-helpers and review process for qualification before indexing its result. Canonical
-evidence remains authoritative; no file paths supplied over HTTP are opened.
+The command generates or inspects the current structured log and returns its verified
+path and checksum. Logs omit source/prompt bodies; detailed model requests and
+responses remain in result bundles. Older snapshots under `logs/` remain immutable.
+
+## Index existing results after an upgrade
+
+1. Back up the runtime before maintenance.
+2. Verify and index referenced normalisation results and edits:
+
+   ```text
+   uv run --locked python tools/run.py --data-root ../extras/runtime index-artefacts
+   ```
+
+3. Inspect any reported corruption or conflicting metadata before continuing.
+   Do not rewrite stored JSON or rename checksummed files to make the command pass.
+
+The catalogue uses relational job/kind ownership, not arbitrary JSON keys, to index
+older results. Original bytes and hashes remain unchanged. Its absolute paths bind
+a populated runtime to its location; moving it requires a deliberate migration.
+
+## Show an external change-review status
+
+Double-Entry Review (DER) retains a material change's implementation history,
+review history and verification in a separate evidence store. The web application
+can display a reference to a status explicitly recorded there.
+
+1. Use the pinned DER helper/process to verify the canonical round and readiness event.
+2. Choose its manifest and event JSON files outside application worktrees.
+3. Index those exact files:
+
+   ```text
+   uv run --locked python tools/run.py --data-root ../extras/runtime index-review <manifest.json> <event.json>
+   ```
+
+4. Open **Change review references**. It rechecks the indexed file hashes and flags
+   missing or changed evidence.
+5. Re-index when a later external event should be shown. This is not a live subscription.
+
+The event must match the manifest's pair, round and exact Git identities, and contain
+a recognised status and positive sequence. Identical retries do not duplicate the
+record; changed evidence cannot replace an old identity. Later events retain earlier
+references. The index does not verify the ledger chain/bundle or grant approval.
+
+## Handle partial failures
+
+| Situation | Action or meaning |
+| --- | --- |
+| Complete output exists without a saved result reference | Retain it for diagnosis; file publication can precede a failed database write. |
+| Log export fails after a job transition | Read the warning and regenerate the log. The committed job transition remains valid. |
+| Referenced file is corrupt | Preserve it for inspection and restore trusted bytes; do not change its contents in place. |
+| Catalogue path conflicts after moving data | Plan a runtime migration instead of forcing a new path into immutable metadata. |
+| Review evidence is missing/stale | Restore the canonical files or explicitly index the later verified event. Do not infer readiness from a branch name. |
+
+Files are published before references; operational metadata and its event are saved
+together in short SQLite transactions. Logging happens afterwards and cannot undo
+that committed transition. See [ADR-0008: Make artefact publication metadata explicit](../adr/ADR-0008-own-artefact-publication-metadata.md)
+for the design rationale.
