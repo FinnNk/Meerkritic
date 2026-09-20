@@ -7,12 +7,15 @@ from fastapi import HTTPException, Request
 from fastapi.responses import HTMLResponse, RedirectResponse
 from starlette.concurrency import run_in_threadpool
 
+from semantic_reviewer.application.interaction import ReviewWorkspace
 from semantic_reviewer.application.rules import RuleService
 from semantic_reviewer.domain.rules import RuleDecisionRequest, RuleDefinition, RuleEvidence
 from semantic_reviewer.web.discovery import local_form
 
 
-def add_rule_routes(app, templates, service: RuleService) -> None:
+def add_rule_routes(
+    app, templates, service: RuleService, workspace: ReviewWorkspace | None = None
+) -> None:
     """Attach rule inspection and bounded same-origin mutations to the local harness."""
 
     def conflict(request, fields):
@@ -54,6 +57,10 @@ def add_rule_routes(app, templates, service: RuleService) -> None:
             name="rule.html",
             context={
                 "head": head,
+                "task": workspace.task(version_id) if workspace else None,
+                "discussion": workspace.discussion(version_id) if workspace else (),
+                "interactions": workspace.history(version_id) if workspace else (),
+                "note_id": str(uuid4()),
                 "trace": json.dumps(trace, indent=2, ensure_ascii=False) if trace else None,
                 "body": body,
                 "version_id": version_id,

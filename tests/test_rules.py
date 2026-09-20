@@ -153,6 +153,10 @@ class RulesTest(unittest.TestCase):
         (self.files.root / (self.version + ".json")).write_text("{}")
         with self.assertRaises(ValueError):
             self.rule_store.read(self.version)
+        with self.assertRaises(ValueError):
+            self.rule_store.decide(self.decision())
+        with self.rule_store.state.connect() as db:
+            self.assertEqual(db.execute("SELECT count(*) FROM rule_decision").fetchone()[0], 0)
 
     def test_rule_browser_labels_claims_and_preserves_stale_submission_values(self):
         client = TestClient(

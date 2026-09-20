@@ -10,7 +10,7 @@ from starlette.concurrency import run_in_threadpool
 from semantic_reviewer.application.discovery import DiscoveryService
 
 
-async def local_form(request: Request) -> dict[str, str]:
+async def local_form(request: Request, *, max_fields: int = 20) -> dict[str, str]:
     """Read a bounded same-origin form; reject repeated fields and cross-site writes."""
     if request.headers.get("origin") != f"{request.url.scheme}://{request.url.netloc}":
         raise HTTPException(403, "Use the local harness form.")
@@ -22,7 +22,7 @@ async def local_form(request: Request) -> dict[str, str]:
         if len(body) > 64000:
             raise HTTPException(413, "Form is too large.")
     try:
-        fields = parse_qs(body.decode("utf-8"), keep_blank_values=True, max_num_fields=20)
+        fields = parse_qs(body.decode("utf-8"), keep_blank_values=True, max_num_fields=max_fields)
         if any(len(values) != 1 for values in fields.values()):
             raise ValueError("Repeated field.")
         return {key: values[0] for key, values in fields.items()}

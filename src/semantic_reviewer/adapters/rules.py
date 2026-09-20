@@ -226,47 +226,63 @@ class SQLiteRules:
     def decide(self, request: RuleDecisionRequest) -> dict:
         """Apply an explicit research decision with a replay-safe operation identity and event."""
         request = RuleDecisionRequest.model_validate_json(request.model_dump_json())
+        self.read(request.version_id)
         with self.state.connect() as db:
             db.execute("BEGIN IMMEDIATE")
-            existing = db.execute(
-                "SELECT * FROM rule_decision WHERE id=?", (request.operation_id,)
-            ).fetchone()
-            if existing:
-                if RuleDecisionRequest.model_validate_json(existing["request_json"]) != request:
-                    raise ValueError(
-                        "Decision operation identity already refers to different intent."
-                    )
-                return self._decision(existing)
-            head = self._current(db, request.version_id, request.expected_revision)
-            if head.status != "candidate":
-                raise ValueError("This version already has a decision; revise it explicitly.")
-            now = _now()
-            db.execute(
-                "INSERT INTO rule_decision VALUES(?,?,?,?,?)",
-                (
-                    request.operation_id,
-                    request.version_id,
-                    request.model_dump_json(),
-                    now,
-                    head.revision + 1,
-                ),
-            )
-            db.execute(
-                "UPDATE rule_head SET status=?,revision=revision+1 WHERE rule_id=?",
-                ("promoted" if request.action == "promote" else "rejected", head.rule_id),
-            )
-            _event(
-                db,
-                head.rule_id,
-                "decided",
-                {
-                    "operation_id": request.operation_id,
-                    "version_id": request.version_id,
-                    "action": request.action,
-                },
-            )
-            return {
-                "request": request.model_dump(mode="json"),
-                "occurred_at": now,
-                "resulting_revision": head.revision + 1,
-            }
+            return self.decide_in_transaction(db, request)
+
+    def decide_in_transaction(self, db, request: RuleDecisionRequest) -> dict:
+        """Apply the canonical decision contract inside an already owned write transaction.
+
+        Adapter collaborators may compose atomic batches using the same database.
+        The caller owns commit/rollback; this operation never opens another connection.
+        Verify each immutable rule body before acquiring the transaction.
+        """
+        if not db.in_transaction:
+            raise ValueError("Decision requires an owned write transaction.")
+        request = RuleDecisionRequest.model_validate_json(request.model_dump_json())
+        existing = db.execute(
+            "SELECT * FROM rule_decision WHERE id=?", (request.operation_id,)
+        ).fetchone()
+        if existing:
+            if RuleDecisionRequest.model_validate_json(existing["request_json"]) != request:
+                raise ValueError("Decision operation identity already refers to different intent.")
+            return self._decision(existing)
+        head = self._current(db, request.version_id, request.expected_revision)
+        task = db.execute(
+            "SELECT state FROM review_task WHERE version_id=?", (request.version_id,)
+        ).fetchone()
+        if task[0] not in ("pending", "reopened"):
+            raise ValueError("This review task must be reopened before a new decision.")
+        if head.status != "candidate":
+            raise ValueError("This version already has a decision; revise it explicitly.")
+        now = _now()
+        db.execute(
+            "INSERT INTO rule_decision VALUES(?,?,?,?,?)",
+            (
+                request.operation_id,
+                request.version_id,
+                request.model_dump_json(),
+                now,
+                head.revision + 1,
+            ),
+        )
+        db.execute(
+            "UPDATE rule_head SET status=?,revision=revision+1 WHERE rule_id=?",
+            ("promoted" if request.action == "promote" else "rejected", head.rule_id),
+        )
+        _event(
+            db,
+            head.rule_id,
+            "decided",
+            {
+                "operation_id": request.operation_id,
+                "version_id": request.version_id,
+                "action": request.action,
+            },
+        )
+        return {
+            "request": request.model_dump(mode="json"),
+            "occurred_at": now,
+            "resulting_revision": head.revision + 1,
+        }

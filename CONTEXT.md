@@ -145,3 +145,14 @@ rule version. Inherited claims retain classification but require fresh verificat
 
 A recorded human decision to retain a reviewed research candidate; it is not
 validation, enforcement, deployment or demonstrated generalisation.
+
+## Review draft
+
+A saved coherent set of named human intentions against exact rule versions and
+revisions. Saving does not apply decisions; explicit batch application is atomic.
+
+## Review task
+
+The pending, answered, deferred, reopened or superseded interaction state of one
+rule version. Supersession identifies a replacement and retains historical answers.
+
