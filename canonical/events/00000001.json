@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "sequence": 1,
+  "pair_id": "vs2-grouping",
+  "recorded_at": "2026-09-20T07:53:22+00:00",
+  "previous_hash": null,
+  "kind": "verification",
+  "round_id": "r1",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "vs2-grouping-2026-09-20"
+  },
+  "payload": {
+    "stage": "locally_prepared",
+    "base": "c9ef38f48b10d7876fe26babee36f2f15f258bf3",
+    "diary": "0c1f39f31ba6ecba36d4568eaa66ebc54056079b",
+    "semantic": "125fd8c055b9c110efa1c4dd31dcc661358b32bc",
+    "records": [
+      "verification-summary.json",
+      "review.json",
+      "equivalence.json"
+    ],
+    "summary": "Checkpoint-owned checks, live synthetic compatibility, full self-review, exact final tree equality and canonical local snapshot complete. Remote replication and owner acceptance pending."
+  },
+  "event_hash": "b78288d94816731dfc163023ee8c64275d3e17c5b9dfd6c3adff6271681f4da0"
+}
