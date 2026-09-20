@@ -23,12 +23,13 @@
   <h2>Source {{ item.source.source_index }} · {{ item.source.owner }}/{{ item.source.repository }}</h2>
   <p><strong>{% if item.exclusion %}Excluded: {{ item.exclusion | replace('_', ' ') }}{% else %}Included{% endif %}</strong> · {{ item.annotation.decision | capitalize }}</p>
   <p><a href="/jobs/{{ item.annotation.job_id }}">Original job and decision</a> · annotation <code>{{ item.annotation.id }}</code></p>
-  <p>{{ item.interpretation.issue_statement }}</p>
+  {% if item.interpretation %}<p>{{ item.interpretation.issue_statement }}</p>
   <p>Actionable: {{ item.interpretation.actionable_engineering_concern }} · Generalisable: {{ item.interpretation.generalisable }}</p>
+  {% else %}<p>Rejected failed draft; no valid interpretation is included.</p>{% endif %}
   <details><summary>Frozen source and effective interpretation</summary>
     <h3>Comment</h3><pre>{{ item.source.comment }}</pre>
     <h3>Code</h3><pre>{{ item.source.code }}</pre>
-    <h3>Effective interpretation</h3><pre>{{ item.interpretation.model_dump_json(indent=2) }}</pre>
+    {% if item.interpretation %}<h3>Effective interpretation</h3><pre>{{ item.interpretation.model_dump_json(indent=2) }}</pre>{% endif %}
     <p>Original result: <code>{{ item.annotation.result_sha256 }}</code></p>
     {% if item.annotation.interpretation_sha256 %}<p>Edited body: <code>{{ item.annotation.interpretation_sha256 }}</code></p>{% endif %}
   </details>
