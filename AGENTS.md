@@ -15,7 +15,7 @@
   [commit guidance](docs/development/README.md#commit-messages). Scope is optional;
   breaking changes use `!` or a `BREAKING CHANGE:` footer. Never tidy away true DER
   chronology merely to improve commit messages.
-- Begin implementation with VS1 only. Follow the research reading order and
+- Implement the active frozen batch in the maintained slice plan. Follow the research reading order and
   authority hierarchy in [the research index](docs/research/README.md).
 - Keep the backlog, glossary, ADR/EDR indexes and relevant slice review in step.
   `CONTEXT.md` is a glossary, not a design or progress log.

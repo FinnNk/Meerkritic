@@ -1,0 +1,133 @@
+slice_review:
+  slice: VS1
+  completed_at: 2026-09-20
+  candidate_reviewed_on: 2026-09-20
+  candidate_tip: c1d6487fe41f3165e87a2217c2733e96d5657778
+  status: complete
+  integrated_tip: fa6856bff52efecba55700572cb10e67f9a8f3c0
+  milestone_review: docs/slice-reviews/VS1-milestone-architecture-review.md
+  integrated_checks: canonical command passed, 102 tests
+  historical_candidate_evidence: remaining observations retain original validation context
+  delivered:
+    - Pinned public dataset registration, preserved source identity, Parquet and DuckDB browsing
+    - Separate single worker with crash recovery, local routing and real MAF normalisation
+    - Immutable output, prompt/source provenance, FrameworkObservation and model usage
+    - Immediate Accept/Edit/Reject, grounded edits, immutable history and coherent progress
+    - Artefact catalogue, structured job-log snapshots and read-only DER reference index
+    - Typed architecture snapshots, unchanged quality gates and completed candidate DER pairs
+  deviations:
+    - JSON interpretation editor retained as a VS1 usability limitation
+    - Hosted accounting tested with synthetic versioned prices, without billed hosted calls
+    - Windows/Python 3.12 verified; other execution contexts not claimed
+    - Main workspace Ruff crash retained; exact merged source passed in a clean checkout
+    - No decision-bearing empirical study was warranted by prescribed implementation checks
+  architecture_observations:
+    - SQLite WAL and short atomic transitions suffice for the tested single-user/worker scope
+    - Domain/application remain independent of FastAPI, concrete storage and MAF types
+    - Parquet/filesystem retain large bodies; SQLite retains metadata and events
+    - Diagnostics are regenerable projections, not competing authoritative histories
+  research_observations:
+    - Matching source quotes do not establish interpretation correctness
+    - Inspected model output included unsupported extrapolation; no comparative inference
+    - Automated integration decisions must not become research labels
+  performance_observations:
+    - Live token/timing measurements retained in external evidence as incidental observations
+    - No benchmark, multi-user scale claim or formal DER overhead comparison conducted
+  framework_observations:
+    - MAF core 1.19.0 executed real preparation, inference and validation workflows
+    - Failure-exception copying friction mitigated by plain failure data
+    - Provider failure, semantic failure and framework outcome remain distinguishable
+    - No repeated unresolved material friction warrants removing MAF
+  technical_debt:
+    - Structured JSON editor and shifting pending offset pages
+    - Fixed runtime catalogue paths need a deliberate relocation migration
+    - Explicit DER re-indexing; no automatic evidence-status subscription
+    - Known dependency deprecation warnings, without suppressions
+    - Independent reproduction and additional-platform checks not performed
+  decisions:
+    - Retain the prescribed local architecture and MAF adapter
+    - Use OS process ownership rather than heartbeat expiry for recovery
+    - Keep terminal VS1 result decisions immutable when adding VS2 richer interaction
+    - Keep comparative discovery-method selection behind prospective EDR registration
+  decision_trace:
+    - old_assumption: independent progress queries describe one state
+      evidence: fresh-context review identified mixed-denominator interleaving
+      decision: use one read snapshot with a controlled concurrent-write regression
+      affected_slices: [VS1, VS2]
+    - old_assumption: diagnostic export failures can propagate normally
+      evidence: a queue transition may already be committed
+      decision: warn on automatic diagnostic export and keep explicit inspection strict
+      affected_slices: [VS1, VS2, VS4]
+    - old_assumption: documented future routing paths are sufficient
+      evidence: backlog explicitly requires reserved continuity schemas
+      decision: add strict records without switching behaviour
+      affected_slices: [VS1, VS2, VS4]
+  architecture_before: extras/der-evidence/vs1-validation/r1/slice-architecture-before.json
+  architecture_after: extras/der-evidence/vs1-validation/r1/architecture-after.json
+  architecture_delta: extras/der-evidence/vs1-validation/r1/slice-architecture-delta.json
+  context_updates:
+    - Source, routing, DER and empirical terminology retained as glossary entries
+    - Artefact catalogue and job log snapshot added
+  adrs_created_or_updated:
+    - ADR-0001 remains accepted; first applicable empirical decision confirmation pending
+    - ADR-0002 preserve source records remains implemented
+    - ADR-0003 caller contracts/comments remains implemented
+    - ADR-0004 selective Python style remains implemented
+    - ADR-0005 immutable routing provenance remains implemented
+    - ADR-0006 process-lock recovery is implemented after owner-approved PR6 integration
+  changes_to_remaining_slices:
+    - VS2 detailed plan adds frozen annotation eligibility, empirical gates and three substantive batches
+    - VS3 preserves repository holdouts, weak/verified negative distinction and pinned input versions
+    - VS4 preserves explicit uncertain completion; durable runtime only on demonstrated need
+    - VS5 requires pinned behavioural evaluation environments and artefact provenance
+    - VS6 builds on usage exports and EDR-governed comparative choices
+    - VS7 retains separate internal-data privacy, access and licensing preflight
+    - VS8 remains conditional; no operational scaling trigger established
+  design_clarity_review:
+    complexity: meaningful storage/workflow contracts centralise validation and integrity
+    module_depth: services hide source, grounding and publication obligations
+    knowledge_leakage: no framework or concrete persistence types in domain/application logic
+    layer_quality: web transport, application contracts and adapters have distinct responsibilities
+    strategic_quality: retain simple local architecture; no speculative infrastructure
+    configuration_exposure: model names remain configuration; reserved schemas enable no new UI
+    vocabulary_consistency: source, interpretation, annotation, rule, evidence and readiness remain distinct
+  routing_observations:
+    policy_versions_used:
+      - local-normalisation version 1; inventory llama-local version 2026-09-19.1
+    policy_transitions: []
+    routing_failures:
+      - local-only refusal and unavailable candidates verified in deterministic tests
+    provider_health_issues:
+      - closed-port live failure retained as infrastructure failure, with unknown usage
+    context_strategy_issues:
+      - direct context preflight rejects capacity overflow rather than dropping evidence
+    budget_constraint_issues:
+      - hard budgets fail closed on missing/incompatible quotes; synthetic hosted accounting only
+  double_entry_review:
+    materiality_assessments:
+      - dataset/browser; routing; normalisation; annotation; operational validation all material
+      - this prospective review/planning documentation is routine and uses ordinary commits
+    material_pairs:
+      - vs1-dataset-browser/r5
+      - vs1-routing/r1
+      - vs1-normalisation/r2
+      - vs1-annotation/r1
+      - vs1-validation/r1
+      - vs1-architecture-review/r2
+    critical_pairs: []
+    routine_waivers_or_borderline_decisions: []
+    readiness_at_slice_completion:
+      - first three software batches integrated by owner
+      - annotation, validation and milestone review integrated by owner via PRs 7, 8 and 9
+    equivalence_failures_or_reconstructions:
+      - final frozen diary/semantic trees equal for each presented material pair
+      - earlier normalisation rounds and actual fixes retained externally
+    review_rounds: [dataset-r5, routing-r1, normalisation-r2, annotation-r1, validation-r1]
+    observed_preparation_review_overhead:
+      - raw timestamps retained; no controlled cost/benefit measurement
+    threshold_lessons_for_future_slices:
+      - retain materiality rules; group related propositions without merging independent guarantees
+      - stack dependent substantial batches rather than creating many tiny PRs
+  empirical_decision_records:
+    - no VS1 decision-bearing empirical study; no retrospective registration
+    - EDR-0001 discovery grouping method drafted prospectively for VS2, not registered or run
