@@ -38,9 +38,11 @@ class Model(Record):
     family: Name
     locality: Literal["local", "remote"]
     status: Literal["active_current", "active_older", "deprecated", "retired", "unavailable"]
-    capabilities: tuple[Literal["coding", "tool_use", "structured_output", "reasoning"], ...]
+    capabilities: tuple[
+        Literal["coding", "tool_use", "structured_output", "reasoning", "embeddings"], ...
+    ]
     practical_input_tokens: Annotated[int, Field(gt=0)]
-    output_tokens: Annotated[int, Field(gt=0)]
+    output_tokens: Annotated[int, Field(ge=0)]
     evidence: Name
 
 
@@ -75,7 +77,9 @@ class TaskRequirements(Record):
 
     task_id: Name
     task_class: Name
-    capabilities: tuple[Literal["coding", "tool_use", "structured_output", "reasoning"], ...] = ()
+    capabilities: tuple[
+        Literal["coding", "tool_use", "structured_output", "reasoning", "embeddings"], ...
+    ] = ()
     min_input_tokens: Count = 0
     expected_output_tokens: Count = 0
     privacy: Literal["public", "internal", "local_only"] = "local_only"
