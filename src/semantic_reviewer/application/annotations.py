@@ -73,6 +73,10 @@ class AnnotationStore(Protocol):
         """Return the terminal decision, if this result has been reviewed."""
         ...
 
+    def by_id(self, annotation_id: str) -> Annotation | None:
+        """Return exactly this immutable annotation version, or None when unknown."""
+        ...
+
     def progress(self, dataset_id: str) -> AnnotationProgress:
         """Return coherent source/result counts; raise LookupError for an unknown dataset."""
         ...

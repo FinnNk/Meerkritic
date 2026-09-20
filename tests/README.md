@@ -18,3 +18,8 @@ Keep tests near the behaviour they verify; introduce subdirectories only when
 that improves navigation. Fixtures must be small, synthetic or explicitly permitted
 for redistribution. Full datasets, private examples, live model outputs and
 credentials stay in external runtime/evidence storage.
+
+`test_selections.py` checks exact annotation versions, effective edits, explicit
+research claims, exclusions, corrupted evidence, concurrent idempotence, interrupted
+publication, restart and the CLI with synthetic source records. These are software
+checks, not human-labelled discovery data or a registered empirical comparison.

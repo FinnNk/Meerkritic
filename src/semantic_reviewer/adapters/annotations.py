@@ -74,6 +74,12 @@ class SQLiteAnnotations:
                 )
             )
 
+    def by_id(self, annotation_id: str) -> Annotation | None:
+        """Resolve an explicit version without guessing the latest result for its source."""
+        with self.state.connect() as db:
+            row = db.execute("SELECT * FROM annotation WHERE id=?", (annotation_id,)).fetchone()
+            return Annotation(**dict(row)) if row else None
+
     def progress(self, dataset_id: str) -> AnnotationProgress:
         """Count all results and distinct source coverage, not just the recent job page."""
         with self.state.connect() as db:
