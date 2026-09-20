@@ -1,10 +1,13 @@
 """Persist short job transitions and append-only events in the shared SQLite database."""
 
 import json
+import logging
+import sqlite3
 from dataclasses import asdict
 from datetime import UTC, datetime
 from pathlib import Path
 
+from semantic_reviewer.adapters.results import JsonResults
 from semantic_reviewer.adapters.state import SQLiteState
 from semantic_reviewer.application.jobs import Job
 
@@ -26,6 +29,7 @@ class SQLiteJobs:
     def __init__(self, database: Path) -> None:
         """Migrate operational state before accepting queue operations."""
         self.state = SQLiteState(database)
+        self.logs = JsonResults(database.parent / "logs", database)
 
     def enqueue(self, job: Job) -> Job:
         """Insert a queued job and event together; repeated IDs are rejected."""
@@ -38,6 +42,7 @@ class SQLiteJobs:
                 tuple(values.values()),
             )
             _event(db, job.id, "job_queued", {"schema_version": 1})
+        self._export_log(job.id)
         return job
 
     def get(self, job_id: str) -> Job | None:
@@ -74,7 +79,9 @@ class SQLiteJobs:
                 (worker_id, now, now, row["id"]),
             )
             _event(db, row["id"], "job_started", {"worker_id": worker_id})
-            return Job(**dict(db.execute("SELECT * FROM job WHERE id=?", (row["id"],)).fetchone()))
+            job = Job(**dict(db.execute("SELECT * FROM job WHERE id=?", (row["id"],)).fetchone()))
+        self._export_log(job.id)
+        return job
 
     @staticmethod
     def _owned(db, job: Job) -> None:
@@ -100,6 +107,7 @@ class SQLiteJobs:
                 raise ValueError("Job already has a routing decision.")
             db.execute("UPDATE job SET decision_id=? WHERE id=?", (decision_id, job.id))
             _event(db, job.id, "job_routed", {"decision_id": decision_id})
+        self._export_log(job.id)
 
     def finish(self, job: Job, digest: str | None, error: str | None) -> None:
         """Atomically publish a terminal reference and event, rejecting old-worker writes."""
@@ -114,6 +122,7 @@ class SQLiteJobs:
                 (status, _now(), digest, error, job.id),
             )
             _event(db, job.id, "job_" + status, {"artefact_sha256": digest, "error": error})
+        self._export_log(job.id)
 
     def recover_interrupted(self) -> int:
         """Fail prior running work only under the caller's exclusive OS process lock."""
@@ -129,4 +138,44 @@ class SQLiteJobs:
                     (_now(), error, row[0]),
                 )
                 _event(db, row[0], "job_interrupted", {"error": error})
-            return len(rows)
+        for row in rows:
+            self._export_log(row[0])
+        return len(rows)
+
+    def log(self, job_id: str) -> dict:
+        """Publish a structured snapshot of committed job events; return its metadata."""
+        with self.state.connect() as db:
+            if not db.execute("SELECT 1 FROM job WHERE id=?", (job_id,)).fetchone():
+                raise LookupError("Job does not exist.")
+            rows = db.execute(
+                "SELECT * FROM event WHERE subject_id=? AND kind LIKE 'job_%' ORDER BY sequence",
+                (job_id,),
+            ).fetchall()
+        events = [
+            {
+                "event_id": row["sequence"],
+                "timestamp": row["occurred_at"],
+                "job_id": job_id,
+                "level": "ERROR" if row["kind"] in ("job_failed", "job_interrupted") else "INFO",
+                "event": row["kind"],
+                "data": json.loads(row["details_json"]),
+            }
+            for row in rows
+        ]
+        digest = self.logs.publish({"schema_version": 1, "job_id": job_id, "log_events": events})
+        with self.state.connect() as db:
+            db.execute(
+                "INSERT INTO job_log VALUES (?, ?, ?) ON CONFLICT(job_id) DO UPDATE SET "
+                "artefact_sha256=excluded.artefact_sha256, last_event_id=excluded.last_event_id "
+                "WHERE excluded.last_event_id>job_log.last_event_id",
+                (job_id, digest, rows[-1]["sequence"]),
+            )
+            return dict(db.execute("SELECT * FROM artefact WHERE sha256=?", (digest,)).fetchone())
+
+    def _export_log(self, job_id: str) -> None:
+        try:
+            self.log(job_id)
+        except (OSError, sqlite3.Error, ValueError):
+            # The authoritative transition is already committed. Logs can be
+            # regenerated; a diagnostic disk failure must not imply job rollback.
+            logging.getLogger(__name__).warning("Job log export unavailable for %s", job_id)

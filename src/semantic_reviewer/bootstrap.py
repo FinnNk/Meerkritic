@@ -58,7 +58,7 @@ def build_jobs(data_root: Path) -> JobService:
     return JobService(
         build_datasets(root),
         SQLiteJobs(root / "state.sqlite3"),
-        JsonResults(root / "results"),
+        JsonResults(root / "results", root / "state.sqlite3"),
         SQLiteRoutingJournal(root / "state.sqlite3"),
     )
 
