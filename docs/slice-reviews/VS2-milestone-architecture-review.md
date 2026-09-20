@@ -32,8 +32,9 @@ synthetic fixtures and copied compatibility state.
 
 Subsequent decision update, 20 September 2026: the owner accepted ADR-0012 in the
 project conversation. Its `proposed` status in the assessment above describes the
-inspection at that time. PR #13 acceptance, merge and integrated confirmation
-remain separate from this architectural acceptance.
+inspection at that time. The owner subsequently merged PR #13;
+[integrated confirmation](VS2-integration.md) passed and ADR-0012 is implemented.
+The original candidate assessment is retained as history.
 
 These findings span build-time inspection, live compatibility and the final
 milestone pass. Their discovery stages are explicit; regression tests added later

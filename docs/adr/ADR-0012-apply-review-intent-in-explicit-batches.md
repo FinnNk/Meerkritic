@@ -1,5 +1,5 @@
 ---
-status: accepted
+status: implemented
 date: 2026-09-20
 decision-makers: [Project owner]
 ---
@@ -28,9 +28,9 @@ repeat external work after uncertain completion.
 
 ## Decision Outcome
 
-Accepted by Finn Newick on 20 September 2026 in the project conversation. This
-accepts the architectural decision; PR #13 review, merge and integrated verification
-remain separate. Implementation is present in the review candidate.
+Finn Newick accepted this architectural decision on 20 September 2026 in the
+project conversation, separately from PR review. The owner subsequently
+approved and merged PR #13; implementation and integrated confirmation are complete.
 
 A review workspace owns saved
 immutable draft payloads and version-checked application. Its storage adapter uses
@@ -70,8 +70,11 @@ covers frozen context, invented output, provider failures, unknown completion,
 context bounds and advice that never applies state. Real local MAF compatibility
 is retained in external DER `vs2-interaction/r1`; the documentation revision's
 checkpoint checks are retained in `vs2-interaction/r2`. The owner has accepted the
-decision. Record integrated confirmation after PR #13 is merged, then advance the
-status and index to `implemented`.
+decision and merged [PR #13](https://github.com/FinnNk/Meerkritic/pull/13). Its integrated
+revision `f7aa4e05411da9d804f3624abe57033544fb1073` preserves all nine ordered reviewed
+commit trees and passed the canonical quality checks and 172 tests in its own clean,
+locked Windows/Python 3.12 checkout. The post-merge evidence is indexed by the
+[VS2 integration record](../slice-reviews/VS2-integration.md).
 Revisit durable orchestration only when a concrete longer-lived workflow benefits.
 
 ### Status history
@@ -79,7 +82,8 @@ Revisit durable orchestration only when a concrete longer-lived workflow benefit
 | Date | Status | Record |
 | --- | --- | --- |
 | 2026-09-20 | proposed | Decision and implementation submitted in the PR #13 review candidate. |
-| 2026-09-20 | accepted | Finn Newick: "I accept adr-0012". PR acceptance and integrated confirmation remain pending. |
+| 2026-09-20 | accepted | Finn Newick: "I accept adr-0012". PR acceptance and integrated confirmation were still pending. |
+| 2026-09-20 | implemented | Owner merged PR #13; exact integrated trees and canonical checks verified. |
 
 ## Pros and Cons of the Options
 

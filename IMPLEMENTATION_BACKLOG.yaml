@@ -130,8 +130,8 @@ slices:
   - A1 frozen selections integrated via PR 10; ADR-0009 implemented
   - A2/A3 approved and integrated via PR 11; exact reviewed tree verified; ADR-0010 implemented
   - B approved and integrated via PR 12; exact reviewed tree verified; ADR-0011 implemented
-  - C software candidate implemented; staged decisions, guidance, architecture view and milestone review
-  - full VS2 closure pending owner acceptance and empirical gate
+  - C accepted and integrated via PR 13 at f7aa4e05411da9d804f3624abe57033544fb1073; ADR-0012 implemented
+  - full VS2 closure pending empirical outcome and owner decision
   remaining_gates:
   - human-rated development corpus before empirical method adoption
   - EDR registration before decision-bearing comparison

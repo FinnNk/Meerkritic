@@ -9,7 +9,7 @@ slice_review:
   - Frozen advisory guidance with explicit unknown completion
   - Typed architecture before/delta/after with stale-source warning
   deviations:
-  - Software candidate complete; empirical method comparison remains unregistered
+  - Software accepted and integrated; empirical method comparison remains unregistered
     and unrun
   architecture_observations:
   - One worker and canonical registry decisions retained; see milestone review
@@ -24,8 +24,10 @@ slice_review:
   - Operational bounds require reconsideration only on demonstrated needs
   decisions:
   - ADR0010/0011 implemented after owner merges
-  - ADR0012 accepted by owner on 2026-09-20; PR 13 integration confirmation pending
-  decision_trace: []
+  - ADR0012 implemented after owner acceptance and verified PR 13 integration
+  decision_trace:
+  - ADR0012 accepted in conversation, then implementation confirmed at integrated f7aa4e0
+  - EDR0001 remains draft; no empirical adoption or slice completion implied
   architecture_before: external DER vs2-interaction/r1/architecture-before.json
   architecture_after: external DER vs2-interaction/r1/architecture-after.json
   architecture_delta: external DER vs2-interaction/r1/architecture-delta.json
@@ -69,14 +71,16 @@ slice_review:
     - vs2-inputs/r1
     - vs2-grouping/r1
     - vs2-rules/r1
-    - vs2-interaction/r1
+    - vs2-interaction/r1 and r2; integrated via PR 13
     critical_pairs: []
     routine_waivers_or_borderline_decisions: []
     readiness_at_slice_completion:
-    - First three batches owner-merged; final candidate requires DER publication and
-      owner acceptance
+    - All four software batches owner-merged; PR 13 integration verified separately
+    - Slice remains ACTIVE pending empirical outcome and owner decision
     equivalence_failures_or_reconstructions: []
-    review_rounds: []
+    review_rounds:
+    - vs2-interaction/r2 retained at evidence archive 45252d9257376a986867479ab710b00b94ec462c
+    - Post-merge evidence indexed in docs/slice-reviews/VS2-integration.md
     observed_preparation_review_overhead: []
     threshold_lessons_for_future_slices: []
   empirical_decision_records:

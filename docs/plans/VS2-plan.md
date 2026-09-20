@@ -1,6 +1,6 @@
 # VS2 â€” Annotation-to-Rule Discovery
 
-Plan revision: 7, 20 September 2026. VS2 ACTIVE. A1 is integrated in PR #10 at
+Plan revision: 8, 20 September 2026. VS2 ACTIVE. A1 is integrated in PR #10 at
 `c9ef38f48b10d7876fe26babee36f2f15f258bf3`; its tree equals the reviewed head and
 the locked Windows baseline passes all checks and 115 tests.
 A2/A3 and B are integrated, with synthetic compatibility evidence. The owner
@@ -25,6 +25,15 @@ against this exact prerequisite. Since the owner merged it during implementation
 Batch C targets the equivalent integrated mainline. It completes
 staged interaction, guidance, architecture projection and the candidate milestone
 review. Owner acceptance and the unregistered empirical study remain separate gates.
+
+## Current closure status
+
+The owner accepted ADR-0012 and merged PR #13 on 20 September 2026. The exact
+integrated revision preserves all nine ordered reviewed trees and passed all
+quality checks and 172 tests; see the [integration record](../slice-reviews/VS2-integration.md).
+The earlier batch narratives below retain their historical candidate status.
+Software delivery is complete. The human-reviewed corpus, registered comparison
+and owner empirical decision remain outstanding; VS2 stays ACTIVE.
 
 ## Activation and first batch
 
