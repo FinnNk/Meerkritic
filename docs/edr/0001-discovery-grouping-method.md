@@ -4,6 +4,7 @@
 - Created: 2026-09-20
 - Owner: Project owner
 - Decision-maker(s): Project owner
+- Protocol agreement: Finn Newick, 2026-09-20; proposed workload and criteria accepted
 - Registered on: pending
 - Registered plan: pending; this draft is not a frozen registration
 - Evidence outcome: pending
@@ -13,7 +14,8 @@
 ## Registered plan
 
 This section is a prospective draft. Registration is blocked on the concrete
-permitted human-labelled sample and agreement on the bounded comparison. Synthetic
+permitted human-labelled sample and runnable, pinned methods. The owner agreed the
+proposed workload and criteria on 20 September 2026. Synthetic
 local model/runtime compatibility preflight has passed; the exact evaluation method
 and sample remain unfrozen. Do not collect or analyse decision-bearing results
 until these details and the registration commit are recorded. No selection decision
@@ -113,8 +115,9 @@ registered, and no decision-bearing comparison has been run.
 
 Prepared after PR #13 integration on 20 September 2026. Everything in this section
 is **proposed, not registered or adopted**. The thresholds are prospective judgement
-calls for a small local study, not values optimised on results. Owner agreement,
-qualified inputs, runnable tooling and exact identities are still required.
+calls for a small local study, not values optimised on results. The owner agreed
+the proposed workload and criteria on 20 September 2026. Qualified inputs, runnable
+tooling and exact identities are still required; that agreement is not registration.
 
 ### Prepare the input sample
 
@@ -200,7 +203,8 @@ implementation needed for that choice requires its own verification.
 
 ### Registration checklist
 
-- [ ] Owner agrees the bounded question, workload, rubric, thresholds and limits.
+- [x] Owner agrees the bounded question, workload, rubric, thresholds and limits
+  (Finn Newick, 2026-09-20: “I agree with Edr-0001’s proposed workload and criteria”).
 - [ ] Input preparation follows the agreed procedure; qualified sources, exclusions,
   holdouts, prior exposure and 40 human-reviewed versions are frozen and permitted.
 - [ ] Exact selection/hash, normalisation configuration and curator attestation recorded.
@@ -234,5 +238,5 @@ Pending. No grouping method has been adopted from empirical evidence.
 | Date | Status or event | Author | Reference / reason |
 | --- | --- | --- | --- |
 | 2026-09-20 | draft | Meerkritic agent | Prospective VS2 method-selection question; no registration or run |
-
 | 2026-09-20 | draft elaborated | Meerkritic agent | Software integrated; proposed bounded protocol and source-qualification gate for owner agreement; no study run |
+| 2026-09-20 | protocol agreed; draft retained | Finn Newick | Explicit agreement to the proposed workload and criteria; source preparation, tooling and registration remain outstanding |

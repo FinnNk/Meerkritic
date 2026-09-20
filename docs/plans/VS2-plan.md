@@ -1,6 +1,6 @@
 # VS2 â€” Annotation-to-Rule Discovery
 
-Plan revision: 8, 20 September 2026. VS2 ACTIVE. A1 is integrated in PR #10 at
+Plan revision: 9, 20 September 2026. VS2 ACTIVE. A1 is integrated in PR #10 at
 `c9ef38f48b10d7876fe26babee36f2f15f258bf3`; its tree equals the reviewed head and
 the locked Windows baseline passes all checks and 115 tests.
 A2/A3 and B are integrated, with synthetic compatibility evidence. The owner
@@ -35,12 +35,23 @@ The earlier batch narratives below retain their historical candidate status.
 Software delivery is complete. The human-reviewed corpus, registered comparison
 and owner empirical decision remain outstanding; VS2 stays ACTIVE.
 
-The next bounded batch is study preparation: agree the concrete proposal in
-[EDR-0001](../edr/0001-discovery-grouping-method.md#concrete-proposal-for-owner-review),
-qualify and human-review inputs, and implement the small comparison/rating tools
-using synthetic fixtures. Tooling requires a fresh materiality assessment and DER;
-this documentation proposal does not freeze its implementation contract or register
-the experiment. Follow the [human/agent preparation steps](../development/study-preparation.md).
+PR #14 is integrated at `cd0a4d8c9a254e3027513274b39ce3f65cf227d2`.
+All seven ordered reviewed commit trees are preserved; an isolated locked Windows
+baseline passes all checks and 172 tests. The owner explicitly agreed EDR-0001's
+proposed workload and criteria on 20 September 2026. Agreement does not register it.
+
+The next frozen software batch is **reproducible input preparation** (DER
+`vs2-study-tools/r1`): deterministic source/holdout/exclusion plans, a checked
+preparation log, synthetic contract tests and operator instructions. It must retain
+the source bytes, every attempted record and explicit incomplete/ready/shortfall
+outcomes. It must not infer verified origins, human labels or registration. No UI,
+model execution or database changes are needed.
+
+Then implement the lexical baseline, method-masked rating pack and analysis using
+synthetic inputs in a separate material batch, stacked if its prerequisite is still
+unmerged. Source qualification and human review remain necessary before registration;
+they may proceed alongside this tooling. Follow the
+[human/agent preparation steps](../development/study-preparation.md).
 
 ## Activation and first batch
 

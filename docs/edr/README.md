@@ -114,7 +114,9 @@ rather than duplicating evidence stores.
 
 ## Index
 
-No EDR is registered yet. The current draft is:
+No EDR is registered yet. The owner agreed EDR-0001's proposed workload and criteria
+on 20 September 2026; qualified inputs and runnable, pinned methods remain prerequisites.
+The current draft is:
 
 | EDR | Decision | Status | Evidence outcome |
 | --- | --- | --- | --- |
