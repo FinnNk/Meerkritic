@@ -1,0 +1,100 @@
+{
+  "changes": {
+    "boundaries": {
+      "added": [],
+      "removed": []
+    },
+    "contracts": {
+      "added": [],
+      "removed": []
+    },
+    "imports": {
+      "added": [],
+      "removed": []
+    },
+    "interfaces": {
+      "added": [
+        {
+          "declaration": "def review_actions(job: Job, result: dict | None) -> tuple[str, ...]",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.annotations.review_actions"
+        },
+        {
+          "declaration": "eligibility_policy: Literal['explicit-accept-edit-v1', 'explicit-accept-edit-v2'] = 'explicit-accept-edit-v2'",
+          "kind": "field",
+          "name": "semantic_reviewer.application.selections.SelectionSnapshot.eligibility_policy"
+        },
+        {
+          "declaration": "interpretation: IssueInterpretation | None",
+          "kind": "field",
+          "name": "semantic_reviewer.application.selections.SelectedAnnotation.interpretation"
+        },
+        {
+          "declaration": "reviewed_failed_results: int",
+          "kind": "field",
+          "name": "semantic_reviewer.application.annotations.AnnotationProgress.reviewed_failed_results"
+        },
+        {
+          "declaration": "reviewed_successful_results: int",
+          "kind": "field",
+          "name": "semantic_reviewer.application.annotations.AnnotationProgress.reviewed_successful_results"
+        },
+        {
+          "declaration": "schema_version: Literal[1, 2] = 2",
+          "kind": "field",
+          "name": "semantic_reviewer.application.selections.SelectionSnapshot.schema_version"
+        }
+      ],
+      "removed": [
+        {
+          "declaration": "eligibility_policy: Literal['explicit-accept-edit-v1'] = 'explicit-accept-edit-v1'",
+          "kind": "field",
+          "name": "semantic_reviewer.application.selections.SelectionSnapshot.eligibility_policy"
+        },
+        {
+          "declaration": "interpretation: IssueInterpretation",
+          "kind": "field",
+          "name": "semantic_reviewer.application.selections.SelectedAnnotation.interpretation"
+        },
+        {
+          "declaration": "schema_version: Literal[1] = 1",
+          "kind": "field",
+          "name": "semantic_reviewer.application.selections.SelectionSnapshot.schema_version"
+        }
+      ]
+    },
+    "modules": {
+      "added": [
+        {
+          "definitions": [
+            "Annotation",
+            "AnnotationProgress",
+            "AnnotationService",
+            "AnnotationStore",
+            "JobReader",
+            "review_actions"
+          ],
+          "name": "semantic_reviewer.application.annotations",
+          "package": false,
+          "path": "src/semantic_reviewer/application/annotations.py"
+        }
+      ],
+      "removed": [
+        {
+          "definitions": [
+            "Annotation",
+            "AnnotationProgress",
+            "AnnotationService",
+            "AnnotationStore",
+            "JobReader"
+          ],
+          "name": "semantic_reviewer.application.annotations",
+          "package": false,
+          "path": "src/semantic_reviewer/application/annotations.py"
+        }
+      ]
+    },
+    "settings": {}
+  },
+  "schema_version": 3
+}

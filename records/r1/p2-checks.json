@@ -1,0 +1,31 @@
+{
+  "label": "p2",
+  "revision": "5ec8d3938080e466500eef0f9a91483feb2daff2",
+  "checkout": "WORKSPACE\\extras\\der-checkouts\\vs2-draft-repair-check-p2",
+  "started_at": "2026-09-20T15:24:40.467617+00:00",
+  "commands": [
+    {
+      "argv": [
+        "uv",
+        "sync",
+        "--locked",
+        "--offline",
+        "--python",
+        "HOST_USER/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "tools/check.py"
+      ],
+      "exit_code": 1
+    }
+  ],
+  "required_context": "Windows/Python 3.12/locked checkpoint environment",
+  "status": "failed"
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "pair_id": "vs2-draft-repair",
+  "round_id": "r1",
+  "manifest_sha256": "07853b89f1841e5d7d4f31f8c0d28fe3595adcf768caec38ab22302616e9a739",
+  "semantic_tip": "86a839341787e986dae6870673efeaf8251a41d0",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "/root"
+  },
+  "independence": "self-review",
+  "mode": "full",
+  "status": "complete",
+  "orientation_done": true,
+  "reviewed_commits": [
+    "9e8e91d778557d497d7440b39d2802b296ad322f",
+    "d9933b6ded1b6cbcb1e716e29cc90e3c94a3c371",
+    "72ca78024d2293f7f9841ffd711868a8c6ba1398",
+    "86a839341787e986dae6870673efeaf8251a41d0"
+  ],
+  "aggregate_done": true,
+  "findings": [],
+  "check_records": [
+    "review-notes.md",
+    "propositions.md",
+    "verification-summary.json",
+    "test-change-identities.json",
+    "equivalence.json",
+    "docs-check.json",
+    "architecture-delta.json",
+    "browser-check.json",
+    "upgrade-rehearsal.json",
+    "live-after.json",
+    "screenshot-check.json"
+  ],
+  "limitations": [
+    "Author self-review, not independent approval",
+    "Windows/Python 3.12 only",
+    "One unchanged P1 run hit intermittent temporary-Git cleanup lock; cause unresolved, failure and passing recheck retained",
+    "Workspace temporary-Git lock also affected corrected diary; normal OS temporary directory passed 40 isolated repetitions and is used for subsequent complete checks",
+    "No human research annotations or grouping runs; EDR remains draft"
+  ],
+  "carry_forward_record": null,
+  "platform_approval": false
+}

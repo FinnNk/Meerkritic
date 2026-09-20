@@ -1,0 +1,18 @@
+{
+  "kind": "observation",
+  "round_id": "r1",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "/root"
+  },
+  "payload": {
+    "classification": "material",
+    "base": "e7726500930e79f0ba69becae5d12b77edbb5dea",
+    "diary": "change/vs2-draft-repair-diary",
+    "semantic": "feat/vs2-draft-repair",
+    "design": "vs2-draft-repair/r1/design.md",
+    "scope": "Human correction of retained semantic failures, source grounding and immutable original provenance; owner-approved prospective EDR amendment"
+  }
+}

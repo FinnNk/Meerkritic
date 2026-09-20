@@ -1,0 +1,7 @@
+{
+  "temporary_directory": "WORKSPACE\\extras\\der-tmp\\tmp8vem7pjf",
+  "error": "[WinError 32] The process cannot access the file because it is being used by another process: 'D:\\\\codex\\\\semantic-reviewer\\\\extras\\\\der-tmp\\\\tmp8vem7pjf'",
+  "pid": 57664,
+  "cwd": "WORKSPACE\\extras\\der-checkouts\\vs2-draft-repair",
+  "own_handles": []
+}

@@ -1,0 +1,391 @@
+{
+  "base": "e7726500930e79f0ba69becae5d12b77edbb5dea",
+  "tip": "86a839341787e986dae6870673efeaf8251a41d0",
+  "tree": "005bd76ae56144287f31b5c6ff5ce6979ff105f9",
+  "commits": [
+    {
+      "commit": "9e8e91d778557d497d7440b39d2802b296ad322f",
+      "parents": [
+        "e7726500930e79f0ba69becae5d12b77edbb5dea"
+      ],
+      "tree": "934f5c34f60a183ec04d20b3750e51671cfd5516",
+      "subject": "docs: record the agreed failed-draft correction policy",
+      "change": {
+        "files": [
+          {
+            "path": "docs/adr/ADR-0013-preserve-failed-drafts-during-human-correction.md",
+            "added": 70,
+            "deleted": 0
+          },
+          {
+            "path": "docs/adr/README.md",
+            "added": 1,
+            "deleted": 0
+          },
+          {
+            "path": "docs/edr/0001-discovery-grouping-method.md",
+            "added": 28,
+            "deleted": 1
+          },
+          {
+            "path": "docs/plans/VS2-plan.md",
+            "added": 12,
+            "deleted": 1
+          }
+        ],
+        "file_count": 4,
+        "added": 111,
+        "deleted": 2,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "d9933b6ded1b6cbcb1e716e29cc90e3c94a3c371",
+      "parents": [
+        "9e8e91d778557d497d7440b39d2802b296ad322f"
+      ],
+      "tree": "bf457e7fa17c915a4e3b78bde0c11401ddde075e",
+      "subject": "feat: retain failed drafts through human decisions and selections",
+      "change": {
+        "files": [
+          {
+            "path": "src/semantic_reviewer/adapters/annotations.py",
+            "added": 13,
+            "deleted": 2
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/migrations/013_failed_draft_annotations.sql",
+            "added": 16,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/application/annotations.py",
+            "added": 53,
+            "deleted": 5
+          },
+          {
+            "path": "src/semantic_reviewer/application/selections.py",
+            "added": 32,
+            "deleted": 10
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/progress.html",
+            "added": 4,
+            "deleted": 2
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/selection.html",
+            "added": 3,
+            "deleted": 2
+          },
+          {
+            "path": "tests/test_failed_drafts.py",
+            "added": 239,
+            "deleted": 0
+          }
+        ],
+        "file_count": 7,
+        "added": 360,
+        "deleted": 21,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "72ca78024d2293f7f9841ffd711868a8c6ba1398",
+      "parents": [
+        "d9933b6ded1b6cbcb1e716e29cc90e3c94a3c371"
+      ],
+      "tree": "3469c9434279095e7387d512f89521d01cf64e25",
+      "subject": "feat: expose grounded correction of failed drafts in the harness",
+      "change": {
+        "files": [
+          {
+            "path": "docs/development/failed-drafts.md",
+            "added": 63,
+            "deleted": 0
+          },
+          {
+            "path": "docs/images/annotation-assessment.png",
+            "added": null,
+            "deleted": null
+          },
+          {
+            "path": "docs/images/annotation-result.png",
+            "added": null,
+            "deleted": null
+          },
+          {
+            "path": "docs/images/captures-draft-repair.json",
+            "added": 67,
+            "deleted": 0
+          },
+          {
+            "path": "docs/images/create_demo.py",
+            "added": 19,
+            "deleted": 0
+          },
+          {
+            "path": "docs/images/failed-draft-assessment.png",
+            "added": null,
+            "deleted": null
+          },
+          {
+            "path": "src/semantic_reviewer/web/app.py",
+            "added": 13,
+            "deleted": 1
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/job.html",
+            "added": 16,
+            "deleted": 9
+          },
+          {
+            "path": "tests/test_failed_draft_web.py",
+            "added": 87,
+            "deleted": 0
+          }
+        ],
+        "file_count": 9,
+        "added": 265,
+        "deleted": 10,
+        "binary_files": 3
+      }
+    },
+    {
+      "commit": "86a839341787e986dae6870673efeaf8251a41d0",
+      "parents": [
+        "72ca78024d2293f7f9841ffd711868a8c6ba1398"
+      ],
+      "tree": "005bd76ae56144287f31b5c6ff5ce6979ff105f9",
+      "subject": "docs: backfill correction guides and implementation records",
+      "change": {
+        "files": [
+          {
+            "path": "IMPLEMENTATION_BACKLOG.yaml",
+            "added": 1,
+            "deleted": 0
+          },
+          {
+            "path": "docs/adr/ADR-0013-preserve-failed-drafts-during-human-correction.md",
+            "added": 10,
+            "deleted": 7
+          },
+          {
+            "path": "docs/adr/README.md",
+            "added": 1,
+            "deleted": 1
+          },
+          {
+            "path": "docs/development/annotations.md",
+            "added": 10,
+            "deleted": 6
+          },
+          {
+            "path": "docs/development/normalisation.md",
+            "added": 3,
+            "deleted": 2
+          },
+          {
+            "path": "docs/development/selections.md",
+            "added": 4,
+            "deleted": 1
+          },
+          {
+            "path": "docs/development/study-preparation.md",
+            "added": 5,
+            "deleted": 3
+          },
+          {
+            "path": "docs/edr/0001-discovery-grouping-method.md",
+            "added": 6,
+            "deleted": 8
+          },
+          {
+            "path": "docs/edr/README.md",
+            "added": 3,
+            "deleted": 2
+          },
+          {
+            "path": "docs/images/README.md",
+            "added": 10,
+            "deleted": 4
+          },
+          {
+            "path": "docs/plans/VS2-plan.md",
+            "added": 12,
+            "deleted": 3
+          },
+          {
+            "path": "docs/slice-reviews/VS2-integration.md",
+            "added": 13,
+            "deleted": 0
+          },
+          {
+            "path": "tests/README.md",
+            "added": 8,
+            "deleted": 0
+          }
+        ],
+        "file_count": 13,
+        "added": 86,
+        "deleted": 37,
+        "binary_files": 0
+      }
+    }
+  ],
+  "linear": true,
+  "final_change": {
+    "files": [
+      {
+        "path": "IMPLEMENTATION_BACKLOG.yaml",
+        "added": 1,
+        "deleted": 0
+      },
+      {
+        "path": "docs/adr/ADR-0013-preserve-failed-drafts-during-human-correction.md",
+        "added": 73,
+        "deleted": 0
+      },
+      {
+        "path": "docs/adr/README.md",
+        "added": 1,
+        "deleted": 0
+      },
+      {
+        "path": "docs/development/annotations.md",
+        "added": 10,
+        "deleted": 6
+      },
+      {
+        "path": "docs/development/failed-drafts.md",
+        "added": 63,
+        "deleted": 0
+      },
+      {
+        "path": "docs/development/normalisation.md",
+        "added": 3,
+        "deleted": 2
+      },
+      {
+        "path": "docs/development/selections.md",
+        "added": 4,
+        "deleted": 1
+      },
+      {
+        "path": "docs/development/study-preparation.md",
+        "added": 5,
+        "deleted": 3
+      },
+      {
+        "path": "docs/edr/0001-discovery-grouping-method.md",
+        "added": 34,
+        "deleted": 9
+      },
+      {
+        "path": "docs/edr/README.md",
+        "added": 3,
+        "deleted": 2
+      },
+      {
+        "path": "docs/images/README.md",
+        "added": 10,
+        "deleted": 4
+      },
+      {
+        "path": "docs/images/annotation-assessment.png",
+        "added": null,
+        "deleted": null
+      },
+      {
+        "path": "docs/images/annotation-result.png",
+        "added": null,
+        "deleted": null
+      },
+      {
+        "path": "docs/images/captures-draft-repair.json",
+        "added": 67,
+        "deleted": 0
+      },
+      {
+        "path": "docs/images/create_demo.py",
+        "added": 19,
+        "deleted": 0
+      },
+      {
+        "path": "docs/images/failed-draft-assessment.png",
+        "added": null,
+        "deleted": null
+      },
+      {
+        "path": "docs/plans/VS2-plan.md",
+        "added": 24,
+        "deleted": 4
+      },
+      {
+        "path": "docs/slice-reviews/VS2-integration.md",
+        "added": 13,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/annotations.py",
+        "added": 13,
+        "deleted": 2
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/migrations/013_failed_draft_annotations.sql",
+        "added": 16,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/application/annotations.py",
+        "added": 53,
+        "deleted": 5
+      },
+      {
+        "path": "src/semantic_reviewer/application/selections.py",
+        "added": 32,
+        "deleted": 10
+      },
+      {
+        "path": "src/semantic_reviewer/web/app.py",
+        "added": 13,
+        "deleted": 1
+      },
+      {
+        "path": "src/semantic_reviewer/web/templates/job.html",
+        "added": 16,
+        "deleted": 9
+      },
+      {
+        "path": "src/semantic_reviewer/web/templates/progress.html",
+        "added": 4,
+        "deleted": 2
+      },
+      {
+        "path": "src/semantic_reviewer/web/templates/selection.html",
+        "added": 3,
+        "deleted": 2
+      },
+      {
+        "path": "tests/README.md",
+        "added": 8,
+        "deleted": 0
+      },
+      {
+        "path": "tests/test_failed_draft_web.py",
+        "added": 87,
+        "deleted": 0
+      },
+      {
+        "path": "tests/test_failed_drafts.py",
+        "added": 239,
+        "deleted": 0
+      }
+    ],
+    "file_count": 29,
+    "added": 814,
+    "deleted": 62,
+    "binary_files": 3
+  },
+  "statistics_note": "No rename detection; merge commit churn uses first parent. Final diff and cumulative per-commit churn are different quantities."
+}

@@ -1,0 +1,19 @@
+WORKSPACE\extras\der-checkouts\vs2-draft-repair\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_accept_provider_interrupted_and_missing_drafts_fail_closed (test_failed_drafts.FailedDraftTest.test_accept_provider_interrupted_and_missing_drafts_fail_closed) ... WORKSPACE\extras\der-checkouts\vs2-draft-repair\.venv\Lib\site-packages\yoyo\backends\base.py:411: DeprecationWarning: The default datetime adapter is deprecated as of Python 3.12; see the sqlite3 documentation for suggested replacement recipes
+  cursor.execute(sql, queryparams)
+ok
+test_concurrent_retry_is_one_event_and_conflict_cannot_overwrite (test_failed_drafts.FailedDraftTest.test_concurrent_retry_is_one_event_and_conflict_cannot_overwrite) ... ok
+test_corrected_failure_survives_restart_and_freezes_exact_human_body (test_failed_drafts.FailedDraftTest.test_corrected_failure_survives_restart_and_freezes_exact_human_body) ... ok
+test_database_fences_failed_accept_and_foreign_edit_publication (test_failed_drafts.FailedDraftTest.test_database_fences_failed_accept_and_foreign_edit_publication) ... ok
+test_event_failure_rolls_back_correction (test_failed_drafts.FailedDraftTest.test_event_failure_rolls_back_correction) ... ok
+test_invalid_schema_or_quote_cannot_create_a_decision (test_failed_drafts.FailedDraftTest.test_invalid_schema_or_quote_cannot_create_a_decision) ... ok
+test_legacy_selection_still_reads_but_null_eligible_or_v1_record_is_rejected (test_failed_drafts.FailedDraftTest.test_legacy_selection_still_reads_but_null_eligible_or_v1_record_is_rejected) ... ok
+test_progress_preserves_failure_count_and_separates_reviewed_denominators (test_failed_drafts.FailedDraftTest.test_progress_preserves_failure_count_and_separates_reviewed_denominators) ... ok
+test_rejected_failure_is_explicit_exclusion_without_invented_interpretation (test_failed_drafts.FailedDraftTest.test_rejected_failure_is_explicit_exclusion_without_invented_interpretation) ... ok
+test_selection_rechecks_original_and_edit_identity_not_just_annotation_flag (test_failed_drafts.FailedDraftTest.test_selection_rechecks_original_and_edit_identity_not_just_annotation_flag) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 11.145s
+
+OK

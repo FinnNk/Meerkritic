@@ -1,0 +1,31 @@
+{
+  "pr": "https://github.com/FinnNk/Meerkritic/pull/16",
+  "integrated": "e7726500930e79f0ba69becae5d12b77edbb5dea",
+  "ordered_tree_mapping": [
+    {
+      "reviewed": "69548cb207eeb303ddca669c7f9fb3c0c5ace43c",
+      "integrated": "3c594230b593b7d2604d6bd5cef3ba46e3bf7efe",
+      "tree": "5b871b335bca78cf1a619532b210379842c271cc"
+    },
+    {
+      "reviewed": "ec5f15f2bf5b866d141b4d4040d99d3ec599e2fc",
+      "integrated": "128515d6642807dd41b8add4203ef9483a1644d9",
+      "tree": "20b1747187bb3ca88a6adc47a8f57f3eeb4a0be9"
+    },
+    {
+      "reviewed": "dadc3bb87edefb52358003e012173c3fa4ef263c",
+      "integrated": "64c0cf8e13a3084c672f5ba1ad54dfd62d90b087",
+      "tree": "412c885afc8ed05f3968f083c2a8ff3d3f21462b"
+    },
+    {
+      "reviewed": "4b5fc59712aa62348735cb37e18b2011db8ec94f",
+      "integrated": "aeb1aa1e7118e95067b17814f0f10ee4af9488cb",
+      "tree": "44f2f9f31f83546bae72164922b49993b479507c"
+    },
+    {
+      "reviewed": "2adeb88d3bbcf1af2ee8b5c498c7a32cbe1c100c",
+      "integrated": "e7726500930e79f0ba69becae5d12b77edbb5dea",
+      "tree": "e505c09cd0bb937c1f95a34556931a9609be96cc"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "revision": "71fa5c503e80104ca576f082d5b3487bed8cd41f",
+  "runtime": "extras/screenshot-draft-repair",
+  "synthetic": true,
+  "actions": [
+    "Opened failed draft: Edit/Reject only",
+    "Submitted original invalid quote: error retained with editable draft",
+    "Expanded source: original comment and supplied code visible",
+    "Corrected exact synthetic quote and saved Edit",
+    "Verified human interpretation and annotation ID while original failed status/error remain"
+  ],
+  "annotation_id": "128c4f36-120a-47fe-b359-4ba537f35616",
+  "research_annotations_created": 0,
+  "limitations": [
+    "Two Playwright locator value reads timed out; native browser AX controls completed the interaction"
+  ]
+}

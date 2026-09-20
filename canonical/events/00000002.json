@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "sequence": 2,
+  "pair_id": "vs2-draft-repair",
+  "recorded_at": "2026-09-20T15:55:34+00:00",
+  "previous_hash": "50563ff64afb9a62c10ee822499c291aa82478441577e7bc76f46bfd1f244e0d",
+  "kind": "verification",
+  "round_id": "r1",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "/root"
+  },
+  "payload": {
+    "stage": "locally_prepared",
+    "base": "e7726500930e79f0ba69becae5d12b77edbb5dea",
+    "diary": "936a72f30bd9f97ead787cc0a0e1f8d06b9cfa01",
+    "semantic": "86a839341787e986dae6870673efeaf8251a41d0",
+    "summary": "All four exact semantic checkpoints and corrected frozen diary pass. Original failed attempts retained. Exact tracked-tree equivalence and full author self-review complete. Archive publication remains separate.",
+    "records": [
+      "vs2-draft-repair/r1/verification-summary.json",
+      "vs2-draft-repair/r1/review.json",
+      "vs2-draft-repair/r1/equivalence.json"
+    ]
+  },
+  "event_hash": "602f26cf547bfe5bc9e3593050025aac8dea9c6562abfb73c9c1e229815abef7"
+}

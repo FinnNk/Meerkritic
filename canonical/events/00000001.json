@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "sequence": 1,
+  "pair_id": "vs2-draft-repair",
+  "recorded_at": "2026-09-20T14:57:45+00:00",
+  "previous_hash": null,
+  "kind": "observation",
+  "round_id": "r1",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "/root"
+  },
+  "payload": {
+    "classification": "material",
+    "base": "e7726500930e79f0ba69becae5d12b77edbb5dea",
+    "diary": "change/vs2-draft-repair-diary",
+    "semantic": "feat/vs2-draft-repair",
+    "design": "vs2-draft-repair/r1/design.md",
+    "scope": "Human correction of retained semantic failures, source grounding and immutable original provenance; owner-approved prospective EDR amendment"
+  },
+  "event_hash": "50563ff64afb9a62c10ee822499c291aa82478441577e7bc76f46bfd1f244e0d"
+}

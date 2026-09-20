@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "images": 9,
+  "overridden_entries": [
+    "annotation-result.png",
+    "annotation-assessment.png"
+  ],
+  "captured_source_revision": "71fa5c503e80104ca576f082d5b3487bed8cd41f",
+  "fixture_git_bytes_match": true,
+  "errors": []
+}

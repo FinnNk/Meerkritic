@@ -1,0 +1,20 @@
+{
+  "added": [
+    "tests/test_failed_draft_web.py::FailedDraftWebTest::test_failed_draft_exposes_source_and_edit_reject_but_never_accept",
+    "tests/test_failed_draft_web.py::FailedDraftWebTest::test_infrastructure_failure_has_inspection_but_no_decision_controls",
+    "tests/test_failed_draft_web.py::FailedDraftWebTest::test_invalid_edit_stays_visible_then_valid_correction_preserves_failure",
+    "tests/test_failed_draft_web.py::FailedDraftWebTest::test_rejection_updates_failed_review_count_without_inventing_success",
+    "tests/test_failed_drafts.py::FailedDraftTest::test_accept_provider_interrupted_and_missing_drafts_fail_closed",
+    "tests/test_failed_drafts.py::FailedDraftTest::test_concurrent_retry_is_one_event_and_conflict_cannot_overwrite",
+    "tests/test_failed_drafts.py::FailedDraftTest::test_corrected_failure_survives_restart_and_freezes_exact_human_body",
+    "tests/test_failed_drafts.py::FailedDraftTest::test_database_fences_failed_accept_and_foreign_edit_publication",
+    "tests/test_failed_drafts.py::FailedDraftTest::test_event_failure_rolls_back_correction",
+    "tests/test_failed_drafts.py::FailedDraftTest::test_invalid_schema_or_quote_cannot_create_a_decision",
+    "tests/test_failed_drafts.py::FailedDraftTest::test_legacy_selection_still_reads_but_null_eligible_or_v1_record_is_rejected",
+    "tests/test_failed_drafts.py::FailedDraftTest::test_progress_preserves_failure_count_and_separates_reviewed_denominators",
+    "tests/test_failed_drafts.py::FailedDraftTest::test_rejected_failure_is_explicit_exclusion_without_invented_interpretation",
+    "tests/test_failed_drafts.py::FailedDraftTest::test_selection_rechecks_original_and_edit_identity_not_just_annotation_flag"
+  ],
+  "removed": [],
+  "altered": []
+}

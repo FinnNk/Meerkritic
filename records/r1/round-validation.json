@@ -1,0 +1,7 @@
+{
+  "valid": true,
+  "pair_id": "vs2-draft-repair",
+  "round_id": "r1",
+  "manifest_sha256": "07853b89f1841e5d7d4f31f8c0d28fe3595adcf768caec38ab22302616e9a739",
+  "scope": "archive_identity_and_equivalence_only"
+}

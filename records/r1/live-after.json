@@ -1,0 +1,50 @@
+{
+  "status": "passed",
+  "recorded_at": "2026-09-20T15:51:07.207862+00:00",
+  "revision": "86a839341787e986dae6870673efeaf8251a41d0",
+  "server": {
+    "port": 8010,
+    "pid": 71468,
+    "verified_equivalent_diary": "936a72f30bd9f97ead787cc0a0e1f8d06b9cfa01",
+    "checkout": "WORKSPACE/extras/der-checkouts/vs2-draft-repair-semantic",
+    "code": "86a839341787e986dae6870673efeaf8251a41d0",
+    "runtime": "WORKSPACE/extras/research/edr-0001/runtime"
+  },
+  "counts_before": {
+    "job": 55,
+    "annotation": 0,
+    "event": 331,
+    "discovery_run": 0
+  },
+  "counts_after": {
+    "job": 55,
+    "annotation": 0,
+    "event": 331,
+    "discovery_run": 0
+  },
+  "original_result_hashes_verified": 55,
+  "original_artefact_files_unchanged": 55,
+  "http_pages": [
+    {
+      "job_id": "97251567-5b87-4ff6-87dd-5f8773e17683",
+      "status": 200,
+      "actions": [
+        "accept",
+        "edit",
+        "reject"
+      ]
+    },
+    {
+      "job_id": "e5cf7f2f-574d-4d93-beb9-18b3f42b6c9c",
+      "status": 200,
+      "actions": [
+        "edit",
+        "reject"
+      ]
+    }
+  ],
+  "research_annotations_added": 0,
+  "model_calls_added": 0,
+  "first_job": "http://127.0.0.1:8010/jobs/97251567-5b87-4ff6-87dd-5f8773e17683",
+  "ordered_handoff": "WORKSPACE\\extras\\research\\edr-0001\\INPUT-REVIEW.md"
+}

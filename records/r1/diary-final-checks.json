@@ -1,0 +1,31 @@
+{
+  "label": "diary-final",
+  "revision": "35455675137c4256f12609bf0310e3688cccad5b",
+  "checkout": "WORKSPACE\\extras\\der-checkouts\\vs2-draft-repair-check-diary-final",
+  "started_at": "2026-09-20T15:28:56.055746+00:00",
+  "commands": [
+    {
+      "argv": [
+        "uv",
+        "sync",
+        "--locked",
+        "--offline",
+        "--python",
+        "HOST_USER/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "tools/check.py"
+      ],
+      "exit_code": 1
+    }
+  ],
+  "required_context": "Windows/Python 3.12/locked checkpoint environment",
+  "status": "failed"
+}

@@ -1,0 +1,9 @@
+INFO:     127.0.0.1:49952 - "GET /jobs/5bf9a790-29dd-4889-b2fe-21be3d0b17f9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49952 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63144 - "GET /jobs/7ae1efd4-9925-4b42-8db8-331582309b51 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53192 - "GET /jobs/5bf9a790-29dd-4889-b2fe-21be3d0b17f9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53192 - "POST /jobs/5bf9a790-29dd-4889-b2fe-21be3d0b17f9/annotation HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:50594 - "POST /jobs/5bf9a790-29dd-4889-b2fe-21be3d0b17f9/annotation HTTP/1.1" 303 See Other
+INFO:     127.0.0.1:50594 - "GET /jobs/5bf9a790-29dd-4889-b2fe-21be3d0b17f9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60677 - "GET /jobs/0002e0f6-19d7-434f-b8d9-2ae2d509a2fa HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61658 - "GET /jobs/7ae1efd4-9925-4b42-8db8-331582309b51 HTTP/1.1" 200 OK

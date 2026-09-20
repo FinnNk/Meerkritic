@@ -1,0 +1,17 @@
+{
+  "base": "e7726500930e79f0ba69becae5d12b77edbb5dea",
+  "diary": "936a72f30bd9f97ead787cc0a0e1f8d06b9cfa01",
+  "semantic_tree": "005bd76ae56144287f31b5c6ff5ce6979ff105f9",
+  "commits": [
+    "9e8e91d778557d497d7440b39d2802b296ad322f",
+    "d9933b6ded1b6cbcb1e716e29cc90e3c94a3c371",
+    "72ca78024d2293f7f9841ffd711868a8c6ba1398",
+    "86a839341787e986dae6870673efeaf8251a41d0"
+  ],
+  "mapping": {
+    "P1": "9e8e91d policy retained exactly",
+    "P2": "5ec8d39 backend plus diary 3545567 legacy compatibility fix",
+    "P3": "71fa5c5 UI/new guide plus 1899ea3 screenshot updates",
+    "P4": "d816b7f maintained-document backfill"
+  }
+}

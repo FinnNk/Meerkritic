@@ -1,0 +1,11 @@
+{
+  "observations": "/datasets/documentation-demo?page_size=1",
+  "annotation": "/jobs/7ae1efd4-9925-4b42-8db8-331582309b51",
+  "failed_annotation": "/jobs/5bf9a790-29dd-4889-b2fe-21be3d0b17f9",
+  "progress": "/datasets/documentation-demo/progress",
+  "selection": "/selections/3144c8dea87ff9f0c57235053aa2f372b4decb42e4620feebf75959729a82b15",
+  "discovery": "/discovery/ab6932d0-3bbe-4254-b594-d955acac1398",
+  "rule": "/rules/cd2f5d5923dd59309089a91c9f86c47b06ecf5f082f1b7a7ed15d9fc8a533886",
+  "workspace": "/review-workspace?draft_id=documentation-draft",
+  "guidance": "/guidance?version=cd2f5d5923dd59309089a91c9f86c47b06ecf5f082f1b7a7ed15d9fc8a533886"
+}

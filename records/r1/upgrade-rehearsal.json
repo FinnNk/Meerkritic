@@ -1,0 +1,437 @@
+{
+  "status": "passed",
+  "source": "dedicated study database via SQLite online backup",
+  "before": {
+    "dataset": {
+      "count": 1,
+      "sha256": "a83348f6e9d0cc8392415a68a867bdf13e508c7155c94622f2eb6406ce54e85f"
+    },
+    "routing_version": {
+      "count": 2,
+      "sha256": "9ca5cdda5e44c6e9464b1c4784d1cebb18e0165212f3a6ecbda3775764479abd"
+    },
+    "routing_decision": {
+      "count": 55,
+      "sha256": "419a0f648fd510de4b932ed999282f2d1682ef63f737d667a4a571b12e8bae9c"
+    },
+    "model_usage": {
+      "count": 55,
+      "sha256": "25a5396ff5ec634ed1ef2f8c7e749ebc5c796b7cf84b6ae99f608f981d9ca06a"
+    },
+    "event": {
+      "count": 331,
+      "sha256": "beb5d73b71984e5316afb6628047801f9dd723a87fe33a2a08b6ed398a7a52f3"
+    },
+    "job": {
+      "count": 55,
+      "sha256": "f59f53031c848e5c2f2d035b28aa6b5a922b68589503d2ff55a1649b447d6495"
+    },
+    "annotation": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "artefact": {
+      "count": 275,
+      "sha256": "63ca1153ce07f68df2a50ea3b2dae6f6626432ed32f7843856a82b6d975bdd01"
+    },
+    "job_log": {
+      "count": 55,
+      "sha256": "6c69554aafb6956f7460ca93f809ecd66ccb3b65b4dede18db03e4ca3009d84c"
+    },
+    "review_reference": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "annotation_selection": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "discovery_run": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "rule_version": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "rule_head": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "rule_evidence": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "rule_decision": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "review_task": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "review_draft": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "review_interaction": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "rule_discussion": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "guidance_batch": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    }
+  },
+  "after": {
+    "dataset": {
+      "count": 1,
+      "sha256": "a83348f6e9d0cc8392415a68a867bdf13e508c7155c94622f2eb6406ce54e85f"
+    },
+    "routing_version": {
+      "count": 2,
+      "sha256": "9ca5cdda5e44c6e9464b1c4784d1cebb18e0165212f3a6ecbda3775764479abd"
+    },
+    "routing_decision": {
+      "count": 55,
+      "sha256": "419a0f648fd510de4b932ed999282f2d1682ef63f737d667a4a571b12e8bae9c"
+    },
+    "model_usage": {
+      "count": 55,
+      "sha256": "25a5396ff5ec634ed1ef2f8c7e749ebc5c796b7cf84b6ae99f608f981d9ca06a"
+    },
+    "event": {
+      "count": 331,
+      "sha256": "beb5d73b71984e5316afb6628047801f9dd723a87fe33a2a08b6ed398a7a52f3"
+    },
+    "job": {
+      "count": 55,
+      "sha256": "f59f53031c848e5c2f2d035b28aa6b5a922b68589503d2ff55a1649b447d6495"
+    },
+    "annotation": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "artefact": {
+      "count": 275,
+      "sha256": "63ca1153ce07f68df2a50ea3b2dae6f6626432ed32f7843856a82b6d975bdd01"
+    },
+    "job_log": {
+      "count": 55,
+      "sha256": "6c69554aafb6956f7460ca93f809ecd66ccb3b65b4dede18db03e4ca3009d84c"
+    },
+    "review_reference": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "annotation_selection": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "discovery_run": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "rule_version": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "rule_head": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "rule_evidence": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "rule_decision": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "review_task": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "review_draft": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "review_interaction": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "rule_discussion": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "guidance_batch": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    }
+  },
+  "unchanged_application_tables": true,
+  "succeeded_reviewable": 33,
+  "failed_reviewable": 22,
+  "actions": {
+    "97251567-5b87-4ff6-87dd-5f8773e17683": [
+      "accept",
+      "edit",
+      "reject"
+    ],
+    "e5cf7f2f-574d-4d93-beb9-18b3f42b6c9c": [
+      "edit",
+      "reject"
+    ],
+    "1d61528e-e13a-4d58-8f74-223d439f1dec": [
+      "accept",
+      "edit",
+      "reject"
+    ],
+    "0c74bf22-4fa1-4036-ba4b-1f61de0422ad": [
+      "edit",
+      "reject"
+    ],
+    "8b41c139-89ab-4113-b9f1-c30cb49746b7": [
+      "edit",
+      "reject"
+    ],
+    "dc2061e7-f3e4-43f0-9925-8df9824172ca": [
+      "accept",
+      "edit",
+      "reject"
+    ],
+    "380723f6-be54-425f-b86a-8a9680752971": [
+      "accept",
+      "edit",
+      "reject"
+    ],
+    "359c4bbb-b103-4dcb-8f69-d4348d76bd1b": [
+      "edit",
+      "reject"
+    ],
+    "9dea72c3-8a0b-469c-a16c-8a3c1500e838": [
+      "accept",
+      "edit",
+      "reject"
+    ],
+    "5b0ed742-0315-446e-82d1-7238945ee335": [
+      "accept",
+      "edit",
+      "reject"
+    ],
+    "b9749056-2c23-4f0c-8a1e-4a88100ca6ee": [
+      "accept",
+      "edit",
+      "reject"
+    ],
+    "6e31ea0f-22e1-4c41-bd62-ab3f32e163fe": [
+      "edit",
+      "reject"
+    ],
+    "badbe9a2-9f49-47d0-a7e9-75c794caaee9": [
+      "accept",
+      "edit",
+      "reject"
+    ],
+    "8b228be6-b0ab-435a-a270-14ec8c93b631": [
+      "edit",
+      "reject"
+    ],
+    "42752b8f-969f-451c-92f7-de13a70a4fa7": [
+      "accept",
+      "edit",
+      "reject"
+    ],
+    "07992208-dfd8-4665-a9af-41a596629ff2": [
+      "edit",
+      "reject"
+    ],
+    "31214cd4-853c-4548-8f65-91cc63f5855a": [
+      "accept",
+      "edit",
+      "reject"
+    ],
+    "6c1a0dde-0c26-49f2-b432-c68935ca17ce": [
+      "accept",
+      "edit",
+      "reject"
+    ],
+    "c873f02b-1831-448e-b600-f0a74a1ea8a2": [
+      "accept",
+      "edit",
+      "reject"
+    ],
+    "6ba1b6e0-9317-4629-b286-59f01977d04e": [
+      "accept",
+      "edit",
+      "reject"
+    ],
+    "c50ff644-04ff-4462-b629-da6fd8f6a3a2": [
+      "accept",
+      "edit",
+      "reject"
+    ],
+    "829e5d6b-6f4d-4736-bbe8-b37ff5138c1c": [
+      "edit",
+      "reject"
+    ],
+    "79804ad5-41a8-4bec-889c-73cc2fe7b4dc": [
+      "edit",
+      "reject"
+    ],
+    "0b67e787-87c1-42f1-a9c7-d4caa386ae45": [
+      "accept",
+      "edit",
+      "reject"
+    ],
+    "fc25013e-5dde-4560-8d56-ae417885c99c": [
+      "edit",
+      "reject"
+    ],
+    "c1dc4447-efc6-4bb4-a91e-1d7203d61351": [
+      "edit",
+      "reject"
+    ],
+    "df663a43-169e-4c9b-8956-a20c4217c5bd": [
+      "edit",
+      "reject"
+    ],
+    "cea6ff95-6ce6-4e4e-9001-b0756efb7fad": [
+      "accept",
+      "edit",
+      "reject"
+    ],
+    "1deb7acf-6ec9-467d-a445-a6add04ef0fe": [
+      "edit",
+      "reject"
+    ],
+    "15280bf3-53b2-4de4-b26f-17ff4e8f6987": [
+      "accept",
+      "edit",
+      "reject"
+    ],
+    "ab1c4b49-4360-4586-b9af-17a4c6cbb1b7": [
+      "edit",
+      "reject"
+    ],
+    "910231fa-04f1-4be6-82d6-338b8790d1c9": [
+      "edit",
+      "reject"
+    ],
+    "d33acbf0-4e08-456d-88c0-595923ab3f33": [
+      "accept",
+      "edit",
+      "reject"
+    ],
+    "9e914466-fa90-4f89-9bc6-775c4a3a8da4": [
+      "accept",
+      "edit",
+      "reject"
+    ],
+    "d69f2391-6edc-4b80-a39a-cc65ed75817c": [
+      "accept",
+      "edit",
+      "reject"
+    ],
+    "854a191d-7d76-4b89-bd3f-ae3fd1794216": [
+      "accept",
+      "edit",
+      "reject"
+    ],
+    "b4de7cba-8415-4f4b-9f75-137568bf9c1a": [
+      "accept",
+      "edit",
+      "reject"
+    ],
+    "06c1f008-cac2-455e-8a8e-0125cb7dcaef": [
+      "accept",
+      "edit",
+      "reject"
+    ],
+    "f330251d-8ec3-4284-91cb-166164734a83": [
+      "accept",
+      "edit",
+      "reject"
+    ],
+    "fae3a9ed-ddbc-4ca4-a8ac-e382d975f8ca": [
+      "accept",
+      "edit",
+      "reject"
+    ],
+    "d77443a0-f673-4f3f-9c2b-5a3aec7f5d05": [
+      "accept",
+      "edit",
+      "reject"
+    ],
+    "3c843dc3-b6f7-412f-8a97-9dbf00ceff1a": [
+      "accept",
+      "edit",
+      "reject"
+    ],
+    "de6c3870-ac19-43ac-b547-b8d732f231fd": [
+      "edit",
+      "reject"
+    ],
+    "2cb6b10e-4931-4a1d-b298-3fa86a57c1c5": [
+      "edit",
+      "reject"
+    ],
+    "81fa3440-41eb-4a91-bfc7-af1739d143c2": [
+      "accept",
+      "edit",
+      "reject"
+    ],
+    "632b3f3c-de37-4537-87f3-c8fc8b61a05a": [
+      "accept",
+      "edit",
+      "reject"
+    ],
+    "5a1808b1-2b80-466c-a662-acd575e9bf61": [
+      "accept",
+      "edit",
+      "reject"
+    ],
+    "2565d572-e584-4f93-b2b2-18858317faa8": [
+      "edit",
+      "reject"
+    ],
+    "a6fa73ab-d28d-4309-ac0a-0ba4ce1628a9": [
+      "accept",
+      "edit",
+      "reject"
+    ],
+    "3521c8c1-91f4-4420-bea2-a0221c7fd8e6": [
+      "accept",
+      "edit",
+      "reject"
+    ],
+    "a4421979-e9f8-43e3-9776-3ce6ec50d9de": [
+      "accept",
+      "edit",
+      "reject"
+    ],
+    "c3e8a331-9da2-4952-8faf-c45b9232512a": [
+      "edit",
+      "reject"
+    ],
+    "bc59a99f-7a6b-46bd-b4dd-6f750e1ea4f6": [
+      "edit",
+      "reject"
+    ],
+    "b9fc3100-8dac-4b2f-af91-da0f04409ffa": [
+      "edit",
+      "reject"
+    ],
+    "28bffcfc-36bd-4bf0-bf69-44d756bb81a0": [
+      "edit",
+      "reject"
+    ]
+  },
+  "research_annotations": 0,
+  "model_calls": 0,
+  "revision": "1899ea3893b62ac497f15e3e77a06c3371e35bce"
+}
