@@ -76,7 +76,9 @@ def main() -> int:
             result = (
                 jobs.jobs.log(args.job_id)
                 if args.command == "job-log"
-                else {"indexed": jobs.results.index_referenced()}
+                else {
+                    "indexed": composition.build_artefact_index(args.data_root).index_referenced()
+                }
             )
             print(json.dumps(result, indent=2))
         elif args.command in ("normalise", "jobs"):

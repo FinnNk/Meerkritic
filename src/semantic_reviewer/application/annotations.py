@@ -5,6 +5,7 @@ from datetime import UTC, datetime
 from typing import Literal, Protocol
 from uuid import uuid4
 
+from semantic_reviewer.application.artefacts import Publication
 from semantic_reviewer.application.jobs import JobService
 from semantic_reviewer.domain.normalisation import IssueInterpretation, ground
 
@@ -89,7 +90,8 @@ class AnnotationService:
                     "observation_id": job.observation_id,
                     "interpretation": interpretation.model_dump(mode="json"),
                     "evidence_spans": [asdict(span) for span in spans],
-                }
+                },
+                Publication(job.id, "human_edit"),
             )
         return self.store.record(
             Annotation(

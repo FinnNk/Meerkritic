@@ -5,6 +5,7 @@ import unittest
 import test_jobs
 from fastapi.testclient import TestClient
 
+from semantic_reviewer.application.artefacts import Publication
 from semantic_reviewer.web.app import create_app
 
 
@@ -52,7 +53,8 @@ class JobWebTest(unittest.TestCase):
         job = self.queue.enqueue(self.source.id, 0)
         claimed = self.jobs.claim("test")
         digest = self.results.publish(
-            {"telemetry": "local", "interpretation": None, "response": "<script>bad()</script>"}
+            {"telemetry": "local", "interpretation": None, "response": "<script>bad()</script>"},
+            Publication(job.id, "normalisation"),
         )
         self.jobs.finish(claimed, digest, "Output failed evidence validation.")
         response = self.client.get(f"/jobs/{job.id}")

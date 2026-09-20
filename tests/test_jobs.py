@@ -18,6 +18,7 @@ from semantic_reviewer.adapters.maf import MafWorkflowRunner
 from semantic_reviewer.adapters.results import JsonResults
 from semantic_reviewer.adapters.routing_journal import SQLiteRoutingJournal
 from semantic_reviewer.adapters.worker_lock import worker_lock
+from semantic_reviewer.application.artefacts import Publication
 from semantic_reviewer.application.jobs import JobService
 from semantic_reviewer.application.routing import RoutingService
 from semantic_reviewer.routing.selection import RoutingConfig
@@ -28,7 +29,7 @@ class JobsTest(unittest.TestCase):
         test_datasets.DatasetTest.setUp(self)
         self.service.register(self.source.id)
         self.jobs = SQLiteJobs(self.database)
-        self.results = JsonResults(self.root / "results")
+        self.results = JsonResults(self.root / "results", self.database)
         self.queue = JobService(self.service, self.jobs, self.results)
 
     def test_invalid_completion_cannot_create_success_or_event(self):
@@ -108,8 +109,13 @@ class JobsTest(unittest.TestCase):
 
     def test_result_publication_is_immutable_and_detects_tampering(self):
         value = {"source": "public synthetic", "interpretation": "<script>bad</script>"}
-        digest = self.results.publish(value)
-        self.assertEqual(self.results.publish(value), digest)
+        job = self.queue.enqueue(self.source.id, 0)
+        publication = Publication(job.id, "normalisation")
+        with self.assertRaises(ValueError):
+            self.results.publish([value], publication)
+        self.assertEqual(list(self.results.root.iterdir()), [])
+        digest = self.results.publish(value, publication)
+        self.assertEqual(self.results.publish(value, publication), digest)
         self.assertEqual(self.results.read(digest), value)
         (self.results.root / (digest + ".json")).write_text("{}")
         with self.assertRaisesRegex(ValueError, "checksum"):
