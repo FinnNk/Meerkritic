@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "sequence": 4,
+  "pair_id": "vs2-inputs",
+  "recorded_at": "2026-09-20T06:46:41+00:00",
+  "previous_hash": "91f413f484028020fe37a840f8d9e95c8489725db1dadc70d49c7af9ad93d2f8",
+  "kind": "verification",
+  "round_id": "r2",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "vs2-inputs-2026-09-20"
+  },
+  "payload": {
+    "stage": "locally_prepared",
+    "base": "fa6856bff52efecba55700572cb10e67f9a8f3c0",
+    "diary": "e0cd75f2f4c4bfd9128d4182fbd5809bbb7b85f0",
+    "semantic": "068376980510d4e32004583efb11c6e2d0c9b2be",
+    "feedback": "https://github.com/FinnNk/Meerkritic/pull/10#issuecomment-5748182724",
+    "disposition": "accepted; separate guidance commit and PR description application",
+    "checks": "115 tests and canonical gates pass for new diary/semantic; original checkpoints unchanged",
+    "approval": false
+  },
+  "event_hash": "fe5f7398f140c307261cb6b98e4d61a0d13ae6a7f9f5bd1a41a71a9daa642ccd"
+}

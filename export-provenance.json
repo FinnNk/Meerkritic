@@ -1,0 +1,112 @@
+[
+  {
+    "file": "r2/changes.md",
+    "source_sha256": "0bd523266760d1b7bb0ea356cf50dc77e7ff8b4f59adeeddccadc5ba666eeb71",
+    "export_sha256": "7d33a63591cc96ce52f3bca81319f2436e8544d8c05a77565b815bf28ae459e1"
+  },
+  {
+    "file": "r2/check-round.json",
+    "source_sha256": "f2aec3015c0b96288a1be472579411164f1069a8374eef01b39483d2678f4d2a",
+    "export_sha256": "e41b00ba7e48787acaea0b6d4bf3826c096e6003f61c4bc552b168598d582481"
+  },
+  {
+    "file": "r2/comments.json",
+    "source_sha256": "150b89f0d75782f84725ef8dd2080ea2f7bb3e864fbdb74c72349d987ae8d432",
+    "export_sha256": "150b89f0d75782f84725ef8dd2080ea2f7bb3e864fbdb74c72349d987ae8d432"
+  },
+  {
+    "file": "r2/equivalence.json",
+    "source_sha256": "bdc673d843c1f5f28a08d819ccc3bbfd7be17756f5676dfd46afe306a01272a4",
+    "export_sha256": "e362149b7d48d4efb2e182d49057a410dc384993955ad37af875e2fc2d39d6e6"
+  },
+  {
+    "file": "r2/inline.json",
+    "source_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "export_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+  },
+  {
+    "file": "r2/pr-before.json",
+    "source_sha256": "f60fddfa4dc86f3f400ae9fba403ec5349eec59ed1bfc0a268373149ec23f3ca",
+    "export_sha256": "f60fddfa4dc86f3f400ae9fba403ec5349eec59ed1bfc0a268373149ec23f3ca"
+  },
+  {
+    "file": "r2/pr-description-draft.md",
+    "source_sha256": "780cb751b6f9731647b8f8a9901263c25ec7b268288d693fccc38b55a9a5e9b4",
+    "export_sha256": "5ceb2d87248b6afd78e13fc30378826f123a14425c281252cd3bf03f85adeae4"
+  },
+  {
+    "file": "r2/prepared-event.json",
+    "source_sha256": "bc8781296379344f841746fafa7dfe991302044fe7113f1416242c9c51127405",
+    "export_sha256": "be31b26a5f6316cbca8c9e11e188faa1950d9dc365d374f64c753eaeb05b4cb7"
+  },
+  {
+    "file": "r2/prepared-ledger.json",
+    "source_sha256": "9252ee0f02b1bbc07b02aa1818ea52818a5645c4f4b43386a44c397e6de4b7e8",
+    "export_sha256": "43d2adb5ad05580fe9d7c36eb4c9652d11707dbed90202b67c7c73e71c63cf22"
+  },
+  {
+    "file": "r2/r2-diary-checks.json",
+    "source_sha256": "07b18a38d223b2e7fa8f195067d5b19d47a0e377daac70f1007c26b9689ba799",
+    "export_sha256": "7c955902b21fd1fc5b23fa02cc682342ca75984105cd24ffbe780ebb16231977"
+  },
+  {
+    "file": "r2/r2-diary-checks.log",
+    "source_sha256": "c0ac9c76a81e56965938c0ae72912470273a2b481f5b4382e61d27e0a6356b1e",
+    "export_sha256": "38998aae72f59a7c6a934182db04d5b1c5483f816c253659484d8d7e54824c64"
+  },
+  {
+    "file": "r2/r2-p4-checks.json",
+    "source_sha256": "30b2f502283428ece85fe1bad029d2aaccf27b508c1e6b0950e25a94809476b7",
+    "export_sha256": "8970a5fde5fef887182b8eb5bcd551df1ad7f59a927272bcaabf8f5848ead1ca"
+  },
+  {
+    "file": "r2/r2-p4-checks.log",
+    "source_sha256": "6bcb2e2e97dcd6fa9a268edace2aaf8227c7629c738a9cd3c5289191a95a738f",
+    "export_sha256": "1a44f3eb70006e7b9a2d99d683b6c465266b12b75c0359ec2e355496abfc05db"
+  },
+  {
+    "file": "r2/range-diff.txt",
+    "source_sha256": "4ff4738fe0ec6f0f43e96fb398ca2cc6d68595aae4a98ae933fcf1e89ea34b59",
+    "export_sha256": "4ff4738fe0ec6f0f43e96fb398ca2cc6d68595aae4a98ae933fcf1e89ea34b59"
+  },
+  {
+    "file": "r2/review-notes.md",
+    "source_sha256": "fb9617b6b5eddba84e48cc5bf92102d194a353d256dfb42e349d5697c4c10d61",
+    "export_sha256": "aab6e6f25359b5fea34dfaddefd35c773a7931278e5e36f95913582cf7e0048b"
+  },
+  {
+    "file": "r2/review-validation.json",
+    "source_sha256": "8222ed8f92c1de0df8456eb036275fe42318a792a72eee39289c2261f9e0cb07",
+    "export_sha256": "eaf19ee439bee2d850e9f636af546c43eec84d66836f80950ca979428da47ff8"
+  },
+  {
+    "file": "r2/review.json",
+    "source_sha256": "5b2cfe00fd67ab8e2096eaafb7d59ea93719a261e1bef7f9489ad9adeff85fef",
+    "export_sha256": "c0f3ca5e8123aadff599033b515c9abf8b49b159431f028fe7484244fc185cf2"
+  },
+  {
+    "file": "r2/reviews.json",
+    "source_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "export_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+  },
+  {
+    "file": "r2/semantic-tip.json",
+    "source_sha256": "29b29b096e3567370714b3a2494764a015236d32e2fce5c75e272a072ebd2a26",
+    "export_sha256": "7881b6a7e81992927360d690de69aec7a4e61ab8813701c9aa2bac24c6e3524d"
+  },
+  {
+    "file": "r2/timeline.json",
+    "source_sha256": "f0d9582d2fefe493e6f5329b82371fc46026d2dfa7f93f5a93861a931529a0aa",
+    "export_sha256": "f0d9582d2fefe493e6f5329b82371fc46026d2dfa7f93f5a93861a931529a0aa"
+  },
+  {
+    "file": "r2/verification-summary.json",
+    "source_sha256": "675c29d8a514359f46e0a2085c443bc782f36af5aee99825eb2b0ecca7cf8488",
+    "export_sha256": "75e9b89428af6712f80966663a706bc7256cb7978a313a42700bacbd9fa00def"
+  },
+  {
+    "file": "r2/verify.py",
+    "source_sha256": "4c958f169fb32e1e8c03098c1d41c896daa9b1bf1f587fb1474a83d0d3a36ac4",
+    "export_sha256": "a681c4c45355e989c4f3d2f98c97f7a00e85e806f67af2b94261bffec17e04ae"
+  }
+]

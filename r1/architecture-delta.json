@@ -1,0 +1,390 @@
+{
+  "changes": {
+    "boundaries": {
+      "added": [],
+      "removed": []
+    },
+    "contracts": {
+      "added": [],
+      "removed": []
+    },
+    "imports": {
+      "added": [
+        {
+          "source": "semantic_reviewer.adapters.selections",
+          "target": "dataclasses"
+        },
+        {
+          "source": "semantic_reviewer.adapters.selections",
+          "target": "datetime"
+        },
+        {
+          "source": "semantic_reviewer.adapters.selections",
+          "target": "hashlib"
+        },
+        {
+          "source": "semantic_reviewer.adapters.selections",
+          "target": "json"
+        },
+        {
+          "source": "semantic_reviewer.adapters.selections",
+          "target": "os"
+        },
+        {
+          "source": "semantic_reviewer.adapters.selections",
+          "target": "pathlib"
+        },
+        {
+          "source": "semantic_reviewer.adapters.selections",
+          "target": "re"
+        },
+        {
+          "source": "semantic_reviewer.adapters.selections",
+          "target": "semantic_reviewer.adapters.state"
+        },
+        {
+          "source": "semantic_reviewer.adapters.selections",
+          "target": "semantic_reviewer.application.selections"
+        },
+        {
+          "source": "semantic_reviewer.adapters.selections",
+          "target": "tempfile"
+        },
+        {
+          "source": "semantic_reviewer.application.selections",
+          "target": "dataclasses"
+        },
+        {
+          "source": "semantic_reviewer.application.selections",
+          "target": "json"
+        },
+        {
+          "source": "semantic_reviewer.application.selections",
+          "target": "pydantic"
+        },
+        {
+          "source": "semantic_reviewer.application.selections",
+          "target": "semantic_reviewer.application.annotations"
+        },
+        {
+          "source": "semantic_reviewer.application.selections",
+          "target": "semantic_reviewer.application.artefacts"
+        },
+        {
+          "source": "semantic_reviewer.application.selections",
+          "target": "semantic_reviewer.application.datasets"
+        },
+        {
+          "source": "semantic_reviewer.application.selections",
+          "target": "semantic_reviewer.domain.datasets"
+        },
+        {
+          "source": "semantic_reviewer.application.selections",
+          "target": "semantic_reviewer.domain.normalisation"
+        },
+        {
+          "source": "semantic_reviewer.application.selections",
+          "target": "typing"
+        },
+        {
+          "source": "semantic_reviewer.bootstrap",
+          "target": "semantic_reviewer.adapters.selections"
+        },
+        {
+          "source": "semantic_reviewer.bootstrap",
+          "target": "semantic_reviewer.application.selections"
+        },
+        {
+          "source": "semantic_reviewer.web.app",
+          "target": "semantic_reviewer.application.selections"
+        }
+      ],
+      "removed": []
+    },
+    "interfaces": {
+      "added": [
+        {
+          "declaration": "@model_validator(mode='after') def validate_choices(self) -> Self",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.selections.SelectionRequest.validate_choices"
+        },
+        {
+          "declaration": "@model_validator(mode='after') def validate_identity(self) -> Self",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.selections.SelectionSnapshot.validate_identity"
+        },
+        {
+          "declaration": "annotation: Annotation",
+          "kind": "field",
+          "name": "semantic_reviewer.application.selections.SelectedAnnotation.annotation"
+        },
+        {
+          "declaration": "annotation_ids: tuple[str, ...] = Field(min_length=1, max_length=100)",
+          "kind": "field",
+          "name": "semantic_reviewer.application.selections.SelectionRequest.annotation_ids"
+        },
+        {
+          "declaration": "class JsonSelections()",
+          "kind": "class",
+          "name": "semantic_reviewer.adapters.selections.JsonSelections"
+        },
+        {
+          "declaration": "class SelectedAnnotation(BaseModel)",
+          "kind": "class",
+          "name": "semantic_reviewer.application.selections.SelectedAnnotation"
+        },
+        {
+          "declaration": "class SelectionRequest(BaseModel)",
+          "kind": "class",
+          "name": "semantic_reviewer.application.selections.SelectionRequest"
+        },
+        {
+          "declaration": "class SelectionService()",
+          "kind": "class",
+          "name": "semantic_reviewer.application.selections.SelectionService"
+        },
+        {
+          "declaration": "class SelectionSnapshot(BaseModel)",
+          "kind": "class",
+          "name": "semantic_reviewer.application.selections.SelectionSnapshot"
+        },
+        {
+          "declaration": "class SelectionStore(Protocol)",
+          "kind": "class",
+          "name": "semantic_reviewer.application.selections.SelectionStore"
+        },
+        {
+          "declaration": "class SelectionSummary()",
+          "kind": "class",
+          "name": "semantic_reviewer.application.selections.SelectionSummary"
+        },
+        {
+          "declaration": "created_at: str",
+          "kind": "field",
+          "name": "semantic_reviewer.application.selections.SelectionSummary.created_at"
+        },
+        {
+          "declaration": "curator: str | None = Field(default=None, min_length=1, max_length=200)",
+          "kind": "field",
+          "name": "semantic_reviewer.application.selections.SelectionRequest.curator"
+        },
+        {
+          "declaration": "dataset: Dataset",
+          "kind": "field",
+          "name": "semantic_reviewer.application.selections.SelectionSnapshot.dataset"
+        },
+        {
+          "declaration": "dataset_id: str = Field(min_length=1, max_length=200)",
+          "kind": "field",
+          "name": "semantic_reviewer.application.selections.SelectionRequest.dataset_id"
+        },
+        {
+          "declaration": "dataset_id: str",
+          "kind": "field",
+          "name": "semantic_reviewer.application.selections.SelectionSummary.dataset_id"
+        },
+        {
+          "declaration": "def __init__(self, annotations: AnnotationStore, jobs: JobReader, datasets: DatasetService, results: ResultStore, store: SelectionStore) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.selections.SelectionService.__init__"
+        },
+        {
+          "declaration": "def __init__(self, root: Path, database: Path) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.selections.JsonSelections.__init__"
+        },
+        {
+          "declaration": "def build_selections(data_root: Path) -> SelectionService",
+          "kind": "callable",
+          "name": "semantic_reviewer.bootstrap.build_selections"
+        },
+        {
+          "declaration": "def by_id(self, annotation_id: str) -> Annotation | None",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.annotations.SQLiteAnnotations.by_id"
+        },
+        {
+          "declaration": "def by_id(self, annotation_id: str) -> Annotation | None",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.annotations.AnnotationStore.by_id"
+        },
+        {
+          "declaration": "def create_app(datasets: DatasetService, jobs: JobService | None=None, annotations: AnnotationService | None=None, reviews: ReviewIndex | None=None, selections: SelectionStore | None=None) -> FastAPI",
+          "kind": "callable",
+          "name": "semantic_reviewer.web.app.create_app"
+        },
+        {
+          "declaration": "def freeze(self, request: SelectionRequest) -> SelectionSummary",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.selections.SelectionService.freeze"
+        },
+        {
+          "declaration": "def publish(self, snapshot: SelectionSnapshot) -> SelectionSummary",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.selections.JsonSelections.publish"
+        },
+        {
+          "declaration": "def publish(self, snapshot: SelectionSnapshot) -> SelectionSummary",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.selections.SelectionStore.publish"
+        },
+        {
+          "declaration": "def read(self, selection_id: str) -> tuple[SelectionSummary, SelectionSnapshot]",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.selections.JsonSelections.read"
+        },
+        {
+          "declaration": "def read(self, selection_id: str) -> tuple[SelectionSummary, SelectionSnapshot]",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.selections.SelectionStore.read"
+        },
+        {
+          "declaration": "def recent(self, page: int=1) -> tuple[SelectionSummary, ...]",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.selections.JsonSelections.recent"
+        },
+        {
+          "declaration": "def recent(self, page: int=1) -> tuple[SelectionSummary, ...]",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.selections.SelectionStore.recent"
+        },
+        {
+          "declaration": "eligibility_policy: Literal['explicit-accept-edit-v1'] = 'explicit-accept-edit-v1'",
+          "kind": "field",
+          "name": "semantic_reviewer.application.selections.SelectionSnapshot.eligibility_policy"
+        },
+        {
+          "declaration": "excluded: int",
+          "kind": "field",
+          "name": "semantic_reviewer.application.selections.SelectionSummary.excluded"
+        },
+        {
+          "declaration": "exclusion: Literal['rejected_interpretation', 'holdout_repository'] | None",
+          "kind": "field",
+          "name": "semantic_reviewer.application.selections.SelectedAnnotation.exclusion"
+        },
+        {
+          "declaration": "holdout_repositories: tuple[str, ...] = Field(max_length=1000)",
+          "kind": "field",
+          "name": "semantic_reviewer.application.selections.SelectionRequest.holdout_repositories"
+        },
+        {
+          "declaration": "human_review_attested: bool = Field(default=False, strict=True)",
+          "kind": "field",
+          "name": "semantic_reviewer.application.selections.SelectionRequest.human_review_attested"
+        },
+        {
+          "declaration": "id: str",
+          "kind": "field",
+          "name": "semantic_reviewer.application.selections.SelectionSummary.id"
+        },
+        {
+          "declaration": "included: int",
+          "kind": "field",
+          "name": "semantic_reviewer.application.selections.SelectionSummary.included"
+        },
+        {
+          "declaration": "interpretation: IssueInterpretation",
+          "kind": "field",
+          "name": "semantic_reviewer.application.selections.SelectedAnnotation.interpretation"
+        },
+        {
+          "declaration": "purpose: Literal['fixture', 'research']",
+          "kind": "field",
+          "name": "semantic_reviewer.application.selections.SelectionRequest.purpose"
+        },
+        {
+          "declaration": "purpose: Literal['fixture', 'research']",
+          "kind": "field",
+          "name": "semantic_reviewer.application.selections.SelectionSummary.purpose"
+        },
+        {
+          "declaration": "records: tuple[SelectedAnnotation, ...] = Field(min_length=1, max_length=100)",
+          "kind": "field",
+          "name": "semantic_reviewer.application.selections.SelectionSnapshot.records"
+        },
+        {
+          "declaration": "request: SelectionRequest",
+          "kind": "field",
+          "name": "semantic_reviewer.application.selections.SelectionSnapshot.request"
+        },
+        {
+          "declaration": "schema_version: Literal[1] = 1",
+          "kind": "field",
+          "name": "semantic_reviewer.application.selections.SelectionSnapshot.schema_version"
+        },
+        {
+          "declaration": "source: Observation",
+          "kind": "field",
+          "name": "semantic_reviewer.application.selections.SelectedAnnotation.source"
+        }
+      ],
+      "removed": [
+        {
+          "declaration": "def create_app(datasets: DatasetService, jobs: JobService | None=None, annotations: AnnotationService | None=None, reviews: ReviewIndex | None=None) -> FastAPI",
+          "kind": "callable",
+          "name": "semantic_reviewer.web.app.create_app"
+        }
+      ]
+    },
+    "modules": {
+      "added": [
+        {
+          "definitions": [
+            "JsonSelections"
+          ],
+          "name": "semantic_reviewer.adapters.selections",
+          "package": false,
+          "path": "src/semantic_reviewer/adapters/selections.py"
+        },
+        {
+          "definitions": [
+            "SelectedAnnotation",
+            "SelectionRequest",
+            "SelectionService",
+            "SelectionSnapshot",
+            "SelectionStore",
+            "SelectionSummary",
+            "_exclusion"
+          ],
+          "name": "semantic_reviewer.application.selections",
+          "package": false,
+          "path": "src/semantic_reviewer/application/selections.py"
+        },
+        {
+          "definitions": [
+            "build_annotations",
+            "build_artefact_index",
+            "build_datasets",
+            "build_jobs",
+            "build_review_index",
+            "build_selections",
+            "build_worker",
+            "runtime_path"
+          ],
+          "name": "semantic_reviewer.bootstrap",
+          "package": false,
+          "path": "src/semantic_reviewer/bootstrap.py"
+        }
+      ],
+      "removed": [
+        {
+          "definitions": [
+            "build_annotations",
+            "build_artefact_index",
+            "build_datasets",
+            "build_jobs",
+            "build_review_index",
+            "build_worker",
+            "runtime_path"
+          ],
+          "name": "semantic_reviewer.bootstrap",
+          "package": false,
+          "path": "src/semantic_reviewer/bootstrap.py"
+        }
+      ]
+    },
+    "settings": {}
+  },
+  "schema_version": 2
+}

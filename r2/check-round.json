@@ -1,0 +1,16 @@
+{
+  "valid": true,
+  "pair_id": "vs2-inputs",
+  "round_id": "r2",
+  "manifest_sha256": "ae91f8342772dfd5ae4f87768abde29c67b24483c6b7f8e0dadd11b9b9d70554",
+  "scope": "archive_identity_and_equivalence_only",
+  "current_checkout": {
+    "repository": "$WORKSPACE\\extras\\der-checkouts\\vs2-inputs-archive",
+    "bare": false,
+    "head": "f669491ca9890796fa4d8723f733506669c9b96a",
+    "branch": "change/vs2-inputs-diary",
+    "clean": true,
+    "changes": [],
+    "tree": "914e149eb3cb593ef314816e7964e8c8999c4d2c"
+  }
+}

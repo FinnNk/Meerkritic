@@ -1,0 +1,199 @@
+$WORKSPACE\extras\der-checkouts\vs2-inputs\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+$WORKSPACE\extras\der-checkouts\vs2-inputs\.venv\Lib\site-packages\yoyo\backends\base.py:411: DeprecationWarning: The default datetime adapter is deprecated as of Python 3.12; see the sqlite3 documentation for suggested replacement recipes
+  cursor.execute(sql, queryparams)
+EFEE.EEEE
+======================================================================
+ERROR: test_changed_original_edit_or_source_fails_before_registration (test_selections.SelectionsTest.test_changed_original_edit_or_source_fails_before_registration)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "$WORKSPACE\extras\der-checkouts\vs2-inputs\tests\test_selections.py", line 114, in test_changed_original_edit_or_source_fails_before_registration
+    original = path.read_bytes()
+               ^^^^^^^^^^^^^^^^^
+  File "$USER_HOME\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py", line 1019, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "$USER_HOME\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '$WORKSPACE\\extras\\der-tmp\\tmpozpzh4s7\\datasets\\53fc1563d026f4728ce308bb1a4b69910ae7adba6ee2aef31c547a8339d94a5b.parquet'
+
+======================================================================
+ERROR: test_concurrent_identical_freeze_is_one_event_and_changed_input_has_new_identity (test_selections.SelectionsTest.test_concurrent_identical_freeze_is_one_event_and_changed_input_has_new_identity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "$WORKSPACE\extras\der-checkouts\vs2-inputs\tests\test_selections.py", line 127, in test_concurrent_identical_freeze_is_one_event_and_changed_input_has_new_identity
+    summaries = list(pool.map(self.selections.freeze, [request, request]))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "$USER_HOME\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\concurrent\futures\_base.py", line 619, in result_iterator
+    yield _result_or_cancel(fs.pop())
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "$USER_HOME\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\concurrent\futures\_base.py", line 317, in _result_or_cancel
+    return fut.result(timeout)
+           ^^^^^^^^^^^^^^^^^^^
+  File "$USER_HOME\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\concurrent\futures\_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "$USER_HOME\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "$USER_HOME\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "$WORKSPACE\extras\der-checkouts\vs2-inputs\src\semantic_reviewer\application\selections.py", line 209, in freeze
+    interpretation = IssueInterpretation.model_validate(body.get("interpretation"))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "$WORKSPACE\extras\der-checkouts\vs2-inputs\.venv\Lib\site-packages\pydantic\main.py", line 732, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pydantic_core._pydantic_core.ValidationError: 3 validation errors for IssueInterpretation
+coarse_categories
+  Input should be a valid tuple [type=tuple_type, input_value=['maintainability'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.13/v/tuple_type
+evidence_quotes
+  Input should be a valid tuple [type=tuple_type, input_value=[], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.13/v/tuple_type
+exclusions
+  Input should be a valid tuple [type=tuple_type, input_value=[], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.13/v/tuple_type
+
+======================================================================
+ERROR: test_corrupt_snapshot_read_and_retry_fail_closed_without_repair (test_selections.SelectionsTest.test_corrupt_snapshot_read_and_retry_fail_closed_without_repair)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "$WORKSPACE\extras\der-checkouts\vs2-inputs\tests\test_selections.py", line 162, in test_corrupt_snapshot_read_and_retry_fail_closed_without_repair
+    summary = self.selections.freeze(request)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "$WORKSPACE\extras\der-checkouts\vs2-inputs\src\semantic_reviewer\application\selections.py", line 209, in freeze
+    interpretation = IssueInterpretation.model_validate(body.get("interpretation"))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "$WORKSPACE\extras\der-checkouts\vs2-inputs\.venv\Lib\site-packages\pydantic\main.py", line 732, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pydantic_core._pydantic_core.ValidationError: 3 validation errors for IssueInterpretation
+coarse_categories
+  Input should be a valid tuple [type=tuple_type, input_value=['maintainability'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.13/v/tuple_type
+evidence_quotes
+  Input should be a valid tuple [type=tuple_type, input_value=[], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.13/v/tuple_type
+exclusions
+  Input should be a valid tuple [type=tuple_type, input_value=[], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.13/v/tuple_type
+
+======================================================================
+ERROR: test_effective_edit_source_identity_uncertainty_and_exclusions_survive_restart (test_selections.SelectionsTest.test_effective_edit_source_identity_uncertainty_and_exclusions_survive_restart)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "$WORKSPACE\extras\der-checkouts\vs2-inputs\tests\test_selections.py", line 53, in test_effective_edit_source_identity_uncertainty_and_exclusions_survive_restart
+    first = self.selections.freeze(request)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "$WORKSPACE\extras\der-checkouts\vs2-inputs\src\semantic_reviewer\application\selections.py", line 209, in freeze
+    interpretation = IssueInterpretation.model_validate(body.get("interpretation"))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "$WORKSPACE\extras\der-checkouts\vs2-inputs\.venv\Lib\site-packages\pydantic\main.py", line 732, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pydantic_core._pydantic_core.ValidationError: 3 validation errors for IssueInterpretation
+coarse_categories
+  Input should be a valid tuple [type=tuple_type, input_value=['maintainability'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.13/v/tuple_type
+evidence_quotes
+  Input should be a valid tuple [type=tuple_type, input_value=[], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.13/v/tuple_type
+exclusions
+  Input should be a valid tuple [type=tuple_type, input_value=[], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.13/v/tuple_type
+
+======================================================================
+ERROR: test_event_failure_leaves_only_complete_orphan_then_retry_registers_once (test_selections.SelectionsTest.test_event_failure_leaves_only_complete_orphan_then_retry_registers_once)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "$WORKSPACE\extras\der-checkouts\vs2-inputs\tests\test_selections.py", line 152, in test_event_failure_leaves_only_complete_orphan_then_retry_registers_once
+    self.selections.freeze(self.request(chosen))
+  File "$WORKSPACE\extras\der-checkouts\vs2-inputs\src\semantic_reviewer\application\selections.py", line 209, in freeze
+    interpretation = IssueInterpretation.model_validate(body.get("interpretation"))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "$WORKSPACE\extras\der-checkouts\vs2-inputs\.venv\Lib\site-packages\pydantic\main.py", line 732, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pydantic_core._pydantic_core.ValidationError: 3 validation errors for IssueInterpretation
+coarse_categories
+  Input should be a valid tuple [type=tuple_type, input_value=['maintainability'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.13/v/tuple_type
+evidence_quotes
+  Input should be a valid tuple [type=tuple_type, input_value=[], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.13/v/tuple_type
+exclusions
+  Input should be a valid tuple [type=tuple_type, input_value=[], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.13/v/tuple_type
+
+======================================================================
+ERROR: test_only_declared_job_port_is_needed_and_source_pagination_does_not_leak (test_selections.SelectionsTest.test_only_declared_job_port_is_needed_and_source_pagination_does_not_leak)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "$WORKSPACE\extras\der-checkouts\vs2-inputs\tests\test_selections.py", line 189, in test_only_declared_job_port_is_needed_and_source_pagination_does_not_leak
+    self.assertEqual(service.freeze(self.request(chosen)).included, 1)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "$WORKSPACE\extras\der-checkouts\vs2-inputs\src\semantic_reviewer\application\selections.py", line 209, in freeze
+    interpretation = IssueInterpretation.model_validate(body.get("interpretation"))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "$WORKSPACE\extras\der-checkouts\vs2-inputs\.venv\Lib\site-packages\pydantic\main.py", line 732, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pydantic_core._pydantic_core.ValidationError: 3 validation errors for IssueInterpretation
+coarse_categories
+  Input should be a valid tuple [type=tuple_type, input_value=['maintainability'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.13/v/tuple_type
+evidence_quotes
+  Input should be a valid tuple [type=tuple_type, input_value=[], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.13/v/tuple_type
+exclusions
+  Input should be a valid tuple [type=tuple_type, input_value=[], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.13/v/tuple_type
+
+======================================================================
+ERROR: test_research_attestation_is_explicit_and_holdouts_are_excluded (test_selections.SelectionsTest.test_research_attestation_is_explicit_and_holdouts_are_excluded)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "$WORKSPACE\extras\der-checkouts\vs2-inputs\tests\test_selections.py", line 87, in test_research_attestation_is_explicit_and_holdouts_are_excluded
+    summary = self.selections.freeze(request)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "$WORKSPACE\extras\der-checkouts\vs2-inputs\src\semantic_reviewer\application\selections.py", line 209, in freeze
+    interpretation = IssueInterpretation.model_validate(body.get("interpretation"))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "$WORKSPACE\extras\der-checkouts\vs2-inputs\.venv\Lib\site-packages\pydantic\main.py", line 732, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pydantic_core._pydantic_core.ValidationError: 3 validation errors for IssueInterpretation
+coarse_categories
+  Input should be a valid tuple [type=tuple_type, input_value=['maintainability'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.13/v/tuple_type
+evidence_quotes
+  Input should be a valid tuple [type=tuple_type, input_value=[], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.13/v/tuple_type
+exclusions
+  Input should be a valid tuple [type=tuple_type, input_value=[], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.13/v/tuple_type
+
+======================================================================
+FAIL: test_cli_freezes_and_reads_the_same_snapshot (test_selections.SelectionsTest.test_cli_freezes_and_reads_the_same_snapshot)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "$WORKSPACE\extras\der-checkouts\vs2-inputs\tests\test_selections.py", line 203, in test_cli_freezes_and_reads_the_same_snapshot
+    self.assertEqual(frozen.returncode, 0, frozen.stderr)
+AssertionError: 1 != 0 : 3 validation errors for IssueInterpretation
+coarse_categories
+  Input should be a valid tuple [type=tuple_type, input_value=['maintainability'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.13/v/tuple_type
+evidence_quotes
+  Input should be a valid tuple [type=tuple_type, input_value=[], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.13/v/tuple_type
+exclusions
+  Input should be a valid tuple [type=tuple_type, input_value=[], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.13/v/tuple_type
+
+
+----------------------------------------------------------------------
+Ran 9 tests in 3.550s
+
+FAILED (failures=1, errors=7)
