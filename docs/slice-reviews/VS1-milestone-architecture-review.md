@@ -14,9 +14,12 @@ skills. It is author self-review, not independent assurance. Ordinary correctnes
 and compatibility checks do not require an EDR; no comparative model-quality,
 performance or review-effectiveness claim is made.
 
-Canonical evidence is external: DER pair `vs1-architecture-review`, round `r1`.
-Its manifest and ledger own exact diary/semantic identities and readiness. The
-sanitised evidence branch is `evidence/vs1-architecture-review-r1`; never merge
+Canonical evidence is external: DER pair `vs1-architecture-review`. Round `r1`
+records the implementation and verification; `r2` adds the owner's requested
+finding narratives and future-review reporting guidance without changing runtime
+code. Their manifests and ledger own exact identities and readiness. The
+sanitised evidence branches are `evidence/vs1-architecture-review-r1` and
+`evidence/vs1-architecture-review-r2`; never merge
 evidence ancestry into the application. Logs, methods, architecture JSON and
 checkpoint records remain evidence, not a second store maintained by this report.
 
@@ -44,7 +47,198 @@ checkpoint records remain evidence, not a second store maintained by this report
 | F4 | Documentation/interface, medium | Public contracts omitted return meaning, bounds, side effects and failure behaviour; progress and worker composition were insufficiently typed. | Fixed within the reviewed operations: typed progress/worker/result contracts and separately committed backfill. Compared documentation against actual reads, writes, limits and exceptions; no blanket docstring lint or speculative typing framework. |
 | F5 | Boundary, medium | `/no_think` lived in model-independent task context as well as provider controls. | Fixed: adapter-owned Qwen control, prompt `normalisation-v2`, adapter `llama-native-v2`, with actual request provenance. Unit checks distinguish Qwen/non-Qwen routes; the live pinned fixture completed through MAF with the new boundary. |
 | F6 | Knowledge drift, medium | Delivered features appeared as future work; Observation terminology contradicted preserved-source identity; the backlog used an undefined active-state spelling. | Fixed: maintained documentation and ADR confirmations reconciled, Observation defined before interpretation, backlog uses `ACTIVE`. Historical research and original check evidence remain unchanged. |
-| F7 | Evidence gap, medium | Module/import snapshots could miss changes to a public method contract. | Fixed: static interface records and same-schema delta, with explicit limits. This improves review evidence without pretending to infer runtime compatibility or certify design quality. |
+
+The six original findings are F1–F6. The additional interface-snapshot improvement
+is retained as F7 below, separately from that original set. The following narratives
+explain the inspection that exposed each issue, its resolution and the intended
+earlier detection mechanism. Regression tests cited under resolution were added
+or strengthened during the follow-up; they are not evidence that the original
+review already had those checks. Assessment of why a gap escaped earlier review
+is a process diagnosis, not a measured causal result.
+
+### F1: Contradictory completion states
+
+**How found and why it mattered.** Comparing the completion contract with the
+store's branch conditions exposed two different meanings of success: validation
+tested `error is None`, while persistence used error truthiness. The concrete
+counterexample `finish(job, None, "")` could pass validation and record success
+without a result. Inspection of `NormalisationOutcome` also showed independently
+assignable interpretation, error and measurement fields permitting contradictions.
+Passing normal successful/failed-path tests did not establish those invariants.
+
+**Addressed.** Completion now has explicit success/failure conditions owned by
+the [job store](../../src/semantic_reviewer/adapters/jobs.py), with terminal-write
+constraints in migration 007. The
+[outcome record](../../src/semantic_reviewer/application/normalisation.py) rejects
+contradictory construction. [Job tests](../../tests/test_jobs.py) challenge empty
+and whitespace errors, missing/malformed digests and direct SQL writes, checking
+that rejection does not mutate state/events. [Workflow tests](../../tests/test_normalisation.py)
+challenge inconsistent outcome fields. Existing corrupt history is investigated,
+not silently rewritten; successful schema validation does not prove model quality.
+
+**Generalised pattern and earlier response.** Multiple fields or layers encode
+one state using slightly different predicates. Before implementation, the author
+states valid combinations and their invariant owner. At the semantic checkpoint,
+the reviewer compares construction, validation and persistence, challenging a
+meaningful absent/empty/conflicting value and checking side effects on rejection.
+If predicates diverge, consolidate the meaning at the owning boundary, constrain
+persisted states where appropriate and retain the relevant regression challenge
+with that proposition. A green happy path alone is insufficient evidence.
+
+### F2: Hidden artefact publication contracts
+
+**How found and why it mattered.** Reading the declared `ResultStore` alongside
+`JsonResults`, publication callers and the maintenance CLI exposed requirements
+missing from the interface. Catalogue-enabled publication inferred job/kind from
+JSON keys, while optional catalogue configuration changed the obligations. The
+CLI also called `index_referenced`, which the declared port did not expose. A
+caller following the protocol alone could not discover the real contract.
+
+**Addressed.** [Publication metadata and ports](../../src/semantic_reviewer/application/artefacts.py)
+now declare job/kind, publication/read behaviour and separate maintenance. The
+catalogue is mandatory. [The adapter](../../src/semantic_reviewer/adapters/results.py)
+hides hashing, atomic publication and catalogue conflicts, while callers supply
+meaning explicitly. During repair, the legacy-byte challenge also exposed the
+risk of reserialising JSON during indexing; indexing now preserves the original
+bytes and digest. [Artefact tests](../../tests/test_artefacts.py) cover misleading
+body keys, original-byte indexing, retries, conflicts and partial failure.
+[ADR-0008](../adr/ADR-0008-own-artefact-publication-metadata.md) records the choice.
+Complete orphan files remain possible after a later catalogue failure.
+
+**Generalised pattern and earlier response.** An interface looks simpler because
+payload conventions, optional modes or undeclared operations hide its obligations.
+Before building it, the author identifies information the caller genuinely owns.
+At semantic review, compare the port, concrete implementation and at least one
+real consumer, including maintenance. Challenge an innocent payload variation or
+configuration change: can it silently change storage meaning or required fields?
+If so, make required metadata explicit, remove an unnecessary optional mode or
+declare the actual operation. Validate compatibility with real legacy shapes;
+do not merely add documentation for accidental complexity that can be removed.
+
+### F3: Complexity leaking into callers
+
+**How found and why it mattered.** Tracing enqueue, execution and edit validation
+showed repeated `source_index + 1`/page-size-one lookups. Annotation reached through
+the job service to its datasets/results. Worker composition returned dependencies
+that required the entry point to know lock acquisition, recovery and execution
+order. These dependencies were legal to the import checkers, but callers still
+needed implementation knowledge and lifecycle rules belonging further inward.
+
+**Addressed.** [DatasetService.observation](../../src/semantic_reviewer/application/datasets.py)
+owns identity lookup without a browser-page contract. Annotation receives explicit
+source/result dependencies and a narrow job reader. Application-owned
+[Worker.run](../../src/semantic_reviewer/application/jobs.py) owns exclusivity from
+recovery through execution. [Tests](../../tests/test_jobs.py) disable application
+pagination and deny the process lock to prove lookup independence and absence of
+recovery/claims before exclusivity. An [annotation test](../../tests/test_annotations.py)
+supplies a reader exposing only `inspect`. Existing process-death/restart tests
+remain. Composition still knows concrete dependencies, as its job requires.
+
+**Generalised pattern and earlier response.** Callers repeat representation
+conversions, traverse dependency chains or coordinate another module's lifecycle.
+During design/build, the author lists what each caller must know and identifies
+the canonical owner of sequencing, identity and resource rules. At semantic
+review, trace a real consumer and challenge whether using only its declared port
+is enough; for resource ownership, try refusal or interruption at the boundary.
+Move the coherent operation inward when that removes caller obligations. Retain
+direct query ports where appropriate; do not replace leakage with forwarding-only
+layers or split modules merely to reduce their size.
+
+### F4: Incomplete public caller documentation and types
+
+**How found and why it mattered.** Comparing public docstrings/signatures against
+implementations and consumers exposed omitted bounds, return meanings, side
+effects and errors. Progress was a bare dictionary and worker composition lacked
+a return contract. The commenting principle already existed, but checking for
+the presence of comments did not establish that a caller could rely on them.
+
+**Addressed.** New interfaces carry their contracts with the behavioural commits;
+the separate existing-code backfill covers annotation limits/idempotence, history
+ordering, job inspection/log publication, composition and optional web capabilities.
+`AnnotationProgress` defines counts and denominators; worker and result interfaces
+declare their shapes. See [annotation contracts](../../src/semantic_reviewer/application/annotations.py)
+and [the commenting convention](../development/code-comments.md). Review compared
+the text to actual branches and writes; existing functional tests still pass.
+No blanket documentation/type checker or claim of exhaustive historical cleanup
+was introduced.
+
+**Generalised pattern and earlier response.** An operation is documented but its
+usable contract is incomplete or misleading. While implementing a significant
+interface, the author states the information callers need without reading its
+body. At semantic review, the reviewer walks one real invocation using the
+declared contract: inputs/bounds, result meaning, effects, failures and retry or
+ordering guarantees. Compare those claims against implementation and consumers,
+then fix the contract, type shape or behaviour where they disagree. Put new-code
+documentation with its code; keep unrelated existing-code backfills separately
+reviewable. Appropriate functional checks remain necessary when annotations can
+alter framework behaviour; prose presence or lint success is not the verdict.
+
+### F5: Model-specific control in model-independent context
+
+**How found and why it mattered.** Inspecting `SourceContext` alongside the llama.cpp
+request construction found `/no_think` in the application task prompt and related
+thinking controls at the provider boundary. The domain had no SDK imports or
+model-name routing branch, yet its supposedly general prompt still assumed a
+particular model convention. Dependency checks alone could not expose that coupling.
+
+**Addressed.** The [context builder](../../src/semantic_reviewer/application/normalisation.py)
+now expresses only the task. The [llama.cpp adapter](../../src/semantic_reviewer/adapters/llama.py)
+applies Qwen controls for the configured family and retains the actual template
+request with adapter/prompt versions. [Tests](../../tests/test_llama.py) compare
+Qwen and non-Qwen routes, ensure the task request is not modified and inspect
+provenance. The exact final implementation also completed through real MAF and
+the pinned local fixture. That demonstrates compatibility, not comparative quality
+or universal support for every model family.
+
+**Generalised pattern and earlier response.** Vendor, model or runtime assumptions
+can leak through strings, payloads and conventions even when imports are clean.
+During design/build, the author separates task meaning from execution controls.
+At semantic review, trace the task request through the adapter and ask what would
+become invalid for another eligible provider/model. Inspect the actual retained
+request, not only the selection logic. Move applicable controls into their owning
+adapter, version material request changes and test both their application and
+their absence where inappropriate. Use live preflight when compatibility changes;
+use an EDR only if a significant empirical choice, rather than a prescribed
+boundary correction, is being made.
+
+### F6: Maintained knowledge diverging from implementation
+
+**How found and why it mattered.** Cross-reading the delivered source/tests, guides,
+glossary, backlog and ADR confirmations exposed incompatible descriptions. Guides
+called delivered worker/MAF/annotation features future work; the test overview said
+there were no behaviour tests. Observation meant a normalised result despite the
+source-preservation decision, and `IN_PROGRESS` differed from the defined active
+slice status. Older ADR text still described merged work as awaiting integration.
+Checking only documents edited alongside each feature had missed accumulated drift.
+
+**Addressed.** Maintained descriptions now match delivered VS1, Observation names
+the preserved source before interpretation, the backlog uses `ACTIVE`, and ADR
+confirmation prose distinguishes historical candidate evidence from later merge.
+See [development status](../development/README.md), [the test overview](../../tests/README.md),
+[the glossary](../../CONTEXT.md) and [the backlog](../../IMPLEMENTATION_BACKLOG.yaml).
+Imported research and pinned skills remain byte-preserved; original historical
+test results are not rewritten as new verification. VS2 remains inactive.
+
+**Generalised pattern and earlier response.** Individually correct changes leave
+cross-cutting status, vocabulary and usage descriptions inconsistent. Before
+implementation, the author identifies which maintained claims the change may
+invalidate. At aggregate PR review, the author reconciles and the reviewer compares
+entry-point guidance, relevant unchanged guides, glossary/backlog and ADR/EDR
+indexes against the actual delivered behaviour and integration evidence. Look
+for stale future-tense, conflicting terminology and status mismatches, but judge
+their meaning rather than mechanically replacing words. Update current claims,
+retain historical/source records, and state uncertainty where integration or
+confirmation is still pending.
+
+### F7: Supplementary improvement to architecture evidence
+
+The follow-up also made public signatures, class bases and annotated fields visible
+in typed snapshots. A module/import-only delta could miss a changed caller contract.
+[Snapshot tests](../../tests/test_architecture_snapshot.py) now challenge that case
+without changing imports; schema/version limits are documented in the
+[architecture guide](../architecture/README.md). This supports the earlier interface
+checks for F2–F4. It is additional review evidence, not a seventh original finding
+or a substitute for reading behaviour and actual consumers.
 
 No original finding is deferred. The process weakness was principally insufficient
 application of existing principles. ADR-0007 adds milestone-wide assessment and
