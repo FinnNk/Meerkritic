@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "sequence": 4,
+  "pair_id": "vs2-study-tools",
+  "recorded_at": "2026-09-20T12:40:02+00:00",
+  "previous_hash": "a4c53229a100b9c778cd41027d489ae707c0ec80934e33d616198016a663dc0d",
+  "kind": "publication",
+  "round_id": "r2",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "/root"
+  },
+  "payload": {
+    "stage": "owner_review_ready",
+    "pr": "https://github.com/FinnNk/Meerkritic/pull/15",
+    "head": "1d56877f0ccc434344a0e67b42859f4744524767",
+    "base": "cd0a4d8c9a254e3027513274b39ce3f65cf227d2",
+    "archive_commit": "152c5af041a99fdff3a6bbcbce0cb5a99ae10155",
+    "hosted_qualification": {
+      "required_contexts": [],
+      "observed_rollup": [],
+      "note": "Repository rules require owner review/resolution, not hosted CI. No hosted CI run claimed."
+    },
+    "owner_approval": false,
+    "integrated": false,
+    "evidence": [
+      "published-pr.json",
+      "published-refs.txt",
+      "host-rules.json",
+      "verification-summary.json",
+      "review.json",
+      "equivalence.json"
+    ]
+  },
+  "event_hash": "9e72687e3e6ab992263b07cf2990149660dbcd05d0fc8f1abfc0c56649ae1ebe"
+}
