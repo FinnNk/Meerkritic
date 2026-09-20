@@ -10,7 +10,7 @@ from fastapi.templating import Jinja2Templates
 from starlette.concurrency import run_in_threadpool
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 
-from semantic_reviewer.application.annotations import AnnotationService
+from semantic_reviewer.application.annotations import AnnotationService, review_actions
 from semantic_reviewer.application.architecture import ArchitectureView
 from semantic_reviewer.application.datasets import DatasetService
 from semantic_reviewer.application.discovery import DiscoveryService
@@ -231,6 +231,15 @@ def create_app(
                 job, result = jobs.inspect(job_id)
                 annotation, edited = annotations.review(job_id) if annotations else (None, None)
                 history = annotations.store.history(job.observation_id) if annotations else ()
+                actions = review_actions(job, result) if annotations else ()
+                _, source = datasets.observation(job.dataset_id, job.source_index)
+                initial_draft = ""
+                if actions:
+                    initial_draft = (
+                        result["model_output"]
+                        if job.status == "failed"
+                        else json.dumps(result["interpretation"], ensure_ascii=False, indent=2)
+                    )
             except LookupError as error:
                 raise HTTPException(404, str(error)) from error
             except (ValueError, OSError) as error:
@@ -246,6 +255,9 @@ def create_app(
                     "result": result,
                     "telemetry": jobs.telemetry(job),
                     "can_annotate": annotations is not None,
+                    "actions": actions,
+                    "source": source,
+                    "initial_draft": initial_draft,
                     "annotation": annotation,
                     "edited": edited,
                     "history": history,
