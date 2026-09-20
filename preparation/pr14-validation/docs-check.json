@@ -1,0 +1,77 @@
+{
+  "revision": "6b9540afff64c28e65ee3b55aaf70c1b6ce94a21",
+  "status": "passed",
+  "markdown_files": 61,
+  "local_links": 282,
+  "tables": 70,
+  "imported_files_verified": 59,
+  "errors": [],
+  "commands": [
+    {
+      "argv": [
+        "tools/run.py",
+        "--help"
+      ],
+      "exit_code": 0,
+      "output": "usage: run.py [-h] --data-root DATA_ROOT\n              {catalogue,register,serve,worker,embed,cluster,discovery,synthesise,rules,rule,normalise,jobs,job-log,index-artefacts,index-review,annotate,progress,freeze-selection,selection}\n              ...\n\nRun imports outside HTTP, or serve the local harness from this checkout.\n\npositional arguments:\n  {catalogue,register,serve,worker,embed,cluster,discovery,synthesise,rules,rule,normalise,jobs,job-log,index-artefacts,index-review,annotate,progress,freeze-selection,selection}\n\noptions:\n  -h, --help            show this help message and exit\n  --data-root DATA_ROOT\n"
+    },
+    {
+      "argv": [
+        "tools/run.py",
+        "annotate",
+        "--help"
+      ],
+      "exit_code": 0,
+      "output": "usage: run.py annotate [-h] [--notes NOTES] [--edited-json EDITED_JSON]\n                       job_id {accept,edit,reject}\n\npositional arguments:\n  job_id\n  {accept,edit,reject}\n\noptions:\n  -h, --help            show this help message and exit\n  --notes NOTES\n  --edited-json EDITED_JSON\n"
+    },
+    {
+      "argv": [
+        "tools/run.py",
+        "worker",
+        "--help"
+      ],
+      "exit_code": 0,
+      "output": "usage: run.py worker [-h] --routing ROUTING [--endpoint ENDPOINT] [--once]\n                     [--embedding-endpoint EMBEDDING_ENDPOINT]\n                     [--embedding-profile EMBEDDING_PROFILE]\n                     [--embedding-model EMBEDDING_MODEL]\n\noptions:\n  -h, --help            show this help message and exit\n  --routing ROUTING\n  --endpoint ENDPOINT\n  --once\n  --embedding-endpoint EMBEDDING_ENDPOINT\n  --embedding-profile EMBEDDING_PROFILE\n  --embedding-model EMBEDDING_MODEL\n"
+    },
+    {
+      "argv": [
+        "tools/route.py",
+        "preview",
+        "--help"
+      ],
+      "exit_code": 0,
+      "output": "usage: route.py preview [-h] --config CONFIG --task TASK [--model MODEL]\n                        [--policy-id POLICY_ID]\n                        [--policy-version POLICY_VERSION]\n\noptions:\n  -h, --help            show this help message and exit\n  --config CONFIG\n  --task TASK\n  --model MODEL\n  --policy-id POLICY_ID\n  --policy-version POLICY_VERSION\n"
+    },
+    {
+      "argv": [
+        "tools/route.py",
+        "preview",
+        "--config",
+        "config/routing/example.json",
+        "--task",
+        "config/routing/task-example.json"
+      ],
+      "exit_code": 0,
+      "output": "{\n  \"id\": \"b1d62c40-2ac3-42be-8fb6-6da2ca8cdda3\",\n  \"created_at\": \"2026-09-20T11:16:58.130689Z\",\n  \"requirements\": {\n    \"task_id\": \"example-normalisation\",\n    \"task_class\": \"normalisation\",\n    \"capabilities\": [\n      \"structured_output\"\n    ],\n    \"min_input_tokens\": 1024,\n    \"expected_output_tokens\": 256,\n    \"privacy\": \"local_only\",\n    \"excluded_families\": [],\n    \"policy_override\": null\n  },\n  \"inventory\": {\n    \"id\": \"synthetic\",\n    \"version\": \"1\"\n  },\n  \"policy\": {\n    \"id\": \"example\",\n    \"version\": \"1\"\n  },\n  \"policy_source\": \"system\",\n  \"selected\": {\n    \"id\": \"example-local\",\n    \"provider\": \"example-runtime\",\n    \"family\": \"local-family\",\n    \"locality\": \"local\",\n    \"status\": \"active_current\",\n    \"capabilities\": [\n      \"structured_output\"\n    ],\n    \"practical_input_tokens\": 2048,\n    \"output_tokens\": 512,\n    \"evidence\": \"Synthetic example; no runtime configured or verified.\"\n  },\n  \"reasons\": [\n    \"policy_order\"\n  ],\n  \"candidates\": [\n    {\n      \"model_id\": \"example-remote\",\n      \"rejected_by\": [\n        \"privacy\"\n      ],\n      \"over_soft_budget\": false\n    },\n    {\n      \"model_id\": \"example-local\",\n      \"rejected_by\": [],\n      \"over_soft_budget\": false\n    }\n  ],\n  \"context\": {\n    \"id\": \"direct-v1\",\n    \"mode\": \"direct_large_context\",\n    \"reserve_output_tokens\": 256,\n    \"max_fraction_of_context\": 1.0,\n    \"include_raw_transcript\": false\n  },\n  \"max_input_tokens\": 2048,\n  \"escalation_from\": null,\n  \"model_override\": null,\n  \"health\": [],\n  \"budget\": null,\n  \"quotes\": [],\n  \"project_local_only\": false\n}\n"
+    },
+    {
+      "argv": [
+        "tools/architecture.py",
+        "--help"
+      ],
+      "exit_code": 0,
+      "output": "usage: architecture.py [-h] {snapshot,delta,publish-view} ...\n\nGenerate the canonical typed architecture data and local harness projection.\n\npositional arguments:\n  {snapshot,delta,publish-view}\n\noptions:\n  -h, --help            show this help message and exit\n"
+    }
+  ],
+  "rendered_samples": [
+    "docs/development/study-preparation.md",
+    "docs/edr/0001-discovery-grouping-method.md",
+    "README.md",
+    "docs/development/normalisation.md",
+    "docs/development/research-interaction.md",
+    "docs/development/documentation-style.md",
+    "docs/edr/README.md"
+  ],
+  "application_source_tests_lock_unchanged": true,
+  "sole_licence_file": "LICENSE.md"
+}
