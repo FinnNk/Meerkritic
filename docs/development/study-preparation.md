@@ -5,7 +5,8 @@ by a method. The project's first grouping study has an agreed protocol but is no
 registered. Its exact
 sample, methods and decision criteria belong in
 [EDR-0001](../edr/0001-discovery-grouping-method.md#concrete-proposal-for-owner-review).
-The comparison runner and rating pack are not available yet.
+The [comparison guide](study-comparison.md) covers the fixed methods, masked rating
+pack and report. Use them on research inputs only after registration.
 
 ## Agree the study before preparing inputs
 
@@ -20,8 +21,8 @@ The comparison runner and rating pack are not available yet.
    directory. Use it consistently for the web application and worker. Keep software
    test decisions separate from human research annotations.
 
-The agent can build and test the comparison tooling with synthetic fixtures while
-the owner reviews inputs. Synthetic tests cannot supply missing human judgements.
+The comparison tooling has synthetic checks; these cannot supply missing human
+judgements or demonstrate which method is better.
 
 ## Create the fixed input order
 

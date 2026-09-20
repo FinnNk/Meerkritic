@@ -125,7 +125,7 @@ slices:
   name: Annotation-to-Rule Discovery
   status: ACTIVE
   plan: docs/plans/VS2-plan.md
-  frozen_batch: reproducible study input preparation; DER vs2-study-tools/r1
+  frozen_batch: bounded comparison and rating tooling; DER vs2-comparison/r1
   batch_progress:
   - A1 frozen selections integrated via PR 10; ADR-0009 implemented
   - A2/A3 approved and integrated via PR 11; exact reviewed tree verified; ADR-0010 implemented
@@ -133,12 +133,14 @@ slices:
   - C accepted and integrated via PR 13 at f7aa4e05411da9d804f3624abe57033544fb1073; ADR-0012 implemented
   - study preparation documentation integrated via PR 14 at cd0a4d8c9a254e3027513274b39ce3f65cf227d2
   - owner agreed EDR-0001 workload and criteria on 2026-09-20; registration remains pending
-  - fixed preparation plan retained with 80 candidates and 12 holdout repositories; source qualification and human review pending
+  - fixed pool checked; 55 qualified sources yielded 33 valid initial drafts and 22 retained failures; the 40-input target needs an owner-agreed preparation amendment
+  - input preparation integrated via PR 15 at f5b23e44e4f13237a9f505f2f8182e0561813efe; ordered trees match and 181 integrated tests pass
   - full VS2 closure pending empirical outcome and owner decision
   remaining_gates:
   - human-rated development corpus before empirical method adoption
   - EDR registration before decision-bearing comparison
-  - reproducible preparation/comparison tooling and exact registration identities
+  - comparison tooling implemented with synthetic checks; DER review and owner acceptance separate from empirical registration
+  - qualified human-reviewed sample and exact registration identities
   - recorded empirical outcome and owner decision before full slice closure
   revision_after: VS1
   maf_evaluation: continue MAF usage; evaluate rule-discovery workflow fit

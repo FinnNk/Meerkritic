@@ -1,6 +1,6 @@
 # VS2 â€” Annotation-to-Rule Discovery
 
-Plan revision: 9, 20 September 2026. VS2 ACTIVE. A1 is integrated in PR #10 at
+Plan revision: 11, 20 September 2026. VS2 ACTIVE. A1 is integrated in PR #10 at
 `c9ef38f48b10d7876fe26babee36f2f15f258bf3`; its tree equals the reviewed head and
 the locked Windows baseline passes all checks and 115 tests.
 A2/A3 and B are integrated, with synthetic compatibility evidence. The owner
@@ -40,7 +40,7 @@ All seven ordered reviewed commit trees are preserved; an isolated locked Window
 baseline passes all checks and 172 tests. The owner explicitly agreed EDR-0001's
 proposed workload and criteria on 20 September 2026. Agreement does not register it.
 
-The next frozen software batch is **reproducible input preparation** (DER
+The preceding software batch is **reproducible input preparation** (DER
 `vs2-study-tools/r1`): deterministic source/holdout/exclusion plans, a checked
 preparation log, synthetic contract tests and operator instructions. It must retain
 the source bytes, every attempted record and explicit incomplete/ready/shortfall
@@ -53,9 +53,28 @@ public-source plan retains 80 candidates across 45 development repositories and
 12 holdouts; no source qualification or human review is claimed. Final DER
 checkpoint review and owner acceptance remain separate from that preparation record.
 
-Then implement the lexical baseline, method-masked rating pack and analysis using
-synthetic inputs in a separate material batch, stacked if its prerequisite is still
-unmerged. Source qualification and human review remain necessary before registration;
+PR #15 is integrated at `f5b23e44e4f13237a9f505f2f8182e0561813efe`: all four
+ordered reviewed trees match and the integrated locked checks pass with 181 tests.
+The next frozen material batch, DER `vs2-comparison/r1`, delivers the lexical
+baseline, method-masked rating pack and criterion-based analysis, bound to existing
+immutable selections and run evidence. Test it on synthetic inputs. Keep missing
+ratings, failures and insufficient groups explicit; do not automatically adopt a
+method. No new study UI, database schema or generic experiment framework is needed.
+
+The implementation now provides those contracts and the
+[comparison command guide](../development/study-comparison.md). Synthetic tests
+challenge exact-input drift, fixed methods, masking, complete ratings, denominator
+rules, retries and registration. Source preparation has begun under the fixed input
+order and normalisation configuration. Human judgements, actual registration and
+an empirical decision remain separate from software acceptance; VS2 stays ACTIVE.
+
+The completed input-preparation pass cannot meet the agreed 40-input target:
+80 source checks yielded 55 qualified records; their single normalisation pass
+yielded 33 valid drafts and 22 retained failures. No human decisions or research
+grouping runs have occurred. EDR-0001 records the evidence and the required owner
+choice before a prospective amendment. Do not silently broaden or rerun the sample.
+
+Source qualification and human review remain necessary before registration;
 they may proceed alongside this tooling. Follow the
 [human/agent preparation steps](../development/study-preparation.md).
 

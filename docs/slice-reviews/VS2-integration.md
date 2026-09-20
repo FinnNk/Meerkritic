@@ -40,3 +40,15 @@ retained with DER `vs2-study-tools/r1`, outside application worktrees.
 
 The owner's later explicit agreement to EDR-0001's proposed workload and criteria
 is recorded in that EDR. It is separate from PR acceptance and from registration.
+
+## Input-preparation tooling integration
+
+The owner approved and merged [PR #15](https://github.com/FinnNk/Meerkritic/pull/15)
+on 20 September 2026. Reviewed head `1d56877f0ccc434344a0e67b42859f4744524767`
+maps to integrated head `f5b23e44e4f13237a9f505f2f8182e0561813efe`; all four
+ordered reviewed trees match. The integrated locked Windows/Python 3.12 baseline
+passes every standard check and 181 tests. The exact mapping and clean-checkout
+record are retained with DER `vs2-comparison/r1`, outside application worktrees.
+
+This integrates the deterministic input order and attempt ledger. It does not
+attest source authenticity, supply human reviews or register the comparison.

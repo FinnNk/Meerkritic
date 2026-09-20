@@ -93,9 +93,10 @@ registered, and no decision-bearing comparison has been run.
 
 ### Method and reproduction plan
 
-- **Code and commands:** implement the bounded study runner and analysis after software integration, with
-  actual invocation commands and full code SHA frozen before the first study run.
-  A script name alone is insufficient; no runnable method is claimed yet.
+- **Code and commands:** `tools/study_compare.py` provides the lexical execution,
+  masked pack and analysis commands. Follow the [comparison guide](../development/study-comparison.md).
+  Freeze actual invocation commands and full code SHA before the first study run;
+  software verification does not register the study.
 - **Environment:** Python 3.12/locked dependencies, Windows and actual GPU/CPU/RAM;
   record embedding provider/build and any nondeterminism.
 - **Configuration:** pin model weights, preprocessing, clustering, randomisation,
@@ -154,9 +155,11 @@ were used only for deduplication; source bodies were not displayed or interprete
   DER `vs2-study-tools/r1`; replay with the [preparation command](../development/study-preparation.md#create-the-fixed-input-order).
 
 The plan is retained outside Git at `extras/research/edr-0001/preparation/0000.json`
-relative to the workspace parent. It contains zero attempts or human labels. Exact
-research annotation versions, normalisation configuration and registration remain
-pending. Neither this metadata plan nor its software verification is a grouping run.
+relative to the workspace parent. That initial record contains zero attempts or
+human labels. The normalisation configuration was subsequently frozen before
+source inspection and inference; the preparation outcome is recorded below. Exact
+research annotation versions and registration remain pending. Neither the metadata
+plan nor its software verification is a grouping run.
 
 Source qualification, normalisation and human input review prepare the corpus;
 they are not the grouping comparison. They follow the agreed sampling procedure.
@@ -188,11 +191,18 @@ results before declaring any selected observation a historical example.
 | Execution | One run per configuration, using an immutable embedding artefact. At most one technical rerun across the study after a diagnosed implementation failure; retain the original failure and any exposed outputs. No parameter search. |
 | Resource limit | A proposed 30-minute wall-clock cap for each method after model loading, excluding input curation and human rating. Record hardware, model loading separately, timeouts and all known usage. Synthetic preflight must establish feasibility before registration. |
 
-The baseline/runner, rating pack and analysis commands are **not implemented yet**.
-Their implementation is a separate material change because it defines experiment
-and rating evidence. Use DER, synthetic fixtures and the existing quality gates;
-do not extend the research UI solely for this one study. Freeze exact commands,
-code, runtime versions and input/output formats before registration.
+The baseline, rating pack and analysis commands are implemented as material DER
+change `vs2-comparison` (review round `r2`), with synthetic fixtures and the existing quality gates.
+They bind the exact selection, interpretation text, vectors and memberships; no
+new research UI or database state is required. Freeze exact commands, code, runtime
+versions and input/output formats before registration. No research comparison has run.
+
+The deterministic masking procedure uses canonical JSON SHA-256, seed `20260920`
+and sorted membership IDs. Rank groups independently within each method with stage
+`select`, take the equal budget, deduplicate identical membership sets, then rank
+presentation with stage `present`. The [reproduction table](../development/study-comparison.md#reproduce-the-ordering-and-report)
+specifies the complete hash input and member order. This implements the previously
+proposed seeded ordering before any research grouping or rating exposure.
 
 ### Rate the groups and decide
 
@@ -249,7 +259,59 @@ None. Draft completion is still prospective; no registered plan exists to amend.
 
 ## Runs and evidence inventory
 
-No runs. VS1 compatibility and integration checks are prior exposure, not study results.
+No research grouping runs. Earlier compatibility and integration checks are prior
+exposure, not comparative study results.
+
+### Input preparation on 20 September 2026
+
+The fixed pool and one initial normalisation pass have been inspected. This is
+corpus preparation, not a grouping comparison or a model-quality benchmark.
+
+| Stage | Recorded outcome |
+| --- | ---: |
+| Fixed candidate positions inspected | 80 |
+| Public origins/context qualified for input review | 55 |
+| Origins unresolved after public comment endpoints returned 404 | 25 |
+| Initial normalisation attempts | 55 |
+| Schema- and evidence-valid drafts | 33 |
+| Retained failed outputs | 22 |
+| Failures from missing or ambiguous exact evidence quotes | 21 |
+| Failure from an affirmative concern without required source evidence | 1 |
+| Human Accept/Edit/Reject decisions | 0 |
+| Model reruns or research grouping runs | 0 |
+
+The agreed target of 40 usable human-reviewed inputs is **unreachable under the
+current preparation rules**: only 33 valid drafts are available, before any human
+rejection. Stop before registration. Do not extend the pool, retry models, relax
+evidence validation or treat an automated decision as a human label. The owner
+must choose an explicit prospective amendment. Human correction of repairable
+failed drafts has been proposed, preserving the original failures and single model
+pass; it has not been agreed or implemented. The current annotation controls require
+a successful normalisation and cannot yet apply such corrections to failed jobs.
+
+Source checks retained the original imported bytes and separate public responses.
+Observed differences include case/formatting changes, removed suggestion blocks
+and collapsed diff whitespace, consistent with the upstream preprocessing description.
+The public `httpie/httpie` endpoint redirects to `httpie/cli`; matching comment IDs,
+PR numbers, paths and content were verified without rewriting imported identities.
+Public origin does not establish a comment's correctness. Some original comments
+were authored by bots; human assessment is still required.
+
+The [preparation summary](evidence/0001-input-preparation.json) records exact code,
+model/prompt/routing settings, counts and evidence hashes. The full per-candidate
+inventory, response receipts, failed and successful outputs, runtime files and
+validation replay remain under `extras/research/edr-0001` outside Git. Its digest
+is included in the summary. The retained initial ledger has one unresolved-source
+outcome and stops before the first human decision; it does not pretend that all
+later input reviews have occurred. Separate source/job records cover all 80 positions.
+
+Reproduce the candidate order with the preparation command and pinned source hash;
+then use the recorded configuration and normalisation code to inspect the initial
+pass. Original upstream README/licence receipts are retained. That repository's
+MIT licence is recorded, without asserting that it grants every right in the
+third-party comments/code it collected. No raw source or model output is republished
+here. Access dates, response hashes and local runtime evidence support inspection;
+independent reproduction and byte-identical model output have not been demonstrated.
 
 ## Results and interpretation
 
@@ -267,3 +329,5 @@ Pending. No grouping method has been adopted from empirical evidence.
 | 2026-09-20 | draft elaborated | Meerkritic agent | Software integrated; proposed bounded protocol and source-qualification gate for owner agreement; no study run |
 | 2026-09-20 | protocol agreed; draft retained | Finn Newick | Explicit agreement to the proposed workload and criteria; source preparation, tooling and registration remain outstanding |
 | 2026-09-20 | input order recorded; draft retained | Meerkritic agent | Reproducible metadata-only candidate/holdout plan; no source qualification, human labels or comparison |
+| 2026-09-20 | comparison tooling prepared; draft retained | Meerkritic agent | Fixed lexical method, masking and criterion report with synthetic checks; registration and human judgements remain outstanding |
+| 2026-09-20 | input preparation infeasible; draft retained | Meerkritic agent | All 80 origins checked; 55 initial normalisations produced 33 valid drafts and 22 retained failures. No human labels or grouping results; owner amendment required before continuing. |
