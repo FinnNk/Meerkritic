@@ -1,6 +1,6 @@
 # VS2 â€” Annotation-to-Rule Discovery
 
-Plan revision: 11, 20 September 2026. VS2 ACTIVE. A1 is integrated in PR #10 at
+Plan revision: 12, 20 September 2026. VS2 ACTIVE. A1 is integrated in PR #10 at
 `c9ef38f48b10d7876fe26babee36f2f15f258bf3`; its tree equals the reviewed head and
 the locked Windows baseline passes all checks and 115 tests.
 A2/A3 and B are integrated, with synthetic compatibility evidence. The owner
@@ -68,15 +68,35 @@ rules, retries and registration. Source preparation has begun under the fixed in
 order and normalisation configuration. Human judgements, actual registration and
 an empirical decision remain separate from software acceptance; VS2 stays ACTIVE.
 
-The completed input-preparation pass cannot meet the agreed 40-input target:
+Before the agreed correction amendment, the input pass could not meet 40 inputs:
 80 source checks yielded 55 qualified records; their single normalisation pass
 yielded 33 valid drafts and 22 retained failures. No human decisions or research
-grouping runs have occurred. EDR-0001 records the evidence and the required owner
-choice before a prospective amendment. Do not silently broaden or rerun the sample.
+grouping runs have occurred. EDR-0001 records the evidence and the subsequent
+owner-agreed prospective amendment. Do not silently broaden or rerun the sample.
 
 Source qualification and human review remain necessary before registration;
 they may proceed alongside this tooling. Follow the
 [human/agent preparation steps](../development/study-preparation.md).
+
+## Frozen human-correction batch
+
+PR #16 is integrated at `e7726500930e79f0ba69becae5d12b77edbb5dea`;
+all five reviewed commit trees match. The owner agreed the prospective preparation
+amendment on 20 September 2026. DER `vs2-draft-repair/r1` now owns the bounded batch:
+retain semantic failures while allowing grounded human Edit/Reject, carry the exact
+correction into explicit selections, expose the controls/source in the harness,
+and prepare the ordered human-review handoff. No model reruns, fabricated labels,
+new candidate pool or early grouping comparison. Record policy first, complete
+backend/UI contracts with tests, then backfill current guides and confirmation.
+
+The correction path is implemented with separate original/human evidence, versioned
+selection reading and focused backend/browser checks. A migration rehearsal on a
+copy of the study database preserves every application table and verifies all
+33 successful and 22 failed outputs are reviewable with their appropriate actions.
+No human research decisions or further model calls were made. The ordered local
+handoff precedes input judgements; grouping judgements wait for selection freeze
+and registration. Final DER checkpoint qualification and owner acceptance remain
+separate from this implementation record.
 
 ## Activation and first batch
 

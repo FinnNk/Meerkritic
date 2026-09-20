@@ -255,7 +255,32 @@ registers the experiment or adopts a method.
 
 ## Amendments and deviations
 
-None. Draft completion is still prospective; no registered plan exists to amend.
+### Preparation amendment agreed on 20 September 2026
+
+Finn Newick agreed to human correction of failed drafts after inspecting the
+recorded shortfall: “approved, merged and yes, please add that to the harness”.
+This is a prospective change to input preparation after exposure to its failure
+counts, before any human annotation, registration or comparative grouping result.
+It is not a retrospective amendment to a registered experiment.
+
+- Keep the fixed 80-candidate order, verified origins, holdouts, target of 40 usable
+  interpretations and maximum five per repository.
+- Keep the single frozen normalisation pass. Do not retry a model or relax source,
+  schema or exact-evidence validation.
+- Offer human Edit or Reject for a retained draft that failed semantic validation.
+  A correction must pass the same interpretation schema and source grounding as
+  an ordinary edit. Accept is unavailable for a failed model output.
+- Preserve the original job, failed status, raw output, error, telemetry and result
+  hash. Store the human decision and any corrected interpretation separately.
+- Record the terminal preparation outcome with the exact job and annotation IDs.
+  An edited failure may count towards the target; a rejected one may not. Report
+  initial model failures separately from eventual human-corrected inputs.
+- Work in the original order. Stop at 40 usable reviews or an explicit shortfall.
+  Human correction makes the target possible; it does not guarantee 40 usable inputs.
+
+The harness implementation and checks belong to DER `vs2-draft-repair/r1`.
+The EDR stays **draft** until the completed human-reviewed selection and all
+registration prerequisites exist.
 
 ## Runs and evidence inventory
 
@@ -280,14 +305,12 @@ corpus preparation, not a grouping comparison or a model-quality benchmark.
 | Human Accept/Edit/Reject decisions | 0 |
 | Model reruns or research grouping runs | 0 |
 
-The agreed target of 40 usable human-reviewed inputs is **unreachable under the
-current preparation rules**: only 33 valid drafts are available, before any human
-rejection. Stop before registration. Do not extend the pool, retry models, relax
-evidence validation or treat an automated decision as a human label. The owner
-must choose an explicit prospective amendment. Human correction of repairable
-failed drafts has been proposed, preserving the original failures and single model
-pass; it has not been agreed or implemented. The current annotation controls require
-a successful normalisation and cannot yet apply such corrections to failed jobs.
+Under the rules in force at the initial pass, the target was unreachable: only
+33 valid drafts were available before human rejection. The prospective amendment
+above now permits human correction/rejection of retained failed drafts. The
+harness implements that path while preserving the one model pass and unchanged
+schema/evidence checks. Forty usable inputs remain possible, not guaranteed;
+registration still waits for the actual reviewed selection.
 
 Source checks retained the original imported bytes and separate public responses.
 Observed differences include case/formatting changes, removed suggestion blocks
@@ -331,3 +354,5 @@ Pending. No grouping method has been adopted from empirical evidence.
 | 2026-09-20 | input order recorded; draft retained | Meerkritic agent | Reproducible metadata-only candidate/holdout plan; no source qualification, human labels or comparison |
 | 2026-09-20 | comparison tooling prepared; draft retained | Meerkritic agent | Fixed lexical method, masking and criterion report with synthetic checks; registration and human judgements remain outstanding |
 | 2026-09-20 | input preparation infeasible; draft retained | Meerkritic agent | All 80 origins checked; 55 initial normalisations produced 33 valid drafts and 22 retained failures. No human labels or grouping results; owner amendment required before continuing. |
+
+| 2026-09-20 | preparation amendment agreed; draft retained | Finn Newick | Allow human correction/rejection of retained semantic failures, preserving the original pass and fixed sample rules; no human labels or grouping results yet. |

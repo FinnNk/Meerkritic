@@ -51,7 +51,7 @@ an input. This [synthetic selection](../images/README.md) is explicitly labelled
 | Input | Treatment |
 | --- | --- |
 | Accepted annotation | Include the original model interpretation. |
-| Edited annotation | Include the verified edit and retain the original result hash. |
+| Edited annotation | Include the verified edit and retain the original result hash, including when the original model draft failed validation. |
 | Rejected annotation | Exclude the interpretation. Rejection does not prove the source is a valid negative example. |
 | Repository listed as a holdout | Exclude it even if accepted; repository matching ignores case. |
 | Rejected and held out | Show the holdout exclusion and retain the Reject decision. |
@@ -60,6 +60,9 @@ A *holdout* is material reserved from the current discovery work for later evalu
 The request declares holdouts; the application does not discover them for you.
 Selecting a holdout still reads and retains its source, so record that exposure.
 An all-excluded selection can be saved but cannot supply discovery inputs.
+A rejected failed draft has no valid interpretation: its decision and exclusion
+remain visible without inventing one. New snapshots use version 2; existing
+version 1 snapshots remain readable.
 
 ## Use human-reviewed data
 

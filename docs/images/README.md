@@ -9,7 +9,7 @@ The application's normal fixture labels remain visible where it provides them.
 
 Use Python 3.12 and run these commands from the repository root. Choose a **new**
 local directory outside every Git worktree; the script refuses an existing path.
-It creates four source records, four prepared interpretations, three synthetic
+It creates four source records, four prepared interpretations, one failed draft, three synthetic
 decisions, a fixture selection, one group, one candidate and a saved review draft.
 
 1. Install the locked dependencies:
@@ -54,15 +54,16 @@ using its existing dark appearance, a reported 1280 × 720 CSS viewport and nati
 
 Only pixel crops were applied: no scaling, redaction, compositing or content edits.
 Raw captures and runtime files remain outside Git. [captures.json](captures.json)
-records pixel crop rectangles, scroll positions, image dimensions and SHA-256 hashes.
+and [the correction captures](captures-draft-repair.json) record pixel crop rectangles, scroll positions, image dimensions and SHA-256 hashes.
 Use the visible landmarks below when different browser scaling makes those exact
 coordinates unsuitable. A crop must keep the relevant labels and controls readable.
 
 | Asset | Route key | Type / pixels | Content to retain |
 | --- | --- | --- | --- |
 | [Source browser](source-browser.png) | `observations` | Overview, 1232 × 675 | Dataset title, synthetic label, comment/code pair and Normalise action |
-| [Interpretation result](annotation-result.png) | `annotation` | Overview, 1232 × 712 | Proposed issue through all three assessment buttons |
-| [Assessment controls](annotation-assessment.png) | `annotation` | Panel, 960 × 212 | Human assessment heading, explanation, notes, editor and all buttons |
+| [Interpretation result](annotation-result.png) | `annotation` | Overview, 1232 × 535 | Proposed issue and quoted evidence |
+| [Assessment controls](annotation-assessment.png) | `annotation` | Panel, 960 × 221 | Human assessment heading, explanation, notes, editor and all buttons |
+| [Failed draft](failed-draft-assessment.png) | `failed_annotation` | Overview, 1232 × 635 | Failure explanation, original draft editor and Edit/Reject controls |
 | [Saved selection](frozen-selection.png) | `selection` | Overview, 1232 × 605 | Fixture label, totals, queue action and complete first input card |
 | [Discovery group](discovery-group.png) | `discovery` | Overview, 1232 × 514 | Result heading, fixture label, totals and complete representative card |
 | [Rule definition](rule-definition.png) | `rule` | Panel, 960 × 391 | Title, fixture label, pending state, scope and exclusions |
@@ -86,3 +87,8 @@ group-rating interface yet; the discovery image must not be described as one.
   for closer inspection. Crop surrounding navigation before shrinking text.
 - In PRs, use an immutable image URL from the reviewed commit and link these notes.
   Keep routine validation evidence separate from the illustration.
+
+The correction capture record supersedes the earlier result and assessment entries
+in `captures.json`; the other original captures remain current. The failed-draft
+image shows an unreviewed synthetic job. Browser verification used a separate
+synthetic job and saved one correction; neither is research data.

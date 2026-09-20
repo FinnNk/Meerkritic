@@ -1,0 +1,67 @@
+{
+  "application_revision": "71fa5c503e80104ca576f082d5b3487bed8cd41f",
+  "captured_on": "2026-09-20",
+  "browser": "Codex in-app browser on Windows; dark appearance",
+  "viewport_css": [
+    1280,
+    720
+  ],
+  "transformation": "Pixel crop only; no scaling or content edits",
+  "fixture_sha256": "a45883c106f901be5af60c4002f08a01313c60d34cc25b77d8e1c4174e7fcd32",
+  "images": [
+    {
+      "file": "failed-draft-assessment.png",
+      "source": "failed_annotation",
+      "scroll_y_css": 551.3333129882812,
+      "size": [
+        1232,
+        635
+      ],
+      "sha256": "8cc487c067f29f3a570c0d2c4d4bdd1fd292b581454f5aac137f78ba2edc3bcf",
+      "crop_pixels": [
+        16,
+        0,
+        1248,
+        635
+      ]
+    },
+    {
+      "file": "annotation-result.png",
+      "source": "annotation",
+      "scroll_y_css": 500.6666564941406,
+      "size": [
+        1232,
+        535
+      ],
+      "sha256": "ebc896e080ac5ecb11c1271452f838efcb122b6bf8514418cf4cbb5e1a471822",
+      "crop_pixels": [
+        16,
+        0,
+        1248,
+        535
+      ]
+    },
+    {
+      "file": "annotation-assessment.png",
+      "source": "annotation",
+      "scroll_y_css": 644.6666870117188,
+      "size": [
+        960,
+        221
+      ],
+      "sha256": "40381e8ce01f1b364f9e2c4bf64a3d04492d0182b2d2bea7714cce8621a8bb48",
+      "crop_pixels": [
+        16,
+        404,
+        976,
+        625
+      ]
+    }
+  ],
+  "raw_image_pixels": [
+    1265,
+    712
+  ],
+  "fixture_worktree_sha256": "f609af7981519d63f00dd8a48122592b35fb01c812a8e4d27fcc53c17ac8fe37",
+  "fixture_line_endings": "Capture ran the recorded Git source with Windows CRLF worktree line endings; both byte hashes retained."
+}

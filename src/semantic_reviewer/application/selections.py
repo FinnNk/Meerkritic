@@ -6,7 +6,12 @@ from typing import Literal, Protocol, Self
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
-from semantic_reviewer.application.annotations import Annotation, AnnotationStore, JobReader
+from semantic_reviewer.application.annotations import (
+    Annotation,
+    AnnotationStore,
+    JobReader,
+    review_actions,
+)
 from semantic_reviewer.application.artefacts import ResultStore
 from semantic_reviewer.application.datasets import DatasetService
 from semantic_reviewer.domain.datasets import Dataset, Observation
@@ -64,7 +69,7 @@ class SelectedAnnotation(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
     annotation: Annotation
     source: Observation
-    interpretation: IssueInterpretation
+    interpretation: IssueInterpretation | None
     exclusion: Literal["rejected_interpretation", "holdout_repository"] | None
 
 
@@ -72,8 +77,10 @@ class SelectionSnapshot(BaseModel):
     """A bounded immutable input body; registration time is outside its content identity."""
 
     model_config = ConfigDict(extra="forbid", frozen=True)
-    schema_version: Literal[1] = 1
-    eligibility_policy: Literal["explicit-accept-edit-v1"] = "explicit-accept-edit-v1"
+    schema_version: Literal[1, 2] = 2
+    eligibility_policy: Literal["explicit-accept-edit-v1", "explicit-accept-edit-v2"] = (
+        "explicit-accept-edit-v2"
+    )
     request: SelectionRequest
     dataset: Dataset
     records: tuple[SelectedAnnotation, ...] = Field(min_length=1, max_length=100)
@@ -81,6 +88,8 @@ class SelectionSnapshot(BaseModel):
     @model_validator(mode="after")
     def validate_identity(self) -> Self:
         """Enforce version uniqueness, grounding and the declared exclusion policy."""
+        if self.eligibility_policy != f"explicit-accept-edit-v{self.schema_version}":
+            raise ValueError("Selection policy and schema version disagree.")
         if (
             self.dataset.id != self.request.dataset_id
             or tuple(item.annotation.id for item in self.records) != self.request.annotation_ids
@@ -100,7 +109,15 @@ class SelectionSnapshot(BaseModel):
             expected = _exclusion(self.request, annotation, source)
             if item.exclusion != expected:
                 raise ValueError("Selection exclusion disagrees with the frozen policy.")
-            ground(item.interpretation, source)
+            if item.interpretation is None:
+                if (
+                    self.schema_version != 2
+                    or annotation.decision != "reject"
+                    or not item.exclusion
+                ):
+                    raise ValueError("Only an excluded rejection may omit its interpretation.")
+            else:
+                ground(item.interpretation, source)
         return self
 
 
@@ -179,7 +196,8 @@ class SelectionService:
         """Verify explicit choices and publish an immutable selection outside HTTP.
 
         Accept uses the original body; Edit uses its verified replacement and keeps
-        the original hash. Reject/holdout records remain explicit exclusions. No
+        the original hash, even when the model job failed. Reject/holdout records remain
+        explicit exclusions; a rejected semantic failure has no valid interpretation. No
         existing annotation is changed, and later decisions cannot enter this body.
         Unknown records raise LookupError; identity/schema/grounding conflicts raise
         ValueError; storage errors propagate. Nothing registers before all inputs
@@ -194,13 +212,15 @@ class SelectionService:
             job, original = self._jobs.inspect(annotation.job_id)
             if (
                 job.dataset_id != request.dataset_id
-                or job.status != "succeeded"
+                or annotation.decision not in review_actions(job, original)
                 or job.artefact_sha256 != annotation.result_sha256
                 or job.observation_id != annotation.observation_id
                 or original is None
                 or original.get("job_id") != job.id
             ):
-                raise ValueError("Annotation does not identify the exact successful result.")
+                raise ValueError(
+                    "Annotation must identify an admissible decision on the exact original result."
+                )
             dataset, source = self._datasets.observation(job.dataset_id, job.source_index)
             body = original
             if annotation.decision == "edit":
@@ -211,8 +231,10 @@ class SelectionService:
                     or body.get("observation_id") != source.id
                 ):
                     raise ValueError("Edited interpretation has conflicting provenance.")
-            interpretation = IssueInterpretation.model_validate_json(
-                json.dumps(body.get("interpretation"))
+            interpretation = (
+                None
+                if annotation.decision == "reject" and job.status == "failed"
+                else IssueInterpretation.model_validate_json(json.dumps(body.get("interpretation")))
             )
             records.append(
                 SelectedAnnotation(

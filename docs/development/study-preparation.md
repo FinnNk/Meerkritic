@@ -65,7 +65,9 @@ For each next candidate:
    repository name or an HTTP success alone does not verify a comment.
 2. If usable, run normalisation once with the fixed configuration, then ask the
    human reviewer to Accept, Edit or Reject through the existing annotation controls.
-   Keep failed jobs and rejected interpretations.
+   A retained semantic failure can be [corrected or rejected](failed-drafts.md)
+   under the agreed preparation amendment. Keep its original failed job and output;
+   do not rerun the model. Infrastructure failures remain for inspection.
 3. Write one terminal attempt as JSON. For example, an unresolved source uses:
 
    ```json
@@ -97,7 +99,7 @@ For each next candidate:
 | --- | --- |
 | `source_unresolved` | Source could not be verified; retain reference, evidence digest and check notes. |
 | `context_unusable` | Origin checked, but supplied context cannot support interpretation; explain why. |
-| `normalisation_failed` | Source checked; `job_id` identifies the one failed normalisation attempt. |
+| `normalisation_failed` | Source checked; `job_id` identifies a failure with no usable human correction. Do not use this to skip a retained draft awaiting review. |
 | `accept`, `edit`, `reject` | Source checked; provide `job_id`, exact `annotation_id` and `human_reviewer`. Rejection remains in the log but does not count towards the target. |
 | `repository_quota` | Required once that repository has five usable reviews; no source, job or human-review fields. The candidate is skipped without inspection. |
 
@@ -134,7 +136,7 @@ group-rating interface, and these example decisions do not enter the study.
 | Read the source | Read the supplied comment and code, with the verified original reference where available. Distinguish preprocessed text from the original. |
 | Check meaning | Does the interpretation accurately describe the concern, rather than invent an unstated requirement? |
 | Check evidence | Do the quoted excerpts support its claims? Is uncertainty or limited applicability retained? |
-| Accept | Use when the existing interpretation is usable as written. This does not validate a future rule or detector. |
+| Accept | Available for successful drafts only; use when the interpretation is usable as written. This does not validate a future rule or detector. |
 | Edit | Correct a usable interpretation while keeping it grounded in the supplied source. Save the edited structured result. |
 | Reject | Use when the interpretation cannot serve the study. Record a short reason; rejection is not a verified negative example. |
 
