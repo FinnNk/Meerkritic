@@ -26,11 +26,29 @@ class IssueInterpretation(BaseModel):
     actionable_engineering_concern: Judgement
     issue_statement: Text
     coarse_categories: Annotated[tuple[Text, ...], Field(min_length=1, max_length=8)]
-    scope: Literal["expression", "statement", "function", "class", "file", "module", "repository"]
+    scope: Literal[
+        "expression", "statement", "function", "class", "file", "module", "repository", "unknown"
+    ] = Field(
+        description=(
+            "Smallest affected code unit established by the supplied evidence, not the "
+            "area needed for investigation. Use unknown when impact extent is not established."
+        )
+    )
     generalisable: Judgement
-    proposed_invariant: Text | None
+    proposed_invariant: Text | None = Field(
+        description=(
+            "Candidate condition suggested by this source, not a validated general rule. "
+            "Use null if the supplied evidence does not justify one."
+        )
+    )
     evidence_quotes: Annotated[tuple[EvidenceQuote, ...], Field(max_length=16)]
-    exclusions: Annotated[tuple[Text, ...], Field(max_length=16)]
+    exclusions: Annotated[tuple[Text, ...], Field(max_length=16)] = Field(
+        description=(
+            "Known exceptions or conditions limiting applicability of the concern or "
+            "candidate rule; not missing evidence or investigation tasks. Empty means "
+            "none identified, not that no exceptions exist."
+        )
+    )
 
     @model_validator(mode="after")
     def actionable_evidence(self) -> "IssueInterpretation":

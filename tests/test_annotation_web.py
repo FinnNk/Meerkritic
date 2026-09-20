@@ -43,6 +43,39 @@ class AnnotationWebTest(unittest.TestCase):
         self.assertEqual(conflict.status_code, 409)
         self.assertEqual(self.store.get(self.job.id).decision, "reject")
 
+    def test_review_explains_field_meanings_without_changing_original_draft(self):
+        original = self.queue.inspect(self.job.id)
+        page = self.client.get(f"/jobs/{self.job.id}")
+        self.assertEqual(page.status_code, 200)
+        self.assertIn('class="source-panel" open', page.text)
+        self.assertIn("Your task: assess the interpretation", page.text)
+        self.assertIn("Impact scope", page.text)
+        self.assertIn("Assessment notes and evidence limitations", page.text)
+        self.assertIn("Put missing evidence and investigation needs in notes", page.text)
+        self.assertEqual(self.queue.inspect(self.job.id), original)
+        self.assertIsNone(self.store.get(self.job.id))
+
+    def test_unknown_scope_and_separate_notes_survive_edit_and_restart(self):
+        original_job, original_body = self.queue.inspect(self.job.id)
+        self.issue.update(scope="unknown", exclusions=["Caller already checks the condition."])
+        notes = "Evidence limitation: caller not supplied. Investigation: inspect callers."
+        response = self.client.post(
+            self.url,
+            data={"decision": "edit", "edited_json": json.dumps(self.issue), "notes": notes},
+            headers=self.headers,
+        )
+        self.assertEqual(response.status_code, 200)
+        restarted = TestClient(
+            create_app(self.service, self.queue, self.annotations), base_url="http://127.0.0.1"
+        )
+        self.assertIn(notes, restarted.get(f"/jobs/{self.job.id}").text)
+        annotation, edited = self.annotations.review(self.job.id)
+        self.assertEqual(annotation.notes, notes)
+        self.assertEqual(edited["interpretation"], self.issue)
+        self.assertNotIn("Evidence limitation", json.dumps(edited["interpretation"]))
+        self.assertEqual(self.queue.inspect(self.job.id), (original_job, original_body))
+        self.assertEqual(self.store.progress(self.source.id)["edit"], 1)
+
     def test_invalid_edit_preserves_draft_and_escapes_model_and_human_text(self):
         response = self.client.post(
             self.url,

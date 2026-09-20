@@ -164,7 +164,7 @@ class AnnotationService:
     ) -> Annotation:
         """Immediately persist Accept/Edit/Reject, preserving original model provenance.
 
-        Edits must satisfy the original schema and exact source grounding. Identical
+        Edits must satisfy the current compatible schema and exact source grounding. Identical
         retries are safe; changing a completed decision requires a future workflow.
         An interrupted database write may leave an unreferenced immutable edit file.
 
