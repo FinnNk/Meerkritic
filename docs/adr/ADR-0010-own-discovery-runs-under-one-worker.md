@@ -1,5 +1,5 @@
 ---
-status: proposed
+status: implemented
 date: 2026-09-20
 decision-makers: [Project owner]
 ---
@@ -27,7 +27,7 @@ grouping must run outside HTTP while retaining exact analytical provenance.
 
 ## Decision Outcome
 
-Proposed and implemented in the review candidate: the discovery owner validates
+Accepted through owner review and merge of PR #11: the discovery owner validates
 frozen inputs, queues explicit invocations and coordinates routing/runtime/output
 publication. The shared Worker owns the process lock and recovery of both queues;
 it alternates queues. MAF executes embedding calls through a project-owned port.
@@ -48,8 +48,10 @@ cryptographically attest which model bytes another process loaded.
 The candidate's discovery tests challenge restart, fencing, event rollback, privacy,
 token bounds, corrupt files, vector shape, deterministic grouping and browser
 submission. Synthetic real MAF/llama.cpp compatibility is recorded externally in
-DER `vs2-grouping/r1`. Owner acceptance and integration remain pending; those gates
-must be verified before this ADR moves to implemented. Revisit on measured queue
+DER `vs2-grouping/r1`. PR #11 was approved and merged on 20 September 2026 at
+`e81c2e867e714f2fed72d235eb44ba035b4bf302`; its tree exactly equals the verified
+semantic head `125fd8c055b9c110efa1c4dd31dcc661358b32bc` (132 tests).
+Revisit on measured queue
 contention, a demonstrated corpus bound or a need for independent worker lifetimes.
 
 ## Pros and Cons of the Options
