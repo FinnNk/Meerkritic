@@ -1,6 +1,43 @@
 """Validate bounded vectors and apply a deterministic exploratory grouping method."""
 
 import math
+import re
+from fractions import Fraction
+
+from semantic_reviewer.domain.normalisation import IssueInterpretation
+
+
+def interpretation_text(value: IssueInterpretation) -> str:
+    """Build the shared issue/invariant/category text without source taxonomy labels.
+
+    This is the versioned issue-invariant-categories-v1 representation. Preserve
+    empty invariant lines and category order so both methods consume identical text.
+    """
+    return "\n".join(
+        (value.issue_statement, value.proposed_invariant or "", ", ".join(value.coarse_categories))
+    )
+
+
+def cluster_texts(ids: tuple[str, ...], texts: tuple[str, ...]) -> tuple[dict, ...]:
+    """Apply the fixed EDR lexical baseline, including empty-token outliers.
+
+    Use ASCII token sets after case-folding, Jaccard >= 1/4, connected components
+    of at least two members and summed-similarity representatives. No fitting or
+    stop-word removal occurs. Reject misaligned, duplicate or oversized inputs.
+    """
+    if (
+        not 1 <= len(ids) <= 100
+        or len(ids) != len(texts)
+        or len(set(ids)) != len(ids)
+        or any(not isinstance(i, str) or not i.strip() for i in ids)
+        or any(not isinstance(t, str) or len(t) > 12000 for t in texts)
+    ):
+        raise ValueError("Lexical inputs must be unique, aligned and bounded.")
+    tokens = [set(re.findall(r"[a-z0-9]+", text.casefold())) for text in texts]
+    similarities = [
+        [Fraction(len(a & b), len(a | b)) if a | b else Fraction(0) for b in tokens] for a in tokens
+    ]
+    return _components(ids, similarities, Fraction(1, 4), 2)
 
 
 def validate_vectors(vectors: tuple, count: int) -> tuple[tuple[float, ...], ...]:
@@ -36,6 +73,10 @@ def cluster_vectors(ids: tuple[str, ...], vectors: tuple, threshold: float, mini
     similarities = [
         [sum(a * b for a, b in zip(x, y, strict=True)) for y in vectors] for x in vectors
     ]
+    return _components(ids, similarities, threshold, minimum)
+
+
+def _components(ids, similarities, threshold, minimum):
     remaining = set(range(len(ids)))
     result = []
     group = 0
