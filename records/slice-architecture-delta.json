@@ -1,0 +1,842 @@
+{
+  "changes": {
+    "boundaries": {
+      "added": [],
+      "removed": []
+    },
+    "contracts": {
+      "added": [],
+      "removed": []
+    },
+    "imports": {
+      "added": [
+        {
+          "source": "semantic_reviewer.adapters.annotations",
+          "target": "dataclasses"
+        },
+        {
+          "source": "semantic_reviewer.adapters.annotations",
+          "target": "json"
+        },
+        {
+          "source": "semantic_reviewer.adapters.annotations",
+          "target": "pathlib"
+        },
+        {
+          "source": "semantic_reviewer.adapters.annotations",
+          "target": "semantic_reviewer.adapters.state"
+        },
+        {
+          "source": "semantic_reviewer.adapters.annotations",
+          "target": "semantic_reviewer.application.annotations"
+        },
+        {
+          "source": "semantic_reviewer.adapters.jobs",
+          "target": "dataclasses"
+        },
+        {
+          "source": "semantic_reviewer.adapters.jobs",
+          "target": "datetime"
+        },
+        {
+          "source": "semantic_reviewer.adapters.jobs",
+          "target": "json"
+        },
+        {
+          "source": "semantic_reviewer.adapters.jobs",
+          "target": "logging"
+        },
+        {
+          "source": "semantic_reviewer.adapters.jobs",
+          "target": "pathlib"
+        },
+        {
+          "source": "semantic_reviewer.adapters.jobs",
+          "target": "semantic_reviewer.adapters.results"
+        },
+        {
+          "source": "semantic_reviewer.adapters.jobs",
+          "target": "semantic_reviewer.adapters.state"
+        },
+        {
+          "source": "semantic_reviewer.adapters.jobs",
+          "target": "semantic_reviewer.application.jobs"
+        },
+        {
+          "source": "semantic_reviewer.adapters.jobs",
+          "target": "sqlite3"
+        },
+        {
+          "source": "semantic_reviewer.adapters.llama",
+          "target": "datetime"
+        },
+        {
+          "source": "semantic_reviewer.adapters.llama",
+          "target": "httpx"
+        },
+        {
+          "source": "semantic_reviewer.adapters.llama",
+          "target": "ipaddress"
+        },
+        {
+          "source": "semantic_reviewer.adapters.llama",
+          "target": "json"
+        },
+        {
+          "source": "semantic_reviewer.adapters.llama",
+          "target": "math"
+        },
+        {
+          "source": "semantic_reviewer.adapters.llama",
+          "target": "semantic_reviewer.application.model"
+        },
+        {
+          "source": "semantic_reviewer.adapters.llama",
+          "target": "semantic_reviewer.routing.selection"
+        },
+        {
+          "source": "semantic_reviewer.adapters.llama",
+          "target": "semantic_reviewer.routing.usage"
+        },
+        {
+          "source": "semantic_reviewer.adapters.llama",
+          "target": "time"
+        },
+        {
+          "source": "semantic_reviewer.adapters.llama",
+          "target": "urllib.parse"
+        },
+        {
+          "source": "semantic_reviewer.adapters.maf",
+          "target": "agent_framework"
+        },
+        {
+          "source": "semantic_reviewer.adapters.maf",
+          "target": "asyncio"
+        },
+        {
+          "source": "semantic_reviewer.adapters.maf",
+          "target": "dataclasses"
+        },
+        {
+          "source": "semantic_reviewer.adapters.maf",
+          "target": "datetime"
+        },
+        {
+          "source": "semantic_reviewer.adapters.maf",
+          "target": "importlib.metadata"
+        },
+        {
+          "source": "semantic_reviewer.adapters.maf",
+          "target": "semantic_reviewer.application.model"
+        },
+        {
+          "source": "semantic_reviewer.adapters.maf",
+          "target": "semantic_reviewer.application.normalisation"
+        },
+        {
+          "source": "semantic_reviewer.adapters.maf",
+          "target": "semantic_reviewer.domain.normalisation"
+        },
+        {
+          "source": "semantic_reviewer.adapters.maf",
+          "target": "semantic_reviewer.routing.usage"
+        },
+        {
+          "source": "semantic_reviewer.adapters.registry",
+          "target": "semantic_reviewer.adapters.state"
+        },
+        {
+          "source": "semantic_reviewer.adapters.results",
+          "target": "datetime"
+        },
+        {
+          "source": "semantic_reviewer.adapters.results",
+          "target": "hashlib"
+        },
+        {
+          "source": "semantic_reviewer.adapters.results",
+          "target": "json"
+        },
+        {
+          "source": "semantic_reviewer.adapters.results",
+          "target": "os"
+        },
+        {
+          "source": "semantic_reviewer.adapters.results",
+          "target": "pathlib"
+        },
+        {
+          "source": "semantic_reviewer.adapters.results",
+          "target": "re"
+        },
+        {
+          "source": "semantic_reviewer.adapters.results",
+          "target": "semantic_reviewer.adapters.state"
+        },
+        {
+          "source": "semantic_reviewer.adapters.results",
+          "target": "tempfile"
+        },
+        {
+          "source": "semantic_reviewer.adapters.reviews",
+          "target": "dataclasses"
+        },
+        {
+          "source": "semantic_reviewer.adapters.reviews",
+          "target": "datetime"
+        },
+        {
+          "source": "semantic_reviewer.adapters.reviews",
+          "target": "hashlib"
+        },
+        {
+          "source": "semantic_reviewer.adapters.reviews",
+          "target": "json"
+        },
+        {
+          "source": "semantic_reviewer.adapters.reviews",
+          "target": "pathlib"
+        },
+        {
+          "source": "semantic_reviewer.adapters.reviews",
+          "target": "re"
+        },
+        {
+          "source": "semantic_reviewer.adapters.reviews",
+          "target": "semantic_reviewer.adapters.state"
+        },
+        {
+          "source": "semantic_reviewer.adapters.reviews",
+          "target": "semantic_reviewer.application.reviews"
+        },
+        {
+          "source": "semantic_reviewer.adapters.routing_journal",
+          "target": "duckdb"
+        },
+        {
+          "source": "semantic_reviewer.adapters.routing_journal",
+          "target": "json"
+        },
+        {
+          "source": "semantic_reviewer.adapters.routing_journal",
+          "target": "os"
+        },
+        {
+          "source": "semantic_reviewer.adapters.routing_journal",
+          "target": "pathlib"
+        },
+        {
+          "source": "semantic_reviewer.adapters.routing_journal",
+          "target": "semantic_reviewer.adapters.state"
+        },
+        {
+          "source": "semantic_reviewer.adapters.routing_journal",
+          "target": "semantic_reviewer.routing.selection"
+        },
+        {
+          "source": "semantic_reviewer.adapters.routing_journal",
+          "target": "semantic_reviewer.routing.usage"
+        },
+        {
+          "source": "semantic_reviewer.adapters.routing_journal",
+          "target": "sqlite3"
+        },
+        {
+          "source": "semantic_reviewer.adapters.routing_journal",
+          "target": "tempfile"
+        },
+        {
+          "source": "semantic_reviewer.adapters.state",
+          "target": "collections.abc"
+        },
+        {
+          "source": "semantic_reviewer.adapters.state",
+          "target": "contextlib"
+        },
+        {
+          "source": "semantic_reviewer.adapters.state",
+          "target": "pathlib"
+        },
+        {
+          "source": "semantic_reviewer.adapters.state",
+          "target": "sqlite3"
+        },
+        {
+          "source": "semantic_reviewer.adapters.state",
+          "target": "yoyo"
+        },
+        {
+          "source": "semantic_reviewer.adapters.worker_lock",
+          "target": "contextlib"
+        },
+        {
+          "source": "semantic_reviewer.adapters.worker_lock",
+          "target": "fcntl"
+        },
+        {
+          "source": "semantic_reviewer.adapters.worker_lock",
+          "target": "msvcrt"
+        },
+        {
+          "source": "semantic_reviewer.adapters.worker_lock",
+          "target": "os"
+        },
+        {
+          "source": "semantic_reviewer.adapters.worker_lock",
+          "target": "pathlib"
+        },
+        {
+          "source": "semantic_reviewer.application.annotations",
+          "target": "dataclasses"
+        },
+        {
+          "source": "semantic_reviewer.application.annotations",
+          "target": "datetime"
+        },
+        {
+          "source": "semantic_reviewer.application.annotations",
+          "target": "semantic_reviewer.application.jobs"
+        },
+        {
+          "source": "semantic_reviewer.application.annotations",
+          "target": "semantic_reviewer.domain.normalisation"
+        },
+        {
+          "source": "semantic_reviewer.application.annotations",
+          "target": "typing"
+        },
+        {
+          "source": "semantic_reviewer.application.annotations",
+          "target": "uuid"
+        },
+        {
+          "source": "semantic_reviewer.application.jobs",
+          "target": "dataclasses"
+        },
+        {
+          "source": "semantic_reviewer.application.jobs",
+          "target": "datetime"
+        },
+        {
+          "source": "semantic_reviewer.application.jobs",
+          "target": "semantic_reviewer.application.datasets"
+        },
+        {
+          "source": "semantic_reviewer.application.jobs",
+          "target": "semantic_reviewer.application.normalisation"
+        },
+        {
+          "source": "semantic_reviewer.application.jobs",
+          "target": "semantic_reviewer.application.routing"
+        },
+        {
+          "source": "semantic_reviewer.application.jobs",
+          "target": "semantic_reviewer.routing.selection"
+        },
+        {
+          "source": "semantic_reviewer.application.jobs",
+          "target": "semantic_reviewer.routing.usage"
+        },
+        {
+          "source": "semantic_reviewer.application.jobs",
+          "target": "threading"
+        },
+        {
+          "source": "semantic_reviewer.application.jobs",
+          "target": "typing"
+        },
+        {
+          "source": "semantic_reviewer.application.jobs",
+          "target": "uuid"
+        },
+        {
+          "source": "semantic_reviewer.application.model",
+          "target": "dataclasses"
+        },
+        {
+          "source": "semantic_reviewer.application.model",
+          "target": "datetime"
+        },
+        {
+          "source": "semantic_reviewer.application.model",
+          "target": "semantic_reviewer.routing.selection"
+        },
+        {
+          "source": "semantic_reviewer.application.model",
+          "target": "semantic_reviewer.routing.usage"
+        },
+        {
+          "source": "semantic_reviewer.application.model",
+          "target": "typing"
+        },
+        {
+          "source": "semantic_reviewer.application.normalisation",
+          "target": "dataclasses"
+        },
+        {
+          "source": "semantic_reviewer.application.normalisation",
+          "target": "datetime"
+        },
+        {
+          "source": "semantic_reviewer.application.normalisation",
+          "target": "json"
+        },
+        {
+          "source": "semantic_reviewer.application.normalisation",
+          "target": "semantic_reviewer.application.model"
+        },
+        {
+          "source": "semantic_reviewer.application.normalisation",
+          "target": "semantic_reviewer.domain.datasets"
+        },
+        {
+          "source": "semantic_reviewer.application.normalisation",
+          "target": "semantic_reviewer.domain.normalisation"
+        },
+        {
+          "source": "semantic_reviewer.application.normalisation",
+          "target": "semantic_reviewer.routing.selection"
+        },
+        {
+          "source": "semantic_reviewer.application.normalisation",
+          "target": "semantic_reviewer.routing.usage"
+        },
+        {
+          "source": "semantic_reviewer.application.normalisation",
+          "target": "typing"
+        },
+        {
+          "source": "semantic_reviewer.application.reviews",
+          "target": "dataclasses"
+        },
+        {
+          "source": "semantic_reviewer.application.reviews",
+          "target": "typing"
+        },
+        {
+          "source": "semantic_reviewer.application.routing",
+          "target": "semantic_reviewer.routing.selection"
+        },
+        {
+          "source": "semantic_reviewer.application.routing",
+          "target": "semantic_reviewer.routing.usage"
+        },
+        {
+          "source": "semantic_reviewer.application.routing",
+          "target": "typing"
+        },
+        {
+          "source": "semantic_reviewer.bootstrap",
+          "target": "semantic_reviewer.adapters.annotations"
+        },
+        {
+          "source": "semantic_reviewer.bootstrap",
+          "target": "semantic_reviewer.adapters.jobs"
+        },
+        {
+          "source": "semantic_reviewer.bootstrap",
+          "target": "semantic_reviewer.adapters.llama"
+        },
+        {
+          "source": "semantic_reviewer.bootstrap",
+          "target": "semantic_reviewer.adapters.maf"
+        },
+        {
+          "source": "semantic_reviewer.bootstrap",
+          "target": "semantic_reviewer.adapters.results"
+        },
+        {
+          "source": "semantic_reviewer.bootstrap",
+          "target": "semantic_reviewer.adapters.reviews"
+        },
+        {
+          "source": "semantic_reviewer.bootstrap",
+          "target": "semantic_reviewer.adapters.routing_journal"
+        },
+        {
+          "source": "semantic_reviewer.bootstrap",
+          "target": "semantic_reviewer.adapters.worker_lock"
+        },
+        {
+          "source": "semantic_reviewer.bootstrap",
+          "target": "semantic_reviewer.application.annotations"
+        },
+        {
+          "source": "semantic_reviewer.bootstrap",
+          "target": "semantic_reviewer.application.jobs"
+        },
+        {
+          "source": "semantic_reviewer.bootstrap",
+          "target": "semantic_reviewer.application.routing"
+        },
+        {
+          "source": "semantic_reviewer.bootstrap",
+          "target": "semantic_reviewer.routing.selection"
+        },
+        {
+          "source": "semantic_reviewer.domain.normalisation",
+          "target": "dataclasses"
+        },
+        {
+          "source": "semantic_reviewer.domain.normalisation",
+          "target": "pydantic"
+        },
+        {
+          "source": "semantic_reviewer.domain.normalisation",
+          "target": "semantic_reviewer.domain.datasets"
+        },
+        {
+          "source": "semantic_reviewer.domain.normalisation",
+          "target": "typing"
+        },
+        {
+          "source": "semantic_reviewer.routing.continuity",
+          "target": "pydantic"
+        },
+        {
+          "source": "semantic_reviewer.routing.continuity",
+          "target": "semantic_reviewer.routing.selection"
+        },
+        {
+          "source": "semantic_reviewer.routing.continuity",
+          "target": "typing"
+        },
+        {
+          "source": "semantic_reviewer.routing.selection",
+          "target": "datetime"
+        },
+        {
+          "source": "semantic_reviewer.routing.selection",
+          "target": "decimal"
+        },
+        {
+          "source": "semantic_reviewer.routing.selection",
+          "target": "pydantic"
+        },
+        {
+          "source": "semantic_reviewer.routing.selection",
+          "target": "typing"
+        },
+        {
+          "source": "semantic_reviewer.routing.selection",
+          "target": "uuid"
+        },
+        {
+          "source": "semantic_reviewer.routing.usage",
+          "target": "decimal"
+        },
+        {
+          "source": "semantic_reviewer.routing.usage",
+          "target": "pydantic"
+        },
+        {
+          "source": "semantic_reviewer.routing.usage",
+          "target": "semantic_reviewer.routing.selection"
+        },
+        {
+          "source": "semantic_reviewer.routing.usage",
+          "target": "typing"
+        },
+        {
+          "source": "semantic_reviewer.routing.usage",
+          "target": "uuid"
+        },
+        {
+          "source": "semantic_reviewer.web.app",
+          "target": "semantic_reviewer.application.annotations"
+        },
+        {
+          "source": "semantic_reviewer.web.app",
+          "target": "semantic_reviewer.application.jobs"
+        },
+        {
+          "source": "semantic_reviewer.web.app",
+          "target": "semantic_reviewer.application.reviews"
+        },
+        {
+          "source": "semantic_reviewer.web.app",
+          "target": "starlette.concurrency"
+        },
+        {
+          "source": "semantic_reviewer.web.app",
+          "target": "starlette.middleware.trustedhost"
+        },
+        {
+          "source": "semantic_reviewer.web.app",
+          "target": "urllib.parse"
+        },
+        {
+          "source": "semantic_reviewer.worker",
+          "target": "pathlib"
+        },
+        {
+          "source": "semantic_reviewer.worker",
+          "target": "semantic_reviewer.bootstrap"
+        },
+        {
+          "source": "semantic_reviewer.worker",
+          "target": "time"
+        },
+        {
+          "source": "semantic_reviewer.worker",
+          "target": "uuid"
+        }
+      ],
+      "removed": [
+        {
+          "source": "semantic_reviewer.adapters.registry",
+          "target": "contextlib"
+        },
+        {
+          "source": "semantic_reviewer.adapters.registry",
+          "target": "sqlite3"
+        },
+        {
+          "source": "semantic_reviewer.adapters.registry",
+          "target": "yoyo"
+        }
+      ]
+    },
+    "modules": {
+      "added": [
+        {
+          "definitions": [
+            "AgentHandoff",
+            "RoutingPolicyTransition"
+          ],
+          "name": "semantic_reviewer.routing.continuity",
+          "package": false,
+          "path": "src/semantic_reviewer/routing/continuity.py"
+        },
+        {
+          "definitions": [
+            "Annotation",
+            "AnnotationService",
+            "AnnotationStore"
+          ],
+          "name": "semantic_reviewer.application.annotations",
+          "package": false,
+          "path": "src/semantic_reviewer/application/annotations.py"
+        },
+        {
+          "definitions": [
+            "BudgetConstraint",
+            "Candidate",
+            "ContextStrategy",
+            "CostQuote",
+            "Model",
+            "ModelInventory",
+            "ProviderHealth",
+            "Record",
+            "Route",
+            "RoutingConfig",
+            "RoutingDecision",
+            "RoutingPolicy",
+            "TaskRequirements",
+            "Version",
+            "select_route"
+          ],
+          "name": "semantic_reviewer.routing.selection",
+          "package": false,
+          "path": "src/semantic_reviewer/routing/selection.py"
+        },
+        {
+          "definitions": [
+            "ContextBuilder",
+            "FrameworkObservation",
+            "NormalisationInput",
+            "NormalisationOutcome",
+            "SourceContext",
+            "WorkflowRunner"
+          ],
+          "name": "semantic_reviewer.application.normalisation",
+          "package": false,
+          "path": "src/semantic_reviewer/application/normalisation.py"
+        },
+        {
+          "definitions": [
+            "EvidenceQuote",
+            "EvidenceSpan",
+            "IssueInterpretation",
+            "ground"
+          ],
+          "name": "semantic_reviewer.domain.normalisation",
+          "package": false,
+          "path": "src/semantic_reviewer/domain/normalisation.py"
+        },
+        {
+          "definitions": [
+            "Inferred",
+            "MafWorkflowRunner",
+            "Prepared"
+          ],
+          "name": "semantic_reviewer.adapters.maf",
+          "package": false,
+          "path": "src/semantic_reviewer/adapters/maf.py"
+        },
+        {
+          "definitions": [
+            "Job",
+            "JobService",
+            "JobStore",
+            "ResultStore"
+          ],
+          "name": "semantic_reviewer.application.jobs",
+          "package": false,
+          "path": "src/semantic_reviewer/application/jobs.py"
+        },
+        {
+          "definitions": [
+            "JsonResults"
+          ],
+          "name": "semantic_reviewer.adapters.results",
+          "package": false,
+          "path": "src/semantic_reviewer/adapters/results.py"
+        },
+        {
+          "definitions": [
+            "LlamaClient"
+          ],
+          "name": "semantic_reviewer.adapters.llama",
+          "package": false,
+          "path": "src/semantic_reviewer/adapters/llama.py"
+        },
+        {
+          "definitions": [
+            "Measurement",
+            "ModelUsage",
+            "Price",
+            "PriceCatalogue",
+            "TokenUsage",
+            "account_usage",
+            "usage_summary"
+          ],
+          "name": "semantic_reviewer.routing.usage",
+          "package": false,
+          "path": "src/semantic_reviewer/routing/usage.py"
+        },
+        {
+          "definitions": [
+            "ModelClient",
+            "ModelFailure",
+            "ModelReply",
+            "ModelRequest"
+          ],
+          "name": "semantic_reviewer.application.model",
+          "package": false,
+          "path": "src/semantic_reviewer/application/model.py"
+        },
+        {
+          "definitions": [
+            "ReviewIndex",
+            "ReviewReference"
+          ],
+          "name": "semantic_reviewer.application.reviews",
+          "package": false,
+          "path": "src/semantic_reviewer/application/reviews.py"
+        },
+        {
+          "definitions": [
+            "RoutingJournal",
+            "RoutingService"
+          ],
+          "name": "semantic_reviewer.application.routing",
+          "package": false,
+          "path": "src/semantic_reviewer/application/routing.py"
+        },
+        {
+          "definitions": [
+            "SQLiteAnnotations"
+          ],
+          "name": "semantic_reviewer.adapters.annotations",
+          "package": false,
+          "path": "src/semantic_reviewer/adapters/annotations.py"
+        },
+        {
+          "definitions": [
+            "SQLiteJobs",
+            "_event",
+            "_now"
+          ],
+          "name": "semantic_reviewer.adapters.jobs",
+          "package": false,
+          "path": "src/semantic_reviewer/adapters/jobs.py"
+        },
+        {
+          "definitions": [
+            "SQLiteReviewIndex",
+            "_read"
+          ],
+          "name": "semantic_reviewer.adapters.reviews",
+          "package": false,
+          "path": "src/semantic_reviewer/adapters/reviews.py"
+        },
+        {
+          "definitions": [
+            "SQLiteRoutingJournal",
+            "_payload"
+          ],
+          "name": "semantic_reviewer.adapters.routing_journal",
+          "package": false,
+          "path": "src/semantic_reviewer/adapters/routing_journal.py"
+        },
+        {
+          "definitions": [
+            "SQLiteState"
+          ],
+          "name": "semantic_reviewer.adapters.state",
+          "package": false,
+          "path": "src/semantic_reviewer/adapters/state.py"
+        },
+        {
+          "definitions": [
+            "build_annotations",
+            "build_datasets",
+            "build_jobs",
+            "build_review_index",
+            "build_worker",
+            "runtime_path"
+          ],
+          "name": "semantic_reviewer.bootstrap",
+          "package": false,
+          "path": "src/semantic_reviewer/bootstrap.py"
+        },
+        {
+          "definitions": [
+            "run"
+          ],
+          "name": "semantic_reviewer.worker",
+          "package": false,
+          "path": "src/semantic_reviewer/worker.py"
+        },
+        {
+          "definitions": [
+            "worker_lock"
+          ],
+          "name": "semantic_reviewer.adapters.worker_lock",
+          "package": false,
+          "path": "src/semantic_reviewer/adapters/worker_lock.py"
+        }
+      ],
+      "removed": [
+        {
+          "definitions": [
+            "build_datasets"
+          ],
+          "name": "semantic_reviewer.bootstrap",
+          "package": false,
+          "path": "src/semantic_reviewer/bootstrap.py"
+        },
+        {
+          "definitions": [],
+          "name": "semantic_reviewer.worker",
+          "package": false,
+          "path": "src/semantic_reviewer/worker.py"
+        }
+      ]
+    },
+    "settings": {}
+  },
+  "schema_version": 1
+}

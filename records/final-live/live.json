@@ -1,0 +1,366 @@
+{
+  "started_at": "2026-09-20T00:21:23.450998+00:00",
+  "runtime": "$WORKSPACE\\extras\\preflight\\vs1-validation-final\\runtime",
+  "jobs": [
+    {
+      "job": {
+        "id": "7b9523c0-b01d-45f7-acc4-af06da404802",
+        "dataset_id": "crc-py-manual-4176ac0",
+        "source_index": 0,
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:0",
+        "status": "succeeded",
+        "queued_at": "2026-09-20T00:21:24.240490+00:00",
+        "started_at": "2026-09-20T00:21:24.932686+00:00",
+        "heartbeat_at": "2026-09-20T00:21:24.932686+00:00",
+        "completed_at": "2026-09-20T00:21:27.437582+00:00",
+        "worker_id": "23dfbab1-bb73-4dfe-bf2b-d39a260efcdc",
+        "decision_id": "dc7a4c49-9a06-4826-9068-2499a1d75ae3",
+        "artefact_sha256": "408e95acb0682943e2fe5b9bcd61ede0ae08359887ca5d2fc70ea4514b3bfd1f",
+        "error": null
+      },
+      "usage": {
+        "currency": null,
+        "decision_id": "dc7a4c49-9a06-4826-9068-2499a1d75ae3",
+        "estimated_cost": "0",
+        "id": "09de5e5c-673b-41ad-a4c6-7bad9debce04",
+        "measurement": {
+          "completed_at": "2026-09-20T00:21:27.420825Z",
+          "generation_ms": 2044.52,
+          "outcome": "success",
+          "provider_currency": null,
+          "provider_reported_cost": null,
+          "queue_ms": 768.494,
+          "started_at": "2026-09-20T00:21:24.240490Z",
+          "time_to_first_token_ms": 375.0,
+          "tokens": {
+            "cached_input_tokens": 0,
+            "input_tokens": 223,
+            "output_tokens": 211,
+            "reasoning_tokens": null
+          }
+        },
+        "price_catalogue": null,
+        "spend_basis": "local"
+      },
+      "framework": {
+        "activity": "source preparation -> inference -> evidence validation",
+        "component": "WorkflowBuilder/executors",
+        "framework": "Microsoft Agent Framework",
+        "mitigation": "none",
+        "observation": "Three-step graph returned a typed outcome.",
+        "outcome": "completed",
+        "reproducibility": "Repeat with the retained prompt, source and runtime versions.",
+        "severity": "info",
+        "version": "1.19.0"
+      },
+      "annotation": {
+        "id": "f85b6dae-8377-4de6-a776-d3053e479574",
+        "job_id": "7b9523c0-b01d-45f7-acc4-af06da404802",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:0",
+        "result_sha256": "408e95acb0682943e2fe5b9bcd61ede0ae08359887ca5d2fc70ea4514b3bfd1f",
+        "decision": "accept",
+        "interpretation_sha256": null,
+        "notes": "Automated functional verification only; not an owner judgement.",
+        "created_at": "2026-09-20T00:21:27.529399+00:00",
+        "schema_version": 1
+      },
+      "log": {
+        "sha256": "56a41848bf784c56ccb65d25d936796625b66730981741d3ae9ecb9ecd74a551",
+        "job_id": "7b9523c0-b01d-45f7-acc4-af06da404802",
+        "type": "job_log",
+        "path": "$WORKSPACE\\extras\\preflight\\vs1-validation-final\\runtime\\logs\\56a41848bf784c56ccb65d25d936796625b66730981741d3ae9ecb9ecd74a551.json",
+        "size": 928,
+        "created_at": "2026-09-20T00:21:27.445085+00:00"
+      }
+    },
+    {
+      "job": {
+        "id": "343bccbb-0eeb-4628-87b7-7c5f7d6db2c2",
+        "dataset_id": "crc-py-manual-4176ac0",
+        "source_index": 0,
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:0",
+        "status": "succeeded",
+        "queued_at": "2026-09-20T00:21:27.586963+00:00",
+        "started_at": "2026-09-20T00:21:28.322618+00:00",
+        "heartbeat_at": "2026-09-20T00:21:28.322618+00:00",
+        "completed_at": "2026-09-20T00:21:30.637437+00:00",
+        "worker_id": "85f97481-5dab-41e2-a27d-48c2e4379020",
+        "decision_id": "0a1879b2-4470-42c0-b347-326d991c00e8",
+        "artefact_sha256": "24e5aee5ed05898c3c00d4ee49012257b6f38009c59b8c8e2b4b0adc39248ad7",
+        "error": null
+      },
+      "usage": {
+        "currency": null,
+        "decision_id": "0a1879b2-4470-42c0-b347-326d991c00e8",
+        "estimated_cost": "0",
+        "id": "97552b8d-375c-42aa-8549-24062983e114",
+        "measurement": {
+          "completed_at": "2026-09-20T00:21:30.611136Z",
+          "generation_ms": 2090.086,
+          "outcome": "success",
+          "provider_currency": null,
+          "provider_reported_cost": null,
+          "queue_ms": 830.431,
+          "started_at": "2026-09-20T00:21:27.586963Z",
+          "time_to_first_token_ms": 108.99999993853271,
+          "tokens": {
+            "cached_input_tokens": 0,
+            "input_tokens": 223,
+            "output_tokens": 211,
+            "reasoning_tokens": null
+          }
+        },
+        "price_catalogue": null,
+        "spend_basis": "local"
+      },
+      "framework": {
+        "activity": "source preparation -> inference -> evidence validation",
+        "component": "WorkflowBuilder/executors",
+        "framework": "Microsoft Agent Framework",
+        "mitigation": "none",
+        "observation": "Three-step graph returned a typed outcome.",
+        "outcome": "completed",
+        "reproducibility": "Repeat with the retained prompt, source and runtime versions.",
+        "severity": "info",
+        "version": "1.19.0"
+      },
+      "annotation": {
+        "id": "ac383dc4-353f-4ecf-b9ce-12e890f4a4b7",
+        "job_id": "343bccbb-0eeb-4628-87b7-7c5f7d6db2c2",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:0",
+        "result_sha256": "24e5aee5ed05898c3c00d4ee49012257b6f38009c59b8c8e2b4b0adc39248ad7",
+        "decision": "edit",
+        "interpretation_sha256": "171bb70b4cd2b61b1335bb7991e76d5817944a1defbff1e2c6fa6ebdf96eba60",
+        "notes": "Automated functional verification only; not an owner judgement.",
+        "created_at": "2026-09-20T00:21:30.765610+00:00",
+        "schema_version": 1
+      },
+      "log": {
+        "sha256": "c8558ccf45c87012445fe12dc9664f257456efcbfe391c1eb3b151a004beaf36",
+        "job_id": "343bccbb-0eeb-4628-87b7-7c5f7d6db2c2",
+        "type": "job_log",
+        "path": "$WORKSPACE\\extras\\preflight\\vs1-validation-final\\runtime\\logs\\c8558ccf45c87012445fe12dc9664f257456efcbfe391c1eb3b151a004beaf36.json",
+        "size": 931,
+        "created_at": "2026-09-20T00:21:30.649428+00:00"
+      }
+    },
+    {
+      "job": {
+        "id": "f8eb0040-2d8f-4ec9-a9fb-e9a0ef3dea63",
+        "dataset_id": "crc-py-manual-4176ac0",
+        "source_index": 0,
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:0",
+        "status": "succeeded",
+        "queued_at": "2026-09-20T00:21:30.829131+00:00",
+        "started_at": "2026-09-20T00:21:31.581776+00:00",
+        "heartbeat_at": "2026-09-20T00:21:31.581776+00:00",
+        "completed_at": "2026-09-20T00:21:34.094599+00:00",
+        "worker_id": "e1608301-35d2-4943-860f-9e062a8482a9",
+        "decision_id": "099212ea-c08f-4f0f-bc0c-75664a174970",
+        "artefact_sha256": "9dcf14ede1b61f6285b6d0d5337fdb53d6348c46e08b598d33afd53859a525d4",
+        "error": null
+      },
+      "usage": {
+        "currency": null,
+        "decision_id": "099212ea-c08f-4f0f-bc0c-75664a174970",
+        "estimated_cost": "0",
+        "id": "2d596b46-26fc-4d31-a9d6-ec07f72b88e1",
+        "measurement": {
+          "completed_at": "2026-09-20T00:21:34.077522Z",
+          "generation_ms": 2274.945,
+          "outcome": "success",
+          "provider_currency": null,
+          "provider_reported_cost": null,
+          "queue_ms": 837.647,
+          "started_at": "2026-09-20T00:21:30.829131Z",
+          "time_to_first_token_ms": 140.99999994505197,
+          "tokens": {
+            "cached_input_tokens": 0,
+            "input_tokens": 223,
+            "output_tokens": 211,
+            "reasoning_tokens": null
+          }
+        },
+        "price_catalogue": null,
+        "spend_basis": "local"
+      },
+      "framework": {
+        "activity": "source preparation -> inference -> evidence validation",
+        "component": "WorkflowBuilder/executors",
+        "framework": "Microsoft Agent Framework",
+        "mitigation": "none",
+        "observation": "Three-step graph returned a typed outcome.",
+        "outcome": "completed",
+        "reproducibility": "Repeat with the retained prompt, source and runtime versions.",
+        "severity": "info",
+        "version": "1.19.0"
+      },
+      "annotation": {
+        "id": "d5110cb7-9fb2-4b2d-b1d4-8985f1c8a003",
+        "job_id": "f8eb0040-2d8f-4ec9-a9fb-e9a0ef3dea63",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:0",
+        "result_sha256": "9dcf14ede1b61f6285b6d0d5337fdb53d6348c46e08b598d33afd53859a525d4",
+        "decision": "reject",
+        "interpretation_sha256": null,
+        "notes": "Automated functional verification only; not an owner judgement.",
+        "created_at": "2026-09-20T00:21:34.185399+00:00",
+        "schema_version": 1
+      },
+      "log": {
+        "sha256": "86f53c535d315de09662ea31ae6cd9afcc394a66d835f4d624599c025c214240",
+        "job_id": "f8eb0040-2d8f-4ec9-a9fb-e9a0ef3dea63",
+        "type": "job_log",
+        "path": "$WORKSPACE\\extras\\preflight\\vs1-validation-final\\runtime\\logs\\86f53c535d315de09662ea31ae6cd9afcc394a66d835f4d624599c025c214240.json",
+        "size": 932,
+        "created_at": "2026-09-20T00:21:34.101886+00:00"
+      }
+    },
+    {
+      "job": {
+        "id": "349ba867-5be8-4a66-a6cb-5d6fe6a9b838",
+        "dataset_id": "crc-py-manual-4176ac0",
+        "source_index": 0,
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:0",
+        "status": "failed",
+        "queued_at": "2026-09-20T00:21:34.228946+00:00",
+        "started_at": "2026-09-20T00:21:34.930857+00:00",
+        "heartbeat_at": "2026-09-20T00:21:34.930857+00:00",
+        "completed_at": "2026-09-20T00:21:37.131185+00:00",
+        "worker_id": "40faa79b-8a5c-4b0e-8b63-9e56e28f7241",
+        "decision_id": "805bfe1e-592a-429b-9a24-b53ec5359988",
+        "artefact_sha256": "838aacd4fde7177eba93532de0ceb51c58ce069ed943efe7ad8bf96232f82e2b",
+        "error": "Local provider failed or returned an invalid response."
+      },
+      "usage": {
+        "currency": null,
+        "decision_id": "805bfe1e-592a-429b-9a24-b53ec5359988",
+        "estimated_cost": "0",
+        "id": "7ecdff68-ec09-430a-b601-3a039fbee259",
+        "measurement": {
+          "completed_at": "2026-09-20T00:21:37.112660Z",
+          "generation_ms": null,
+          "outcome": "provider_failure",
+          "provider_currency": null,
+          "provider_reported_cost": null,
+          "queue_ms": 777.172,
+          "started_at": "2026-09-20T00:21:34.228946Z",
+          "time_to_first_token_ms": null,
+          "tokens": {
+            "cached_input_tokens": null,
+            "input_tokens": null,
+            "output_tokens": null,
+            "reasoning_tokens": null
+          }
+        },
+        "price_catalogue": null,
+        "spend_basis": "local"
+      },
+      "framework": {
+        "activity": "source preparation -> inference -> evidence validation",
+        "component": "WorkflowBuilder/executors",
+        "framework": "Microsoft Agent Framework",
+        "mitigation": "none",
+        "observation": "Three-step graph returned a typed outcome.",
+        "outcome": "completed",
+        "reproducibility": "Repeat with the retained prompt, source and runtime versions.",
+        "severity": "info",
+        "version": "1.19.0"
+      },
+      "annotation": null,
+      "log": {
+        "sha256": "3c595f8b73d050a3a50c40b9193acc015c4ce8c0a0e711eefe2d8db6633bbfbe",
+        "job_id": "349ba867-5be8-4a66-a6cb-5d6fe6a9b838",
+        "type": "job_log",
+        "path": "$WORKSPACE\\extras\\preflight\\vs1-validation-final\\runtime\\logs\\3c595f8b73d050a3a50c40b9193acc015c4ce8c0a0e711eefe2d8db6633bbfbe.json",
+        "size": 982,
+        "created_at": "2026-09-20T00:21:37.140209+00:00"
+      }
+    },
+    {
+      "job": {
+        "id": "1c3364ea-4cea-43d9-9d23-25822e7d1dbe",
+        "dataset_id": "crc-py-manual-4176ac0",
+        "source_index": 0,
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:0",
+        "status": "failed",
+        "queued_at": "2026-09-20T00:21:37.270887+00:00",
+        "started_at": "2026-09-20T00:21:37.609763+00:00",
+        "heartbeat_at": "2026-09-20T00:21:37.609763+00:00",
+        "completed_at": "2026-09-20T00:21:38.277403+00:00",
+        "worker_id": "crash-probe",
+        "decision_id": null,
+        "artefact_sha256": null,
+        "error": "Worker stopped before recording completion; inspect evidence before resubmitting."
+      },
+      "usage": null,
+      "framework": null,
+      "annotation": null,
+      "log": {
+        "sha256": "3e0e3b1cbf26060214bdb5e7ba89cff44634cc2f6b62d3ec7ac892056ba1ffd8",
+        "job_id": "1c3364ea-4cea-43d9-9d23-25822e7d1dbe",
+        "type": "job_log",
+        "path": "$WORKSPACE\\extras\\preflight\\vs1-validation-final\\runtime\\logs\\3e0e3b1cbf26060214bdb5e7ba89cff44634cc2f6b62d3ec7ac892056ba1ffd8.json",
+        "size": 695,
+        "created_at": "2026-09-20T00:21:38.286336+00:00"
+      }
+    }
+  ],
+  "warning": "Automated functional decisions in an isolated public-data runtime; not owner annotations or model-quality evidence.",
+  "progress": {
+    "source_total": 1030,
+    "reviewed_sources": 1,
+    "successful_results": 3,
+    "reviewed_results": 3,
+    "accept": 1,
+    "edit": 1,
+    "reject": 1,
+    "failed": 2,
+    "queued": 0,
+    "running": 0
+  },
+  "review_reference": {
+    "pair_id": "vs1-annotation",
+    "round_id": "r1",
+    "sequence": 2,
+    "stage": "owner_review_ready",
+    "diary": "9d5124098a79a97d3b88a064e979a0b04451f410",
+    "semantic": "843ff161d49e096d1da2a55cacf75acac03e97f3",
+    "manifest_path": "$WORKSPACE\\extras\\der-evidence\\pairs\\vs1-annotation\\rounds\\r1\\manifest.json",
+    "manifest_sha256": "b200b8a52f5ce2ed3255613c52052f5ba7d96c2fd6b5ea262dd935fd32a2ba8d",
+    "event_path": "$WORKSPACE\\extras\\der-evidence\\pairs\\vs1-annotation\\events\\00000002.json",
+    "event_sha256": "ac547629f1256cdf822351e971ed03c18c902ddffbe5aa1464ce280557715126",
+    "indexed_at": "2026-09-20T00:21:38.458580+00:00"
+  },
+  "exported_usage": 4,
+  "analytics": [
+    [
+      "provider_failure",
+      1,
+      null,
+      null
+    ],
+    [
+      "success",
+      3,
+      669,
+      633
+    ]
+  ],
+  "artefact_counts": [
+    [
+      "human_edit",
+      1
+    ],
+    [
+      "job_log",
+      19
+    ],
+    [
+      "normalisation",
+      4
+    ]
+  ],
+  "annotation_events": 3,
+  "sqlite_mode": "wal",
+  "completed_at": "2026-09-20T00:21:38.575377+00:00"
+}

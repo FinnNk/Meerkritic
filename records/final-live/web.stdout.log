@@ -1,0 +1,17 @@
+INFO:     127.0.0.1:61485 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61485 - "GET /datasets/crc-py-manual-4176ac0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61485 - "POST /datasets/crc-py-manual-4176ac0/observations/0/normalise HTTP/1.1" 303 See Other
+INFO:     127.0.0.1:61485 - "POST /jobs/7b9523c0-b01d-45f7-acc4-af06da404802/annotation HTTP/1.1" 303 See Other
+INFO:     127.0.0.1:61485 - "GET /jobs/7b9523c0-b01d-45f7-acc4-af06da404802 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61485 - "POST /datasets/crc-py-manual-4176ac0/observations/0/normalise HTTP/1.1" 303 See Other
+INFO:     127.0.0.1:61485 - "POST /jobs/343bccbb-0eeb-4628-87b7-7c5f7d6db2c2/annotation HTTP/1.1" 303 See Other
+INFO:     127.0.0.1:61485 - "GET /jobs/343bccbb-0eeb-4628-87b7-7c5f7d6db2c2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61485 - "POST /datasets/crc-py-manual-4176ac0/observations/0/normalise HTTP/1.1" 303 See Other
+INFO:     127.0.0.1:61485 - "POST /jobs/f8eb0040-2d8f-4ec9-a9fb-e9a0ef3dea63/annotation HTTP/1.1" 303 See Other
+INFO:     127.0.0.1:61485 - "GET /jobs/f8eb0040-2d8f-4ec9-a9fb-e9a0ef3dea63 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61485 - "GET /jobs/349ba867-5be8-4a66-a6cb-5d6fe6a9b838 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61485 - "GET /datasets/crc-py-manual-4176ac0/progress HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61485 - "GET /reviews HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64543 - "GET /datasets/crc-py-manual-4176ac0/progress HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64543 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64543 - "GET /reviews HTTP/1.1" 200 OK

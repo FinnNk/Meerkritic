@@ -1,0 +1,157 @@
+{
+  "changes": {
+    "boundaries": {
+      "added": [],
+      "removed": []
+    },
+    "contracts": {
+      "added": [],
+      "removed": []
+    },
+    "imports": {
+      "added": [
+        {
+          "source": "semantic_reviewer.adapters.jobs",
+          "target": "logging"
+        },
+        {
+          "source": "semantic_reviewer.adapters.jobs",
+          "target": "semantic_reviewer.adapters.results"
+        },
+        {
+          "source": "semantic_reviewer.adapters.jobs",
+          "target": "sqlite3"
+        },
+        {
+          "source": "semantic_reviewer.adapters.results",
+          "target": "datetime"
+        },
+        {
+          "source": "semantic_reviewer.adapters.results",
+          "target": "semantic_reviewer.adapters.state"
+        },
+        {
+          "source": "semantic_reviewer.adapters.reviews",
+          "target": "dataclasses"
+        },
+        {
+          "source": "semantic_reviewer.adapters.reviews",
+          "target": "datetime"
+        },
+        {
+          "source": "semantic_reviewer.adapters.reviews",
+          "target": "hashlib"
+        },
+        {
+          "source": "semantic_reviewer.adapters.reviews",
+          "target": "json"
+        },
+        {
+          "source": "semantic_reviewer.adapters.reviews",
+          "target": "pathlib"
+        },
+        {
+          "source": "semantic_reviewer.adapters.reviews",
+          "target": "re"
+        },
+        {
+          "source": "semantic_reviewer.adapters.reviews",
+          "target": "semantic_reviewer.adapters.state"
+        },
+        {
+          "source": "semantic_reviewer.adapters.reviews",
+          "target": "semantic_reviewer.application.reviews"
+        },
+        {
+          "source": "semantic_reviewer.application.reviews",
+          "target": "dataclasses"
+        },
+        {
+          "source": "semantic_reviewer.application.reviews",
+          "target": "typing"
+        },
+        {
+          "source": "semantic_reviewer.bootstrap",
+          "target": "semantic_reviewer.adapters.reviews"
+        },
+        {
+          "source": "semantic_reviewer.routing.continuity",
+          "target": "pydantic"
+        },
+        {
+          "source": "semantic_reviewer.routing.continuity",
+          "target": "semantic_reviewer.routing.selection"
+        },
+        {
+          "source": "semantic_reviewer.routing.continuity",
+          "target": "typing"
+        },
+        {
+          "source": "semantic_reviewer.web.app",
+          "target": "semantic_reviewer.application.reviews"
+        }
+      ],
+      "removed": []
+    },
+    "modules": {
+      "added": [
+        {
+          "definitions": [
+            "AgentHandoff",
+            "RoutingPolicyTransition"
+          ],
+          "name": "semantic_reviewer.routing.continuity",
+          "package": false,
+          "path": "src/semantic_reviewer/routing/continuity.py"
+        },
+        {
+          "definitions": [
+            "ReviewIndex",
+            "ReviewReference"
+          ],
+          "name": "semantic_reviewer.application.reviews",
+          "package": false,
+          "path": "src/semantic_reviewer/application/reviews.py"
+        },
+        {
+          "definitions": [
+            "SQLiteReviewIndex",
+            "_read"
+          ],
+          "name": "semantic_reviewer.adapters.reviews",
+          "package": false,
+          "path": "src/semantic_reviewer/adapters/reviews.py"
+        },
+        {
+          "definitions": [
+            "build_annotations",
+            "build_datasets",
+            "build_jobs",
+            "build_review_index",
+            "build_worker",
+            "runtime_path"
+          ],
+          "name": "semantic_reviewer.bootstrap",
+          "package": false,
+          "path": "src/semantic_reviewer/bootstrap.py"
+        }
+      ],
+      "removed": [
+        {
+          "definitions": [
+            "build_annotations",
+            "build_datasets",
+            "build_jobs",
+            "build_worker",
+            "runtime_path"
+          ],
+          "name": "semantic_reviewer.bootstrap",
+          "package": false,
+          "path": "src/semantic_reviewer/bootstrap.py"
+        }
+      ]
+    },
+    "settings": {}
+  },
+  "schema_version": 1
+}

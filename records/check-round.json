@@ -1,0 +1,16 @@
+{
+  "valid": true,
+  "pair_id": "vs1-validation",
+  "round_id": "r1",
+  "manifest_sha256": "62b2a60e6933f21261a250f58e4dde3803b1fbcb81cf37d30347be485606472b",
+  "scope": "archive_identity_and_equivalence_only",
+  "current_checkout": {
+    "repository": "$WORKSPACE\\extras\\der-checkouts\\vs1-validation",
+    "bare": false,
+    "head": "0ea4edeae12029bcbbd1db11843fe41824651220",
+    "branch": "change/vs1-validation-diary",
+    "clean": true,
+    "changes": [],
+    "tree": "c642ecd33eb8c22d27ccb7cf3012be22ed652116"
+  }
+}

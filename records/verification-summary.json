@@ -1,0 +1,27 @@
+[
+  {
+    "record": "r1-diary-checks.json",
+    "revision": "0ea4edeae12029bcbbd1db11843fe41824651220",
+    "tests": 94
+  },
+  {
+    "record": "r1-p0-checks.json",
+    "revision": "464a557c84582a056556c1234fd8e5d489ad23a7",
+    "tests": 88
+  },
+  {
+    "record": "r1-p1-checks.json",
+    "revision": "525446578e497066398838b0cef4be06755d8f57",
+    "tests": 91
+  },
+  {
+    "record": "r1-p2-checks.json",
+    "revision": "8e0cde670b203e22020813f1e46157d051cbe19f",
+    "tests": 93
+  },
+  {
+    "record": "r1-p3-checks.json",
+    "revision": "c1d6487fe41f3165e87a2217c2733e96d5657778",
+    "tests": 94
+  }
+]

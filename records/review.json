@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "pair_id": "vs1-validation",
+  "round_id": "r1",
+  "manifest_sha256": "62b2a60e6933f21261a250f58e4dde3803b1fbcb81cf37d30347be485606472b",
+  "semantic_tip": "c1d6487fe41f3165e87a2217c2733e96d5657778",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "vs1-validation-2026-09-20"
+  },
+  "independence": "self-review",
+  "mode": "full",
+  "status": "complete",
+  "orientation_done": true,
+  "reviewed_commits": [
+    "464a557c84582a056556c1234fd8e5d489ad23a7",
+    "525446578e497066398838b0cef4be06755d8f57",
+    "8e0cde670b203e22020813f1e46157d051cbe19f",
+    "c1d6487fe41f3165e87a2217c2733e96d5657778"
+  ],
+  "aggregate_done": true,
+  "findings": [],
+  "check_records": [
+    "r1-diary-checks.json",
+    "r1-p0-checks.json",
+    "r1-p1-checks.json",
+    "r1-p2-checks.json",
+    "r1-p3-checks.json",
+    "review-notes.md"
+  ],
+  "limitations": [
+    "Windows/Python 3.12 only",
+    "Self-review; fresh-context challenge scoped",
+    "No hosted CI configured",
+    "Owner approval and integration pending"
+  ],
+  "carry_forward_record": null,
+  "platform_approval": false
+}

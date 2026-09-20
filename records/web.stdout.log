@@ -1,0 +1,14 @@
+INFO:     127.0.0.1:55013 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55013 - "GET /datasets/crc-py-manual-4176ac0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55013 - "POST /datasets/crc-py-manual-4176ac0/observations/0/normalise HTTP/1.1" 303 See Other
+INFO:     127.0.0.1:55013 - "POST /jobs/6c59c77a-431e-452e-9d9e-f8b292026329/annotation HTTP/1.1" 303 See Other
+INFO:     127.0.0.1:55013 - "GET /jobs/6c59c77a-431e-452e-9d9e-f8b292026329 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55013 - "POST /datasets/crc-py-manual-4176ac0/observations/0/normalise HTTP/1.1" 303 See Other
+INFO:     127.0.0.1:55013 - "POST /jobs/6a9d8214-2c54-4104-a32d-6e2206d5386a/annotation HTTP/1.1" 303 See Other
+INFO:     127.0.0.1:55013 - "GET /jobs/6a9d8214-2c54-4104-a32d-6e2206d5386a HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55013 - "POST /datasets/crc-py-manual-4176ac0/observations/0/normalise HTTP/1.1" 303 See Other
+INFO:     127.0.0.1:55013 - "POST /jobs/cf060c4a-8870-4cc3-9644-274da92d7776/annotation HTTP/1.1" 303 See Other
+INFO:     127.0.0.1:55013 - "GET /jobs/cf060c4a-8870-4cc3-9644-274da92d7776 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55013 - "GET /jobs/afbe5734-db69-4fc0-b811-726f7c7f87d2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55013 - "GET /datasets/crc-py-manual-4176ac0/progress HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55013 - "GET /reviews HTTP/1.1" 200 OK

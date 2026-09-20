@@ -1,0 +1,336 @@
+{
+  "base": "843ff161d49e096d1da2a55cacf75acac03e97f3",
+  "tip": "c1d6487fe41f3165e87a2217c2733e96d5657778",
+  "tree": "c642ecd33eb8c22d27ccb7cf3012be22ed652116",
+  "commits": [
+    {
+      "commit": "464a557c84582a056556c1234fd8e5d489ad23a7",
+      "parents": [
+        "843ff161d49e096d1da2a55cacf75acac03e97f3"
+      ],
+      "tree": "47dc05ef149b36516c0f50d097638dafa94eab3c",
+      "subject": "feat: catalogue immutable artefacts and structured job logs",
+      "change": {
+        "files": [
+          {
+            "path": "docs/development/operational-evidence.md",
+            "added": 25,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/jobs.py",
+            "added": 51,
+            "deleted": 2
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/migrations/005_artefacts.sql",
+            "added": 19,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/results.py",
+            "added": 39,
+            "deleted": 1
+          },
+          {
+            "path": "src/semantic_reviewer/application/jobs.py",
+            "added": 4,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/bootstrap.py",
+            "added": 1,
+            "deleted": 1
+          },
+          {
+            "path": "tests/test_artefacts.py",
+            "added": 112,
+            "deleted": 0
+          },
+          {
+            "path": "tools/run.py",
+            "added": 12,
+            "deleted": 0
+          }
+        ],
+        "file_count": 8,
+        "added": 263,
+        "deleted": 4,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "525446578e497066398838b0cef4be06755d8f57",
+      "parents": [
+        "464a557c84582a056556c1234fd8e5d489ad23a7"
+      ],
+      "tree": "d46717c0466e2d2c3a5698a4c92a2a22e0726c61",
+      "subject": "feat: index external DER readiness references",
+      "change": {
+        "files": [
+          {
+            "path": "docs/development/operational-evidence.md",
+            "added": 18,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/migrations/006_review_references.sql",
+            "added": 19,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/reviews.py",
+            "added": 134,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/application/reviews.py",
+            "added": 29,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/asgi.py",
+            "added": 2,
+            "deleted": 2
+          },
+          {
+            "path": "src/semantic_reviewer/bootstrap.py",
+            "added": 6,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/app.py",
+            "added": 12,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/base.html",
+            "added": 1,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/reviews.html",
+            "added": 15,
+            "deleted": 0
+          },
+          {
+            "path": "tests/test_review_references.py",
+            "added": 79,
+            "deleted": 0
+          },
+          {
+            "path": "tools/run.py",
+            "added": 7,
+            "deleted": 0
+          }
+        ],
+        "file_count": 11,
+        "added": 322,
+        "deleted": 2,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "8e0cde670b203e22020813f1e46157d051cbe19f",
+      "parents": [
+        "525446578e497066398838b0cef4be06755d8f57"
+      ],
+      "tree": "80f46137890bbe3fe8fe511fa12d018f9a0f3cf7",
+      "subject": "feat(routing): reserve explicit policy continuity records",
+      "change": {
+        "files": [
+          {
+            "path": "docs/development/routing.md",
+            "added": 9,
+            "deleted": 1
+          },
+          {
+            "path": "src/semantic_reviewer/routing/continuity.py",
+            "added": 42,
+            "deleted": 0
+          },
+          {
+            "path": "tests/test_routing_continuity.py",
+            "added": 51,
+            "deleted": 0
+          }
+        ],
+        "file_count": 3,
+        "added": 102,
+        "deleted": 1,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "c1d6487fe41f3165e87a2217c2733e96d5657778",
+      "parents": [
+        "8e0cde670b203e22020813f1e46157d051cbe19f"
+      ],
+      "tree": "c642ecd33eb8c22d27ccb7cf3012be22ed652116",
+      "subject": "test: verify the complete VS1 data-to-annotation path",
+      "change": {
+        "files": [
+          {
+            "path": "CONTEXT.md",
+            "added": 10,
+            "deleted": 0
+          },
+          {
+            "path": "IMPLEMENTATION_BACKLOG.yaml",
+            "added": 2,
+            "deleted": 1
+          },
+          {
+            "path": "docs/development/vs1-verification.md",
+            "added": 77,
+            "deleted": 0
+          },
+          {
+            "path": "docs/slice-reviews/VS1-progress.md",
+            "added": 7,
+            "deleted": 2
+          },
+          {
+            "path": "tests/test_vs1_path.py",
+            "added": 112,
+            "deleted": 0
+          }
+        ],
+        "file_count": 5,
+        "added": 208,
+        "deleted": 3,
+        "binary_files": 0
+      }
+    }
+  ],
+  "linear": true,
+  "final_change": {
+    "files": [
+      {
+        "path": "CONTEXT.md",
+        "added": 10,
+        "deleted": 0
+      },
+      {
+        "path": "IMPLEMENTATION_BACKLOG.yaml",
+        "added": 2,
+        "deleted": 1
+      },
+      {
+        "path": "docs/development/operational-evidence.md",
+        "added": 43,
+        "deleted": 0
+      },
+      {
+        "path": "docs/development/routing.md",
+        "added": 9,
+        "deleted": 1
+      },
+      {
+        "path": "docs/development/vs1-verification.md",
+        "added": 77,
+        "deleted": 0
+      },
+      {
+        "path": "docs/slice-reviews/VS1-progress.md",
+        "added": 7,
+        "deleted": 2
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/jobs.py",
+        "added": 51,
+        "deleted": 2
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/migrations/005_artefacts.sql",
+        "added": 19,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/migrations/006_review_references.sql",
+        "added": 19,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/results.py",
+        "added": 39,
+        "deleted": 1
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/reviews.py",
+        "added": 134,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/application/jobs.py",
+        "added": 4,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/application/reviews.py",
+        "added": 29,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/asgi.py",
+        "added": 2,
+        "deleted": 2
+      },
+      {
+        "path": "src/semantic_reviewer/bootstrap.py",
+        "added": 7,
+        "deleted": 1
+      },
+      {
+        "path": "src/semantic_reviewer/routing/continuity.py",
+        "added": 42,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/web/app.py",
+        "added": 12,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/web/templates/base.html",
+        "added": 1,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/web/templates/reviews.html",
+        "added": 15,
+        "deleted": 0
+      },
+      {
+        "path": "tests/test_artefacts.py",
+        "added": 112,
+        "deleted": 0
+      },
+      {
+        "path": "tests/test_review_references.py",
+        "added": 79,
+        "deleted": 0
+      },
+      {
+        "path": "tests/test_routing_continuity.py",
+        "added": 51,
+        "deleted": 0
+      },
+      {
+        "path": "tests/test_vs1_path.py",
+        "added": 112,
+        "deleted": 0
+      },
+      {
+        "path": "tools/run.py",
+        "added": 19,
+        "deleted": 0
+      }
+    ],
+    "file_count": 24,
+    "added": 895,
+    "deleted": 10,
+    "binary_files": 0
+  },
+  "statistics_note": "No rename detection; merge commit churn uses first parent. Final diff and cumulative per-commit churn are different quantities."
+}
