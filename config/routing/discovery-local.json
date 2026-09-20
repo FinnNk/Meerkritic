@@ -63,11 +63,47 @@
         "mode": "direct_large_context",
         "reserve_output_tokens": 0
       }
+    },
+    {
+      "identity": {
+        "id": "local-discovery-fixture",
+        "version": "2"
+      },
+      "inventory": {
+        "id": "llama-discovery-fixture",
+        "version": "1"
+      },
+      "local_only": true,
+      "routes": [
+        {
+          "task_class": "normalisation",
+          "models": [
+            "qwen3-4b-local"
+          ]
+        },
+        {
+          "task_class": "embedding",
+          "models": [
+            "nomic-embed-v1.5-local"
+          ]
+        },
+        {
+          "task_class": "rule_synthesis",
+          "models": [
+            "qwen3-4b-local"
+          ]
+        }
+      ],
+      "context": {
+        "id": "direct-v1",
+        "mode": "direct_large_context",
+        "reserve_output_tokens": 0
+      }
     }
   ],
   "system_default": {
     "id": "local-discovery-fixture",
-    "version": "1"
+    "version": "2"
   },
   "local_only": true
 }

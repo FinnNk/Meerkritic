@@ -106,13 +106,22 @@ def build_worker(
             )
         from semantic_reviewer.adapters.embedding import EmbeddingProfile, LlamaEmbeddingClient
         from semantic_reviewer.adapters.maf_embedding import MafEmbeddingRuntime
+        from semantic_reviewer.adapters.maf_synthesis import MafSynthesisRuntime
         from semantic_reviewer.application.discovery import DiscoveryExecution
+        from semantic_reviewer.application.synthesis import RuleSynthesisExecution
 
         profile = EmbeddingProfile.model_validate_json(embedding_profile.read_bytes())
+        discovery_service = build_discovery(root)
         discovery = DiscoveryExecution(
-            build_discovery(root),
+            discovery_service,
             routing,
             MafEmbeddingRuntime(LlamaEmbeddingClient(embedding_endpoint, profile, embedding_model)),
+            RuleSynthesisExecution(
+                discovery_service,
+                build_rules(root),
+                routing,
+                MafSynthesisRuntime(LlamaClient(endpoint)),
+            ),
         )
     return Worker(
         build_jobs(root),
@@ -173,6 +182,7 @@ def build_discovery(data_root: Path) -> DiscoveryService:
         JsonSelections(root / "selections", root / "state.sqlite3"),
         SQLiteDiscovery(root / "state.sqlite3"),
         ParquetDiscovery(root / "discovery"),
+        SQLiteRoutingJournal(root / "state.sqlite3"),
     )
 
 

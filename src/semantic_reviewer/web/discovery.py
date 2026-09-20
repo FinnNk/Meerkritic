@@ -70,6 +70,13 @@ def add_discovery_routes(app, templates, service: DiscoveryService):
     def detail(request: Request, run_id: str, page: int = Query(1, ge=1, le=10)):
         try:
             run, body = service.inspect(run_id)
+            trace = (
+                service.files.read_json(body["trace_digest"])
+                if body and body.get("trace_digest")
+                else None
+            )
+            if trace and trace.get("run_id") != run.id:
+                raise ValueError("Synthesis trace belongs to another invocation.")
             summary, snapshot = service.selections.read(run.request.selection_id)
             records = {item.annotation.id: item for item in snapshot.records}
             members = (
@@ -93,5 +100,20 @@ def add_discovery_routes(app, templates, service: DiscoveryService):
                 "page": page,
                 "total": len(rows),
                 "manifest": json.dumps(body, indent=2, ensure_ascii=False),
+                "trace": json.dumps(trace, indent=2, ensure_ascii=False) if trace else None,
+                "telemetry": body.get("telemetry")
+                if body and body.get("telemetry")
+                else service.telemetry(run),
             },
         )
+
+    @app.post("/discovery/synthesise")
+    async def synthesise(request: Request):
+        fields = await local_form(request)
+        try:
+            run = await run_in_threadpool(
+                service.synthesise, fields.get("cluster_run", ""), int(fields.get("cluster", ""))
+            )
+        except (ValueError, LookupError, OSError) as error:
+            raise HTTPException(409, "Synthesis needs a successful cluster and group.") from error
+        return RedirectResponse(f"/discovery/{run.id}", status_code=303)

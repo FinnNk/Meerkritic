@@ -33,6 +33,12 @@ def main() -> int:
     cluster.add_argument("--minimum-size", type=int, default=2)
     discovery = commands.add_parser("discovery")
     discovery.add_argument("run_id", nargs="?")
+    synthesise = commands.add_parser("synthesise")
+    synthesise.add_argument("cluster_run")
+    synthesise.add_argument("cluster", type=int)
+    commands.add_parser("rules")
+    rule = commands.add_parser("rule")
+    rule.add_argument("version_id")
     normalise = commands.add_parser("normalise")
     normalise.add_argument("dataset_id")
     normalise.add_argument("source_index", type=int)
@@ -73,7 +79,7 @@ def main() -> int:
                 embedding_profile=args.embedding_profile,
                 embedding_model=args.embedding_model,
             )
-        elif args.command in ("embed", "cluster", "discovery"):
+        elif args.command in ("embed", "cluster", "synthesise", "discovery"):
             composition = importlib.import_module("semantic_reviewer.bootstrap")
             service = composition.build_discovery(args.data_root)
             if args.command == "embed":
@@ -82,12 +88,28 @@ def main() -> int:
                 result = asdict(
                     service.cluster(args.embedding_run, args.threshold, args.minimum_size)
                 )
+            elif args.command == "synthesise":
+                result = asdict(service.synthesise(args.cluster_run, args.cluster))
             elif args.run_id:
                 run, body = service.inspect(args.run_id)
                 result = {"run": asdict(run), "result": body}
             else:
                 result = [asdict(run) for run in service.store.recent()]
             print(json.dumps(result, indent=2, default=lambda item: item.model_dump(mode="json")))
+        elif args.command in ("rules", "rule"):
+            composition = importlib.import_module("semantic_reviewer.bootstrap")
+            registry = composition.build_rules(args.data_root)
+            if args.command == "rules":
+                result = [asdict(head) for head in registry.store.recent()]
+            else:
+                head, body, evidence, decisions = registry.store.read(args.version_id)
+                result = {
+                    "head": asdict(head),
+                    "version": body.model_dump(mode="json"),
+                    "evidence": [item.model_dump(mode="json") for item in evidence],
+                    "decisions": decisions,
+                }
+            print(json.dumps(result, indent=2))
         elif args.command in ("annotate", "progress"):
             composition = importlib.import_module("semantic_reviewer.bootstrap")
             annotations = composition.build_annotations(
