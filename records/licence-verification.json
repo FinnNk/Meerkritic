@@ -1,0 +1,9 @@
+{
+  "published_content": "verified byte-for-byte at a2580a0785ab109c6014e404a949f60722282844",
+  "sha256": "e021af15f5e9912721ba0ba8683d479f51b34c510c27191a32112f82e54e305a",
+  "path": "LICENSE.md",
+  "metadata": "MIT / license-files=[LICENSE.md]",
+  "recognition": "unconfirmed: licence-detection API returned 404 for commit and branch references; contents API confirms published file",
+  "documentation": "https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository",
+  "follow_up": "Recheck automatic detection after owner merge; do not add a duplicate file or claim detection already occurred."
+}
