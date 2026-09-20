@@ -136,6 +136,10 @@ an explicit project review check; it does not replace its qualification requirem
 
 ### Agent pull requests
 
+In PR descriptions and commit comments, give each project reference its code and descriptive title on first mention, for example **A1 — immutable annotation selection and eligibility**, within **VS2 — Annotation-to-Rule Discovery**. Apply this to slice, batch, proposition and ADR/EDR references as appropriate. Link the source record where useful, but do not require the reader to open it to understand the reference. Later mentions in the same description or comment may use the code alone when unambiguous.
+
+Before publishing or updating a description or comment, check that its first references are understandable without cross-referencing the plan. Preserve owner amendments when updating existing prose. This convention does not require repeating titles on every mention or rewriting historical comments.
+
 The dedicated `meerkritic-agent[bot]` GitHub App pushes work to topic branches and
 opens PRs. Configure both Git attribution and authentication for the App; setting
 a commit author alone does not select the account used to push or open a PR.
