@@ -1,14 +1,14 @@
 # VS3 preparation and remaining-slice revision
 
-20 September 2026. Status: **DRAFT; not frozen or started**. VS2 software has a
-review candidate for staged interaction and validation; owner integration and the
-empirical registration/adoption gate remain distinct. This document revises future
+20 September 2026. Status: **DRAFT; not frozen or started**. VS2 software is accepted
+and integrated through PR #13. The empirical registration/adoption gate remains
+outstanding. This document revises future
 work using observed contracts and limits, not speculative infrastructure needs.
 
 ## Entry gates
 
-- Owner accepts the final VS2 batch; verify actual integrated proposition mapping
-  and required checks without relabelling earlier candidate evidence.
+- Software integration gate satisfied: [PR #13 integration](../slice-reviews/VS2-integration.md)
+  verifies the actual proposition mapping and checks without relabelling earlier evidence.
 - Resolve EDR-0001 (Choose an initial discovery grouping method): a permitted,
   explicitly human-labelled corpus, exact baseline/candidate method and thresholds
   must be registered before the comparison. Record an adoption, no-adoption or

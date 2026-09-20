@@ -1,10 +1,12 @@
-# VS2 — Annotation-to-Rule Discovery review
+# VS2 - Annotation-to-Rule Discovery review
 
-Reviewed 20 September 2026. **Software candidate complete; slice closure remains
-pending owner acceptance and the empirical gate.** A1, A2/A3 and B are integrated
-through PRs #10–#12. Batch C supplies staged interaction, guidance and architecture
-inspection in the current review candidate. This is not a claim that unmerged
-code or an unregistered study is complete.
+Reviewed 20 September 2026. **Software accepted and integrated; slice closure
+remains pending the empirical gate.** A1, A2/A3 and B are integrated through
+PRs #10-#12. Batch C is integrated through PR #13 at
+`f7aa4e05411da9d804f3624abe57033544fb1073`, with nine ordered reviewed trees
+preserved and all quality checks and 172 tests passing on that exact revision.
+See the [integration record](VS2-integration.md). The empirical study remains
+unregistered and unrun.
 
 ## Delivered path
 
@@ -62,14 +64,14 @@ was needed. Architecture snapshots use one generator and remain evidence project
 - Actor names are local attestations; no multi-user authentication claim. Windows
   is the tested context. Author self-review is not independent review.
 - ADR-0010/0011 are implemented after verified owner merges. ADR-0012 (Apply review
-  intent in explicit batches) was accepted by the owner on 20 September 2026;
-  PR #13 merge and integrated confirmation remain pending. ADR-0001 remains
+  intent in explicit batches) is also implemented after explicit owner acceptance
+  and verified PR #13 integration on 20 September 2026. ADR-0001 remains
   accepted pending its first applicable registered empirical decision.
 
 ## Remaining slices and pause boundary
 
 [VS3 preparation](../plans/VS3-plan.md) revises replay inputs, execution and comparison
 around immutable rule versions, explicit evidence labels and the existing review
-contracts. VS4–VS8 are explicitly revised there; none is activated. After final
-software review/merge, verify integration and resolve the human/EDR gates before
-claiming full VS2 closure or freezing later work.
+contracts. VS4-VS8 are explicitly revised there; none is activated. Software
+integration is verified. Resolve the human-review and EDR gates before claiming
+full VS2 closure or freezing later work.
