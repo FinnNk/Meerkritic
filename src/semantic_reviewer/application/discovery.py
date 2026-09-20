@@ -8,7 +8,7 @@ from typing import Annotated, Literal, Protocol, Self
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from semantic_reviewer.application.embeddings import EmbeddingInput, EmbeddingRuntime
-from semantic_reviewer.application.routing import RoutingService
+from semantic_reviewer.application.routing import RoutingJournal, RoutingService
 from semantic_reviewer.application.selections import SelectionStore
 from semantic_reviewer.domain.grouping import cluster_vectors, validate_vectors
 from semantic_reviewer.routing.selection import TaskRequirements
@@ -21,10 +21,13 @@ class DiscoveryRequest(BaseModel):
     """Pin one selection and, for clustering, its exact successful vector artefact."""
 
     model_config = ConfigDict(extra="forbid", frozen=True)
-    kind: Literal["embedding", "clustering"]
+    kind: Literal["embedding", "clustering", "synthesis"]
     selection_id: Digest
     embedding_run: str | None = None
     embedding_digest: Digest | None = None
+    cluster_run: str | None = Field(default=None, min_length=1, max_length=200)
+    cluster_digest: Digest | None = None
+    cluster: int | None = Field(default=None, ge=0, strict=True)
     threshold: float = Field(default=0.85, ge=-1, le=1, allow_inf_nan=False)
     minimum_size: int = Field(default=2, ge=2, le=100, strict=True)
 
@@ -33,8 +36,15 @@ class DiscoveryRequest(BaseModel):
         """Reject incomplete or irrelevant upstream references."""
         if (self.kind == "clustering") != bool(self.embedding_run and self.embedding_digest):
             raise ValueError("Clustering requires an exact embedding run and digest.")
-        if self.kind == "embedding" and (self.embedding_run or self.embedding_digest):
-            raise ValueError("Embedding inputs cannot reference another embedding run.")
+        if self.kind != "clustering" and (self.embedding_run or self.embedding_digest):
+            raise ValueError("Only clustering inputs reference an embedding run.")
+        has_cluster = bool(self.cluster_run and self.cluster_digest and self.cluster is not None)
+        if (self.kind == "synthesis") != has_cluster:
+            raise ValueError("Synthesis requires an exact cluster run, digest and group.")
+        if self.kind != "synthesis" and any(
+            x is not None for x in (self.cluster_run, self.cluster_digest, self.cluster)
+        ):
+            raise ValueError("Only synthesis inputs reference a cluster group.")
         return self
 
 
@@ -122,10 +132,31 @@ class DiscoveryService:
     """Hide input identity checks and queue publication behind explicit user operations."""
 
     def __init__(
-        self, selections: SelectionStore, store: DiscoveryStore, files: DiscoveryFiles
+        self,
+        selections: SelectionStore,
+        store: DiscoveryStore,
+        files: DiscoveryFiles,
+        journal: RoutingJournal | None = None,
     ) -> None:
         """Bind ports for one external runtime; construction never invokes inference."""
         self.selections, self.store, self.files = selections, store, files
+        self.journal = journal
+
+    def telemetry(self, run: DiscoveryRun) -> str:
+        """Show recorded usage or honest unknown token counts while a routed call is running."""
+        record = self.journal.get(run.decision_id) if self.journal and run.decision_id else None
+        if not record or record[0].selected is None:
+            return (
+                "Awaiting an eligible route"
+                if run.request.kind != "clustering"
+                else "No model call"
+            )
+        decision, usage = record
+        if usage:
+            return usage_summary(decision, usage)
+        elapsed = (datetime.now(UTC) - datetime.fromisoformat(run.queued_at)).total_seconds()
+        location = "local" if decision.selected.locality == "local" else "spend pending"
+        return f"{decision.selected.id} · ? in / ? out · {location} · {elapsed:.1f}s"
 
     def embed(self, selection_id: str) -> DiscoveryRun:
         """Verify a non-empty eligible selection, then queue a distinct invocation."""
@@ -157,20 +188,64 @@ class DiscoveryService:
         body = self.files.read_json(run.result_digest) if run.result_digest else None
         if body is not None and (
             body.get("run_id") != run.id
-            or body.get("request") != run.request.model_dump(mode="json")
+            or DiscoveryRequest.model_validate(body.get("request")) != run.request
         ):
             raise ValueError("Discovery result disagrees with its queued request.")
         return run, body
+
+    def synthesise(self, cluster_run: str, cluster: int) -> DiscoveryRun:
+        """Pin a successful clustering result for worker synthesis; never invoke a model here.
+
+        The synthesis owner resolves eligible membership in the worker. Unknown or
+        failed upstream runs are rejected before queueing; invalid groups fail visibly
+        during execution. Each explicit call creates a distinct invocation.
+        """
+        run, _ = self.inspect(cluster_run)
+        if run.status != "succeeded" or run.request.kind != "clustering":
+            raise ValueError("Synthesis requires a successful cluster run.")
+        return self.store.enqueue(
+            DiscoveryRequest(
+                kind="synthesis",
+                selection_id=run.request.selection_id,
+                cluster_run=run.id,
+                cluster_digest=run.result_digest,
+                cluster=cluster,
+            )
+        )
+
+
+@dataclass(frozen=True)
+class SynthesisPublication:
+    """Return immutable proposal provenance separately from its optional registered candidate."""
+
+    rule_version: str | None
+    trace_digest: str
+    error: str | None
+    insufficiency_reason: str | None
+    telemetry: str
+
+
+class SynthesisExecutor(Protocol):
+    """Own rule-specific resolution, runtime validation and registry publication."""
+
+    def execute(self, run: DiscoveryRun) -> SynthesisPublication:
+        """Execute an already claimed synthesis run under the corpus worker's process lock."""
+        ...
 
 
 class DiscoveryExecution:
     """Resolve, execute and publish one corpus job under the shared exclusive worker lock."""
 
     def __init__(
-        self, service: DiscoveryService, routing: RoutingService, runtime: EmbeddingRuntime
+        self,
+        service: DiscoveryService,
+        routing: RoutingService,
+        runtime: EmbeddingRuntime,
+        synthesis: SynthesisExecutor | None = None,
     ) -> None:
         """Bind idle dependencies; the owning Worker controls recovery and execution."""
         self.service, self.routing, self.runtime = service, routing, runtime
+        self.synthesis = synthesis
 
     def recover_interrupted(self) -> int:
         """Fail unfinished calls without replay; caller must already own the process lock."""
@@ -255,7 +330,7 @@ class DiscoveryExecution:
                         dimensions=len(vectors[0]),
                         normalisation="l2-v1",
                     )
-            else:
+            elif run.request.kind == "clustering":
                 parent, embedding = service.inspect(run.request.embedding_run)
                 if (
                     parent.status != "succeeded"
@@ -278,6 +353,12 @@ class DiscoveryExecution:
                     outliers=sum(row["cluster"] == -1 for row in members),
                     clusters=len({row["cluster"] for row in members if row["cluster"] >= 0}),
                 )
+            else:
+                if self.synthesis is None:
+                    raise ValueError("This worker has no configured synthesis runtime.")
+                publication = self.synthesis.execute(run)
+                body.update(asdict(publication))
+                error = publication.error
         except (ValueError, LookupError, OSError) as failure:
             # Do not leak filesystem paths or source/provider payloads into operational errors.
             error = f"Discovery input or output validation failed ({type(failure).__name__})."

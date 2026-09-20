@@ -190,6 +190,13 @@ class DiscoveryTest(unittest.TestCase):
         ):
             self.discovery.inspect(run.id)
 
+    def test_prior_request_manifests_remain_readable_without_new_optional_fields(self):
+        run, body = self.embed()
+        for field in ("cluster_run", "cluster_digest", "cluster"):
+            body["request"].pop(field, None)
+        with patch.object(self.files, "read_json", return_value=body):
+            self.assertEqual(self.discovery.inspect(run.id)[0].id, run.id)
+
     def test_atomic_event_failure_rolls_back_and_claims_are_exclusive(self):
         selection = self.selection()
         with self.discovery_store.state.connect() as db:
@@ -220,7 +227,8 @@ class DiscoveryTest(unittest.TestCase):
         config = self.routing.config.model_dump(mode="json")
         config["inventory"]["identity"]["version"] = "remote-negative-control"
         config["inventory"]["models"][1]["locality"] = "remote"
-        config["policies"][0]["inventory"] = config["inventory"]["identity"]
+        for policy in config["policies"]:
+            policy["inventory"] = config["inventory"]["identity"]
         config["policies"][0]["identity"]["version"] = "remote-negative-control"
         config["system_default"] = config["policies"][0]["identity"]
         self.execution.routing = RoutingService(

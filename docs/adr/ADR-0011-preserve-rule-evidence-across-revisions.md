@@ -34,7 +34,7 @@ and parent links but resets inherited verification to weak. Old claims remain
 intact; the new version begins as a candidate. Promotion records a reviewed
 research candidate, never validation, enforcement or deployment.
 
-The planned synthesis application uses the existing corpus queue and a project-owned runtime port. MAF
+Synthesis uses the existing corpus queue and a project-owned runtime port. MAF
 prepares bounded examples, invokes the routed model and validates structured
 references. Raw output and a complete trace precede rule publication. An explicit
 insufficiency result creates no candidate. Infrastructure failures do not trigger
@@ -57,7 +57,9 @@ not an automatic deduction from an accepted interpretation.
 
 `tests/test_rules.py` challenges concurrent decisions, idempotent retries, event
 rollback, immutable history, source identity, revision bounds and stale browser
-submissions. The next proposition will supply synthesis runtime and interrupted-publication checks. External DER `vs2-rules/r1` records exact checks
+submissions. `tests/test_synthesis.py` challenges real MAF orchestration with
+controlled provider outputs, invalid references, provider/context failures and
+interruption after publication. External DER `vs2-rules/r1` records exact checks
 and live local compatibility. Owner acceptance remains pending. Revisit on a
 demonstrated evidence bound or a need for different review authority.
 
