@@ -57,8 +57,37 @@ with a reason. Do not convert missing evidence into a pass or impose findings qu
 Use the [milestone review template](milestone-review-template.md). Store the
 maintained report with the slice review (or another named milestone report under
 `docs/architecture/`). Link canonical DER evidence rather than duplicating it.
+Produce this document for every future milestone review, including reviews with
+no findings. For each finding, preserve a trace from discovery to resolution and
+to the earlier development/review practice intended to catch the general problem.
+Use the VS1 review as an example, not a required number or catalogue of findings.
 Update future work and relevant ADRs/EDRs when warranted. Do not invent empirical
 claims from review judgement or rewrite a frozen EDR plan after seeing results.
+
+## Required finding record
+
+For each finding record:
+
+- **Observed issue and consequence:** concrete example, affected revision and
+  governing principle or contract; distinguish a defect from a design concern.
+- **How it was found:** the path/interface/document comparison, question or probe
+  that exposed it, with source/evidence references. Distinguish initial discovery
+  from regression tests added during the fix; do not invent missing chronology.
+- **How it was addressed:** the change and its invariant owner, or an explicit
+  accepted/deferred disposition; link implementation and validation evidence.
+- **General failure pattern:** describe the class of problem beyond the particular
+  function, model, field name or document in which it appeared.
+- **Earlier detection and response:** identify the pre-implementation, semantic
+  checkpoint or aggregate PR check, the responsible author/reviewer, a concrete
+  challenge, and the proportionate response if it exposes the same pattern.
+- **Confirmation and limits:** say what establishes the fix, what remains uncertain
+  and any revisit trigger. Intended prevention is not proof of effectiveness.
+
+Keep these details in the milestone's maintained review document, with a short
+disposition table for navigation. A table alone is insufficient when it omits the
+discovery method or the earlier detection/response mechanism. Link raw evidence
+to its canonical store. Keep original finding identifiers stable and distinguish
+additional improvements discovered during the follow-up from the original findings.
 
 ## Build and PR checkpoints
 
@@ -77,3 +106,10 @@ maintained documentation, including unchanged descriptions made stale by the wor
 The canonical quality command remains required. These judgement checks strengthen
 its surrounding workflow without adding blanket type/docstring lint, arbitrary
 metrics or mandatory new tests for unchanged low-risk behaviour.
+
+Use lessons from prior milestone findings at these earlier checkpoints. Authors
+apply the relevant generalised challenge while designing/building the change;
+reviewers check the response and evidence before accepting the proposition or PR.
+Do not postpone a known applicable check until the next milestone review. Later
+reviews assess whether the practice was actually applied and record recurrences;
+they must not claim that adding a checklist guarantees prevention.
