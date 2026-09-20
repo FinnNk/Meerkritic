@@ -1,0 +1,208 @@
+{
+  "scope": "Synthetic compatibility; automated fixture decisions are not research labels",
+  "source_revision": "125fd8c055b9c110efa1c4dd31dcc661358b32bc",
+  "run_id": "9c7d7981-4c4e-4ddf-9a84-c2fae0e79069",
+  "status": "succeeded",
+  "result_digest": "e25a3c2c8c39f870cc113cded15edd2b0ed5ea264d4ea1cbd7608f81deaed0ed",
+  "result": {
+    "completed_at": "2026-09-20T07:50:35.801471+00:00",
+    "dimensions": 768,
+    "eligible": 2,
+    "error": null,
+    "excluded": 1,
+    "failed": 0,
+    "framework": {
+      "activity": "embed selected interpretations",
+      "component": "WorkflowBuilder/executor",
+      "framework": "Microsoft Agent Framework",
+      "mitigation": "none",
+      "observation": "Typed embedding outcome retained.",
+      "outcome": "completed",
+      "reproducibility": "Use the frozen selection, deployment profile and dependency lock.",
+      "severity": "info",
+      "version": "1.19.0"
+    },
+    "model_provenance": {
+      "adapter": "llama-embeddings-v1",
+      "model_file_digest_verified": true,
+      "profile": {
+        "context_tokens": 2048,
+        "dimensions": 768,
+        "licence": "Apache-2.0",
+        "model_id": "nomic-embed-v1.5-local",
+        "prefix": "clustering: ",
+        "repository": "nomic-ai/nomic-embed-text-v1.5-GGUF",
+        "revision": "0188c9bf409793f810680a5a431e7b899c46104c",
+        "runtime": "llama.cpp b10964-b29c606e2; mean pooling; F16; CPU",
+        "sha256": "f7af6f66802f4df86eda10fe9bbcfc75c39562bed48ef6ace719a251cf1c2fdb"
+      },
+      "request_text_sha256": [
+        "e6b4a52b67aa6a9ab23b3f86f34b2045c7b7dc3ec8555f5354473f0041775251",
+        "e6b4a52b67aa6a9ab23b3f86f34b2045c7b7dc3ec8555f5354473f0041775251"
+      ],
+      "responses": [
+        {
+          "model": "nomic-embed-v1.5-local",
+          "object": "list",
+          "usage": {
+            "prompt_tokens": 9,
+            "total_tokens": 9
+          }
+        },
+        {
+          "model": "nomic-embed-v1.5-local",
+          "object": "list",
+          "usage": {
+            "prompt_tokens": 9,
+            "total_tokens": 9
+          }
+        }
+      ],
+      "server_identity": "API alias/dimensions/context; loaded bytes are an operator claim",
+      "server_metadata": {
+        "ftype": "F16",
+        "n_ctx": 2048,
+        "n_ctx_train": 2048,
+        "n_embd": 768,
+        "n_params": 136727040,
+        "n_vocab": 30522,
+        "size": 273533952,
+        "vocab_type": true
+      }
+    },
+    "normalisation": "l2-v1",
+    "preprocessing": "issue-invariant-categories-v1",
+    "purpose": "fixture",
+    "request": {
+      "embedding_digest": null,
+      "embedding_run": null,
+      "kind": "embedding",
+      "minimum_size": 2,
+      "selection_id": "f795c4d793fac54a74ba78967ab4191b077eb5a4500a7790adea6ae552d5abf1",
+      "threshold": 0.85
+    },
+    "routing": {
+      "budget": null,
+      "candidates": [
+        {
+          "model_id": "nomic-embed-v1.5-local",
+          "over_soft_budget": false,
+          "rejected_by": []
+        }
+      ],
+      "context": {
+        "id": "direct-v1",
+        "include_raw_transcript": false,
+        "max_fraction_of_context": 1.0,
+        "mode": "direct_large_context",
+        "reserve_output_tokens": 0
+      },
+      "created_at": "2026-09-20T07:50:34.474597Z",
+      "escalation_from": null,
+      "health": [],
+      "id": "a928333a-6487-4694-a3d8-0c5dff80fdc2",
+      "inventory": {
+        "id": "llama-discovery-fixture",
+        "version": "1"
+      },
+      "max_input_tokens": 2048,
+      "model_override": null,
+      "policy": {
+        "id": "local-discovery-fixture",
+        "version": "1"
+      },
+      "policy_source": "system",
+      "project_local_only": true,
+      "quotes": [],
+      "reasons": [
+        "policy_order"
+      ],
+      "requirements": {
+        "capabilities": [
+          "embeddings"
+        ],
+        "excluded_families": [],
+        "expected_output_tokens": 0,
+        "min_input_tokens": 0,
+        "policy_override": null,
+        "privacy": "local_only",
+        "task_class": "embedding",
+        "task_id": "9c7d7981-4c4e-4ddf-9a84-c2fae0e79069"
+      },
+      "selected": {
+        "capabilities": [
+          "embeddings"
+        ],
+        "evidence": "Synthetic compatibility fixture only; see config/models/nomic-embedding-fixture.json. No comparative quality or empirical adoption claim.",
+        "family": "nomic-bert",
+        "id": "nomic-embed-v1.5-local",
+        "locality": "local",
+        "output_tokens": 0,
+        "practical_input_tokens": 2048,
+        "provider": "llama.cpp",
+        "status": "active_current"
+      }
+    },
+    "run_id": "9c7d7981-4c4e-4ddf-9a84-c2fae0e79069",
+    "schema_version": 1,
+    "telemetry": "nomic-embed-v1.5-local \u00b7 18 in / 0 out \u00b7 local \u00b7 0.2s",
+    "text_sha256": [
+      "45bfbcfa4cfbe3dc383c542e6673b2c431bc021d4f7be59bd336e82d7a87ed33",
+      "45bfbcfa4cfbe3dc383c542e6673b2c431bc021d4f7be59bd336e82d7a87ed33"
+    ],
+    "turnaround_ms": 1347.892,
+    "usage": {
+      "currency": null,
+      "decision_id": "a928333a-6487-4694-a3d8-0c5dff80fdc2",
+      "estimated_cost": "0",
+      "id": "68807cf8-43d4-459d-a688-7a67310cb892",
+      "measurement": {
+        "completed_at": "2026-09-20T07:50:34.627480Z",
+        "generation_ms": null,
+        "outcome": "success",
+        "provider_currency": null,
+        "provider_reported_cost": null,
+        "queue_ms": 33.586,
+        "started_at": "2026-09-20T07:50:34.453579Z",
+        "time_to_first_token_ms": null,
+        "tokens": {
+          "cached_input_tokens": null,
+          "input_tokens": 18,
+          "output_tokens": 0,
+          "reasoning_tokens": null
+        }
+      },
+      "price_catalogue": null,
+      "spend_basis": "local"
+    },
+    "vectors_digest": "86b91977bedea070e7c7d651ec8be24bf4b74344935a80e8937f2a188e10983f"
+  },
+  "cluster_id": "caf1f19d-be4d-48fe-bbd5-349a05880637",
+  "cluster_status": "succeeded",
+  "cluster_digest": "960cba7dce8529fd4d73cafc104a8a53a9347159456829ecf82482cf185cd878",
+  "cluster_result": {
+    "algorithm": "cosine-components-v1",
+    "clusters": 1,
+    "completed_at": "2026-09-20T07:50:35.965752+00:00",
+    "eligible": 2,
+    "error": null,
+    "excluded": 1,
+    "failed": 0,
+    "members_digest": "c859a557160442ceb411ab03ab2630c22f78f2348ba9d76a21c0a7a96c4e67ff",
+    "outliers": 0,
+    "purpose": "fixture",
+    "request": {
+      "embedding_digest": "e25a3c2c8c39f870cc113cded15edd2b0ed5ea264d4ea1cbd7608f81deaed0ed",
+      "embedding_run": "9c7d7981-4c4e-4ddf-9a84-c2fae0e79069",
+      "kind": "clustering",
+      "minimum_size": 2,
+      "selection_id": "f795c4d793fac54a74ba78967ab4191b077eb5a4500a7790adea6ae552d5abf1",
+      "threshold": 0.85
+    },
+    "run_id": "caf1f19d-be4d-48fe-bbd5-349a05880637",
+    "schema_version": 1,
+    "seed": null,
+    "turnaround_ms": 92.086
+  },
+  "retained_runtime": "WORKSPACE\\extras\\preflight\\vs2-embedding\\runtime-9c7d7981-4c4e-4ddf-9a84-c2fae0e79069"
+}

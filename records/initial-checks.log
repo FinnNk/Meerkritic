@@ -1,0 +1,58 @@
+Running: ruff format --check .
+63 files already formatted
+Running: ruff check .
+E501 Line too long (101 > 100)
+  --> src\semantic_reviewer\adapters\discovery.py:48:101
+   |
+46 |         with self.state.connect() as db:
+47 |             db.execute(
+48 |                 "INSERT INTO discovery_run(id,request_json,status,queued_at) VALUES(?,?,'queued',?)",
+   |                                                                                                     ^
+49 |                 (run_id, request.model_dump_json(), _now()),
+50 |             )
+   |
+
+E501 Line too long (102 > 100)
+   --> src\semantic_reviewer\adapters\discovery.py:125:101
+    |
+123 |             status = "failed" if error else "succeeded"
+124 |             db.execute(
+125 |                 "UPDATE discovery_run SET status=?,result_digest=?,error=?,completed_at=? WHERE id=?",
+    |                                                                                                     ^^
+126 |                 (status, digest, error, _now(), run.id),
+127 |             )
+    |
+
+E501 Line too long (109 > 100)
+   --> src\semantic_reviewer\adapters\discovery.py:233:101
+    |
+231 |         with duckdb.connect() as db:
+232 |             rows = db.execute(
+233 |                 "SELECT position,annotation_id,text,vector FROM read_parquet(?) ORDER BY position LIMIT 101",
+    |                                                                                                     ^^^^^^^^^
+234 |                 [str(path)],
+235 |             ).fetchall()
+    |
+
+E501 Line too long (111 > 100)
+   --> src\semantic_reviewer\adapters\discovery.py:260:101
+    |
+258 |         with duckdb.connect() as db:
+259 |             rows = db.execute(
+260 |                 "SELECT annotation_id,cluster,representative FROM read_parquet(?) ORDER BY position LIMIT 101",
+    |                                                                                                     ^^^^^^^^^^^
+261 |                 [str(path)],
+262 |             ).fetchall()
+    |
+
+E501 Line too long (103 > 100)
+  --> src\semantic_reviewer\adapters\embedding.py:84:101
+   |
+83 |     def run(self, value: EmbeddingInput) -> EmbeddingOutcome:
+84 |         """Validate all token budgets before any embedding call; failures retain partial accounting."""
+   |                                                                                                     ^^^
+85 |         started, clock = datetime.now(UTC), time.monotonic()
+86 |         tokens = 0
+   |
+
+Found 5 errors.

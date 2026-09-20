@@ -1,0 +1,16 @@
+{
+  "valid": true,
+  "pair_id": "vs2-grouping",
+  "round_id": "r1",
+  "manifest_sha256": "85bc12f9636fff3ddcc43190256d8ae96b83b9341634d8e3fbd4a41e201c59b9",
+  "scope": "archive_identity_and_equivalence_only",
+  "current_checkout": {
+    "repository": "WORKSPACE\\extras\\der-checkouts\\vs2-grouping-archive",
+    "bare": false,
+    "head": "0c1f39f31ba6ecba36d4568eaa66ebc54056079b",
+    "branch": "change/vs2-grouping-diary",
+    "clean": true,
+    "changes": [],
+    "tree": "ad60c533d489f3bd590884d53e90165449c39104"
+  }
+}

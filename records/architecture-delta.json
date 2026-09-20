@@ -1,0 +1,991 @@
+{
+  "changes": {
+    "boundaries": {
+      "added": [],
+      "removed": []
+    },
+    "contracts": {
+      "added": [],
+      "removed": []
+    },
+    "imports": {
+      "added": [
+        {
+          "source": "semantic_reviewer.adapters.discovery",
+          "target": "datetime"
+        },
+        {
+          "source": "semantic_reviewer.adapters.discovery",
+          "target": "duckdb"
+        },
+        {
+          "source": "semantic_reviewer.adapters.discovery",
+          "target": "hashlib"
+        },
+        {
+          "source": "semantic_reviewer.adapters.discovery",
+          "target": "json"
+        },
+        {
+          "source": "semantic_reviewer.adapters.discovery",
+          "target": "os"
+        },
+        {
+          "source": "semantic_reviewer.adapters.discovery",
+          "target": "pathlib"
+        },
+        {
+          "source": "semantic_reviewer.adapters.discovery",
+          "target": "re"
+        },
+        {
+          "source": "semantic_reviewer.adapters.discovery",
+          "target": "semantic_reviewer.adapters.state"
+        },
+        {
+          "source": "semantic_reviewer.adapters.discovery",
+          "target": "semantic_reviewer.application.discovery"
+        },
+        {
+          "source": "semantic_reviewer.adapters.discovery",
+          "target": "semantic_reviewer.domain.grouping"
+        },
+        {
+          "source": "semantic_reviewer.adapters.discovery",
+          "target": "tempfile"
+        },
+        {
+          "source": "semantic_reviewer.adapters.discovery",
+          "target": "uuid"
+        },
+        {
+          "source": "semantic_reviewer.adapters.embedding",
+          "target": "datetime"
+        },
+        {
+          "source": "semantic_reviewer.adapters.embedding",
+          "target": "hashlib"
+        },
+        {
+          "source": "semantic_reviewer.adapters.embedding",
+          "target": "httpx"
+        },
+        {
+          "source": "semantic_reviewer.adapters.embedding",
+          "target": "json"
+        },
+        {
+          "source": "semantic_reviewer.adapters.embedding",
+          "target": "pathlib"
+        },
+        {
+          "source": "semantic_reviewer.adapters.embedding",
+          "target": "pydantic"
+        },
+        {
+          "source": "semantic_reviewer.adapters.embedding",
+          "target": "semantic_reviewer.adapters.local_http"
+        },
+        {
+          "source": "semantic_reviewer.adapters.embedding",
+          "target": "semantic_reviewer.application.embeddings"
+        },
+        {
+          "source": "semantic_reviewer.adapters.embedding",
+          "target": "semantic_reviewer.domain.grouping"
+        },
+        {
+          "source": "semantic_reviewer.adapters.embedding",
+          "target": "semantic_reviewer.routing.usage"
+        },
+        {
+          "source": "semantic_reviewer.adapters.embedding",
+          "target": "time"
+        },
+        {
+          "source": "semantic_reviewer.adapters.llama",
+          "target": "semantic_reviewer.adapters.local_http"
+        },
+        {
+          "source": "semantic_reviewer.adapters.local_http",
+          "target": "ipaddress"
+        },
+        {
+          "source": "semantic_reviewer.adapters.local_http",
+          "target": "math"
+        },
+        {
+          "source": "semantic_reviewer.adapters.local_http",
+          "target": "urllib.parse"
+        },
+        {
+          "source": "semantic_reviewer.adapters.maf_embedding",
+          "target": "agent_framework"
+        },
+        {
+          "source": "semantic_reviewer.adapters.maf_embedding",
+          "target": "asyncio"
+        },
+        {
+          "source": "semantic_reviewer.adapters.maf_embedding",
+          "target": "dataclasses"
+        },
+        {
+          "source": "semantic_reviewer.adapters.maf_embedding",
+          "target": "datetime"
+        },
+        {
+          "source": "semantic_reviewer.adapters.maf_embedding",
+          "target": "importlib.metadata"
+        },
+        {
+          "source": "semantic_reviewer.adapters.maf_embedding",
+          "target": "semantic_reviewer.application.embeddings"
+        },
+        {
+          "source": "semantic_reviewer.adapters.maf_embedding",
+          "target": "semantic_reviewer.application.normalisation"
+        },
+        {
+          "source": "semantic_reviewer.adapters.maf_embedding",
+          "target": "semantic_reviewer.routing.usage"
+        },
+        {
+          "source": "semantic_reviewer.application.discovery",
+          "target": "dataclasses"
+        },
+        {
+          "source": "semantic_reviewer.application.discovery",
+          "target": "datetime"
+        },
+        {
+          "source": "semantic_reviewer.application.discovery",
+          "target": "hashlib"
+        },
+        {
+          "source": "semantic_reviewer.application.discovery",
+          "target": "pydantic"
+        },
+        {
+          "source": "semantic_reviewer.application.discovery",
+          "target": "semantic_reviewer.application.embeddings"
+        },
+        {
+          "source": "semantic_reviewer.application.discovery",
+          "target": "semantic_reviewer.application.routing"
+        },
+        {
+          "source": "semantic_reviewer.application.discovery",
+          "target": "semantic_reviewer.application.selections"
+        },
+        {
+          "source": "semantic_reviewer.application.discovery",
+          "target": "semantic_reviewer.domain.grouping"
+        },
+        {
+          "source": "semantic_reviewer.application.discovery",
+          "target": "semantic_reviewer.routing.selection"
+        },
+        {
+          "source": "semantic_reviewer.application.discovery",
+          "target": "semantic_reviewer.routing.usage"
+        },
+        {
+          "source": "semantic_reviewer.application.discovery",
+          "target": "typing"
+        },
+        {
+          "source": "semantic_reviewer.application.embeddings",
+          "target": "dataclasses"
+        },
+        {
+          "source": "semantic_reviewer.application.embeddings",
+          "target": "datetime"
+        },
+        {
+          "source": "semantic_reviewer.application.embeddings",
+          "target": "semantic_reviewer.application.normalisation"
+        },
+        {
+          "source": "semantic_reviewer.application.embeddings",
+          "target": "semantic_reviewer.routing.selection"
+        },
+        {
+          "source": "semantic_reviewer.application.embeddings",
+          "target": "semantic_reviewer.routing.usage"
+        },
+        {
+          "source": "semantic_reviewer.application.embeddings",
+          "target": "typing"
+        },
+        {
+          "source": "semantic_reviewer.bootstrap",
+          "target": "semantic_reviewer.adapters.discovery"
+        },
+        {
+          "source": "semantic_reviewer.bootstrap",
+          "target": "semantic_reviewer.adapters.embedding"
+        },
+        {
+          "source": "semantic_reviewer.bootstrap",
+          "target": "semantic_reviewer.adapters.maf_embedding"
+        },
+        {
+          "source": "semantic_reviewer.bootstrap",
+          "target": "semantic_reviewer.application.discovery"
+        },
+        {
+          "source": "semantic_reviewer.domain.grouping",
+          "target": "math"
+        },
+        {
+          "source": "semantic_reviewer.web.app",
+          "target": "semantic_reviewer.application.discovery"
+        },
+        {
+          "source": "semantic_reviewer.web.app",
+          "target": "semantic_reviewer.web.discovery"
+        },
+        {
+          "source": "semantic_reviewer.web.discovery",
+          "target": "fastapi"
+        },
+        {
+          "source": "semantic_reviewer.web.discovery",
+          "target": "fastapi.responses"
+        },
+        {
+          "source": "semantic_reviewer.web.discovery",
+          "target": "json"
+        },
+        {
+          "source": "semantic_reviewer.web.discovery",
+          "target": "semantic_reviewer.application.discovery"
+        },
+        {
+          "source": "semantic_reviewer.web.discovery",
+          "target": "starlette.concurrency"
+        },
+        {
+          "source": "semantic_reviewer.web.discovery",
+          "target": "urllib.parse"
+        }
+      ],
+      "removed": [
+        {
+          "source": "semantic_reviewer.adapters.llama",
+          "target": "ipaddress"
+        },
+        {
+          "source": "semantic_reviewer.adapters.llama",
+          "target": "math"
+        },
+        {
+          "source": "semantic_reviewer.adapters.llama",
+          "target": "urllib.parse"
+        }
+      ]
+    },
+    "interfaces": {
+      "added": [
+        {
+          "declaration": "@model_validator(mode='after') def coherent(self) -> Self",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.discovery.DiscoveryRequest.coherent"
+        },
+        {
+          "declaration": "async def local_form(request: Request) -> dict[str, str]",
+          "kind": "callable",
+          "name": "semantic_reviewer.web.discovery.local_form"
+        },
+        {
+          "declaration": "capabilities: tuple[Literal['coding', 'tool_use', 'structured_output', 'reasoning', 'embeddings'], ...] = ()",
+          "kind": "field",
+          "name": "semantic_reviewer.routing.selection.TaskRequirements.capabilities"
+        },
+        {
+          "declaration": "capabilities: tuple[Literal['coding', 'tool_use', 'structured_output', 'reasoning', 'embeddings'], ...]",
+          "kind": "field",
+          "name": "semantic_reviewer.routing.selection.Model.capabilities"
+        },
+        {
+          "declaration": "class CorpusQueue(Protocol)",
+          "kind": "class",
+          "name": "semantic_reviewer.application.jobs.CorpusQueue"
+        },
+        {
+          "declaration": "class DiscoveryExecution()",
+          "kind": "class",
+          "name": "semantic_reviewer.application.discovery.DiscoveryExecution"
+        },
+        {
+          "declaration": "class DiscoveryFiles(Protocol)",
+          "kind": "class",
+          "name": "semantic_reviewer.application.discovery.DiscoveryFiles"
+        },
+        {
+          "declaration": "class DiscoveryRequest(BaseModel)",
+          "kind": "class",
+          "name": "semantic_reviewer.application.discovery.DiscoveryRequest"
+        },
+        {
+          "declaration": "class DiscoveryRun()",
+          "kind": "class",
+          "name": "semantic_reviewer.application.discovery.DiscoveryRun"
+        },
+        {
+          "declaration": "class DiscoveryService()",
+          "kind": "class",
+          "name": "semantic_reviewer.application.discovery.DiscoveryService"
+        },
+        {
+          "declaration": "class DiscoveryStore(Protocol)",
+          "kind": "class",
+          "name": "semantic_reviewer.application.discovery.DiscoveryStore"
+        },
+        {
+          "declaration": "class EmbeddingInput()",
+          "kind": "class",
+          "name": "semantic_reviewer.application.embeddings.EmbeddingInput"
+        },
+        {
+          "declaration": "class EmbeddingOutcome()",
+          "kind": "class",
+          "name": "semantic_reviewer.application.embeddings.EmbeddingOutcome"
+        },
+        {
+          "declaration": "class EmbeddingProfile(BaseModel)",
+          "kind": "class",
+          "name": "semantic_reviewer.adapters.embedding.EmbeddingProfile"
+        },
+        {
+          "declaration": "class EmbeddingRuntime(Protocol)",
+          "kind": "class",
+          "name": "semantic_reviewer.application.embeddings.EmbeddingRuntime"
+        },
+        {
+          "declaration": "class LlamaEmbeddingClient()",
+          "kind": "class",
+          "name": "semantic_reviewer.adapters.embedding.LlamaEmbeddingClient"
+        },
+        {
+          "declaration": "class MafEmbeddingRuntime()",
+          "kind": "class",
+          "name": "semantic_reviewer.adapters.maf_embedding.MafEmbeddingRuntime"
+        },
+        {
+          "declaration": "class ParquetDiscovery()",
+          "kind": "class",
+          "name": "semantic_reviewer.adapters.discovery.ParquetDiscovery"
+        },
+        {
+          "declaration": "class SQLiteDiscovery()",
+          "kind": "class",
+          "name": "semantic_reviewer.adapters.discovery.SQLiteDiscovery"
+        },
+        {
+          "declaration": "completed_at: str | None = None",
+          "kind": "field",
+          "name": "semantic_reviewer.application.discovery.DiscoveryRun.completed_at"
+        },
+        {
+          "declaration": "context_tokens: int = Field(ge=1, le=8192)",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.embedding.EmbeddingProfile.context_tokens"
+        },
+        {
+          "declaration": "decision: RoutingDecision",
+          "kind": "field",
+          "name": "semantic_reviewer.application.embeddings.EmbeddingInput.decision"
+        },
+        {
+          "declaration": "decision_id: str | None = None",
+          "kind": "field",
+          "name": "semantic_reviewer.application.discovery.DiscoveryRun.decision_id"
+        },
+        {
+          "declaration": "def __init__(self, database: Path) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.discovery.SQLiteDiscovery.__init__"
+        },
+        {
+          "declaration": "def __init__(self, endpoint: str, profile: EmbeddingProfile, model_file: Path, timeout: float=120, transport=None) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.embedding.LlamaEmbeddingClient.__init__"
+        },
+        {
+          "declaration": "def __init__(self, jobs: JobService, routing: RoutingService, workflow: WorkflowRunner, lock: Callable[[], AbstractContextManager[None]], discovery: CorpusQueue | None=None) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.jobs.Worker.__init__"
+        },
+        {
+          "declaration": "def __init__(self, model: EmbeddingRuntime) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.maf_embedding.MafEmbeddingRuntime.__init__"
+        },
+        {
+          "declaration": "def __init__(self, root: Path) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.discovery.ParquetDiscovery.__init__"
+        },
+        {
+          "declaration": "def __init__(self, selections: SelectionStore, store: DiscoveryStore, files: DiscoveryFiles) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.discovery.DiscoveryService.__init__"
+        },
+        {
+          "declaration": "def __init__(self, service: DiscoveryService, routing: RoutingService, runtime: EmbeddingRuntime) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.discovery.DiscoveryExecution.__init__"
+        },
+        {
+          "declaration": "def add_discovery_routes(app, templates, service: DiscoveryService)",
+          "kind": "callable",
+          "name": "semantic_reviewer.web.discovery.add_discovery_routes"
+        },
+        {
+          "declaration": "def bind_route(self, run: DiscoveryRun, decision_id: str) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.discovery.SQLiteDiscovery.bind_route"
+        },
+        {
+          "declaration": "def bind_route(self, run: DiscoveryRun, decision_id: str) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.discovery.DiscoveryStore.bind_route"
+        },
+        {
+          "declaration": "def build_discovery(data_root: Path) -> DiscoveryService",
+          "kind": "callable",
+          "name": "semantic_reviewer.bootstrap.build_discovery"
+        },
+        {
+          "declaration": "def build_worker(data_root: Path, routing_file: Path, endpoint: str, *, embedding_endpoint: str | None=None, embedding_profile: Path | None=None, embedding_model: Path | None=None) -> Worker",
+          "kind": "callable",
+          "name": "semantic_reviewer.bootstrap.build_worker"
+        },
+        {
+          "declaration": "def claim(self, worker_id: str) -> DiscoveryRun | None",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.discovery.SQLiteDiscovery.claim"
+        },
+        {
+          "declaration": "def claim(self, worker_id: str) -> DiscoveryRun | None",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.discovery.DiscoveryStore.claim"
+        },
+        {
+          "declaration": "def cluster(self, embedding_run: str, threshold: float, minimum_size: int=2) -> DiscoveryRun",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.discovery.DiscoveryService.cluster"
+        },
+        {
+          "declaration": "def cluster_vectors(ids: tuple[str, ...], vectors: tuple, threshold: float, minimum: int) -> tuple",
+          "kind": "callable",
+          "name": "semantic_reviewer.domain.grouping.cluster_vectors"
+        },
+        {
+          "declaration": "def create_app(datasets: DatasetService, jobs: JobService | None=None, annotations: AnnotationService | None=None, reviews: ReviewIndex | None=None, selections: SelectionStore | None=None, discovery: DiscoveryService | None=None) -> FastAPI",
+          "kind": "callable",
+          "name": "semantic_reviewer.web.app.create_app"
+        },
+        {
+          "declaration": "def embed(self, selection_id: str) -> DiscoveryRun",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.discovery.DiscoveryService.embed"
+        },
+        {
+          "declaration": "def enqueue(self, request: DiscoveryRequest) -> DiscoveryRun",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.discovery.SQLiteDiscovery.enqueue"
+        },
+        {
+          "declaration": "def enqueue(self, request: DiscoveryRequest) -> DiscoveryRun",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.discovery.DiscoveryStore.enqueue"
+        },
+        {
+          "declaration": "def finish(self, run: DiscoveryRun, digest: str | None, error: str | None) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.discovery.SQLiteDiscovery.finish"
+        },
+        {
+          "declaration": "def finish(self, run: DiscoveryRun, digest: str | None, error: str | None) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.discovery.DiscoveryStore.finish"
+        },
+        {
+          "declaration": "def get(self, run_id: str) -> DiscoveryRun",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.discovery.SQLiteDiscovery.get"
+        },
+        {
+          "declaration": "def get(self, run_id: str) -> DiscoveryRun",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.discovery.DiscoveryStore.get"
+        },
+        {
+          "declaration": "def inspect(self, run_id: str) -> tuple[DiscoveryRun, dict | None]",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.discovery.DiscoveryService.inspect"
+        },
+        {
+          "declaration": "def local_endpoint(endpoint: str, timeout: float) -> str",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.local_http.local_endpoint"
+        },
+        {
+          "declaration": "def read_json(self, digest: str) -> dict",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.discovery.ParquetDiscovery.read_json"
+        },
+        {
+          "declaration": "def read_json(self, digest: str) -> dict",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.discovery.DiscoveryFiles.read_json"
+        },
+        {
+          "declaration": "def read_members(self, digest: str) -> tuple[dict, ...]",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.discovery.ParquetDiscovery.read_members"
+        },
+        {
+          "declaration": "def read_members(self, digest: str) -> tuple[dict, ...]",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.discovery.DiscoveryFiles.read_members"
+        },
+        {
+          "declaration": "def read_vectors(self, digest: str) -> tuple",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.discovery.ParquetDiscovery.read_vectors"
+        },
+        {
+          "declaration": "def read_vectors(self, digest: str) -> tuple[tuple[str, str, tuple[float, ...]], ...]",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.discovery.DiscoveryFiles.read_vectors"
+        },
+        {
+          "declaration": "def recent(self) -> tuple[DiscoveryRun, ...]",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.discovery.SQLiteDiscovery.recent"
+        },
+        {
+          "declaration": "def recent(self) -> tuple[DiscoveryRun, ...]",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.discovery.DiscoveryStore.recent"
+        },
+        {
+          "declaration": "def recover_interrupted(self) -> int",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.discovery.SQLiteDiscovery.recover_interrupted"
+        },
+        {
+          "declaration": "def recover_interrupted(self) -> int",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.discovery.DiscoveryExecution.recover_interrupted"
+        },
+        {
+          "declaration": "def recover_interrupted(self) -> int",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.discovery.DiscoveryStore.recover_interrupted"
+        },
+        {
+          "declaration": "def recover_interrupted(self) -> int",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.jobs.CorpusQueue.recover_interrupted"
+        },
+        {
+          "declaration": "def run(data_root: Path, routing_file: Path, endpoint: str, *, once: bool=False, embedding_endpoint: str | None=None, embedding_profile: Path | None=None, embedding_model: Path | None=None) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.worker.run"
+        },
+        {
+          "declaration": "def run(self, value: EmbeddingInput) -> EmbeddingOutcome",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.embedding.LlamaEmbeddingClient.run"
+        },
+        {
+          "declaration": "def run(self, value: EmbeddingInput) -> EmbeddingOutcome",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.maf_embedding.MafEmbeddingRuntime.run"
+        },
+        {
+          "declaration": "def run(self, value: EmbeddingInput) -> EmbeddingOutcome",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.embeddings.EmbeddingRuntime.run"
+        },
+        {
+          "declaration": "def run_once(self, worker_id: str) -> bool",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.discovery.DiscoveryExecution.run_once"
+        },
+        {
+          "declaration": "def run_once(self, worker_id: str) -> bool",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.jobs.CorpusQueue.run_once"
+        },
+        {
+          "declaration": "def validate_vectors(vectors: tuple, count: int) -> tuple[tuple[float, ...], ...]",
+          "kind": "callable",
+          "name": "semantic_reviewer.domain.grouping.validate_vectors"
+        },
+        {
+          "declaration": "def write_json(self, body: dict) -> str",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.discovery.ParquetDiscovery.write_json"
+        },
+        {
+          "declaration": "def write_json(self, body: dict) -> str",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.discovery.DiscoveryFiles.write_json"
+        },
+        {
+          "declaration": "def write_members(self, members: tuple[dict, ...]) -> str",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.discovery.ParquetDiscovery.write_members"
+        },
+        {
+          "declaration": "def write_members(self, members: tuple[dict, ...]) -> str",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.discovery.DiscoveryFiles.write_members"
+        },
+        {
+          "declaration": "def write_vectors(self, ids: tuple[str, ...], texts: tuple[str, ...], vectors: tuple) -> str",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.discovery.ParquetDiscovery.write_vectors"
+        },
+        {
+          "declaration": "def write_vectors(self, ids: tuple[str, ...], texts: tuple[str, ...], vectors: tuple) -> str",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.discovery.DiscoveryFiles.write_vectors"
+        },
+        {
+          "declaration": "dimensions: int = Field(ge=1, le=4096)",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.embedding.EmbeddingProfile.dimensions"
+        },
+        {
+          "declaration": "embedding_digest: Digest | None = None",
+          "kind": "field",
+          "name": "semantic_reviewer.application.discovery.DiscoveryRequest.embedding_digest"
+        },
+        {
+          "declaration": "embedding_run: str | None = None",
+          "kind": "field",
+          "name": "semantic_reviewer.application.discovery.DiscoveryRequest.embedding_run"
+        },
+        {
+          "declaration": "error: str | None = None",
+          "kind": "field",
+          "name": "semantic_reviewer.application.discovery.DiscoveryRun.error"
+        },
+        {
+          "declaration": "error: str | None = None",
+          "kind": "field",
+          "name": "semantic_reviewer.application.embeddings.EmbeddingOutcome.error"
+        },
+        {
+          "declaration": "framework: FrameworkObservation | None = None",
+          "kind": "field",
+          "name": "semantic_reviewer.application.embeddings.EmbeddingOutcome.framework"
+        },
+        {
+          "declaration": "id: str",
+          "kind": "field",
+          "name": "semantic_reviewer.application.discovery.DiscoveryRun.id"
+        },
+        {
+          "declaration": "kind: Literal['embedding', 'clustering']",
+          "kind": "field",
+          "name": "semantic_reviewer.application.discovery.DiscoveryRequest.kind"
+        },
+        {
+          "declaration": "licence: str",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.embedding.EmbeddingProfile.licence"
+        },
+        {
+          "declaration": "measurement: Measurement",
+          "kind": "field",
+          "name": "semantic_reviewer.application.embeddings.EmbeddingOutcome.measurement"
+        },
+        {
+          "declaration": "minimum_size: int = Field(default=2, ge=2, le=100, strict=True)",
+          "kind": "field",
+          "name": "semantic_reviewer.application.discovery.DiscoveryRequest.minimum_size"
+        },
+        {
+          "declaration": "model_id: str",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.embedding.EmbeddingProfile.model_id"
+        },
+        {
+          "declaration": "output_tokens: Annotated[int, Field(ge=0)]",
+          "kind": "field",
+          "name": "semantic_reviewer.routing.selection.Model.output_tokens"
+        },
+        {
+          "declaration": "prefix: str = Field(max_length=100)",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.embedding.EmbeddingProfile.prefix"
+        },
+        {
+          "declaration": "provenance: dict",
+          "kind": "field",
+          "name": "semantic_reviewer.application.embeddings.EmbeddingOutcome.provenance"
+        },
+        {
+          "declaration": "queued_at: datetime",
+          "kind": "field",
+          "name": "semantic_reviewer.application.embeddings.EmbeddingInput.queued_at"
+        },
+        {
+          "declaration": "queued_at: str",
+          "kind": "field",
+          "name": "semantic_reviewer.application.discovery.DiscoveryRun.queued_at"
+        },
+        {
+          "declaration": "repository: str",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.embedding.EmbeddingProfile.repository"
+        },
+        {
+          "declaration": "request: DiscoveryRequest",
+          "kind": "field",
+          "name": "semantic_reviewer.application.discovery.DiscoveryRun.request"
+        },
+        {
+          "declaration": "result_digest: str | None = None",
+          "kind": "field",
+          "name": "semantic_reviewer.application.discovery.DiscoveryRun.result_digest"
+        },
+        {
+          "declaration": "revision: str",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.embedding.EmbeddingProfile.revision"
+        },
+        {
+          "declaration": "runtime: str",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.embedding.EmbeddingProfile.runtime"
+        },
+        {
+          "declaration": "selection_id: Digest",
+          "kind": "field",
+          "name": "semantic_reviewer.application.discovery.DiscoveryRequest.selection_id"
+        },
+        {
+          "declaration": "sha256: str = Field(pattern='^[0-9a-f]{64}$')",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.embedding.EmbeddingProfile.sha256"
+        },
+        {
+          "declaration": "started_at: str | None = None",
+          "kind": "field",
+          "name": "semantic_reviewer.application.discovery.DiscoveryRun.started_at"
+        },
+        {
+          "declaration": "status: Literal['queued', 'running', 'succeeded', 'failed']",
+          "kind": "field",
+          "name": "semantic_reviewer.application.discovery.DiscoveryRun.status"
+        },
+        {
+          "declaration": "texts: tuple[str, ...]",
+          "kind": "field",
+          "name": "semantic_reviewer.application.embeddings.EmbeddingInput.texts"
+        },
+        {
+          "declaration": "threshold: float = Field(default=0.85, ge=-1, le=1, allow_inf_nan=False)",
+          "kind": "field",
+          "name": "semantic_reviewer.application.discovery.DiscoveryRequest.threshold"
+        },
+        {
+          "declaration": "vectors: tuple[tuple[float, ...], ...]",
+          "kind": "field",
+          "name": "semantic_reviewer.application.embeddings.EmbeddingOutcome.vectors"
+        },
+        {
+          "declaration": "worker_id: str | None = None",
+          "kind": "field",
+          "name": "semantic_reviewer.application.discovery.DiscoveryRun.worker_id"
+        }
+      ],
+      "removed": [
+        {
+          "declaration": "capabilities: tuple[Literal['coding', 'tool_use', 'structured_output', 'reasoning'], ...] = ()",
+          "kind": "field",
+          "name": "semantic_reviewer.routing.selection.TaskRequirements.capabilities"
+        },
+        {
+          "declaration": "capabilities: tuple[Literal['coding', 'tool_use', 'structured_output', 'reasoning'], ...]",
+          "kind": "field",
+          "name": "semantic_reviewer.routing.selection.Model.capabilities"
+        },
+        {
+          "declaration": "def __init__(self, jobs: JobService, routing: RoutingService, workflow: WorkflowRunner, lock: Callable[[], AbstractContextManager[None]]) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.jobs.Worker.__init__"
+        },
+        {
+          "declaration": "def build_worker(data_root: Path, routing_file: Path, endpoint: str) -> Worker",
+          "kind": "callable",
+          "name": "semantic_reviewer.bootstrap.build_worker"
+        },
+        {
+          "declaration": "def create_app(datasets: DatasetService, jobs: JobService | None=None, annotations: AnnotationService | None=None, reviews: ReviewIndex | None=None, selections: SelectionStore | None=None) -> FastAPI",
+          "kind": "callable",
+          "name": "semantic_reviewer.web.app.create_app"
+        },
+        {
+          "declaration": "def run(data_root: Path, routing_file: Path, endpoint: str, *, once: bool=False) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.worker.run"
+        },
+        {
+          "declaration": "output_tokens: Annotated[int, Field(gt=0)]",
+          "kind": "field",
+          "name": "semantic_reviewer.routing.selection.Model.output_tokens"
+        }
+      ]
+    },
+    "modules": {
+      "added": [
+        {
+          "definitions": [
+            "CorpusQueue",
+            "Job",
+            "JobService",
+            "JobStore",
+            "Worker"
+          ],
+          "name": "semantic_reviewer.application.jobs",
+          "package": false,
+          "path": "src/semantic_reviewer/application/jobs.py"
+        },
+        {
+          "definitions": [
+            "DiscoveryExecution",
+            "DiscoveryFiles",
+            "DiscoveryRequest",
+            "DiscoveryRun",
+            "DiscoveryService",
+            "DiscoveryStore"
+          ],
+          "name": "semantic_reviewer.application.discovery",
+          "package": false,
+          "path": "src/semantic_reviewer/application/discovery.py"
+        },
+        {
+          "definitions": [
+            "EmbeddingInput",
+            "EmbeddingOutcome",
+            "EmbeddingRuntime"
+          ],
+          "name": "semantic_reviewer.application.embeddings",
+          "package": false,
+          "path": "src/semantic_reviewer/application/embeddings.py"
+        },
+        {
+          "definitions": [
+            "EmbeddingProfile",
+            "LlamaEmbeddingClient"
+          ],
+          "name": "semantic_reviewer.adapters.embedding",
+          "package": false,
+          "path": "src/semantic_reviewer/adapters/embedding.py"
+        },
+        {
+          "definitions": [
+            "MafEmbeddingRuntime"
+          ],
+          "name": "semantic_reviewer.adapters.maf_embedding",
+          "package": false,
+          "path": "src/semantic_reviewer/adapters/maf_embedding.py"
+        },
+        {
+          "definitions": [
+            "ParquetDiscovery",
+            "SQLiteDiscovery",
+            "_event",
+            "_now",
+            "_run"
+          ],
+          "name": "semantic_reviewer.adapters.discovery",
+          "package": false,
+          "path": "src/semantic_reviewer/adapters/discovery.py"
+        },
+        {
+          "definitions": [
+            "add_discovery_routes",
+            "local_form"
+          ],
+          "name": "semantic_reviewer.web.discovery",
+          "package": false,
+          "path": "src/semantic_reviewer/web/discovery.py"
+        },
+        {
+          "definitions": [
+            "build_annotations",
+            "build_artefact_index",
+            "build_datasets",
+            "build_discovery",
+            "build_jobs",
+            "build_review_index",
+            "build_selections",
+            "build_worker",
+            "runtime_path"
+          ],
+          "name": "semantic_reviewer.bootstrap",
+          "package": false,
+          "path": "src/semantic_reviewer/bootstrap.py"
+        },
+        {
+          "definitions": [
+            "cluster_vectors",
+            "validate_vectors"
+          ],
+          "name": "semantic_reviewer.domain.grouping",
+          "package": false,
+          "path": "src/semantic_reviewer/domain/grouping.py"
+        },
+        {
+          "definitions": [
+            "local_endpoint"
+          ],
+          "name": "semantic_reviewer.adapters.local_http",
+          "package": false,
+          "path": "src/semantic_reviewer/adapters/local_http.py"
+        }
+      ],
+      "removed": [
+        {
+          "definitions": [
+            "Job",
+            "JobService",
+            "JobStore",
+            "Worker"
+          ],
+          "name": "semantic_reviewer.application.jobs",
+          "package": false,
+          "path": "src/semantic_reviewer/application/jobs.py"
+        },
+        {
+          "definitions": [
+            "build_annotations",
+            "build_artefact_index",
+            "build_datasets",
+            "build_jobs",
+            "build_review_index",
+            "build_selections",
+            "build_worker",
+            "runtime_path"
+          ],
+          "name": "semantic_reviewer.bootstrap",
+          "package": false,
+          "path": "src/semantic_reviewer/bootstrap.py"
+        }
+      ]
+    },
+    "settings": {}
+  },
+  "schema_version": 2
+}

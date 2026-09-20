@@ -1,0 +1,486 @@
+{
+  "base": "c9ef38f48b10d7876fe26babee36f2f15f258bf3",
+  "tip": "125fd8c055b9c110efa1c4dd31dcc661358b32bc",
+  "tree": "ad60c533d489f3bd590884d53e90165449c39104",
+  "commits": [
+    {
+      "commit": "ab010c451f98c41f22c95dc49e078d787aac6ce3",
+      "parents": [
+        "c9ef38f48b10d7876fe26babee36f2f15f258bf3"
+      ],
+      "tree": "4c7fa502847403650d85866597fd77ddeec0f024",
+      "subject": "docs: activate autonomous stacked delivery for remaining VS2 batches",
+      "change": {
+        "files": [
+          {
+            "path": "AGENTS.md",
+            "added": 3,
+            "deleted": 2
+          },
+          {
+            "path": "docs/adr/ADR-0009-freeze-explicit-annotation-selections.md",
+            "added": 6,
+            "deleted": 4
+          },
+          {
+            "path": "docs/adr/README.md",
+            "added": 1,
+            "deleted": 1
+          },
+          {
+            "path": "docs/development/README.md",
+            "added": 3,
+            "deleted": 2
+          },
+          {
+            "path": "docs/plans/VS2-plan.md",
+            "added": 12,
+            "deleted": 5
+          }
+        ],
+        "file_count": 5,
+        "added": 25,
+        "deleted": 14,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "12f166acf9ba1a68027b38695ac19381805277b3",
+      "parents": [
+        "ab010c451f98c41f22c95dc49e078d787aac6ce3"
+      ],
+      "tree": "8f047ddbfa5ce5c0c3f2e55bf9665925e2ef78cd",
+      "subject": "feat: execute pinned local embeddings through MAF",
+      "change": {
+        "files": [
+          {
+            "path": "config/models/nomic-embedding-fixture.json",
+            "added": 11,
+            "deleted": 0
+          },
+          {
+            "path": "config/routing/discovery-local.json",
+            "added": 73,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/embedding.py",
+            "added": 199,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/llama.py",
+            "added": 2,
+            "deleted": 23
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/local_http.py",
+            "added": 36,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/maf_embedding.py",
+            "added": 65,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/application/embeddings.py",
+            "added": 37,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/domain/grouping.py",
+            "added": 24,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/routing/selection.py",
+            "added": 7,
+            "deleted": 3
+          },
+          {
+            "path": "tests/test_embeddings.py",
+            "added": 106,
+            "deleted": 0
+          }
+        ],
+        "file_count": 10,
+        "added": 560,
+        "deleted": 26,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "a2150f7a0470f6e8f5aa8018a487018f24aa6923",
+      "parents": [
+        "12f166acf9ba1a68027b38695ac19381805277b3"
+      ],
+      "tree": "ea297f4d08410fa054a17cc46b456a8e315dc32d",
+      "subject": "feat: queue and inspect immutable embedding runs",
+      "change": {
+        "files": [
+          {
+            "path": "CONTEXT.md",
+            "added": 8,
+            "deleted": 0
+          },
+          {
+            "path": "IMPLEMENTATION_BACKLOG.yaml",
+            "added": 5,
+            "deleted": 2
+          },
+          {
+            "path": "README.md",
+            "added": 4,
+            "deleted": 0
+          },
+          {
+            "path": "docs/adr/ADR-0010-own-discovery-runs-under-one-worker.md",
+            "added": 69,
+            "deleted": 0
+          },
+          {
+            "path": "docs/adr/README.md",
+            "added": 1,
+            "deleted": 0
+          },
+          {
+            "path": "docs/development/discovery.md",
+            "added": 71,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/discovery.py",
+            "added": 243,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/migrations/009_discovery.sql",
+            "added": 23,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/application/discovery.py",
+            "added": 231,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/application/jobs.py",
+            "added": 26,
+            "deleted": 1
+          },
+          {
+            "path": "src/semantic_reviewer/asgi.py",
+            "added": 2,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/bootstrap.py",
+            "added": 41,
+            "deleted": 2
+          },
+          {
+            "path": "src/semantic_reviewer/web/app.py",
+            "added": 6,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/discovery.py",
+            "added": 71,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/base.html",
+            "added": 1,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/discovery.html",
+            "added": 11,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/discovery_run.html",
+            "added": 14,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/selection.html",
+            "added": 1,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/worker.py",
+            "added": 18,
+            "deleted": 2
+          },
+          {
+            "path": "tests/test_discovery.py",
+            "added": 216,
+            "deleted": 0
+          },
+          {
+            "path": "tools/run.py",
+            "added": 27,
+            "deleted": 1
+          }
+        ],
+        "file_count": 21,
+        "added": 1089,
+        "deleted": 8,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "125fd8c055b9c110efa1c4dd31dcc661358b32bc",
+      "parents": [
+        "a2150f7a0470f6e8f5aa8018a487018f24aa6923"
+      ],
+      "tree": "ad60c533d489f3bd590884d53e90165449c39104",
+      "subject": "feat: group pinned vectors with inspectable memberships and outliers",
+      "change": {
+        "files": [
+          {
+            "path": "IMPLEMENTATION_BACKLOG.yaml",
+            "added": 1,
+            "deleted": 1
+          },
+          {
+            "path": "README.md",
+            "added": 1,
+            "deleted": 1
+          },
+          {
+            "path": "docs/development/discovery.md",
+            "added": 22,
+            "deleted": 5
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/discovery.py",
+            "added": 29,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/application/discovery.py",
+            "added": 119,
+            "deleted": 57
+          },
+          {
+            "path": "src/semantic_reviewer/domain/grouping.py",
+            "added": 40,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/discovery.py",
+            "added": 29,
+            "deleted": 3
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/discovery_run.html",
+            "added": 11,
+            "deleted": 0
+          },
+          {
+            "path": "tests/test_discovery.py",
+            "added": 62,
+            "deleted": 0
+          },
+          {
+            "path": "tools/run.py",
+            "added": 9,
+            "deleted": 1
+          }
+        ],
+        "file_count": 10,
+        "added": 323,
+        "deleted": 68,
+        "binary_files": 0
+      }
+    }
+  ],
+  "linear": true,
+  "final_change": {
+    "files": [
+      {
+        "path": "AGENTS.md",
+        "added": 3,
+        "deleted": 2
+      },
+      {
+        "path": "CONTEXT.md",
+        "added": 8,
+        "deleted": 0
+      },
+      {
+        "path": "IMPLEMENTATION_BACKLOG.yaml",
+        "added": 5,
+        "deleted": 2
+      },
+      {
+        "path": "README.md",
+        "added": 4,
+        "deleted": 0
+      },
+      {
+        "path": "config/models/nomic-embedding-fixture.json",
+        "added": 11,
+        "deleted": 0
+      },
+      {
+        "path": "config/routing/discovery-local.json",
+        "added": 73,
+        "deleted": 0
+      },
+      {
+        "path": "docs/adr/ADR-0009-freeze-explicit-annotation-selections.md",
+        "added": 6,
+        "deleted": 4
+      },
+      {
+        "path": "docs/adr/ADR-0010-own-discovery-runs-under-one-worker.md",
+        "added": 69,
+        "deleted": 0
+      },
+      {
+        "path": "docs/adr/README.md",
+        "added": 2,
+        "deleted": 1
+      },
+      {
+        "path": "docs/development/README.md",
+        "added": 3,
+        "deleted": 2
+      },
+      {
+        "path": "docs/development/discovery.md",
+        "added": 88,
+        "deleted": 0
+      },
+      {
+        "path": "docs/plans/VS2-plan.md",
+        "added": 12,
+        "deleted": 5
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/discovery.py",
+        "added": 272,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/embedding.py",
+        "added": 199,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/llama.py",
+        "added": 2,
+        "deleted": 23
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/local_http.py",
+        "added": 36,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/maf_embedding.py",
+        "added": 65,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/migrations/009_discovery.sql",
+        "added": 23,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/application/discovery.py",
+        "added": 293,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/application/embeddings.py",
+        "added": 37,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/application/jobs.py",
+        "added": 26,
+        "deleted": 1
+      },
+      {
+        "path": "src/semantic_reviewer/asgi.py",
+        "added": 2,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/bootstrap.py",
+        "added": 41,
+        "deleted": 2
+      },
+      {
+        "path": "src/semantic_reviewer/domain/grouping.py",
+        "added": 64,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/routing/selection.py",
+        "added": 7,
+        "deleted": 3
+      },
+      {
+        "path": "src/semantic_reviewer/web/app.py",
+        "added": 6,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/web/discovery.py",
+        "added": 97,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/web/templates/base.html",
+        "added": 1,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/web/templates/discovery.html",
+        "added": 11,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/web/templates/discovery_run.html",
+        "added": 25,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/web/templates/selection.html",
+        "added": 1,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/worker.py",
+        "added": 18,
+        "deleted": 2
+      },
+      {
+        "path": "tests/test_discovery.py",
+        "added": 278,
+        "deleted": 0
+      },
+      {
+        "path": "tests/test_embeddings.py",
+        "added": 106,
+        "deleted": 0
+      },
+      {
+        "path": "tools/run.py",
+        "added": 35,
+        "deleted": 1
+      }
+    ],
+    "file_count": 35,
+    "added": 1929,
+    "deleted": 48,
+    "binary_files": 0
+  },
+  "statistics_note": "No rename detection; merge commit churn uses first parent. Final diff and cumulative per-commit churn are different quantities."
+}

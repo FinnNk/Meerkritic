@@ -1,0 +1,11 @@
+{
+  "before": "ab010c451f98c41f22c95dc49e078d787aac6ce3",
+  "after": "125fd8c055b9c110efa1c4dd31dcc661358b32bc",
+  "before_note": "P1 changes guidance only; its source/dependency architecture equals the integrated base.",
+  "generator": "Each snapshot uses its own checkpoint tools/architecture.py",
+  "hashes": {
+    "architecture-before.json": "8fba2fc89c32d4d50dbf97938774a02d338430d85323e65d34b4d1de37d15df2",
+    "architecture-after.json": "c3a7ffbd4121840d8e205438a78f7dadaf0f92c608418be03702d06ad454f9f5",
+    "architecture-delta.json": "29135e39d942adf8bb63cd7bc9ad3bb1cde58da036425d52392ddac3b11b0b6e"
+  }
+}
