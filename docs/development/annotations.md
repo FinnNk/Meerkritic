@@ -1,12 +1,14 @@
 # Review model interpretations
 
-An *annotation* is your Accept, Edit or Reject decision on one successful model
-interpretation. Each model run has its own decision; reviewing several runs for
+An *annotation* is your decision on one model output. Successful interpretations
+offer Accept, Edit or Reject; retained failed drafts offer Edit or Reject. Each model run has its own decision; reviewing several runs for
 one source still counts as reviewing one original observation.
 
 ## Review a result
 
-First [run normalisation](normalisation.md) and open a successful job.
+First [run normalisation](normalisation.md) and open the job. For a failed draft,
+follow [correction and rejection](failed-drafts.md); infrastructure failures have
+no interpretation to assess.
 
 1. Read the original comment, code, proposed interpretation and quoted evidence.
 2. Choose an action:
@@ -22,7 +24,8 @@ First [run normalisation](normalisation.md) and open a successful job.
    drafts stay visible for correction.
 4. Submit the decision. It is saved immediately; there is no draft/apply stage for
    source annotations. The page shows your decision separately from the model result.
-5. Open **Annotation progress and review queue** to find the next unreviewed result.
+5. Open **Annotation progress and review queue** to find unreviewed outputs or
+   inspect failures. For a study, follow its prepared order instead of this queue.
 
 An identical retry returns the saved decision. A different decision for the same
 result is refused. Source annotations cannot currently be reopened; the
@@ -38,8 +41,9 @@ editing. The [demonstration](../images/README.md) is awaiting a decision.
 
 | Display | Meaning |
 | --- | --- |
-| Successful results | Model runs available for human review |
-| Reviewed results | Results with an Accept, Edit or Reject decision |
+| Successful results | Reviewed successful runs out of all successful runs |
+| Reviewed failed outputs | Reviewed failed runs out of all failed runs; some failures have no reviewable draft |
+| Reviewed results | Total outputs with a decision, including corrected or rejected failures |
 | Source coverage | Distinct original observations reviewed, regardless of repeat runs |
 | Source history | The latest 100 decisions for that source across model runs |
 

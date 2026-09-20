@@ -68,11 +68,11 @@ rules, retries and registration. Source preparation has begun under the fixed in
 order and normalisation configuration. Human judgements, actual registration and
 an empirical decision remain separate from software acceptance; VS2 stays ACTIVE.
 
-The completed input-preparation pass cannot meet the agreed 40-input target:
+Before the agreed correction amendment, the input pass could not meet 40 inputs:
 80 source checks yielded 55 qualified records; their single normalisation pass
 yielded 33 valid drafts and 22 retained failures. No human decisions or research
-grouping runs have occurred. EDR-0001 records the evidence and the required owner
-choice before a prospective amendment. Do not silently broaden or rerun the sample.
+grouping runs have occurred. EDR-0001 records the evidence and the subsequent
+owner-agreed prospective amendment. Do not silently broaden or rerun the sample.
 
 Source qualification and human review remain necessary before registration;
 they may proceed alongside this tooling. Follow the
@@ -88,6 +88,15 @@ correction into explicit selections, expose the controls/source in the harness,
 and prepare the ordered human-review handoff. No model reruns, fabricated labels,
 new candidate pool or early grouping comparison. Record policy first, complete
 backend/UI contracts with tests, then backfill current guides and confirmation.
+
+The correction path is implemented with separate original/human evidence, versioned
+selection reading and focused backend/browser checks. A migration rehearsal on a
+copy of the study database preserves every application table and verifies all
+33 successful and 22 failed outputs are reviewable with their appropriate actions.
+No human research decisions or further model calls were made. The ordered local
+handoff precedes input judgements; grouping judgements wait for selection freeze
+and registration. Final DER checkpoint qualification and owner acceptance remain
+separate from this implementation record.
 
 ## Activation and first batch
 

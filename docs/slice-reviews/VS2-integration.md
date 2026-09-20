@@ -52,3 +52,16 @@ record are retained with DER `vs2-comparison/r1`, outside application worktrees.
 
 This integrates the deterministic input order and attempt ledger. It does not
 attest source authenticity, supply human reviews or register the comparison.
+
+## Comparison tooling integration
+
+The owner approved and merged [PR #16](https://github.com/FinnNk/Meerkritic/pull/16)
+on 20 September 2026. Reviewed head `2adeb88d3bbcf1af2ee8b5c498c7a32cbe1c100c`
+maps to integrated head `e7726500930e79f0ba69becae5d12b77edbb5dea`; all five
+ordered reviewed trees match. Isolated locked Windows/Python 3.12 checks pass
+with 215 tests. Mapping and baseline records live in DER `vs2-draft-repair/r1`.
+
+This integrates the comparison software, not a research result. The owner also
+agreed a prospective human-correction amendment, recorded in EDR-0001. Its
+implementation retains the single normalisation pass; human input judgements,
+selection freeze, registration, group ratings and empirical decision remain open.

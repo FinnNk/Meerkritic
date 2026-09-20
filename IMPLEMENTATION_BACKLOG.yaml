@@ -122,6 +122,7 @@ slices:
     - per-object discussion
     - batched send-to-agent
 - id: VS2
+  current_follow_up: Human correction of retained failed drafts implemented; human input reviews and registered comparison remain outstanding (DER vs2-draft-repair r1).
   name: Annotation-to-Rule Discovery
   status: ACTIVE
   plan: docs/plans/VS2-plan.md

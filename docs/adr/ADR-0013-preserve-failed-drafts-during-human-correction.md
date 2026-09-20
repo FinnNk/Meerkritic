@@ -1,5 +1,5 @@
 ---
-status: accepted
+status: implemented
 date: 2026-09-20
 decision-makers: [Finn Newick]
 ---
@@ -48,12 +48,15 @@ new snapshots version this representation and old snapshots remain readable.
 
 ### Confirmation
 
-Before marking this implemented, verify unchanged failed job/result bytes, valid
-and invalid corrections, rejection, duplicate/conflicting submissions, atomic
-events, restart, selection freezing and legacy snapshot reading. Exercise the
-browser with synthetic data, including a retained invalid edit. Keep the live
-study free of agent-generated annotations. Evidence belongs to DER
-`vs2-draft-repair/r1`; confirmation is pending at this accepted decision commit.
+Implemented on 20 September 2026. Ten backend and four web tests cover unchanged
+failed job/result bytes, valid/invalid correction, rejection, duplicate/conflicting
+submissions, atomic events, restart, selection freezing and legacy reading.
+A browser exercise retained an invalid synthetic edit, then saved a valid correction
+while keeping the original failure visible. A SQLite-backup migration rehearsal
+preserved every application table and verified all 55 original study outputs.
+The study still contains zero annotations. Evidence is retained in DER
+`vs2-draft-repair/r1` (`backend-tests-04.log`, `web-tests.log`, `browser-check.json`,
+`upgrade-rehearsal.json`); software acceptance is a separate gate.
 
 ## Pros and Cons of the Options
 

@@ -37,3 +37,11 @@ a deterministic test response does not establish model quality.
 - Label automated decisions as test data, not human research labels.
 - For editorial changes, check links, commands and rendering without introducing
   brittle tests that merely match prose. Follow the [documentation checklist](../docs/development/documentation-style.md#author-and-reviewer-checks).
+
+## Failed-draft correction
+
+`test_failed_drafts.py` challenges provenance, schema/quote rejection, terminal
+eligibility, atomic events, concurrency, restart, progress denominators and both
+selection versions. `test_failed_draft_web.py` checks escaped source/output,
+Edit/Reject-only failures, retained invalid drafts and inspection-only provider
+failures. All decisions are synthetic; these tests supply no research labels.
