@@ -56,6 +56,12 @@ on the merged revision in a clean Windows checkout. The integration record is
 indexed by `vs1-annotation/r1/pr6-integration.json` in the external DER store.
 The ordinary workspace's Ruff crash is retained separately; no ignore was added.
 
+The milestone follow-up makes this existing policy structural: application-owned
+`Worker.run` acquires exclusivity before recovery or claims and retains it through
+execution. Lock-refusal and existing process-death/recovery tests confirm that
+callers no longer coordinate the lifecycle themselves. This is a refinement of the
+same policy, not a new recovery or replay decision.
+
 ## More Information
 
 This is a correctness/recovery design constrained by the single-worker VS1 architecture,

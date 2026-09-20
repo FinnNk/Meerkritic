@@ -60,8 +60,8 @@ Newest first. Status here describes the decision, not the PR or vertical slice.
 
 | Record | Title | Status | Decision-makers | Date |
 | --- | --- | --- | --- | --- |
-| [ADR-0008](ADR-0008-own-artefact-publication-metadata.md) | Make artefact publication metadata explicit | accepted | Project owner | 2026-09-20 |
-| [ADR-0007](ADR-0007-review-architecture-after-milestones.md) | Review architecture and guidance after each milestone | accepted | Project owner | 2026-09-20 |
+| [ADR-0008](ADR-0008-own-artefact-publication-metadata.md) | Make artefact publication metadata explicit | implemented | Project owner | 2026-09-20 |
+| [ADR-0007](ADR-0007-review-architecture-after-milestones.md) | Review architecture and guidance after each milestone | implemented | Project owner | 2026-09-20 |
 | [ADR-0006](ADR-0006-recover-jobs-under-process-lock.md) | Recover interrupted jobs under an exclusive process lock | implemented | Project owner | 2026-09-20 |
 | [ADR-0005](ADR-0005-retain-immutable-routing-provenance.md) | Retain immutable routing versions and invocation records | implemented | Project owner | 2026-09-19 |
 | [ADR-0004](ADR-0004-adopt-selective-python-style.md) | Adopt a selective Python style guide | implemented | Project owner | 2026-09-19 |
