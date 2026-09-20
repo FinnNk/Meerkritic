@@ -22,4 +22,12 @@ Context limits describe usable input and output capacities separately. The selec
 
 `RoutingService.complete` retains one completion per decision. Identical concurrent retries return the original completion ID. Changed metrics, outcomes or price-version contents are rejected without partial writes. The event migration preserves dataset history while adding routing and usage subjects; [ADR-0005](../adr/ADR-0005-retain-immutable-routing-provenance.md) records the proposed retention decision.
 
-Policy transitions and structured handoffs remain later additive records linked to decisions, not implemented switching actions. Health, budgets, context strategies and escalation references are selection inputs now. The live adapter must refresh observations, construct context, invoke the provider and persist completion. No current routing API invokes a model.
+`routing.continuity` reserves strict `RoutingPolicyTransition` and `AgentHandoff`
+records. Transitions retain both versioned policies, requesting actor, reason and
+time; a no-op transition is invalid. Handoffs carry structured task context and
+provenance references, with no implicit raw-transcript field. These schemas do not
+enable switching, create a durable session or perform a handoff in VS1. The runtime
+and persistence protocol will be implemented only when a later workflow needs it.
+Health, budgets, context strategies and escalation references are selection inputs
+now. The live adapter constructs context, invokes the provider and persists completion.
+Routing selection itself never invokes a model.
