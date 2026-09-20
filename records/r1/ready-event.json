@@ -1,0 +1,33 @@
+{
+  "kind": "publication",
+  "round_id": "r1",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "/root"
+  },
+  "payload": {
+    "stage": "owner_review_ready",
+    "pr": "https://github.com/FinnNk/Meerkritic/pull/18",
+    "head": "796db0edc2032ed7ff0c518eecadd718b91c3e22",
+    "base": "86a839341787e986dae6870673efeaf8251a41d0",
+    "archive_commit": "ac4bd226a299199e061b970db7cad6618e90cd46",
+    "hosted_qualification": {
+      "required_contexts": [],
+      "observed_rollup": [],
+      "note": "No hosted checks required for this stack base. Owner acceptance remains project policy and main has a separate review gate. No hosted CI run claimed."
+    },
+    "owner_approval": false,
+    "integrated": false,
+    "evidence": [
+      "published-pr.json",
+      "host-rules.json",
+      "published-refs.txt",
+      "host-rules.json",
+      "verification-summary.json",
+      "review.json",
+      "equivalence.json"
+    ]
+  }
+}

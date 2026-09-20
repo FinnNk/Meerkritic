@@ -1,0 +1,86 @@
+[
+  {
+    "source": "r1/export-result.json",
+    "source_sha256": "6eb16d512fc9b4fcee4e30b76640c5aeb661c85aa791087bddecd0ceb196096f",
+    "export_sha256": "6eb16d512fc9b4fcee4e30b76640c5aeb661c85aa791087bddecd0ceb196096f",
+    "transformation": "Local paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/publish.py",
+    "source_sha256": "3d19a2f7598d27e78398046d6a2034b2a601a6ecd8b9e606cc21891881ce041f",
+    "export_sha256": "0b06d53cc41236cc081a0006189c3a0bd0399e66ba4f3bd4d80f6aff9aa08f9e",
+    "transformation": "Local paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/archive-import.log",
+    "source_sha256": "3eef9673f8bcdd92cfedc6cdbad99d78d086d809fc6744f2620d373dbd10bf1d",
+    "export_sha256": "7fed333ca02c8bd2e45db57c93ab0154be8c104a0963e8c302bbe5cc410a8cd1",
+    "transformation": "Local paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/publish-archive.log",
+    "source_sha256": "f1b27abd35862b167becff2d5df1185e59037b4b6c5e02abc69e11207900a833",
+    "export_sha256": "f1b27abd35862b167becff2d5df1185e59037b4b6c5e02abc69e11207900a833",
+    "transformation": "Local paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/publish-branch.log",
+    "source_sha256": "37e06f27b15b2a821546f5cf997c0c883fef44bd0cf49f28f9e9cd5e956cbbdf",
+    "export_sha256": "37e06f27b15b2a821546f5cf997c0c883fef44bd0cf49f28f9e9cd5e956cbbdf",
+    "transformation": "Local paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/publish-pr.log",
+    "source_sha256": "9f02131421a3c318256860fe925050a0b7804b5432b15a1bb20fa027ee003799",
+    "export_sha256": "9f02131421a3c318256860fe925050a0b7804b5432b15a1bb20fa027ee003799",
+    "transformation": "Local paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/pr-url.txt",
+    "source_sha256": "9f02131421a3c318256860fe925050a0b7804b5432b15a1bb20fa027ee003799",
+    "export_sha256": "9f02131421a3c318256860fe925050a0b7804b5432b15a1bb20fa027ee003799",
+    "transformation": "Local paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/pr-body.md",
+    "source_sha256": "7fa55b05b34c4118d54cb41051551ba0efce9b6b44b480ae89610a6a41ba0337",
+    "export_sha256": "7fa55b05b34c4118d54cb41051551ba0efce9b6b44b480ae89610a6a41ba0337",
+    "transformation": "Local paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/published-pr.json",
+    "source_sha256": "65476b6c518445bc7754da279a67c8eb7e49b400498bbfc8ffedd4858e3b69b3",
+    "export_sha256": "65476b6c518445bc7754da279a67c8eb7e49b400498bbfc8ffedd4858e3b69b3",
+    "transformation": "Local paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/host-rules.json",
+    "source_sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+    "export_sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+    "transformation": "Local paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/published-refs.txt",
+    "source_sha256": "9d9a584a4584664c6cd24f8287f77d6af892bc97d5a4322925f8bbe94d40f387",
+    "export_sha256": "9d9a584a4584664c6cd24f8287f77d6af892bc97d5a4322925f8bbe94d40f387",
+    "transformation": "Local paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/ready-event.json",
+    "source_sha256": "bf1a8168d9747bf4840230094c51418215cb91098cfae709ee3dfcd0c1c2790a",
+    "export_sha256": "bf1a8168d9747bf4840230094c51418215cb91098cfae709ee3dfcd0c1c2790a",
+    "transformation": "Local paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/ready-ledger.json",
+    "source_sha256": "5419e763563c6ef84e73dd7074e2012e54e3086f172046eedf5a6d9a61b27d54",
+    "export_sha256": "93a888d1ff1e2afdc125a884abb53c7a7064db17a191814ecc9f40f8c7e2b11d",
+    "transformation": "Local paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/qualify.py",
+    "source_sha256": "059675e66d50b34e56e61809f9db4bb5d66dd557ae57894460ca408ae84586bb",
+    "export_sha256": "f40b5d510663349141d422dcbecd20706a6c014e2e4598d4371bc2bd191ac8f7",
+    "transformation": "Local paths replaced; UTF-8 BOM removed if present"
+  }
+]
