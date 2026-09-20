@@ -123,6 +123,9 @@ do not rewrite them or silently branch the preparation history.
 
 Use the existing [normalisation workflow](normalisation.md) to produce the queued
 interpretations and [annotation controls](annotations.md) to record your review.
+Use the [field meanings](assessment-fields.md), distinguish impact from investigation
+needs, and record any assistance or prior exposure. Pause before saving if a field
+cannot express your judgement faithfully.
 Work through the prepared order; do not choose only promising-looking concerns.
 
 ![The existing Human assessment panel offers Accept, Edit and Reject, with optional notes and a structured editor.](../images/annotation-assessment.png)

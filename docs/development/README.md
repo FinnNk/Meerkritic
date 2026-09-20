@@ -49,9 +49,11 @@ green checks without explicit owner approval.
 4. Implement using the [Python style](python-style.md), [commenting](code-comments.md)
    and [documentation](documentation-style.md) guides. Check actual callers as well
    as declared interfaces.
-5. Reconcile affected guides, glossary, backlog and [ADR statuses](../adr/README.md#lifecycle-review).
+5. Before changing assessment fields or collecting judgements, check the
+   [assessment contract](assessment-contract.md) against prompts, schemas and UI.
+6. Reconcile affected guides, glossary, backlog and [ADR statuses](../adr/README.md#lifecycle-review).
    Check whether a significant evidence-dependent choice needs an [EDR](../edr/README.md).
-6. Verify the result and review the combined change before publication.
+7. Verify the result and review the combined change before publication.
 
 ## Review boundaries
 
