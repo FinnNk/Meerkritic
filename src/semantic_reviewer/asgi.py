@@ -2,7 +2,7 @@
 
 from pathlib import Path
 
-from semantic_reviewer.bootstrap import build_annotations
+from semantic_reviewer.bootstrap import build_annotations, build_review_index
 from semantic_reviewer.web.app import create_app
 
 
@@ -18,4 +18,4 @@ def build_app(data_root: Path):
     """
     annotations = build_annotations(data_root)
     jobs = annotations.jobs
-    return create_app(jobs.datasets, jobs, annotations)
+    return create_app(jobs.datasets, jobs, annotations, build_review_index(data_root))
