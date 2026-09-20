@@ -8,11 +8,14 @@ import hashlib
 import json
 import math
 import re
-from collections import defaultdict
+from collections import Counter, defaultdict
+from typing import Annotated, Literal
 
+from pydantic import BaseModel, ConfigDict, Field
+
+Digest = Annotated[str, Field(pattern=r"^[0-9a-f]{64}$")]
+Text = Annotated[str, Field(min_length=1, max_length=4000, pattern=r"\S")]
 PILOTS = ("django/django", "paperless-ngx/paperless-ngx")
-
-
 SEED = "20260920"
 
 
@@ -106,6 +109,100 @@ def prepare_sample(source: bytes, expected_digest: str, exposed: tuple[str, ...]
         "holdout_repositories": holdout,
         "candidates": ordered,
         "exclusions": sorted(exclusions, key=lambda row: row["source_index"]),
+    }
+
+
+class PreparationAttempt(BaseModel):
+    """One terminal preparation outcome, explicitly attributed to its recorder.
+
+    Source evidence identifies a retained response/record, not a claim that a URL
+    alone proves authenticity. Human review is claimed only by explicit reviewer
+    and annotation identities. The application selection verifies those versions
+    later; this external ledger does not authenticate a person or read live state.
+    """
+
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    source_index: int = Field(ge=0, strict=True)
+    outcome: Literal[
+        "source_unresolved",
+        "context_unusable",
+        "normalisation_failed",
+        "reject",
+        "accept",
+        "edit",
+        "repository_quota",
+    ]
+    recorded_by: Text
+    reason: Text
+    source_reference: Text | None = None
+    source_evidence_sha256: Digest | None = None
+    source_check: Text | None = None
+    job_id: Text | None = None
+    annotation_id: Text | None = None
+    human_reviewer: Text | None = None
+
+
+def preparation_progress(plan: dict, attempts: tuple[PreparationAttempt, ...]) -> dict:
+    """Validate an ordered attempt prefix and return progress without making decisions.
+
+    Callers must supply the plan returned by prepare_sample for the pinned source.
+    Every candidate consumes one of the 80 positions, including quota skips; stop
+    immediately at 40 usable reviews. Five accepted/edited records per repository
+    is a hard limit. A depleted smaller candidate pool is also an explicit shortfall.
+    """
+    candidates = plan["candidates"]
+    accepted, counts, annotation_ids, job_ids = [], Counter(), set(), set()
+    if len(attempts) > len(candidates):
+        raise ValueError("Attempt log extends beyond the fixed candidate pool.")
+    for candidate, attempt in zip(candidates[: len(attempts)], attempts, strict=True):
+        if len(accepted) == 40:
+            raise ValueError("Preparation must stop at 40 usable human reviews.")
+        if attempt.source_index != candidate["source_index"]:
+            raise ValueError("Attempts must follow the fixed candidate order without gaps.")
+        repository = candidate["repository"]
+        if (counts[repository] == 5) != (attempt.outcome == "repository_quota"):
+            raise ValueError("Skip a repository only after its five usable reviews.")
+        human = attempt.outcome in {"accept", "edit", "reject"}
+        normalised = human or attempt.outcome == "normalisation_failed"
+        if human != bool(attempt.annotation_id and attempt.human_reviewer):
+            raise ValueError("Human outcomes require both annotation and named human reviewer.")
+        if not human and (attempt.annotation_id or attempt.human_reviewer):
+            raise ValueError("Non-human outcomes cannot claim a human annotation.")
+        if normalised != bool(attempt.job_id):
+            raise ValueError("Normalisation outcomes require a job ID; other outcomes forbid it.")
+        if attempt.outcome != "repository_quota":
+            if not all(
+                (attempt.source_reference, attempt.source_evidence_sha256, attempt.source_check)
+            ):
+                raise ValueError(
+                    "Retain source reference, evidence digest and check for every attempt."
+                )
+        elif any((attempt.source_reference, attempt.source_evidence_sha256, attempt.source_check)):
+            raise ValueError("Quota skips do not claim source inspection.")
+        if attempt.annotation_id:
+            if attempt.annotation_id in annotation_ids:
+                raise ValueError("An annotation cannot supply two research inputs.")
+            annotation_ids.add(attempt.annotation_id)
+        if attempt.job_id:
+            if attempt.job_id in job_ids:
+                raise ValueError("A normalisation job cannot supply two candidates.")
+            job_ids.add(attempt.job_id)
+        if attempt.outcome in {"accept", "edit"}:
+            accepted.append(attempt.annotation_id)
+            counts[repository] += 1
+    state = "pending"
+    if len(accepted) == 40:
+        state = "ready"
+    elif len(attempts) == len(candidates):
+        state = "shortfall"
+    return {
+        "state": state,
+        "attempted": len(attempts),
+        "usable": len(accepted),
+        "annotation_ids": accepted,
+        "usable_by_repository": dict(sorted(counts.items())),
+        "next_candidate": candidates[len(attempts)] if state == "pending" else None,
+        "registration": "not established by preparation",
     }
 
 
