@@ -39,6 +39,10 @@ def main() -> int:
     annotate.add_argument("--edited-json", type=Path)
     progress = commands.add_parser("progress")
     progress.add_argument("dataset_id")
+    selection = commands.add_parser("freeze-selection")
+    selection.add_argument("request", type=Path)
+    inspect_selection = commands.add_parser("selection")
+    inspect_selection.add_argument("selection_id")
     args = parser.parse_args()
     sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
     try:
@@ -67,6 +71,22 @@ def main() -> int:
                     )
                 )
             )
+            print(json.dumps(result, indent=2))
+        elif args.command in ("freeze-selection", "selection"):
+            composition = importlib.import_module("semantic_reviewer.bootstrap")
+            selection_types = importlib.import_module("semantic_reviewer.application.selections")
+            selections = composition.build_selections(args.data_root)
+            if args.command == "freeze-selection":
+                with args.request.open("rb") as stream:
+                    body = stream.read(256_001)
+                if len(body) > 256_000:
+                    raise ValueError("Selection request exceeds 256 KB.")
+                result = asdict(
+                    selections.freeze(selection_types.SelectionRequest.model_validate_json(body))
+                )
+            else:
+                summary, snapshot = selections.store.read(args.selection_id)
+                result = {"summary": asdict(summary), "snapshot": snapshot.model_dump(mode="json")}
             print(json.dumps(result, indent=2))
         elif args.command == "index-review":
             composition = importlib.import_module("semantic_reviewer.bootstrap")

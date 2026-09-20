@@ -11,10 +11,12 @@ from semantic_reviewer.adapters.registry import SQLiteRegistry
 from semantic_reviewer.adapters.results import JsonResults
 from semantic_reviewer.adapters.reviews import SQLiteReviewIndex
 from semantic_reviewer.adapters.routing_journal import SQLiteRoutingJournal
+from semantic_reviewer.adapters.selections import JsonSelections
 from semantic_reviewer.application.annotations import AnnotationService
 from semantic_reviewer.application.artefacts import ArtefactIndex
 from semantic_reviewer.application.datasets import DatasetService, PublicDataset
 from semantic_reviewer.application.jobs import JobService, Worker
+from semantic_reviewer.application.selections import SelectionService
 
 
 def build_datasets(data_root: Path) -> DatasetService:
@@ -115,3 +117,20 @@ def build_artefact_index(data_root: Path) -> ArtefactIndex:
     """Initialise external storage and expose explicit result/edit indexing maintenance."""
     root = runtime_path(data_root)
     return JsonResults(root / "results", root / "state.sqlite3")
+
+
+def build_selections(data_root: Path) -> SelectionService:
+    """Compose frozen input validation and inspection for one external runtime.
+
+    Migrate storage without selecting records, loading models or changing annotations.
+    Path and storage failures follow runtime_path/build_jobs; publication is explicit.
+    """
+    root = runtime_path(data_root)
+    jobs = build_jobs(root)
+    return SelectionService(
+        SQLiteAnnotations(root / "state.sqlite3"),
+        jobs,
+        jobs.datasets,
+        jobs.results,
+        JsonSelections(root / "selections", root / "state.sqlite3"),
+    )

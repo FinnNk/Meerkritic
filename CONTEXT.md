@@ -116,3 +116,9 @@ An identified, committed plan recorded before decision-bearing data collection o
 ## Architecture Decision Record (ADR)
 
 A MADR-formatted record of a consequential architecture choice, its rationale and consequences; it may cite EDRs as supporting evidence.
+
+## Annotation selection
+
+An immutable snapshot of explicitly chosen annotation versions, source and effective
+interpretation content, eligibility policy, exclusions and declared research or fixture
+purpose. A curator attestation records a claim of human review, not authentication.

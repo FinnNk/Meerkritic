@@ -60,6 +60,7 @@ Newest first. Status here describes the decision, not the PR or vertical slice.
 
 | Record | Title | Status | Decision-makers | Date |
 | --- | --- | --- | --- | --- |
+| [ADR-0009](ADR-0009-freeze-explicit-annotation-selections.md) | Freeze explicit annotation selections before discovery | proposed | Project owner | 2026-09-20 |
 | [ADR-0008](ADR-0008-own-artefact-publication-metadata.md) | Make artefact publication metadata explicit | implemented | Project owner | 2026-09-20 |
 | [ADR-0007](ADR-0007-review-architecture-after-milestones.md) | Review architecture and guidance after each milestone | implemented | Project owner | 2026-09-20 |
 | [ADR-0006](ADR-0006-recover-jobs-under-process-lock.md) | Recover interrupted jobs under an exclusive process lock | implemented | Project owner | 2026-09-20 |
