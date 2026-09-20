@@ -10,6 +10,7 @@ how to use the code in this checkout. The [glossary](../CONTEXT.md) explains pro
 | Understand the public sample and recover dataset files | [Datasets](development/datasets.md) |
 | Start a local model server | [Local inference setup](development/local-inference.md) |
 | Ask a model to interpret a review comment | [Normalisation](development/normalisation.md) |
+| Understand assessment fields | [Field meanings and worked steps](development/assessment-fields.md) |
 | Review and correct interpretations | [Annotations](development/annotations.md) |
 | Choose a fixed set of reviewed inputs | [Selections](development/selections.md) |
 | Group concerns and inspect their sources | [Discovery](development/discovery.md) |

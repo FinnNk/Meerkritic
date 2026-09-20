@@ -65,7 +65,7 @@ Newest first. Status here describes the decision, not the PR or vertical slice.
 
 | Record | Title | Status | Decision-makers | Date |
 | --- | --- | --- | --- | --- |
-| [ADR-0014](ADR-0014-clarify-assessment-field-meanings.md) | Distinguish impact, applicability and evidence limits in assessments | accepted | Finn Newick | 2026-09-20 |
+| [ADR-0014](ADR-0014-clarify-assessment-field-meanings.md) | Distinguish impact, applicability and evidence limits in assessments | implemented | Finn Newick | 2026-09-20 |
 | [ADR-0013](ADR-0013-preserve-failed-drafts-during-human-correction.md) | Preserve failed drafts during human correction | implemented | Finn Newick | 2026-09-20 |
 | [ADR-0012](ADR-0012-apply-review-intent-in-explicit-batches.md) | Apply review intent in explicit batches | implemented | Project owner | 2026-09-20 |
 | [ADR-0011](ADR-0011-preserve-rule-evidence-across-revisions.md) | Preserve rule evidence across immutable revisions | implemented | Project owner | 2026-09-20 |

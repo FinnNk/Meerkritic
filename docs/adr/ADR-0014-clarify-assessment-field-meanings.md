@@ -1,5 +1,5 @@
 ---
-status: accepted
+status: implemented
 date: 2026-09-20
 decision-makers: [Finn Newick]
 ---
@@ -55,10 +55,23 @@ and unchanged exact-quote checks. Do not rerun the study's frozen initial pass.
 
 ### Confirmation
 
-Before marking implemented: verify old and unknown scopes, exact grounding and
-immutable result preservation; inspect the synthetic review UI and affected guides;
-retain the paused assessment and verify that the live study has not been changed.
-Record candidate revision and evidence in the confirmation update.
+Implemented in the assessment-clarity candidate branch, before owner review/merge.
+The implementation at `5efdc2e` passed the eight targeted workflow tests and six
+annotation-web tests, covering old/unknown scope, grounding, immutable originals,
+separate notes and restart. The prompt-version expectation correction at `59c058f`
+passed its targeted failure-provenance recheck; the earlier complete test failure
+is retained. Full checkpoint qualification is recorded separately by DER.
+
+Synthetic browser inspection covered successful and failed drafts, field-help
+expansion and 600/1000-pixel responsive widths. Current screenshots and their
+capture record are in [the image guide](../images/README.md). The read-only study
+check found all 55 original artefacts unchanged, 55 jobs, 331 events, zero annotations
+and zero discovery runs. Preliminary human observations remain outside Git.
+
+Evidence: DER `assessment-clarity/r1`, including `normalisation-tests.log`,
+`annotation-web-tests.log`, `prompt-provenance-recheck.log`, `responsive-check.json`
+and `live-before.json`. Revisit if future consumers need structured evidence limits
+or if independent reviewers cannot apply the clarified meanings consistently.
 
 ## Pros and Cons of the Options
 
