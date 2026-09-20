@@ -16,67 +16,58 @@ Its design centres on three ideas:
 - **Human judgement.** Make interpretations available for review and correction,
   and evaluate proposed fixes against the code and its tests.
 
-## Getting started
+## Browse the sample
 
-Meerkritic is in early development. The local harness can register a public sample
-and browse review comments alongside their code context. A local worker can normalise
-an observation into an evidence-linked interpretation for human assessment.
+You need **Python 3.12** and **uv**. Run commands from the repository root.
+The browser is a local web application, called the *harness* in some project records.
 
-With **Python 3.12** and **uv** installed, run these commands from the repository
-root:
+1. Install the locked dependencies:
 
-```sh
-uv sync --locked
-uv run --locked python tools/run.py --data-root ../extras/runtime register crc-py-manual-4176ac0
-uv run --locked python tools/run.py --data-root ../extras/runtime serve
-```
+   ```text
+   uv sync --locked
+   ```
 
-Open [localhost:8000](http://127.0.0.1:8000) to browse the 1,030-record sample.
-Registration downloads about 2.5 MB and verifies the pinned source checksum. Keep
-the data root outside the repository; use the same path for registration and serving.
-The server binds to this computer only.
+2. Download and register the public review-comment sample:
 
-To run model normalisation, follow the [local workflow guide](docs/development/normalisation.md)
-to start llama.cpp and the worker, then choose **Normalise** beside an observation.
-Inspect results, provenance and failures from **Normalisation jobs** in the harness.
-Choose **Accept**, **Edit** or **Reject** on a successful result to save your
-assessment immediately. Open **Annotation progress and review queue** to find
-unreviewed results and track source coverage. See the [annotation guide](docs/development/annotations.md)
-for editing and decision-history behaviour.
+   ```text
+   uv run --locked python tools/run.py --data-root ../extras/runtime register crc-py-manual-4176ac0
+   ```
 
-Freeze explicitly chosen decisions with the [selection guide](docs/development/selections.md),
-then open **Frozen annotation inputs** to inspect the retained source, effective
-interpretations and exclusions. Fixture inputs remain distinct from research labels.
+   This downloads about 2.5 MB, checks its checksum and registers 1,030 records.
+   Keep the data directory outside the repository and use the same path throughout.
 
-Explore those inputs through the harness's **Discovery** view. See
-[discovery setup](docs/development/discovery.md) for the local embedding worker,
-reproducible grouping and the limits of the current exploratory method.
+3. Start the web application:
 
-From a group, queue a provisional rule and inspect its evidence in **Rule registry**.
-Use [rule review](docs/development/rules.md) to challenge or revise a candidate.
-The [review workspace](docs/development/research-interaction.md) saves coherent
-decision drafts, applies them explicitly and sends selected discussion as guidance.
-Agent responses are advice; they do not apply edits or decisions. **Architecture**
-shows published before/after evidence and warns when its source snapshot is stale.
+   ```text
+   uv run --locked python tools/run.py --data-root ../extras/runtime serve
+   ```
 
-Run `uv run --locked python tools/check.py` for formatting, lint, architecture and
-behaviour checks. See the [dataset guide](docs/development/datasets.md) for source
-provenance, storage and recovery, or the [development guide](docs/development/README.md)
-for the contribution workflow.
+4. Open [localhost:8000](http://127.0.0.1:8000) and choose the dataset to browse
+   comments alongside their code. The server accepts connections on this computer only.
 
-## Learn more
+## What would you like to do?
 
-- [Repository layout and dependency boundaries](docs/development/structure.md)
-- [Project glossary](CONTEXT.md)
-- [Empirical decisions: hypotheses, methods and results](docs/edr/README.md)
-- [Architecture decisions and their rationale](docs/adr/README.md)
+| Task | Guide |
+| --- | --- |
+| Turn a comment and its code into a structured interpretation | [Run normalisation](docs/development/normalisation.md) |
+| Accept, correct or reject a model interpretation | [Review annotations](docs/development/annotations.md) |
+| Save fixed inputs for discovery | [Select annotations](docs/development/selections.md) |
+| Group similar concerns | [Run discovery](docs/development/discovery.md) |
+| Propose and challenge a reusable check | [Review candidate rules](docs/development/rules.md) |
+| Save several decisions or ask the model for advice | [Use the review workspace](docs/development/research-interaction.md) |
+| Inspect changes to the code's architecture | [Publish and read architecture views](docs/architecture/README.md) |
+
+Model work needs a separate local model server and worker; browsing does not.
+Agent advice never applies rule edits or human decisions automatically.
+See the [documentation index](docs/README.md) for setup, operations and developer references.
 
 ## Contributing
 
-Use [GitHub issues](https://github.com/FinnNk/Meerkritic/issues) to ask questions,
-report problems or suggest improvements. For code and documentation changes, read
-the [project instructions](AGENTS.md), work on a branch and use Conventional
-Commits. Run the quality checks before submitting changes for review.
+- Use [GitHub issues](https://github.com/FinnNk/Meerkritic/issues) to ask questions,
+  report problems or suggest improvements.
+- Read the [project instructions](AGENTS.md) and [development guide](docs/development/README.md).
+- Work on a branch, use Conventional Commits and run
+  `uv run --locked python tools/check.py` before submitting changes for review.
 
 ## Licence
 

@@ -1,67 +1,85 @@
-# Stage research decisions and send guidance
+# Save rule decisions and ask for advice
 
-Open **Review workspace**, or use a rule's **Stage decisions, defer or reopen**
-link. Choose actions and rationales for up to twenty rule versions, enter your
-name and **Save draft only**. The saved draft survives restart; no decision has
-been applied. Reopen it, inspect the target versions and **Apply this saved batch**.
+Use **Review workspace** to save several rule decisions before applying them.
+Use **Guidance** to send selected discussion to a model for advice. Saving a draft,
+posting a message and requesting advice are separate actions.
 
-All decisions and events apply together. A stale version or evidence revision
-leaves every decision unchanged and keeps the draft. The page identifies the
-conflicting version and shows the saved and current revision. Inspect that rule
-before deliberately correcting the draft's target revision or action. An applied
-draft is immutable; start a new draft for further intent. Identical Apply retries
-return the original receipt rather than applying again.
+## Save and apply a draft
 
-## Review states
+Start with candidates in the [rule registry](rules.md).
 
-New versions are pending. Promote/reject answers a pending or reopened task.
-Defer pauses a pending/reopened task; explicitly reopen a deferred or answered
-task before another decision. Reopening preserves earlier answers and returns
-the rule to candidate status. A definition revision supersedes the previous task
-with a replacement link and creates a pending task for the new version. Evidence
-added after a decision remains visibly newer than that decision.
+1. Open **Review workspace**, or a rule's **Stage decisions, defer or reopen** link.
+2. Choose actions and rationales for up to twenty rule versions, and enter your name.
+3. Choose **Save draft only**. The draft survives restart; rule decisions have not changed.
+4. Open the saved draft and inspect its target versions and actions.
+5. Choose **Apply this saved batch**. All its decisions and events are saved together.
 
-Immediate promote/reject remains available for pending/reopened versions. Both
-paths use the same registry contract. Promotion is a research judgement, never
-validation or deployment. Names/rationales are recorded local claims, not identity
-authentication. VS1 Accept/Edit/Reject annotations remain unchanged.
+If any rule or its evidence changed after you prepared the draft, **none of the
+batch is applied**. The page identifies the conflicting version and preserves the
+draft. Inspect that rule before correcting the target revision or action and saving
+again. An applied draft cannot be edited; start a new one. Repeating an identical
+Apply request returns the original receipt.
 
-## Discussion and coherent guidance
+## Choose the next review action
 
-Add discussion to a rule version. Messages are immutable and remain on that version
-after it is superseded. Adding a message neither sends it to an agent nor applies
-a decision. Open **Guidance**, choose rule versions and explicitly check the notes
-to include, then submit one coherent instruction. The form shows up to six rules
-and the latest twenty notes per rule; a rule's guidance link puts it first.
+| Current review state | Meaning | Available next action |
+| --- | --- | --- |
+| Pending | A new rule version awaits review. | Promote, reject or defer |
+| Answered | A promote/reject decision has been recorded. | Reopen before another decision |
+| Deferred | Review has been set aside. | Reopen when ready |
+| Reopened | Review is active again; earlier answers remain recorded. | Promote, reject or defer |
+| Superseded | A newer rule definition replaces this version. | Follow the replacement link to review it |
 
-Submission freezes exact definitions, expected revisions and selected messages.
-Later messages or revisions cannot silently enter the context. A duplicate send
-with the same identity/content returns the existing batch; changed content requires
-a new identity. Stale targets fail before queueing. Context exceeding 18,000 characters
-is rejected before queueing rather than truncated; the model adapter also checks
-the real token/template budget.
+Reopening returns the rule to candidate status and preserves earlier answers.
+Revising the definition creates a new pending task and marks the old one superseded.
+Evidence added after a decision is shown as newer than that decision.
 
-The existing worker handles guidance alongside source normalisation and discovery,
-under one lock with round-robin scheduling. Use routing policy version 3 from
-`config/routing/discovery-local.json`; earlier policy versions remain available
-for historical resolution. A generation-only worker can answer guidance without
-loading the embedding runtime. No HTTP request performs inference.
+Immediate promote/reject on a rule page follows the same rules as batch application.
+Promotion retains a research candidate; it does not deploy or validate a detector.
+These controls apply to rules. [Source annotations](annotations.md) still save
+Accept/Edit/Reject immediately and cannot be reopened.
 
-A **responded** batch contains advisory text, routing/usage, MAF observation and
-raw provenance. It never applies a rule edit or human decision. Missing/invented
-version references or invalid output fail visibly. A **failed** batch differs from
-**unknown** completion after worker interruption. Recovery never resends; inspect
-the retained context before making a new explicit submission. The page warns when
-the target versions/revisions have changed since submission.
+## Add discussion and send guidance
 
-Live telemetry refreshes every five seconds. Unknown tokens remain unknown.
-Responses and submitted context are external immutable artefacts; SQLite holds
-queue metadata, small claims, receipts and append-only operational events.
+A message belongs to the exact rule version on which it was posted. It remains
+there after a revision. Posting it does not invoke a model or apply a decision.
 
-## Compatibility and research limits
+1. Add a discussion message on a rule page.
+2. Open **Guidance**, or use the rule's guidance link to put that rule first.
+3. Choose the rule versions and explicitly select the messages to include.
+   The form shows up to six rules and the latest twenty messages per rule.
+4. Enter one instruction describing the advice you want, then submit.
+5. Inspect the saved request and wait for the worker's response. Later messages or
+   rule revisions do not enter the request you already sent.
 
-On 20 September 2026, real local Qwen/llama.cpp and MAF returned advice on a copy
-of the synthetic Batch B candidate, with exact source/context provenance and no
-rule-state change. External DER `vs2-interaction/r1` retains the method and result.
-Automated fixture decisions are not human research labels. EDR-0001 remains draft;
-these functional tests do not select a superior model, prompt or grouping method.
+The [discovery worker](discovery.md#start-the-worker) supports guidance. To run only
+normalisation and guidance, start the generation server and use this command from
+the repository root, after stopping any other worker on the same data directory:
+
+```text
+uv run --locked python tools/run.py --data-root ../extras/runtime worker --routing config/routing/discovery-local.json --endpoint http://127.0.0.1:8081
+```
+
+This uses the supplied policy version 3 and does not load an embedding runtime.
+Model work runs in the worker, outside web requests.
+
+## Read a response or recover a failed request
+
+| State or message | Meaning and next action |
+| --- | --- |
+| Queued | Waiting for a worker with an eligible route. Check the worker's data directory and routing file. |
+| Running | The worker is processing the saved request. Usage refreshes every five seconds. |
+| Responded | Advisory text and its source/request history are available. Apply any chosen change yourself through rule review. |
+| Failed | Inspect the error and retained output; invalid or invented version references are refused. |
+| Unknown | The worker stopped before completion was recorded. It may have finished externally; inspect before making a new explicit submission. |
+| Historical context | A target has changed since submission. Compare the advice with the current rule before acting. |
+| Context too large | Reduce the selected material. Requests above 18,000 characters are refused; the model's token limit is checked separately. |
+
+No response edits a rule or applies a decision. Recovery never automatically
+resends. Duplicate requests with the same identity and content return the existing
+batch; changed content requires a new request. Stale targets are refused before queueing.
+
+Names and rationales are local claims, not authenticated identities. Submitted
+context and responses are immutable external files; SQLite holds queue metadata,
+small claims, receipts and events. See [operational evidence](operational-evidence.md)
+for the distinction between stored output and a successful operation.
