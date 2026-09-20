@@ -10,7 +10,8 @@ slices:
   - routing selection/accounting/journal/inspection integrated (DER vs1-routing r1, PR 5)
   - live llama.cpp, MAF normalisation, durable worker and browser results integrated (DER vs1-normalisation r2, PR 6)
   - immediate annotation, immutable decision history and progress candidate (DER vs1-annotation r1)
-  - operational evidence indexing, full-path validation and final slice review remain outstanding
+  - artefact metadata, structured job logs, DER references and full-path validation candidate (DER vs1-validation r1; stacked on annotation)
+  - final slice review and detailed VS2 plan follow on a separate committed branch without a PR
   entry_conditions:
   - project bootstrap approved
   exit_conditions:

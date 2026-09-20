@@ -95,6 +95,16 @@ The revision state tracked separately from slice status: locally prepared, publi
 The single authorised role that owns integration into the canonical DER diary/semantic pair while contributors/agents may work concurrently in separate worktrees or branches.
 
 
+## Artefact catalogue
+
+Small immutable metadata identifying filesystem evidence by checksum, job, kind,
+path, size and publication time; it does not contain the evidence body.
+
+## Job log snapshot
+
+An immutable filesystem projection of committed job lifecycle events, with a
+mutable pointer to the latest snapshot; event history remains authoritative.
+
 ## Empirical Decision Record (EDR)
 
 A pre-registered record of a significant evidence-dependent decision, its hypothesis, method, results, limitations and decision status.
