@@ -1,0 +1,5 @@
+1:  4c45515 = 1:  4c45515 docs(vs2): activate frozen-input batch after VS1 review
+2:  6e2cd57 = 2:  6e2cd57 feat(selections): freeze explicit annotation versions and provenance
+3:  4abbcdd = 3:  4abbcdd feat(selections): browse verified frozen inputs in the harness
+4:  0683769 = 4:  0683769 docs: name project references on first mention
+-:  ------- > 5:  520d50f docs: put project reference titles in parentheses

@@ -1,0 +1,26 @@
+Running: ruff format --check .
+58 files already formatted
+Running: ruff check .
+I001 [*] Import block is un-sorted or un-formatted
+ --> tests\test_selection_web.py:3:1
+  |
+1 |   """Verify frozen input inspection, HTML escaping and honest evidence failures."""
+2 |
+3 | / import unittest
+4 | |
+5 | | from fastapi.testclient import TestClient
+6 | | import test_selections
+7 | |
+8 | | from semantic_reviewer.asgi import build_app
+  | |____________________________________________^
+help: Organize imports
+  |
+4 |
+5 + import test_selections
+6 | from fastapi.testclient import TestClient
+  - import test_selections
+7 |
+  |
+
+Found 1 error.
+[*] 1 fixable with the `--fix` option.

@@ -1,0 +1,18 @@
+{
+  "kind": "verification",
+  "round_id": "r3",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "vs2-inputs-2026-09-20"
+  },
+  "payload": {
+    "stage": "locally_prepared",
+    "diary": "ba1cf530b8b6c95209380947ecf4339c55586b66",
+    "semantic": "520d50fd6f9c9349773230f248ed537409edaa77",
+    "feedback": "https://github.com/FinnNk/Meerkritic/pull/10#issuecomment-5748233592",
+    "checks": "New diary and semantic pass115 tests and all gates; exact final tree equality. Earlier exact commits unchanged.",
+    "platform_approval": false
+  }
+}

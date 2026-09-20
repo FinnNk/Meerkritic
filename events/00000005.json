@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "sequence": 5,
+  "pair_id": "vs2-inputs",
+  "recorded_at": "2026-09-20T06:48:41+00:00",
+  "previous_hash": "fe5f7398f140c307261cb6b98e4d61a0d13ae6a7f9f5bd1a41a71a9daa642ccd",
+  "kind": "publication",
+  "round_id": "r2",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "vs2-inputs-2026-09-20"
+  },
+  "payload": {
+    "stage": "owner_review_ready",
+    "pr": "https://github.com/FinnNk/Meerkritic/pull/10",
+    "semantic": "068376980510d4e32004583efb11c6e2d0c9b2be",
+    "base": "fa6856bff52efecba55700572cb10e67f9a8f3c0",
+    "archive": "5e7987c8b64257342ea407a887471c994feca35b",
+    "publication": "complete",
+    "required_hosted_contexts": [],
+    "checks": "New diary/semantic checkpoint pass115 tests and all gates; three unchanged exact-SHA checkpoints retained from r1. No hosted CI run claimed.",
+    "platform_approval": false,
+    "integrated": false,
+    "observed_at": "2026-09-20T06:48:41.451499+00:00"
+  },
+  "event_hash": "8c58dc9cc53e9b01c6bed4d68c24740f9fc68b74dee8bccb4ed3d5fb3dd66285"
+}
