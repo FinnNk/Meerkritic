@@ -1,0 +1,16 @@
+{
+  "frozen_diary": "6bf1544b1fa1f70f188ae19fd08f55df78574787",
+  "semantic_base": "ff9af2e68d989590ebe030002e2e3789c35efef0",
+  "commits": {
+    "p1": "186bff35b6410320762383e35f6229a3853c6de9",
+    "p2": "89d5fcae41c35f5716ed881615d684d072af451d",
+    "p3": "55001b6374fefdaaf1634674bdb431c4af7d48e6",
+    "p4": "ee351d3d7b70774c610a1e8e446c64aad8720448",
+    "p5": "eaeecaafd37883f2cb6da09d2845886413a9a530"
+  },
+  "supersedes": "Candidate identities in boundaries.md; proposition contracts unchanged",
+  "corrections": [
+    "Final display encoding repair on diary",
+    "Intermediate header reassembly corrected from frozen content; earlier checks remain bound to old SHAs"
+  ]
+}

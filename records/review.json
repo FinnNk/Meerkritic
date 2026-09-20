@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "pair_id": "vs2-interaction",
+  "round_id": "r1",
+  "manifest_sha256": "29fa222376f6fceaa151abfb21fc30e669ef691993d68b120bb0875ded27351c",
+  "semantic_tip": "eaeecaafd37883f2cb6da09d2845886413a9a530",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "vs2-interaction-2026-09-20"
+  },
+  "independence": "self-review",
+  "mode": "full",
+  "status": "complete",
+  "orientation_done": true,
+  "reviewed_commits": [
+    "186bff35b6410320762383e35f6229a3853c6de9",
+    "89d5fcae41c35f5716ed881615d684d072af451d",
+    "55001b6374fefdaaf1634674bdb431c4af7d48e6",
+    "ee351d3d7b70774c610a1e8e446c64aad8720448",
+    "eaeecaafd37883f2cb6da09d2845886413a9a530"
+  ],
+  "aggregate_done": true,
+  "findings": [],
+  "check_records": [
+    "verification-summary.json",
+    "review-notes.md",
+    "live-http-release.json",
+    "live-guidance-4fdca658-07f9-4029-aace-f33e01ccfbb2.json"
+  ],
+  "limitations": [
+    "Author self-review, not independent review",
+    "Windows/Python 3.12 only",
+    "Synthetic compatibility only; empirical adoption pending"
+  ],
+  "carry_forward_record": null,
+  "platform_approval": false
+}

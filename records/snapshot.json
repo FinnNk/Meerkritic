@@ -1,0 +1,7 @@
+{
+  "manifest": "WORKSPACE\\extras\\der-evidence\\pairs\\vs2-interaction\\rounds\\r1\\manifest.json",
+  "manifest_sha256": "29fa222376f6fceaa151abfb21fc30e669ef691993d68b120bb0875ded27351c",
+  "stage": "archived_candidate",
+  "bundle_sha256": "bd03bdedcc502d8a7e7415f223a48a9a21e74b1aeccf57b0e88f0e5be0475dad",
+  "note": "Local archive only; behavioural verification, durable replication and approval are separate."
+}

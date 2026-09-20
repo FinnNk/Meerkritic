@@ -1,0 +1,12 @@
+{
+  "before": "ff9af2e68d989590ebe030002e2e3789c35efef0",
+  "after": "eaeecaafd37883f2cb6da09d2845886413a9a530",
+  "generator": "eaeecaafd37883f2cb6da09d2845886413a9a530",
+  "schema": 3,
+  "note": "Both sides generated with final schema-3 generator; earlier archives unchanged",
+  "hashes": {
+    "architecture-before.json": "2d9891a2f4af7527d56f3ce39c645d33fdf7baca42919fbfae8464047b605327",
+    "architecture-after.json": "46914fda424a7494ea7025a50b3a3b519c59847795d43d08e447bc149745a46a",
+    "architecture-delta.json": "18f65e76be2a139b1db098470820f9d4e7c7780bce47985bbde8b252e3535bf1"
+  }
+}

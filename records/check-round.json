@@ -1,0 +1,16 @@
+{
+  "valid": true,
+  "pair_id": "vs2-interaction",
+  "round_id": "r1",
+  "manifest_sha256": "29fa222376f6fceaa151abfb21fc30e669ef691993d68b120bb0875ded27351c",
+  "scope": "archive_identity_and_equivalence_only",
+  "current_checkout": {
+    "repository": "WORKSPACE\\extras\\der-checkouts\\vs2-interaction-archive",
+    "bare": false,
+    "head": "6bf1544b1fa1f70f188ae19fd08f55df78574787",
+    "branch": "change/vs2-interaction-diary",
+    "clean": true,
+    "changes": [],
+    "tree": "a438e28af4f45f3cac884d9876b2189b228e2a6c"
+  }
+}

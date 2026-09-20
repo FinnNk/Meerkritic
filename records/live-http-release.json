@@ -1,0 +1,82 @@
+{
+  "source_revision": "eaeecaafd37883f2cb6da09d2845886413a9a530",
+  "runtime": "WORKSPACE\\extras\\preflight\\vs2-guidance\\runtime-4fdca658-07f9-4029-aace-f33e01ccfbb2",
+  "scope": "Synthetic real loopback HTTP; no visual layout or research quality claim",
+  "projection": "385107d2aa98d49737070146965a1a68ccc6cac7a8ef5d0771e88c60592d27a8",
+  "requests": [
+    {
+      "path": "/",
+      "method": "GET",
+      "status": 200,
+      "contains": null
+    },
+    {
+      "path": "/rules",
+      "method": "GET",
+      "status": 200,
+      "contains": null
+    },
+    {
+      "path": "/review-workspace",
+      "method": "GET",
+      "status": 200,
+      "contains": null
+    },
+    {
+      "path": "/guidance",
+      "method": "GET",
+      "status": 200,
+      "contains": null
+    },
+    {
+      "path": "/rules/d35b730e30fbe190cfc9e541e1fc818e9117dd77158cbf520af435efd48c8765",
+      "method": "GET",
+      "status": 200,
+      "contains": null
+    },
+    {
+      "path": "/guidance/4fdca658-07f9-4029-aace-f33e01ccfbb2",
+      "method": "GET",
+      "status": 200,
+      "contains": "Advisory response"
+    },
+    {
+      "path": "/architecture",
+      "method": "GET",
+      "status": 200,
+      "contains": "matches the current source fingerprint"
+    },
+    {
+      "path": "/review-workspace/save",
+      "method": "POST",
+      "status": 200,
+      "contains": "Apply this saved batch"
+    },
+    {
+      "path": "/review-workspace/apply",
+      "method": "POST",
+      "status": 200,
+      "contains": "Applied batch"
+    },
+    {
+      "path": "/rules/d35b730e30fbe190cfc9e541e1fc818e9117dd77158cbf520af435efd48c8765",
+      "method": "GET",
+      "status": 200,
+      "contains": "Review state: deferred"
+    },
+    {
+      "path": "/rules/d35b730e30fbe190cfc9e541e1fc818e9117dd77158cbf520af435efd48c8765",
+      "method": "GET",
+      "status": 200,
+      "contains": null
+    },
+    {
+      "path": "/guidance/4fdca658-07f9-4029-aace-f33e01ccfbb2",
+      "method": "GET",
+      "status": 200,
+      "contains": "Historical context"
+    }
+  ],
+  "restart_retained": true,
+  "status": "passed"
+}

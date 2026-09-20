@@ -1,0 +1,24 @@
+{
+  "pr": 12,
+  "integrated": "ff9af2e68d989590ebe030002e2e3789c35efef0",
+  "ordered_tree_mapping": [
+    {
+      "reviewed": "dd2a1ff5d5e2b620c2b37c22362623320d1bfeee",
+      "integrated": "cfd37e495ede80c90714ef5ab83fc5524c13d03a",
+      "tree": "d4c9bdf2bbd0f4e8732c137a118215e708259c67"
+    },
+    {
+      "reviewed": "45683c9359db803b4911467dddb6e9344af242d7",
+      "integrated": "120a0bc5984f4eae2cbb04ee46b5d287835ef01c",
+      "tree": "ad40e83830f1190639eab74530a9222d5c07fdee"
+    },
+    {
+      "reviewed": "dc6ba77119b2cf148cf014c54a7748953bd9735d",
+      "integrated": "ff9af2e68d989590ebe030002e2e3789c35efef0",
+      "tree": "4a7956b86edd51c73f9e9cbb1c28c6747cdda7a9"
+    }
+  ],
+  "owner_statement": "Accepted and merged PR12; continue autonomously",
+  "post_merge_checks": "integrated-base-checks.json",
+  "old_checks_remain_bound_to_reviewed_shas": true
+}

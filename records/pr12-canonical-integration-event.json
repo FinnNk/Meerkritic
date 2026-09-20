@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "sequence": 2,
+  "pair_id": "vs2-rules",
+  "recorded_at": "2026-09-20T09:39:43+00:00",
+  "previous_hash": "1345c3c2186d816d9bf9a04f4acec27f3dacf7f68ad572c0c144cc1ab7f1cc43",
+  "kind": "integration",
+  "round_id": "r1",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "vs2-interaction-2026-09-20"
+  },
+  "payload": {
+    "stage": "integrated",
+    "pr": "https://github.com/FinnNk/Meerkritic/pull/12",
+    "reviewed": "dc6ba77119b2cf148cf014c54a7748953bd9735d",
+    "integrated": "ff9af2e68d989590ebe030002e2e3789c35efef0",
+    "merged_at": "2026-09-20T08:52:49Z",
+    "ordered_mapping_record": "vs2-interaction/r1/pr12-integration.json",
+    "post_merge_checks": "vs2-interaction/r1/integrated-base-checks.json",
+    "note": "Factual observation after owner merge. Prior checks/approval retain reviewed identities; no retrospective readiness event is manufactured."
+  },
+  "event_hash": "3b4bf5cc44ad3b91bf3efc7285691a6394ce8ba6601dffbc573a469ef2e29753"
+}

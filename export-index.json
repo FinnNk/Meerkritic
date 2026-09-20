@@ -1,0 +1,530 @@
+[
+  {
+    "source": "architecture-after.json",
+    "source_sha256": "46914fda424a7494ea7025a50b3a3b519c59847795d43d08e447bc149745a46a",
+    "export_sha256": "46914fda424a7494ea7025a50b3a3b519c59847795d43d08e447bc149745a46a",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "architecture-before.json",
+    "source_sha256": "2d9891a2f4af7527d56f3ce39c645d33fdf7baca42919fbfae8464047b605327",
+    "export_sha256": "2d9891a2f4af7527d56f3ce39c645d33fdf7baca42919fbfae8464047b605327",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "architecture-delta.json",
+    "source_sha256": "18f65e76be2a139b1db098470820f9d4e7c7780bce47985bbde8b252e3535bf1",
+    "export_sha256": "18f65e76be2a139b1db098470820f9d4e7c7780bce47985bbde8b252e3535bf1",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "architecture-identities.json",
+    "source_sha256": "8ba3128812a98dd8f4bbcf7016eb2a93cb7a1c8d85c4360b0801aae09c9ec3f2",
+    "export_sha256": "8ba3128812a98dd8f4bbcf7016eb2a93cb7a1c8d85c4360b0801aae09c9ec3f2",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "architecture-view-checks.log",
+    "source_sha256": "5b038f46251858a2996e9f6a7e0c0384b6d41fa8bd25a9b83123046536f86376",
+    "export_sha256": "5493cf807b8b9de29fab369535a56bed8c1ee5e09c57b057e93edfbafef4b851",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "boundaries-final.json",
+    "source_sha256": "d209cfb8dc55fabd7455b16600ce1741f82a5a2225dde70ce8b9f9bad777f9ad",
+    "export_sha256": "d209cfb8dc55fabd7455b16600ce1741f82a5a2225dde70ce8b9f9bad777f9ad",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "boundaries.md",
+    "source_sha256": "df2a97538c229781f629a0860bf46a8cf0f6fe63c0060004b3d02c695eb43479",
+    "export_sha256": "df2a97538c229781f629a0860bf46a8cf0f6fe63c0060004b3d02c695eb43479",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "check-round.json",
+    "source_sha256": "4226e4fbbd4b259336fdd990d58ef877d90331d03f197b163923ffdaea6f961d",
+    "export_sha256": "2a9165b1a58fe175c3cb19a934838de2a3d74dbe147bc2fd5c1eb023b2958a83",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "diary-final-checks.json",
+    "source_sha256": "1a2fb96feb3c91d1c9847f62c5880177f25c80e0660d374da8197a7d3599566a",
+    "export_sha256": "724ee90fa9af22ab3cb62caa17532ce3662156ddcaf4d1212e4dad0eb3d66f94",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "diary-final-checks.log",
+    "source_sha256": "24afa6c935350aa7ee1dbe5b17d20644d731cdf4af9175a58107f6773fe27d7d",
+    "export_sha256": "ab02e075e065f63acd61b00eceab4b43ab92421f97070932a5639a1e3ab96a14",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "diary-final2-checks.json",
+    "source_sha256": "0372ddf61d7b0cf200a8ceb402288e226d08f0bde6a516f9a9b8bd9258adaa61",
+    "export_sha256": "49461e3b8f8ec9da3442adc1bf176deb752d3b00c2f2034b1483d22336bd5f5c",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "diary-final2-checks.log",
+    "source_sha256": "84c257fd58633a09b926b5a87100271476350ad27e18e5cd43b4ca61f91ff28a",
+    "export_sha256": "dc0e3f9f817562bcaef243f5301e2fa99bc9d7cfda0075bfd7528598028aa892",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "diary-initial-identity-resolution.json",
+    "source_sha256": "6d67c360ac3477bd8f395037279383b5da0ffc6dad154ef650350387a2336d66",
+    "export_sha256": "6d67c360ac3477bd8f395037279383b5da0ffc6dad154ef650350387a2336d66",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "equivalence.json",
+    "source_sha256": "a714f7861e0f38fb73dde2b0f2580f45d2d88ac1aea72810c6219ca71ba53ca8",
+    "export_sha256": "a714f7861e0f38fb73dde2b0f2580f45d2d88ac1aea72810c6219ca71ba53ca8",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "export_packet.py",
+    "source_sha256": "d16548b7967dbe671074d2bc5e4bf7fe5271eb6e3716ad24902407093f8db2ec",
+    "export_sha256": "126934796c12484afb5d0c8b18473a53572651529b644d19ec7540d63b737985",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "guidance-checks.log",
+    "source_sha256": "a2cb51e47a7cd0b4367767c63be2a9274bbb18183b4e211283bdb315b72d62a0",
+    "export_sha256": "d63612b7b32396cc8a0cf8229da6383c1a385c9b26d96ec5d67fb3f74c1cb59f",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "integrated-base-checks.json",
+    "source_sha256": "0f5483183495c4cd694b08196efe782b9915edc099fce69a4db1707439e132ce",
+    "export_sha256": "ead4179ee3d7a39f0194feeb59b4d067ab30596b9c8eb1fa80ca8d835c9b9bee",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "integrated-base-checks.log",
+    "source_sha256": "02a97009f87654ef6ae424e59d1d44fe34c5f62ad5d3512cd90cddb20ef2b4e6",
+    "export_sha256": "73bcfd1ff2f22b10a467f22dc77001db0e1caa3e32dc359a5769a9b307f85fac",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "inventory.json",
+    "source_sha256": "b6f46a50adccf9301674b569ce10e3d77207af6399bfab29cd2a5539f156d07c",
+    "export_sha256": "b6f46a50adccf9301674b569ce10e3d77207af6399bfab29cd2a5539f156d07c",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "live-guidance-4fdca658-07f9-4029-aace-f33e01ccfbb2.json",
+    "source_sha256": "cdb165c69bd76f54c1e3b5b95da04e364129a20033c965d9179d921fb3215f87",
+    "export_sha256": "b87f71391619a433226be13a0b1246551199a7012ba6a81ea147f16bf43fc354",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "live-guidance-5a7479e3-ccf2-4bc8-a344-6f5822a9eacc.json",
+    "source_sha256": "5c7c3e3d0c0c90c82be08cf4bc6ce92634bb1c396ec036b86da048d7566335ef",
+    "export_sha256": "c3175f61b1efef46e45effada600b3d003086498255a0352916d82c85425cef4",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "live-guidance-e55cefc3-bbd2-49cd-b313-d18ab3cea94f.json",
+    "source_sha256": "223657f8aeb97ea7e9b14b9f7e19c4943a3c802205f900e43466726f66b03f67",
+    "export_sha256": "696b0f2f56c11a198cd3b1d956670031c5d10adeb33364177d01809353076470",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "live-guidance-final.log",
+    "source_sha256": "f4a5a4816a455450de1477216fe310b9ee2f6a4e25f51217096905f91e3c8fc5",
+    "export_sha256": "f4a5a4816a455450de1477216fe310b9ee2f6a4e25f51217096905f91e3c8fc5",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "live-guidance-initial.log",
+    "source_sha256": "8bee124b540ca197a9cbf0a59a41d0db7555f08f955ddbc607ad916373e1a872",
+    "export_sha256": "8bee124b540ca197a9cbf0a59a41d0db7555f08f955ddbc607ad916373e1a872",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "live-guidance-release.log",
+    "source_sha256": "c24df9cfe62bfa0063b0822badd930673dff41ecc796b014f702763913de3e03",
+    "export_sha256": "c24df9cfe62bfa0063b0822badd930673dff41ecc796b014f702763913de3e03",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "live-http-release.json",
+    "source_sha256": "61af6944605aadf8ceb4272246afd4a2c045cc166976c1f6440882b8c9cf7d07",
+    "export_sha256": "712ce75bf657314e9378d4c93d957da7f4cd48ef4d6ec48c2b514ad3b340f7d5",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "live-http-release.log",
+    "source_sha256": "89f4a3804ed8d57e21a62fdac874f4890fdd99e212f824d2adfc504cb1e5a24f",
+    "export_sha256": "89f4a3804ed8d57e21a62fdac874f4890fdd99e212f824d2adfc504cb1e5a24f",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "live-http.json",
+    "source_sha256": "f2da2a126d1adf91e251f6f53222cba2e0fdec81d18f7217aeefd85526b456cb",
+    "export_sha256": "d0283331624a57b32dbe90c8de14c4ee48cf27a811093f8394b67d32be4bdea4",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "live-http.log",
+    "source_sha256": "89f4a3804ed8d57e21a62fdac874f4890fdd99e212f824d2adfc504cb1e5a24f",
+    "export_sha256": "89f4a3804ed8d57e21a62fdac874f4890fdd99e212f824d2adfc504cb1e5a24f",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "live_guidance.py",
+    "source_sha256": "aa07549d1dc88ecd191b0584a47ed69aafc9fb930e3aa30c06b1425247c08c72",
+    "export_sha256": "91e8ead453bbb1a0999a1f09b26acb881e181652197282587e0841eed2eea2b8",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "live_http.py",
+    "source_sha256": "b9df18d3497a4049c2ca8edbfdce462b075cb7039f18b78191757cbbf5328a83",
+    "export_sha256": "6592174f6722e5d2cbaa762379819d92353a932b5fa46d02a840f2e1fd7af294",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "live_http_release.py",
+    "source_sha256": "42b5c97a559a69c0cc6dfe0518aa7bba886cf493a601378f1c762969c5e84756",
+    "export_sha256": "9dbafb50703d29c02dda6a17a66fa9fa9e19de65d926f00154be9c24830b8f03",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "milestone-fixes-checks.log",
+    "source_sha256": "dafcf665bb12144eb478c682eee4cb63fb1726eac524a78af3814ca5f57eeae4",
+    "export_sha256": "f833288716dfd6782aeae0b24041221a8c9bceffdb168cb1791af331eadfc7f6",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "p1-checks.json",
+    "source_sha256": "dc8429bb0e48caec16fafdbc1c43cfee78677a543948d8e6881b148bf9efc8b2",
+    "export_sha256": "1dd13320f0d4f4c7f5415cd3e0c48e57b080e1f3704c70ab9b35ba655054883b",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "p1-checks.log",
+    "source_sha256": "d115d544e677e8e06f34a4617cfe49e5c8cd1fa818cc16ee418d649f620891cc",
+    "export_sha256": "66798cce45d40f2c73d393b67de14f2314277ca497b46af512a52b44cbb09d65",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "p1-identity.json",
+    "source_sha256": "dc46487419974b748f385b8b36f3a859f52384462a9604637de80ebe775e4531",
+    "export_sha256": "dc46487419974b748f385b8b36f3a859f52384462a9604637de80ebe775e4531",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "p2-checks.json",
+    "source_sha256": "19eccd0f704e2d604130667814890575e6b632c2ffcf6e8b0c95548a4063f243",
+    "export_sha256": "8798f7f649f6fb27499dfd62c2ebf56a4ac8bf140a6e02426969a2fadbf5a1ab",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "p2-checks.log",
+    "source_sha256": "ebf30ab932bfbf24936ac8fd403a0112aa87b74544f4a013b0f5fa57442f4485",
+    "export_sha256": "fca2a7813c056376fbff962894945c237aded981805651c217b728dac60362db",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "p2-identity.json",
+    "source_sha256": "0dad81a61d8d8bfbede0bef8b1e1afe82a50b77fad66e16c07ffff9d49aab57e",
+    "export_sha256": "0dad81a61d8d8bfbede0bef8b1e1afe82a50b77fad66e16c07ffff9d49aab57e",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "p3-checks.json",
+    "source_sha256": "254659ab26ca01740720772bb44501549c07a1e4297cff13dbe8605b576210b5",
+    "export_sha256": "b42027bf83840c7b157bd43555efbfbfef0096efc33c0939d098b258b6885ae2",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "p3-checks.log",
+    "source_sha256": "2c70c8c6e47e3d5b86692aca99eb93842d98ca3060712632c13bf2d29788da9a",
+    "export_sha256": "d5d1703a0d78480af7ddd916c28887123edd09abaaebc1d852339511497e8346",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "p3-encoding-rebuild-identity.json",
+    "source_sha256": "b0df91b187216135afdb3882dcd9be4810f5caf217422e67eaafaaa57fbd048f",
+    "export_sha256": "b0df91b187216135afdb3882dcd9be4810f5caf217422e67eaafaaa57fbd048f",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "p3-final-checks.json",
+    "source_sha256": "5137eed9d4c563675489a090b83051351ed2466cf499a077dd2fc79657904718",
+    "export_sha256": "578501a932c316896f0f0854a81d6af4c294d34698d5374408f361f88ee99c3e",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "p3-final-checks.log",
+    "source_sha256": "3f7d811d873429bf817caa043e157a75fa9939bd999c965fdbfeb6e840bd9439",
+    "export_sha256": "3307fb525f346f70dbcad0fbb2f26f6d3822103bede9dac34a97de135cbe1b12",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "p3-identity.json",
+    "source_sha256": "7de4ef6d64f19e990291401e08f999a47696d7c259a0c82bc6b2c953338132cb",
+    "export_sha256": "7de4ef6d64f19e990291401e08f999a47696d7c259a0c82bc6b2c953338132cb",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "p3-initial-identity.json",
+    "source_sha256": "b69b13babe72df1b7387c75fffdd477022a75ca7258efcec40e08dfc8587c3d4",
+    "export_sha256": "b69b13babe72df1b7387c75fffdd477022a75ca7258efcec40e08dfc8587c3d4",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "p3-release-checks.json",
+    "source_sha256": "276160a1434922f6d63579ac09eb439fa35b7de69115d029989b2a99d6a8907e",
+    "export_sha256": "da074b19e6e5bd58061a87bca5d49560333bdb8367e36bc0d743842533e998b4",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "p3-release-checks.log",
+    "source_sha256": "83aa5acfc9c19246f4de390954df05c712614608a2dd3556bf5b7c76ab4fe5c9",
+    "export_sha256": "82a4a451a9ebeda679d179db1789536374b03f28deb7b59a35a4e1e80482dbda",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "p4-checks.json",
+    "source_sha256": "9f2e24caf98b3e565ec05443c620f2a2d44f349ba7b3dbd15d94f53ab86833ed",
+    "export_sha256": "5bc3aaba6f6a87263614af0af639e750f75ddf92c24f82c2933debfaf94a470b",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "p4-checks.log",
+    "source_sha256": "347b717d948b50c568e666a096de5e9f69547971e32512683501b07e456d4253",
+    "export_sha256": "07223664e5ac846485854f1aa6778d597fab5a37e21d01a19f095103dd5fc16d",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "p4-encoding-rebuild-identity.json",
+    "source_sha256": "222e878a3f57b55d08f8f5301c0a11340fbf00424d360ec1c62ed92099809f54",
+    "export_sha256": "222e878a3f57b55d08f8f5301c0a11340fbf00424d360ec1c62ed92099809f54",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "p4-final-checks.json",
+    "source_sha256": "33e77dd25f91f1e0cd5521ac67bb581e3702baa8322b5377603d5887e9a710f5",
+    "export_sha256": "e288fb628cf8d3a5d5b038c841be1fef4d899d9ea9e68fb383a5b7a95fdd2008",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "p4-final-checks.log",
+    "source_sha256": "12d10943465edef67fa5d36dbd3e51bd8f8596d5055c48e18e044cfc2c82cb03",
+    "export_sha256": "90c88cb48249bc5c8d2902d2184176645f24996e579d1a627f6b561a72a687eb",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "p4-identity.json",
+    "source_sha256": "6934dfa8521435a519bb6e89ab6208098170f6b5480d0c097d86b6b0bb54136e",
+    "export_sha256": "6934dfa8521435a519bb6e89ab6208098170f6b5480d0c097d86b6b0bb54136e",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "p4-initial-identity.json",
+    "source_sha256": "94acfb9cc046c3a11fc60741324026a882f53a5f637e41fabff803410ea5ff0d",
+    "export_sha256": "94acfb9cc046c3a11fc60741324026a882f53a5f637e41fabff803410ea5ff0d",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "p4-release-checks.json",
+    "source_sha256": "4cdff62b6b21613860ffd84daf5dcd679063163508d78eca41031626a0d8ff85",
+    "export_sha256": "d6aecf4291c431ec644c0d5c9ec6f6a46caea8c7920449977cb0d71e9308adfc",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "p4-release-checks.log",
+    "source_sha256": "ab8b18025aaae726ed4da84f410b22595d59170569b74df5fbfae6ec1a9bc8da",
+    "export_sha256": "85fb67f7e67f64e239d7a406ddd286f294822aea20c26db0b1f3a43efb972307",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "p5-checks.json",
+    "source_sha256": "a035a5efbdbed457f726b3196f14f14fc20ebb2ac88fa6a2bf24022d86748635",
+    "export_sha256": "c6a4d69a0590e3b29ccbaa61cb827fb1ad57402062517053b1ce3f33ab72507c",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "p5-checks.log",
+    "source_sha256": "c58724a595bfb4ca7ef5978be3219382df2f2017b400e24f96a429d02ecd286e",
+    "export_sha256": "4943d91f14187c4b2f57ec9cba55f5dbd6b32caa35fcd0fc9cc33fc1ab3cc669",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "p5-encoding-rebuild-identity.json",
+    "source_sha256": "3b292c3b48a113a752bc99a248dba2bc1353c69a6e7e3c5a73939449a78ab3fc",
+    "export_sha256": "3b292c3b48a113a752bc99a248dba2bc1353c69a6e7e3c5a73939449a78ab3fc",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "p5-final-checks.json",
+    "source_sha256": "53419138f682c9e7eb0bc59a1043448999c904f50b84709094fc01f2f9a3eb50",
+    "export_sha256": "0512889ed9d1f3af04638a4166a9b33a8036be1d42ee3fc9aedf13f83f1670a9",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "p5-final-checks.log",
+    "source_sha256": "8004c6503ff1f1039b85d2ae90b14115a633627b3faf871030f7462182b228b3",
+    "export_sha256": "06854b089f926591a112100f330c64d547aec3c1b0d42d20791984aa243657f3",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "p5-identity.json",
+    "source_sha256": "efb4b5f91a2db6c810d578f2f59dd42726dbe3e64bb1f89405dce90d61dbe093",
+    "export_sha256": "efb4b5f91a2db6c810d578f2f59dd42726dbe3e64bb1f89405dce90d61dbe093",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "p5-initial-identity.json",
+    "source_sha256": "34a826fd20dd202f03f3c8dd5b45f0e09cf102b908e64d62b5b0f4e4154d54dd",
+    "export_sha256": "34a826fd20dd202f03f3c8dd5b45f0e09cf102b908e64d62b5b0f4e4154d54dd",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "p5-release-checks.json",
+    "source_sha256": "5394e77252c441ce638a52243dd5878142442d82bbef5eea674a74269e6572db",
+    "export_sha256": "c9359f71cb691c8956562f04638afa0b79a5bfae6b784ff305dba40093d0213c",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "p5-release-checks.log",
+    "source_sha256": "a7c094d8cc87c9d2dc81cf3c4e490687652b890f241e6efd6bf29581a97f2206",
+    "export_sha256": "4f0d26f0e5d9d717f696ef613462029b96a2d06c3042687f908008612478355f",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "pr12-canonical-integration-event.json",
+    "source_sha256": "82dd888825c39679998c2452ce94027f0743ae7625dca33fb86cca5bc1b1f542",
+    "export_sha256": "82dd888825c39679998c2452ce94027f0743ae7625dca33fb86cca5bc1b1f542",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "pr12-current.json",
+    "source_sha256": "eba07f7bbc88bf437109b210aa0447d17bbb79cbc47eff148f8b24311629bcbf",
+    "export_sha256": "eba07f7bbc88bf437109b210aa0447d17bbb79cbc47eff148f8b24311629bcbf",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "pr12-inline-comments.json",
+    "source_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "export_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "pr12-integration-event.json",
+    "source_sha256": "21f67c0f5e93c27256cd98fa9df9cb2164e7013fdf4a4fda711c31c22b746e85",
+    "export_sha256": "21f67c0f5e93c27256cd98fa9df9cb2164e7013fdf4a4fda711c31c22b746e85",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "pr12-integration-ledger.json",
+    "source_sha256": "3ebd998b230ed13b0ea3c682a7c82e24da1ebfd2df9baa006234b36d8052995f",
+    "export_sha256": "a991f7629bab7e0647b4192f121cf7fbf8ce5a3e49a4067455afc987c414b3bc",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "pr12-integration.json",
+    "source_sha256": "7dbe7d3432a27ff60b16242566355d49c3686f18988fe096c6f3196ed4c8947f",
+    "export_sha256": "7dbe7d3432a27ff60b16242566355d49c3686f18988fe096c6f3196ed4c8947f",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "prepare_packet.py",
+    "source_sha256": "abdb52dc378117efcd2ba53629032dd07ac1bbb7b367f1dacb47657bf1686ed9",
+    "export_sha256": "153ec3a773af93b19e7b70271e6962255136795459441b43cfd9f2d5ce2ca8a0",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "prepared-event.json",
+    "source_sha256": "a2ce4376c84460f6db05d5300555362fc67ef709915372f45850ac23a11f3168",
+    "export_sha256": "a2ce4376c84460f6db05d5300555362fc67ef709915372f45850ac23a11f3168",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "prepared-ledger.json",
+    "source_sha256": "bfa2c455b955ab687557456c22768b6194fdcf535ee97511155ce2df89e38658",
+    "export_sha256": "c89812e51537047617974dfe4e2754496e5c3c25d97dd9b168ff93dcc3ac5cf6",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "reconstruct-corrected.py",
+    "source_sha256": "f4107faaa2d749afc988b536cf160ec07c5f83cb698651b65030435e1e6a1bd1",
+    "export_sha256": "19d8c2719bee5871b49543b01a77da855a45c2f78d11865e56801d53c2c84476",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "reconstruct-final.py",
+    "source_sha256": "dd4568bfb6b173bae7894243a97a7d0e77d1f5f16063db3aa2c2406ae7b7d7d6",
+    "export_sha256": "bc6a7c60eea1ea09282ff39dbcc5f640a53f8bb6eb2e5e005572f89e1abde2f2",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "reconstruct.py",
+    "source_sha256": "0e4a2ad69c8c4d41385cae8194f736ce272acd12ad6b19313a1d511157b80659",
+    "export_sha256": "3e51c7fbf7d493656445880ab5c1312754821b4575950d1bb6420d9180604b95",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "reconstruction-correction.md",
+    "source_sha256": "311572527f0d0332f6076f21930c9eb9d0d57aa7706961b2d0a281254bf0528c",
+    "export_sha256": "311572527f0d0332f6076f21930c9eb9d0d57aa7706961b2d0a281254bf0528c",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "record_pr12.py",
+    "source_sha256": "b21c23ad72999444364f8aea2939bf48770c4778a9f7e545f648c16418b0cf28",
+    "export_sha256": "48163781417a7e9f928eccf2486abb95e29485cd20bf0668b43b72dcf5137d9e",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "review-notes.md",
+    "source_sha256": "20c9f835054b346bbe0176447f8113941b716df46b06b7c916fdf7cb063d4d74",
+    "export_sha256": "20c9f835054b346bbe0176447f8113941b716df46b06b7c916fdf7cb063d4d74",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "review-validation.json",
+    "source_sha256": "8222ed8f92c1de0df8456eb036275fe42318a792a72eee39289c2261f9e0cb07",
+    "export_sha256": "8222ed8f92c1de0df8456eb036275fe42318a792a72eee39289c2261f9e0cb07",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "review.json",
+    "source_sha256": "3ac761bac92db9b20cd4ac4948473afc7432a1e2fba1bc02f993fdf536a14916",
+    "export_sha256": "3ac761bac92db9b20cd4ac4948473afc7432a1e2fba1bc02f993fdf536a14916",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "setup.md",
+    "source_sha256": "12f50fa1f8156cc9e9458277effe1127df16ae333f0ab2fa6b45a48230bb74c8",
+    "export_sha256": "12f50fa1f8156cc9e9458277effe1127df16ae333f0ab2fa6b45a48230bb74c8",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "snapshot.json",
+    "source_sha256": "5b54e459e2114982e8f5418ef7068154799e4f17ba50aeb72e2207c38afd680b",
+    "export_sha256": "655407f0cc31472c82894803be0a66965c950d8bd895510bf52f7ee022425642",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "staging-checks.log",
+    "source_sha256": "b2d1fcdfa607603dc3c350f0513ce8355105d5db2920ba62507be94baf41a1cd",
+    "export_sha256": "d4dd373045d14c80d09d14e54c91f7072825fde42fcd070c09276c87b3f058ba",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "verification-summary.json",
+    "source_sha256": "4d7f59428e0d53c9f84aa923f4c3f2ba8d03dac25f94968d47b189797b9ecef1",
+    "export_sha256": "3caeb0869317809968903468afd887299fcab1703ada75a4ec7d300439708924",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  },
+  {
+    "source": "verify.py",
+    "source_sha256": "bdf7ff46d85a345f2d2f081ae2cfe404d59c7ca944e8de7ad8a80273744b5cd6",
+    "export_sha256": "ba1a663ced6522d10a49e2cdfbbdef1585e0340ddaa13020bf5191b1b4384e69",
+    "transformation": "Local workspace/user paths replaced with placeholders"
+  }
+]
