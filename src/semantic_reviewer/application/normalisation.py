@@ -11,7 +11,7 @@ from semantic_reviewer.domain.normalisation import EvidenceSpan, IssueInterpreta
 from semantic_reviewer.routing.selection import RoutingDecision
 from semantic_reviewer.routing.usage import Measurement
 
-PROMPT_VERSION = "normalisation-v2"
+PROMPT_VERSION = "normalisation-v3"
 
 
 @dataclass(frozen=True)
@@ -94,7 +94,13 @@ class SourceContext:
                 "Assess whether it expresses "
                 "an actionable engineering concern and whether it generalises. State the issue "
                 "without prescribing a particular edit; permit no and uncertain. Use descriptive "
-                "categories, scope and exclusions. Quote short exact, unique substrings from the "
+                "categories. Scope is the smallest affected code unit supported by the evidence, "
+                "not the area needed for investigation; use unknown if its extent is unclear. "
+                "Exclusions are known applicability exceptions, not missing context. "
+                "Qualify claims when evidence is incomplete. A proposed invariant is a candidate "
+                "condition suggested by this source, not proof of a general rule; use null when "
+                "none is justified. Do not invent broader advice or endorse the comment as true. "
+                "Quote short exact, unique substrings from the "
                 "comment or code as evidence. Do not invent source text or repository facts. "
                 "Return only the requested JSON."
             ),
