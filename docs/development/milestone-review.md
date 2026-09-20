@@ -103,6 +103,11 @@ backfills retain their separate semantic commits.
 
 At aggregate review, revisit interactions across the series and reconcile affected
 maintained documentation, including unchanged descriptions made stale by the work.
+Apply the [documentation checklist](documentation-style.md#author-and-reviewer-checks):
+read guides as someone new to the project, follow task steps in a disposable runtime
+where useful, and compare terminology, commands, UI labels and current-behaviour claims.
+Report readability and navigation problems as well as factual omissions. Check PR
+descriptions for the same reader-facing issues.
 The canonical quality command remains required. These judgement checks strengthen
 its surrounding workflow without adding blanket type/docstring lint, arbitrary
 metrics or mandatory new tests for unchanged low-risk behaviour.

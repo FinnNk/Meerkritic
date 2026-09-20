@@ -48,4 +48,6 @@ Do not replace this trace with a list of fixes or a claim that checks passed.
 - Layer quality, state/error design and caller-contract completeness:
 - Special cases/configuration and higher-leverage simplifications:
 - Glossary, ADR/EDR, status and maintained documentation reconciliation:
+- Reader-facing documentation: audience, terminology, structured instructions,
+  current behaviour, navigation, examples/recovery and PR-description clarity:
 - Required changes to the next milestone and unresolved gates:

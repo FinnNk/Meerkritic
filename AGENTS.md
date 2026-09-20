@@ -39,6 +39,11 @@
 
 ## Software change review
 
+- Follow the [documentation style guide](docs/development/documentation-style.md)
+  for guides, references, agent instructions and PR descriptions. Explain terms
+  before using them; make instructions steps or tables; describe current behaviour.
+  Apply its author/reviewer checklist before publication, including unchanged guides
+  affected by the change. Keep guidance changes separate from documentation backfills.
 - Follow the [Python style guide](docs/development/python-style.md), which adopts
   selected Google guidance with explicit project choices, not the entire guide.
 - When acting as the App bot, follow the [owner-feedback convention](docs/development/app-bot-feedback.md)

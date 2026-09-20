@@ -19,6 +19,9 @@ Empirical adoption remains gated by draft EDR-0001.
 
 ## Setup and checks
 
+For guides, references and PR descriptions, follow the
+[documentation style guide](documentation-style.md) and its author/reviewer checklist.
+
 Use the [Python style guide](python-style.md) for the adopted conventions and their project-specific scope. It incorporates selected Google guidance, not the entire upstream guide.
 
 Use Python 3.12 and uv. The tested interpreter patch version and tool versions are
