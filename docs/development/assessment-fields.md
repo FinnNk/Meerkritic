@@ -14,6 +14,11 @@ that the original reviewer was right or that a proposed general rule is valid.
 | Add notes | Identify missing evidence, investigation needs and your own additional advice. | Preserve the distinction between source evidence and your judgement. |
 | Save one decision | Accept, Edit or Reject the complete interpretation. For Edit, keep the complete JSON structure. | The buttons save immediately; they do not save individual fields. |
 
+![The source comment and code in a distinct, open assessment panel.](../images/assessment-source.png)
+
+This [synthetic example](../images/README.md) illustrates the source panel; it is
+not a research judgement.
+
 ## Interpret the fields
 
 | Field in the editor | Meaning and allowed values |

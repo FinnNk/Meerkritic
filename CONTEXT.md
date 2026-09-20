@@ -204,3 +204,18 @@ can leave external completion unknown without automatic replay.
 
 A saved view of before/after architecture records and their differences. A source
 checksum detects code/configuration changes; the view does not certify quality or review readiness.
+
+## Impact scope
+
+The smallest affected code unit established by supplied evidence; unknown when
+that extent cannot be established. Distinct from the area needed for investigation.
+
+## Applicability limits
+
+Known exceptions or conditions under which a concern or candidate rule does not
+apply. Stored as interpretation exclusions; distinct from missing evidence.
+
+## Evidence limitations
+
+Facts the supplied material cannot establish, recorded in annotation notes along
+with investigation needs. These notes are not interpretation text for grouping.
