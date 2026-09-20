@@ -1,0 +1,1 @@
+Initial link pass found AGENTS.md referencing the existing #commit-messages anchor after its heading was renamed. Restored the heading to preserve links. The following help probe used the parent workspace as cwd and failed to locate tools/run.py; repeat from the actual repository root. Neither failure is evidence of application behaviour.

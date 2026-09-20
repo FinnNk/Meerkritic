@@ -1,0 +1,9 @@
+ 1:  186bff3 =  1:  186bff3 docs: strengthen boundary review and activate the final VS2 batch
+ 2:  89d5fca =  2:  89d5fca docs: backfill discovery and rule HTTP caller contracts
+ 3:  55001b6 =  3:  55001b6 feat: save and atomically apply version-fenced research decisions
+ 4:  ee351d3 =  4:  ee351d3 feat: return advisory guidance from immutable submitted context
+ 5:  eaeecaa =  5:  eaeecaa feat: inspect architecture freshness and record the VS2 milestone review
+ -:  ------- >  6:  c86e14d docs: license Meerkritic under MIT
+ -:  ------- >  7:  8cd1685 docs: define reader-focused writing and review guidance
+ -:  ------- >  8:  db65516 docs: organise task guides around steps and recovery
+ -:  ------- >  9:  a2580a0 docs: clarify developer references and documentation navigation

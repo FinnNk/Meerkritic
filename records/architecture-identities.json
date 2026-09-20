@@ -1,0 +1,12 @@
+{
+  "before": "ff9af2e68d989590ebe030002e2e3789c35efef0",
+  "after": "a2580a0785ab109c6014e404a949f60722282844",
+  "generator": "a2580a0785ab109c6014e404a949f60722282844",
+  "schema": 3,
+  "note": "Same generator for both sides. r2 documentation changes no modules or contracts; MIT package metadata changes the source fingerprint.",
+  "hashes": {
+    "architecture-before.json": "2d9891a2f4af7527d56f3ce39c645d33fdf7baca42919fbfae8464047b605327",
+    "architecture-after.json": "80c03d69492de1549c1ee4e1512fc85fc3eee2fcbb4c9cbb70be7ccb6e8568dd",
+    "architecture-delta.json": "18f65e76be2a139b1db098470820f9d4e7c7780bce47985bbde8b252e3535bf1"
+  }
+}

@@ -1,0 +1,1325 @@
+{
+  "changes": {
+    "boundaries": {
+      "added": [],
+      "removed": []
+    },
+    "contracts": {
+      "added": [],
+      "removed": []
+    },
+    "imports": {
+      "added": [
+        {
+          "source": "semantic_reviewer.adapters.architecture",
+          "target": "ast"
+        },
+        {
+          "source": "semantic_reviewer.adapters.architecture",
+          "target": "dataclasses"
+        },
+        {
+          "source": "semantic_reviewer.adapters.architecture",
+          "target": "hashlib"
+        },
+        {
+          "source": "semantic_reviewer.adapters.architecture",
+          "target": "importlib.util"
+        },
+        {
+          "source": "semantic_reviewer.adapters.architecture",
+          "target": "json"
+        },
+        {
+          "source": "semantic_reviewer.adapters.architecture",
+          "target": "pathlib"
+        },
+        {
+          "source": "semantic_reviewer.adapters.architecture",
+          "target": "tomllib"
+        },
+        {
+          "source": "semantic_reviewer.adapters.architecture_projection",
+          "target": "json"
+        },
+        {
+          "source": "semantic_reviewer.adapters.architecture_projection",
+          "target": "os"
+        },
+        {
+          "source": "semantic_reviewer.adapters.architecture_projection",
+          "target": "pathlib"
+        },
+        {
+          "source": "semantic_reviewer.adapters.architecture_projection",
+          "target": "re"
+        },
+        {
+          "source": "semantic_reviewer.adapters.architecture_projection",
+          "target": "semantic_reviewer.adapters.architecture"
+        },
+        {
+          "source": "semantic_reviewer.adapters.architecture_projection",
+          "target": "semantic_reviewer.adapters.discovery"
+        },
+        {
+          "source": "semantic_reviewer.adapters.architecture_projection",
+          "target": "uuid"
+        },
+        {
+          "source": "semantic_reviewer.adapters.guidance",
+          "target": "datetime"
+        },
+        {
+          "source": "semantic_reviewer.adapters.guidance",
+          "target": "json"
+        },
+        {
+          "source": "semantic_reviewer.adapters.guidance",
+          "target": "pathlib"
+        },
+        {
+          "source": "semantic_reviewer.adapters.guidance",
+          "target": "re"
+        },
+        {
+          "source": "semantic_reviewer.adapters.guidance",
+          "target": "semantic_reviewer.adapters.state"
+        },
+        {
+          "source": "semantic_reviewer.adapters.guidance",
+          "target": "semantic_reviewer.domain.guidance"
+        },
+        {
+          "source": "semantic_reviewer.adapters.interaction",
+          "target": "datetime"
+        },
+        {
+          "source": "semantic_reviewer.adapters.interaction",
+          "target": "json"
+        },
+        {
+          "source": "semantic_reviewer.adapters.interaction",
+          "target": "pathlib"
+        },
+        {
+          "source": "semantic_reviewer.adapters.interaction",
+          "target": "semantic_reviewer.adapters.rules"
+        },
+        {
+          "source": "semantic_reviewer.adapters.interaction",
+          "target": "semantic_reviewer.application.discovery"
+        },
+        {
+          "source": "semantic_reviewer.adapters.interaction",
+          "target": "semantic_reviewer.domain.interaction"
+        },
+        {
+          "source": "semantic_reviewer.adapters.interaction",
+          "target": "semantic_reviewer.domain.rules"
+        },
+        {
+          "source": "semantic_reviewer.adapters.maf_guidance",
+          "target": "agent_framework"
+        },
+        {
+          "source": "semantic_reviewer.adapters.maf_guidance",
+          "target": "asyncio"
+        },
+        {
+          "source": "semantic_reviewer.adapters.maf_guidance",
+          "target": "dataclasses"
+        },
+        {
+          "source": "semantic_reviewer.adapters.maf_guidance",
+          "target": "datetime"
+        },
+        {
+          "source": "semantic_reviewer.adapters.maf_guidance",
+          "target": "importlib.metadata"
+        },
+        {
+          "source": "semantic_reviewer.adapters.maf_guidance",
+          "target": "semantic_reviewer.application.guidance"
+        },
+        {
+          "source": "semantic_reviewer.adapters.maf_guidance",
+          "target": "semantic_reviewer.application.model"
+        },
+        {
+          "source": "semantic_reviewer.adapters.maf_guidance",
+          "target": "semantic_reviewer.application.normalisation"
+        },
+        {
+          "source": "semantic_reviewer.adapters.maf_guidance",
+          "target": "semantic_reviewer.domain.guidance"
+        },
+        {
+          "source": "semantic_reviewer.adapters.maf_guidance",
+          "target": "semantic_reviewer.routing.selection"
+        },
+        {
+          "source": "semantic_reviewer.adapters.maf_guidance",
+          "target": "semantic_reviewer.routing.usage"
+        },
+        {
+          "source": "semantic_reviewer.application.architecture",
+          "target": "typing"
+        },
+        {
+          "source": "semantic_reviewer.application.guidance",
+          "target": "dataclasses"
+        },
+        {
+          "source": "semantic_reviewer.application.guidance",
+          "target": "datetime"
+        },
+        {
+          "source": "semantic_reviewer.application.guidance",
+          "target": "json"
+        },
+        {
+          "source": "semantic_reviewer.application.guidance",
+          "target": "semantic_reviewer.application.discovery"
+        },
+        {
+          "source": "semantic_reviewer.application.guidance",
+          "target": "semantic_reviewer.application.interaction"
+        },
+        {
+          "source": "semantic_reviewer.application.guidance",
+          "target": "semantic_reviewer.application.model"
+        },
+        {
+          "source": "semantic_reviewer.application.guidance",
+          "target": "semantic_reviewer.application.normalisation"
+        },
+        {
+          "source": "semantic_reviewer.application.guidance",
+          "target": "semantic_reviewer.application.routing"
+        },
+        {
+          "source": "semantic_reviewer.application.guidance",
+          "target": "semantic_reviewer.application.rules"
+        },
+        {
+          "source": "semantic_reviewer.application.guidance",
+          "target": "semantic_reviewer.domain.guidance"
+        },
+        {
+          "source": "semantic_reviewer.application.guidance",
+          "target": "semantic_reviewer.routing.selection"
+        },
+        {
+          "source": "semantic_reviewer.application.guidance",
+          "target": "semantic_reviewer.routing.usage"
+        },
+        {
+          "source": "semantic_reviewer.application.guidance",
+          "target": "typing"
+        },
+        {
+          "source": "semantic_reviewer.application.interaction",
+          "target": "semantic_reviewer.domain.interaction"
+        },
+        {
+          "source": "semantic_reviewer.application.interaction",
+          "target": "typing"
+        },
+        {
+          "source": "semantic_reviewer.bootstrap",
+          "target": "semantic_reviewer.adapters.architecture_projection"
+        },
+        {
+          "source": "semantic_reviewer.bootstrap",
+          "target": "semantic_reviewer.adapters.guidance"
+        },
+        {
+          "source": "semantic_reviewer.bootstrap",
+          "target": "semantic_reviewer.adapters.interaction"
+        },
+        {
+          "source": "semantic_reviewer.bootstrap",
+          "target": "semantic_reviewer.adapters.maf_guidance"
+        },
+        {
+          "source": "semantic_reviewer.bootstrap",
+          "target": "semantic_reviewer.application.architecture"
+        },
+        {
+          "source": "semantic_reviewer.bootstrap",
+          "target": "semantic_reviewer.application.guidance"
+        },
+        {
+          "source": "semantic_reviewer.bootstrap",
+          "target": "semantic_reviewer.application.interaction"
+        },
+        {
+          "source": "semantic_reviewer.domain.guidance",
+          "target": "pydantic"
+        },
+        {
+          "source": "semantic_reviewer.domain.guidance",
+          "target": "semantic_reviewer.domain.rules"
+        },
+        {
+          "source": "semantic_reviewer.domain.guidance",
+          "target": "typing"
+        },
+        {
+          "source": "semantic_reviewer.domain.interaction",
+          "target": "pydantic"
+        },
+        {
+          "source": "semantic_reviewer.domain.interaction",
+          "target": "semantic_reviewer.domain.rules"
+        },
+        {
+          "source": "semantic_reviewer.domain.interaction",
+          "target": "typing"
+        },
+        {
+          "source": "semantic_reviewer.web.app",
+          "target": "json"
+        },
+        {
+          "source": "semantic_reviewer.web.app",
+          "target": "semantic_reviewer.application.architecture"
+        },
+        {
+          "source": "semantic_reviewer.web.app",
+          "target": "semantic_reviewer.application.guidance"
+        },
+        {
+          "source": "semantic_reviewer.web.app",
+          "target": "semantic_reviewer.application.interaction"
+        },
+        {
+          "source": "semantic_reviewer.web.app",
+          "target": "semantic_reviewer.web.guidance"
+        },
+        {
+          "source": "semantic_reviewer.web.app",
+          "target": "semantic_reviewer.web.interaction"
+        },
+        {
+          "source": "semantic_reviewer.web.guidance",
+          "target": "fastapi"
+        },
+        {
+          "source": "semantic_reviewer.web.guidance",
+          "target": "fastapi.responses"
+        },
+        {
+          "source": "semantic_reviewer.web.guidance",
+          "target": "json"
+        },
+        {
+          "source": "semantic_reviewer.web.guidance",
+          "target": "semantic_reviewer.application.guidance"
+        },
+        {
+          "source": "semantic_reviewer.web.guidance",
+          "target": "semantic_reviewer.domain.guidance"
+        },
+        {
+          "source": "semantic_reviewer.web.guidance",
+          "target": "semantic_reviewer.web.discovery"
+        },
+        {
+          "source": "semantic_reviewer.web.guidance",
+          "target": "starlette.concurrency"
+        },
+        {
+          "source": "semantic_reviewer.web.guidance",
+          "target": "uuid"
+        },
+        {
+          "source": "semantic_reviewer.web.interaction",
+          "target": "fastapi"
+        },
+        {
+          "source": "semantic_reviewer.web.interaction",
+          "target": "fastapi.responses"
+        },
+        {
+          "source": "semantic_reviewer.web.interaction",
+          "target": "json"
+        },
+        {
+          "source": "semantic_reviewer.web.interaction",
+          "target": "semantic_reviewer.application.interaction"
+        },
+        {
+          "source": "semantic_reviewer.web.interaction",
+          "target": "semantic_reviewer.application.rules"
+        },
+        {
+          "source": "semantic_reviewer.web.interaction",
+          "target": "semantic_reviewer.domain.interaction"
+        },
+        {
+          "source": "semantic_reviewer.web.interaction",
+          "target": "semantic_reviewer.web.discovery"
+        },
+        {
+          "source": "semantic_reviewer.web.interaction",
+          "target": "starlette.concurrency"
+        },
+        {
+          "source": "semantic_reviewer.web.interaction",
+          "target": "uuid"
+        },
+        {
+          "source": "semantic_reviewer.web.rules",
+          "target": "semantic_reviewer.application.interaction"
+        }
+      ],
+      "removed": []
+    },
+    "interfaces": {
+      "added": [
+        {
+          "declaration": "@model_validator(mode='after') def distinct(self) -> Self",
+          "kind": "callable",
+          "name": "semantic_reviewer.domain.guidance.GuidanceRequest.distinct"
+        },
+        {
+          "declaration": "@model_validator(mode='after') def unique_targets(self) -> Self",
+          "kind": "callable",
+          "name": "semantic_reviewer.domain.interaction.ReviewDraft.unique_targets"
+        },
+        {
+          "declaration": "action: Literal['promote', 'reject', 'defer', 'reopen']",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.interaction.ReviewIntent.action"
+        },
+        {
+          "declaration": "actor: Identity",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.guidance.GuidanceRequest.actor"
+        },
+        {
+          "declaration": "actor: Identity",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.interaction.DiscussionNote.actor"
+        },
+        {
+          "declaration": "actor: Identity",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.interaction.ReviewDraft.actor"
+        },
+        {
+          "declaration": "advice: Text",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.guidance.GuidanceAdvice.advice"
+        },
+        {
+          "declaration": "allowed_dependencies: tuple[str, ...]",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.architecture.Boundary.allowed_dependencies"
+        },
+        {
+          "declaration": "async def local_form(request: Request, *, max_fields: int=20) -> dict[str, str]",
+          "kind": "callable",
+          "name": "semantic_reviewer.web.discovery.local_form"
+        },
+        {
+          "declaration": "boundaries: tuple[Boundary, ...]",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.architecture.Snapshot.boundaries"
+        },
+        {
+          "declaration": "class ArchitectureProjection()",
+          "kind": "class",
+          "name": "semantic_reviewer.adapters.architecture_projection.ArchitectureProjection"
+        },
+        {
+          "declaration": "class ArchitectureView(Protocol)",
+          "kind": "class",
+          "name": "semantic_reviewer.application.architecture.ArchitectureView"
+        },
+        {
+          "declaration": "class Boundary()",
+          "kind": "class",
+          "name": "semantic_reviewer.adapters.architecture.Boundary"
+        },
+        {
+          "declaration": "class Contract()",
+          "kind": "class",
+          "name": "semantic_reviewer.adapters.architecture.Contract"
+        },
+        {
+          "declaration": "class DiscussionNote(BaseModel)",
+          "kind": "class",
+          "name": "semantic_reviewer.domain.interaction.DiscussionNote"
+        },
+        {
+          "declaration": "class GuidanceAdvice(BaseModel)",
+          "kind": "class",
+          "name": "semantic_reviewer.domain.guidance.GuidanceAdvice"
+        },
+        {
+          "declaration": "class GuidanceExecution()",
+          "kind": "class",
+          "name": "semantic_reviewer.application.guidance.GuidanceExecution"
+        },
+        {
+          "declaration": "class GuidanceOutcome()",
+          "kind": "class",
+          "name": "semantic_reviewer.application.guidance.GuidanceOutcome"
+        },
+        {
+          "declaration": "class GuidanceRequest(BaseModel)",
+          "kind": "class",
+          "name": "semantic_reviewer.domain.guidance.GuidanceRequest"
+        },
+        {
+          "declaration": "class GuidanceResponse(BaseModel)",
+          "kind": "class",
+          "name": "semantic_reviewer.domain.guidance.GuidanceResponse"
+        },
+        {
+          "declaration": "class GuidanceRuntime(Protocol)",
+          "kind": "class",
+          "name": "semantic_reviewer.application.guidance.GuidanceRuntime"
+        },
+        {
+          "declaration": "class GuidanceService()",
+          "kind": "class",
+          "name": "semantic_reviewer.application.guidance.GuidanceService"
+        },
+        {
+          "declaration": "class GuidanceStore(Protocol)",
+          "kind": "class",
+          "name": "semantic_reviewer.application.guidance.GuidanceStore"
+        },
+        {
+          "declaration": "class GuidanceTarget(BaseModel)",
+          "kind": "class",
+          "name": "semantic_reviewer.domain.guidance.GuidanceTarget"
+        },
+        {
+          "declaration": "class Import()",
+          "kind": "class",
+          "name": "semantic_reviewer.adapters.architecture.Import"
+        },
+        {
+          "declaration": "class Interface()",
+          "kind": "class",
+          "name": "semantic_reviewer.adapters.architecture.Interface"
+        },
+        {
+          "declaration": "class MafGuidanceRuntime()",
+          "kind": "class",
+          "name": "semantic_reviewer.adapters.maf_guidance.MafGuidanceRuntime"
+        },
+        {
+          "declaration": "class Module()",
+          "kind": "class",
+          "name": "semantic_reviewer.adapters.architecture.Module"
+        },
+        {
+          "declaration": "class ReviewDraft(BaseModel)",
+          "kind": "class",
+          "name": "semantic_reviewer.domain.interaction.ReviewDraft"
+        },
+        {
+          "declaration": "class ReviewIntent(BaseModel)",
+          "kind": "class",
+          "name": "semantic_reviewer.domain.interaction.ReviewIntent"
+        },
+        {
+          "declaration": "class ReviewWorkspace(Protocol)",
+          "kind": "class",
+          "name": "semantic_reviewer.application.interaction.ReviewWorkspace"
+        },
+        {
+          "declaration": "class SQLiteGuidance()",
+          "kind": "class",
+          "name": "semantic_reviewer.adapters.guidance.SQLiteGuidance"
+        },
+        {
+          "declaration": "class SQLiteReviewWorkspace()",
+          "kind": "class",
+          "name": "semantic_reviewer.adapters.interaction.SQLiteReviewWorkspace"
+        },
+        {
+          "declaration": "class Snapshot()",
+          "kind": "class",
+          "name": "semantic_reviewer.adapters.architecture.Snapshot"
+        },
+        {
+          "declaration": "class WorkQueue(Protocol)",
+          "kind": "class",
+          "name": "semantic_reviewer.application.jobs.WorkQueue"
+        },
+        {
+          "declaration": "contracts: tuple[Contract, ...]",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.architecture.Snapshot.contracts"
+        },
+        {
+          "declaration": "declaration: str",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.architecture.Interface.declaration"
+        },
+        {
+          "declaration": "def __init__(self, database: Path) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.guidance.SQLiteGuidance.__init__"
+        },
+        {
+          "declaration": "def __init__(self, database: Path, files: DiscoveryFiles) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.interaction.SQLiteReviewWorkspace.__init__"
+        },
+        {
+          "declaration": "def __init__(self, jobs: JobService, routing: RoutingService, workflow: WorkflowRunner, lock: Callable[[], AbstractContextManager[None]], discovery: WorkQueue | None=None, guidance: WorkQueue | None=None) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.jobs.Worker.__init__"
+        },
+        {
+          "declaration": "def __init__(self, model: ModelClient) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.maf_guidance.MafGuidanceRuntime.__init__"
+        },
+        {
+          "declaration": "def __init__(self, root: Path, checkout: Path) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.architecture_projection.ArchitectureProjection.__init__"
+        },
+        {
+          "declaration": "def __init__(self, rules: RuleService, workspace: ReviewWorkspace, store: GuidanceStore, files: DiscoveryFiles, journal: RoutingJournal | None=None) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.guidance.GuidanceService.__init__"
+        },
+        {
+          "declaration": "def __init__(self, service: GuidanceService, routing: RoutingService, runtime: GuidanceRuntime) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.guidance.GuidanceExecution.__init__"
+        },
+        {
+          "declaration": "def add_guidance_routes(app, templates, service: GuidanceService) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.web.guidance.add_guidance_routes"
+        },
+        {
+          "declaration": "def add_interaction_routes(app, templates, workspace: ReviewWorkspace, rules: RuleService) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.web.interaction.add_interaction_routes"
+        },
+        {
+          "declaration": "def add_rule_routes(app, templates, service: RuleService, workspace: ReviewWorkspace | None=None) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.web.rules.add_rule_routes"
+        },
+        {
+          "declaration": "def apply(self, draft_id: str, expected_revision: int) -> dict",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.interaction.SQLiteReviewWorkspace.apply"
+        },
+        {
+          "declaration": "def apply(self, draft_id: str, expected_revision: int) -> dict",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.interaction.ReviewWorkspace.apply"
+        },
+        {
+          "declaration": "def bind_route(self, run: dict, decision_id: str) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.guidance.SQLiteGuidance.bind_route"
+        },
+        {
+          "declaration": "def bind_route(self, run: dict, decision_id: str) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.guidance.GuidanceStore.bind_route"
+        },
+        {
+          "declaration": "def build_architecture(data_root: Path) -> ArchitectureView",
+          "kind": "callable",
+          "name": "semantic_reviewer.bootstrap.build_architecture"
+        },
+        {
+          "declaration": "def build_guidance(data_root: Path) -> GuidanceService",
+          "kind": "callable",
+          "name": "semantic_reviewer.bootstrap.build_guidance"
+        },
+        {
+          "declaration": "def build_workspace(data_root: Path) -> ReviewWorkspace",
+          "kind": "callable",
+          "name": "semantic_reviewer.bootstrap.build_workspace"
+        },
+        {
+          "declaration": "def claim(self, worker_id: str) -> dict | None",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.guidance.SQLiteGuidance.claim"
+        },
+        {
+          "declaration": "def claim(self, worker_id: str) -> dict | None",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.guidance.GuidanceStore.claim"
+        },
+        {
+          "declaration": "def create_app(datasets: DatasetService, jobs: JobService | None=None, annotations: AnnotationService | None=None, reviews: ReviewIndex | None=None, selections: SelectionStore | None=None, discovery: DiscoveryService | None=None, rules: RuleService | None=None, workspace: ReviewWorkspace | None=None, guidance: GuidanceService | None=None, architecture: ArchitectureView | None=None) -> FastAPI",
+          "kind": "callable",
+          "name": "semantic_reviewer.web.app.create_app"
+        },
+        {
+          "declaration": "def decide_in_transaction(self, db, request: RuleDecisionRequest) -> dict",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.rules.SQLiteRules.decide_in_transaction"
+        },
+        {
+          "declaration": "def delta(before: dict, after: dict) -> dict",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.architecture.delta"
+        },
+        {
+          "declaration": "def discuss(self, note: DiscussionNote) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.interaction.SQLiteReviewWorkspace.discuss"
+        },
+        {
+          "declaration": "def discuss(self, note: DiscussionNote) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.interaction.ReviewWorkspace.discuss"
+        },
+        {
+          "declaration": "def discussion(self, version_id: str) -> tuple[DiscussionNote, ...]",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.interaction.SQLiteReviewWorkspace.discussion"
+        },
+        {
+          "declaration": "def discussion(self, version_id: str) -> tuple[DiscussionNote, ...]",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.interaction.ReviewWorkspace.discussion"
+        },
+        {
+          "declaration": "def enqueue(self, request: GuidanceRequest, digest: str) -> dict",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.guidance.SQLiteGuidance.enqueue"
+        },
+        {
+          "declaration": "def enqueue(self, request: GuidanceRequest, digest: str) -> dict",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.guidance.GuidanceStore.enqueue"
+        },
+        {
+          "declaration": "def finish(self, run: dict, digest: str | None, error: str | None) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.guidance.SQLiteGuidance.finish"
+        },
+        {
+          "declaration": "def finish(self, run: dict, digest: str | None, error: str | None) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.guidance.GuidanceStore.finish"
+        },
+        {
+          "declaration": "def get(self, batch_id: str) -> dict",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.guidance.SQLiteGuidance.get"
+        },
+        {
+          "declaration": "def get(self, batch_id: str) -> dict",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.guidance.GuidanceStore.get"
+        },
+        {
+          "declaration": "def history(self, version_id: str) -> tuple[dict, ...]",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.interaction.SQLiteReviewWorkspace.history"
+        },
+        {
+          "declaration": "def history(self, version_id: str) -> tuple[dict, ...]",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.interaction.ReviewWorkspace.history"
+        },
+        {
+          "declaration": "def inspect(self, batch_id: str) -> tuple[dict, dict, dict | None]",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.guidance.GuidanceService.inspect"
+        },
+        {
+          "declaration": "def interfaces(tree: ast.Module, module: str) -> tuple[Interface, ...]",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.architecture.interfaces"
+        },
+        {
+          "declaration": "def publish(self, before: dict, after: dict) -> str",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.architecture_projection.ArchitectureProjection.publish"
+        },
+        {
+          "declaration": "def read(self) -> dict | None",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.architecture_projection.ArchitectureProjection.read"
+        },
+        {
+          "declaration": "def read(self) -> dict | None",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.architecture.ArchitectureView.read"
+        },
+        {
+          "declaration": "def read(self, draft_id: str) -> tuple[dict, ReviewDraft]",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.interaction.SQLiteReviewWorkspace.read"
+        },
+        {
+          "declaration": "def read(self, draft_id: str) -> tuple[dict, ReviewDraft]",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.interaction.ReviewWorkspace.read"
+        },
+        {
+          "declaration": "def recent(self) -> tuple[dict, ...]",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.guidance.SQLiteGuidance.recent"
+        },
+        {
+          "declaration": "def recent(self) -> tuple[dict, ...]",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.interaction.SQLiteReviewWorkspace.recent"
+        },
+        {
+          "declaration": "def recent(self) -> tuple[dict, ...]",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.guidance.GuidanceStore.recent"
+        },
+        {
+          "declaration": "def recent(self) -> tuple[dict, ...]",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.interaction.ReviewWorkspace.recent"
+        },
+        {
+          "declaration": "def recover_interrupted(self) -> int",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.guidance.SQLiteGuidance.recover_interrupted"
+        },
+        {
+          "declaration": "def recover_interrupted(self) -> int",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.guidance.GuidanceExecution.recover_interrupted"
+        },
+        {
+          "declaration": "def recover_interrupted(self) -> int",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.guidance.GuidanceStore.recover_interrupted"
+        },
+        {
+          "declaration": "def recover_interrupted(self) -> int",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.jobs.WorkQueue.recover_interrupted"
+        },
+        {
+          "declaration": "def run(self, decision: RoutingDecision, request: ModelRequest, targets: tuple[str, ...], queued_at: datetime) -> GuidanceOutcome",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.maf_guidance.MafGuidanceRuntime.run"
+        },
+        {
+          "declaration": "def run(self, decision: RoutingDecision, request: ModelRequest, targets: tuple[str, ...], queued_at: datetime) -> GuidanceOutcome",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.guidance.GuidanceRuntime.run"
+        },
+        {
+          "declaration": "def run_once(self, worker_id: str) -> bool",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.guidance.GuidanceExecution.run_once"
+        },
+        {
+          "declaration": "def run_once(self, worker_id: str) -> bool",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.jobs.WorkQueue.run_once"
+        },
+        {
+          "declaration": "def save(self, draft_id: str, expected_revision: int | None, body: ReviewDraft) -> dict",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.interaction.SQLiteReviewWorkspace.save"
+        },
+        {
+          "declaration": "def save(self, draft_id: str, expected_revision: int | None, body: ReviewDraft) -> dict",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.interaction.ReviewWorkspace.save"
+        },
+        {
+          "declaration": "def snapshot(root: Path) -> Snapshot",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.architecture.snapshot"
+        },
+        {
+          "declaration": "def source_fingerprint(root: Path) -> str",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.architecture.source_fingerprint"
+        },
+        {
+          "declaration": "def submit(self, request: GuidanceRequest) -> dict",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.guidance.GuidanceService.submit"
+        },
+        {
+          "declaration": "def task(self, version_id: str) -> dict",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.interaction.SQLiteReviewWorkspace.task"
+        },
+        {
+          "declaration": "def task(self, version_id: str) -> dict",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.interaction.ReviewWorkspace.task"
+        },
+        {
+          "declaration": "def telemetry(self, run: dict) -> str",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.guidance.GuidanceService.telemetry"
+        },
+        {
+          "declaration": "def validate_targets(self, targets: tuple[str, ...]) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.domain.guidance.GuidanceResponse.validate_targets"
+        },
+        {
+          "declaration": "definitions: tuple[str, ...]",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.architecture.Module.definitions"
+        },
+        {
+          "declaration": "discussion_ids: tuple[Identity, ...] = Field(default=(), max_length=20)",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.guidance.GuidanceTarget.discussion_ids"
+        },
+        {
+          "declaration": "error: str | None",
+          "kind": "field",
+          "name": "semantic_reviewer.application.guidance.GuidanceOutcome.error"
+        },
+        {
+          "declaration": "expected_revision: int = Field(ge=1, strict=True)",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.guidance.GuidanceTarget.expected_revision"
+        },
+        {
+          "declaration": "expected_revision: int = Field(ge=1, strict=True)",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.interaction.ReviewIntent.expected_revision"
+        },
+        {
+          "declaration": "forbid_cycles: bool",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.architecture.Snapshot.forbid_cycles"
+        },
+        {
+          "declaration": "forbidden: tuple[str, ...]",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.architecture.Contract.forbidden"
+        },
+        {
+          "declaration": "framework: FrameworkObservation",
+          "kind": "field",
+          "name": "semantic_reviewer.application.guidance.GuidanceOutcome.framework"
+        },
+        {
+          "declaration": "id: Identity",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.guidance.GuidanceRequest.id"
+        },
+        {
+          "declaration": "id: Identity",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.interaction.DiscussionNote.id"
+        },
+        {
+          "declaration": "ignore_type_checking_imports: bool",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.architecture.Snapshot.ignore_type_checking_imports"
+        },
+        {
+          "declaration": "imports: tuple[Import, ...]",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.architecture.Snapshot.imports"
+        },
+        {
+          "declaration": "instruction: Text",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.guidance.GuidanceRequest.instruction"
+        },
+        {
+          "declaration": "intents: tuple[ReviewIntent, ...] = Field(min_length=1, max_length=20)",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.interaction.ReviewDraft.intents"
+        },
+        {
+          "declaration": "interfaces: tuple[Interface, ...]",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.architecture.Snapshot.interfaces"
+        },
+        {
+          "declaration": "kind: str",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.architecture.Contract.kind"
+        },
+        {
+          "declaration": "kind: str",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.architecture.Interface.kind"
+        },
+        {
+          "declaration": "measurement: Measurement",
+          "kind": "field",
+          "name": "semantic_reviewer.application.guidance.GuidanceOutcome.measurement"
+        },
+        {
+          "declaration": "modules: tuple[Module, ...]",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.architecture.Snapshot.modules"
+        },
+        {
+          "declaration": "modules: tuple[str, ...]",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.architecture.Contract.modules"
+        },
+        {
+          "declaration": "name: str",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.architecture.Boundary.name"
+        },
+        {
+          "declaration": "name: str",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.architecture.Contract.name"
+        },
+        {
+          "declaration": "name: str",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.architecture.Interface.name"
+        },
+        {
+          "declaration": "name: str",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.architecture.Module.name"
+        },
+        {
+          "declaration": "package: bool",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.architecture.Module.package"
+        },
+        {
+          "declaration": "path: str",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.architecture.Module.path"
+        },
+        {
+          "declaration": "rationale: Text",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.interaction.ReviewIntent.rationale"
+        },
+        {
+          "declaration": "reply: ModelReply | None",
+          "kind": "field",
+          "name": "semantic_reviewer.application.guidance.GuidanceOutcome.reply"
+        },
+        {
+          "declaration": "response: GuidanceResponse | None",
+          "kind": "field",
+          "name": "semantic_reviewer.application.guidance.GuidanceOutcome.response"
+        },
+        {
+          "declaration": "responses: tuple[GuidanceAdvice, ...] = Field(min_length=1, max_length=6)",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.guidance.GuidanceResponse.responses"
+        },
+        {
+          "declaration": "root_module: str",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.architecture.Snapshot.root_module"
+        },
+        {
+          "declaration": "schema_version: int",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.architecture.Snapshot.schema_version"
+        },
+        {
+          "declaration": "source: str",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.architecture.Import.source"
+        },
+        {
+          "declaration": "source_digest: str",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.architecture.Snapshot.source_digest"
+        },
+        {
+          "declaration": "source_roots: tuple[str, ...]",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.architecture.Snapshot.source_roots"
+        },
+        {
+          "declaration": "sources: tuple[str, ...]",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.architecture.Contract.sources"
+        },
+        {
+          "declaration": "summary: Text",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.guidance.GuidanceResponse.summary"
+        },
+        {
+          "declaration": "target: str",
+          "kind": "field",
+          "name": "semantic_reviewer.adapters.architecture.Import.target"
+        },
+        {
+          "declaration": "targets: tuple[GuidanceTarget, ...] = Field(min_length=1, max_length=6)",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.guidance.GuidanceRequest.targets"
+        },
+        {
+          "declaration": "text: Text",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.interaction.DiscussionNote.text"
+        },
+        {
+          "declaration": "version_id: Digest",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.guidance.GuidanceAdvice.version_id"
+        },
+        {
+          "declaration": "version_id: Digest",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.guidance.GuidanceTarget.version_id"
+        },
+        {
+          "declaration": "version_id: Digest",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.interaction.DiscussionNote.version_id"
+        },
+        {
+          "declaration": "version_id: Digest",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.interaction.ReviewIntent.version_id"
+        }
+      ],
+      "removed": [
+        {
+          "declaration": "async def local_form(request: Request) -> dict[str, str]",
+          "kind": "callable",
+          "name": "semantic_reviewer.web.discovery.local_form"
+        },
+        {
+          "declaration": "class CorpusQueue(Protocol)",
+          "kind": "class",
+          "name": "semantic_reviewer.application.jobs.CorpusQueue"
+        },
+        {
+          "declaration": "def __init__(self, jobs: JobService, routing: RoutingService, workflow: WorkflowRunner, lock: Callable[[], AbstractContextManager[None]], discovery: CorpusQueue | None=None) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.jobs.Worker.__init__"
+        },
+        {
+          "declaration": "def add_rule_routes(app, templates, service: RuleService) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.web.rules.add_rule_routes"
+        },
+        {
+          "declaration": "def create_app(datasets: DatasetService, jobs: JobService | None=None, annotations: AnnotationService | None=None, reviews: ReviewIndex | None=None, selections: SelectionStore | None=None, discovery: DiscoveryService | None=None, rules: RuleService | None=None) -> FastAPI",
+          "kind": "callable",
+          "name": "semantic_reviewer.web.app.create_app"
+        },
+        {
+          "declaration": "def recover_interrupted(self) -> int",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.jobs.CorpusQueue.recover_interrupted"
+        },
+        {
+          "declaration": "def run_once(self, worker_id: str) -> bool",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.jobs.CorpusQueue.run_once"
+        }
+      ]
+    },
+    "modules": {
+      "added": [
+        {
+          "definitions": [
+            "ArchitectureProjection",
+            "_validate"
+          ],
+          "name": "semantic_reviewer.adapters.architecture_projection",
+          "package": false,
+          "path": "src/semantic_reviewer/adapters/architecture_projection.py"
+        },
+        {
+          "definitions": [
+            "ArchitectureView"
+          ],
+          "name": "semantic_reviewer.application.architecture",
+          "package": false,
+          "path": "src/semantic_reviewer/application/architecture.py"
+        },
+        {
+          "definitions": [
+            "Boundary",
+            "Contract",
+            "Import",
+            "Interface",
+            "Module",
+            "Snapshot",
+            "delta",
+            "interfaces",
+            "snapshot",
+            "source_fingerprint"
+          ],
+          "name": "semantic_reviewer.adapters.architecture",
+          "package": false,
+          "path": "src/semantic_reviewer/adapters/architecture.py"
+        },
+        {
+          "definitions": [
+            "DiscussionNote",
+            "ReviewDraft",
+            "ReviewIntent"
+          ],
+          "name": "semantic_reviewer.domain.interaction",
+          "package": false,
+          "path": "src/semantic_reviewer/domain/interaction.py"
+        },
+        {
+          "definitions": [
+            "GuidanceAdvice",
+            "GuidanceRequest",
+            "GuidanceResponse",
+            "GuidanceTarget"
+          ],
+          "name": "semantic_reviewer.domain.guidance",
+          "package": false,
+          "path": "src/semantic_reviewer/domain/guidance.py"
+        },
+        {
+          "definitions": [
+            "GuidanceExecution",
+            "GuidanceOutcome",
+            "GuidanceRuntime",
+            "GuidanceService",
+            "GuidanceStore"
+          ],
+          "name": "semantic_reviewer.application.guidance",
+          "package": false,
+          "path": "src/semantic_reviewer/application/guidance.py"
+        },
+        {
+          "definitions": [
+            "Job",
+            "JobService",
+            "JobStore",
+            "WorkQueue",
+            "Worker"
+          ],
+          "name": "semantic_reviewer.application.jobs",
+          "package": false,
+          "path": "src/semantic_reviewer/application/jobs.py"
+        },
+        {
+          "definitions": [
+            "MafGuidanceRuntime"
+          ],
+          "name": "semantic_reviewer.adapters.maf_guidance",
+          "package": false,
+          "path": "src/semantic_reviewer/adapters/maf_guidance.py"
+        },
+        {
+          "definitions": [
+            "ReviewWorkspace"
+          ],
+          "name": "semantic_reviewer.application.interaction",
+          "package": false,
+          "path": "src/semantic_reviewer/application/interaction.py"
+        },
+        {
+          "definitions": [
+            "SQLiteGuidance",
+            "_event",
+            "_now"
+          ],
+          "name": "semantic_reviewer.adapters.guidance",
+          "package": false,
+          "path": "src/semantic_reviewer/adapters/guidance.py"
+        },
+        {
+          "definitions": [
+            "SQLiteReviewWorkspace",
+            "_event",
+            "_now"
+          ],
+          "name": "semantic_reviewer.adapters.interaction",
+          "package": false,
+          "path": "src/semantic_reviewer/adapters/interaction.py"
+        },
+        {
+          "definitions": [
+            "add_guidance_routes"
+          ],
+          "name": "semantic_reviewer.web.guidance",
+          "package": false,
+          "path": "src/semantic_reviewer/web/guidance.py"
+        },
+        {
+          "definitions": [
+            "add_interaction_routes"
+          ],
+          "name": "semantic_reviewer.web.interaction",
+          "package": false,
+          "path": "src/semantic_reviewer/web/interaction.py"
+        },
+        {
+          "definitions": [
+            "build_annotations",
+            "build_architecture",
+            "build_artefact_index",
+            "build_datasets",
+            "build_discovery",
+            "build_guidance",
+            "build_jobs",
+            "build_review_index",
+            "build_rules",
+            "build_selections",
+            "build_worker",
+            "build_workspace",
+            "runtime_path"
+          ],
+          "name": "semantic_reviewer.bootstrap",
+          "package": false,
+          "path": "src/semantic_reviewer/bootstrap.py"
+        }
+      ],
+      "removed": [
+        {
+          "definitions": [
+            "CorpusQueue",
+            "Job",
+            "JobService",
+            "JobStore",
+            "Worker"
+          ],
+          "name": "semantic_reviewer.application.jobs",
+          "package": false,
+          "path": "src/semantic_reviewer/application/jobs.py"
+        },
+        {
+          "definitions": [
+            "build_annotations",
+            "build_artefact_index",
+            "build_datasets",
+            "build_discovery",
+            "build_jobs",
+            "build_review_index",
+            "build_rules",
+            "build_selections",
+            "build_worker",
+            "runtime_path"
+          ],
+          "name": "semantic_reviewer.bootstrap",
+          "package": false,
+          "path": "src/semantic_reviewer/bootstrap.py"
+        }
+      ]
+    },
+    "settings": {}
+  },
+  "schema_version": 3
+}

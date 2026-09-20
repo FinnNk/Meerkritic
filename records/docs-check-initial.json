@@ -1,0 +1,73 @@
+{
+  "status": "failed",
+  "markdown_files": 59,
+  "local_links": 264,
+  "tables": 62,
+  "imported_files_verified": 59,
+  "errors": [
+    "CLI check failed: tools/run.py work --help",
+    "CLI check failed: tools/route.py preview"
+  ],
+  "commands": [
+    {
+      "argv": [
+        "tools/run.py",
+        "--help"
+      ],
+      "exit_code": 0,
+      "output": "usage: run.py [-h] --data-root DATA_ROOT\n              {catalogue,register,serve,worker,embed,cluster,discovery,synthesise,rules,rule,normalise,jobs,job-log,index-artefacts,index-review,annotate,progress,freeze-selection,selection}\n              ...\n\nRun imports outside HTTP, or serve the local harness from this checkout.\n\npositional arguments:\n  {catalogue,register,serve,worker,embed,cluster,discovery,synthesise,rules,rule,normalise,jobs,job-log,index-artefacts,index-review,annotate,progress,freeze-selection,selection}\n\noptions:\n  -h, --help            show this help message and exit\n  --data-root DATA_ROOT\n"
+    },
+    {
+      "argv": [
+        "tools/run.py",
+        "annotate",
+        "--help"
+      ],
+      "exit_code": 0,
+      "output": "usage: run.py annotate [-h] [--notes NOTES] [--edited-json EDITED_JSON]\n                       job_id {accept,edit,reject}\n\npositional arguments:\n  job_id\n  {accept,edit,reject}\n\noptions:\n  -h, --help            show this help message and exit\n  --notes NOTES\n  --edited-json EDITED_JSON\n"
+    },
+    {
+      "argv": [
+        "tools/run.py",
+        "work",
+        "--help"
+      ],
+      "exit_code": 2,
+      "output": "usage: run.py [-h] --data-root DATA_ROOT\n              {catalogue,register,serve,worker,embed,cluster,discovery,synthesise,rules,rule,normalise,jobs,job-log,index-artefacts,index-review,annotate,progress,freeze-selection,selection}\n              ...\nrun.py: error: argument command: invalid choice: 'work' (choose from catalogue, register, serve, worker, embed, cluster, discovery, synthesise, rules, rule, normalise, jobs, job-log, index-artefacts, index-review, annotate, progress, freeze-selection, selection)\n"
+    },
+    {
+      "argv": [
+        "tools/route.py",
+        "preview",
+        "--help"
+      ],
+      "exit_code": 0,
+      "output": "usage: route.py preview [-h] --config CONFIG --task TASK [--model MODEL]\n                        [--policy-id POLICY_ID]\n                        [--policy-version POLICY_VERSION]\n\noptions:\n  -h, --help            show this help message and exit\n  --config CONFIG\n  --task TASK\n  --model MODEL\n  --policy-id POLICY_ID\n  --policy-version POLICY_VERSION\n"
+    },
+    {
+      "argv": [
+        "tools/route.py",
+        "preview"
+      ],
+      "exit_code": 2,
+      "output": "usage: route.py preview [-h] --config CONFIG --task TASK [--model MODEL]\n                        [--policy-id POLICY_ID]\n                        [--policy-version POLICY_VERSION]\nroute.py preview: error: the following arguments are required: --config, --task\n"
+    },
+    {
+      "argv": [
+        "tools/architecture.py",
+        "--help"
+      ],
+      "exit_code": 0,
+      "output": "usage: architecture.py [-h] {snapshot,delta,publish-view} ...\n\nGenerate the canonical typed architecture data and local harness projection.\n\npositional arguments:\n  {snapshot,delta,publish-view}\n\noptions:\n  -h, --help            show this help message and exit\n"
+    }
+  ],
+  "rendered_samples": [
+    "README.md",
+    "docs/development/normalisation.md",
+    "docs/development/research-interaction.md",
+    "docs/development/documentation-style.md",
+    "docs/edr/README.md"
+  ],
+  "application_source_tests_lock_unchanged": true,
+  "sole_licence_file": "LICENSE.md"
+}

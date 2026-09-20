@@ -1,0 +1,1131 @@
+{
+  "base": "ff9af2e68d989590ebe030002e2e3789c35efef0",
+  "tip": "a2580a0785ab109c6014e404a949f60722282844",
+  "tree": "6d26f31d6789e4c79df4c8cbd9192aa174e5088a",
+  "commits": [
+    {
+      "commit": "186bff35b6410320762383e35f6229a3853c6de9",
+      "parents": [
+        "ff9af2e68d989590ebe030002e2e3789c35efef0"
+      ],
+      "tree": "73255c0f53f5578544aae6f6cc85016acd2a0acd",
+      "subject": "docs: strengthen boundary review and activate the final VS2 batch",
+      "change": {
+        "files": [
+          {
+            "path": "IMPLEMENTATION_BACKLOG.yaml",
+            "added": 3,
+            "deleted": 2
+          },
+          {
+            "path": "docs/adr/ADR-0011-preserve-rule-evidence-across-revisions.md",
+            "added": 5,
+            "deleted": 3
+          },
+          {
+            "path": "docs/adr/README.md",
+            "added": 1,
+            "deleted": 1
+          },
+          {
+            "path": "docs/development/milestone-review.md",
+            "added": 6,
+            "deleted": 0
+          },
+          {
+            "path": "docs/plans/VS2-plan.md",
+            "added": 18,
+            "deleted": 9
+          }
+        ],
+        "file_count": 5,
+        "added": 33,
+        "deleted": 15,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "89d5fcae41c35f5716ed881615d684d072af451d",
+      "parents": [
+        "186bff35b6410320762383e35f6229a3853c6de9"
+      ],
+      "tree": "551a422d4e021114994429bb2d57c3c418fe70d7",
+      "subject": "docs: backfill discovery and rule HTTP caller contracts",
+      "change": {
+        "files": [
+          {
+            "path": "src/semantic_reviewer/web/discovery.py",
+            "added": 5,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/rules.py",
+            "added": 5,
+            "deleted": 0
+          }
+        ],
+        "file_count": 2,
+        "added": 10,
+        "deleted": 0,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "55001b6374fefdaaf1634674bdb431c4af7d48e6",
+      "parents": [
+        "89d5fcae41c35f5716ed881615d684d072af451d"
+      ],
+      "tree": "5a6608694c803a492819f23f8a524ec6f492addf",
+      "subject": "feat: save and atomically apply version-fenced research decisions",
+      "change": {
+        "files": [
+          {
+            "path": "CONTEXT.md",
+            "added": 11,
+            "deleted": 0
+          },
+          {
+            "path": "docs/adr/ADR-0012-apply-review-intent-in-explicit-batches.md",
+            "added": 78,
+            "deleted": 0
+          },
+          {
+            "path": "docs/adr/README.md",
+            "added": 1,
+            "deleted": 0
+          },
+          {
+            "path": "docs/development/research-interaction.md",
+            "added": 33,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/interaction.py",
+            "added": 236,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/migrations/011_review_workspace.sql",
+            "added": 54,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/rules.py",
+            "added": 58,
+            "deleted": 42
+          },
+          {
+            "path": "src/semantic_reviewer/application/interaction.py",
+            "added": 54,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/asgi.py",
+            "added": 2,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/bootstrap.py",
+            "added": 9,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/domain/interaction.py",
+            "added": 42,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/app.py",
+            "added": 7,
+            "deleted": 1
+          },
+          {
+            "path": "src/semantic_reviewer/web/discovery.py",
+            "added": 2,
+            "deleted": 2
+          },
+          {
+            "path": "src/semantic_reviewer/web/interaction.py",
+            "added": 132,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/rules.py",
+            "added": 8,
+            "deleted": 1
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/base.html",
+            "added": 3,
+            "deleted": 2
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/review_workspace.html",
+            "added": 26,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/rule.html",
+            "added": 15,
+            "deleted": 10
+          },
+          {
+            "path": "tests/test_interaction.py",
+            "added": 197,
+            "deleted": 0
+          },
+          {
+            "path": "tests/test_rules.py",
+            "added": 4,
+            "deleted": 0
+          }
+        ],
+        "file_count": 20,
+        "added": 972,
+        "deleted": 58,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "ee351d3d7b70774c610a1e8e446c64aad8720448",
+      "parents": [
+        "55001b6374fefdaaf1634674bdb431c4af7d48e6"
+      ],
+      "tree": "97867f37f2be04b5ddfda13b1c1673dd0de3791c",
+      "subject": "feat: return advisory guidance from immutable submitted context",
+      "change": {
+        "files": [
+          {
+            "path": "CONTEXT.md",
+            "added": 6,
+            "deleted": 0
+          },
+          {
+            "path": "config/routing/discovery-local.json",
+            "added": 43,
+            "deleted": 1
+          },
+          {
+            "path": "docs/adr/ADR-0012-apply-review-intent-in-explicit-batches.md",
+            "added": 5,
+            "deleted": 2
+          },
+          {
+            "path": "docs/development/research-interaction.md",
+            "added": 38,
+            "deleted": 4
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/guidance.py",
+            "added": 154,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/maf_guidance.py",
+            "added": 92,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/migrations/012_guidance.sql",
+            "added": 22,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/application/guidance.py",
+            "added": 242,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/application/jobs.py",
+            "added": 20,
+            "deleted": 16
+          },
+          {
+            "path": "src/semantic_reviewer/asgi.py",
+            "added": 2,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/bootstrap.py",
+            "added": 18,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/domain/guidance.py",
+            "added": 57,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/app.py",
+            "added": 6,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/guidance.py",
+            "added": 107,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/base.html",
+            "added": 2,
+            "deleted": 1
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/guidance.html",
+            "added": 13,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/guidance_result.html",
+            "added": 14,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/rule.html",
+            "added": 1,
+            "deleted": 1
+          },
+          {
+            "path": "tests/test_guidance.py",
+            "added": 252,
+            "deleted": 0
+          },
+          {
+            "path": "tests/test_synthesis.py",
+            "added": 1,
+            "deleted": 1
+          }
+        ],
+        "file_count": 20,
+        "added": 1095,
+        "deleted": 26,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "eaeecaafd37883f2cb6da09d2845886413a9a530",
+      "parents": [
+        "ee351d3d7b70774c610a1e8e446c64aad8720448"
+      ],
+      "tree": "a438e28af4f45f3cac884d9876b2189b228e2a6c",
+      "subject": "feat: inspect architecture freshness and record the VS2 milestone review",
+      "change": {
+        "files": [
+          {
+            "path": "CONTEXT.md",
+            "added": 4,
+            "deleted": 0
+          },
+          {
+            "path": "IMPLEMENTATION_BACKLOG.yaml",
+            "added": 12,
+            "deleted": 3
+          },
+          {
+            "path": "README.md",
+            "added": 7,
+            "deleted": 0
+          },
+          {
+            "path": "docs/architecture/README.md",
+            "added": 27,
+            "deleted": 3
+          },
+          {
+            "path": "docs/development/README.md",
+            "added": 5,
+            "deleted": 2
+          },
+          {
+            "path": "docs/development/rules.md",
+            "added": 2,
+            "deleted": 2
+          },
+          {
+            "path": "docs/development/structure.md",
+            "added": 1,
+            "deleted": 1
+          },
+          {
+            "path": "docs/edr/0001-discovery-grouping-method.md",
+            "added": 10,
+            "deleted": 2
+          },
+          {
+            "path": "docs/plans/VS2-plan.md",
+            "added": 11,
+            "deleted": 0
+          },
+          {
+            "path": "docs/plans/VS3-plan.md",
+            "added": 62,
+            "deleted": 0
+          },
+          {
+            "path": "docs/slice-reviews/VS2-milestone-architecture-review.md",
+            "added": 189,
+            "deleted": 0
+          },
+          {
+            "path": "docs/slice-reviews/VS2-review.md",
+            "added": 74,
+            "deleted": 0
+          },
+          {
+            "path": "docs/slice-reviews/VS2-review.yaml",
+            "added": 83,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/architecture.py",
+            "added": 243,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/architecture_projection.py",
+            "added": 86,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/application/architecture.py",
+            "added": 15,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/asgi.py",
+            "added": 2,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/bootstrap.py",
+            "added": 10,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/app.py",
+            "added": 29,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/architecture.html",
+            "added": 15,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/base.html",
+            "added": 2,
+            "deleted": 1
+          },
+          {
+            "path": "tests/test_architecture_view.py",
+            "added": 83,
+            "deleted": 0
+          },
+          {
+            "path": "tools/architecture.py",
+            "added": 28,
+            "deleted": 221
+          }
+        ],
+        "file_count": 23,
+        "added": 1000,
+        "deleted": 235,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "c86e14de9bd2944db76d957913397c36ade0ae73",
+      "parents": [
+        "eaeecaafd37883f2cb6da09d2845886413a9a530"
+      ],
+      "tree": "b137f959fb997c6749d85161530b3f4101400497",
+      "subject": "docs: license Meerkritic under MIT",
+      "change": {
+        "files": [
+          {
+            "path": "LICENSE.md",
+            "added": 21,
+            "deleted": 0
+          },
+          {
+            "path": "README.md",
+            "added": 6,
+            "deleted": 0
+          },
+          {
+            "path": "docs/sources.md",
+            "added": 4,
+            "deleted": 1
+          },
+          {
+            "path": "pyproject.toml",
+            "added": 2,
+            "deleted": 0
+          }
+        ],
+        "file_count": 4,
+        "added": 33,
+        "deleted": 1,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "8cd168531df7049efa6b47d50b8b3b8942b908ed",
+      "parents": [
+        "c86e14de9bd2944db76d957913397c36ade0ae73"
+      ],
+      "tree": "44085b287d4da2606446259438288ad326f701a5",
+      "subject": "docs: define reader-focused writing and review guidance",
+      "change": {
+        "files": [
+          {
+            "path": ".github/pull_request_template.md",
+            "added": 25,
+            "deleted": 0
+          },
+          {
+            "path": "AGENTS.md",
+            "added": 5,
+            "deleted": 0
+          },
+          {
+            "path": "docs/development/README.md",
+            "added": 3,
+            "deleted": 0
+          },
+          {
+            "path": "docs/development/documentation-style.md",
+            "added": 115,
+            "deleted": 0
+          },
+          {
+            "path": "docs/development/milestone-review-template.md",
+            "added": 2,
+            "deleted": 0
+          },
+          {
+            "path": "docs/development/milestone-review.md",
+            "added": 5,
+            "deleted": 0
+          }
+        ],
+        "file_count": 6,
+        "added": 155,
+        "deleted": 0,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "db655166354f39906ac8a8ed970845413e6d7fd4",
+      "parents": [
+        "8cd168531df7049efa6b47d50b8b3b8942b908ed"
+      ],
+      "tree": "f1b9d6a988b724de9c1fb8f561cafa3010904995",
+      "subject": "docs: organise task guides around steps and recovery",
+      "change": {
+        "files": [
+          {
+            "path": "README.md",
+            "added": 49,
+            "deleted": 58
+          },
+          {
+            "path": "docs/README.md",
+            "added": 47,
+            "deleted": 0
+          },
+          {
+            "path": "docs/development/annotations.md",
+            "added": 69,
+            "deleted": 42
+          },
+          {
+            "path": "docs/development/datasets.md",
+            "added": 69,
+            "deleted": 57
+          },
+          {
+            "path": "docs/development/discovery.md",
+            "added": 93,
+            "deleted": 75
+          },
+          {
+            "path": "docs/development/local-inference.md",
+            "added": 72,
+            "deleted": 31
+          },
+          {
+            "path": "docs/development/normalisation.md",
+            "added": 65,
+            "deleted": 60
+          },
+          {
+            "path": "docs/development/operational-evidence.md",
+            "added": 83,
+            "deleted": 51
+          },
+          {
+            "path": "docs/development/research-interaction.md",
+            "added": 85,
+            "deleted": 67
+          },
+          {
+            "path": "docs/development/routing-operations.md",
+            "added": 55,
+            "deleted": 20
+          },
+          {
+            "path": "docs/development/rules.md",
+            "added": 72,
+            "deleted": 75
+          },
+          {
+            "path": "docs/development/selections.md",
+            "added": 86,
+            "deleted": 66
+          }
+        ],
+        "file_count": 12,
+        "added": 845,
+        "deleted": 602,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "a2580a0785ab109c6014e404a949f60722282844",
+      "parents": [
+        "db655166354f39906ac8a8ed970845413e6d7fd4"
+      ],
+      "tree": "6d26f31d6789e4c79df4c8cbd9192aa174e5088a",
+      "subject": "docs: clarify developer references and documentation navigation",
+      "change": {
+        "files": [
+          {
+            "path": ".env.example",
+            "added": 2,
+            "deleted": 2
+          },
+          {
+            "path": "AGENTS.md",
+            "added": 1,
+            "deleted": 1
+          },
+          {
+            "path": "CONTEXT.md",
+            "added": 49,
+            "deleted": 11
+          },
+          {
+            "path": "config/README.md",
+            "added": 18,
+            "deleted": 8
+          },
+          {
+            "path": "docs/README.md",
+            "added": 1,
+            "deleted": 1
+          },
+          {
+            "path": "docs/adr/README.md",
+            "added": 14,
+            "deleted": 9
+          },
+          {
+            "path": "docs/architecture/README.md",
+            "added": 74,
+            "deleted": 53
+          },
+          {
+            "path": "docs/development/README.md",
+            "added": 116,
+            "deleted": 169
+          },
+          {
+            "path": "docs/development/code-comments.md",
+            "added": 50,
+            "deleted": 32
+          },
+          {
+            "path": "docs/development/milestone-review.md",
+            "added": 1,
+            "deleted": 1
+          },
+          {
+            "path": "docs/development/normalisation-contract.md",
+            "added": 48,
+            "deleted": 29
+          },
+          {
+            "path": "docs/development/python-style.md",
+            "added": 13,
+            "deleted": 3
+          },
+          {
+            "path": "docs/development/routing.md",
+            "added": 78,
+            "deleted": 20
+          },
+          {
+            "path": "docs/development/structure.md",
+            "added": 45,
+            "deleted": 48
+          },
+          {
+            "path": "docs/development/verification.md",
+            "added": 62,
+            "deleted": 0
+          },
+          {
+            "path": "docs/development/vs1-verification.md",
+            "added": 0,
+            "deleted": 77
+          },
+          {
+            "path": "docs/edr/README.md",
+            "added": 93,
+            "deleted": 45
+          },
+          {
+            "path": "docs/slice-reviews/README.md",
+            "added": 3,
+            "deleted": 1
+          },
+          {
+            "path": "docs/slice-reviews/VS1-progress.md",
+            "added": 1,
+            "deleted": 1
+          },
+          {
+            "path": "docs/slice-reviews/VS1-verification.md",
+            "added": 80,
+            "deleted": 0
+          },
+          {
+            "path": "tests/README.md",
+            "added": 31,
+            "deleted": 22
+          }
+        ],
+        "file_count": 21,
+        "added": 780,
+        "deleted": 533,
+        "binary_files": 0
+      }
+    }
+  ],
+  "linear": true,
+  "final_change": {
+    "files": [
+      {
+        "path": ".env.example",
+        "added": 2,
+        "deleted": 2
+      },
+      {
+        "path": ".github/pull_request_template.md",
+        "added": 25,
+        "deleted": 0
+      },
+      {
+        "path": "AGENTS.md",
+        "added": 6,
+        "deleted": 1
+      },
+      {
+        "path": "CONTEXT.md",
+        "added": 68,
+        "deleted": 9
+      },
+      {
+        "path": "IMPLEMENTATION_BACKLOG.yaml",
+        "added": 14,
+        "deleted": 4
+      },
+      {
+        "path": "LICENSE.md",
+        "added": 21,
+        "deleted": 0
+      },
+      {
+        "path": "README.md",
+        "added": 55,
+        "deleted": 51
+      },
+      {
+        "path": "config/README.md",
+        "added": 18,
+        "deleted": 8
+      },
+      {
+        "path": "config/routing/discovery-local.json",
+        "added": 43,
+        "deleted": 1
+      },
+      {
+        "path": "docs/README.md",
+        "added": 47,
+        "deleted": 0
+      },
+      {
+        "path": "docs/adr/ADR-0011-preserve-rule-evidence-across-revisions.md",
+        "added": 5,
+        "deleted": 3
+      },
+      {
+        "path": "docs/adr/ADR-0012-apply-review-intent-in-explicit-batches.md",
+        "added": 81,
+        "deleted": 0
+      },
+      {
+        "path": "docs/adr/README.md",
+        "added": 16,
+        "deleted": 10
+      },
+      {
+        "path": "docs/architecture/README.md",
+        "added": 74,
+        "deleted": 29
+      },
+      {
+        "path": "docs/development/README.md",
+        "added": 116,
+        "deleted": 163
+      },
+      {
+        "path": "docs/development/annotations.md",
+        "added": 69,
+        "deleted": 42
+      },
+      {
+        "path": "docs/development/code-comments.md",
+        "added": 50,
+        "deleted": 32
+      },
+      {
+        "path": "docs/development/datasets.md",
+        "added": 69,
+        "deleted": 57
+      },
+      {
+        "path": "docs/development/discovery.md",
+        "added": 93,
+        "deleted": 75
+      },
+      {
+        "path": "docs/development/documentation-style.md",
+        "added": 115,
+        "deleted": 0
+      },
+      {
+        "path": "docs/development/local-inference.md",
+        "added": 72,
+        "deleted": 31
+      },
+      {
+        "path": "docs/development/milestone-review-template.md",
+        "added": 2,
+        "deleted": 0
+      },
+      {
+        "path": "docs/development/milestone-review.md",
+        "added": 12,
+        "deleted": 1
+      },
+      {
+        "path": "docs/development/normalisation-contract.md",
+        "added": 48,
+        "deleted": 29
+      },
+      {
+        "path": "docs/development/normalisation.md",
+        "added": 65,
+        "deleted": 60
+      },
+      {
+        "path": "docs/development/operational-evidence.md",
+        "added": 83,
+        "deleted": 51
+      },
+      {
+        "path": "docs/development/python-style.md",
+        "added": 13,
+        "deleted": 3
+      },
+      {
+        "path": "docs/development/research-interaction.md",
+        "added": 85,
+        "deleted": 0
+      },
+      {
+        "path": "docs/development/routing-operations.md",
+        "added": 55,
+        "deleted": 20
+      },
+      {
+        "path": "docs/development/routing.md",
+        "added": 78,
+        "deleted": 20
+      },
+      {
+        "path": "docs/development/rules.md",
+        "added": 72,
+        "deleted": 75
+      },
+      {
+        "path": "docs/development/selections.md",
+        "added": 86,
+        "deleted": 66
+      },
+      {
+        "path": "docs/development/structure.md",
+        "added": 45,
+        "deleted": 48
+      },
+      {
+        "path": "docs/development/verification.md",
+        "added": 62,
+        "deleted": 0
+      },
+      {
+        "path": "docs/development/vs1-verification.md",
+        "added": 0,
+        "deleted": 77
+      },
+      {
+        "path": "docs/edr/0001-discovery-grouping-method.md",
+        "added": 10,
+        "deleted": 2
+      },
+      {
+        "path": "docs/edr/README.md",
+        "added": 93,
+        "deleted": 45
+      },
+      {
+        "path": "docs/plans/VS2-plan.md",
+        "added": 29,
+        "deleted": 9
+      },
+      {
+        "path": "docs/plans/VS3-plan.md",
+        "added": 62,
+        "deleted": 0
+      },
+      {
+        "path": "docs/slice-reviews/README.md",
+        "added": 3,
+        "deleted": 1
+      },
+      {
+        "path": "docs/slice-reviews/VS1-progress.md",
+        "added": 1,
+        "deleted": 1
+      },
+      {
+        "path": "docs/slice-reviews/VS1-verification.md",
+        "added": 80,
+        "deleted": 0
+      },
+      {
+        "path": "docs/slice-reviews/VS2-milestone-architecture-review.md",
+        "added": 189,
+        "deleted": 0
+      },
+      {
+        "path": "docs/slice-reviews/VS2-review.md",
+        "added": 74,
+        "deleted": 0
+      },
+      {
+        "path": "docs/slice-reviews/VS2-review.yaml",
+        "added": 83,
+        "deleted": 0
+      },
+      {
+        "path": "docs/sources.md",
+        "added": 4,
+        "deleted": 1
+      },
+      {
+        "path": "pyproject.toml",
+        "added": 2,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/architecture.py",
+        "added": 243,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/architecture_projection.py",
+        "added": 86,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/guidance.py",
+        "added": 154,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/interaction.py",
+        "added": 236,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/maf_guidance.py",
+        "added": 92,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/migrations/011_review_workspace.sql",
+        "added": 54,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/migrations/012_guidance.sql",
+        "added": 22,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/rules.py",
+        "added": 58,
+        "deleted": 42
+      },
+      {
+        "path": "src/semantic_reviewer/application/architecture.py",
+        "added": 15,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/application/guidance.py",
+        "added": 242,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/application/interaction.py",
+        "added": 54,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/application/jobs.py",
+        "added": 20,
+        "deleted": 16
+      },
+      {
+        "path": "src/semantic_reviewer/asgi.py",
+        "added": 6,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/bootstrap.py",
+        "added": 37,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/domain/guidance.py",
+        "added": 57,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/domain/interaction.py",
+        "added": 42,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/web/app.py",
+        "added": 42,
+        "deleted": 1
+      },
+      {
+        "path": "src/semantic_reviewer/web/discovery.py",
+        "added": 7,
+        "deleted": 2
+      },
+      {
+        "path": "src/semantic_reviewer/web/guidance.py",
+        "added": 107,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/web/interaction.py",
+        "added": 132,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/web/rules.py",
+        "added": 13,
+        "deleted": 1
+      },
+      {
+        "path": "src/semantic_reviewer/web/templates/architecture.html",
+        "added": 15,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/web/templates/base.html",
+        "added": 5,
+        "deleted": 2
+      },
+      {
+        "path": "src/semantic_reviewer/web/templates/guidance.html",
+        "added": 13,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/web/templates/guidance_result.html",
+        "added": 14,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/web/templates/review_workspace.html",
+        "added": 26,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/web/templates/rule.html",
+        "added": 15,
+        "deleted": 10
+      },
+      {
+        "path": "tests/README.md",
+        "added": 31,
+        "deleted": 22
+      },
+      {
+        "path": "tests/test_architecture_view.py",
+        "added": 83,
+        "deleted": 0
+      },
+      {
+        "path": "tests/test_guidance.py",
+        "added": 252,
+        "deleted": 0
+      },
+      {
+        "path": "tests/test_interaction.py",
+        "added": 197,
+        "deleted": 0
+      },
+      {
+        "path": "tests/test_rules.py",
+        "added": 4,
+        "deleted": 0
+      },
+      {
+        "path": "tests/test_synthesis.py",
+        "added": 1,
+        "deleted": 1
+      },
+      {
+        "path": "tools/architecture.py",
+        "added": 28,
+        "deleted": 221
+      }
+    ],
+    "file_count": 81,
+    "added": 4798,
+    "deleted": 1345,
+    "binary_files": 0
+  },
+  "statistics_note": "No rename detection; merge commit churn uses first parent. Final diff and cumulative per-commit churn are different quantities."
+}
