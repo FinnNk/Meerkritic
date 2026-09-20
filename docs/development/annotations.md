@@ -10,7 +10,9 @@ First [run normalisation](normalisation.md) and open the job. For a failed draft
 follow [correction and rejection](failed-drafts.md); infrastructure failures have
 no interpretation to assess.
 
-1. Read the original comment, code, proposed interpretation and quoted evidence.
+1. Read the open source panel, then assess the interpretation using the
+   [field guide](assessment-fields.md). Impact scope describes affected code;
+   investigation needs and missing evidence belong in notes.
 2. Choose an action:
 
    | Action | What is saved |
@@ -20,11 +22,14 @@ no interpretation to assess.
    | **Reject** | Your rejection; the source counts as reviewed, not accepted |
 
 3. For **Edit**, expand the structured interpretation and edit its JSON fields.
-   The same schema and source-quote checks apply as for model output. Invalid
+   The current compatible schema and exact source-quote checks apply. Invalid
    drafts stay visible for correction.
-4. Submit the decision. It is saved immediately; there is no draft/apply stage for
+4. Add evidence limitations, investigation needs and any additional advice to
+   **Assessment notes and evidence limitations**. Attribute advice beyond the
+   source to yourself; notes are not interpretation text for grouping.
+5. Submit the decision. It is saved immediately; there is no draft/apply stage for
    source annotations. The page shows your decision separately from the model result.
-5. Open **Annotation progress and review queue** to find unreviewed outputs or
+6. Open **Annotation progress and review queue** to find unreviewed outputs or
    inspect failures. For a study, follow its prepared order instead of this queue.
 
 An identical retry returns the saved decision. A different decision for the same

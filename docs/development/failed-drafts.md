@@ -9,7 +9,7 @@ stored separately; the model job, original text and failure remain unchanged.
 | Step | What to do |
 | --- | --- |
 | Open the job | Read the failure message. **Edit** and **Reject** appear only when a retained semantic draft is available. |
-| Read the source | Expand **Source for your assessment**. Read the original comment and supplied code; neither is an instruction for you or the agent to execute. |
+| Read the source | Read the open **Source for your assessment** panel. Read the original comment and supplied code; neither is an instruction for you or the agent to execute. |
 | Compare the draft | Check whether it describes the actual concern and whether the quoted text supports that interpretation. A quote match alone does not make the claim correct. |
 | Edit | Correct the JSON in **Edit the structured interpretation**, then select **Edit**. Keep the full structure, including fields you did not change. |
 | Reject | If the draft cannot serve the study, add a short reason in **Notes** and select **Reject**. You do not need to fix its JSON first. |
@@ -21,8 +21,10 @@ have no reviewable draft; they remain available for inspection.
 
 ![Failed draft assessment with its original warning, JSON editor and Edit/Reject buttons.](../images/failed-draft-assessment.png)
 
-The [synthetic demonstration](../images/README.md) is awaiting correction. The
-original failed draft is displayed; it has not been replaced by a suggested answer.
+The [synthetic demonstration](../images/README.md) is awaiting correction. Its
+editor was collapsed for this image; it opens by default and retains the original
+failed draft. Read [the assessment field guide](assessment-fields.md) for the
+distinction between impact, applicability and evidence limitations.
 
 ## What the JSON fields mean
 
@@ -31,11 +33,11 @@ original failed draft is displayed; it has not been replaced by a suggested answ
 | `actionable_engineering_concern` | Does the source identify an engineering concern? Use `yes`, `no` or `uncertain`. |
 | `issue_statement` | State the concern in plain language without inventing requirements. |
 | `coarse_categories` | A short list of descriptive categories; retain the JSON array. |
-| `scope` | Choose `expression`, `statement`, `function`, `class`, `file`, `module` or `repository`. |
+| `scope` | Smallest affected code unit supported by the evidence: `expression`, `statement`, `function`, `class`, `file`, `module`, `repository` or `unknown`. Investigation extent belongs in notes. |
 | `generalisable` | Could the concern apply beyond this instance? Use `yes`, `no` or `uncertain`. |
 | `proposed_invariant` | A condition that should hold, or `null` when none is justified. |
 | `evidence_quotes` | Quote exact, unique text from `comment` or `code`. A `yes` actionable concern needs at least one quote. |
-| `exclusions` | Conditions that limit applicability; keep an empty array when none is justified. |
+| `exclusions` | Known exceptions or conditions limiting applicability. Keep an empty array when none are identified; put missing evidence in notes. |
 
 For example, if the supplied comment is `Close the file even when parsing fails.`,
 this evidence entry identifies its exact text:

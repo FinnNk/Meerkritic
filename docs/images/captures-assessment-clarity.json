@@ -1,0 +1,75 @@
+{
+  "application_revision": "5efdc2e",
+  "captured_on": "2026-09-20",
+  "browser": "Codex in-app browser; dark appearance; native viewport capture",
+  "viewport_css": [
+    1000,
+    720
+  ],
+  "transformation": "Pixel crops only; no scaling or content edits",
+  "fixture_git_base": "86a839341787e986dae6870673efeaf8251a41d0",
+  "fixture_sha256": "a45883c106f901be5af60c4002f08a01313c60d34cc25b77d8e1c4174e7fcd32",
+  "images": [
+    {
+      "file": "assessment-source.png",
+      "raw": "source-narrow.png",
+      "crop_pixels": [
+        16,
+        205,
+        976,
+        636
+      ],
+      "size": [
+        960,
+        431
+      ],
+      "sha256": "b3e8c7a9ef34ca7a4d2e550b6841fe261400e87fc94e938e5587402e4e253475"
+    },
+    {
+      "file": "annotation-result.png",
+      "raw": "result-narrow.png",
+      "crop_pixels": [
+        16,
+        169,
+        976,
+        676
+      ],
+      "size": [
+        960,
+        507
+      ],
+      "sha256": "78a36c15d3fcbae8a1bfae6df0e6e69855e4863ba5bd03c0fecdbfb6f6a7360a"
+    },
+    {
+      "file": "annotation-assessment.png",
+      "raw": "assessment-narrow.png",
+      "crop_pixels": [
+        16,
+        174,
+        976,
+        658
+      ],
+      "size": [
+        960,
+        484
+      ],
+      "sha256": "45032059211c57390d234bcbf0baba3ee90ae8fcedb820858a84c31c95574a20"
+    },
+    {
+      "file": "failed-draft-assessment.png",
+      "raw": "failed-narrow.png",
+      "crop_pixels": [
+        16,
+        17,
+        976,
+        590
+      ],
+      "size": [
+        960,
+        573
+      ],
+      "sha256": "be2c1c034c4d7235d509fa9493aaf3b76ba04e2ee39aa6b361e976ac5fc85302"
+    }
+  ],
+  "notes": "The failed-draft editor was collapsed for this focused view; it opens by default. Full-page captures at the original width were rejected after visual inspection because the browser export duplicated and clipped content. Narrow responsive captures supersede those attempts."
+}

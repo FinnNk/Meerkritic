@@ -18,6 +18,15 @@
     nav { display: flex; gap: 2rem; align-items: center; padding: 1rem 0; }
     dl { display: grid; grid-template-columns: max-content 1fr; gap: .3rem 1rem; }
     dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+    .assessment-purpose, .source-panel, .assessment-help { border: 1px solid #8886; border-radius: .6rem; padding: 1.2rem; margin: 1.5rem 0; }
+    .assessment-purpose { background: light-dark(#f0f6ff, #172638); }
+    .assessment-purpose h2 { margin-top: 0; }
+    .source-panel { background: light-dark(#f6f8fa, #202830); border-left: .3rem solid light-dark(#1255a2, #8bc5ff); }
+    .source-panel summary, .assessment-help summary { cursor: pointer; font-weight: 650; }
+    .assessment-help { overflow-x: auto; }
+    .assessment-help table { border-collapse: collapse; width: 100%; }
+    .assessment-help th, .assessment-help td { padding: .6rem; text-align: left; vertical-align: top; border-bottom: 1px solid #8886; }
+    #notes { box-sizing: border-box; width: 100%; font: inherit; }
     @media (max-width: 700px) { .columns { grid-template-columns: 1fr; } dl { display: block; } }
   </style>
 </head>

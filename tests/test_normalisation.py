@@ -75,6 +75,23 @@ class WorkflowTest(unittest.TestCase):
         self.assertEqual(result.framework.version, "1.19.0")
         self.assertEqual(result.framework.outcome, "completed")
 
+    def test_unknown_impact_passes_real_workflow_with_grounded_evidence(self):
+        self.payload["scope"] = "unknown"
+        result = MafWorkflowRunner(self).run(self.value)
+        self.assertIsNone(result.error)
+        self.assertEqual(result.interpretation.scope, "unknown")
+        self.assertEqual(result.request.prompt_version, "normalisation-v3")
+        self.assertIn("not the area needed for investigation", result.request.system)
+        self.assertIn("applicability exceptions, not missing context", result.request.system)
+        self.assertEqual(result.spans[0].quote, "zero before dividing")
+
+    def test_investigation_label_is_not_an_impact_scope(self):
+        self.payload["scope"] = "needs repository investigation"
+        result = MafWorkflowRunner(self).run(self.value)
+        self.assertEqual(result.measurement.outcome, "semantic_failure")
+        self.assertIsNone(result.interpretation)
+        self.assertIsNotNone(result.reply)
+
     def test_invalid_schema_or_invented_or_ambiguous_evidence_is_semantic_failure(self):
         for quote in ("invented", "i", ""):
             self.payload["evidence_quotes"][0]["quote"] = quote

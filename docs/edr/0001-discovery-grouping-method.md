@@ -356,3 +356,28 @@ Pending. No grouping method has been adopted from empirical evidence.
 | 2026-09-20 | input preparation infeasible; draft retained | Meerkritic agent | All 80 origins checked; 55 initial normalisations produced 33 valid drafts and 22 retained failures. No human labels or grouping results; owner amendment required before continuing. |
 
 | 2026-09-20 | preparation amendment agreed; draft retained | Finn Newick | Allow human correction/rejection of retained semantic failures, preserving the original pass and fixed sample rules; no human labels or grouping results yet. |
+
+## Preparation clarification before the first saved judgement
+
+On 20 September 2026 the first input walkthrough was paused before saving a
+judgement. The owner identified a need to trace a removed type's history. The
+agent had conflated investigation extent with impact scope and had misdescribed
+applicability exclusions as evidence limitations. The owner agreed to clarify
+these meanings before continuing; [ADR-0014](../adr/ADR-0014-clarify-assessment-field-meanings.md)
+and the [assessment contract](../development/assessment-contract.md) record the change.
+
+- Preserve the fixed candidate order, original model pass, failures and source bytes.
+- Use unknown impact scope when the supplied evidence cannot establish the affected
+  extent. Record investigation needs and evidence limitations in annotation notes.
+- Keep applicability exceptions separate. Attribute human advice beyond the source
+  to the human, rather than claiming that the comment establishes a broader rule.
+- Apply the clarified guidance to all ensuing input reviews. Retain this first
+  walkthrough as assisted preparation with prior exposure, not a blind rating.
+- Before resuming, verify that no annotation was saved during the pause. Do not
+  automatically translate the conversation into an Accept/Edit/Reject decision.
+
+The preliminary observations and the agent's corrections are retained separately
+under `extras/research/edr-0001/walkthrough-feedback-01.md` and
+`walkthrough-feedback-02.md`. Final wording, scope, applicability and quoted evidence
+still require the human's assessment. No model rerun, grouping comparison or empirical
+result justifies this clarification. The EDR remains **draft**, not registered.
