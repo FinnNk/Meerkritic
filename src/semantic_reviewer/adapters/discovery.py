@@ -241,3 +241,32 @@ class ParquetDiscovery:
             raise ValueError("Vector row identity/order is invalid.")
         vectors = validate_vectors(tuple(tuple(row[3]) for row in rows), len(rows))
         return tuple((r[1], r[2], v) for r, v in zip(rows, vectors, strict=True))
+
+    def write_members(self, members: tuple[dict, ...]) -> str:
+        """Publish ordered cluster assignments, including -1 for explicit outliers."""
+        if not 1 <= len(members) <= 100 or len({r["annotation_id"] for r in members}) != len(
+            members
+        ):
+            raise ValueError("Membership identities must be unique and bounded.")
+        return self._table(
+            "position INTEGER,annotation_id VARCHAR,cluster INTEGER,representative BOOLEAN",
+            [
+                (i, r["annotation_id"], r["cluster"], r["representative"])
+                for i, r in enumerate(members)
+            ],
+        )
+
+    def read_members(self, digest: str) -> tuple[dict, ...]:
+        """Read verified memberships in frozen order for inspection and downstream synthesis."""
+        path, _ = self._read(digest, ".parquet")
+        with duckdb.connect() as db:
+            rows = db.execute(
+                "SELECT annotation_id,cluster,representative FROM read_parquet(?) "
+                "ORDER BY position LIMIT 101",
+                [str(path)],
+            ).fetchall()
+        if not 1 <= len(rows) <= 100 or len({r[0] for r in rows}) != len(rows):
+            raise ValueError("Membership identities must be unique and bounded.")
+        return tuple(
+            dict(zip(("annotation_id", "cluster", "representative"), r, strict=True)) for r in rows
+        )

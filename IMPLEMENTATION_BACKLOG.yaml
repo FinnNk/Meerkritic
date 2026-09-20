@@ -128,7 +128,7 @@ slices:
   frozen_batch: A2/A3 embedding execution and reproducible grouping
   batch_progress:
   - A1 frozen selections integrated via PR 10; ADR-0009 implemented
-  - A2 implemented candidate; A3 follows at the next semantic checkpoint
+  - A2/A3 implemented candidate; DER review and owner acceptance pending
   remaining_gates:
   - human-rated development corpus before empirical method adoption
   - EDR registration before decision-bearing comparison

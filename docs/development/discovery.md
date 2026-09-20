@@ -1,7 +1,18 @@
-# Reproducible embeddings
+# Reproducible discovery
 
-Queue embeddings from a frozen selection in the harness and inspect its exact
-inputs, usage and immutable vector provenance. Clustering follows in the next proposition.
+Start with **Frozen inputs** in the harness. A selection names exact annotation
+versions, preserves edits and labels exclusions. **Queue embeddings** submits work;
+it never calls a model in the HTTP request. Inspect the run, then choose a cosine
+threshold and minimum group size to **Queue clustering**. The result shows every
+member, representative and outlier, linked to its original source and annotation.
+
+The current cosine connected-component algorithm is an exploratory prototype,
+version `cosine-components-v1`. Edges include equality at the chosen threshold;
+transitive chains may join examples that are not pairwise similar. Small components
+are outliers (`-1`). Representatives maximise within-component cosine sum, with
+ties resolved by frozen input order. No seed is used. These are reproducibility
+rules, not a claim of semantic coherence or superiority. EDR-0001 (Choose an initial
+discovery grouping method) remains draft; human evaluation and adoption are pending.
 
 ## Local worker
 
@@ -29,14 +40,20 @@ Equivalent explicit submission/inspection commands:
 
 ```text
 python tools/run.py --data-root <external-runtime> embed <selection-sha256>
+python tools/run.py --data-root <external-runtime> cluster <embedding-run-id> --threshold 0.85
 python tools/run.py --data-root <external-runtime> discovery <run-id>
 ```
+
+The threshold above is an example, not an adopted default. Changing the selection,
+model profile, preprocessing or parameters creates a separate invocation. Results
+do not overwrite earlier runs. A rerun may have different model vectors; only the
+deterministic grouping of the same pinned vectors/parameters has a replay claim.
 
 ## Evidence and limits
 
 Each run retains its exact request, selection, inventory/policy versions, model
 profile, preprocessing, usage, framework observation and result hashes. Texts and
-vectors are ordered Parquet rows; membership files follow in the clustering proposition.
+vectors are ordered Parquet rows; memberships are another immutable Parquet file.
 SQLite holds small queue metadata and append-only events. JSON manifests, raw
 invalid embedding responses and analytical bodies remain outside source control.
 Files publish completely before terminal state; interrupted registration can leave
@@ -57,7 +74,7 @@ refusal are distinct; a failed run cannot supply a clustering input.
 
 Compatibility on 20 September 2026 used llama.cpp `b10964-b29c606e2`, the pinned
 Nomic F16 model and the project's locked MAF runtime. Real MAF execution produced
-768-dimensional vectors from synthetic interpretations. Automated
+768-dimensional vectors and a cluster from synthetic interpretations. Automated
 fixture decisions are not human research labels. Canonical method/log/result
 references are in external DER `vs2-grouping/r1`; this is not an empirical EDR run.
 

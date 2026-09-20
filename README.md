@@ -50,7 +50,7 @@ interpretations and exclusions. Fixture inputs remain distinct from research lab
 
 Explore those inputs through the harness's **Discovery** view. See
 [discovery setup](docs/development/discovery.md) for the local embedding worker,
-embedding provenance and compatibility limitations.
+reproducible grouping and the limits of the current exploratory method.
 
 Run `uv run --locked python tools/check.py` for formatting, lint, architecture and
 behaviour checks. See the [dataset guide](docs/development/datasets.md) for source
