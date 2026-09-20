@@ -110,6 +110,12 @@ metrics or mandatory new tests for unchanged low-risk behaviour.
 Use lessons from prior milestone findings at these earlier checkpoints. Authors
 apply the relevant generalised challenge while designing/building the change;
 reviewers check the response and evidence before accepting the proposition or PR.
+For material invariants, name the actual entry paths (for example immediate and
+batched writes) and the boundary each relies on. A read-path test does not establish
+write integrity. Challenge runtime-port values independently of their usual concrete
+adapter, including constructed objects that can bypass normal parsing. When a
+negative control fails during setup, correct the fixture and preserve the failed
+attempt before claiming evidence of the intended property.
 Do not postpone a known applicable check until the next milestone review. Later
 reviews assess whether the practice was actually applied and record recurrences;
 they must not claim that adding a checklist guarantees prevention.
