@@ -36,8 +36,13 @@ immutable edits, atomic decision/events, history and snapshot-consistent progres
 Concurrent identical submissions create one record; conflicting decisions cannot
 overwrite it. The browser exposes only the three VS1 decision actions.
 
-Remaining VS1 work: operational evidence indexing and structured logs, full
-interaction/restart/failure integration, final slice review and explicit
+The stacked `vs1-validation/r1` candidate adds artefact metadata, structured
+committed-event log snapshots, reserved routing-continuity schemas and a read-only
+DER reference page. Full-path tests and live isolated public-data verification
+exercise all three annotation actions, restart, failed-provider inspection and
+Parquet/DuckDB usage analysis. See the [verification guide](../development/vs1-verification.md).
+
+Remaining VS1 work: owner review/integration of the final stack, final slice review and explicit
 review/revision of future slices. VS2 and later slices remain DRAFT. Related semantic
 propositions may share a PR; prefer stacked PRs when splitting dependent batches.
 Candidate readiness, owner acceptance and slice completion remain separate.
