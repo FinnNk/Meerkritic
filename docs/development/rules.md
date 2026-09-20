@@ -47,6 +47,12 @@ When revising:
   remain available for correction; identical decision retries return the original.
 - Reopen an answered or deferred rule review before another decision.
 
+![A candidate rule shows its pending review state, scope, applicability, violation and ownership-transfer exclusion.](../images/rule-definition.png)
+
+Read the rule's conditions and exclusions together. **Stage decisions, defer or reopen**
+opens the review workspace. This [fixture candidate](../images/README.md) was manually
+prepared and has no human research decision.
+
 ## Inspect failures and usage
 
 | Condition | Next action |

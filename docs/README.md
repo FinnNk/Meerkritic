@@ -32,6 +32,7 @@ how to use the code in this checkout. The [glossary](../CONTEXT.md) explains pro
   and [test guide](../tests/README.md).
 - [Writing documentation](development/documentation-style.md),
   [Python style](development/python-style.md) and [code comments](development/code-comments.md).
+- [Screenshot capture notes and demonstration setup](images/README.md).
 - [Routing reference](development/routing.md) and
   [interpretation contract](development/normalisation-contract.md).
 - [Milestone review method](development/milestone-review.md).

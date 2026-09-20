@@ -14,6 +14,11 @@ Start with candidates in the [rule registry](rules.md).
 4. Open the saved draft and inspect its target versions and actions.
 5. Choose **Apply this saved batch**. All its decisions and events are saved together.
 
+![A saved review draft retains a Defer choice and rationale, with separate Save draft only and Apply this saved batch buttons.](../images/saved-review-draft.png)
+
+The [demonstration draft](../images/README.md) is saved, but the rule is still pending.
+Saving and applying are separate actions.
+
 If any rule or its evidence changed after you prepared the draft, **none of the
 batch is applied**. The page identifies the conflicting version and preserves the
 draft. Inspect that rule before correcting the target revision or action and saving
@@ -51,6 +56,11 @@ there after a revision. Posting it does not invoke a model or apply a decision.
 4. Enter one instruction describing the advice you want, then submit.
 5. Inspect the saved request and wait for the worker's response. Later messages or
    rule revisions do not enter the request you already sent.
+
+![Guidance form with a rule and one discussion message checked, above Submit this guidance batch.](../images/guidance-selection.png)
+
+Select both the target rule and the messages to send. This
+[demonstration](../images/README.md) is filled in but has not been submitted.
 
 The [discovery worker](discovery.md#start-the-worker) supports guidance. To run only
 normalisation and guidance, start the generation server and use this command from

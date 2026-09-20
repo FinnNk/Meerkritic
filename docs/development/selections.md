@@ -43,6 +43,11 @@ server or worker is needed for these commands.
 
 ## Understand inclusion and exclusion
 
+![A saved fixture selection shows two included records, one excluded record, Queue embeddings and a link to an original annotation.](../images/frozen-selection.png)
+
+Check the included/excluded totals and follow **Original job and decision** to inspect
+an input. This [synthetic selection](../images/README.md) is explicitly labelled Fixture.
+
 | Input | Treatment |
 | --- | --- |
 | Accepted annotation | Include the original model interpretation. |

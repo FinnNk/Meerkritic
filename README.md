@@ -16,6 +16,11 @@ Its design centres on three ideas:
 - **Human judgement.** Make interpretations available for review and correction,
   and evaluate proposed fixes against the code and its tests.
 
+![A review comment beside the code it discusses, with a Normalise button below.](docs/images/source-browser.png)
+
+Browse comments alongside their code, then request an interpretation. This screenshot
+uses a [synthetic demonstration](docs/images/README.md), not the public sample below.
+
 ## Browse the sample
 
 You need **Python 3.12** and **uv**. Run commands from the repository root.

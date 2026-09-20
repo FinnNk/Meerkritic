@@ -29,6 +29,11 @@ outside every Git worktree; the same directory must be used by the server and wo
 Importing runs in the command-line process, outside web requests. Browsing queries
 Parquet through DuckDB and verifies its checksum first.
 
+![The source browser places Review comment and Code context side by side, above the Normalise button.](../images/source-browser.png)
+
+The source browser keeps a comment beside its code. This
+[synthetic demonstration](../images/README.md) has four records; the public sample has 1,030.
+
 ## Understand the sample
 
 | Property | Value or interpretation |
