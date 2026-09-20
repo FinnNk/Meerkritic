@@ -1,0 +1,741 @@
+{
+  "valid": true,
+  "pair_id": "vs1-architecture-review",
+  "round_id": "r1",
+  "manifest_sha256": "44de5d3d6430abf8767a979910f0e66d55835c3955705db4ef8ea828aa9da1c4",
+  "scope": "archive_identity_and_equivalence_only",
+  "current_checkout": {
+    "repository": "$WORKSPACE\\extras\\der-checkouts\\vs1-architecture-review-archive",
+    "bare": false,
+    "head": "45c29fcfea43c99026a9ae54051df61d905e30fc",
+    "branch": "change/vs1-architecture-review-diary",
+    "clean": false,
+    "changes": [
+      {
+        "xy": "D ",
+        "path": ".agents/skills/double-entry-review/LICENSE"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/double-entry-review/SKILL.md"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/double-entry-review/agents/openai.yaml"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/double-entry-review/assets/handoff.md"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/double-entry-review/assets/integration-record.md"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/double-entry-review/assets/materiality-assessment.md"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/double-entry-review/assets/proposition.md"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/double-entry-review/assets/repository-profile.example.json"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/double-entry-review/assets/review-report.md"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/double-entry-review/assets/schemas/event-input.schema.json"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/double-entry-review/assets/schemas/event.schema.json"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/double-entry-review/assets/schemas/review.schema.json"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/double-entry-review/assets/schemas/round.schema.json"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/double-entry-review/references/boundary-design.md"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/double-entry-review/references/guidance/boundaries.md"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/double-entry-review/references/guidance/context.md"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/double-entry-review/references/guidance/design.md"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/double-entry-review/references/guidance/structure.md"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/double-entry-review/references/guidance/writing.md"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/double-entry-review/references/helper-usage.md"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/double-entry-review/references/host-integration.md"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/double-entry-review/references/host-operations.md"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/double-entry-review/references/integration.md"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/double-entry-review/references/materiality.md"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/double-entry-review/references/reconstruction.md"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/double-entry-review/references/review-rounds.md"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/double-entry-review/references/reviewing.md"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/double-entry-review/references/setup-and-diary.md"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/double-entry-review/references/sources.md"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/double-entry-review/references/state-and-evidence.md"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/double-entry-review/references/test-evidence.md"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/double-entry-review/references/verification.md"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/double-entry-review/scripts/der.py"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/software-design-clarity/LICENSE"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/software-design-clarity/README.md"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/software-design-clarity/SKILL.md"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/software-design-clarity/references/bibliography.md"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/software-design-clarity/references/design-smells.md"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/software-design-clarity/references/examples.md"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/software-design-clarity/references/principles.md"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/software-design-clarity/references/review-questions.md"
+      },
+      {
+        "xy": "D ",
+        "path": ".agents/skills/software-design-clarity/templates/design-review.md"
+      },
+      {
+        "xy": "D ",
+        "path": ".env.example"
+      },
+      {
+        "xy": "D ",
+        "path": ".gitattributes"
+      },
+      {
+        "xy": "D ",
+        "path": ".gitignore"
+      },
+      {
+        "xy": "D ",
+        "path": ".python-version"
+      },
+      {
+        "xy": "D ",
+        "path": "AGENTS.md"
+      },
+      {
+        "xy": "D ",
+        "path": "CONTEXT.md"
+      },
+      {
+        "xy": "D ",
+        "path": "IMPLEMENTATION_BACKLOG.yaml"
+      },
+      {
+        "xy": "D ",
+        "path": "README.md"
+      },
+      {
+        "xy": "D ",
+        "path": "config/README.md"
+      },
+      {
+        "xy": "D ",
+        "path": "config/datasets/crc-py-manual.json"
+      },
+      {
+        "xy": "D ",
+        "path": "config/routing/example.json"
+      },
+      {
+        "xy": "D ",
+        "path": "config/routing/llama-local.json"
+      },
+      {
+        "xy": "D ",
+        "path": "config/routing/task-example.json"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/adr/ADR-0001-record-significant-empirical-decisions.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/adr/ADR-0002-preserve-source-record-identity.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/adr/ADR-0003-document-caller-contracts-and-intent.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/adr/ADR-0004-adopt-selective-python-style.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/adr/ADR-0005-retain-immutable-routing-provenance.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/adr/ADR-0006-recover-jobs-under-process-lock.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/adr/ADR-0007-review-architecture-after-milestones.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/adr/ADR-0008-own-artefact-publication-metadata.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/adr/README.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/adr/template.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/architecture/README.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/development/README.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/development/annotations.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/development/app-bot-feedback.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/development/code-comments.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/development/datasets.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/development/local-inference.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/development/milestone-review-template.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/development/milestone-review.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/development/normalisation-contract.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/development/normalisation.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/development/operational-evidence.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/development/python-style.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/development/routing-operations.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/development/routing.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/development/structure.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/development/vs1-verification.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/edr/README.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/edr/template.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/research/CODING_AGENT_INITIAL_HANDOVER_PROMPT_V3_DER.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/research/README.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/research/research-pack/01_SYSTEM_DESIGN.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/research/research-pack/02_EXPERIMENTAL_PLAN.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/research/research-pack/03_LOCAL_DATASET_STORAGE.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/research/research-pack/04_COST_MODEL_AND_BUDGET_SCENARIOS.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/research/research-pack/05_PROJECT_HARNESS_PLAN.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/research/research-pack/06_IMPLEMENTATION_HANDOVER.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/research/research-pack/07_SOFTWARE_DESIGN_CLARITY_SKILL.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/research/research-pack/08_AGENTIC_SOFTWARE_FACTORY_FRAMING.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/research/research-pack/09_MODEL_ROUTING_POLICY.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/research/research-pack/10_MODEL_ROUTING_SUBSYSTEM_DESIGN.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/research/research-pack/11_DOUBLE_ENTRY_REVIEW_INTEGRATION.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/research/research-pack/CONTEXT.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/research/research-pack/IMPLEMENTATION_BACKLOG.yaml"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/research/research-pack/MODEL_ROUTING_POLICY.yaml"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/research/research-pack/README.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/research/research-pack/SLICE_REVIEW_TEMPLATE.yaml"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/slice-reviews/README.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/slice-reviews/SLICE_REVIEW_TEMPLATE.yaml"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/slice-reviews/VS1-milestone-architecture-review.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/slice-reviews/VS1-progress.md"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/source-manifest.json"
+      },
+      {
+        "xy": "D ",
+        "path": "docs/sources.md"
+      },
+      {
+        "xy": "D ",
+        "path": "double-entry-review.profile.example.json"
+      },
+      {
+        "xy": "D ",
+        "path": "pyproject.toml"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/__init__.py"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/adapters/__init__.py"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/adapters/annotations.py"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/adapters/jobs.py"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/adapters/llama.py"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/adapters/maf.py"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/adapters/migrations/001_registry.sql"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/adapters/migrations/002_routing.sql"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/adapters/migrations/003_jobs.sql"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/adapters/migrations/004_annotations.sql"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/adapters/migrations/005_artefacts.sql"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/adapters/migrations/006_review_references.sql"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/adapters/migrations/007_job_completion.sql"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/adapters/observations.py"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/adapters/registry.py"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/adapters/results.py"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/adapters/reviews.py"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/adapters/routing_journal.py"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/adapters/state.py"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/adapters/worker_lock.py"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/application/__init__.py"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/application/annotations.py"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/application/artefacts.py"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/application/datasets.py"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/application/jobs.py"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/application/model.py"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/application/normalisation.py"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/application/reviews.py"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/application/routing.py"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/asgi.py"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/bootstrap.py"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/domain/__init__.py"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/domain/datasets.py"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/domain/normalisation.py"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/routing/__init__.py"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/routing/continuity.py"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/routing/selection.py"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/routing/usage.py"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/web/__init__.py"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/web/app.py"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/web/templates/base.html"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/web/templates/index.html"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/web/templates/job.html"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/web/templates/jobs.html"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/web/templates/observations.html"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/web/templates/progress.html"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/web/templates/reviews.html"
+      },
+      {
+        "xy": "D ",
+        "path": "src/semantic_reviewer/worker.py"
+      },
+      {
+        "xy": "D ",
+        "path": "tach.toml"
+      },
+      {
+        "xy": "D ",
+        "path": "tests/README.md"
+      },
+      {
+        "xy": "D ",
+        "path": "tests/test_annotation_web.py"
+      },
+      {
+        "xy": "D ",
+        "path": "tests/test_annotations.py"
+      },
+      {
+        "xy": "D ",
+        "path": "tests/test_architecture_contracts.py"
+      },
+      {
+        "xy": "D ",
+        "path": "tests/test_architecture_snapshot.py"
+      },
+      {
+        "xy": "D ",
+        "path": "tests/test_artefacts.py"
+      },
+      {
+        "xy": "D ",
+        "path": "tests/test_datasets.py"
+      },
+      {
+        "xy": "D ",
+        "path": "tests/test_job_web.py"
+      },
+      {
+        "xy": "D ",
+        "path": "tests/test_jobs.py"
+      },
+      {
+        "xy": "D ",
+        "path": "tests/test_llama.py"
+      },
+      {
+        "xy": "D ",
+        "path": "tests/test_normalisation.py"
+      },
+      {
+        "xy": "D ",
+        "path": "tests/test_review_references.py"
+      },
+      {
+        "xy": "D ",
+        "path": "tests/test_routing_continuity.py"
+      },
+      {
+        "xy": "D ",
+        "path": "tests/test_routing_journal.py"
+      },
+      {
+        "xy": "D ",
+        "path": "tests/test_routing_selection.py"
+      },
+      {
+        "xy": "D ",
+        "path": "tests/test_routing_usage.py"
+      },
+      {
+        "xy": "D ",
+        "path": "tests/test_vs1_path.py"
+      },
+      {
+        "xy": "D ",
+        "path": "tools/architecture.py"
+      },
+      {
+        "xy": "D ",
+        "path": "tools/check.py"
+      },
+      {
+        "xy": "D ",
+        "path": "tools/route.py"
+      },
+      {
+        "xy": "D ",
+        "path": "tools/run.py"
+      },
+      {
+        "xy": "D ",
+        "path": "uv.lock"
+      }
+    ],
+    "tree": "c98dffccb65429bae5fc217ead6462ccf49da8e7"
+  }
+}

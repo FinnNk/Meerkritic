@@ -1,0 +1,74 @@
+{
+  "base": "0bf957bcb0ae47e2c525f5f652830c06d5b8b9c9",
+  "diary": "cdb5c2200a433d6588cf528fce2a54f0e9f845b2",
+  "semantic": "f353cfed1299608234f21e7159c6b0331e5b0660",
+  "new_checks": [
+    {
+      "record": "r2-diary-checks.json",
+      "revision": "cdb5c2200a433d6588cf528fce2a54f0e9f845b2",
+      "tests": 102
+    },
+    {
+      "record": "r2-p10-checks.json",
+      "revision": "3957515c328d401ae333db3599a9617f1033d13f",
+      "tests": 102
+    },
+    {
+      "record": "r2-p11-checks.json",
+      "revision": "f353cfed1299608234f21e7159c6b0331e5b0660",
+      "tests": 102
+    }
+  ],
+  "unchanged_checkpoint_checks": [
+    {
+      "record": "r1-p1-checks.json",
+      "revision": "471445a226dedbecca9eee09b648c333c1c3f125",
+      "tests": 94
+    },
+    {
+      "record": "r1-b-p2-checks.json",
+      "revision": "fe4c4e23b4c653d2fb378f02acb4e86804b46d47",
+      "tests": 96
+    },
+    {
+      "record": "r1-b-p3-checks.json",
+      "revision": "2623af7321df9f4c4b1f73b61f4475d16b6595fc",
+      "tests": 97
+    },
+    {
+      "record": "r1-b-p4-checks.json",
+      "revision": "25a1c620f61944b86b777d804ec47d0ad9fe1ec9",
+      "tests": 100
+    },
+    {
+      "record": "r1-b-p5-checks.json",
+      "revision": "ef8344313652a64d51a8263a46fb55b0bcb15e76",
+      "tests": 101
+    },
+    {
+      "record": "r1-b-p6-checks.json",
+      "revision": "a2d6fd28374070ea5de30a382d17af91312f170b",
+      "tests": 102
+    },
+    {
+      "record": "r1-b-p7-checks.json",
+      "revision": "a1324da85d88957d59d4813887dbceebbea84220",
+      "tests": 102
+    },
+    {
+      "record": "r1-b-p8-checks.json",
+      "revision": "6ea678243c0a93760a0caa5073dc4028d5a07090",
+      "tests": 102
+    },
+    {
+      "record": "r1-b-p9-checks.json",
+      "revision": "036ff45827370f62d798b92ce10c9a52b6ed6330",
+      "tests": 102
+    }
+  ],
+  "carry_forward": "changes.md",
+  "documentation_checks": "42 local Markdown links resolve; six complete narratives inspected against implementation/test sources; discovery is distinguished from later regression checks.",
+  "runtime_changes": false,
+  "live_check": "Not rerun: source/tests/config/lock unchanged; r1 semantic-live remains evidence of that implementation.",
+  "required_hosted_contexts": []
+}

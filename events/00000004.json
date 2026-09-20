@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "sequence": 4,
+  "pair_id": "vs1-architecture-review",
+  "recorded_at": "2026-09-20T05:15:27+00:00",
+  "previous_hash": "8b117f72c8e91717927e40ae5ab349ac9f83e6c0c665782191bafc9adfc12eae",
+  "kind": "observation",
+  "round_id": "r2",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "vs1-architecture-review-2026-09-20"
+  },
+  "payload": {
+    "stage": "locally_prepared",
+    "base": "0bf957bcb0ae47e2c525f5f652830c06d5b8b9c9",
+    "diary": "cdb5c2200a433d6588cf528fce2a54f0e9f845b2",
+    "semantic": "f353cfed1299608234f21e7159c6b0331e5b0660",
+    "commits": [
+      "471445a226dedbecca9eee09b648c333c1c3f125",
+      "fe4c4e23b4c653d2fb378f02acb4e86804b46d47",
+      "2623af7321df9f4c4b1f73b61f4475d16b6595fc",
+      "25a1c620f61944b86b777d804ec47d0ad9fe1ec9",
+      "ef8344313652a64d51a8263a46fb55b0bcb15e76",
+      "a2d6fd28374070ea5de30a382d17af91312f170b",
+      "a1324da85d88957d59d4813887dbceebbea84220",
+      "6ea678243c0a93760a0caa5073dc4028d5a07090",
+      "036ff45827370f62d798b92ce10c9a52b6ed6330",
+      "3957515c328d401ae333db3599a9617f1033d13f",
+      "f353cfed1299608234f21e7159c6b0331e5b0660"
+    ],
+    "checks": "verification-summary.json",
+    "review": "review.json",
+    "scope": "Two prose-only propositions; original nine SHAs unchanged"
+  },
+  "event_hash": "762f1797dcd8ce2debad56df8579f3296f3949b1ef9ef4dbd9e254fccde3c5c4"
+}

@@ -1,0 +1,31 @@
+{
+  "label": "r1-p2",
+  "revision": "52f8caca0d6adf34fc437931d9fb35305e77beb1",
+  "checkout": "$WORKSPACE\\extras\\der-checkouts\\vs1-architecture-review-r1-p2",
+  "started_at": "2026-09-20T04:54:36.771228+00:00",
+  "commands": [
+    {
+      "argv": [
+        "uv",
+        "sync",
+        "--locked",
+        "--offline",
+        "--python",
+        "$USER_HOME/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "tools/check.py"
+      ],
+      "exit_code": 1
+    }
+  ],
+  "required_context": "Windows/Python 3.12/locked checkpoint environment",
+  "status": "failed"
+}

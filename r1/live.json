@@ -1,0 +1,74 @@
+{
+  "source_revision": "4176ac0013136ae3c8283fcdaf087d27159050cf",
+  "source_sha256": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83",
+  "source_checkout": "$WORKSPACE\\extras\\der-checkouts\\vs1-architecture-review",
+  "runtime": "$WORKSPACE\\extras\\preflight\\vs1-architecture-review\\runtime",
+  "jobs": [
+    {
+      "job": {
+        "id": "939c9232-e95b-4e58-9409-87970a4f3649",
+        "dataset_id": "crc-py-manual-4176ac0",
+        "source_index": 0,
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:0",
+        "status": "succeeded",
+        "queued_at": "2026-09-20T04:48:02.591145+00:00",
+        "started_at": "2026-09-20T04:48:03.288902+00:00",
+        "heartbeat_at": "2026-09-20T04:48:03.288902+00:00",
+        "completed_at": "2026-09-20T04:48:05.975374+00:00",
+        "worker_id": "5a1f5105-b6e8-42c5-89a0-2840fd03168e",
+        "decision_id": "63567475-a5a1-4a83-b65e-84419a500d08",
+        "artefact_sha256": "348d342de314b42c0b8faa1cfcd0c711ad03b819decea55f05878508d9dbcecf",
+        "error": null
+      },
+      "usage": {
+        "currency": null,
+        "decision_id": "63567475-a5a1-4a83-b65e-84419a500d08",
+        "estimated_cost": "0",
+        "id": "490923a6-5fee-419a-b386-82a5201040f0",
+        "measurement": {
+          "completed_at": "2026-09-20T04:48:05.955061Z",
+          "generation_ms": 2268.718,
+          "outcome": "success",
+          "provider_currency": null,
+          "provider_reported_cost": null,
+          "queue_ms": 763.2280000000001,
+          "started_at": "2026-09-20T04:48:02.591145Z",
+          "time_to_first_token_ms": 329.00000002700835,
+          "tokens": {
+            "cached_input_tokens": 0,
+            "input_tokens": 223,
+            "output_tokens": 211,
+            "reasoning_tokens": null
+          }
+        },
+        "price_catalogue": null,
+        "spend_basis": "local"
+      },
+      "framework": {
+        "activity": "source preparation -> inference -> evidence validation",
+        "component": "WorkflowBuilder/executors",
+        "framework": "Microsoft Agent Framework",
+        "mitigation": "none",
+        "observation": "Three-step graph returned a typed outcome.",
+        "outcome": "completed",
+        "reproducibility": "Repeat with the retained prompt, source and runtime versions.",
+        "severity": "info",
+        "version": "1.19.0"
+      }
+    }
+  ],
+  "purpose": "Compatibility only; automated functional decisions, not owner research judgements.",
+  "server_health": {
+    "status": "ok"
+  },
+  "indexed": 2,
+  "upgrade_preserved_rows": {
+    "dataset": 1,
+    "job": 5,
+    "annotation": 3,
+    "event": 31,
+    "artefact": 24
+  },
+  "prompt_control_boundary": "Task prompt clean; Qwen control retained in versioned provider request",
+  "status": "passed"
+}

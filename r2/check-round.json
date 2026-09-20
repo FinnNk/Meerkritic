@@ -1,0 +1,16 @@
+{
+  "valid": true,
+  "pair_id": "vs1-architecture-review",
+  "round_id": "r2",
+  "manifest_sha256": "ca5a11338c6a799ba10c437fdbbb23c168d7dbc09be5180e198fd5c2b920285a",
+  "scope": "archive_identity_and_equivalence_only",
+  "current_checkout": {
+    "repository": "$WORKSPACE\\extras\\der-checkouts\\vs1-architecture-review-archive",
+    "bare": false,
+    "head": "45c29fcfea43c99026a9ae54051df61d905e30fc",
+    "branch": "change/vs1-architecture-review-diary",
+    "clean": true,
+    "changes": [],
+    "tree": "c98dffccb65429bae5fc217ead6462ccf49da8e7"
+  }
+}

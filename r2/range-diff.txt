@@ -1,0 +1,11 @@
+1:  471445a =  1:  471445a docs: define milestone architecture and contract reviews
+ 2:  fe4c4e2 =  2:  fe4c4e2 fix: reject contradictory normalisation completions
+ 3:  2623af7 =  3:  2623af7 refactor: make artefact metadata and maintenance explicit
+ 4:  25a1c62 =  4:  25a1c62 refactor: own source lookup and exclusive worker execution
+ 5:  ef83443 =  5:  ef83443 refactor: isolate model controls from task context
+ 6:  a2d6fd2 =  6:  a2d6fd2 feat: expose public contracts in architecture snapshots
+ 7:  a1324da =  7:  a1324da docs: complete existing public operation contracts
+ 8:  6ea6782 =  8:  6ea6782 docs: reconcile maintained guidance with delivered VS1
+ 9:  036ff45 =  9:  036ff45 docs: record VS1 milestone findings and confirmations
+ -:  ------- > 10:  3957515 docs: require finding discovery and prevention records
+ -:  ------- > 11:  f353cfe docs: trace six VS1 findings to earlier review practices

@@ -1,0 +1,7 @@
+{
+  "manifest": "$WORKSPACE\\extras\\der-evidence\\pairs\\vs1-architecture-review\\rounds\\r2\\manifest.json",
+  "manifest_sha256": "ca5a11338c6a799ba10c437fdbbb23c168d7dbc09be5180e198fd5c2b920285a",
+  "stage": "archived_candidate",
+  "bundle_sha256": "4ba582a7320e56672b88b2edefb6c08922a4012d0617fef281085cb8351aedd0",
+  "note": "Local archive only; behavioural verification, durable replication and approval are separate."
+}

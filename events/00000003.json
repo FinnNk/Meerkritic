@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "sequence": 3,
+  "pair_id": "vs1-architecture-review",
+  "recorded_at": "2026-09-20T05:07:32+00:00",
+  "previous_hash": "515bfcc1ac8745b7b01620392c2f19ba97eedccd31e26e1b03af87f77af197cc",
+  "kind": "observation",
+  "round_id": "r1",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "vs1-architecture-review-2026-09-20"
+  },
+  "payload": {
+    "observed_at": "2026-09-20T05:07:31.758952+00:00",
+    "pr": "https://github.com/FinnNk/Meerkritic/pull/9",
+    "author": "app/meerkritic-agent",
+    "base": "0bf957bcb0ae47e2c525f5f652830c06d5b8b9c9",
+    "head": "036ff45827370f62d798b92ce10c9a52b6ed6330",
+    "archive": "7bb47916f158bdfe9d204fdfe3fdeaae27f10d19",
+    "platform_approval": false,
+    "integrated": false,
+    "stage": "owner_review_ready",
+    "required_hosted_contexts": [],
+    "hosted_qualification": "Complete empty required context set; no hosted CI run claimed",
+    "local_verification": "All nine exact checkpoints and frozen diary passed; live exact-tip check passed",
+    "review": "Full author self-review; no unresolved findings",
+    "merge_state": "BLOCKED pending owner review/protected merge gate"
+  },
+  "event_hash": "8b117f72c8e91717927e40ae5ab349ac9f83e6c0c665782191bafc9adfc12eae"
+}

@@ -1,0 +1,513 @@
+{
+  "changes": {
+    "boundaries": {
+      "added": [],
+      "removed": []
+    },
+    "contracts": {
+      "added": [],
+      "removed": []
+    },
+    "imports": {
+      "added": [
+        {
+          "source": "semantic_reviewer.adapters.jobs",
+          "target": "re"
+        },
+        {
+          "source": "semantic_reviewer.adapters.jobs",
+          "target": "semantic_reviewer.application.artefacts"
+        },
+        {
+          "source": "semantic_reviewer.adapters.results",
+          "target": "semantic_reviewer.application.artefacts"
+        },
+        {
+          "source": "semantic_reviewer.application.annotations",
+          "target": "semantic_reviewer.application.artefacts"
+        },
+        {
+          "source": "semantic_reviewer.application.annotations",
+          "target": "semantic_reviewer.application.datasets"
+        },
+        {
+          "source": "semantic_reviewer.application.artefacts",
+          "target": "dataclasses"
+        },
+        {
+          "source": "semantic_reviewer.application.artefacts",
+          "target": "typing"
+        },
+        {
+          "source": "semantic_reviewer.application.jobs",
+          "target": "collections.abc"
+        },
+        {
+          "source": "semantic_reviewer.application.jobs",
+          "target": "contextlib"
+        },
+        {
+          "source": "semantic_reviewer.application.jobs",
+          "target": "semantic_reviewer.application.artefacts"
+        },
+        {
+          "source": "semantic_reviewer.application.jobs",
+          "target": "time"
+        },
+        {
+          "source": "semantic_reviewer.asgi",
+          "target": "fastapi"
+        },
+        {
+          "source": "semantic_reviewer.bootstrap",
+          "target": "functools"
+        },
+        {
+          "source": "semantic_reviewer.bootstrap",
+          "target": "semantic_reviewer.application.artefacts"
+        }
+      ],
+      "removed": [
+        {
+          "source": "semantic_reviewer.worker",
+          "target": "time"
+        },
+        {
+          "source": "semantic_reviewer.worker",
+          "target": "uuid"
+        }
+      ]
+    },
+    "interfaces": {
+      "added": [
+        {
+          "declaration": "accept: int",
+          "kind": "field",
+          "name": "semantic_reviewer.application.annotations.AnnotationProgress.accept"
+        },
+        {
+          "declaration": "class AnnotationProgress(TypedDict)",
+          "kind": "class",
+          "name": "semantic_reviewer.application.annotations.AnnotationProgress"
+        },
+        {
+          "declaration": "class ArtefactIndex(Protocol)",
+          "kind": "class",
+          "name": "semantic_reviewer.application.artefacts.ArtefactIndex"
+        },
+        {
+          "declaration": "class ArtefactMetadata(TypedDict)",
+          "kind": "class",
+          "name": "semantic_reviewer.application.artefacts.ArtefactMetadata"
+        },
+        {
+          "declaration": "class JobReader(Protocol)",
+          "kind": "class",
+          "name": "semantic_reviewer.application.annotations.JobReader"
+        },
+        {
+          "declaration": "class Publication()",
+          "kind": "class",
+          "name": "semantic_reviewer.application.artefacts.Publication"
+        },
+        {
+          "declaration": "class ResultStore(Protocol)",
+          "kind": "class",
+          "name": "semantic_reviewer.application.artefacts.ResultStore"
+        },
+        {
+          "declaration": "class Worker()",
+          "kind": "class",
+          "name": "semantic_reviewer.application.jobs.Worker"
+        },
+        {
+          "declaration": "created_at: str",
+          "kind": "field",
+          "name": "semantic_reviewer.application.artefacts.ArtefactMetadata.created_at"
+        },
+        {
+          "declaration": "def __init__(self, jobs: JobReader, store: AnnotationStore, datasets: DatasetService, results: ResultStore) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.annotations.AnnotationService.__init__"
+        },
+        {
+          "declaration": "def __init__(self, jobs: JobService, routing: RoutingService, workflow: WorkflowRunner, lock: Callable[[], AbstractContextManager[None]]) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.jobs.Worker.__init__"
+        },
+        {
+          "declaration": "def __init__(self, root: Path, database: Path) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.results.JsonResults.__init__"
+        },
+        {
+          "declaration": "def build_annotations(data_root: Path, jobs: JobService) -> AnnotationService",
+          "kind": "callable",
+          "name": "semantic_reviewer.bootstrap.build_annotations"
+        },
+        {
+          "declaration": "def build_app(data_root: Path) -> FastAPI",
+          "kind": "callable",
+          "name": "semantic_reviewer.asgi.build_app"
+        },
+        {
+          "declaration": "def build_artefact_index(data_root: Path) -> ArtefactIndex",
+          "kind": "callable",
+          "name": "semantic_reviewer.bootstrap.build_artefact_index"
+        },
+        {
+          "declaration": "def build_worker(data_root: Path, routing_file: Path, endpoint: str) -> Worker",
+          "kind": "callable",
+          "name": "semantic_reviewer.bootstrap.build_worker"
+        },
+        {
+          "declaration": "def get(self, dataset: Dataset, source_index: int) -> Observation",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.observations.ParquetObservations.get"
+        },
+        {
+          "declaration": "def get(self, dataset: Dataset, source_index: int) -> Observation",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.datasets.ObservationStore.get"
+        },
+        {
+          "declaration": "def index_referenced(self) -> int",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.artefacts.ArtefactIndex.index_referenced"
+        },
+        {
+          "declaration": "def inspect(self, job_id: str) -> tuple[Job, dict[str, object] | None]",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.annotations.JobReader.inspect"
+        },
+        {
+          "declaration": "def inspect(self, job_id: str) -> tuple[Job, dict[str, object] | None]",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.jobs.JobService.inspect"
+        },
+        {
+          "declaration": "def log(self, job_id: str) -> ArtefactMetadata",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.jobs.SQLiteJobs.log"
+        },
+        {
+          "declaration": "def log(self, job_id: str) -> ArtefactMetadata",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.jobs.JobStore.log"
+        },
+        {
+          "declaration": "def observation(self, dataset_id: str, source_index: int) -> tuple[Dataset, Observation]",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.datasets.DatasetService.observation"
+        },
+        {
+          "declaration": "def progress(self, dataset_id: str) -> AnnotationProgress",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.annotations.SQLiteAnnotations.progress"
+        },
+        {
+          "declaration": "def progress(self, dataset_id: str) -> AnnotationProgress",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.annotations.AnnotationStore.progress"
+        },
+        {
+          "declaration": "def publish(self, value: dict[str, object], publication: Publication) -> str",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.results.JsonResults.publish"
+        },
+        {
+          "declaration": "def publish(self, value: dict[str, object], publication: Publication) -> str",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.artefacts.ResultStore.publish"
+        },
+        {
+          "declaration": "def read(self, digest: str) -> dict[str, object]",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.results.JsonResults.read"
+        },
+        {
+          "declaration": "def read(self, digest: str) -> dict[str, object]",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.artefacts.ResultStore.read"
+        },
+        {
+          "declaration": "def review(self, job_id: str) -> tuple[Annotation | None, dict[str, object] | None]",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.annotations.AnnotationService.review"
+        },
+        {
+          "declaration": "def run(self, *, once: bool=False) -> int",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.jobs.Worker.run"
+        },
+        {
+          "declaration": "edit: int",
+          "kind": "field",
+          "name": "semantic_reviewer.application.annotations.AnnotationProgress.edit"
+        },
+        {
+          "declaration": "failed: int",
+          "kind": "field",
+          "name": "semantic_reviewer.application.annotations.AnnotationProgress.failed"
+        },
+        {
+          "declaration": "job_id: str",
+          "kind": "field",
+          "name": "semantic_reviewer.application.artefacts.ArtefactMetadata.job_id"
+        },
+        {
+          "declaration": "job_id: str",
+          "kind": "field",
+          "name": "semantic_reviewer.application.artefacts.Publication.job_id"
+        },
+        {
+          "declaration": "kind: ArtefactKind",
+          "kind": "field",
+          "name": "semantic_reviewer.application.artefacts.Publication.kind"
+        },
+        {
+          "declaration": "path: str",
+          "kind": "field",
+          "name": "semantic_reviewer.application.artefacts.ArtefactMetadata.path"
+        },
+        {
+          "declaration": "queued: int",
+          "kind": "field",
+          "name": "semantic_reviewer.application.annotations.AnnotationProgress.queued"
+        },
+        {
+          "declaration": "reject: int",
+          "kind": "field",
+          "name": "semantic_reviewer.application.annotations.AnnotationProgress.reject"
+        },
+        {
+          "declaration": "reviewed_results: int",
+          "kind": "field",
+          "name": "semantic_reviewer.application.annotations.AnnotationProgress.reviewed_results"
+        },
+        {
+          "declaration": "reviewed_sources: int",
+          "kind": "field",
+          "name": "semantic_reviewer.application.annotations.AnnotationProgress.reviewed_sources"
+        },
+        {
+          "declaration": "running: int",
+          "kind": "field",
+          "name": "semantic_reviewer.application.annotations.AnnotationProgress.running"
+        },
+        {
+          "declaration": "sha256: str",
+          "kind": "field",
+          "name": "semantic_reviewer.application.artefacts.ArtefactMetadata.sha256"
+        },
+        {
+          "declaration": "size: int",
+          "kind": "field",
+          "name": "semantic_reviewer.application.artefacts.ArtefactMetadata.size"
+        },
+        {
+          "declaration": "source_total: int",
+          "kind": "field",
+          "name": "semantic_reviewer.application.annotations.AnnotationProgress.source_total"
+        },
+        {
+          "declaration": "status: Literal['queued', 'running', 'succeeded', 'failed']",
+          "kind": "field",
+          "name": "semantic_reviewer.application.jobs.Job.status"
+        },
+        {
+          "declaration": "successful_results: int",
+          "kind": "field",
+          "name": "semantic_reviewer.application.annotations.AnnotationProgress.successful_results"
+        },
+        {
+          "declaration": "type: ArtefactKind",
+          "kind": "field",
+          "name": "semantic_reviewer.application.artefacts.ArtefactMetadata.type"
+        }
+      ],
+      "removed": [
+        {
+          "declaration": "class ResultStore(Protocol)",
+          "kind": "class",
+          "name": "semantic_reviewer.application.jobs.ResultStore"
+        },
+        {
+          "declaration": "def __init__(self, jobs: JobService, store: AnnotationStore) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.annotations.AnnotationService.__init__"
+        },
+        {
+          "declaration": "def __init__(self, root: Path, database: Path | None=None) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.results.JsonResults.__init__"
+        },
+        {
+          "declaration": "def build_annotations(data_root: Path) -> AnnotationService",
+          "kind": "callable",
+          "name": "semantic_reviewer.bootstrap.build_annotations"
+        },
+        {
+          "declaration": "def build_app(data_root: Path)",
+          "kind": "callable",
+          "name": "semantic_reviewer.asgi.build_app"
+        },
+        {
+          "declaration": "def build_worker(data_root: Path, routing_file: Path, endpoint: str)",
+          "kind": "callable",
+          "name": "semantic_reviewer.bootstrap.build_worker"
+        },
+        {
+          "declaration": "def inspect(self, job_id: str) -> tuple[Job, dict | None]",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.jobs.JobService.inspect"
+        },
+        {
+          "declaration": "def log(self, job_id: str) -> dict",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.jobs.SQLiteJobs.log"
+        },
+        {
+          "declaration": "def log(self, job_id: str) -> dict",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.jobs.JobStore.log"
+        },
+        {
+          "declaration": "def progress(self, dataset_id: str) -> dict",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.annotations.SQLiteAnnotations.progress"
+        },
+        {
+          "declaration": "def progress(self, dataset_id: str) -> dict",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.annotations.AnnotationStore.progress"
+        },
+        {
+          "declaration": "def publish(self, value: dict) -> str",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.results.JsonResults.publish"
+        },
+        {
+          "declaration": "def publish(self, value: dict) -> str",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.jobs.ResultStore.publish"
+        },
+        {
+          "declaration": "def read(self, digest: str) -> dict",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.results.JsonResults.read"
+        },
+        {
+          "declaration": "def read(self, digest: str) -> dict",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.jobs.ResultStore.read"
+        },
+        {
+          "declaration": "def review(self, job_id: str) -> tuple[Annotation | None, dict | None]",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.annotations.AnnotationService.review"
+        },
+        {
+          "declaration": "def run_once(self, routing: RoutingService, workflow: WorkflowRunner, worker_id: str) -> bool",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.jobs.JobService.run_once"
+        },
+        {
+          "declaration": "status: str",
+          "kind": "field",
+          "name": "semantic_reviewer.application.jobs.Job.status"
+        }
+      ]
+    },
+    "modules": {
+      "added": [
+        {
+          "definitions": [
+            "Annotation",
+            "AnnotationProgress",
+            "AnnotationService",
+            "AnnotationStore",
+            "JobReader"
+          ],
+          "name": "semantic_reviewer.application.annotations",
+          "package": false,
+          "path": "src/semantic_reviewer/application/annotations.py"
+        },
+        {
+          "definitions": [
+            "ArtefactIndex",
+            "ArtefactMetadata",
+            "Publication",
+            "ResultStore"
+          ],
+          "name": "semantic_reviewer.application.artefacts",
+          "package": false,
+          "path": "src/semantic_reviewer/application/artefacts.py"
+        },
+        {
+          "definitions": [
+            "Job",
+            "JobService",
+            "JobStore",
+            "Worker"
+          ],
+          "name": "semantic_reviewer.application.jobs",
+          "package": false,
+          "path": "src/semantic_reviewer/application/jobs.py"
+        },
+        {
+          "definitions": [
+            "build_annotations",
+            "build_artefact_index",
+            "build_datasets",
+            "build_jobs",
+            "build_review_index",
+            "build_worker",
+            "runtime_path"
+          ],
+          "name": "semantic_reviewer.bootstrap",
+          "package": false,
+          "path": "src/semantic_reviewer/bootstrap.py"
+        }
+      ],
+      "removed": [
+        {
+          "definitions": [
+            "Annotation",
+            "AnnotationService",
+            "AnnotationStore"
+          ],
+          "name": "semantic_reviewer.application.annotations",
+          "package": false,
+          "path": "src/semantic_reviewer/application/annotations.py"
+        },
+        {
+          "definitions": [
+            "Job",
+            "JobService",
+            "JobStore",
+            "ResultStore"
+          ],
+          "name": "semantic_reviewer.application.jobs",
+          "package": false,
+          "path": "src/semantic_reviewer/application/jobs.py"
+        },
+        {
+          "definitions": [
+            "build_annotations",
+            "build_datasets",
+            "build_jobs",
+            "build_review_index",
+            "build_worker",
+            "runtime_path"
+          ],
+          "name": "semantic_reviewer.bootstrap",
+          "package": false,
+          "path": "src/semantic_reviewer/bootstrap.py"
+        }
+      ]
+    },
+    "settings": {}
+  },
+  "schema_version": 2
+}

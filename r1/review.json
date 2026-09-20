@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "pair_id": "vs1-architecture-review",
+  "round_id": "r1",
+  "manifest_sha256": "44de5d3d6430abf8767a979910f0e66d55835c3955705db4ef8ea828aa9da1c4",
+  "semantic_tip": "036ff45827370f62d798b92ce10c9a52b6ed6330",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "vs1-architecture-review-2026-09-20"
+  },
+  "independence": "self-review",
+  "mode": "full",
+  "status": "complete",
+  "orientation_done": true,
+  "reviewed_commits": [
+    "471445a226dedbecca9eee09b648c333c1c3f125",
+    "fe4c4e23b4c653d2fb378f02acb4e86804b46d47",
+    "2623af7321df9f4c4b1f73b61f4475d16b6595fc",
+    "25a1c620f61944b86b777d804ec47d0ad9fe1ec9",
+    "ef8344313652a64d51a8263a46fb55b0bcb15e76",
+    "a2d6fd28374070ea5de30a382d17af91312f170b",
+    "a1324da85d88957d59d4813887dbceebbea84220",
+    "6ea678243c0a93760a0caa5073dc4028d5a07090",
+    "036ff45827370f62d798b92ce10c9a52b6ed6330"
+  ],
+  "aggregate_done": true,
+  "findings": [],
+  "check_records": [
+    "r1-diary-checks.json",
+    "r1-p1-checks.json",
+    "r1-b-p2-checks.json",
+    "r1-b-p3-checks.json",
+    "r1-b-p4-checks.json",
+    "r1-b-p5-checks.json",
+    "r1-b-p6-checks.json",
+    "r1-b-p7-checks.json",
+    "r1-b-p8-checks.json",
+    "r1-b-p9-checks.json",
+    "review-notes.md",
+    "verification-summary.json",
+    "semantic-live/live.json"
+  ],
+  "limitations": [
+    "Windows/Python 3.12 only",
+    "Self-review, not independent assurance",
+    "Local fixture compatibility, not comparative model quality",
+    "No owner approval or integration"
+  ],
+  "carry_forward_record": null,
+  "platform_approval": false
+}

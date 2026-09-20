@@ -1,0 +1,806 @@
+{
+  "base": "0bf957bcb0ae47e2c525f5f652830c06d5b8b9c9",
+  "tip": "036ff45827370f62d798b92ce10c9a52b6ed6330",
+  "tree": "c98dffccb65429bae5fc217ead6462ccf49da8e7",
+  "commits": [
+    {
+      "commit": "471445a226dedbecca9eee09b648c333c1c3f125",
+      "parents": [
+        "0bf957bcb0ae47e2c525f5f652830c06d5b8b9c9"
+      ],
+      "tree": "9d0a7011c4d734dcada6c492080f47308a3efcbc",
+      "subject": "docs: define milestone architecture and contract reviews",
+      "change": {
+        "files": [
+          {
+            "path": "AGENTS.md",
+            "added": 7,
+            "deleted": 0
+          },
+          {
+            "path": "docs/adr/ADR-0007-review-architecture-after-milestones.md",
+            "added": 57,
+            "deleted": 0
+          },
+          {
+            "path": "docs/adr/README.md",
+            "added": 1,
+            "deleted": 0
+          },
+          {
+            "path": "docs/development/README.md",
+            "added": 5,
+            "deleted": 0
+          },
+          {
+            "path": "docs/development/code-comments.md",
+            "added": 6,
+            "deleted": 0
+          },
+          {
+            "path": "docs/development/milestone-review-template.md",
+            "added": 31,
+            "deleted": 0
+          },
+          {
+            "path": "docs/development/milestone-review.md",
+            "added": 79,
+            "deleted": 0
+          },
+          {
+            "path": "docs/slice-reviews/SLICE_REVIEW_TEMPLATE.yaml",
+            "added": 6,
+            "deleted": 0
+          }
+        ],
+        "file_count": 8,
+        "added": 192,
+        "deleted": 0,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "fe4c4e23b4c653d2fb378f02acb4e86804b46d47",
+      "parents": [
+        "471445a226dedbecca9eee09b648c333c1c3f125"
+      ],
+      "tree": "b8dd81576d328f897833ef54a6a5270a6f8e7bf3",
+      "subject": "fix: reject contradictory normalisation completions",
+      "change": {
+        "files": [
+          {
+            "path": "docs/development/normalisation.md",
+            "added": 7,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/jobs.py",
+            "added": 12,
+            "deleted": 2
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/migrations/007_job_completion.sql",
+            "added": 16,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/application/jobs.py",
+            "added": 16,
+            "deleted": 3
+          },
+          {
+            "path": "src/semantic_reviewer/application/normalisation.py",
+            "added": 22,
+            "deleted": 1
+          },
+          {
+            "path": "tests/test_jobs.py",
+            "added": 26,
+            "deleted": 0
+          },
+          {
+            "path": "tests/test_normalisation.py",
+            "added": 18,
+            "deleted": 0
+          }
+        ],
+        "file_count": 7,
+        "added": 117,
+        "deleted": 6,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "2623af7321df9f4c4b1f73b61f4475d16b6595fc",
+      "parents": [
+        "fe4c4e23b4c653d2fb378f02acb4e86804b46d47"
+      ],
+      "tree": "579e3c1ced394ccbab0caabb00d3de8c5cb2656c",
+      "subject": "refactor: make artefact metadata and maintenance explicit",
+      "change": {
+        "files": [
+          {
+            "path": "docs/adr/ADR-0008-own-artefact-publication-metadata.md",
+            "added": 56,
+            "deleted": 0
+          },
+          {
+            "path": "docs/adr/README.md",
+            "added": 1,
+            "deleted": 0
+          },
+          {
+            "path": "docs/development/operational-evidence.md",
+            "added": 8,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/jobs.py",
+            "added": 6,
+            "deleted": 2
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/results.py",
+            "added": 46,
+            "deleted": 33
+          },
+          {
+            "path": "src/semantic_reviewer/application/annotations.py",
+            "added": 3,
+            "deleted": 1
+          },
+          {
+            "path": "src/semantic_reviewer/application/artefacts.py",
+            "added": 69,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/application/jobs.py",
+            "added": 3,
+            "deleted": 14
+          },
+          {
+            "path": "src/semantic_reviewer/bootstrap.py",
+            "added": 7,
+            "deleted": 0
+          },
+          {
+            "path": "tests/test_annotations.py",
+            "added": 4,
+            "deleted": 1
+          },
+          {
+            "path": "tests/test_artefacts.py",
+            "added": 32,
+            "deleted": 4
+          },
+          {
+            "path": "tests/test_job_web.py",
+            "added": 3,
+            "deleted": 1
+          },
+          {
+            "path": "tests/test_jobs.py",
+            "added": 9,
+            "deleted": 3
+          },
+          {
+            "path": "tools/run.py",
+            "added": 3,
+            "deleted": 1
+          }
+        ],
+        "file_count": 14,
+        "added": 250,
+        "deleted": 60,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "25a1c620f61944b86b777d804ec47d0ad9fe1ec9",
+      "parents": [
+        "2623af7321df9f4c4b1f73b61f4475d16b6595fc"
+      ],
+      "tree": "084db257a2a71c65c7466a8db670648998fc64b7",
+      "subject": "refactor: own source lookup and exclusive worker execution",
+      "change": {
+        "files": [
+          {
+            "path": "docs/development/annotations.md",
+            "added": 6,
+            "deleted": 0
+          },
+          {
+            "path": "docs/development/normalisation.md",
+            "added": 6,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/annotations.py",
+            "added": 2,
+            "deleted": 2
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/observations.py",
+            "added": 9,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/application/annotations.py",
+            "added": 58,
+            "deleted": 13
+          },
+          {
+            "path": "src/semantic_reviewer/application/datasets.py",
+            "added": 23,
+            "deleted": 1
+          },
+          {
+            "path": "src/semantic_reviewer/application/jobs.py",
+            "added": 54,
+            "deleted": 10
+          },
+          {
+            "path": "src/semantic_reviewer/asgi.py",
+            "added": 3,
+            "deleted": 3
+          },
+          {
+            "path": "src/semantic_reviewer/bootstrap.py",
+            "added": 14,
+            "deleted": 7
+          },
+          {
+            "path": "src/semantic_reviewer/worker.py",
+            "added": 5,
+            "deleted": 16
+          },
+          {
+            "path": "tests/test_annotations.py",
+            "added": 17,
+            "deleted": 2
+          },
+          {
+            "path": "tests/test_jobs.py",
+            "added": 49,
+            "deleted": 7
+          },
+          {
+            "path": "tests/test_vs1_path.py",
+            "added": 10,
+            "deleted": 3
+          },
+          {
+            "path": "tools/run.py",
+            "added": 3,
+            "deleted": 1
+          }
+        ],
+        "file_count": 14,
+        "added": 259,
+        "deleted": 65,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "ef8344313652a64d51a8263a46fb55b0bcb15e76",
+      "parents": [
+        "25a1c620f61944b86b777d804ec47d0ad9fe1ec9"
+      ],
+      "tree": "96bd2bd03009aed02192a9d4dd716317f4b1bde2",
+      "subject": "refactor: isolate model controls from task context",
+      "change": {
+        "files": [
+          {
+            "path": "docs/development/local-inference.md",
+            "added": 8,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/llama.py",
+            "added": 17,
+            "deleted": 10
+          },
+          {
+            "path": "src/semantic_reviewer/application/normalisation.py",
+            "added": 2,
+            "deleted": 2
+          },
+          {
+            "path": "tests/test_jobs.py",
+            "added": 1,
+            "deleted": 1
+          },
+          {
+            "path": "tests/test_llama.py",
+            "added": 15,
+            "deleted": 0
+          },
+          {
+            "path": "tests/test_normalisation.py",
+            "added": 1,
+            "deleted": 0
+          }
+        ],
+        "file_count": 6,
+        "added": 44,
+        "deleted": 13,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "a2d6fd28374070ea5de30a382d17af91312f170b",
+      "parents": [
+        "ef8344313652a64d51a8263a46fb55b0bcb15e76"
+      ],
+      "tree": "654fe8bc58f05d9681da36d3382c65046aed2e4d",
+      "subject": "feat: expose public contracts in architecture snapshots",
+      "change": {
+        "files": [
+          {
+            "path": "docs/architecture/README.md",
+            "added": 12,
+            "deleted": 2
+          },
+          {
+            "path": "tests/test_architecture_snapshot.py",
+            "added": 32,
+            "deleted": 0
+          },
+          {
+            "path": "tools/architecture.py",
+            "added": 51,
+            "deleted": 3
+          }
+        ],
+        "file_count": 3,
+        "added": 95,
+        "deleted": 5,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "a1324da85d88957d59d4813887dbceebbea84220",
+      "parents": [
+        "a2d6fd28374070ea5de30a382d17af91312f170b"
+      ],
+      "tree": "f43f5ac8eedfef9e1526f75e75c36e71e43ba3bb",
+      "subject": "docs: complete existing public operation contracts",
+      "change": {
+        "files": [
+          {
+            "path": "src/semantic_reviewer/application/annotations.py",
+            "added": 31,
+            "deleted": 3
+          },
+          {
+            "path": "src/semantic_reviewer/application/jobs.py",
+            "added": 23,
+            "deleted": 5
+          },
+          {
+            "path": "src/semantic_reviewer/asgi.py",
+            "added": 6,
+            "deleted": 3
+          },
+          {
+            "path": "src/semantic_reviewer/bootstrap.py",
+            "added": 12,
+            "deleted": 2
+          },
+          {
+            "path": "src/semantic_reviewer/web/app.py",
+            "added": 6,
+            "deleted": 0
+          }
+        ],
+        "file_count": 5,
+        "added": 78,
+        "deleted": 13,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "6ea678243c0a93760a0caa5073dc4028d5a07090",
+      "parents": [
+        "a1324da85d88957d59d4813887dbceebbea84220"
+      ],
+      "tree": "4800551026589002985c17fda09cff48621e421f",
+      "subject": "docs: reconcile maintained guidance with delivered VS1",
+      "change": {
+        "files": [
+          {
+            "path": "CONTEXT.md",
+            "added": 2,
+            "deleted": 2
+          },
+          {
+            "path": "IMPLEMENTATION_BACKLOG.yaml",
+            "added": 5,
+            "deleted": 4
+          },
+          {
+            "path": "docs/adr/ADR-0002-preserve-source-record-identity.md",
+            "added": 2,
+            "deleted": 2
+          },
+          {
+            "path": "docs/adr/ADR-0003-document-caller-contracts-and-intent.md",
+            "added": 1,
+            "deleted": 1
+          },
+          {
+            "path": "docs/adr/ADR-0004-adopt-selective-python-style.md",
+            "added": 1,
+            "deleted": 1
+          },
+          {
+            "path": "docs/development/README.md",
+            "added": 12,
+            "deleted": 10
+          },
+          {
+            "path": "docs/development/normalisation-contract.md",
+            "added": 2,
+            "deleted": 1
+          },
+          {
+            "path": "docs/development/python-style.md",
+            "added": 1,
+            "deleted": 1
+          },
+          {
+            "path": "docs/development/routing-operations.md",
+            "added": 3,
+            "deleted": 1
+          },
+          {
+            "path": "docs/development/routing.md",
+            "added": 3,
+            "deleted": 3
+          },
+          {
+            "path": "docs/development/vs1-verification.md",
+            "added": 4,
+            "deleted": 4
+          },
+          {
+            "path": "docs/slice-reviews/VS1-progress.md",
+            "added": 9,
+            "deleted": 5
+          },
+          {
+            "path": "tests/README.md",
+            "added": 18,
+            "deleted": 13
+          }
+        ],
+        "file_count": 13,
+        "added": 63,
+        "deleted": 48,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "036ff45827370f62d798b92ce10c9a52b6ed6330",
+      "parents": [
+        "6ea678243c0a93760a0caa5073dc4028d5a07090"
+      ],
+      "tree": "c98dffccb65429bae5fc217ead6462ccf49da8e7",
+      "subject": "docs: record VS1 milestone findings and confirmations",
+      "change": {
+        "files": [
+          {
+            "path": "docs/adr/ADR-0006-recover-jobs-under-process-lock.md",
+            "added": 6,
+            "deleted": 0
+          },
+          {
+            "path": "docs/adr/ADR-0007-review-architecture-after-milestones.md",
+            "added": 6,
+            "deleted": 4
+          },
+          {
+            "path": "docs/adr/ADR-0008-own-artefact-publication-metadata.md",
+            "added": 8,
+            "deleted": 5
+          },
+          {
+            "path": "docs/adr/README.md",
+            "added": 2,
+            "deleted": 2
+          },
+          {
+            "path": "docs/slice-reviews/VS1-milestone-architecture-review.md",
+            "added": 110,
+            "deleted": 0
+          },
+          {
+            "path": "docs/slice-reviews/VS1-progress.md",
+            "added": 4,
+            "deleted": 0
+          }
+        ],
+        "file_count": 6,
+        "added": 136,
+        "deleted": 11,
+        "binary_files": 0
+      }
+    }
+  ],
+  "linear": true,
+  "final_change": {
+    "files": [
+      {
+        "path": "AGENTS.md",
+        "added": 7,
+        "deleted": 0
+      },
+      {
+        "path": "CONTEXT.md",
+        "added": 2,
+        "deleted": 2
+      },
+      {
+        "path": "IMPLEMENTATION_BACKLOG.yaml",
+        "added": 5,
+        "deleted": 4
+      },
+      {
+        "path": "docs/adr/ADR-0002-preserve-source-record-identity.md",
+        "added": 2,
+        "deleted": 2
+      },
+      {
+        "path": "docs/adr/ADR-0003-document-caller-contracts-and-intent.md",
+        "added": 1,
+        "deleted": 1
+      },
+      {
+        "path": "docs/adr/ADR-0004-adopt-selective-python-style.md",
+        "added": 1,
+        "deleted": 1
+      },
+      {
+        "path": "docs/adr/ADR-0006-recover-jobs-under-process-lock.md",
+        "added": 6,
+        "deleted": 0
+      },
+      {
+        "path": "docs/adr/ADR-0007-review-architecture-after-milestones.md",
+        "added": 59,
+        "deleted": 0
+      },
+      {
+        "path": "docs/adr/ADR-0008-own-artefact-publication-metadata.md",
+        "added": 59,
+        "deleted": 0
+      },
+      {
+        "path": "docs/adr/README.md",
+        "added": 2,
+        "deleted": 0
+      },
+      {
+        "path": "docs/architecture/README.md",
+        "added": 12,
+        "deleted": 2
+      },
+      {
+        "path": "docs/development/README.md",
+        "added": 17,
+        "deleted": 10
+      },
+      {
+        "path": "docs/development/annotations.md",
+        "added": 6,
+        "deleted": 0
+      },
+      {
+        "path": "docs/development/code-comments.md",
+        "added": 6,
+        "deleted": 0
+      },
+      {
+        "path": "docs/development/local-inference.md",
+        "added": 8,
+        "deleted": 0
+      },
+      {
+        "path": "docs/development/milestone-review-template.md",
+        "added": 31,
+        "deleted": 0
+      },
+      {
+        "path": "docs/development/milestone-review.md",
+        "added": 79,
+        "deleted": 0
+      },
+      {
+        "path": "docs/development/normalisation-contract.md",
+        "added": 2,
+        "deleted": 1
+      },
+      {
+        "path": "docs/development/normalisation.md",
+        "added": 13,
+        "deleted": 0
+      },
+      {
+        "path": "docs/development/operational-evidence.md",
+        "added": 8,
+        "deleted": 0
+      },
+      {
+        "path": "docs/development/python-style.md",
+        "added": 1,
+        "deleted": 1
+      },
+      {
+        "path": "docs/development/routing-operations.md",
+        "added": 3,
+        "deleted": 1
+      },
+      {
+        "path": "docs/development/routing.md",
+        "added": 3,
+        "deleted": 3
+      },
+      {
+        "path": "docs/development/vs1-verification.md",
+        "added": 4,
+        "deleted": 4
+      },
+      {
+        "path": "docs/slice-reviews/SLICE_REVIEW_TEMPLATE.yaml",
+        "added": 6,
+        "deleted": 0
+      },
+      {
+        "path": "docs/slice-reviews/VS1-milestone-architecture-review.md",
+        "added": 110,
+        "deleted": 0
+      },
+      {
+        "path": "docs/slice-reviews/VS1-progress.md",
+        "added": 13,
+        "deleted": 5
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/annotations.py",
+        "added": 2,
+        "deleted": 2
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/jobs.py",
+        "added": 18,
+        "deleted": 4
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/llama.py",
+        "added": 17,
+        "deleted": 10
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/migrations/007_job_completion.sql",
+        "added": 16,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/observations.py",
+        "added": 9,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/results.py",
+        "added": 46,
+        "deleted": 33
+      },
+      {
+        "path": "src/semantic_reviewer/application/annotations.py",
+        "added": 91,
+        "deleted": 16
+      },
+      {
+        "path": "src/semantic_reviewer/application/artefacts.py",
+        "added": 69,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/application/datasets.py",
+        "added": 23,
+        "deleted": 1
+      },
+      {
+        "path": "src/semantic_reviewer/application/jobs.py",
+        "added": 96,
+        "deleted": 32
+      },
+      {
+        "path": "src/semantic_reviewer/application/normalisation.py",
+        "added": 24,
+        "deleted": 3
+      },
+      {
+        "path": "src/semantic_reviewer/asgi.py",
+        "added": 9,
+        "deleted": 6
+      },
+      {
+        "path": "src/semantic_reviewer/bootstrap.py",
+        "added": 33,
+        "deleted": 9
+      },
+      {
+        "path": "src/semantic_reviewer/web/app.py",
+        "added": 6,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/worker.py",
+        "added": 5,
+        "deleted": 16
+      },
+      {
+        "path": "tests/README.md",
+        "added": 18,
+        "deleted": 13
+      },
+      {
+        "path": "tests/test_annotations.py",
+        "added": 21,
+        "deleted": 3
+      },
+      {
+        "path": "tests/test_architecture_snapshot.py",
+        "added": 32,
+        "deleted": 0
+      },
+      {
+        "path": "tests/test_artefacts.py",
+        "added": 32,
+        "deleted": 4
+      },
+      {
+        "path": "tests/test_job_web.py",
+        "added": 3,
+        "deleted": 1
+      },
+      {
+        "path": "tests/test_jobs.py",
+        "added": 85,
+        "deleted": 11
+      },
+      {
+        "path": "tests/test_llama.py",
+        "added": 15,
+        "deleted": 0
+      },
+      {
+        "path": "tests/test_normalisation.py",
+        "added": 19,
+        "deleted": 0
+      },
+      {
+        "path": "tests/test_vs1_path.py",
+        "added": 10,
+        "deleted": 3
+      },
+      {
+        "path": "tools/architecture.py",
+        "added": 51,
+        "deleted": 3
+      },
+      {
+        "path": "tools/run.py",
+        "added": 6,
+        "deleted": 2
+      }
+    ],
+    "file_count": 53,
+    "added": 1222,
+    "deleted": 209,
+    "binary_files": 0
+  },
+  "statistics_note": "No rename detection; merge commit churn uses first parent. Final diff and cumulative per-commit churn are different quantities."
+}

@@ -1,0 +1,40 @@
+Running: ruff format --check .
+unformatted: File would be reformatted
+  --> src\semantic_reviewer\adapters\results.py:28:82
+   |
+27 |         Metadata is committed after the file is flushed/linked. Catalogue failure
+   -         may leave a complete orphan file; an existing identity is never replaced.
+   -         """
+   -         if not isinstance(value, dict):
+   -             raise ValueError("Result artefact must be a JSON object.")
+   -         body = json.dumps(value, sort_keys=True, ensure_ascii=False, separators=(",", ":")).encode()
+28 +         may leave a complete orphan file; an existing identity is never replaced.
+29 +         """
+30 +         if not isinstance(value, dict):
+31 +             raise ValueError("Result artefact must be a JSON object.")
+32 +         body = json.dumps(value, sort_keys=True, ensure_ascii=False, separators=(",", ":")).encode()
+33 |         digest = hashlib.sha256(body).hexdigest()
+   |
+
+unformatted: File would be reformatted
+   --> tests\test_jobs.py:133:74
+    |
+132 |
+    -     def test_result_publication_is_immutable_and_detects_tampering(self):
+133 +     def test_result_publication_is_immutable_and_detects_tampering(self):
+134 |         value = {"source": "public synthetic", "interpretation": "<script>bad</script>"}
+135 |         job = self.queue.enqueue(self.source.id, 0)
+    -         publication = Publication(job.id, "normalisation")
+    -         with self.assertRaises(ValueError):
+    -             self.results.publish([value], publication)
+    -         self.assertEqual(list(self.results.root.iterdir()), [])
+    -         digest = self.results.publish(value, publication)
+136 +         publication = Publication(job.id, "normalisation")
+137 +         with self.assertRaises(ValueError):
+138 +             self.results.publish([value], publication)
+139 +         self.assertEqual(list(self.results.root.iterdir()), [])
+140 +         digest = self.results.publish(value, publication)
+141 |         self.assertEqual(self.results.publish(value, publication), digest)
+    |
+
+2 files would be reformatted, 52 files already formatted
