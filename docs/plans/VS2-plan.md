@@ -47,6 +47,12 @@ the source bytes, every attempted record and explicit incomplete/ready/shortfall
 outcomes. It must not infer verified origins, human labels or registration. No UI,
 model execution or database changes are needed.
 
+The implementation now provides the sample plan and attempt log. Synthetic checks
+cover invalid source/order/evidence, limits and immutable publication. The initial
+public-source plan retains 80 candidates across 45 development repositories and
+12 holdouts; no source qualification or human review is claimed. Final DER
+checkpoint review and owner acceptance remain separate from that preparation record.
+
 Then implement the lexical baseline, method-masked rating pack and analysis using
 synthetic inputs in a separate material batch, stacked if its prerequisite is still
 unmerged. Source qualification and human review remain necessary before registration;

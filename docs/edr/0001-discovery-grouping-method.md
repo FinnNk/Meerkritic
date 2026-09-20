@@ -132,6 +132,32 @@ tooling and exact identities are still required; that agreement is not registrat
 | Human-review budget | Inspect at most 80 candidate records, at most ten from any repository, stopping when 40 usable Accept/Edit interpretations have been collected. Limit the final selection to five accepted/edited observations per repository. Retain every attempted, failed, skipped and rejected record. |
 | Shortfall | If the fixed budget cannot yield 40 eligible observations, stop preparation and revise this draft prospectively. Do not substitute automated decisions or quietly extend the budget. |
 
+The implemented preparation procedure is `edr-0001-inputs-v1`. It partitions the
+claimed repository identities first, deduplicates by original source position,
+then applies the seeded candidate ordering. A duplicate of an earlier excluded
+record remains excluded. The fixed pool contains at most 80 positions; a later
+skip after five usable reviews from a repository consumes its position, without
+replacement from outside that pool. These operational details were fixed before
+source qualification or human input review, not selected from grouping results.
+
+On 20 September 2026, metadata-only preparation retained 80 candidates across 45
+development repositories and reserved 12 repository identities. Of the 950 other
+records, 92 have prior-exposure precedence, 130 holdout precedence, four duplicate
+precedence and 724 fall outside the candidate budget. These are mutually exclusive
+planning reasons, not source-authenticity judgements. Automatic exact-text hashes
+were used only for deduplication; source bodies were not displayed or interpreted.
+
+- Source bytes: `a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83`.
+- Plan content: `de2a70fbbf1510389627e68fce37b1d49389c82bf0eb2138901fcab78a33458c`.
+- Initial external record: `bef06bf63a6f3f4f8842aa0dc0714dc8accceb18fbc36111acbcbcd80aa13cf2`.
+- Preparation code: diary `f027a95765c5309d863392509ca4594c0951b811`, retained with
+  DER `vs2-study-tools/r1`; replay with the [preparation command](../development/study-preparation.md#create-the-fixed-input-order).
+
+The plan is retained outside Git at `extras/research/edr-0001/preparation/0000.json`
+relative to the workspace parent. It contains zero attempts or human labels. Exact
+research annotation versions, normalisation configuration and registration remain
+pending. Neither this metadata plan nor its software verification is a grouping run.
+
 Source qualification, normalisation and human input review prepare the corpus;
 they are not the grouping comparison. They follow the agreed sampling procedure.
 Group outputs and coherence ratings must not be produced before registration.
@@ -240,3 +266,4 @@ Pending. No grouping method has been adopted from empirical evidence.
 | 2026-09-20 | draft | Meerkritic agent | Prospective VS2 method-selection question; no registration or run |
 | 2026-09-20 | draft elaborated | Meerkritic agent | Software integrated; proposed bounded protocol and source-qualification gate for owner agreement; no study run |
 | 2026-09-20 | protocol agreed; draft retained | Finn Newick | Explicit agreement to the proposed workload and criteria; source preparation, tooling and registration remain outstanding |
+| 2026-09-20 | input order recorded; draft retained | Meerkritic agent | Reproducible metadata-only candidate/holdout plan; no source qualification, human labels or comparison |
