@@ -9,8 +9,9 @@
 - Plan and review semantic commit boundaries explicitly: each commit establishes a
   complete review proposition, with the code, tests and documentation it needs.
   A PR may contain several related propositions. Balance review size against the
-  overhead of separate PRs; prefer stacked PRs when splitting dependent work is
-  useful. Follow the [boundary check](docs/development/README.md#review-boundaries).
+  overhead of separate PRs. Always use stacked PRs at batch boundaries when the
+  predecessor is unmerged; additional splits may use stacks when size or complexity
+  warrants them. Follow the [boundary check](docs/development/README.md#review-boundaries).
 - Use Conventional Commits 1.0.0 for diary and semantic commits; see
   [commit guidance](docs/development/README.md#commit-messages). Scope is optional;
   breaking changes use `!` or a `BREAKING CHANGE:` footer. Never tidy away true DER

@@ -124,8 +124,9 @@ before presenting it for review:
   DER diary chronology to match the proposed semantic series.
 
 Split PRs when that meaningfully improves review or delivery, rather than merely
-because there are several semantic commits. When splitting dependent work, normally
-use stacked PRs: target each child at its immediate predecessor, link the dependencies
+because there are several semantic commits. Always use stacked PRs at dependent
+batch boundaries; use additional stacked splits when size or complexity warrants
+them. Target each child at its immediate predecessor, link the dependencies
 and state the review/merge order. Independent work need not form an artificial stack.
 After a parent lands, update the child's base and verify the resulting revision;
 follow the DER revision and evidence requirements where applicable. The owner still
