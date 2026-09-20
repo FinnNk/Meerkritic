@@ -4,12 +4,22 @@
 {% block content %}
 <nav><a href="/jobs">Jobs</a><a href="/datasets/{{ job.dataset_id }}?page={{ job.source_index + 1 }}&amp;page_size=1">Source observation</a></nav>
 <h1>Normalisation</h1>
+<aside class="assessment-purpose" aria-labelledby="assessment-purpose-title">
+<h2 id="assessment-purpose-title">Your task: assess the interpretation</h2>
+<p>Create trustworthy descriptions of engineering concerns for later grouping and comparison.
+Judge whether the model faithfully represents the supplied comment and code.
+Accepting an interpretation does <strong>not</strong> establish that the original reviewer was correct
+or that a proposed general rule is valid.</p>
+<ol><li>Read the source and identify what it supports.</li>
+<li>Check the model's claims, uncertainty and quoted evidence.</li>
+<li>Record one decision for the complete interpretation. Each action saves immediately.</li></ol>
+</aside>
 <p><strong>{{ job.status }}</strong>{% if job.stale %} · Heartbeat overdue; worker state needs inspection.{% endif %}</p>
 {% if job.status == 'queued' %}<p>Waiting for the local worker. This page refreshes automatically.</p>{% endif %}
 {% if job.status == 'running' %}<p>Working · last heartbeat {{ job.heartbeat_at }}. Token counts appear after inference completes.</p>{% endif %}
 {% if job.decision_id %}<p>{{ telemetry }}</p>{% endif %}
 {% if job.error %}<p role="alert">{{ job.error }}</p>{% endif %}
-<details><summary>Source for your assessment</summary>
+<details class="source-panel" open><summary>Source for your assessment</summary>
 <p>{{ source.owner }}/{{ source.repository }} · {{ source.file_path }}</p>
 <h3>Original comment</h3><pre>{{ source.comment }}</pre>
 <h3>Supplied code</h3><pre>{{ source.code }}</pre>
@@ -24,12 +34,15 @@
   <dt>Actionable concern</dt><dd>{{ result.interpretation.actionable_engineering_concern }}</dd>
   <dt>Generalisable</dt><dd>{{ result.interpretation.generalisable }}</dd>
   <dt>Categories</dt><dd>{{ result.interpretation.coarse_categories | join(', ') }}</dd>
-  <dt>Scope</dt><dd>{{ result.interpretation.scope }}</dd>
-  <dt>Proposed invariant</dt><dd>{{ result.interpretation.proposed_invariant or 'None proposed' }}</dd>
+  <dt>Impact scope</dt><dd>{{ result.interpretation.scope }} <span class="muted">— affected code, not investigation extent</span></dd>
+  <dt>Candidate rule</dt><dd>{{ result.interpretation.proposed_invariant or 'None proposed' }}</dd>
 </dl>
+<p class="muted">These are original model claims. Older drafts may use scope or applicability limits incorrectly; assess their meaning rather than assuming the labels make them correct.</p>
 <h3>Evidence</h3>
 {% for span in result.evidence_spans %}<blockquote><pre>{{ span.quote }}</pre><p>{{ span.source }} · characters {{ span.start }}–{{ span.end }}</p></blockquote>{% endfor %}
-{% if result.interpretation.exclusions %}<h3>Exclusions</h3><ul>{% for item in result.interpretation.exclusions %}<li>{{ item }}</li>{% endfor %}</ul>{% endif %}
+{% if result.interpretation.exclusions %}<h3>Applicability limits</h3>
+<p>Exceptions or conditions under which the concern or candidate rule does not apply.</p>
+<ul>{% for item in result.interpretation.exclusions %}<li>{{ item }}</li>{% endfor %}</ul>{% endif %}
 {% endif %}
 <details><summary>Provenance and runtime</summary>
 <pre>{{ result | tojson(indent=2) }}</pre>
@@ -37,6 +50,17 @@
 {% endif %}
 {% if can_annotate %}
 <h2>Human assessment</h2>
+<details class="assessment-help"><summary>How to assess the fields</summary>
+<table><thead><tr><th>Field</th><th>Question to answer</th></tr></thead><tbody>
+<tr><th>Issue statement</th><td>Does it faithfully describe the concern, without claiming more than the source supports?</td></tr>
+<tr><th>Actionable concern</th><td>Does the comment identify something a developer could address? Use yes, no or uncertain.</td></tr>
+<tr><th>Generalisable</th><td>Could the concern apply beyond this example? This does not validate a general rule.</td></tr>
+<tr><th>Categories</th><td>Which broad engineering concerns does the source describe?</td></tr>
+<tr><th>Impact scope (<code>scope</code>)</th><td>Choose the smallest affected unit supported by the evidence: expression, statement, function, class, file, module or repository. Use <code>unknown</code> if the affected extent is unclear. Searching repository history does not itself establish repository-wide impact.</td></tr>
+<tr><th>Candidate rule (<code>proposed_invariant</code>)</th><td>What condition does this example suggest should hold? Use <code>null</code> if none is justified. Put your additional advice in notes and attribute it to yourself.</td></tr>
+<tr><th>Applicability limits (<code>exclusions</code>)</th><td>What known exceptions limit the concern or rule? Use an empty list if none are identified. Put missing evidence and investigation needs in notes.</td></tr>
+<tr><th>Evidence quotes</th><td>Do the exact quoted words support the claim? Matching text alone does not establish correctness.</td></tr>
+</tbody></table></details>
 {% if error %}<p role="alert">{{ error }}</p>{% endif %}
 {% if annotation %}
 <p><strong>{{ annotation.decision | capitalize }}</strong> · {{ annotation.created_at }}</p>
@@ -47,10 +71,12 @@
 {% elif actions %}
 {% if job.status == 'failed' %}
 <p>This draft failed validation. Edit it using <strong>Source for your assessment</strong>, or reject it. Accept is unavailable. Each action saves immediately.</p>
-<p>The original output and failure remain unchanged. Your correction must pass the same schema and exact-quote checks.</p>
+<p>The original output and failure remain unchanged. Your correction must pass the current compatible schema and exact-quote checks.</p>
 {% else %}<p>Accept the interpretation, edit it, or reject it. Each action saves immediately.</p>{% endif %}
 <form method="post" action="/jobs/{{ job.id }}/annotation">
-<label for="notes">Notes (optional)</label><textarea id="notes" name="notes" maxlength="4000" rows="3">{{ draft.notes if draft else '' }}</textarea>
+<label for="notes">Assessment notes and evidence limitations (optional)</label>
+<p id="notes-help">Record what the supplied material cannot establish, any investigation needed, and your own advice beyond the source. Notes are saved with your decision but are not used as interpretation text for grouping. If uncertainty changes the concern, qualify the issue or candidate rule too.</p>
+<textarea id="notes" name="notes" aria-describedby="notes-help" maxlength="4000" rows="4">{{ draft.notes if draft else '' }}</textarea>
 <details{% if job.status == 'failed' or (draft and draft.decision == 'edit') %} open{% endif %}><summary>Edit the structured interpretation</summary>
 <p>Change the fields below, retaining the complete JSON structure. Evidence quotes must exactly match the original comment or code. The original result is preserved.</p>
 <label for="edited_json">Edited interpretation</label><textarea id="edited_json" name="edited_json" rows="12" style="width:100%;font-family:monospace">{{ draft.edited_json if draft else initial_draft }}</textarea></details>
