@@ -115,7 +115,10 @@ rather than duplicating evidence stores.
 ## Index
 
 No EDR is registered yet. The owner agreed EDR-0001's proposed workload and criteria
-on 20 September 2026; qualified inputs and runnable, pinned methods remain prerequisites.
+on 20 September 2026. Comparison commands now exist with synthetic checks;
+qualified human-reviewed inputs and exact registration identities remain prerequisites.
+The first preparation pass yielded only 33 valid drafts, so its 40-input target
+requires an owner-agreed amendment before research continues.
 The current draft is:
 
 | EDR | Decision | Status | Evidence outcome |

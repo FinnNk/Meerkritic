@@ -18,6 +18,7 @@ The runner selects this checkout's source and environment.
 | Discovery and rules | Fixed selections, embeddings/grouping, synthesis, inherited evidence and concurrent decisions |
 | Research interaction | Saved/apply distinction, whole-batch rollback, discussion, advice-only responses and unknown completion |
 | Study preparation | Fixed sample/holdout order, complete exclusions, explicit source/reviewer evidence, quotas, shortfall and immutable attempt records |
+| Study comparison | Exact shared inputs, lexical boundary cases, masked equal budgets, shared ratings, missing/uncertain judgements, fixed thresholds, retained retries and registration checks |
 | Web and architecture | Escaping, bounded input, source freshness, corrupt projections and forbidden imports |
 
 `test_vs1_path.py` retains its historical filename and joins the input-to-annotation
