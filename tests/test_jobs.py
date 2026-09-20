@@ -280,7 +280,7 @@ class JobsTest(unittest.TestCase):
             state, bundle = self.queue.inspect(job.id)
             self.assertEqual(state.status, "failed")
             self.assertEqual(bundle["usage"]["measurement"]["outcome"], failure)
-            self.assertEqual(bundle["request"]["prompt_version"], "normalisation-v1")
+            self.assertEqual(bundle["request"]["prompt_version"], "normalisation-v2")
             self.assertEqual(bundle["source"]["id"], job.observation_id)
             self.assertEqual(bundle["framework"]["outcome"], "completed")
             if failure == "semantic_failure":

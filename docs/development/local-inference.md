@@ -10,6 +10,14 @@ Operational preflight used official llama.cpp v0.4.1's b10964 Windows CUDA 12.4 
 
 ## Start the compatibility fixture
 
+The task prompt is model-independent (`normalisation-v2`). Adapter request version
+`llama-native-v2` owns Qwen3's `/no_think` and `enable_thinking=False` controls;
+other families receive neither convention. The provider request evidence retains
+the actual template request, rendered completion payload and both versions. This
+preserves the compatibility fixture's rendered instructions while removing model
+behaviour knowledge from application context construction. Historical v1 bundles
+remain immutable and readable; this is not a comparative model-quality decision.
+
 Download the official `llama-b10964-bin-win-cuda-12.4-x64.zip` and matching CUDA runtime
 archive from the b10964 release. Verify their published SHA-256 digests before
 extracting to the same directory. Obtain `Qwen3-4B-Q4_K_M.gguf` from the pinned model

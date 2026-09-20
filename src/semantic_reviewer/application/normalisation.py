@@ -11,7 +11,7 @@ from semantic_reviewer.domain.normalisation import EvidenceSpan, IssueInterpreta
 from semantic_reviewer.routing.selection import RoutingDecision
 from semantic_reviewer.routing.usage import Measurement
 
-PROMPT_VERSION = "normalisation-v1"
+PROMPT_VERSION = "normalisation-v2"
 
 
 @dataclass(frozen=True)
@@ -96,7 +96,7 @@ class SourceContext:
                 "without prescribing a particular edit; permit no and uncertain. Use descriptive "
                 "categories, scope and exclusions. Quote short exact, unique substrings from the "
                 "comment or code as evidence. Do not invent source text or repository facts. "
-                "Return only the requested JSON. /no_think"
+                "Return only the requested JSON."
             ),
             user=json.dumps(
                 {
