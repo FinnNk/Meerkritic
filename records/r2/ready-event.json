@@ -1,0 +1,32 @@
+{
+  "kind": "publication",
+  "round_id": "r2",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "/root"
+  },
+  "payload": {
+    "stage": "owner_review_ready",
+    "pr": "https://github.com/FinnNk/Meerkritic/pull/16",
+    "head": "2adeb88d3bbcf1af2ee8b5c498c7a32cbe1c100c",
+    "base": "f5b23e44e4f13237a9f505f2f8182e0561813efe",
+    "archive_commit": "5d3612cee3163e1652683ed35233e3cf555d1ca5",
+    "hosted_qualification": {
+      "required_contexts": [],
+      "observed_rollup": [],
+      "note": "Repository rules require owner review/resolution, not hosted CI. No hosted CI run claimed."
+    },
+    "owner_approval": false,
+    "integrated": false,
+    "evidence": [
+      "published-pr.json",
+      "published-refs.txt",
+      "host-rules.json",
+      "verification-summary.json",
+      "review.json",
+      "equivalence.json"
+    ]
+  }
+}
