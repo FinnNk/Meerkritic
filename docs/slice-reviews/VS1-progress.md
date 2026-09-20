@@ -54,3 +54,7 @@ Candidate readiness, owner acceptance and slice completion remain separate.
 Canonical evidence lives outside application worktrees at `extras/der-evidence`.
 Earlier pairs are `vs1-dataset-browser/r5` and `vs1-routing/r1`. This file only indexes
 progress; evidence owns chronology, verification, propositions and review/readiness.
+
+The [milestone architecture review](VS1-milestone-architecture-review.md) records
+the all-guidance assessment, authorised fixes and verification limits. Its material
+follow-up uses DER pair `vs1-architecture-review/r1` in one owner-reviewed PR.

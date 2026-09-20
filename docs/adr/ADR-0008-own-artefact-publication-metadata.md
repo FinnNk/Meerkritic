@@ -1,5 +1,5 @@
 ---
-status: accepted
+status: implemented
 date: 2026-09-20
 decision-makers:
   - Project owner
@@ -44,10 +44,13 @@ references. This refines the storage boundary without changing evidence ownershi
 
 ### Confirmation
 
-Verify payload keys cannot alter catalogue metadata, real legacy bodies index
-without rewriting, retries preserve identity, metadata conflicts fail, and partial
-publication failures preserve existing state. Canonical checks and milestone review
-record implementation confirmation separately from owner PR approval.
+The artefact/job tests demonstrate that payload keys cannot alter catalogue metadata,
+non-object input fails before publication, legacy bodies retain their exact bytes/hash,
+retries preserve identity, metadata conflicts fail, and publication failures retain
+consistent references. All 102 tests and canonical gates passed; the
+[VS1 milestone review](../slice-reviews/VS1-milestone-architecture-review.md) records
+the live compatibility and backup-migration checks. Implementation is confirmed in
+this candidate; owner PR approval and integration remain separate.
 
 ## More Information
 

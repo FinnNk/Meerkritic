@@ -1,5 +1,5 @@
 ---
-status: accepted
+status: implemented
 date: 2026-09-20
 decision-makers:
   - Project owner
@@ -45,9 +45,11 @@ policy and ADR-0004's selective style policy; neither is superseded.
 
 ### Confirmation
 
-Apply the new process to the VS1 milestone findings, record all dispositions and
-architecture effects, and verify the guidance, templates and agent instructions
-agree. Advance to implemented only after this confirmation is recorded.
+The [VS1 milestone review](../slice-reviews/VS1-milestone-architecture-review.md)
+applies the method across all guidance, records finding dispositions and architecture
+effects, and distinguishes confirmed behaviour from limitations. Agent instructions,
+build/PR guidance and both review templates agree. This confirms implementation
+in the candidate; owner approval and integration of this PR remain separate.
 
 ## More Information
 
