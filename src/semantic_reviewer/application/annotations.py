@@ -2,11 +2,12 @@
 
 from dataclasses import asdict, dataclass
 from datetime import UTC, datetime
-from typing import Literal, Protocol
+from typing import Literal, Protocol, TypedDict
 from uuid import uuid4
 
-from semantic_reviewer.application.artefacts import Publication
-from semantic_reviewer.application.jobs import JobService
+from semantic_reviewer.application.artefacts import Publication, ResultStore
+from semantic_reviewer.application.datasets import DatasetService
+from semantic_reviewer.application.jobs import Job
 from semantic_reviewer.domain.normalisation import IssueInterpretation, ground
 
 
@@ -25,6 +26,38 @@ class Annotation:
     schema_version: int = 1
 
 
+class JobReader(Protocol):
+    """Expose verified job results without revealing queue or storage dependencies."""
+
+    def inspect(self, job_id: str) -> tuple[Job, dict[str, object] | None]:
+        """Return metadata and verified body, or None before publication.
+
+        Unknown jobs raise LookupError; corrupt evidence raises ValueError and
+        filesystem failures raise OSError. Reading does not change job state.
+        """
+        ...
+
+
+class AnnotationProgress(TypedDict):
+    """Count one consistent snapshot; source and result denominators remain distinct.
+
+    source_total includes all registered source rows; reviewed_sources counts each
+    source once. successful_results counts model runs; reviewed_results includes
+    every terminal human decision, including Reject. All counts are non-negative.
+    """
+
+    source_total: int
+    reviewed_sources: int
+    successful_results: int
+    reviewed_results: int
+    accept: int
+    edit: int
+    reject: int
+    failed: int
+    queued: int
+    running: int
+
+
 class AnnotationStore(Protocol):
     """Own atomic decision/event insertion, idempotence and bounded review queries."""
 
@@ -36,12 +69,16 @@ class AnnotationStore(Protocol):
         """Return the terminal decision, if this result has been reviewed."""
         ...
 
-    def progress(self, dataset_id: str) -> dict:
-        """Count result decisions and distinct reviewed sources independently."""
+    def progress(self, dataset_id: str) -> AnnotationProgress:
+        """Return coherent source/result counts; raise LookupError for an unknown dataset."""
         ...
 
     def pending(self, dataset_id: str, page: int) -> tuple[str, ...]:
-        """Return a page of at most 20 successful, unreviewed result identities."""
+        """Return up to 20 unreviewed successful IDs in completion-time/ID order.
+
+        page is one-based, at most 1,000,000; invalid bounds raise ValueError.
+        Unknown/empty datasets return (). Offset pages can shift after decisions.
+        """
         ...
 
     def history(self, observation_id: str) -> tuple[Annotation, ...]:
@@ -52,10 +89,18 @@ class AnnotationStore(Protocol):
 class AnnotationService:
     """Hide edit validation and evidence publication from UI and command-line callers."""
 
-    def __init__(self, jobs: JobService, store: AnnotationStore) -> None:
+    def __init__(
+        self,
+        jobs: JobReader,
+        store: AnnotationStore,
+        datasets: DatasetService,
+        results: ResultStore,
+    ) -> None:
         """Bind source/result access and the transactional decision store."""
-        self.jobs = jobs
+        self._jobs = jobs
         self.store = store
+        self._datasets = datasets
+        self._results = results
 
     def decide(
         self, job_id: str, decision: str, notes: str = "", edited_json: str | None = None
@@ -72,7 +117,7 @@ class AnnotationService:
             )
         if (decision == "edit") != (edited_json is not None):
             raise ValueError("Only Edit requires a replacement interpretation.")
-        job, result = self.jobs.inspect(job_id)
+        job, result = self._jobs.inspect(job_id)
         if job.status != "succeeded" or not result or not result.get("interpretation"):
             raise ValueError("Only a successful interpretation can be reviewed.")
         digest = None
@@ -80,9 +125,9 @@ class AnnotationService:
             if len(edited_json.encode("utf-8")) > 256_000:
                 raise ValueError("Edited interpretation is too large.")
             interpretation = IssueInterpretation.model_validate_json(edited_json)
-            source = self.jobs.datasets.browse(job.dataset_id, job.source_index + 1, 1).items[0]
+            _, source = self._datasets.observation(job.dataset_id, job.source_index)
             spans = ground(interpretation, source)
-            digest = self.jobs.results.publish(
+            digest = self._results.publish(
                 {
                     "schema_version": 1,
                     "job_id": job.id,
@@ -106,11 +151,11 @@ class AnnotationService:
             )
         )
 
-    def review(self, job_id: str) -> tuple[Annotation | None, dict | None]:
+    def review(self, job_id: str) -> tuple[Annotation | None, dict[str, object] | None]:
         """Read the decision and verified edited body, when present."""
         annotation = self.store.get(job_id)
         edited = (
-            self.jobs.results.read(annotation.interpretation_sha256)
+            self._results.read(annotation.interpretation_sha256)
             if annotation and annotation.interpretation_sha256
             else None
         )

@@ -52,7 +52,9 @@ def main() -> int:
             execution.run(args.data_root, args.routing, args.endpoint, once=args.once)
         elif args.command in ("annotate", "progress"):
             composition = importlib.import_module("semantic_reviewer.bootstrap")
-            annotations = composition.build_annotations(args.data_root)
+            annotations = composition.build_annotations(
+                args.data_root, composition.build_jobs(args.data_root)
+            )
             result = (
                 annotations.store.progress(args.dataset_id)
                 if args.command == "progress"

@@ -5,7 +5,7 @@ from dataclasses import asdict
 from pathlib import Path
 
 from semantic_reviewer.adapters.state import SQLiteState
-from semantic_reviewer.application.annotations import Annotation
+from semantic_reviewer.application.annotations import Annotation, AnnotationProgress
 
 
 class SQLiteAnnotations:
@@ -74,7 +74,7 @@ class SQLiteAnnotations:
                 )
             )
 
-    def progress(self, dataset_id: str) -> dict:
+    def progress(self, dataset_id: str) -> AnnotationProgress:
         """Count all results and distinct source coverage, not just the recent job page."""
         with self.state.connect() as db:
             # SELECT alone does not open a persistent SQLite snapshot. Keep the

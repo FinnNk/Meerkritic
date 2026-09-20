@@ -1,5 +1,8 @@
 """Coordinate durable normalisation jobs without web, framework or storage types."""
 
+import time
+from collections.abc import Callable
+from contextlib import AbstractContextManager
 from dataclasses import asdict, dataclass
 from datetime import UTC, datetime
 from threading import Event, Thread
@@ -116,15 +119,13 @@ class JobService:
 
     def enqueue(self, dataset_id: str, source_index: int) -> Job:
         """Validate a registered source and enqueue one explicit invocation; never run it here."""
-        page = self.datasets.browse(dataset_id, source_index + 1, 1)
-        if not page.items:
-            raise LookupError("Source record does not exist.")
+        _, source = self.datasets.observation(dataset_id, source_index)
         return self.jobs.enqueue(
             Job(
                 str(uuid4()),
                 dataset_id,
                 source_index,
-                page.items[0].id,
+                source.id,
                 "queued",
                 datetime.now(UTC).isoformat(),
             )
@@ -148,7 +149,7 @@ class JobService:
         elapsed = (datetime.now(UTC) - datetime.fromisoformat(job.queued_at)).total_seconds()
         return f"{decision.selected.id} · ? in / ? out · local · {elapsed:.1f}s"
 
-    def run_once(self, routing: RoutingService, workflow: WorkflowRunner, worker_id: str) -> bool:
+    def _run_once(self, routing: RoutingService, workflow: WorkflowRunner, worker_id: str) -> bool:
         """Run at most one queued item, under the caller's exclusive worker process lock.
 
         Unexpected storage/runtime errors terminate the worker and leave the job running
@@ -171,8 +172,8 @@ class JobService:
         pulse = Thread(target=keep_alive, daemon=True)
         pulse.start()
         try:
-            page = self.datasets.browse(job.dataset_id, job.source_index + 1, 1)
-            if not page.items or page.items[0].id != job.observation_id:
+            dataset, source = self.datasets.observation(job.dataset_id, job.source_index)
+            if source.id != job.observation_id:
                 raise ValueError("Queued source identity no longer matches stored evidence.")
             decision = routing.route(
                 TaskRequirements(
@@ -188,14 +189,14 @@ class JobService:
                 self.jobs.finish(job, None, "Routing refused: " + ", ".join(decision.reasons))
                 return True
             outcome = workflow.run(
-                NormalisationInput(page.items[0], decision, datetime.fromisoformat(job.queued_at))
+                NormalisationInput(source, decision, datetime.fromisoformat(job.queued_at))
             )
             usage = routing.complete(decision.id, outcome.measurement)
             bundle = {
                 "schema_version": 1,
                 "job_id": job.id,
-                "dataset": asdict(page.dataset),
-                "source": asdict(page.items[0]),
+                "dataset": asdict(dataset),
+                "source": asdict(source),
                 "routing": decision.model_dump(mode="json"),
                 "usage": usage.model_dump(mode="json"),
                 "telemetry": usage_summary(decision, usage),
@@ -218,3 +219,46 @@ class JobService:
         finally:
             stop.set()
             pulse.join()
+
+
+class Worker:
+    """Own exclusive execution, restart recovery and the lifetime of queue processing.
+
+    Callers provide dependencies, not lock/recovery choreography. Each run acquires
+    a fresh process lock before recovery or claims; the lock remains held through
+    inference and is released even when execution fails. Heartbeats never grant
+    permission to evict a live worker or replay uncertain work.
+    """
+
+    def __init__(
+        self,
+        jobs: JobService,
+        routing: RoutingService,
+        workflow: WorkflowRunner,
+        lock: Callable[[], AbstractContextManager[None]],
+    ) -> None:
+        """Bind execution and an exclusive-lock factory without starting or recovering work."""
+        self._jobs = jobs
+        self._routing = routing
+        self._workflow = workflow
+        self._lock = lock
+
+    def run(self, *, once: bool = False) -> int:
+        """Recover under exclusivity, then process work; return the number completed.
+
+        once=True returns after at most one claim, including zero for an empty queue.
+        Otherwise poll until interrupted. Lock contention and storage/runtime failures
+        propagate; unfinished work remains for a later exclusive recovery. This call
+        must run outside web requests. No uncertain invocation is automatically retried.
+        """
+        completed = 0
+        with self._lock():
+            self._jobs.jobs.recover_interrupted()
+            worker_id = str(uuid4())
+            while True:
+                worked = self._jobs._run_once(self._routing, self._workflow, worker_id)
+                completed += int(worked)
+                if once:
+                    return completed
+                if not worked:
+                    time.sleep(1)

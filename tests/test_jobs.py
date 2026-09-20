@@ -19,7 +19,7 @@ from semantic_reviewer.adapters.results import JsonResults
 from semantic_reviewer.adapters.routing_journal import SQLiteRoutingJournal
 from semantic_reviewer.adapters.worker_lock import worker_lock
 from semantic_reviewer.application.artefacts import Publication
-from semantic_reviewer.application.jobs import JobService
+from semantic_reviewer.application.jobs import JobService, Worker
 from semantic_reviewer.application.routing import RoutingService
 from semantic_reviewer.routing.selection import RoutingConfig
 
@@ -56,6 +56,29 @@ class JobsTest(unittest.TestCase):
         self.assertEqual(self.jobs.get(job.id).status, "running")
         self.jobs.finish(claimed, None, "Provider unavailable")
         self.assertEqual(self.jobs.get(job.id).status, "failed")
+
+    def test_worker_cannot_recover_or_claim_without_exclusive_lock(self):
+        worker = Worker(self.queue, None, None, lambda: worker_lock(self.root))
+        with worker_lock(self.root), patch.object(self.jobs, "recover_interrupted") as recover:
+            with patch.object(self.jobs, "claim") as claim, self.assertRaises(RuntimeError):
+                worker.run(once=True)
+            recover.assert_not_called()
+            claim.assert_not_called()
+        # Empty execution releases exclusivity and returns an honest zero count.
+        self.assertEqual(worker.run(once=True), 0)
+        with worker_lock(self.root):
+            pass
+
+    def test_source_lookup_does_not_require_application_pagination(self):
+        with patch.object(self.service, "browse", side_effect=AssertionError("pagination leaked")):
+            dataset, source = self.service.observation(self.source.id, 1)
+            job = self.queue.enqueue(self.source.id, 1)
+        self.assertEqual(source.source_index, 1)
+        self.assertEqual(job.observation_id, source.id)
+        self.assertEqual(dataset.id, self.source.id)
+        for index in (-1, dataset.row_count):
+            with self.subTest(index=index), self.assertRaises(LookupError):
+                self.service.observation(dataset.id, index)
 
     def test_concurrent_claim_restart_and_old_worker_fencing(self):
         first = self.queue.enqueue(self.source.id, 0)
@@ -147,7 +170,11 @@ class JobsTest(unittest.TestCase):
             SQLiteRoutingJournal(self.database),
         )
         queued = self.queue.enqueue(self.source.id, 0)
-        self.assertTrue(self.queue.run_once(routing, MafWorkflowRunner(Model()), "worker"))
+        self.assertTrue(
+            Worker(
+                self.queue, routing, MafWorkflowRunner(Model()), lambda: worker_lock(self.root)
+            ).run(once=True)
+        )
         restarted = JobService(self.service, SQLiteJobs(self.database), self.results)
         job, bundle = restarted.inspect(queued.id)
         self.assertEqual(job.status, "succeeded")
@@ -164,7 +191,11 @@ class JobsTest(unittest.TestCase):
                 )
             ]
             self.assertEqual(events, ["job_queued", "job_started", "job_routed", "job_succeeded"])
-        self.assertFalse(self.queue.run_once(routing, MafWorkflowRunner(Model()), "worker"))
+        self.assertFalse(
+            Worker(
+                self.queue, routing, MafWorkflowRunner(Model()), lambda: worker_lock(self.root)
+            ).run(once=True)
+        )
 
     def test_refused_route_fails_job_without_calling_model(self):
         config = RoutingConfig.model_validate_json(EXAMPLE.read_bytes())
@@ -182,7 +213,7 @@ class JobsTest(unittest.TestCase):
         )
         routing = RoutingService(config, SQLiteRoutingJournal(self.database))
         job = self.queue.enqueue(self.source.id, 0)
-        self.queue.run_once(routing, None, "worker")
+        Worker(self.queue, routing, None, lambda: worker_lock(self.root)).run(once=True)
         failed = self.jobs.get(job.id)
         self.assertEqual(failed.status, "failed")
         self.assertIsNotNone(failed.decision_id)
@@ -243,7 +274,9 @@ class JobsTest(unittest.TestCase):
                     return ModelReply("{}", measured, "request", "response")
 
             job = self.queue.enqueue(self.source.id, 0)
-            self.queue.run_once(routing, MafWorkflowRunner(Model()), "worker")
+            Worker(
+                self.queue, routing, MafWorkflowRunner(Model()), lambda: worker_lock(self.root)
+            ).run(once=True)
             state, bundle = self.queue.inspect(job.id)
             self.assertEqual(state.status, "failed")
             self.assertEqual(bundle["usage"]["measurement"]["outcome"], failure)
@@ -281,7 +314,12 @@ class JobsTest(unittest.TestCase):
             before_files = set(self.results.root.glob("*.json"))
             with patch.object(target, method, side_effect=OSError("injected storage failure")):
                 with self.assertRaises(OSError):
-                    self.queue.run_once(routing, MafWorkflowRunner(model), "worker")
+                    Worker(
+                        self.queue,
+                        routing,
+                        MafWorkflowRunner(model),
+                        lambda: worker_lock(self.root),
+                    ).run(once=True)
             state = self.jobs.get(job.id)
             self.assertEqual(state.status, "running")
             self.assertIsNotNone(routing.journal.get(state.decision_id)[1])
@@ -292,5 +330,9 @@ class JobsTest(unittest.TestCase):
                 self.assertEqual(self.results.read(next(iter(orphans)).stem)["job_id"], job.id)
             with worker_lock(self.root):
                 self.jobs.recover_interrupted()
-            self.assertFalse(self.queue.run_once(routing, MafWorkflowRunner(model), "replacement"))
+            self.assertFalse(
+                Worker(
+                    self.queue, routing, MafWorkflowRunner(model), lambda: worker_lock(self.root)
+                ).run(once=True)
+            )
         self.assertEqual(model.calls, 2)

@@ -210,3 +210,12 @@ class ParquetObservations:
         return ObservationPage(
             dataset, tuple(Observation(*row) for row in rows), page, page_size, dataset.row_count
         )
+
+    def get(self, dataset: Dataset, source_index: int) -> Observation:
+        """Return one source record after integrity checking; raise LookupError if absent."""
+        if not 0 <= source_index < dataset.row_count:
+            raise LookupError("Source record does not exist.")
+        page = self.browse(dataset, source_index + 1, 1)
+        if not page.items or page.items[0].source_index != source_index:
+            raise LookupError("Source record does not exist.")
+        return page.items[0]

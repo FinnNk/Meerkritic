@@ -1,25 +1,14 @@
-"""Run normalisation outside web requests with one OS-owned worker per local data root."""
+"""Run normalisation outside web requests through the owned worker lifecycle."""
 
-import time
 from pathlib import Path
-from uuid import uuid4
 
 from semantic_reviewer.bootstrap import build_worker
 
 
 def run(data_root: Path, routing_file: Path, endpoint: str, *, once: bool = False) -> None:
-    """Recover interrupted work after acquiring exclusivity, then execute queued jobs.
+    """Run the configured worker; once processes at most one job before returning.
 
-    ``once`` processes at most one job. Otherwise poll until interrupted; unexpected
-    storage failures stop this process so a later restart can identify unfinished work.
+    Worker owns exclusivity, interruption recovery and cleanup. Configuration,
+    lock and execution errors propagate; no failed invocation is replayed.
     """
-    jobs, routing, workflow, lock = build_worker(data_root, routing_file, endpoint)
-    with lock:
-        jobs.jobs.recover_interrupted()
-        worker_id = str(uuid4())
-        while True:
-            worked = jobs.run_once(routing, workflow, worker_id)
-            if once:
-                return
-            if not worked:
-                time.sleep(1)
+    build_worker(data_root, routing_file, endpoint).run(once=once)

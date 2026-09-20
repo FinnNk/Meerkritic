@@ -14,8 +14,9 @@ from semantic_reviewer.adapters.jobs import SQLiteJobs
 from semantic_reviewer.adapters.maf import MafWorkflowRunner
 from semantic_reviewer.adapters.results import JsonResults
 from semantic_reviewer.adapters.routing_journal import SQLiteRoutingJournal
+from semantic_reviewer.adapters.worker_lock import worker_lock
 from semantic_reviewer.application.annotations import AnnotationService
-from semantic_reviewer.application.jobs import JobService
+from semantic_reviewer.application.jobs import JobService, Worker
 from semantic_reviewer.application.model import ModelReply
 from semantic_reviewer.application.routing import RoutingService
 from semantic_reviewer.routing.selection import RoutingConfig
@@ -30,7 +31,7 @@ class SlicePathTest(unittest.TestCase):
         queue = JobService(
             self.service, self.jobs, JsonResults(self.results.root, self.database), journal
         )
-        annotations = AnnotationService(queue, self.store)
+        annotations = AnnotationService(queue, self.store, self.service, self.results)
         client = TestClient(
             create_app(self.service, queue, annotations), base_url="http://127.0.0.1"
         )
@@ -61,7 +62,11 @@ class SlicePathTest(unittest.TestCase):
             self.assertEqual(response.status_code, 303)
             job_id = response.headers["location"].split("/")[-1]
             self.assertEqual(self.jobs.get(job_id).status, "queued")
-            self.assertTrue(queue.run_once(routing, MafWorkflowRunner(Model()), "test-worker"))
+            self.assertTrue(
+                Worker(
+                    queue, routing, MafWorkflowRunner(Model()), lambda: worker_lock(self.root)
+                ).run(once=True)
+            )
             job, result = queue.inspect(job_id)
             self.assertEqual(job.status, "succeeded")
             self.assertEqual(result["framework"]["outcome"], "completed")
@@ -86,6 +91,8 @@ class SlicePathTest(unittest.TestCase):
                 journal,
             ),
             SQLiteAnnotations(self.database),
+            self.service,
+            self.results,
         )
         self.assertEqual(
             [restarted.review(job)[0].decision for job in jobs], ["accept", "edit", "reject"]
