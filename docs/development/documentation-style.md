@@ -92,6 +92,34 @@ as a prompt, removing sections that do not apply.
 - Rewrite the description around the final change when scope changes. Preserve
   owner amendments and do not claim tests, independence or approval that did not occur.
 
+### Validation tables
+
+Use the PR template's **Check / Result / Evidence** table instead of recurring
+validation paragraphs. State the checked revision and environment once above it.
+Prefer text results to badges: they remain readable without colour or an image
+service, and can point to evidence for an exact revision.
+
+1. Read the retained check records and logs for the named revision. Populate the
+   table from those results; do not copy numbers or successes from an earlier PR.
+2. Group standard static checks into **Quality gates** (Ruff, Import Linter and
+   Tach). Give tests their own row; include a count only when the evidence records it.
+3. Add only relevant checks, such as documentation links, migrations, live workflow
+   checks or DER equivalence/checkpoint coverage. Name older integration evidence
+   separately; it does not certify the current head.
+4. Use **Passed**, **Failed**, **Partial**, **Not run** or **Blocked**, with a short
+   count or qualifier where useful. A partial, missing or skipped required check
+   must remain visible. Omit checks that do not apply.
+5. Link directly to immutable records or logs. Keep commands, detailed environments,
+   individual checkpoint results and reproduction instructions in that evidence.
+6. After a head change, refresh affected evidence and the table. Preserve owner
+   edits outside the generated section and check the published result.
+
+An agent or renderer may fill this template from existing structured evidence;
+the table is a summary, not another evidence store or a new validation gate.
+Keep prose below it only for a consequential failure, limitation or unusual result
+that the rows cannot explain. Put licence/status announcements and remaining study
+decisions in their relevant sections. Do not repeat generic assurances for every PR.
+
 ## Author and reviewer checks
 
 Apply these before presenting a change, at semantic review and at aggregate review:
@@ -104,6 +132,7 @@ Apply these before presenting a change, at semantic review and at aggregate revi
 - [ ] Is current guidance free of unnecessary milestone history and duplicated policy?
 - [ ] Do links work, and does the rendered Markdown remain easy to scan?
 - [ ] Are evidence claims and limitations precise without overwhelming the task?
+- [ ] Does the PR validation table match retained evidence for its stated revision?
 
 Review meaning, not a word count or checklist score. Check examples against the CLI
 and relevant code; run safe examples in a disposable runtime where useful. Never

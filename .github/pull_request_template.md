@@ -14,9 +14,18 @@ establishes. Name any unmerged prerequisite and the required review/merge order.
 
 ## Validation
 
-- Checks run and what they establish:
-- Important failures, limitations or checks not run:
-- Evidence/reproduction links where needed:
+<!-- Populate from retained evidence for the stated revision, not the last PR.
+Use docs/development/documentation-style.md#validation-tables. Keep relevant rows;
+add change-specific checks. Missing required checks stay Not run/Blocked, not Passed.
+Link immutable records/logs. Use prose only for material exceptions. -->
+
+Checked revision: <!-- short SHA; environment/context once, e.g. Windows / Python 3.12 -->
+
+| Check | Result | Evidence |
+| --- | --- | --- |
+| Quality gates | Not run | — |
+| Tests | Not run | — |
+| Change-specific checks | Not run | — |
 
 ## Decisions and remaining work
 
