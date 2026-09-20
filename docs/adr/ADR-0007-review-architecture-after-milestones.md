@@ -37,6 +37,12 @@ maintained knowledge at aggregate review. Findings precede fixes unless existing
 owner authority covers the follow-up. This extends ADR-0003's caller-contract
 policy and ADR-0004's selective style policy; neither is superseded.
 
+The owner refined the required review record on 20 September 2026: capture each
+finding, how it was discovered and addressed, and how generalised instances should
+be detected and addressed during design, build and PR review before the next
+milestone assessment. Produce that maintained document in future reviews. The
+guide and template specify the trace; the VS1 review supplies its first instance.
+
 ### Consequences
 
 - Reviews need concrete evidence and explicit limits, not only checkmarks.

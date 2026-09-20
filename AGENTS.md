@@ -59,6 +59,8 @@
   Cover all applicable guidance, record evidence and finding dispositions, and
   distinguish inspection from authority to fix. Use its contract challenges
   before implementation, at semantic checkpoints and at aggregate review.
+  Produce a maintained review document tracing each finding's discovery, remedy
+  and generalised earlier detection/response, following the review template.
 - Run `uv run --locked python tools/check.py` before presenting a software batch
   as complete. Never weaken architecture contracts, tests or ignores merely to
   make checks pass without explicit owner approval.
