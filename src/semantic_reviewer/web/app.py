@@ -13,6 +13,7 @@ from semantic_reviewer.application.annotations import AnnotationService
 from semantic_reviewer.application.datasets import DatasetService
 from semantic_reviewer.application.jobs import JobService
 from semantic_reviewer.application.reviews import ReviewIndex
+from semantic_reviewer.application.selections import SelectionStore
 from semantic_reviewer.domain.datasets import DatasetError
 
 
@@ -21,6 +22,7 @@ def create_app(
     jobs: JobService | None = None,
     annotations: AnnotationService | None = None,
     reviews: ReviewIndex | None = None,
+    selections: SelectionStore | None = None,
 ) -> FastAPI:
     """Build local HTML and JSON interfaces, with optional queue access.
 
@@ -30,6 +32,8 @@ def create_app(
         annotations: Human review access, enabled only together with jobs. Supplied
             services must refer to the same runtime data as datasets and jobs.
         reviews: Optional external DER reference index; enables the reviews page.
+        selections: Optional frozen-input catalogue for the same runtime. Enables
+            read-only browsing; freezing remains an explicit command-line operation.
 
     Returns:
         A FastAPI application without starting a server. Observation requests map
@@ -44,6 +48,44 @@ def create_app(
     )
     templates = Jinja2Templates(directory=Path(__file__).parent / "templates")
     templates.env.globals["has_reviews"] = reviews is not None
+    templates.env.globals["has_selections"] = selections is not None
+
+    if selections is not None:
+
+        @app.get("/selections", response_class=HTMLResponse)
+        def selection_list(request: Request, page: int = Query(1, ge=1, le=1_000_000)):
+            """List bounded metadata without claiming its bodies have been verified."""
+            return templates.TemplateResponse(
+                request=request,
+                name="selections.html",
+                context={"items": selections.recent(page), "page": page},
+            )
+
+        @app.get("/selections/{selection_id}", response_class=HTMLResponse)
+        def selection_detail(
+            request: Request,
+            selection_id: str,
+            page: int = Query(1, ge=1, le=10),
+        ):
+            """Verify the frozen body and display ten records, including labelled exclusions."""
+            try:
+                summary, snapshot = selections.read(selection_id)
+            except LookupError as error:
+                raise HTTPException(404, "Selection does not exist.") from error
+            except (ValueError, OSError) as error:
+                raise HTTPException(
+                    409, "Frozen selection evidence is unavailable or changed."
+                ) from error
+            return templates.TemplateResponse(
+                request=request,
+                name="selection.html",
+                context={
+                    "summary": summary,
+                    "snapshot": snapshot,
+                    "page": page,
+                    "items": snapshot.records[(page - 1) * 10 : page * 10],
+                },
+            )
 
     if reviews is not None:
 

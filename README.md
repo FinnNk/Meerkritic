@@ -44,6 +44,10 @@ assessment immediately. Open **Annotation progress and review queue** to find
 unreviewed results and track source coverage. See the [annotation guide](docs/development/annotations.md)
 for editing and decision-history behaviour.
 
+Freeze explicitly chosen decisions with the [selection guide](docs/development/selections.md),
+then open **Frozen annotation inputs** to inspect the retained source, effective
+interpretations and exclusions. Fixture inputs remain distinct from research labels.
+
 Run `uv run --locked python tools/check.py` for formatting, lint, architecture and
 behaviour checks. See the [dataset guide](docs/development/datasets.md) for source
 provenance, storage and recovery, or the [development guide](docs/development/README.md)

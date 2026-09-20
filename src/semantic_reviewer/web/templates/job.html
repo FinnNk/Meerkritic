@@ -34,6 +34,7 @@
 {% if error %}<p role="alert">{{ error }}</p>{% endif %}
 {% if annotation %}
 <p><strong>{{ annotation.decision | capitalize }}</strong> · {{ annotation.created_at }}</p>
+<p>Annotation ID: <code>{{ annotation.id }}</code></p>
 {% if annotation.notes %}<p>{{ annotation.notes }}</p>{% endif %}
 {% if edited %}<h3>Human interpretation</h3><p>{{ edited.interpretation.issue_statement }}</p><pre>{{ edited | tojson(indent=2) }}</pre>{% endif %}
 <p>This decision is recorded. VS1 does not reopen or overwrite decisions.</p>

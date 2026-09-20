@@ -24,6 +24,7 @@
 <body>
   <header><a href="/">Meerkritic</a> · Code review grounded in engineering evidence</header>
   {% if has_reviews %}<nav><a href="/reviews">Change review references</a></nav>{% endif %}
+  {% if has_selections %}<nav><a href="/selections">Frozen annotation inputs</a></nav>{% endif %}
   <main>{% block content %}{% endblock %}</main>
 </body>
 </html>

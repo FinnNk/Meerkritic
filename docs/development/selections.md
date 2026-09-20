@@ -4,8 +4,8 @@ Freeze explicitly chosen annotation versions before discovery. This first VS2
 capability creates reproducible inputs; it does not run grouping or establish model
 quality. Existing Accept/Edit/Reject decisions and their events remain unchanged.
 
-Create an external JSON request using the exact annotation IDs returned by
-the annotation command:
+Open a reviewed job to copy its displayed annotation ID. Create an external JSON
+request using the exact versions you intend to include:
 
 ```json
 {
@@ -22,6 +22,12 @@ Run from the repository, with the same external runtime used for annotation:
 uv run --locked python tools/run.py --data-root ../extras/runtime freeze-selection ../extras/selection-request.json
 uv run --locked python tools/run.py --data-root ../extras/runtime selection <returned-id>
 ```
+
+Open **Frozen annotation inputs** in the harness to browse metadata, then select
+a snapshot to verify its content and inspect ten records per page. Included and
+excluded totals, fixture/research purpose, uncertainty and original/edit hashes
+remain visible. Unknown snapshots return 404; unavailable/changed bodies return 409.
+The catalogue lists metadata only and does not certify body integrity.
 
 The first command returns the frozen identity, included/excluded counts and first
 registration time. The second verifies and prints the complete snapshot. Freezing
