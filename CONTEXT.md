@@ -156,3 +156,9 @@ revisions. Saving does not apply decisions; explicit batch application is atomic
 The pending, answered, deferred, reopened or superseded interaction state of one
 rule version. Supersession identifies a replacement and retains historical answers.
 
+## Guidance batch
+
+An immutable explicit submission of selected rule versions, discussion and human
+instruction. An advisory response is distinct from an applied decision; interruption
+can leave external completion unknown without automatic replay.
+

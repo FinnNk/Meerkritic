@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Guidance response · Meerkritic{% endblock %}
+{% block refresh %}{% if run.status in ('queued','running') %}<meta http-equiv="refresh" content="5">{% endif %}{% endblock %}
+{% block content %}
+<p><a href="/guidance">Guidance batches</a></p><h1>Guidance · {{ run.status }}</h1><p>{{ telemetry }}</p>
+<p>Submission, response and applied decision are separate. Advice never changes rule definitions or human decisions.</p>
+{% if run.error %}<p role="alert"><strong>{{ run.error }}</strong></p>{% endif %}
+{% if stale %}<p><strong>Historical context:</strong> one or more target revisions have changed since submission. Inspect the current rules before using this advice.</p>{% endif %}
+<h2>Submitted guidance</h2><p>{{ snapshot.request.actor }}: {{ snapshot.request.instruction }}</p>
+{% for target in snapshot.targets %}<article><h3><a href="/rules/{{ target.version_id }}">{{ target.version.definition.statement }}</a></h3><p>{{ target.version.purpose | capitalize }} · {{ target.version.definition.applicability }}</p>
+{% for note in target.discussion %}<p>{{ note.actor }}: {{ note.text }}</p>{% endfor %}</article>{% endfor %}
+{% if result and result.response %}<h2>Advisory response</h2><p>{{ result.response.summary }}</p>{% for advice in result.response.responses %}<article><p><a href="/rules/{{ advice.version_id }}">Rule version</a></p><p>{{ advice.advice }}</p></article>{% endfor %}{% endif %}
+{% if trace %}<details><summary>Raw response and provenance</summary><pre>{{ trace }}</pre></details>{% endif %}
+{% endblock %}

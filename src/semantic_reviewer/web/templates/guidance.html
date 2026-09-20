@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Send guidance · Meerkritic{% endblock %}
+{% block content %}
+<h1>Send coherent guidance</h1><p>Select exact rule versions and discussion messages to send together. A response is advice; it does not apply edits or decisions.</p>
+<form action="/guidance" method="post"><input type="hidden" name="batch_id" value="{{ batch_id }}">
+<label>Your name <input name="actor" maxlength="200" required></label><label>Guidance for this batch <textarea name="instruction" maxlength="2000" required></textarea></label>
+{% for row in rows %}{% set target_index = loop.index0 %}<article><h2><label><input type="checkbox" name="target_{{ target_index }}" value="yes"> {{ row.title }}</label></h2>
+<p><a href="/rules/{{ row.version }}">Inspect this version</a> · revision {{ row.revision }}</p>
+<input type="hidden" name="version_{{ target_index }}" value="{{ row.version }}"><input type="hidden" name="revision_{{ target_index }}" value="{{ row.revision }}">
+{% for note in row.notes %}<label><input type="checkbox" name="note_{{ target_index }}_{{ loop.index0 }}" value="{{ note.id }}"> {{ note.actor }}: {{ note.text }}</label>{% else %}<p>No discussion messages.</p>{% endfor %}</article>{% endfor %}
+<p>This form shows up to six current rules and their latest twenty notes. Open a rule's guidance link to include it first. Only checked messages are submitted.</p><button>Submit this guidance batch</button></form>
+<h2>Submitted batches</h2>{% for batch in batches %}<p><a href="/guidance/{{ batch.id }}">{{ batch.queued_at }}</a> · {{ batch.status }}</p>{% else %}<p>No submitted guidance.</p>{% endfor %}
+{% endblock %}

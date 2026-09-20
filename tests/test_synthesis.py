@@ -79,7 +79,7 @@ class SynthesisTest(unittest.TestCase):
         self.assertEqual(body.origin.kind, "model")
         self.assertEqual(head.status, "candidate")
         self.assertEqual({item.verification for item in evidence}, {"weak"})
-        self.assertEqual(trace["routing"]["policy"]["version"], "2")
+        self.assertEqual(trace["routing"]["policy"]["version"], "3")
         self.assertEqual(trace["framework"]["outcome"], "completed")
         self.assertEqual(trace["usage"]["measurement"]["outcome"], "success")
         self.assertIn("rule-synthesis-v2", trace["provider_request"])

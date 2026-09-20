@@ -39,7 +39,7 @@ Reopening is explicit; previous answers remain historical. Rule revision marks
 the old task superseded with a replacement link. Discussion is append-only on an
 exact version. Adding a message does not send it to an agent.
 
-The next proposition will add an explicit guidance send that freezes selected definitions, revisions, instructions
+An explicit guidance send freezes selected definitions, revisions, instructions
 and discussion messages. A separate bounded queue shares the existing worker lock
 and round-robin lifecycle. Ordinary MAF returns advice only. Submission, response
 and decision application are distinct; recovery marks interrupted work unknown
@@ -61,7 +61,10 @@ empirically chosen optima. Named actors remain local claims rather than authenti
 ### Confirmation
 
 `tests/test_interaction.py` covers restart, stale/concurrent drafts, rollback,
-idempotency, lifecycle and exact-version discussion. Guidance runtime and compatibility confirmation belong to the next proposition. Owner acceptance remains pending.
+idempotency, lifecycle and exact-version discussion. `tests/test_guidance.py`
+covers frozen context, invented output, provider failures, unknown completion,
+context bounds and advice that never applies state. Real local MAF compatibility
+is retained in external DER `vs2-interaction/r1`. Owner acceptance remains pending.
 Revisit durable orchestration only when a concrete longer-lived workflow benefits.
 
 ## Pros and Cons of the Options
