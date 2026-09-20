@@ -56,6 +56,10 @@ class JobStore(Protocol):
         """Read at most the latest 100 jobs in reverse queue order."""
         ...
 
+    def log(self, job_id: str) -> dict:
+        """Export a structured snapshot of committed events and return artefact metadata."""
+        ...
+
     def claim(self, worker_id: str) -> Job | None:
         """Atomically claim the oldest queued job, only when no job is running."""
         ...
