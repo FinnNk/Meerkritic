@@ -39,7 +39,10 @@ worktrees and is not included in this source manifest.
 The ADR template adapts [MADR at revision
 ba75bb1b20d42af5746b246ad348c202419ae681](https://github.com/adr/madr/blob/ba75bb1b20d42af5746b246ad348c202419ae681/template/adr-template.md),
 retrieved on 2026-09-19. Upstream offers MIT OR CC0-1.0; the adaptation uses CC0-1.0.
-This attribution does not select a licence for the entire Meerkritic project.
+Meerkritic's first-party code and documentation use the root [MIT licence](../LICENSE.md).
+Imported material and third-party skills retain their existing licence notices and
+attribution; the project licence does not replace those terms.
+The root `LICENSE.md` contains the standard MIT text and is recognised by GitHub.
 
 Commit guidance follows [Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/v1.0.0/)
 as requested by the owner. The EDR process is project-authored documentation.
