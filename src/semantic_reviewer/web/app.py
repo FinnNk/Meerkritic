@@ -11,10 +11,12 @@ from starlette.middleware.trustedhost import TrustedHostMiddleware
 
 from semantic_reviewer.application.annotations import AnnotationService
 from semantic_reviewer.application.datasets import DatasetService
+from semantic_reviewer.application.discovery import DiscoveryService
 from semantic_reviewer.application.jobs import JobService
 from semantic_reviewer.application.reviews import ReviewIndex
 from semantic_reviewer.application.selections import SelectionStore
 from semantic_reviewer.domain.datasets import DatasetError
+from semantic_reviewer.web.discovery import add_discovery_routes
 
 
 def create_app(
@@ -23,6 +25,7 @@ def create_app(
     annotations: AnnotationService | None = None,
     reviews: ReviewIndex | None = None,
     selections: SelectionStore | None = None,
+    discovery: DiscoveryService | None = None,
 ) -> FastAPI:
     """Build local HTML and JSON interfaces, with optional queue access.
 
@@ -49,6 +52,9 @@ def create_app(
     templates = Jinja2Templates(directory=Path(__file__).parent / "templates")
     templates.env.globals["has_reviews"] = reviews is not None
     templates.env.globals["has_selections"] = selections is not None
+    templates.env.globals["has_discovery"] = discovery is not None
+    if discovery is not None:
+        add_discovery_routes(app, templates, discovery)
 
     if selections is not None:
 

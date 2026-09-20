@@ -7,6 +7,7 @@
 {% if summary.purpose == 'fixture' %}<p>Software fixture: these decisions are not human research labels.</p>
 {% else %}<p>Human-review attestation by {{ snapshot.request.curator }}. This is a recorded claim, not independently verified provenance or an approved empirical sample.</p>{% endif %}
 {% if summary.included == 0 %}<p>No included records. This snapshot cannot supply a discovery corpus.</p>{% endif %}
+{% if has_discovery and summary.included %}<form action="/discovery/embed" method="post"><input type="hidden" name="selection_id" value="{{ summary.id }}"><button type="submit">Queue embeddings</button></form>{% endif %}
 <details><summary>Frozen provenance</summary><dl>
   <dt>Selection SHA-256</dt><dd><code>{{ summary.id }}</code></dd>
   <dt>Registered</dt><dd>{{ summary.created_at }}</dd>

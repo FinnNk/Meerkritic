@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Discovery result · Meerkritic{% endblock %}
+{% block refresh %}{% if run.status in ('queued','running') %}<meta http-equiv="refresh" content="5">{% endif %}{% endblock %}
+{% block content %}
+<p><a href="/discovery">Discovery runs</a> · <a href="/selections/{{ summary.id }}">Frozen inputs and exclusions</a></p>
+<h1>{{ run.request.kind | capitalize }} · {{ run.status }}</h1>
+<p>{{ summary.purpose | capitalize }} · {{ summary.included }} eligible · {{ summary.excluded }} excluded
+{% if body %} · {{ body.failed }} failed{% if 'outliers' in body %} · {{ body.outliers }} outliers · {{ body.clusters }} groups{% endif %}{% endif %}</p>
+{% if summary.purpose == 'fixture' %}<p>Software fixture; these are not human research labels.</p>{% endif %}
+{% if run.error %}<p><strong>{{ run.error }}</strong> An explicit new submission is required to retry.</p>{% endif %}
+{% if body and body.telemetry %}<p>{{ body.telemetry }}</p>{% endif %}
+{% if run.status in ('queued','running') %}<p>Waiting for the discovery-enabled worker. This page refreshes every five seconds. Recovery requires the exclusive worker lock; elapsed time does not trigger replay.</p>{% endif %}
+<details><summary>Exact run provenance</summary><p>Run <code>{{ run.id }}</code></p><p>Result SHA-256 <code>{{ run.result_digest or 'Pending' }}</code></p><pre>{{ manifest }}</pre></details>
+{% endblock %}

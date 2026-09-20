@@ -15,6 +15,7 @@ from semantic_reviewer.adapters.selections import JsonSelections
 from semantic_reviewer.application.annotations import AnnotationService
 from semantic_reviewer.application.artefacts import ArtefactIndex
 from semantic_reviewer.application.datasets import DatasetService, PublicDataset
+from semantic_reviewer.application.discovery import DiscoveryService
 from semantic_reviewer.application.jobs import JobService, Worker
 from semantic_reviewer.application.selections import SelectionService
 
@@ -73,7 +74,15 @@ def build_jobs(data_root: Path) -> JobService:
     )
 
 
-def build_worker(data_root: Path, routing_file: Path, endpoint: str) -> Worker:
+def build_worker(
+    data_root: Path,
+    routing_file: Path,
+    endpoint: str,
+    *,
+    embedding_endpoint: str | None = None,
+    embedding_profile: Path | None = None,
+    embedding_model: Path | None = None,
+) -> Worker:
     """Compose an idle worker owning exclusivity/recovery; run it outside HTTP.
 
     Initialise external storage and validate routing configuration without invoking
@@ -87,11 +96,29 @@ def build_worker(data_root: Path, routing_file: Path, endpoint: str) -> Worker:
 
     root = runtime_path(data_root)
     config = RoutingConfig.model_validate_json(routing_file.read_bytes())
+    routing = RoutingService(config, SQLiteRoutingJournal(root / "state.sqlite3"))
+    discovery = None
+    if any((embedding_endpoint, embedding_profile, embedding_model)):
+        if not all((embedding_endpoint, embedding_profile, embedding_model)):
+            raise ValueError(
+                "Discovery requires embedding endpoint, profile and model file together."
+            )
+        from semantic_reviewer.adapters.embedding import EmbeddingProfile, LlamaEmbeddingClient
+        from semantic_reviewer.adapters.maf_embedding import MafEmbeddingRuntime
+        from semantic_reviewer.application.discovery import DiscoveryExecution
+
+        profile = EmbeddingProfile.model_validate_json(embedding_profile.read_bytes())
+        discovery = DiscoveryExecution(
+            build_discovery(root),
+            routing,
+            MafEmbeddingRuntime(LlamaEmbeddingClient(embedding_endpoint, profile, embedding_model)),
+        )
     return Worker(
         build_jobs(root),
-        RoutingService(config, SQLiteRoutingJournal(root / "state.sqlite3")),
+        routing,
         MafWorkflowRunner(LlamaClient(endpoint)),
         partial(worker_lock, root),
+        discovery,
     )
 
 
@@ -133,4 +160,16 @@ def build_selections(data_root: Path) -> SelectionService:
         jobs.datasets,
         jobs.results,
         JsonSelections(root / "selections", root / "state.sqlite3"),
+    )
+
+
+def build_discovery(data_root: Path) -> DiscoveryService:
+    """Compose queue and verified analytical inspection; models load only in the worker."""
+    from semantic_reviewer.adapters.discovery import ParquetDiscovery, SQLiteDiscovery
+
+    root = runtime_path(data_root)
+    return DiscoveryService(
+        JsonSelections(root / "selections", root / "state.sqlite3"),
+        SQLiteDiscovery(root / "state.sqlite3"),
+        ParquetDiscovery(root / "discovery"),
     )

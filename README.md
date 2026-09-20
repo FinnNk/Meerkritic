@@ -48,6 +48,10 @@ Freeze explicitly chosen decisions with the [selection guide](docs/development/s
 then open **Frozen annotation inputs** to inspect the retained source, effective
 interpretations and exclusions. Fixture inputs remain distinct from research labels.
 
+Explore those inputs through the harness's **Discovery** view. See
+[discovery setup](docs/development/discovery.md) for the local embedding worker,
+embedding provenance and compatibility limitations.
+
 Run `uv run --locked python tools/check.py` for formatting, lint, architecture and
 behaviour checks. See the [dataset guide](docs/development/datasets.md) for source
 provenance, storage and recovery, or the [development guide](docs/development/README.md)

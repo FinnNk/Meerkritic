@@ -125,9 +125,12 @@ slices:
   name: Annotation-to-Rule Discovery
   status: ACTIVE
   plan: docs/plans/VS2-plan.md
-  frozen_batch: A1 immutable annotation selections
+  frozen_batch: A2/A3 embedding execution and reproducible grouping
+  batch_progress:
+  - A1 frozen selections integrated via PR 10; ADR-0009 implemented
+  - A2 implemented candidate; A3 follows at the next semantic checkpoint
   remaining_gates:
-  - A2/A3 model preflight and bounded human corpus
+  - human-rated development corpus before empirical method adoption
   - EDR registration before decision-bearing comparison
   - B/C contracts elaborated before implementation
   revision_after: VS1
