@@ -23,3 +23,6 @@ credentials stay in external runtime/evidence storage.
 research claims, exclusions, corrupted evidence, concurrent idempotence, interrupted
 publication, restart and the CLI with synthetic source records. These are software
 checks, not human-labelled discovery data or a registered empirical comparison.
+
+`test_selection_web.py` opens a composed application after freezing and checks
+source/decision display, escaping, pagination and missing/corrupt snapshot failures.

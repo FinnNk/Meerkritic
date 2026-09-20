@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Frozen annotation inputs · Meerkritic{% endblock %}
+{% block content %}
+<h1>Frozen annotation inputs</h1>
+<p>Explicit annotation versions retained for discovery. Fixture inputs are not research labels.</p>
+<p>Freeze a selection with <code>tools/run.py freeze-selection</code> using the annotation IDs shown on reviewed jobs. Opening a snapshot verifies its stored content.</p>
+{% for item in items %}
+<article>
+  <h2><a href="/selections/{{ item.id }}">{{ item.dataset_id }}</a></h2>
+  <p><strong>{{ item.purpose | capitalize }}</strong> · {{ item.included }} included · {{ item.excluded }} excluded · {{ item.created_at }}</p>
+  <code>{{ item.id }}</code>
+</article>
+{% else %}<p>No selections on this page.</p>{% endfor %}
+<nav>{% if page > 1 %}<a href="?page={{ page - 1 }}">Previous</a>{% endif %}{% if items | length == 20 and page < 1000000 %}<a href="?page={{ page + 1 }}">Next</a>{% endif %}</nav>
+{% endblock %}

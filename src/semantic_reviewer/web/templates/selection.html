@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Frozen selection · Meerkritic{% endblock %}
+{% block content %}
+<p><a href="/selections">All frozen inputs</a></p>
+<h1>{{ snapshot.dataset.title }}</h1>
+<p><strong>{{ summary.purpose | capitalize }}</strong> · {{ summary.included }} included · {{ summary.excluded }} excluded</p>
+{% if summary.purpose == 'fixture' %}<p>Software fixture: these decisions are not human research labels.</p>
+{% else %}<p>Human-review attestation by {{ snapshot.request.curator }}. This is a recorded claim, not independently verified provenance or an approved empirical sample.</p>{% endif %}
+{% if summary.included == 0 %}<p>No included records. This snapshot cannot supply a discovery corpus.</p>{% endif %}
+<details><summary>Frozen provenance</summary><dl>
+  <dt>Selection SHA-256</dt><dd><code>{{ summary.id }}</code></dd>
+  <dt>Registered</dt><dd>{{ summary.created_at }}</dd>
+  <dt>Policy</dt><dd>{{ snapshot.eligibility_policy }}</dd>
+  <dt>Dataset revision</dt><dd>{{ snapshot.dataset.revision }}</dd>
+  <dt>Source SHA-256</dt><dd>{{ snapshot.dataset.source_sha256 }}</dd>
+  <dt>Parquet SHA-256</dt><dd>{{ snapshot.dataset.parquet_sha256 }}</dd>
+  <dt>Declared holdouts</dt><dd>{{ snapshot.request.holdout_repositories | join(', ') or 'None declared' }}</dd>
+</dl></details>
+<p>The snapshot's bytes and metadata have been verified. Original source and result artefact availability is not rechecked here. Rejected interpretations are not verified negatives; uncertainty remains visible.</p>
+{% for item in items %}
+<article>
+  <h2>Source {{ item.source.source_index }} · {{ item.source.owner }}/{{ item.source.repository }}</h2>
+  <p><strong>{% if item.exclusion %}Excluded: {{ item.exclusion | replace('_', ' ') }}{% else %}Included{% endif %}</strong> · {{ item.annotation.decision | capitalize }}</p>
+  <p><a href="/jobs/{{ item.annotation.job_id }}">Original job and decision</a> · annotation <code>{{ item.annotation.id }}</code></p>
+  <p>{{ item.interpretation.issue_statement }}</p>
+  <p>Actionable: {{ item.interpretation.actionable_engineering_concern }} · Generalisable: {{ item.interpretation.generalisable }}</p>
+  <details><summary>Frozen source and effective interpretation</summary>
+    <h3>Comment</h3><pre>{{ item.source.comment }}</pre>
+    <h3>Code</h3><pre>{{ item.source.code }}</pre>
+    <h3>Effective interpretation</h3><pre>{{ item.interpretation.model_dump_json(indent=2) }}</pre>
+    <p>Original result: <code>{{ item.annotation.result_sha256 }}</code></p>
+    {% if item.annotation.interpretation_sha256 %}<p>Edited body: <code>{{ item.annotation.interpretation_sha256 }}</code></p>{% endif %}
+  </details>
+</article>
+{% else %}<p>No records on this page.</p>{% endfor %}
+<nav>{% if page > 1 %}<a href="?page={{ page - 1 }}">Previous</a>{% endif %}{% if page * 10 < snapshot.records | length %}<a href="?page={{ page + 1 }}">Next</a>{% endif %}</nav>
+{% endblock %}
