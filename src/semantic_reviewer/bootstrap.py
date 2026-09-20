@@ -16,6 +16,7 @@ from semantic_reviewer.application.annotations import AnnotationService
 from semantic_reviewer.application.artefacts import ArtefactIndex
 from semantic_reviewer.application.datasets import DatasetService, PublicDataset
 from semantic_reviewer.application.discovery import DiscoveryService
+from semantic_reviewer.application.interaction import ReviewWorkspace
 from semantic_reviewer.application.jobs import JobService, Worker
 from semantic_reviewer.application.rules import RuleService
 from semantic_reviewer.application.selections import SelectionService
@@ -195,3 +196,11 @@ def build_rules(data_root: Path) -> RuleService:
     return RuleService(
         discovery, SQLiteRules(root / "state.sqlite3", discovery.files), discovery.files
     )
+
+
+def build_workspace(data_root: Path) -> ReviewWorkspace:
+    """Compose saved intent and review transitions; no decisions or model work occur."""
+    from semantic_reviewer.adapters.interaction import SQLiteReviewWorkspace
+
+    root = runtime_path(data_root)
+    return SQLiteReviewWorkspace(root / "state.sqlite3", build_discovery(root).files)

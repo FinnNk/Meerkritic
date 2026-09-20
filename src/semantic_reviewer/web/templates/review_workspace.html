@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Review workspace · Meerkritic{% endblock %}
+{% block content %}
+<h1>Review workspace</h1>
+<p>Save decisions together, inspect them, then apply explicitly. Saving a draft changes no rule decision.</p>
+{% if error %}<p role="alert"><strong>{{ error }}</strong> Your saved draft remains below.</p>{% endif %}
+{% if metadata %}<p>{{ metadata.status | capitalize }} · draft revision {{ metadata.revision }}</p>{% endif %}
+{% if receipt %}<h2>Applied batch</h2><p>{{ receipt.applied_at }} · {{ body.actor }}</p>
+{% for result in receipt.results %}<p><a href="/rules/{{ result.version_id }}">Rule version</a> · {{ result.action }} · resulting revision {{ result.resulting_revision }}</p>{% endfor %}
+<p><a href="/review-workspace">Start a new draft</a></p>
+{% else %}
+<form action="/review-workspace/save" method="post">
+<input type="hidden" name="draft_id" value="{{ draft_id }}"><input type="hidden" name="draft_revision" value="{{ metadata.revision if metadata else '' }}">
+<label>Your name <input name="actor" maxlength="200" value="{{ body.actor if body else '' }}" required></label>
+{% for row in rows %}<article><h2><a href="/rules/{{ row.version }}">{{ row.title }}</a></h2>
+<p>{{ row.task.state | capitalize }} · saved target revision {{ row.revision }} · current revision {{ row.current_revision }}</p>
+<input type="hidden" name="version_{{ loop.index0 }}" value="{{ row.version }}">
+<label>Target revision <input type="number" min="1" name="revision_{{ loop.index0 }}" value="{{ row.revision }}" required></label>
+<label>Decision <select name="action_{{ loop.index0 }}"><option value="">Leave unchanged</option>
+{% for action in ['promote','reject','defer','reopen'] %}<option value="{{ action }}" {% if row.intent and row.intent.action == action %}selected{% endif %}>{{ action | capitalize }}</option>{% endfor %}</select></label>
+<label>Rationale <textarea name="rationale_{{ loop.index0 }}" maxlength="2000">{{ row.intent.rationale if row.intent else '' }}</textarea></label></article>{% endfor %}
+<button>Save draft only</button></form>
+{% if metadata %}<form action="/review-workspace/apply" method="post"><input type="hidden" name="draft_id" value="{{ draft_id }}"><input type="hidden" name="revision" value="{{ metadata.revision }}"><button>Apply this saved batch</button></form>{% endif %}
+{% endif %}
+<h2>Saved and applied drafts</h2>{% for draft in drafts %}<p><a href="/review-workspace?draft_id={{ draft.id }}">{{ draft.created_at }}</a> · {{ draft.status }} · revision {{ draft.revision }}</p>{% else %}<p>No drafts yet.</p>{% endfor %}
+{% endblock %}
