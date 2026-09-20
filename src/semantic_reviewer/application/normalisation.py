@@ -40,7 +40,13 @@ class FrameworkObservation:
 
 @dataclass(frozen=True)
 class NormalisationOutcome:
-    """Retain validated interpretation or failure, plus actual usage and raw provenance."""
+    """Keep success and failure consistent with interpretation and usage.
+
+    Success requires an interpretation and reply; failure requires a non-blank
+    explanation and has no accepted interpretation/spans. Construction rejects
+    contradictions with ValueError. The runner attaches framework/request evidence
+    after the individual steps; these may be absent on a runtime failure.
+    """
 
     interpretation: IssueInterpretation | None
     spans: tuple[EvidenceSpan, ...]
@@ -49,6 +55,21 @@ class NormalisationOutcome:
     error: str | None
     framework: FrameworkObservation | None = None
     request: ModelRequest | None = None
+
+    def __post_init__(self) -> None:
+        success = self.measurement.outcome == "success"
+        if success:
+            if self.error is not None or self.interpretation is None or self.reply is None:
+                raise ValueError("Successful normalisation requires interpretation and reply only.")
+        elif (
+            not isinstance(self.error, str)
+            or not self.error.strip()
+            or self.interpretation is not None
+            or self.spans
+        ):
+            raise ValueError(
+                "Failed normalisation requires an error and no accepted interpretation."
+            )
 
 
 class ContextBuilder(Protocol):

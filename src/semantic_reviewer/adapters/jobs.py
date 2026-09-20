@@ -2,6 +2,7 @@
 
 import json
 import logging
+import re
 import sqlite3
 from dataclasses import asdict
 from datetime import UTC, datetime
@@ -110,13 +111,22 @@ class SQLiteJobs:
         self._export_log(job.id)
 
     def finish(self, job: Job, digest: str | None, error: str | None) -> None:
-        """Atomically publish a terminal reference and event, rejecting old-worker writes."""
+        """Commit a terminal reference/event after validating the completion contract.
+
+        None means success and requires a SHA-256 reference. Failure requires a
+        non-blank explanation and may retain a result reference. Invalid arguments
+        or lost ownership raise ValueError without changing the job or its events.
+        """
+        if error is not None and (not isinstance(error, str) or not error.strip()):
+            raise ValueError("Failed jobs require a non-blank explanation.")
+        if digest is not None and not re.fullmatch(r"[0-9a-f]{64}", digest):
+            raise ValueError("Completion requires a SHA-256 artefact identity.")
         if error is None and digest is None:
             raise ValueError("Successful jobs require a complete artefact.")
         with self.state.connect() as db:
             db.execute("BEGIN IMMEDIATE")
             self._owned(db, job)
-            status = "failed" if error else "succeeded"
+            status = "succeeded" if error is None else "failed"
             db.execute(
                 "UPDATE job SET status=?, completed_at=?, artefact_sha256=?, error=? WHERE id=?",
                 (status, _now(), digest, error, job.id),

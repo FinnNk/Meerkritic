@@ -1,6 +1,7 @@
 """Check real queue transactions, crash recovery, artefact integrity and routed execution."""
 
 import json
+import sqlite3
 import subprocess
 import sys
 import unittest
@@ -29,6 +30,31 @@ class JobsTest(unittest.TestCase):
         self.jobs = SQLiteJobs(self.database)
         self.results = JsonResults(self.root / "results")
         self.queue = JobService(self.service, self.jobs, self.results)
+
+    def test_invalid_completion_cannot_create_success_or_event(self):
+        job = self.queue.enqueue(self.source.id, 0)
+        claimed = self.jobs.claim("worker")
+        with self.jobs.state.connect() as db:
+            before = db.execute("SELECT count(*) FROM event").fetchone()[0]
+        for digest, error in ((None, ""), (None, " \t"), (None, None), ("", None)):
+            with self.subTest(digest=digest, error=error), self.assertRaises(ValueError):
+                self.jobs.finish(claimed, digest, error)
+        with self.jobs.state.connect() as db:
+            self.assertEqual(db.execute("SELECT count(*) FROM event").fetchone()[0], before)
+            with self.assertRaises(sqlite3.IntegrityError):
+                db.execute("UPDATE job SET status='succeeded', error='' WHERE id=?", (job.id,))
+            for status, digest, error in (
+                ("succeeded", "g" * 64, None),
+                ("failed", None, "\t\r\n"),
+            ):
+                with self.subTest(status=status), self.assertRaises(sqlite3.IntegrityError):
+                    db.execute(
+                        "UPDATE job SET status=?, artefact_sha256=?, error=? WHERE id=?",
+                        (status, digest, error, job.id),
+                    )
+        self.assertEqual(self.jobs.get(job.id).status, "running")
+        self.jobs.finish(claimed, None, "Provider unavailable")
+        self.assertEqual(self.jobs.get(job.id).status, "failed")
 
     def test_concurrent_claim_restart_and_old_worker_fencing(self):
         first = self.queue.enqueue(self.source.id, 0)

@@ -58,3 +58,10 @@ heartbeats do not flood the event stream. This remains operational history, not 
 
 Completed usage can use the existing [routing export](routing-operations.md) for Parquet/DuckDB.
 No network queue, distributed worker or full MAF durable runtime is introduced.
+
+Completion has one meaning: a successful job has a result digest and no error;
+a failed job has a non-blank explanation. The store rejects contradictory requests
+before any state/event change, and database triggers protect new terminal writes.
+Workflow outcomes also reject disagreements between usage status, interpretation
+and error. Existing immutable history is not rewritten by migration; a previously
+corrupt terminal record requires explicit investigation, not silent repair.
