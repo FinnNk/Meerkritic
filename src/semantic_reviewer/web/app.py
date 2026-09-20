@@ -26,11 +26,17 @@ def create_app(
 
     Args:
         datasets: Service supplying registration metadata and verified observations.
+        jobs: Queue/result access. When absent, job routes are not registered.
+        annotations: Human review access, enabled only together with jobs. Supplied
+            services must refer to the same runtime data as datasets and jobs.
+        reviews: Optional external DER reference index; enables the reviews page.
 
     Returns:
         A FastAPI application without starting a server. Observation requests map
         unknown IDs to 404 and dataset-integrity failures to 409; FastAPI rejects
         invalid query bounds with 422 before calling the handler.
+        Construction does not enqueue or execute inference. HTTP mutation routes
+        persist explicit submissions; human decisions include their events.
     """
     app = FastAPI(title="Meerkritic", version="0.1.0")
     app.add_middleware(

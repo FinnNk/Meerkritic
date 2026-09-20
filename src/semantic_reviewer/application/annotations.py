@@ -62,7 +62,11 @@ class AnnotationStore(Protocol):
     """Own atomic decision/event insertion, idempotence and bounded review queries."""
 
     def record(self, annotation: Annotation) -> Annotation:
-        """Return an identical existing decision or reject a conflicting submission."""
+        """Atomically insert decision/event or return an identical existing decision.
+
+        Identity/time may differ on retries; all substantive fields must match.
+        A conflicting decision raises ValueError and writes neither row nor event.
+        """
         ...
 
     def get(self, job_id: str) -> Annotation | None:
@@ -82,7 +86,10 @@ class AnnotationStore(Protocol):
         ...
 
     def history(self, observation_id: str) -> tuple[Annotation, ...]:
-        """Return at most the latest 100 decisions for a source across model runs."""
+        """Return at most 100 decisions in descending creation-time/ID order.
+
+        Include all runs for the source; return () when no decisions exist.
+        """
         ...
 
 
@@ -110,6 +117,22 @@ class AnnotationService:
         Edits must satisfy the original schema and exact source grounding. Identical
         retries are safe; changing a completed decision requires a future workflow.
         An interrupted database write may leave an unreferenced immutable edit file.
+
+        Args:
+            job_id: Successful job whose result is being reviewed.
+            decision: Lower-case accept, edit or reject.
+            notes: At most 4,000 characters, retained verbatim.
+            edited_json: Required only for edit; at most 256,000 UTF-8 bytes.
+
+        Returns:
+            The persisted decision, including its original identity/time on a retry.
+
+        Raises:
+            LookupError: The job or its source does not exist.
+            ValueError: The request, schema, grounding, evidence integrity or decision
+                conflicts with the contract. No annotation/event is committed.
+            OSError: Evidence access/publication fails. Storage errors propagate;
+                an edit file may already exist when decision persistence fails.
         """
         if decision not in ("accept", "edit", "reject") or len(notes) > 4000:
             raise ValueError(
@@ -152,7 +175,12 @@ class AnnotationService:
         )
 
     def review(self, job_id: str) -> tuple[Annotation | None, dict[str, object] | None]:
-        """Read the decision and verified edited body, when present."""
+        """Read the decision and verified edited body, when present.
+
+        Return (None, None) for an unreviewed or unknown job; this query does not
+        establish job existence. Corrupt edited evidence raises ValueError and
+        filesystem failures propagate. Reading does not record a decision.
+        """
         annotation = self.store.get(job_id)
         edited = (
             self._results.read(annotation.interpretation_sha256)
