@@ -25,12 +25,14 @@ def add_rule_routes(app, templates, service: RuleService) -> None:
 
     @app.get("/rules", response_class=HTMLResponse)
     def rules(request: Request):
+        """List current candidate heads; opening a version verifies its immutable body."""
         return templates.TemplateResponse(
             request=request, name="rules.html", context={"heads": service.store.recent()}
         )
 
     @app.get("/rules/{version_id}", response_class=HTMLResponse)
     def detail(request: Request, version_id: str):
+        """Render a verified version, exact source evidence and historical decisions."""
         try:
             head, body, evidence, decisions = service.store.read(version_id)
             _, snapshot = service.discovery.selections.read(body.selection_id)
@@ -70,6 +72,7 @@ def add_rule_routes(app, templates, service: RuleService) -> None:
 
     @app.post("/rules/{version_id}/decide")
     async def decide(request: Request, version_id: str):
+        """Record an explicit fenced research decision; preserve submitted values on conflict."""
         fields = await local_form(request)
         try:
             decision = RuleDecisionRequest(
@@ -87,6 +90,7 @@ def add_rule_routes(app, templates, service: RuleService) -> None:
 
     @app.post("/rules/{version_id}/evidence")
     async def evidence(request: Request, version_id: str):
+        """Validate a typed source claim and append it against the expected current revision."""
         fields = await local_form(request)
         try:
             item = RuleEvidence(
@@ -105,6 +109,7 @@ def add_rule_routes(app, templates, service: RuleService) -> None:
 
     @app.post("/rules/{version_id}/revise")
     async def revise(request: Request, version_id: str):
+        """Publish a child definition with retained evidence; preserve input on conflict."""
         fields = await local_form(request)
         try:
             definition = RuleDefinition(
