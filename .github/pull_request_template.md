@@ -15,17 +15,29 @@ establishes. Name any unmerged prerequisite and the required review/merge order.
 ## Validation
 
 <!-- Populate from retained evidence for the stated revision, not the last PR.
-Use docs/development/documentation-style.md#validation-tables. Keep relevant rows;
-add change-specific checks. Missing required checks stay Not run/Blocked, not Passed.
-Link immutable records/logs. Use prose only for material exceptions. -->
+Use docs/development/documentation-style.md#validation-summary. Confirm every
+expected standard check ran and passed; name any missing, skipped or failed check.
+Link immutable evidence. Keep tables only where the breakdown helps review. -->
 
-Checked revision: <!-- short SHA; environment/context once, e.g. Windows / Python 3.12 -->
+**Standard checks:** Not run · revision <!-- short SHA --> · <!-- evidence link -->
 
-| Check | Result | Evidence |
-| --- | --- | --- |
-| Quality gates | Not run | — |
-| Tests | Not run | — |
-| Change-specific checks | Not run | — |
+<!-- State environment once if relevant. A passing overall flag alone is not enough:
+compare the recorded execution with the required checks in tools/check.py.
+For documentation-only changes, a test-total line usually suffices.
+For software changes, use recorded test categories when useful:
+
+| Test category | Passed | Failed | Skipped |
+| --- | ---: | ---: | ---: |
+
+Explain changed coverage where it helps review:
+
+| Behaviour | Coverage change |
+| --- | --- |
+
+Use only categories the suite defines and counts the evidence supports. Do not
+infer added/removed/altered test counts from changed lines or filenames.
+Add change-specific evidence and material exceptions; omit empty tables and
+routine tool-by-tool rows. -->
 
 ## Decisions and remaining work
 
