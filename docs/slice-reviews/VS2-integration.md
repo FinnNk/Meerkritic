@@ -28,3 +28,15 @@ The [slice review](VS2-review.md) and [milestone review](VS2-milestone-architect
 retain the delivered behaviour, findings and limitations. This record closes the
 software integration gate, not the empirical study or the whole slice. No later
 slice has been activated.
+
+## Study-preparation documentation integration
+
+The owner approved and merged [PR #14](https://github.com/FinnNk/Meerkritic/pull/14)
+on 20 September 2026. Reviewed head `fb5745475e7dd7d0cf5a93e329b3cd0c34910c72`
+maps to integrated head `cd0a4d8c9a254e3027513274b39ce3f65cf227d2`; all seven
+ordered reviewed trees are preserved. The integrated locked Windows baseline passes
+all standard checks and 172 tests. Its ordered mapping and baseline evidence are
+retained with DER `vs2-study-tools/r1`, outside application worktrees.
+
+The owner's later explicit agreement to EDR-0001's proposed workload and criteria
+is recorded in that EDR. It is separate from PR acceptance and from registration.
