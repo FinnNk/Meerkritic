@@ -1,0 +1,38 @@
+[
+  {
+    "name": "study-final-checks.json",
+    "source_sha256": "085d3b6fffc13173b221dd04f2e8f645efb80ad8ca4538f378ede6db168817bc",
+    "export_sha256": "4a849c1146dc99b79348497a955172764b709f7d185035654ef618948868b645",
+    "transformation": "Local paths replaced; UTF-8 BOM removed where present"
+  },
+  {
+    "name": "study-final-checks.log",
+    "source_sha256": "25e2bbc0c2bc3b12db158ae093aecb1b1c594846f8c8da2480961ffb02ade837",
+    "export_sha256": "5461d8b8cf4ac43a37b82887ca902d8b1b0f4ec208d9ae2ccdac98364b025066",
+    "transformation": "Local paths replaced; UTF-8 BOM removed where present"
+  },
+  {
+    "name": "docs-check.json",
+    "source_sha256": "68fa1e9a7015fe4f0a592c7bbd6f4428041654e03ac560ee3836240acfcf1802",
+    "export_sha256": "68fa1e9a7015fe4f0a592c7bbd6f4428041654e03ac560ee3836240acfcf1802",
+    "transformation": "Local paths replaced; UTF-8 BOM removed where present"
+  },
+  {
+    "name": "docs_check.py",
+    "source_sha256": "a33b985b79445433b6bd241d6b5f603619f3b66b1a1f385ea91b6d28dfb3c56f",
+    "export_sha256": "236511597ea14e228d61aa5dedc4a03cbddaadf4aba46b14a12d798e2a26bb80",
+    "transformation": "Local paths replaced; UTF-8 BOM removed where present"
+  },
+  {
+    "name": "source-metadata.json",
+    "source_sha256": "3ec5e8c61c49e75103e1d58ded839bd9a11408056234e770f7d1b4a45afcc086",
+    "export_sha256": "3ec5e8c61c49e75103e1d58ded839bd9a11408056234e770f7d1b4a45afcc086",
+    "transformation": "Local paths replaced; UTF-8 BOM removed where present"
+  },
+  {
+    "name": "scope.md",
+    "source_sha256": "68b50ce8cf73c7cf76e52ac68b8704b3845b6fc97c9c3e1a84c7ce9639b1cb0c",
+    "export_sha256": "68b50ce8cf73c7cf76e52ac68b8704b3845b6fc97c9c3e1a84c7ce9639b1cb0c",
+    "transformation": "Local paths replaced; UTF-8 BOM removed where present"
+  }
+]
