@@ -23,6 +23,12 @@
 
 ## Empirical decisions
 
+- Before collecting human judgements or changing assessment fields, follow the
+  [assessment contract](docs/development/assessment-contract.md). Align schema,
+  prompt, UI and guide meanings; distinguish unknown impact from investigation
+  needs and applicability exceptions from missing evidence. Pause ambiguous
+  collection and record assistance and prospective protocol corrections.
+
 - Apply [the EDR process](docs/edr/README.md) when a significant decision depends on
   data and a plausible result could change the choice. Do not apply it to
   incidental telemetry, ordinary tests or prescribed implementation requirements.
