@@ -102,6 +102,13 @@ class SQLiteAnnotations:
                     (dataset_id,),
                 )
             )
+            reviewed = dict(
+                db.execute(
+                    "SELECT j.status, count(*) FROM annotation a JOIN job j ON j.id=a.job_id "
+                    "WHERE j.dataset_id=? GROUP BY j.status",
+                    (dataset_id,),
+                )
+            )
             sources = db.execute(
                 "SELECT count(DISTINCT a.observation_id) FROM annotation a "
                 "JOIN job j ON j.id=a.job_id "
@@ -113,6 +120,8 @@ class SQLiteAnnotations:
                 "reviewed_sources": sources,
                 "successful_results": counts.get("succeeded", 0),
                 "reviewed_results": sum(decisions.values()),
+                "reviewed_successful_results": reviewed.get("succeeded", 0),
+                "reviewed_failed_results": reviewed.get("failed", 0),
                 "accept": decisions.get("accept", 0),
                 "edit": decisions.get("edit", 0),
                 "reject": decisions.get("reject", 0),
@@ -122,7 +131,7 @@ class SQLiteAnnotations:
             }
 
     def pending(self, dataset_id: str, page: int) -> tuple[str, ...]:
-        """Page through unreviewed successful results in stable completion order."""
+        """Page through unreviewed successes and published failures for inspection."""
         if not 1 <= page <= 1_000_000:
             raise ValueError("Page is outside the supported range.")
         with self.state.connect() as db:
@@ -130,7 +139,9 @@ class SQLiteAnnotations:
                 row[0]
                 for row in db.execute(
                     "SELECT j.id FROM job j LEFT JOIN annotation a ON a.job_id=j.id "
-                    "WHERE j.dataset_id=? AND j.status='succeeded' AND a.id IS NULL "
+                    "WHERE j.dataset_id=? AND a.id IS NULL AND "
+                    "(j.status='succeeded' OR "
+                    "(j.status='failed' AND j.artefact_sha256 IS NOT NULL)) "
                     "ORDER BY j.completed_at, j.id LIMIT 20 OFFSET ?",
                     (dataset_id, (page - 1) * 20),
                 )

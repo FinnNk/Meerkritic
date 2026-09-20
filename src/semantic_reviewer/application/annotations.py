@@ -43,13 +43,17 @@ class AnnotationProgress(TypedDict):
 
     source_total includes all registered source rows; reviewed_sources counts each
     source once. successful_results counts model runs; reviewed_results includes
-    every terminal human decision, including Reject. All counts are non-negative.
+    every terminal human decision, including Reject and corrected failures.
+    reviewed_successful_results and reviewed_failed_results separate the original
+    execution outcomes. A human edit never increases model successes. All counts are non-negative.
     """
 
     source_total: int
     reviewed_sources: int
     successful_results: int
     reviewed_results: int
+    reviewed_successful_results: int
+    reviewed_failed_results: int
     accept: int
     edit: int
     reject: int
@@ -64,6 +68,8 @@ class AnnotationStore(Protocol):
     def record(self, annotation: Annotation) -> Annotation:
         """Atomically insert decision/event or return an identical existing decision.
 
+        The caller verifies body eligibility via review_actions and source grounding.
+        Storage fences terminal result and same-job edit identity.
         Identity/time may differ on retries; all substantive fields must match.
         A conflicting decision raises ValueError and writes neither row nor event.
         """
@@ -82,7 +88,10 @@ class AnnotationStore(Protocol):
         ...
 
     def pending(self, dataset_id: str, page: int) -> tuple[str, ...]:
-        """Return up to 20 unreviewed successful IDs in completion-time/ID order.
+        """Return up to 20 unreviewed successful or published failed job IDs.
+
+        Completion-time/ID order is for general inspection, not study sampling.
+        A published failure may be ineligible for correction; inspect its evidence.
 
         page is one-based, at most 1,000,000; invalid bounds raise ValueError.
         Unknown/empty datasets return (). Offset pages can shift after decisions.
@@ -95,6 +104,43 @@ class AnnotationStore(Protocol):
         Include all runs for the source; return () when no decisions exist.
         """
         ...
+
+
+def review_actions(job: Job, result: dict | None) -> tuple[str, ...]:
+    """Return admissible decisions without trusting a caller's claimed job status.
+
+    A successful interpretation supports Accept/Edit/Reject. A retained semantic
+    failure supports only Edit/Reject; provider and interrupted failures do not.
+    The caller must first verify the result bytes against the job's artefact hash.
+    No action changes the original execution outcome. Malformed evidence fails closed.
+    """
+    if not job.artefact_sha256 or not isinstance(result, dict):
+        return ()
+    # Older successful bodies omit job_id; their verified job hash and catalogue
+    # retain ownership. An explicitly conflicting identity is never compatible.
+    if (
+        job.status == "succeeded"
+        and result.get("job_id", job.id) == job.id
+        and isinstance(result.get("interpretation"), dict)
+    ):
+        return ("accept", "edit", "reject")
+    usage = result.get("usage")
+    measurement = usage.get("measurement") if isinstance(usage, dict) else None
+    output = result.get("model_output")
+    if (
+        job.status == "failed"
+        and result.get("job_id") == job.id
+        and job.error
+        and result.get("error") == job.error
+        and result.get("interpretation") is None
+        and isinstance(measurement, dict)
+        and measurement.get("outcome") == "semantic_failure"
+        and isinstance(output, str)
+        and output.strip()
+        and len(output.encode("utf-8")) <= 256_000
+    ):
+        return ("edit", "reject")
+    return ()
 
 
 class AnnotationService:
@@ -123,7 +169,7 @@ class AnnotationService:
         An interrupted database write may leave an unreferenced immutable edit file.
 
         Args:
-            job_id: Successful job whose result is being reviewed.
+            job_id: Successful interpretation or retained semantic-failure draft.
             decision: Lower-case accept, edit or reject.
             notes: At most 4,000 characters, retained verbatim.
             edited_json: Required only for edit; at most 256,000 UTF-8 bytes.
@@ -145,8 +191,10 @@ class AnnotationService:
         if (decision == "edit") != (edited_json is not None):
             raise ValueError("Only Edit requires a replacement interpretation.")
         job, result = self._jobs.inspect(job_id)
-        if job.status != "succeeded" or not result or not result.get("interpretation"):
-            raise ValueError("Only a successful interpretation can be reviewed.")
+        if decision not in review_actions(job, result):
+            raise ValueError(
+                "This result does not support that decision. Failed drafts require Edit or Reject."
+            )
         digest = None
         if edited_json is not None:
             if len(edited_json.encode("utf-8")) > 256_000:
