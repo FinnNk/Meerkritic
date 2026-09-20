@@ -1,5 +1,5 @@
 ---
-status: proposed
+status: accepted
 date: 2026-09-20
 decision-makers: [Project owner]
 ---
@@ -28,7 +28,11 @@ repeat external work after uncertain completion.
 
 ## Decision Outcome
 
-Proposed and implemented in the review candidate: a review workspace owns saved
+Accepted by Finn Newick on 20 September 2026 in the project conversation. This
+accepts the architectural decision; PR #13 review, merge and integrated verification
+remain separate. Implementation is present in the review candidate.
+
+A review workspace owns saved
 immutable draft payloads and version-checked application. Its storage adapter uses
 the registry's canonical decision operation within one transaction. Every target
 and event commits together or none does. Identical application retries return the
@@ -64,8 +68,18 @@ empirically chosen optima. Named actors remain local claims rather than authenti
 idempotency, lifecycle and exact-version discussion. `tests/test_guidance.py`
 covers frozen context, invented output, provider failures, unknown completion,
 context bounds and advice that never applies state. Real local MAF compatibility
-is retained in external DER `vs2-interaction/r1`. Owner acceptance remains pending.
+is retained in external DER `vs2-interaction/r1`; the documentation revision's
+checkpoint checks are retained in `vs2-interaction/r2`. The owner has accepted the
+decision. Record integrated confirmation after PR #13 is merged, then advance the
+status and index to `implemented`.
 Revisit durable orchestration only when a concrete longer-lived workflow benefits.
+
+### Status history
+
+| Date | Status | Record |
+| --- | --- | --- |
+| 2026-09-20 | proposed | Decision and implementation submitted in the PR #13 review candidate. |
+| 2026-09-20 | accepted | Finn Newick: "I accept adr-0012". PR acceptance and integrated confirmation remain pending. |
 
 ## Pros and Cons of the Options
 

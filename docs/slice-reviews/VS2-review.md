@@ -62,7 +62,8 @@ was needed. Architecture snapshots use one generator and remain evidence project
 - Actor names are local attestations; no multi-user authentication claim. Windows
   is the tested context. Author self-review is not independent review.
 - ADR-0010/0011 are implemented after verified owner merges. ADR-0012 (Apply review
-  intent in explicit batches) is proposed in the current candidate. ADR-0001 remains
+  intent in explicit batches) was accepted by the owner on 20 September 2026;
+  PR #13 merge and integrated confirmation remain pending. ADR-0001 remains
   accepted pending its first applicable registered empirical decision.
 
 ## Remaining slices and pause boundary
