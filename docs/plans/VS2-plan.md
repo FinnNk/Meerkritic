@@ -1,6 +1,6 @@
 # VS2 â€” Annotation-to-Rule Discovery
 
-Plan revision: 11, 20 September 2026. VS2 ACTIVE. A1 is integrated in PR #10 at
+Plan revision: 12, 20 September 2026. VS2 ACTIVE. A1 is integrated in PR #10 at
 `c9ef38f48b10d7876fe26babee36f2f15f258bf3`; its tree equals the reviewed head and
 the locked Windows baseline passes all checks and 115 tests.
 A2/A3 and B are integrated, with synthetic compatibility evidence. The owner
@@ -77,6 +77,17 @@ choice before a prospective amendment. Do not silently broaden or rerun the samp
 Source qualification and human review remain necessary before registration;
 they may proceed alongside this tooling. Follow the
 [human/agent preparation steps](../development/study-preparation.md).
+
+## Frozen human-correction batch
+
+PR #16 is integrated at `e7726500930e79f0ba69becae5d12b77edbb5dea`;
+all five reviewed commit trees match. The owner agreed the prospective preparation
+amendment on 20 September 2026. DER `vs2-draft-repair/r1` now owns the bounded batch:
+retain semantic failures while allowing grounded human Edit/Reject, carry the exact
+correction into explicit selections, expose the controls/source in the harness,
+and prepare the ordered human-review handoff. No model reruns, fabricated labels,
+new candidate pool or early grouping comparison. Record policy first, complete
+backend/UI contracts with tests, then backfill current guides and confirmation.
 
 ## Activation and first batch
 
