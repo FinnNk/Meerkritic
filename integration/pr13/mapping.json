@@ -1,0 +1,54 @@
+{
+  "pr": 13,
+  "base": "ff9af2e68d989590ebe030002e2e3789c35efef0",
+  "reviewed_tip": "a2580a0785ab109c6014e404a949f60722282844",
+  "integrated_tip": "f7aa4e05411da9d804f3624abe57033544fb1073",
+  "ordered_tree_mapping": [
+    {
+      "reviewed": "186bff35b6410320762383e35f6229a3853c6de9",
+      "integrated": "bd6ea5ba95d1271620dc37e23348961699880976",
+      "tree": "73255c0f53f5578544aae6f6cc85016acd2a0acd"
+    },
+    {
+      "reviewed": "89d5fcae41c35f5716ed881615d684d072af451d",
+      "integrated": "b0c8f65ebf487065ce3d2a0749479ed2e5ad9d8c",
+      "tree": "551a422d4e021114994429bb2d57c3c418fe70d7"
+    },
+    {
+      "reviewed": "55001b6374fefdaaf1634674bdb431c4af7d48e6",
+      "integrated": "ea0819e3aaa4672ef0e22534ee940728e3d88da4",
+      "tree": "5a6608694c803a492819f23f8a524ec6f492addf"
+    },
+    {
+      "reviewed": "ee351d3d7b70774c610a1e8e446c64aad8720448",
+      "integrated": "7c3e9b7572fa6b12028c41e87cbd23bbb0084fba",
+      "tree": "97867f37f2be04b5ddfda13b1c1673dd0de3791c"
+    },
+    {
+      "reviewed": "eaeecaafd37883f2cb6da09d2845886413a9a530",
+      "integrated": "d8cdd67172826a992b5759a17ccde3fa40b312d2",
+      "tree": "a438e28af4f45f3cac884d9876b2189b228e2a6c"
+    },
+    {
+      "reviewed": "c86e14de9bd2944db76d957913397c36ade0ae73",
+      "integrated": "955496e9d09378754ffc2e8c40949357a7deb837",
+      "tree": "b137f959fb997c6749d85161530b3f4101400497"
+    },
+    {
+      "reviewed": "8cd168531df7049efa6b47d50b8b3b8942b908ed",
+      "integrated": "404ee0f8a9ff282a2b012e75a3e8a43d72d21bfe",
+      "tree": "44085b287d4da2606446259438288ad326f701a5"
+    },
+    {
+      "reviewed": "db655166354f39906ac8a8ed970845413e6d7fd4",
+      "integrated": "1e892a5e268819e045104cfd58804a4f05ac74a6",
+      "tree": "f1b9d6a988b724de9c1fb8f561cafa3010904995"
+    },
+    {
+      "reviewed": "a2580a0785ab109c6014e404a949f60722282844",
+      "integrated": "f7aa4e05411da9d804f3624abe57033544fb1073",
+      "tree": "6d26f31d6789e4c79df4c8cbd9192aa174e5088a"
+    }
+  ],
+  "note": "Rebase merge preserved nine ordered proposition trees. Old checks retain old identities; separate post-merge check recorded."
+}

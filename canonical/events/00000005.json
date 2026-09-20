@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "sequence": 5,
+  "pair_id": "vs2-interaction",
+  "recorded_at": "2026-09-20T10:45:23+00:00",
+  "previous_hash": "7c8da329747ad73dfadae31f26e858010aff7ab8efece148101922de98ddc0fc",
+  "kind": "observation",
+  "round_id": "r2",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "adr0012-owner-acceptance-2026-09-20"
+  },
+  "payload": {
+    "decision": "ADR-0012 accepted",
+    "decision_maker": "Finn Newick",
+    "source": "Owner message in project conversation: I accept adr-0012",
+    "diary_commit": "6ca2b1b53cf95595268aca0d6a9285f52a9152fa",
+    "scope": "Routine decision-status documentation only; no application change or new DER pair",
+    "published_round_unchanged": true,
+    "pr_approval": false,
+    "merged": false,
+    "next_step": "Include the recorded acceptance in the next semantic revision or post-merge reconciliation; owner is reviewing the existing PR head."
+  },
+  "event_hash": "7e64fa73e02bfc39b5b8894e5f08906f04c5b1209f3ee8ecb0067bf5aa5ef759"
+}

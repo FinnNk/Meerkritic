@@ -1,0 +1,50 @@
+[
+  {
+    "name": "event.json",
+    "source_sha256": "d21dfa60ea0780039dbde95ebf3b4fb1c7c27487dfaaf0d2a8c978513a7d60e7",
+    "export_sha256": "d21dfa60ea0780039dbde95ebf3b4fb1c7c27487dfaaf0d2a8c978513a7d60e7",
+    "transformation": "Local paths replaced; UTF-8 BOM removed where present"
+  },
+  {
+    "name": "ledger.json",
+    "source_sha256": "c9a47ccc3e98494d00044d3b360e85998dbc4daee54bc97c89db9d67a3e38497",
+    "export_sha256": "a8606c6151767f05bf15a19584010e8708d060e5f1f4f458d8325c6052b0346b",
+    "transformation": "Local paths replaced; UTF-8 BOM removed where present"
+  },
+  {
+    "name": "github.json",
+    "source_sha256": "8f0a9bafc8acb2c02a09d82b51af2db8593259f827d0eed434351c2614b716a0",
+    "export_sha256": "8f0a9bafc8acb2c02a09d82b51af2db8593259f827d0eed434351c2614b716a0",
+    "transformation": "Local paths replaced; UTF-8 BOM removed where present"
+  },
+  {
+    "name": "mapping.json",
+    "source_sha256": "b4a3fdd755aa8bcd5ac90105db8ced5c8f8033b12b67bf3221d26cb64e03bcf3",
+    "export_sha256": "b4a3fdd755aa8bcd5ac90105db8ced5c8f8033b12b67bf3221d26cb64e03bcf3",
+    "transformation": "Local paths replaced; UTF-8 BOM removed where present"
+  },
+  {
+    "name": "licence.json",
+    "source_sha256": "1d99a510d7c38ff06dea51d377f54aff2fe1372c60829f21d7c095d1f2b63637",
+    "export_sha256": "1d99a510d7c38ff06dea51d377f54aff2fe1372c60829f21d7c095d1f2b63637",
+    "transformation": "Local paths replaced; UTF-8 BOM removed where present"
+  },
+  {
+    "name": "merged-checks.json",
+    "source_sha256": "d0635336202315a0301049eddeedcb577268b748c31ed35b085bd1c01d35c4e2",
+    "export_sha256": "97ac05a70cf9d70a7be61456befbcaf3292ea896f0141fb4b13e77569aab9485",
+    "transformation": "Local paths replaced; UTF-8 BOM removed where present"
+  },
+  {
+    "name": "merged-checks.log",
+    "source_sha256": "9986768d31103ae74da2c67d64843210f867b70b3fce8bd67b78567f932b73b8",
+    "export_sha256": "6d72dfedafdf3889b222b1a3fd21cfee54447ad8acf81cab8c48819449574a66",
+    "transformation": "Local paths replaced; UTF-8 BOM removed where present"
+  },
+  {
+    "name": "verify.py",
+    "source_sha256": "3de1efc244aa6e71d7893615c23207ca34836a4da15953330bfb890690f1878b",
+    "export_sha256": "ff14287d5bddc8101133615f394511e6f7eec04bceb4878c250cb0d51d8a9034",
+    "transformation": "Local paths replaced; UTF-8 BOM removed where present"
+  }
+]

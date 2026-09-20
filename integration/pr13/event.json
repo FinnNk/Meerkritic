@@ -1,0 +1,20 @@
+{
+  "kind": "integration",
+  "round_id": "r2",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "pr13-integration-2026-09-20"
+  },
+  "payload": {
+    "pr": "https://github.com/FinnNk/Meerkritic/pull/13",
+    "reviewed": "a2580a0785ab109c6014e404a949f60722282844",
+    "integrated": "f7aa4e05411da9d804f3624abe57033544fb1073",
+    "owner_approval": true,
+    "ordered_equivalent_trees": 9,
+    "checks": "integration/pr13/merged-checks.json",
+    "adr0012": "implemented after explicit owner acceptance and integrated confirmation",
+    "vs2": "ACTIVE; empirical gate outstanding"
+  }
+}
