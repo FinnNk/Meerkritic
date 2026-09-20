@@ -78,6 +78,11 @@ This foundation documents the convention; it does not claim server-side enforcem
 
 ## Batches and review
 
+Apply the [milestone review method](milestone-review.md) after each vertical slice
+or agreed milestone. Its build/PR checkpoints make invariant ownership, caller
+contracts, concrete counterexamples and maintained-documentation reconciliation
+part of acceptance. Use the linked template and retain evidence-backed conclusions.
+
 Classify each software batch before substantive work. Architecture-contract and
 evidence-policy changes are material; use the installed DER skill with one history
 integrator. Keep external evidence, exact identities and required qualification
