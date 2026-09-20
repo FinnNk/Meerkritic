@@ -92,33 +92,56 @@ as a prompt, removing sections that do not apply.
 - Rewrite the description around the final change when scope changes. Preserve
   owner amendments and do not claim tests, independence or approval that did not occur.
 
-### Validation tables
+### Validation summary
 
-Use the PR template's **Check / Result / Evidence** table instead of recurring
-validation paragraphs. State the checked revision and environment once above it.
-Prefer text results to badges: they remain readable without colour or an image
-service, and can point to evidence for an exact revision.
+Lead with one compact summary, populated from retained evidence:
 
-1. Read the retained check records and logs for the named revision. Populate the
-   table from those results; do not copy numbers or successes from an earlier PR.
-2. Group standard static checks into **Quality gates** (Ruff, Import Linter and
-   Tach). Give tests their own row; include a count only when the evidence records it.
-3. Add only relevant checks, such as documentation links, migrations, live workflow
-   checks or DER equivalence/checkpoint coverage. Name older integration evidence
-   separately; it does not certify the current head.
-4. Use **Passed**, **Failed**, **Partial**, **Not run** or **Blocked**, with a short
-   count or qualifier where useful. A partial, missing or skipped required check
-   must remain visible. Omit checks that do not apply.
-5. Link directly to immutable records or logs. Keep commands, detailed environments,
-   individual checkpoint results and reproduction instructions in that evidence.
-6. After a head change, refresh affected evidence and the table. Preserve owner
+> **Standard checks:** Passed · revision `abc1234` · [Evidence]
+
+Replace the illustrative revision and evidence placeholder when publishing. State
+the environment once where relevant. Prefer text to badges: it stays readable
+without colour or an image service and can link to evidence for an exact revision.
+Do not give each routine tool a table row.
+
+1. Read the retained records and logs for the stated revision. Compare the recorded
+   execution with every required check in that revision's `tools/check.py`, including
+   both Ruff checks, Import Linter, Tach and the test suite. An overall success flag
+   alone does not prove that all expected checks ran.
+2. Use **Passed** only when every required check ran and passed. Otherwise use
+   **Failed**, **Partial**, **Not run** or **Blocked**, naming missing, skipped or
+   failed required checks. Report skipped tests separately; do not count them as
+   passed or hide them behind a successful suite exit status.
+3. Derive statuses and counts from the evidence, not the last PR. Link immutable
+   records or logs; keep commands, detailed environments and reproduction details
+   there. Name older integration evidence separately from current-head results.
+4. Add a test breakdown only when it helps the reviewer. Use categories the suite
+   actually defines; do not infer unit/integration categories from test names.
+   A documentation-only change usually needs just the recorded test total.
+5. Explain changed coverage by behaviour when useful. Authors supply this explanation;
+   counts alone do not establish coverage. Added/removed/altered test counts are
+   optional, need a stated comparison base and reliable test-identity comparison,
+   and must account for renames or moves. Diff line counts are not test counts.
+6. Include relevant change-specific evidence, such as documentation checks, migrations,
+   live workflows or DER equivalence. Use a small table for meaningful comparisons;
+   use short prose or bullets for a single result or material exception.
+7. After a head change, refresh affected evidence and the summary. Preserve owner
    edits outside the generated section and check the published result.
 
-An agent or renderer may fill this template from existing structured evidence;
-the table is a summary, not another evidence store or a new validation gate.
-Keep prose below it only for a consequential failure, limitation or unusual result
-that the rows cannot explain. Put licence/status announcements and remaining study
-decisions in their relevant sections. Do not repeat generic assurances for every PR.
+For an informative test breakdown, use:
+
+| Test category | Passed | Failed | Skipped |
+| --- | ---: | ---: | ---: |
+
+For changed coverage, use:
+
+| Behaviour | Coverage change |
+| --- | --- |
+
+Fill only useful tables and remove empty ones from the PR. An agent or renderer
+may populate statuses and counts from existing evidence, but must check the expected
+checks before reporting success. The summary is not another evidence store or a
+new validation gate. Keep prose for consequential exceptions; put licence/status
+announcements and study decisions in their relevant sections.
 
 ## Author and reviewer checks
 
@@ -132,7 +155,10 @@ Apply these before presenting a change, at semantic review and at aggregate revi
 - [ ] Is current guidance free of unnecessary milestone history and duplicated policy?
 - [ ] Do links work, and does the rendered Markdown remain easy to scan?
 - [ ] Are evidence claims and limitations precise without overwhelming the task?
-- [ ] Does the PR validation table match retained evidence for its stated revision?
+- [ ] Does the PR validation summary match retained evidence for its stated revision,
+      account for every expected standard check and expose missing or skipped checks?
+- [ ] Do test breakdowns use recorded categories/counts and explain useful coverage
+      changes without giving routine tools unnecessary space?
 
 Review meaning, not a word count or checklist score. Check examples against the CLI
 and relevant code; run safe examples in a disposable runtime where useful. Never
