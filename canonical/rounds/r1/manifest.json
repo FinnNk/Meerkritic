@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "skill_version": "0.3.0-alpha.2",
+  "method_revision": 7,
+  "method_sha256": "f4f01865a4ec5d9b9b88d1c475b076c221820eb89041ce0b0053ed5ae0661b04",
+  "stage": "archived_candidate",
+  "pair_id": "vs2-comparison",
+  "round_id": "r1",
+  "created_at": "2026-09-20T13:46:53+00:00",
+  "object_format": "sha1",
+  "base": {
+    "diary_commit": "f5b23e44e4f13237a9f505f2f8182e0561813efe",
+    "semantic_commit": "f5b23e44e4f13237a9f505f2f8182e0561813efe",
+    "shared_tree": "8da2d34fc36dc897f08486c7b7350094e9b5704d"
+  },
+  "diary": {
+    "tip": "ccedd3d85b965d4f6a08e095ca8345e8895985a5",
+    "tree": "9e8c7ccfb9ef4ff4c6a4b1197445626fdd360c24"
+  },
+  "semantic": {
+    "tip": "a2668e32979cdb6e4541f739741db5a47e34804f",
+    "tree": "9e8c7ccfb9ef4ff4c6a4b1197445626fdd360c24"
+  },
+  "semantic_commits": [
+    "69548cb207eeb303ddca669c7f9fb3c0c5ace43c",
+    "ec5f15f2bf5b866d141b4d4040d99d3ec599e2fc",
+    "dadc3bb87edefb52358003e012173c3fa4ef263c",
+    "4b5fc59712aa62348735cb37e18b2011db8ec94f",
+    "a2668e32979cdb6e4541f739741db5a47e34804f"
+  ],
+  "equivalence": {
+    "trees_equal": true,
+    "direct_diff_exit_code": 0
+  },
+  "bundle": {
+    "file": "history.bundle",
+    "sha256": "2b6e14e3d73b5c14aad988b2c1abfa1d990debe2a5a639d2294405774371ade2",
+    "refs": {
+      "refs/heads/diary-base": "f5b23e44e4f13237a9f505f2f8182e0561813efe",
+      "refs/heads/semantic-base": "f5b23e44e4f13237a9f505f2f8182e0561813efe",
+      "refs/heads/diary": "ccedd3d85b965d4f6a08e095ca8345e8895985a5",
+      "refs/heads/semantic": "a2668e32979cdb6e4541f739741db5a47e34804f"
+    }
+  },
+  "verification": "not_attested",
+  "approval": "not_attested",
+  "publication": "not_attested",
+  "integration": "not_attested"
+}

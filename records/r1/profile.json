@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "method_revision": 7,
+  "evidence_store": "WORKSPACE/extras/der-evidence",
+  "pair_id": "vs2-comparison",
+  "diary_branch": "change/vs2-comparison-diary",
+  "semantic_branch": "feat/vs2-comparison",
+  "base_ref": "f5b23e44e4f13237a9f505f2f8182e0561813efe",
+  "verification": {
+    "baseline": [
+      [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "tools/check.py"
+      ]
+    ],
+    "per_commit": [
+      [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "tools/check.py"
+      ]
+    ],
+    "tip": [
+      [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "tools/check.py"
+      ]
+    ],
+    "external_state": []
+  },
+  "publication": {
+    "host": "github",
+    "policy": "versioned-rounds",
+    "merge_method": "rebase",
+    "remote_operations_authorised": true
+  },
+  "notes": "Owner authorised autonomous VS2 batches and PRs using App identity; owner merges. Windows/Python 3.12, each checkpoint owns source/lock/env. Absolute paths external; no credentials."
+}

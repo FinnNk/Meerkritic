@@ -1,0 +1,22 @@
+{
+  "kind": "verification",
+  "round_id": "r2",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "/root"
+  },
+  "payload": {
+    "stage": "locally_prepared",
+    "base": "f5b23e44e4f13237a9f505f2f8182e0561813efe",
+    "diary": "b42ba374bc9c318de1b2724d2634bd00880fb81b",
+    "semantic": "2adeb88d3bbcf1af2ee8b5c498c7a32cbe1c100c",
+    "summary": "All exact semantic checkpoints pass; unchanged P1-P4 identities use exact r1 checks; new diary and final P5 checked afresh. Diary/final tracked trees equal; full author self-review complete. r1 unverified P5 retained and superseded during documentation completion. Canonical archive verified. Two r2 P5 runs failed during Windows temporary-directory cleanup; diagnostic and final canonical reruns retained separately. Lock cause remains uncertain.",
+    "records": [
+      "vs2-comparison/r2/verification-summary.json",
+      "vs2-comparison/r2/review.json",
+      "vs2-comparison/r2/equivalence.json"
+    ]
+  }
+}

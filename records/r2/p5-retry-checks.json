@@ -1,0 +1,31 @@
+{
+  "label": "p5-retry",
+  "revision": "2adeb88d3bbcf1af2ee8b5c498c7a32cbe1c100c",
+  "checkout": "WORKSPACE\\extras\\der-checkouts\\vs2-comparison-check-r2-p5-retry",
+  "started_at": "2026-09-20T14:21:29.539721+00:00",
+  "commands": [
+    {
+      "argv": [
+        "uv",
+        "sync",
+        "--locked",
+        "--offline",
+        "--python",
+        "HOST_USER/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "tools/check.py"
+      ],
+      "exit_code": 1
+    }
+  ],
+  "required_context": "Windows/Python 3.12/locked checkpoint environment",
+  "status": "failed"
+}

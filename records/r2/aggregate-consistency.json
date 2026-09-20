@@ -1,0 +1,55 @@
+{
+  "status": "passed",
+  "revision": "2adeb88d3bbcf1af2ee8b5c498c7a32cbe1c100c",
+  "research_evidence_hashes_verified": [
+    {
+      "path": "preparation/0000.json",
+      "sha256": "bef06bf63a6f3f4f8842aa0dc0714dc8accceb18fbc36111acbcbcd80aa13cf2"
+    },
+    {
+      "path": "preparation/0001.json",
+      "sha256": "31283b98936c18f0a44340c7a483fee509e718c4b1bd2d92d0e6d4824fd4eaaf"
+    },
+    {
+      "path": "source-checks/qualification-03.json",
+      "sha256": "5d871c0d75e93ba33951c3496ed2bcaa10c06c88a7e34b14cbbcc81e35a333fd"
+    },
+    {
+      "path": "normalisation-configuration/configuration.json",
+      "sha256": "40435ccba2f6512f5939f66f79859dbe2d38e0b2b011cddf6d183b120d706789"
+    },
+    {
+      "path": "normalisation-configuration/runtime-supplement.json",
+      "sha256": "b0b97d1266d59ff8dd29699e25a0941099115615c8e627782c6f03c3cea750b9"
+    },
+    {
+      "path": "normalisation-configuration/hardware.json",
+      "sha256": "3640307434f0f1ce6d4b0f5aa01c04f1e8f329616b00361b5236d0ec409c56a9"
+    },
+    {
+      "path": "normalisation-results-02.json",
+      "sha256": "1b7fd8085c4a38784fcbcec55bc039c230518258b7e06c9ad037019f7c6f4f4b"
+    },
+    {
+      "path": "failure-diagnostics-02.json",
+      "sha256": "f9e9b063dcc84434a3cbef985bbf846b0d279ac1bc30ac8683ef6b75f67eb4b4"
+    },
+    {
+      "path": "source-access/README.md",
+      "sha256": "525a206fe546935f333bf1fe63cf6630d99d3578c62a2074ef1ec1c73f05a9d6"
+    },
+    {
+      "path": "source-access/LICENSE",
+      "sha256": "5b51d7572d81d86b6e995c6b81cf573f37f64dbee164f7a9360d3538cb064300"
+    }
+  ],
+  "complete_external_inventory_sha256": "4fa88fd56a91f76783b034a2662a55a82a4f34131418e6483bc5cf4a6ad6f750",
+  "test_file_changes": [
+    "A\ttests/test_comparison.py",
+    "A\ttests/test_study.py",
+    "A\ttests/test_study_cli.py",
+    "A\ttests/test_study_grouping.py"
+  ],
+  "no_raw_research_files_exported": true,
+  "scope": "Hashes bind the committed aggregate to retained local evidence, not independent replication or source-rights proof."
+}

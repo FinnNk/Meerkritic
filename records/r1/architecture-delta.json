@@ -1,0 +1,356 @@
+{
+  "changes": {
+    "boundaries": {
+      "added": [],
+      "removed": []
+    },
+    "contracts": {
+      "added": [],
+      "removed": []
+    },
+    "imports": {
+      "added": [
+        {
+          "source": "semantic_reviewer.application.comparison",
+          "target": "collections"
+        },
+        {
+          "source": "semantic_reviewer.application.comparison",
+          "target": "dataclasses"
+        },
+        {
+          "source": "semantic_reviewer.application.comparison",
+          "target": "datetime"
+        },
+        {
+          "source": "semantic_reviewer.application.comparison",
+          "target": "hashlib"
+        },
+        {
+          "source": "semantic_reviewer.application.comparison",
+          "target": "semantic_reviewer.application.discovery"
+        },
+        {
+          "source": "semantic_reviewer.application.comparison",
+          "target": "semantic_reviewer.domain.grouping"
+        },
+        {
+          "source": "semantic_reviewer.application.comparison",
+          "target": "semantic_reviewer.domain.study"
+        },
+        {
+          "source": "semantic_reviewer.application.comparison",
+          "target": "time"
+        },
+        {
+          "source": "semantic_reviewer.domain.grouping",
+          "target": "fractions"
+        },
+        {
+          "source": "semantic_reviewer.domain.grouping",
+          "target": "re"
+        },
+        {
+          "source": "semantic_reviewer.domain.grouping",
+          "target": "semantic_reviewer.domain.normalisation"
+        },
+        {
+          "source": "semantic_reviewer.domain.study",
+          "target": "collections"
+        },
+        {
+          "source": "semantic_reviewer.domain.study",
+          "target": "fractions"
+        },
+        {
+          "source": "semantic_reviewer.domain.study",
+          "target": "hashlib"
+        },
+        {
+          "source": "semantic_reviewer.domain.study",
+          "target": "json"
+        },
+        {
+          "source": "semantic_reviewer.domain.study",
+          "target": "pydantic"
+        },
+        {
+          "source": "semantic_reviewer.domain.study",
+          "target": "typing"
+        }
+      ],
+      "removed": []
+    },
+    "interfaces": {
+      "added": [
+        {
+          "declaration": "@model_validator(mode='after') def complete(self) -> Self",
+          "kind": "callable",
+          "name": "semantic_reviewer.domain.study.Comparison.complete"
+        },
+        {
+          "declaration": "@model_validator(mode='after') def consistent(self) -> Self",
+          "kind": "callable",
+          "name": "semantic_reviewer.domain.study.Attempt.consistent"
+        },
+        {
+          "declaration": "attempts: tuple[Attempt, ...] = Field(min_length=1, max_length=2)",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.study.Method.attempts"
+        },
+        {
+          "declaration": "baseline: Method",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.study.Comparison.baseline"
+        },
+        {
+          "declaration": "candidate: Method",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.study.Comparison.candidate"
+        },
+        {
+          "declaration": "class Attempt(BaseModel)",
+          "kind": "class",
+          "name": "semantic_reviewer.domain.study.Attempt"
+        },
+        {
+          "declaration": "class Comparison(BaseModel)",
+          "kind": "class",
+          "name": "semantic_reviewer.domain.study.Comparison"
+        },
+        {
+          "declaration": "class Group(BaseModel)",
+          "kind": "class",
+          "name": "semantic_reviewer.domain.study.Group"
+        },
+        {
+          "declaration": "class Item(BaseModel)",
+          "kind": "class",
+          "name": "semantic_reviewer.domain.study.Item"
+        },
+        {
+          "declaration": "class Method(BaseModel)",
+          "kind": "class",
+          "name": "semantic_reviewer.domain.study.Method"
+        },
+        {
+          "declaration": "class Rating(BaseModel)",
+          "kind": "class",
+          "name": "semantic_reviewer.domain.study.Rating"
+        },
+        {
+          "declaration": "class Ratings(BaseModel)",
+          "kind": "class",
+          "name": "semantic_reviewer.domain.study.Ratings"
+        },
+        {
+          "declaration": "def analyse(value: Comparison, ratings: Ratings) -> dict",
+          "kind": "callable",
+          "name": "semantic_reviewer.domain.study.analyse"
+        },
+        {
+          "declaration": "def assemble(service: DiscoveryService, lexical: dict, attempts: list[dict], expected_profile: dict | None=None) -> tuple[Comparison, dict]",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.comparison.assemble"
+        },
+        {
+          "declaration": "def assessment(value: Comparison) -> tuple[dict, dict]",
+          "kind": "callable",
+          "name": "semantic_reviewer.domain.study.assessment"
+        },
+        {
+          "declaration": "def baseline(service: DiscoveryService, selection_id: str, previous: dict | None=None, retry_reason: str | None=None) -> dict",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.comparison.baseline"
+        },
+        {
+          "declaration": "def cluster_texts(ids: tuple[str, ...], texts: tuple[str, ...]) -> tuple[dict, ...]",
+          "kind": "callable",
+          "name": "semantic_reviewer.domain.grouping.cluster_texts"
+        },
+        {
+          "declaration": "def digest(value: dict) -> str",
+          "kind": "callable",
+          "name": "semantic_reviewer.domain.study.digest"
+        },
+        {
+          "declaration": "def interpretation_text(value: IssueInterpretation) -> str",
+          "kind": "callable",
+          "name": "semantic_reviewer.domain.grouping.interpretation_text"
+        },
+        {
+          "declaration": "elapsed_seconds: float = Field(ge=0, allow_inf_nan=False)",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.study.Attempt.elapsed_seconds"
+        },
+        {
+          "declaration": "error: Text | None = None",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.study.Attempt.error"
+        },
+        {
+          "declaration": "group_id: Identity",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.study.Rating.group_id"
+        },
+        {
+          "declaration": "groups: tuple[Group, ...] = Field(default=(), max_length=50)",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.study.Method.groups"
+        },
+        {
+          "declaration": "id: Identity",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.study.Item.id"
+        },
+        {
+          "declaration": "items: tuple[Item, ...] = Field(min_length=1, max_length=100)",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.study.Comparison.items"
+        },
+        {
+          "declaration": "judgement: Literal['coherent', 'not coherent', 'uncertain']",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.study.Rating.judgement"
+        },
+        {
+          "declaration": "members: tuple[Identity, ...] = Field(min_length=2, max_length=100)",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.study.Group.members"
+        },
+        {
+          "declaration": "outliers: tuple[Identity, ...] = Field(default=(), max_length=100)",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.study.Method.outliers"
+        },
+        {
+          "declaration": "pack_sha256: Annotated[str, Field(pattern='^[0-9a-f]{64}$')]",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.study.Ratings.pack_sha256"
+        },
+        {
+          "declaration": "protocol: Literal['edr-0001-comparison-v1'] = 'edr-0001-comparison-v1'",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.study.Comparison.protocol"
+        },
+        {
+          "declaration": "purpose: Literal['fixture', 'research']",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.study.Comparison.purpose"
+        },
+        {
+          "declaration": "purpose: Literal['fixture', 'research']",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.study.Ratings.purpose"
+        },
+        {
+          "declaration": "rater: Identity",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.study.Ratings.rater"
+        },
+        {
+          "declaration": "ratings: tuple[Rating, ...] = Field(max_length=24)",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.study.Ratings.ratings"
+        },
+        {
+          "declaration": "reason: Text",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.study.Rating.reason"
+        },
+        {
+          "declaration": "repository: Identity",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.study.Item.repository"
+        },
+        {
+          "declaration": "representative: Identity",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.study.Group.representative"
+        },
+        {
+          "declaration": "retry_reason: Text | None = None",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.study.Attempt.retry_reason"
+        },
+        {
+          "declaration": "status: Literal['succeeded', 'failed']",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.study.Attempt.status"
+        },
+        {
+          "declaration": "suspected_unmasking: str = Field(max_length=12000)",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.study.Ratings.suspected_unmasking"
+        },
+        {
+          "declaration": "text: Text",
+          "kind": "field",
+          "name": "semantic_reviewer.domain.study.Item.text"
+        }
+      ],
+      "removed": []
+    },
+    "modules": {
+      "added": [
+        {
+          "definitions": [
+            "Attempt",
+            "Comparison",
+            "Group",
+            "Item",
+            "Method",
+            "Rating",
+            "Ratings",
+            "_rank",
+            "analyse",
+            "assessment",
+            "digest"
+          ],
+          "name": "semantic_reviewer.domain.study",
+          "package": false,
+          "path": "src/semantic_reviewer/domain/study.py"
+        },
+        {
+          "definitions": [
+            "_components",
+            "cluster_texts",
+            "cluster_vectors",
+            "interpretation_text",
+            "validate_vectors"
+          ],
+          "name": "semantic_reviewer.domain.grouping",
+          "package": false,
+          "path": "src/semantic_reviewer/domain/grouping.py"
+        },
+        {
+          "definitions": [
+            "_duration",
+            "_embedding",
+            "_inputs",
+            "_method",
+            "_terminal",
+            "assemble",
+            "baseline"
+          ],
+          "name": "semantic_reviewer.application.comparison",
+          "package": false,
+          "path": "src/semantic_reviewer/application/comparison.py"
+        }
+      ],
+      "removed": [
+        {
+          "definitions": [
+            "cluster_vectors",
+            "validate_vectors"
+          ],
+          "name": "semantic_reviewer.domain.grouping",
+          "package": false,
+          "path": "src/semantic_reviewer/domain/grouping.py"
+        }
+      ]
+    },
+    "settings": {}
+  },
+  "schema_version": 3
+}

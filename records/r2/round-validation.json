@@ -1,0 +1,7 @@
+{
+  "valid": true,
+  "pair_id": "vs2-comparison",
+  "round_id": "r2",
+  "manifest_sha256": "9bb8c45b41d94bdb36562eab3491cf79aefcce267f599d1c4e9e4c2ea21712c4",
+  "scope": "archive_identity_and_equivalence_only"
+}

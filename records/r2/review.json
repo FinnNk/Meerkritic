@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "pair_id": "vs2-comparison",
+  "round_id": "r2",
+  "manifest_sha256": "9bb8c45b41d94bdb36562eab3491cf79aefcce267f599d1c4e9e4c2ea21712c4",
+  "semantic_tip": "2adeb88d3bbcf1af2ee8b5c498c7a32cbe1c100c",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "/root"
+  },
+  "independence": "self-review",
+  "mode": "full",
+  "status": "complete",
+  "orientation_done": true,
+  "reviewed_commits": [
+    "69548cb207eeb303ddca669c7f9fb3c0c5ace43c",
+    "ec5f15f2bf5b866d141b4d4040d99d3ec599e2fc",
+    "dadc3bb87edefb52358003e012173c3fa4ef263c",
+    "4b5fc59712aa62348735cb37e18b2011db8ec94f",
+    "2adeb88d3bbcf1af2ee8b5c498c7a32cbe1c100c"
+  ],
+  "aggregate_done": true,
+  "findings": [],
+  "check_records": [
+    "aggregate-consistency.json",
+    "test-change-identities.json",
+    "verification-summary.json",
+    "review-notes.md",
+    "docs-check.json",
+    "equivalence.json",
+    "architecture-delta.json"
+  ],
+  "limitations": [
+    "Author self-review, not independent review",
+    "Windows/Python 3.12 only",
+    "Intermittent temporary-Git cleanup lock occurred twice; original failures and diagnostic checks retained; root cause unresolved",
+    "Source qualification and initial normalisation completed; no human study labels, registration or comparative results",
+    "Record fields are attestations; operator verifies source evidence and annotation versions"
+  ],
+  "carry_forward_record": null,
+  "platform_approval": false
+}

@@ -1,0 +1,287 @@
+{
+  "base": "f5b23e44e4f13237a9f505f2f8182e0561813efe",
+  "tip": "2adeb88d3bbcf1af2ee8b5c498c7a32cbe1c100c",
+  "tree": "e505c09cd0bb937c1f95a34556931a9609be96cc",
+  "commits": [
+    {
+      "commit": "69548cb207eeb303ddca669c7f9fb3c0c5ace43c",
+      "parents": [
+        "f5b23e44e4f13237a9f505f2f8182e0561813efe"
+      ],
+      "tree": "5b871b335bca78cf1a619532b210379842c271cc",
+      "subject": "feat: share interpretation text and add the fixed lexical baseline",
+      "change": {
+        "files": [
+          {
+            "path": "src/semantic_reviewer/application/discovery.py",
+            "added": 2,
+            "deleted": 11
+          },
+          {
+            "path": "src/semantic_reviewer/domain/grouping.py",
+            "added": 41,
+            "deleted": 0
+          },
+          {
+            "path": "tests/test_study_grouping.py",
+            "added": 42,
+            "deleted": 0
+          }
+        ],
+        "file_count": 3,
+        "added": 85,
+        "deleted": 11,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "ec5f15f2bf5b866d141b4d4040d99d3ec599e2fc",
+      "parents": [
+        "69548cb207eeb303ddca669c7f9fb3c0c5ace43c"
+      ],
+      "tree": "20b1747187bb3ca88a6adc47a8f57f3eeb4a0be9",
+      "subject": "feat: assess masked groups against fixed study criteria",
+      "change": {
+        "files": [
+          {
+            "path": "src/semantic_reviewer/domain/study.py",
+            "added": 279,
+            "deleted": 0
+          },
+          {
+            "path": "tests/test_study.py",
+            "added": 203,
+            "deleted": 0
+          }
+        ],
+        "file_count": 2,
+        "added": 482,
+        "deleted": 0,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "dadc3bb87edefb52358003e012173c3fa4ef263c",
+      "parents": [
+        "ec5f15f2bf5b866d141b4d4040d99d3ec599e2fc"
+      ],
+      "tree": "412c885afc8ed05f3968f083c2a8ff3d3f21462b",
+      "subject": "feat: bind comparisons to exact stored inputs and attempts",
+      "change": {
+        "files": [
+          {
+            "path": "src/semantic_reviewer/application/comparison.py",
+            "added": 259,
+            "deleted": 0
+          },
+          {
+            "path": "tests/test_comparison.py",
+            "added": 176,
+            "deleted": 0
+          }
+        ],
+        "file_count": 2,
+        "added": 435,
+        "deleted": 0,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "4b5fc59712aa62348735cb37e18b2011db8ec94f",
+      "parents": [
+        "dadc3bb87edefb52358003e012173c3fa4ef263c"
+      ],
+      "tree": "44f2f9f31f83546bae72164922b49993b479507c",
+      "subject": "feat: publish registered comparison and rating evidence",
+      "change": {
+        "files": [
+          {
+            "path": "docs/development/study-comparison.md",
+            "added": 159,
+            "deleted": 0
+          },
+          {
+            "path": "tests/test_study_cli.py",
+            "added": 142,
+            "deleted": 0
+          },
+          {
+            "path": "tools/study_compare.py",
+            "added": 226,
+            "deleted": 0
+          }
+        ],
+        "file_count": 3,
+        "added": 527,
+        "deleted": 0,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "2adeb88d3bbcf1af2ee8b5c498c7a32cbe1c100c",
+      "parents": [
+        "4b5fc59712aa62348735cb37e18b2011db8ec94f"
+      ],
+      "tree": "e505c09cd0bb937c1f95a34556931a9609be96cc",
+      "subject": "docs: backfill comparison workflow and preparation findings",
+      "change": {
+        "files": [
+          {
+            "path": "IMPLEMENTATION_BACKLOG.yaml",
+            "added": 5,
+            "deleted": 3
+          },
+          {
+            "path": "docs/README.md",
+            "added": 1,
+            "deleted": 0
+          },
+          {
+            "path": "docs/development/study-preparation.md",
+            "added": 4,
+            "deleted": 3
+          },
+          {
+            "path": "docs/edr/0001-discovery-grouping-method.md",
+            "added": 76,
+            "deleted": 12
+          },
+          {
+            "path": "docs/edr/README.md",
+            "added": 4,
+            "deleted": 1
+          },
+          {
+            "path": "docs/edr/evidence/0001-input-preparation.json",
+            "added": 54,
+            "deleted": 0
+          },
+          {
+            "path": "docs/plans/VS2-plan.md",
+            "added": 24,
+            "deleted": 5
+          },
+          {
+            "path": "docs/slice-reviews/VS2-integration.md",
+            "added": 12,
+            "deleted": 0
+          },
+          {
+            "path": "tests/README.md",
+            "added": 1,
+            "deleted": 0
+          }
+        ],
+        "file_count": 9,
+        "added": 181,
+        "deleted": 24,
+        "binary_files": 0
+      }
+    }
+  ],
+  "linear": true,
+  "final_change": {
+    "files": [
+      {
+        "path": "IMPLEMENTATION_BACKLOG.yaml",
+        "added": 5,
+        "deleted": 3
+      },
+      {
+        "path": "docs/README.md",
+        "added": 1,
+        "deleted": 0
+      },
+      {
+        "path": "docs/development/study-comparison.md",
+        "added": 159,
+        "deleted": 0
+      },
+      {
+        "path": "docs/development/study-preparation.md",
+        "added": 4,
+        "deleted": 3
+      },
+      {
+        "path": "docs/edr/0001-discovery-grouping-method.md",
+        "added": 76,
+        "deleted": 12
+      },
+      {
+        "path": "docs/edr/README.md",
+        "added": 4,
+        "deleted": 1
+      },
+      {
+        "path": "docs/edr/evidence/0001-input-preparation.json",
+        "added": 54,
+        "deleted": 0
+      },
+      {
+        "path": "docs/plans/VS2-plan.md",
+        "added": 24,
+        "deleted": 5
+      },
+      {
+        "path": "docs/slice-reviews/VS2-integration.md",
+        "added": 12,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/application/comparison.py",
+        "added": 259,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/application/discovery.py",
+        "added": 2,
+        "deleted": 11
+      },
+      {
+        "path": "src/semantic_reviewer/domain/grouping.py",
+        "added": 41,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/domain/study.py",
+        "added": 279,
+        "deleted": 0
+      },
+      {
+        "path": "tests/README.md",
+        "added": 1,
+        "deleted": 0
+      },
+      {
+        "path": "tests/test_comparison.py",
+        "added": 176,
+        "deleted": 0
+      },
+      {
+        "path": "tests/test_study.py",
+        "added": 203,
+        "deleted": 0
+      },
+      {
+        "path": "tests/test_study_cli.py",
+        "added": 142,
+        "deleted": 0
+      },
+      {
+        "path": "tests/test_study_grouping.py",
+        "added": 42,
+        "deleted": 0
+      },
+      {
+        "path": "tools/study_compare.py",
+        "added": 226,
+        "deleted": 0
+      }
+    ],
+    "file_count": 19,
+    "added": 1710,
+    "deleted": 35,
+    "binary_files": 0
+  },
+  "statistics_note": "No rename detection; merge commit churn uses first parent. Final diff and cumulative per-commit churn are different quantities."
+}

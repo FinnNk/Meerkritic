@@ -1,0 +1,18 @@
+{
+  "revision": "2adeb88d3bbcf1af2ee8b5c498c7a32cbe1c100c",
+  "command": [
+    "WORKSPACE\\extras\\der-checkouts\\vs2-comparison-check-r2-p5\\.venv\\Scripts\\python.exe",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-p",
+    "test_study_cli.py",
+    "-k",
+    "RegistrationTest"
+  ],
+  "exit_code": 0,
+  "elapsed_seconds": 4.687000000034459,
+  "scope": "All four isolated Git registration tests, including real TemporaryDirectory cleanup; unchanged source after full-suite cleanup error"
+}

@@ -1,0 +1,266 @@
+{
+  "status": "passed",
+  "head": "2adeb88d3bbcf1af2ee8b5c498c7a32cbe1c100c",
+  "base": "f5b23e44e4f13237a9f505f2f8182e0561813efe",
+  "environment": "Windows/Python 3.12/each checkpoint owns locked dependencies and source",
+  "checkpoints": [
+    {
+      "proposition": "p1",
+      "revision": "69548cb207eeb303ddca669c7f9fb3c0c5ace43c",
+      "tree": "5b871b335bca78cf1a619532b210379842c271cc",
+      "status": "passed",
+      "tests": 186,
+      "skipped": 0,
+      "expected_checks": [
+        [
+          "ruff",
+          "format",
+          "--check",
+          "."
+        ],
+        [
+          "ruff",
+          "check",
+          "."
+        ],
+        [
+          "lint-imports",
+          "--no-cache"
+        ],
+        [
+          "tach",
+          "check"
+        ],
+        [
+          "<python>",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_*.py"
+        ]
+      ],
+      "observed_checks": [
+        "ruff format --check .",
+        "ruff check .",
+        "lint-imports --no-cache",
+        "tach check",
+        "WORKSPACE\\extras\\der-checkouts\\vs2-comparison-check-p1\\.venv\\Scripts\\python.exe -m unittest discover -s tests -p test_*.py"
+      ],
+      "evidence": "r1/p1-checks.json",
+      "log": "r1/p1-checks.log"
+    },
+    {
+      "proposition": "p2",
+      "revision": "ec5f15f2bf5b866d141b4d4040d99d3ec599e2fc",
+      "tree": "20b1747187bb3ca88a6adc47a8f57f3eeb4a0be9",
+      "status": "passed",
+      "tests": 199,
+      "skipped": 0,
+      "expected_checks": [
+        [
+          "ruff",
+          "format",
+          "--check",
+          "."
+        ],
+        [
+          "ruff",
+          "check",
+          "."
+        ],
+        [
+          "lint-imports",
+          "--no-cache"
+        ],
+        [
+          "tach",
+          "check"
+        ],
+        [
+          "<python>",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_*.py"
+        ]
+      ],
+      "observed_checks": [
+        "ruff format --check .",
+        "ruff check .",
+        "lint-imports --no-cache",
+        "tach check",
+        "WORKSPACE\\extras\\der-checkouts\\vs2-comparison-check-p2\\.venv\\Scripts\\python.exe -m unittest discover -s tests -p test_*.py"
+      ],
+      "evidence": "r1/p2-checks.json",
+      "log": "r1/p2-checks.log"
+    },
+    {
+      "proposition": "p3",
+      "revision": "dadc3bb87edefb52358003e012173c3fa4ef263c",
+      "tree": "412c885afc8ed05f3968f083c2a8ff3d3f21462b",
+      "status": "passed",
+      "tests": 210,
+      "skipped": 0,
+      "expected_checks": [
+        [
+          "ruff",
+          "format",
+          "--check",
+          "."
+        ],
+        [
+          "ruff",
+          "check",
+          "."
+        ],
+        [
+          "lint-imports",
+          "--no-cache"
+        ],
+        [
+          "tach",
+          "check"
+        ],
+        [
+          "<python>",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_*.py"
+        ]
+      ],
+      "observed_checks": [
+        "ruff format --check .",
+        "ruff check .",
+        "lint-imports --no-cache",
+        "tach check",
+        "WORKSPACE\\extras\\der-checkouts\\vs2-comparison-check-p3\\.venv\\Scripts\\python.exe -m unittest discover -s tests -p test_*.py"
+      ],
+      "evidence": "r1/p3-checks.json",
+      "log": "r1/p3-checks.log"
+    },
+    {
+      "proposition": "p4",
+      "revision": "4b5fc59712aa62348735cb37e18b2011db8ec94f",
+      "tree": "44f2f9f31f83546bae72164922b49993b479507c",
+      "status": "passed",
+      "tests": 215,
+      "skipped": 0,
+      "expected_checks": [
+        [
+          "ruff",
+          "format",
+          "--check",
+          "."
+        ],
+        [
+          "ruff",
+          "check",
+          "."
+        ],
+        [
+          "lint-imports",
+          "--no-cache"
+        ],
+        [
+          "tach",
+          "check"
+        ],
+        [
+          "<python>",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_*.py"
+        ]
+      ],
+      "observed_checks": [
+        "ruff format --check .",
+        "ruff check .",
+        "lint-imports --no-cache",
+        "tach check",
+        "WORKSPACE\\extras\\der-checkouts\\vs2-comparison-check-p4\\.venv\\Scripts\\python.exe -m unittest discover -s tests -p test_*.py"
+      ],
+      "evidence": "r1/p4-checks.json",
+      "log": "r1/p4-checks.log"
+    },
+    {
+      "proposition": "p5",
+      "revision": "2adeb88d3bbcf1af2ee8b5c498c7a32cbe1c100c",
+      "tree": "e505c09cd0bb937c1f95a34556931a9609be96cc",
+      "status": "passed",
+      "tests": 215,
+      "skipped": 0,
+      "expected_checks": [
+        [
+          "ruff",
+          "format",
+          "--check",
+          "."
+        ],
+        [
+          "ruff",
+          "check",
+          "."
+        ],
+        [
+          "lint-imports",
+          "--no-cache"
+        ],
+        [
+          "tach",
+          "check"
+        ],
+        [
+          "<python>",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_*.py"
+        ]
+      ],
+      "observed_checks": [
+        "ruff format --check .",
+        "ruff check .",
+        "lint-imports --no-cache",
+        "tach check",
+        "WORKSPACE\\extras\\der-checkouts\\vs2-comparison-check-r2-p5-final\\.venv\\Scripts\\python.exe -m unittest discover -s tests -p test_*.py"
+      ],
+      "evidence": "r2/p5-final-checks.json",
+      "log": "r2/p5-final-checks.log"
+    }
+  ],
+  "test_changes": {
+    "lexical_shared_text_added": 5,
+    "masked_assessment_added": 13,
+    "evidence_binding_added": 11,
+    "registration_publication_added": 5,
+    "existing_tests_removed": 0,
+    "existing_tests_altered": 0
+  },
+  "diary_evidence": [
+    "r2/diary-checks.json"
+  ],
+  "retained_failed_verifications": [
+    "r2/p5-checks.json",
+    "r2/p5-retry-checks.json"
+  ],
+  "failure_diagnosis": "Two full runs hit Windows WinError 32 during temporary Git directory cleanup, with no assertion failure. Isolated checks and the diagnostic full suite passed unchanged; lock holder not identified. Final canonical rerun is separately bound to the same commit.",
+  "targeted_recheck": "r2/registration-cleanup-recheck.json",
+  "superseded_unverified_checkpoint": "r1 P5 a2668e32979cdb6e4541f739741db5a47e34804f was not run; only the final documentation proposition changed in r2"
+}

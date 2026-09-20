@@ -1,0 +1,20 @@
+{
+  "revision": "2adeb88d3bbcf1af2ee8b5c498c7a32cbe1c100c",
+  "diagnostic_full_suite_tests": 215,
+  "status": "passed",
+  "cleanup_instrumented_on_error": true,
+  "error_handler_entered": false,
+  "source_changed": false,
+  "root_cause": "not established",
+  "retained_failures": [
+    "p5-checks.json",
+    "p5-retry-checks.json"
+  ],
+  "isolated_logs": [
+    "registration-cleanup-recheck.log",
+    "registration-all-imports.log",
+    "registration-domain-predecessor.log",
+    "registration-exact-env.log"
+  ],
+  "scope": "Diagnostic evidence, not a replacement for the canonical quality command"
+}

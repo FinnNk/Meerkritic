@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "sequence": 2,
+  "pair_id": "vs2-comparison",
+  "recorded_at": "2026-09-20T13:51:07+00:00",
+  "previous_hash": "0dd30626ad10a256fed89ea54e5b8cc158f786b42787ab58d75508803b578127",
+  "kind": "verification",
+  "round_id": "r1",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "/root"
+  },
+  "payload": {
+    "stage": "reconstructed; checkpoint verification pending",
+    "diary": "ccedd3d85b965d4f6a08e095ca8345e8895985a5",
+    "semantic": "a2668e32979cdb6e4541f739741db5a47e34804f",
+    "tree": "9e8c7ccfb9ef4ff4c6a4b1197445626fdd360c24",
+    "diary_check": "passed, 215 tests",
+    "equivalence": "passed",
+    "records": [
+      "vs2-comparison/r1/diary-checks.json",
+      "vs2-comparison/r1/propositions.md",
+      "vs2-comparison/r1/equivalence.json"
+    ]
+  },
+  "event_hash": "e310516c1a6c5002dc89039f94e06ad297f15cec20d06099fc159b3868895fad"
+}

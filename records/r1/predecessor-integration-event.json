@@ -1,0 +1,23 @@
+{
+  "kind": "integration",
+  "round_id": "r2",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "/root"
+  },
+  "payload": {
+    "pr": "https://github.com/FinnNk/Meerkritic/pull/15",
+    "reviewed_head": "1d56877f0ccc434344a0e67b42859f4744524767",
+    "integrated_head": "f5b23e44e4f13237a9f505f2f8182e0561813efe",
+    "owner_approval": true,
+    "ordered_trees_equal": true,
+    "integrated_checks": "passed, 181 tests",
+    "records": [
+      "vs2-comparison/r1/pr15-platform.json",
+      "vs2-comparison/r1/pr15-integration.json",
+      "vs2-comparison/r1/baseline-checks.json"
+    ]
+  }
+}

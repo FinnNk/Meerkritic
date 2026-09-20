@@ -1,0 +1,24 @@
+WORKSPACE\extras\der-checkouts\vs2-comparison-check-r2-p5\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_coverage_loss_inclusive_boundary (test_study.StudyTest.test_coverage_loss_inclusive_boundary) ... ok
+test_deterministic_masking_and_equal_budget (test_study.StudyTest.test_deterministic_masking_and_equal_budget) ... ok
+test_duplicate_missing_unknown_and_wrong_representative_fail (test_study.StudyTest.test_duplicate_missing_unknown_and_wrong_representative_fail) ... ok
+test_exact_thresholds_and_uncertain_denominator (test_study.StudyTest.test_exact_thresholds_and_uncertain_denominator) ... ok
+test_failed_run_cannot_claim_partition_or_adoption (test_study.StudyTest.test_failed_run_cannot_claim_partition_or_adoption) ... ok
+test_foreign_duplicate_and_purpose_mismatched_ratings_fail (test_study.StudyTest.test_foreign_duplicate_and_purpose_mismatched_ratings_fail) ... ok
+test_identical_memberships_rated_once_even_with_reversed_order (test_study.StudyTest.test_identical_memberships_rated_once_even_with_reversed_order) ... ok
+test_missing_is_incomplete_not_dropped (test_study.StudyTest.test_missing_is_incomplete_not_dropped) ... ok
+test_no_undisclosed_or_successful_attempt_reruns (test_study.StudyTest.test_no_undisclosed_or_successful_attempt_reruns) ... ok
+test_research_requires_exact_sample_size_and_repository_quota (test_study.StudyTest.test_research_requires_exact_sample_size_and_repository_quota) ... ok
+test_resource_cap_and_retained_failed_retry (test_study.StudyTest.test_resource_cap_and_retained_failed_retry) ... ok
+test_review_cap_reports_unassessed_groups (test_study.StudyTest.test_review_cap_reports_unassessed_groups) ... ok
+test_too_few_groups_is_insufficient_even_if_all_are_coherent (test_study.StudyTest.test_too_few_groups_is_insufficient_even_if_all_are_coherent) ... ok
+test_changed_or_untracked_implementation_cannot_claim_registered_code (test_study_cli.RegistrationTest.test_changed_or_untracked_implementation_cannot_claim_registered_code) ... ok
+test_execution_before_registration_is_not_eligible (test_study_cli.RegistrationTest.test_execution_before_registration_is_not_eligible) ... ok
+test_fixtures_do_not_claim_registration (test_study_cli.RegistrationTest.test_fixtures_do_not_claim_registration) ... ok
+test_two_commit_registration_and_profile_binding (test_study_cli.RegistrationTest.test_two_commit_registration_and_profile_binding) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 4.077s
+
+OK

@@ -1,0 +1,62 @@
+{
+  "base": "f5b23e44e4f13237a9f505f2f8182e0561813efe",
+  "head": "2adeb88d3bbcf1af2ee8b5c498c7a32cbe1c100c",
+  "files": {
+    "test_study_grouping.py": {
+      "added": 5,
+      "identities": [
+        "test_inclusive_threshold_transitivity_and_representative",
+        "test_sets_casefold_ascii_empty_and_stable_tie",
+        "test_below_threshold_and_no_stop_words",
+        "test_invalid_inputs",
+        "test_shared_text_preserves_empty_line_and_category_order"
+      ]
+    },
+    "test_study.py": {
+      "added": 13,
+      "identities": [
+        "test_review_cap_reports_unassessed_groups",
+        "test_coverage_loss_inclusive_boundary",
+        "test_deterministic_masking_and_equal_budget",
+        "test_identical_memberships_rated_once_even_with_reversed_order",
+        "test_exact_thresholds_and_uncertain_denominator",
+        "test_missing_is_incomplete_not_dropped",
+        "test_too_few_groups_is_insufficient_even_if_all_are_coherent",
+        "test_resource_cap_and_retained_failed_retry",
+        "test_failed_run_cannot_claim_partition_or_adoption",
+        "test_duplicate_missing_unknown_and_wrong_representative_fail",
+        "test_foreign_duplicate_and_purpose_mismatched_ratings_fail",
+        "test_no_undisclosed_or_successful_attempt_reruns",
+        "test_research_requires_exact_sample_size_and_repository_quota"
+      ]
+    },
+    "test_comparison.py": {
+      "added": 11,
+      "identities": [
+        "test_clustering_retry_reuses_embedding_and_counts_its_time_once",
+        "test_execution_budget_excludes_queue_time",
+        "test_baseline_retry_requires_failed_predecessor_and_keeps_original",
+        "test_exact_inputs_outputs_and_provenance",
+        "test_changed_baseline_text_or_membership_fails",
+        "test_valid_parquet_with_changed_text_is_not_same_input",
+        "test_valid_membership_file_with_wrong_groups_is_rejected",
+        "test_wrong_parameters_and_unfinished_runs_fail",
+        "test_failure_preserved_without_inventing_partition",
+        "test_missing_timestamps_fail_instead_of_using_queue_turnaround",
+        "test_profile_mismatch_and_success_rerun_fail"
+      ]
+    },
+    "test_study_cli.py": {
+      "added": 5,
+      "identities": [
+        "test_complete_fixture_flow_freezes_ratings_and_reports_insufficiency",
+        "test_two_commit_registration_and_profile_binding",
+        "test_changed_or_untracked_implementation_cannot_claim_registered_code",
+        "test_fixtures_do_not_claim_registration",
+        "test_execution_before_registration_is_not_eligible"
+      ]
+    }
+  },
+  "removed": 0,
+  "altered_existing": 0
+}

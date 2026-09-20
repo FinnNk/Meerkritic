@@ -1,0 +1,58 @@
+{
+  "status": "passed",
+  "revision": "2adeb88d3bbcf1af2ee8b5c498c7a32cbe1c100c",
+  "links": 326,
+  "tables": 77,
+  "imported_files_verified": 59,
+  "errors": [],
+  "cli_help": [
+    {
+      "arguments": [
+        "--help"
+      ],
+      "output": "usage: study_compare.py [-h] --data-root DATA_ROOT --evidence EVIDENCE\n                        [--registration-commit REGISTRATION_COMMIT]\n                        {baseline,pack,analyse} ...\n\nRun the fixed lexical method, prepare masked assessments and analyse frozen\nhuman ratings.\n\npositional arguments:\n  {baseline,pack,analyse}\n\noptions:\n  -h, --help            show this help message and exit\n  --data-root DATA_ROOT\n  --evidence EVIDENCE\n  --registration-commit REGISTRATION_COMMIT\n",
+      "exit_code": 0
+    },
+    {
+      "arguments": [
+        "--data-root",
+        "external",
+        "--evidence",
+        "evidence",
+        "baseline",
+        "--help"
+      ],
+      "output": "usage: study_compare.py baseline [-h] [--previous PREVIOUS]\n                                 [--retry-reason RETRY_REASON]\n                                 selection_id\n\npositional arguments:\n  selection_id\n\noptions:\n  -h, --help            show this help message and exit\n  --previous PREVIOUS\n  --retry-reason RETRY_REASON\n",
+      "exit_code": 0
+    },
+    {
+      "arguments": [
+        "--data-root",
+        "external",
+        "--evidence",
+        "evidence",
+        "pack",
+        "--help"
+      ],
+      "output": "usage: study_compare.py pack [-h] --attempts ATTEMPTS [--profile PROFILE]\n                             baseline_sha256\n\npositional arguments:\n  baseline_sha256\n\noptions:\n  -h, --help           show this help message and exit\n  --attempts ATTEMPTS\n  --profile PROFILE\n",
+      "exit_code": 0
+    },
+    {
+      "arguments": [
+        "--data-root",
+        "external",
+        "--evidence",
+        "evidence",
+        "analyse",
+        "--help"
+      ],
+      "output": "usage: study_compare.py analyse [-h] --ratings RATINGS comparison_sha256\n\npositional arguments:\n  comparison_sha256\n\noptions:\n  -h, --help         show this help message and exit\n  --ratings RATINGS\n",
+      "exit_code": 0
+    }
+  ],
+  "rendered": [
+    "study-comparison.html",
+    "study-preparation.html",
+    "0001-discovery-grouping-method.html"
+  ]
+}
