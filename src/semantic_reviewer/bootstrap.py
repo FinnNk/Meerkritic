@@ -17,6 +17,7 @@ from semantic_reviewer.application.artefacts import ArtefactIndex
 from semantic_reviewer.application.datasets import DatasetService, PublicDataset
 from semantic_reviewer.application.discovery import DiscoveryService
 from semantic_reviewer.application.jobs import JobService, Worker
+from semantic_reviewer.application.rules import RuleService
 from semantic_reviewer.application.selections import SelectionService
 
 
@@ -172,4 +173,15 @@ def build_discovery(data_root: Path) -> DiscoveryService:
         JsonSelections(root / "selections", root / "state.sqlite3"),
         SQLiteDiscovery(root / "state.sqlite3"),
         ParquetDiscovery(root / "discovery"),
+    )
+
+
+def build_rules(data_root: Path) -> RuleService:
+    """Compose versioned rule inspection and research decisions without loading model runtimes."""
+    from semantic_reviewer.adapters.rules import SQLiteRules
+
+    root = runtime_path(data_root)
+    discovery = build_discovery(root)
+    return RuleService(
+        discovery, SQLiteRules(root / "state.sqlite3", discovery.files), discovery.files
     )

@@ -22,6 +22,7 @@
   </style>
 </head>
 <body>
+  {% if has_rules %}<nav><a href="/rules">Rule registry</a></nav>{% endif %}
   {% if has_discovery %}<nav><a href="/discovery">Discovery</a></nav>{% endif %}
   <header><a href="/">Meerkritic</a> · Code review grounded in engineering evidence</header>
   {% if has_reviews %}<nav><a href="/reviews">Change review references</a></nav>{% endif %}

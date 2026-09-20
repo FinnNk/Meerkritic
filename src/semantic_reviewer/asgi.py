@@ -9,6 +9,7 @@ from semantic_reviewer.bootstrap import (
     build_discovery,
     build_jobs,
     build_review_index,
+    build_rules,
     build_selections,
 )
 from semantic_reviewer.web.app import create_app
@@ -34,4 +35,5 @@ def build_app(data_root: Path) -> FastAPI:
         build_review_index(data_root),
         build_selections(data_root).store,
         build_discovery(data_root),
+        build_rules(data_root),
     )
