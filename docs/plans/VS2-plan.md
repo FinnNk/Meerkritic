@@ -1,12 +1,21 @@
 # VS2 — Annotation-to-Rule Discovery
 
-Plan revision: 3, 20 September 2026. VS2 ACTIVE. A1 is integrated in PR #10 at
+Plan revision: 5, 20 September 2026. VS2 ACTIVE. A1 is integrated in PR #10 at
 `c9ef38f48b10d7876fe26babee36f2f15f258bf3`; its tree equals the reviewed head and
 the locked Windows baseline passes all checks and 115 tests.
 A2/A3 are frozen for implementation with synthetic compatibility inputs. The owner
 authorises autonomous work through the remaining batches, always using stacked PRs
 at dependent batch boundaries. Freeze B and C after their software prerequisites
 pass; the empirical comparison remains separately gated.
+
+Batch A2/A3 is integrated through PR #11 at `e81c2e867e714f2fed72d235eb44ba035b4bf302`,
+whose tree equals reviewed head `125fd8c055b9c110efa1c4dd31dcc661358b32bc`,
+with all four checkpoint checks passing and 132 tests at its final head. Real
+MAF/llama.cpp embedding and grouping compatibility passed on synthetic inputs.
+Batch B was frozen against that exact predecessor before the owner merged it;
+its semantic PR now targets the equivalent integrated mainline. It delivers immutable rule versions/evidence/decisions and
+bounded routed MAF synthesis through the existing corpus queue. Promotion means
+reviewed research candidate, never validated or deployed. EDR-0001 stays draft.
 
 ## Activation and first batch
 
