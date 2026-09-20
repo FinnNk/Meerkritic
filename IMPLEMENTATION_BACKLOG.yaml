@@ -125,7 +125,7 @@ slices:
   name: Annotation-to-Rule Discovery
   status: ACTIVE
   plan: docs/plans/VS2-plan.md
-  frozen_batch: C staged research interaction and slice validation
+  frozen_batch: none; application batches integrated, empirical preparation pending agreement
   batch_progress:
   - A1 frozen selections integrated via PR 10; ADR-0009 implemented
   - A2/A3 approved and integrated via PR 11; exact reviewed tree verified; ADR-0010 implemented

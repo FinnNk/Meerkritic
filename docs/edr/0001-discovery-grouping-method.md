@@ -49,7 +49,7 @@ registered, and no decision-bearing comparison has been run.
 - **Unit and target population:** a pair/group of explicitly human-reviewed
   engineering concerns within a fixed development corpus; repository is the
   dependence/holdout unit for any later headline claim.
-- **Sample and selection:** provisionally 30–60 eligible accepted/edited observations,
+- **Sample and selection:** provisionally 40 eligible accepted/edited observations,
   selected by a seeded, versioned query before method outputs are inspected. Exact
   count, IDs, source revision/hashes and seed must be frozen at registration. Stop
   rather than substituting automated judgements if human labels are insufficient.
@@ -91,7 +91,7 @@ registered, and no decision-bearing comparison has been run.
 
 ### Method and reproduction plan
 
-- **Code and commands:** implement the runner and analysis in VS2 Batch A, with
+- **Code and commands:** implement the bounded study runner and analysis after software integration, with
   actual invocation commands and full code SHA frozen before the first study run.
   A script name alone is insufficient; no runnable method is claimed yet.
 - **Environment:** Python 3.12/locked dependencies, Windows and actual GPU/CPU/RAM;
@@ -108,6 +108,110 @@ registered, and no decision-bearing comparison has been run.
   Share methods, hashes and permitted outputs; if raw data redistribution is
   restricted, record access instructions and limitations. Exact stochastic output
   equality and independent reproduction are not assumed.
+
+## Concrete proposal for owner review
+
+Prepared after PR #13 integration on 20 September 2026. Everything in this section
+is **proposed, not registered or adopted**. The thresholds are prospective judgement
+calls for a small local study, not values optimised on results. Owner agreement,
+qualified inputs, runnable tooling and exact identities are still required.
+
+### Prepare the input sample
+
+| Choice | Proposed procedure |
+| --- | --- |
+| Source | The pinned CRC-Py manual file in `config/datasets/crc-py-manual.json`; retain its source hash and zero-based indexes. Its upstream category labels are not our evaluation labels. |
+| Prior exposure | Exclude records from the two known pilot repositories, `django/django` and `paperless-ngx/paperless-ngx`. Add any further disclosed exposure before selection. |
+| Repository holdout | Sort the remaining case-folded `owner/repository` identities by SHA-256 of UTF-8 `20260920:holdout:<identity>`; reserve the first ceiling of 20% of identities. Record the list before reading their source bodies or producing interpretations. Existing restrictions take precedence. |
+| Candidate order | Within each development repository, sort records by SHA-256 of UTF-8 `20260920:sample:<source-hash>:<source-index>`. Traverse repositories in case-folded lexical order, taking one record per repository per round. Do not use category, comment wording or later model output to select promising concerns. |
+| Source qualification | Check each candidate's repository, PR/comment identity and provenance against its original public source before annotation. Preserve supplied/preprocessed text; record the original reference and discrepancies separately. Exclude unresolved origins or unusable context with reasons. An unfamiliar repository name alone is not an exclusion. |
+| Duplicates | For repeated case-folded repository/comment identities retain the lowest source index; also exclude subsequent identical code/comment pairs. Retain the excluded identities. Do not deduplicate or rewrite the imported source file. |
+| Human-review budget | Inspect at most 80 candidate records, at most ten from any repository, stopping when 40 usable Accept/Edit interpretations have been collected. Limit the final selection to five accepted/edited observations per repository. Retain every attempted, failed, skipped and rejected record. |
+| Shortfall | If the fixed budget cannot yield 40 eligible observations, stop preparation and revise this draft prospectively. Do not substitute automated decisions or quietly extend the budget. |
+
+Source qualification, normalisation and human input review prepare the corpus;
+they are not the grouping comparison. They follow the agreed sampling procedure.
+Group outputs and coherence ratings must not be produced before registration.
+One fixed normalisation configuration produces one initial interpretation per
+candidate; retain failures and use human Edit to correct a usable interpretation.
+Do not keep sampling model outputs until a preferred interpretation appears.
+Freeze its exact model/prompt/routing configuration before input preparation and
+include that provenance at registration.
+
+Metadata-only preparation inspected 1,030 records and 59 claimed repository
+identities; 369 records name `TheAlgorithms/Python`. Some other identities resemble
+example repositories. These observations motivate provenance checks and a
+concentration limit; they do not prove that particular records are synthetic or
+that this sampling design is optimal. No source comments, grouping outputs or
+coherence ratings were inspected in that preparation. The upstream description
+alone does not validate every record in the manual subset. Record verification
+results before declaring any selected observation a historical example.
+
+### Compare two fixed methods
+
+| Part | Proposed fixed choice |
+| --- | --- |
+| Shared input | The existing discovery interpretation-text builder applied to exactly the same ordered, human-reviewed selection. No source taxonomy labels or extra code enter either method. Freeze the builder's code SHA. |
+| Candidate | `nomic-embed-text-v1.5.f16.gguf`, revision `0188c9bf409793f810680a5a431e7b899c46104c`, SHA-256 `f7af6f66802f4df86eda10fe9bbcfc75c39562bed48ef6ace719a251cf1c2fdb`; existing pinned llama.cpp profile, 768 dimensions and `clustering: ` prefix. Use `cosine-components-v1`, threshold 0.85, minimum size 2. |
+| Baseline | Case-fold the shared text; extract sets of ASCII tokens matching `[a-z0-9]+`. No stop-word list, stemming or fitted vocabulary. Connect pairs whose token-set Jaccard similarity is at least 0.25; groups are connected components of size at least 2. Empty token sets are reported as outliers and cannot match one another. |
+| Representatives | Select the member with greatest summed within-group similarity; ties follow frozen input order. Rate all group members, not only the representative. |
+| Reason for these settings | Candidate 0.85 is the existing documented exploratory example; baseline 0.25 is a simple untuned comparator. Neither is an adopted default. This study compares these configurations, not the best possible version of either method. |
+| Execution | One run per configuration, using an immutable embedding artefact. At most one technical rerun across the study after a diagnosed implementation failure; retain the original failure and any exposed outputs. No parameter search. |
+| Resource limit | A proposed 30-minute wall-clock cap for each method after model loading, excluding input curation and human rating. Record hardware, model loading separately, timeouts and all known usage. Synthetic preflight must establish feasibility before registration. |
+
+The baseline/runner, rating pack and analysis commands are **not implemented yet**.
+Their implementation is a separate material change because it defines experiment
+and rating evidence. Use DER, synthetic fixtures and the existing quality gates;
+do not extend the research UI solely for this one study. Freeze exact commands,
+code, runtime versions and input/output formats before registration.
+
+### Rate the groups and decide
+
+1. Create a deterministic, method-masked assessment pack. Record the randomisation
+   procedure and seed `20260920`, and keep the method mapping out of the rating pack.
+2. Match the number of assessed groups: `k = min(12, baseline groups, candidate groups)`.
+   Select groups by a documented seeded ordering. Fewer than eight groups per
+   method makes the primary comparison insufficient; do not relax this after results.
+3. Present complete member texts. Give identical membership sets one rating and
+   reuse it for both methods; retain the mapping so this is not hidden independence.
+4. Record `coherent`, `not coherent` or `uncertain`, plus a short reason. A coherent
+   group expresses one specific reusable engineering concern across every member;
+   sharing a language, library or broad topic is insufficient. Contradictory or
+   unrelated members make it not coherent; inadequate context makes it uncertain.
+5. Freeze completed ratings before revealing method identities. The named human
+   rater must supply the judgements. Similar group content may reveal the method;
+   record suspected unmasking and do not claim perfect blinding.
+
+| Criterion | Proposed decision rule |
+| --- | --- |
+| Primary | Candidate coherent-group fraction exceeds the baseline by at least 10 percentage points and is at least 75%. Count uncertain ratings in the assessed denominator as not established coherent. |
+| Rating completeness | Require all selected groups to be rated. Missing ratings leave analysis incomplete; do not silently drop them or substitute agent judgements. |
+| Coverage | Candidate groups of size at least 2 cover at least 60% of the 40 inputs, and coverage is no more than 10 percentage points below the baseline. Report all outliers and unassessed groups separately. |
+| Reliability and resource limits | Final method runs have complete, valid outputs and finish within the registered cap. A technical rerun does not erase the initial failure. |
+| Adoption | Recommend the candidate only when every applicable criterion passes. Otherwise record no adoption or an inconclusive result with the exact failed/unevaluable criteria; the owner makes the final decision. |
+
+Report raw numerators/denominators, group sizes, repository concentration, failures
+and limitations. Shared inputs do not create matched output groups. This small,
+single-rater comparison does not establish population-wide superiority. An
+inconclusive result can support an explicit decision to keep the current method
+exploratory or commission a new registered study; it cannot be relabelled success.
+Choosing the baseline does not imply it is already an application default: any
+implementation needed for that choice requires its own verification.
+
+### Registration checklist
+
+- [ ] Owner agrees the bounded question, workload, rubric, thresholds and limits.
+- [ ] Input preparation follows the agreed procedure; qualified sources, exclusions,
+  holdouts, prior exposure and 40 human-reviewed versions are frozen and permitted.
+- [ ] Exact selection/hash, normalisation configuration and curator attestation recorded.
+- [ ] Baseline/runner, masking, analysis and failure checks pass on synthetic inputs.
+- [ ] Exact code SHA, commands, hardware, versions and configuration recorded; no placeholders.
+- [ ] Commit the completed plan, then commit its SHA, date and `registered` status
+  before executing either method on the research selection or collecting group ratings.
+
+Use [the study preparation guide](../development/study-preparation.md) for the
+human and agent hand-off. Neither merging this draft nor accepting the software
+registers the experiment or adopts a method.
 
 ## Amendments and deviations
 
@@ -130,3 +234,5 @@ Pending. No grouping method has been adopted from empirical evidence.
 | Date | Status or event | Author | Reference / reason |
 | --- | --- | --- | --- |
 | 2026-09-20 | draft | Meerkritic agent | Prospective VS2 method-selection question; no registration or run |
+
+| 2026-09-20 | draft elaborated | Meerkritic agent | Software integrated; proposed bounded protocol and source-qualification gate for owner agreement; no study run |
