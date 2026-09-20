@@ -1,0 +1,20 @@
+{
+  "revision": "fb5745475e7dd7d0cf5a93e329b3cd0c34910c72",
+  "status": "passed",
+  "images_verified": 8,
+  "route_statuses": {
+    "observations": 200,
+    "annotation": 200,
+    "progress": 200,
+    "selection": 200,
+    "discovery": 200,
+    "rule": 200,
+    "workspace": 200,
+    "guidance": 200
+  },
+  "fresh_fixture_succeeded": true,
+  "existing_runtime_refused_without_changes": true,
+  "worktree_destination_refused": true,
+  "model_calls": 0,
+  "visual_review": "All native captures inspected; README and annotation crop inspected in rendered guides; every illustrated guide checked for loaded images and alt text."
+}

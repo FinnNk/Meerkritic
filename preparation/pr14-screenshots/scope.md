@@ -1,0 +1,1 @@
+Routine documentation guidance and illustration backfill. Application source, tests, contracts, locked dependencies and research decisions are unchanged. The documentation fixture prepares only labelled synthetic data in a new external directory and calls no model. Guidance is committed before its application. No new DER pair.

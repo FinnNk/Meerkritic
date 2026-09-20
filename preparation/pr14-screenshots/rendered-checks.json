@@ -1,0 +1,85 @@
+[
+  {
+    "path": "normalisation",
+    "images": [
+      {
+        "alt": "A proposed issue, its quoted source evidence and Human assessment controls on a result page.",
+        "loaded": true,
+        "src": "../images/annotation-result.png",
+        "width": 959.9896240234376
+      }
+    ]
+  },
+  {
+    "path": "datasets",
+    "images": [
+      {
+        "alt": "The source browser places Review comment and Code context side by side, above the Normalise button.",
+        "loaded": true,
+        "src": "../images/source-browser.png",
+        "width": 959.9896240234376
+      }
+    ]
+  },
+  {
+    "path": "selections",
+    "images": [
+      {
+        "alt": "A saved fixture selection shows two included records, one excluded record, Queue embeddings and a link to an original annotation.",
+        "loaded": true,
+        "src": "../images/frozen-selection.png",
+        "width": 959.9896240234376
+      }
+    ]
+  },
+  {
+    "path": "discovery",
+    "images": [
+      {
+        "alt": "A successful grouping view identifies its representative and links to the original result, source and rule-synthesis action.",
+        "loaded": true,
+        "src": "../images/discovery-group.png",
+        "width": 959.96875
+      }
+    ]
+  },
+  {
+    "path": "rules",
+    "images": [
+      {
+        "alt": "A candidate rule shows its pending review state, scope, applicability, violation and ownership-transfer exclusion.",
+        "loaded": true,
+        "src": "../images/rule-definition.png",
+        "width": 960
+      }
+    ]
+  },
+  {
+    "path": "research-interaction",
+    "images": [
+      {
+        "alt": "A saved review draft retains a Defer choice and rationale, with separate Save draft only and Apply this saved batch buttons.",
+        "loaded": true,
+        "src": "../images/saved-review-draft.png",
+        "width": 959.9896240234376
+      },
+      {
+        "alt": "Guidance form with a rule and one discussion message checked, above Submit this guidance batch.",
+        "loaded": true,
+        "src": "../images/guidance-selection.png",
+        "width": 959.96875
+      }
+    ]
+  },
+  {
+    "path": "study-preparation",
+    "images": [
+      {
+        "alt": "The existing Human assessment panel offers Accept, Edit and Reject, with optional notes and a structured editor.",
+        "loaded": true,
+        "src": "../images/annotation-assessment.png",
+        "width": 960
+      }
+    ]
+  }
+]
