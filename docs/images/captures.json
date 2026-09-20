@@ -1,0 +1,145 @@
+{
+  "application_revision": "da3e48c",
+  "captured_on": "2026-09-20",
+  "browser": "Codex in-app browser on Windows; dark appearance",
+  "viewport_css": [
+    1280,
+    720
+  ],
+  "raw_image_pixels": [
+    1265,
+    712
+  ],
+  "transformation": "Pixel crop only; no scaling, redaction or content changes",
+  "images": [
+    {
+      "file": "source-browser.png",
+      "source": "observations",
+      "scroll_y_css": 316.667,
+      "crop_pixels": [
+        16,
+        20,
+        1248,
+        695
+      ],
+      "size": [
+        1232,
+        675
+      ],
+      "sha256": "09aa98eca737e18e64c28eb32e6e84f5076582f3199b872600f5dbb88703d57a"
+    },
+    {
+      "file": "annotation-result.png",
+      "source": "annotation",
+      "scroll_y_css": 504,
+      "crop_pixels": [
+        16,
+        0,
+        1248,
+        712
+      ],
+      "size": [
+        1232,
+        712
+      ],
+      "sha256": "8db93a959aa4eddb174abd5330a89919b7750deb9ab1165158b26996ea5122af"
+    },
+    {
+      "file": "annotation-assessment.png",
+      "source": "annotation",
+      "scroll_y_css": 504,
+      "crop_pixels": [
+        16,
+        500,
+        976,
+        712
+      ],
+      "size": [
+        960,
+        212
+      ],
+      "sha256": "998e1bf4a25c2a648c7cbc1aa33af926034939fb73f408acc797bce161015d65"
+    },
+    {
+      "file": "frozen-selection.png",
+      "source": "selection",
+      "scroll_y_css": 316.667,
+      "crop_pixels": [
+        16,
+        60,
+        1248,
+        665
+      ],
+      "size": [
+        1232,
+        605
+      ],
+      "sha256": "04a735e5cbc12ee83ed808cb8774c99b79eb434b8bdaf158670bd6a3332c6569"
+    },
+    {
+      "file": "discovery-group.png",
+      "source": "discovery",
+      "scroll_y_css": 316.667,
+      "crop_pixels": [
+        16,
+        60,
+        1248,
+        574
+      ],
+      "size": [
+        1232,
+        514
+      ],
+      "sha256": "b2b45c2fba33366010bca941e725723de50bf1ad5852099da71949ce07487756"
+    },
+    {
+      "file": "rule-definition.png",
+      "source": "rule",
+      "scroll_y_css": 316.667,
+      "crop_pixels": [
+        16,
+        60,
+        976,
+        451
+      ],
+      "size": [
+        960,
+        391
+      ],
+      "sha256": "97789a6754efdca1260f5116af7710e32190def8b983957fd949ce55a8778588"
+    },
+    {
+      "file": "saved-review-draft.png",
+      "source": "workspace",
+      "scroll_y_css": 236,
+      "crop_pixels": [
+        16,
+        100,
+        1248,
+        582
+      ],
+      "size": [
+        1232,
+        482
+      ],
+      "sha256": "816dbb69c96d74cc60e823ebf4348d4fb0b622cbaff1e89a7cd1f6438580b02c"
+    },
+    {
+      "file": "guidance-selection.png",
+      "source": "guidance",
+      "scroll_y_css": 210.667,
+      "crop_pixels": [
+        16,
+        130,
+        1248,
+        582
+      ],
+      "size": [
+        1232,
+        452
+      ],
+      "sha256": "0df1a7a9df140c7c841f3d0acc5d2879bb0735525bf83b221b0935767d3393a9"
+    }
+  ],
+  "fixture_sha256": "cbea6e8da39c11c9b731bceb9e0f8c60fa13cfba0c602824501aed23aea830c0"
+}

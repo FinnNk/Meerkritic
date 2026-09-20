@@ -28,6 +28,12 @@ Use the existing [normalisation workflow](normalisation.md) to produce the queue
 interpretations and [annotation controls](annotations.md) to record your review.
 Work through the prepared order; do not choose only promising-looking concerns.
 
+![The existing Human assessment panel offers Accept, Edit and Reject, with optional notes and a structured editor.](../images/annotation-assessment.png)
+
+These are the existing input-review controls, shown with
+[synthetic demonstration data](../images/README.md). They are not the proposed
+group-rating interface, and these example decisions do not enter the study.
+
 | Step | What the human reviewer checks |
 | --- | --- |
 | Read the source | Read the supplied comment and code, with the verified original reference where available. Distinguish preprocessed text from the original. |

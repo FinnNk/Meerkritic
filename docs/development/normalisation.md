@@ -32,6 +32,12 @@ You review the result; a successful model call does not establish that it is cor
 Refreshing a result page does not submit another job. Pressing **Normalise** again
 creates a separate model run.
 
+![A proposed issue, its quoted source evidence and Human assessment controls on a result page.](../images/annotation-result.png)
+
+Read the proposed issue and its evidence before choosing Accept, Edit or Reject.
+The interpretation shown here was [prepared for the demonstration](../images/README.md);
+it is not a model-quality result.
+
 ## Process one job from the command line
 
 Stop the continuous worker first. These commands queue the first source record,

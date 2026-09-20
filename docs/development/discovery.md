@@ -61,6 +61,12 @@ work while the first owns the data directory's process lock.
    before deciding whether a group expresses a useful shared concern.
 5. To propose a reusable check, continue with [candidate rules](rules.md).
 
+![A successful grouping view identifies its representative and links to the original result, source and rule-synthesis action.](../images/discovery-group.png)
+
+Start with the representative, then inspect every group member and its source links.
+This [synthetic example](../images/README.md) uses manually supplied vectors; its
+grouping is an illustration, not evidence of model quality or a study rating screen.
+
 Equivalent commands print a run ID or a run's stored request/result:
 
 ```text

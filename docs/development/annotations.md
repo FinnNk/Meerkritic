@@ -29,6 +29,11 @@ result is refused. Source annotations cannot currently be reopened; the
 [review workspace](research-interaction.md) reopens **rule reviews**, not annotations.
 The JSON editor is the current editing interface.
 
+![Human assessment panel with optional notes, an expandable structured editor, and Accept, Edit and Reject buttons.](../images/annotation-assessment.png)
+
+Each button saves immediately. Expand **Edit the structured interpretation** before
+editing. The [demonstration](../images/README.md) is awaiting a decision.
+
 ## Read progress and history
 
 | Display | Meaning |
