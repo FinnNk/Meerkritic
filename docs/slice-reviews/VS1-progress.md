@@ -1,6 +1,7 @@
 # VS1 progress
 
-Status: in progress. This is a batch reference, not a completed slice review.
+Status: ACTIVE (milestone follow-up). The functional VS1 batches are integrated;
+this is a progress index, not the separate final slice review or VS2 plan.
 
 Dataset browsing and routing are integrated. PR #5 was approved and merged as
 `f1478217d43414da6e55599a5bf390c7f957dadb`; all 43 tests passed on main and all four
@@ -31,19 +32,22 @@ compatibility checks. Comparative quality/cost choices must follow the EDR proce
 ADR-0001 remains accepted pending its first applicable empirical decision; ADRs 0002-0004
 remain implemented. Ordinary tests do not advance the empirical-process ADR.
 
-The `vs1-annotation/r1` candidate adds immediate Accept/Edit/Reject, source-grounded
+The integrated `vs1-annotation/r1` batch (PR #7) adds immediate Accept/Edit/Reject, source-grounded
 immutable edits, atomic decision/events, history and snapshot-consistent progress.
 Concurrent identical submissions create one record; conflicting decisions cannot
 overwrite it. The browser exposes only the three VS1 decision actions.
 
-The stacked `vs1-validation/r1` candidate adds artefact metadata, structured
+The integrated `vs1-validation/r1` batch (PR #8, merged through PR #7) adds artefact metadata, structured
 committed-event log snapshots, reserved routing-continuity schemas and a read-only
 DER reference page. Full-path tests and live isolated public-data verification
 exercise all three annotation actions, restart, failed-provider inspection and
 Parquet/DuckDB usage analysis. See the [verification guide](../development/vs1-verification.md).
 
-Remaining VS1 work: owner review/integration of the final stack, final slice review and explicit
-review/revision of future slices. VS2 and later slices remain DRAFT. Related semantic
+The final stack is integrated at `0bf957bcb0ae47e2c525f5f652830c06d5b8b9c9`.
+The owner requested a milestone architecture/all-guidance review and authorised
+its fixes in one follow-up PR. The final slice review and detailed future-slice
+plan already exist on a separate local branch without a PR; reconcile that plan
+with the milestone findings before activating VS2. VS2 and later slices remain DRAFT. Related semantic
 propositions may share a PR; prefer stacked PRs when splitting dependent batches.
 Candidate readiness, owner acceptance and slice completion remain separate.
 

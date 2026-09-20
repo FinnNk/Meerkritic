@@ -12,7 +12,8 @@ The schema separates actionable concern from generalisability and permits `uncer
 Affirmative concerns require evidence. Exact quotes must occur uniquely in the supplied
 comment or code; the host derives zero-based, half-open Unicode character spans.
 This proves where quoted text came from, not whether the model's judgement is correct.
-No rule is accepted automatically. Accept/Edit/Reject is a subsequent VS1 batch.
+No rule is accepted automatically. The [human annotation workflow](annotations.md)
+records immediate Accept/Edit/Reject decisions on successful interpretations.
 
 Each workflow outcome returns the prepared prompt/schema version, model output,
 raw provider request/response where available, measurements and a `FrameworkObservation`.

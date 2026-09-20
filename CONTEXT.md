@@ -3,7 +3,7 @@
 This file defines stable project vocabulary only. Keep definitions concise; put design rationale in ADRs or design documents.
 
 ## Observation
-A normalised record derived from a review comment, PR description, issue, commit message, or code comment.
+A preserved source record from a review comment, PR description, issue, commit message or code comment, identified before model interpretation. An interpretation is a separate, evidence-linked output.
 
 ## Weak negative
 An example where no relevant issue was observed, but correctness/non-violation has not been explicitly established.
@@ -33,7 +33,7 @@ Acceptance based on executable or otherwise independently verifiable evidence th
 An evidence-backed observation about Microsoft Agent Framework collected during normal programme use.
 
 ## Architecture snapshot
-A typed representation of modules, dependency edges, contracts, interfaces, and violations at a specific commit/slice point.
+A typed representation of declared modules, dependency edges, contracts and static public interfaces at a specific commit/slice point. Checker results are separate evidence; the snapshot does not establish compliance.
 
 ## Architecture delta
 The typed difference between two architecture snapshots.

@@ -64,7 +64,7 @@ This is implementation confirmation and self-review, not owner approval of the P
 or a claim that VS1 is complete. The owner explicitly requested `implemented`
 after the backfill; the ADR and index now record that state.
 
-The subsequent refinement expanded registration, pagination, publication, composition and architecture contracts and documented provenance records. The quality runner's result contract was backfilled separately. The canonical command passed again with all 15 tests after these edits. R5 evidence, linked from the same PR, records this verification; r4 retains the earlier implementation evidence. The refined convention is implemented in the candidate branch, with PR approval and merge still separate.
+The subsequent refinement expanded registration, pagination, publication, composition and architecture contracts and documented provenance records. The quality runner's result contract was backfilled separately. The canonical command passed again with all 15 tests after these edits. R5 evidence, linked from the same PR, records this verification; r4 retains the earlier implementation evidence. The refined convention was subsequently approved and merged in PR #3. The milestone review extends its application to later VS1 operations without changing the original confirmation evidence.
 
 Review affected comments whenever code changes. Revisit the convention if reviews
 find persistent redundancy, stale contracts or important unexplained behaviour.

@@ -2,12 +2,14 @@
 
 ## Implementation status
 
-VS1 is in progress. Its first material batch implements public dataset registration,
-the local observation browser, SQLite metadata/events and typed architecture snapshots.
-Routing selection, usage accounting, durable provenance and a [routing inspection CLI](routing-operations.md)
-are available in the next candidate batch. Live model calls, worker execution, MAF
-normalisation and human annotation remain outstanding. See the [dataset guide](datasets.md)
-and [VS1 progress](../slice-reviews/VS1-progress.md).
+The VS1 Data-to-Annotation implementation is integrated through PRs #7 and #8
+at main revision `0bf957bcb0ae47e2c525f5f652830c06d5b8b9c9`. It includes public dataset
+registration/browsing, routed llama.cpp calls through MAF, a separate worker,
+structured provenance, immediate human annotation, progress and failure inspection.
+See the [dataset guide](datasets.md), [normalisation guide](normalisation.md),
+[annotation guide](annotations.md) and [VS1 progress](../slice-reviews/VS1-progress.md).
+The milestone architecture follow-up is a separate review batch. The detailed VS2
+plan remains on its existing local branch; VS2 implementation has not started.
 
 ## Setup and checks
 
@@ -46,7 +48,8 @@ We preserve those third-party files byte-for-byte rather
 than restyle them. Their hashes are recorded in `docs/source-manifest.json`.
 Import Linter and Tach enforce first-party package boundaries with no architecture
 ignore rules. This vendor distinction must not be extended to bypass checks on
-project code. Required public interfaces will be declared when real APIs exist.
+project code. Public contracts are declared in application protocols and typed records; review
+their actual consumers alongside the static architecture checks.
 
 ## Commit messages
 
@@ -92,9 +95,8 @@ Follow the [code commenting convention](code-comments.md) when implementing and
 reviewing Python code. Review affected [ADR statuses](../adr/README.md#lifecycle-review)
 with the batch, including confirmation evidence and matching index entries.
 
-The empty initial Git baseline exists only to allow the first documentation branch
-to target `main`. It carries no project files. All substantive files are introduced
-on the review branch, with quality evidence before its first source commit.
+The initial empty baseline supported the bootstrap PR. Subsequent batches start
+from an identified integrated revision or an explicit stacked predecessor.
 
 ### Review boundaries
 

@@ -27,7 +27,7 @@ and later human annotation need stable references to the evidence actually impor
 
 Retain each supplied record with source-hash/index identity in immutable
 Parquet. SQLite registers metadata and an event atomically after publication. This
-is implemented in the candidate batch. The owner selected **Preserve source records**
+was implemented in the now-merged dataset batch (PR #3). The owner selected **Preserve source records**
 in Codex on 2026-09-19; PR approval and merge remain separate.
 
 ### Consequences
@@ -48,7 +48,7 @@ commenting backfill. The pinned 1,030-record sample also registered and reopened
 successfully, with one event after repeated registration, in the retained
 [r3 registration evidence](https://github.com/FinnNk/Meerkritic/blob/2d8cd8d3024eeb70ef35f1afcbff8279141c71b6/p1-isolated-live.json).
 The owner has now accepted the decision; implementation and confirmation are
-complete in the candidate branch. Revisit when cross-source matching or retention
+complete and integrated through PR #3. Revisit when cross-source matching or retention
 requirements become concrete.
 
 ## Pros and Cons of the Options

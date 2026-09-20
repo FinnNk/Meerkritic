@@ -1,15 +1,20 @@
 # Tests
 
-Application tests arrive with the behaviour they verify. This bootstrap contains
-no application behaviour and therefore no application behaviour tests. The three
-architecture negative controls prove that both Import Linter and Tach reject a
-domain-to-adapter dependency and web access through shared worker composition.
-A separate Import Linter control rejects direct web-to-SQLite access; external
-product boundaries are Import Linter's responsibility, not Tach's module graph.
-They require the intended contract diagnostic, not just a failing command.
-The canonical quality command discovers `test_*.py` through Python's standard
-`unittest` runner. These controls do not establish VS1 functionality.
+Run `uv run --locked python tools/check.py` from the repository root. It runs
+Ruff, Import Linter, Tach and all `test_*.py` files with Python's unittest runner.
 
-Use `unit/`, `integration/` and `e2e/` as real tests are introduced. Fixtures must
-be small, synthetic or explicitly permitted for redistribution. Full datasets,
-private examples, model outputs and credentials do not belong here.
+The suite covers dataset integrity, real SQLite/DuckDB/Parquet storage, routing
+and retained versions, the actual MAF graph with deterministic model responses,
+worker exclusion/recovery, artefact publication, HTTP interaction and immediate
+annotation. `test_vs1_path.py` joins the complete path and checks restart and
+usage export. Separate live-model evidence is required for provider compatibility;
+unit tests do not establish model quality or replace that operational check.
+
+Three negative architecture controls require the intended Import Linter/Tach
+failure for forbidden domain-to-adapter, web-to-composition and web-to-SQLite
+access. A nonzero command alone does not satisfy those controls.
+
+Keep tests near the behaviour they verify; introduce subdirectories only when
+that improves navigation. Fixtures must be small, synthetic or explicitly permitted
+for redistribution. Full datasets, private examples, live model outputs and
+credentials stay in external runtime/evidence storage.
