@@ -44,6 +44,8 @@
   before using them; make instructions steps or tables; describe current behaviour.
   Apply its author/reviewer checklist before publication, including unchanged guides
   affected by the change. Keep guidance changes separate from documentation backfills.
+  Populate PR validation tables from retained evidence for the stated revision;
+  follow the guide's [validation-table method](docs/development/documentation-style.md#validation-tables).
 - Follow the [Python style guide](docs/development/python-style.md), which adopts
   selected Google guidance with explicit project choices, not the entire guide.
 - When acting as the App bot, follow the [owner-feedback convention](docs/development/app-bot-feedback.md)
