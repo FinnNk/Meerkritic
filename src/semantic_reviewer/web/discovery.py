@@ -35,12 +35,14 @@ def add_discovery_routes(app, templates, service: DiscoveryService):
 
     @app.get("/discovery", response_class=HTMLResponse)
     def runs(request: Request):
+        """List recent discovery metadata without invoking a model."""
         return templates.TemplateResponse(
             request=request, name="discovery.html", context={"runs": service.store.recent()}
         )
 
     @app.post("/discovery/embed")
     async def embed(request: Request):
+        """Queue verified frozen inputs after bounded same-origin submission."""
         fields = await local_form(request)
         try:
             run = await run_in_threadpool(service.embed, fields.get("selection_id", ""))
@@ -52,6 +54,7 @@ def add_discovery_routes(app, templates, service: DiscoveryService):
 
     @app.post("/discovery/cluster")
     async def cluster(request: Request):
+        """Queue an exact embedding result with explicit grouping parameters."""
         fields = await local_form(request)
         try:
             run = await run_in_threadpool(
@@ -68,6 +71,7 @@ def add_discovery_routes(app, templates, service: DiscoveryService):
 
     @app.get("/discovery/{run_id}", response_class=HTMLResponse)
     def detail(request: Request, run_id: str, page: int = Query(1, ge=1, le=10)):
+        """Render verified provenance and a bounded membership page; reject missing evidence."""
         try:
             run, body = service.inspect(run_id)
             trace = (
@@ -109,6 +113,7 @@ def add_discovery_routes(app, templates, service: DiscoveryService):
 
     @app.post("/discovery/synthesise")
     async def synthesise(request: Request):
+        """Queue a pinned cluster group for worker synthesis; return its inspection URL."""
         fields = await local_form(request)
         try:
             run = await run_in_threadpool(
