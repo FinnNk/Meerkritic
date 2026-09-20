@@ -77,3 +77,9 @@ Use [GitHub issues](https://github.com/FinnNk/Meerkritic/issues) to ask question
 report problems or suggest improvements. For code and documentation changes, read
 the [project instructions](AGENTS.md), work on a branch and use Conventional
 Commits. Run the quality checks before submitting changes for review.
+
+## Licence
+
+Meerkritic is licensed under the [MIT licence](LICENSE.md), copyright 2026 Finn Newick.
+Imported material and third-party skills retain their own notices; see
+[source attribution](docs/sources.md).
