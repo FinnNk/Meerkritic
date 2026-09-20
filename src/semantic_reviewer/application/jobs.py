@@ -239,6 +239,18 @@ class JobService:
             pulse.join()
 
 
+class CorpusQueue(Protocol):
+    """Expose corpus execution to the shared worker without importing selection internals."""
+
+    def recover_interrupted(self) -> int:
+        """Fail interrupted work under the caller's exclusive lock, without replay."""
+        ...
+
+    def run_once(self, worker_id: str) -> bool:
+        """Process at most one item under the same lock; return whether an item was claimed."""
+        ...
+
+
 class Worker:
     """Own exclusive execution, restart recovery and the lifetime of queue processing.
 
@@ -254,12 +266,14 @@ class Worker:
         routing: RoutingService,
         workflow: WorkflowRunner,
         lock: Callable[[], AbstractContextManager[None]],
+        discovery: CorpusQueue | None = None,
     ) -> None:
         """Bind execution and an exclusive-lock factory without starting or recovering work."""
         self._jobs = jobs
         self._routing = routing
         self._workflow = workflow
         self._lock = lock
+        self._discovery = discovery
 
     def run(self, *, once: bool = False) -> int:
         """Recover under exclusivity, then process work; return the number completed.
@@ -272,9 +286,20 @@ class Worker:
         completed = 0
         with self._lock():
             self._jobs.jobs.recover_interrupted()
+            if self._discovery:
+                self._discovery.recover_interrupted()
             worker_id = str(uuid4())
+            prefer_discovery = True
             while True:
-                worked = self._jobs._run_once(self._routing, self._workflow, worker_id)
+                # Alternate queues, preserving one lock and avoiding starvation in either queue.
+                worked = False
+                if prefer_discovery and self._discovery:
+                    worked = self._discovery.run_once(worker_id)
+                if not worked:
+                    worked = self._jobs._run_once(self._routing, self._workflow, worker_id)
+                if not worked and not prefer_discovery and self._discovery:
+                    worked = self._discovery.run_once(worker_id)
+                prefer_discovery = not prefer_discovery
                 completed += int(worked)
                 if once:
                     return completed

@@ -22,6 +22,13 @@ def main() -> int:
     worker.add_argument("--routing", type=Path, required=True)
     worker.add_argument("--endpoint", default="http://127.0.0.1:8081")
     worker.add_argument("--once", action="store_true")
+    worker.add_argument("--embedding-endpoint")
+    worker.add_argument("--embedding-profile", type=Path)
+    worker.add_argument("--embedding-model", type=Path)
+    embed = commands.add_parser("embed")
+    embed.add_argument("selection_id")
+    discovery = commands.add_parser("discovery")
+    discovery.add_argument("run_id", nargs="?")
     normalise = commands.add_parser("normalise")
     normalise.add_argument("dataset_id")
     normalise.add_argument("source_index", type=int)
@@ -53,7 +60,26 @@ def main() -> int:
             uvicorn.run(assembly.build_app(args.data_root), host="127.0.0.1", port=args.port)
         elif args.command == "worker":
             execution = importlib.import_module("semantic_reviewer.worker")
-            execution.run(args.data_root, args.routing, args.endpoint, once=args.once)
+            execution.run(
+                args.data_root,
+                args.routing,
+                args.endpoint,
+                once=args.once,
+                embedding_endpoint=args.embedding_endpoint,
+                embedding_profile=args.embedding_profile,
+                embedding_model=args.embedding_model,
+            )
+        elif args.command in ("embed", "discovery"):
+            composition = importlib.import_module("semantic_reviewer.bootstrap")
+            service = composition.build_discovery(args.data_root)
+            if args.command == "embed":
+                result = asdict(service.embed(args.selection_id))
+            elif args.run_id:
+                run, body = service.inspect(args.run_id)
+                result = {"run": asdict(run), "result": body}
+            else:
+                result = [asdict(run) for run in service.store.recent()]
+            print(json.dumps(result, indent=2, default=lambda item: item.model_dump(mode="json")))
         elif args.command in ("annotate", "progress"):
             composition = importlib.import_module("semantic_reviewer.bootstrap")
             annotations = composition.build_annotations(

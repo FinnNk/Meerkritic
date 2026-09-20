@@ -2,6 +2,14 @@
 
 This file defines stable project vocabulary only. Keep definitions concise; put design rationale in ADRs or design documents.
 
+## Embedding run
+One explicit invocation over a frozen selection, retaining ordered annotation
+identities, a pinned model profile and immutable vectors.
+
+## Cluster run
+Deterministic grouping over one pinned embedding artefact, with explicit algorithm
+parameters, membership, representatives and outliers.
+
 ## Observation
 A preserved source record from a review comment, PR description, issue, commit message or code comment, identified before model interpretation. An interpretation is a separate, evidence-linked output.
 

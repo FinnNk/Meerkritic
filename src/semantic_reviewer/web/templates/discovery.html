@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Discovery · Meerkritic{% endblock %}
+{% block content %}
+<h1>Discovery runs</h1>
+<p>Start with a <a href="/selections">frozen input selection</a>. Embeddings and grouping run in the worker.</p>
+<p>Grouping is exploratory. A successful run is not evidence that a method is suitable or a rule is valid.</p>
+{% for run in runs %}<article><h2><a href="/discovery/{{ run.id }}">{{ run.request.kind | capitalize }}</a> · {{ run.status }}</h2>
+<p>{{ run.queued_at }} · <a href="/selections/{{ run.request.selection_id }}">Frozen input</a></p>
+{% if run.error %}<p>{{ run.error }}</p>{% endif %}</article>
+{% else %}<p>No discovery runs yet.</p>{% endfor %}
+{% endblock %}

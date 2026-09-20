@@ -6,6 +6,7 @@ from fastapi import FastAPI
 
 from semantic_reviewer.bootstrap import (
     build_annotations,
+    build_discovery,
     build_jobs,
     build_review_index,
     build_selections,
@@ -32,4 +33,5 @@ def build_app(data_root: Path) -> FastAPI:
         annotations,
         build_review_index(data_root),
         build_selections(data_root).store,
+        build_discovery(data_root),
     )
