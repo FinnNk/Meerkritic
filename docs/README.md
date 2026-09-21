@@ -3,6 +3,20 @@
 Start with [browsing the sample](../README.md#browse-the-sample). These guides describe
 how to use the code in this checkout. The [glossary](../CONTEXT.md) explains project terms.
 
+## Find your way around
+
+The harness groups its main links below the project name. Select **Meerkritic** to return home; links for the current page appear separately beneath the header. The groups wrap on smaller screens.
+
+| Group | Destinations |
+| --- | --- |
+| Research | Frozen annotation inputs, discovery and the rule registry |
+| Review | The rule-review workspace and guidance from selected discussion |
+| Project | Architecture and references to software-change reviews |
+
+![Compact Research, Review and Project groups, with assessment links below.](images/harness-navigation.png)
+
+This [synthetic assessment view](images/README.md) shows **Jobs** and **Source observation** as local links. Only available features appear in the main navigation.
+
 ## Use the application
 
 | Goal | Read |

@@ -1,0 +1,27 @@
+{
+  "application_revision": "cb3957a",
+  "captured_on": "2026-09-21",
+  "fixture": "create_demo.py --preserved-source; existing synthetic runtime",
+  "viewport_css": [
+    1280,
+    720
+  ],
+  "transformation": "Pixel crop only; no scaling or content edits",
+  "images": [
+    {
+      "file": "harness-navigation.png",
+      "raw": "navigation-raw.png",
+      "crop_pixels": [
+        16,
+        16,
+        1248,
+        145
+      ],
+      "size": [
+        1232,
+        129
+      ],
+      "sha256": "9d529453c1884c470b7383c556275fb83ee26c55e2cf82e87f1d62edcd56cadf"
+    }
+  ]
+}

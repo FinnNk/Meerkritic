@@ -90,6 +90,8 @@ group-rating interface yet; the discovery image must not be described as one.
 
 ## Maintain the images
 
+The [navigation capture](harness-navigation.png) shows the shared header and assessment links from code at `cb3957a`, captured on 21 September 2026. [Its record](captures-navigation.json) gives the 1280 × 720 CSS viewport and 1232 × 129 pixel crop. Reuse the synthetic fixture and capture the top of an assessment page without scrolling. The earlier overview images start below the header and remain applicable; focused assessment images also exclude navigation.
+
 The [preserved-source capture](preserved-source.png) supersedes the source-panel
 illustration for the current assessment guide. It shows additional context above
 the model input; the earlier capture remains a historical asset.
