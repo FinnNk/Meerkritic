@@ -27,6 +27,12 @@ justify; do not turn additional advice into a source-derived rule.
 
 ## Author and reviewer checks
 
+When additional source context is available, follow
+[ADR-0015](../adr/ADR-0015-separate-review-context-from-model-input.md): distinguish
+the exact model input from preserved upstream material, retain its identity and
+record what was presented with new judgements. Never silently rewrite source
+strings, infer lost formatting or attribute new context to an earlier model run.
+
 - Define the question each field answers, its allowed values and how uncertainty
   is represented before collecting judgements.
 - Check an ordinary example and an ambiguous example. Distinguish the affected
