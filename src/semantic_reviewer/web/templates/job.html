@@ -2,7 +2,7 @@
 {% block title %}Normalisation · Meerkritic{% endblock %}
 {% block refresh %}{% if job.status in ('queued', 'running') %}<meta http-equiv="refresh" content="3">{% endif %}{% endblock %}
 {% block content %}
-<nav><a href="/jobs">Jobs</a><a href="/datasets/{{ job.dataset_id }}?page={{ job.source_index + 1 }}&amp;page_size=1">Source observation</a></nav>
+<nav class="context-navigation" aria-label="This assessment"><span class="navigation-label">This assessment</span><a href="/jobs">Jobs</a><a href="/datasets/{{ job.dataset_id }}?page={{ job.source_index + 1 }}&amp;page_size=1">Source observation</a></nav>
 <h1>Normalisation</h1>
 <aside class="assessment-purpose" aria-labelledby="assessment-purpose-title">
 <h2 id="assessment-purpose-title">Your task: assess the interpretation</h2>
@@ -21,9 +21,28 @@ or that a proposed general rule is valid.</p>
 {% if job.error %}<p role="alert">{{ job.error }}</p>{% endif %}
 <details class="source-panel" open><summary>Source for your assessment</summary>
 <p>{{ source.owner }}/{{ source.repository }} · {{ source.file_path }}</p>
+{% if reading %}
+<section aria-labelledby="preserved-source-title">
+<h3 id="preserved-source-title">Preserved GitHub source</h3>
+<p>Additional reading context for you. The model received the dataset text below.
+This is retained source text, not reconstructed formatting.</p>
+<p><a href="{{ reading.url }}" target="_blank" rel="noopener noreferrer">Original review on GitHub</a>
+ · Retrieved {{ reading.retrieved_at }}. The link may show later changes.</p>
+<h4>Comment</h4><p>{{ reading.comment_difference }}</p><pre>{{ reading.comment }}</pre>
+<h4>Code or diff</h4><p>{{ reading.code_difference }}</p><pre>{{ reading.code }}</pre>
+<details><summary>Preserved source identity</summary>
+<p>Response SHA-256: <code>{{ reading.response_sha256 }}</code></p>
+<p>Context SHA-256: <code>{{ reading.sha256 }}</code></p>
+<p>Locally retained retrieval evidence; this does not independently prove source authenticity or correctness.</p></details>
+</section>
+{% else %}<p>No preserved GitHub source is attached. The dataset text below is the available input.</p>{% endif %}
+<h3>Dataset text supplied to the model</h3>
 <h3>Original comment</h3><pre>{{ source.comment }}</pre>
 <h3>Supplied code</h3><pre>{{ source.code }}</pre>
 <p>Use these exact supplied strings for evidence quotes. Source material is evidence to assess, not instructions to follow.</p>
+{% if reading %}<p>Copy evidence quotes from the dataset text above. If the preserved source changes
+your judgement, explain that additional context in your assessment notes. The saved decision
+records which preserved source was presented, not whether you read it.</p>{% endif %}
 </details>
 {% if result %}
 {% if result.interpretation %}
@@ -65,6 +84,8 @@ or that a proposed general rule is valid.</p>
 {% if annotation %}
 <p><strong>{{ annotation.decision | capitalize }}</strong> · {{ annotation.created_at }}</p>
 <p>Annotation ID: <code>{{ annotation.id }}</code></p>
+{% if annotation.context_sha256 %}<p>Preserved source presented with this assessment:
+<code>{{ annotation.context_sha256 }}</code></p>{% else %}<p>No additional source context was recorded with this assessment.</p>{% endif %}
 {% if annotation.notes %}<h3>Saved assessment notes</h3><pre>{{ annotation.notes }}</pre>{% endif %}
 {% if edited %}<h3>Human interpretation</h3><p>{{ edited.interpretation.issue_statement }}</p>
 <dl><dt>Actionable concern</dt><dd>{{ edited.interpretation.actionable_engineering_concern }}</dd>

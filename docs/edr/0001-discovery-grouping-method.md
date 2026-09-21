@@ -284,6 +284,31 @@ registration prerequisites exist.
 
 ## Runs and evidence inventory
 
+### Prospective source-reading amendment, 21 September 2026
+
+During the second assisted input assessment, collapsed diff whitespace obscured
+the boundary between neighbouring upgrade notes. The downloaded JSON and harness
+Parquet matched exactly; the separately retained GitHub response preserved line
+breaks. This is a presentation observation, not a measured model-quality effect.
+Finn Newick agreed to a separate preserved-source view and recording the additional
+human context before continuing labelling.
+
+- Keep the fixed candidate order, dataset bytes, model pass and exact-quote checks.
+- Present verified retained GitHub context separately, with its retrieval date,
+  response identity and comparison to the dataset text. Do not reconstruct lines.
+- Record the context digest presented with subsequent annotations. This records
+  availability, not proof of reading; note assistance and source-only conclusions.
+- Earlier assessments retain their original provenance. The first saved assessment
+  differs from the agreed unsaved walkthrough draft; reconcile it explicitly before
+  freezing inputs. The second assessment remains unsaved at this amendment.
+- No model reruns or quality comparison are authorised by this presentation change.
+  Any later comparison of flattened and original inputs requires its own committed
+  pre-registration, paired inputs and evaluation criteria before new model runs.
+
+Implementation follows [ADR-0015](../adr/ADR-0015-separate-review-context-from-model-input.md).
+The study remains draft; this amendment precedes ensuing collection and does not
+retroactively describe earlier judgements as having the new presentation.
+
 No research grouping runs. Earlier compatibility and integration checks are prior
 exposure, not comparative study results.
 

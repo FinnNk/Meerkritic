@@ -14,6 +14,7 @@ from semantic_reviewer.application.annotations import (
 )
 from semantic_reviewer.application.artefacts import ResultStore
 from semantic_reviewer.application.datasets import DatasetService
+from semantic_reviewer.application.reading import SourceReader
 from semantic_reviewer.domain.datasets import Dataset, Observation
 from semantic_reviewer.domain.normalisation import IssueInterpretation, ground
 
@@ -184,6 +185,7 @@ class SelectionService:
         datasets: DatasetService,
         results: ResultStore,
         store: SelectionStore,
+        sources: SourceReader | None = None,
     ) -> None:
         """Bind ports for the same runtime; expose the store's read-only inspection operations."""
         self._annotations = annotations
@@ -191,6 +193,7 @@ class SelectionService:
         self._datasets = datasets
         self._results = results
         self.store = store
+        self._sources = sources
 
     def freeze(self, request: SelectionRequest) -> SelectionSummary:
         """Verify explicit choices and publish an immutable selection outside HTTP.
@@ -222,6 +225,14 @@ class SelectionService:
                     "Annotation must identify an admissible decision on the exact original result."
                 )
             dataset, source = self._datasets.observation(job.dataset_id, job.source_index)
+            if annotation.context_sha256:
+                context = self._sources.read(job.id) if self._sources else None
+                if not context or (context.sha256, context.job_id, context.observation_id) != (
+                    annotation.context_sha256,
+                    job.id,
+                    source.id,
+                ):
+                    raise ValueError("Annotation reading context is unavailable or changed.")
             body = original
             if annotation.decision == "edit":
                 body = self._results.read(annotation.interpretation_sha256)

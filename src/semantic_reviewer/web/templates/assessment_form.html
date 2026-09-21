@@ -13,6 +13,7 @@
 {%- endmacro %}
 <form class="assessment-form" method="post" action="/jobs/{{ job.id }}/annotation#assessment-editor" id="assessment-editor">
 <input type="hidden" name="editor" value="fields">
+<input type="hidden" name="context_sha256" value="{{ presented_context }}">
 <h3>Edit the interpretation</h3>
 {% if error %}<p role="alert">{{ error }}</p>{% endif %}
 <p>Change the fields below, then choose <strong>Save edited assessment</strong>.

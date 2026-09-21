@@ -13,6 +13,9 @@ no interpretation to assess.
 1. Read the open source panel, then assess the interpretation using the
    [field guide](assessment-fields.md). Impact scope describes affected code;
    investigation needs and missing evidence belong in notes.
+   When attached, [preserved source](preserved-source.md) provides original formatting
+   separately from the dataset text sent to the model. Check any text differences;
+   evidence quotes must still match the dataset view.
 2. Choose an action:
 
    | Action | What is saved |
@@ -37,6 +40,9 @@ result is refused. Source annotations cannot currently be reopened; the
 [review workspace](research-interaction.md) reopens **rule reviews**, not annotations.
 Edits belong to the current tab until submitted. A second tab does not contain
 your unsaved changes. Check the saved interpretation and notes after submission.
+New decisions record the attached source identity presented by the form. If source
+context changed while the tab was open, preserve your edits, reload, review the
+source views and reapply your edits. A recorded identity does not prove it was read.
 
 ![The assessment form uses text fields and dropdowns for the issue and judgements.](../images/annotation-assessment.png)
 

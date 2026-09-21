@@ -9,6 +9,7 @@ does not prove that the corresponding operation completed successfully.
 | Record | Contains | Authority or limit |
 | --- | --- | --- |
 | Result/edit JSON | Immutable normalisation output or human edit, identified by checksum | Read through the application to verify its bytes. |
+| Preserved source context | Exact retrieved response and receipt, bound to a job | Stored under `source-context/`; new annotations record which digest was presented. Back up these files with the database. See [source views](preserved-source.md). |
 | Artefact catalogue | Job, kind, hash, path, size and publication time | Small SQLite metadata; not the body itself. |
 | Operational events | Committed state changes | Append-only database history. |
 | Job log snapshot | Event sequence, timestamps, job, level and small details | Derived from committed events; not a second history. |

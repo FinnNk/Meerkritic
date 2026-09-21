@@ -1,0 +1,29 @@
+{
+  "application_revision": "f00e4f8",
+  "captured_on": "2026-09-21",
+  "browser": "Codex in-app browser; dark appearance",
+  "viewport_css": [
+    1280,
+    720
+  ],
+  "scroll_css": [
+    0,
+    783.3333129882812
+  ],
+  "fixture": "create_demo.py --preserved-source",
+  "fixture_sha256": "36123cdbb2ff05663710ec31f2fd07fcd873d2d67651f7bfd9abdd49f8ebe93f",
+  "synthetic": true,
+  "transformation": "Pixel crop only; no scaling or content edits",
+  "file": "preserved-source.png",
+  "crop_pixels": [
+    16,
+    0,
+    1248,
+    656
+  ],
+  "size": [
+    1232,
+    656
+  ],
+  "sha256": "3f19386bcfdebd9edd56858a3c8c6ceea5523a346b7b47dc87d0c3f59b026468"
+}
