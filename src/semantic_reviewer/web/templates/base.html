@@ -27,6 +27,18 @@
     .assessment-help table { border-collapse: collapse; width: 100%; }
     .assessment-help th, .assessment-help td { padding: .6rem; text-align: left; vertical-align: top; border-bottom: 1px solid #8886; }
     #notes { box-sizing: border-box; width: 100%; font: inherit; }
+    .assessment-form { border: 1px solid #8886; border-radius: .6rem; padding: 1.2rem; margin: 1.5rem 0; }
+    .assessment-form label { display: block; font-weight: 600; margin-top: 1rem; }
+    .assessment-form textarea, .assessment-form select { box-sizing: border-box; width: 100%; font: inherit; padding: .5rem; }
+    .assessment-form fieldset { min-width: 0; margin: 1.5rem 0; border: 1px solid #8886; border-radius: .4rem; }
+    .assessment-form legend { font-weight: 650; }
+    .assessment-form button { font: inherit; padding: .5rem .8rem; cursor: pointer; margin: .5rem 0; }
+    .assessment-form p { margin: .5rem 0; }
+    .assessment-choices { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+    .assessment-row { padding-bottom: 1rem; border-bottom: 1px solid #8883; margin-bottom: 1rem; }
+    .assessment-actions { display: flex; flex-wrap: wrap; gap: .8rem; }
+    .assessment-save { background: light-dark(#1255a2, #8bc5ff); color: light-dark(white, #111); border: 1px solid transparent; border-radius: .3rem; }
+    @media (max-width: 700px) { .assessment-choices { grid-template-columns: 1fr; } }
     @media (max-width: 700px) { .columns { grid-template-columns: 1fr; } dl { display: block; } }
   </style>
 </head>
