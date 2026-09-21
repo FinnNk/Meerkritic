@@ -23,7 +23,7 @@ class AnnotationWebTest(unittest.TestCase):
 
     def test_actions_persist_immediately_and_progress_survives_new_app(self):
         page = self.client.get(f"/jobs/{self.job.id}")
-        for action in ("Accept", "Edit", "Reject"):
+        for action in ("Accept original", "Save edited assessment", "Reject"):
             self.assertIn(f">{action}</button>", page.text)
         response = self.client.post(
             self.url,
