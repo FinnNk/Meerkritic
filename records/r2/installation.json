@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "version": "0.1.1",
+  "source_revision": "8d97bd67ddc09dbbbd9d140fb58199e6ec733ee0",
+  "installed_to": "HOST_USER\\.codex\\skills\\technical-documentation",
+  "files": {
+    "SKILL.md": "d459e66e7d5c5fa67ddc2d52e044a95a7ccfc8e57fec46baa02f89f65b43bd39",
+    "agents/openai.yaml": "726f4b09487b3ef584e2825204c3c91f06975c85cfd698c11cc5400939e70fa1",
+    "references/pr-descriptions.md": "3a5066fc850f5359e978891d9d21c354603c01980ee9dd07a7ce2df277bf507a",
+    "references/screenshots.md": "c25d9ef1c1826bff37a9daaabf52f4d99eda63e4e55286a8bfe3bd08a8253097"
+  },
+  "validator": "Skill is valid!"
+}

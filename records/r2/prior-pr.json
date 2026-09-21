@@ -1,0 +1,13 @@
+{
+  "author": {
+    "is_bot": true,
+    "login": "app/meerkritic-agent"
+  },
+  "baseRefOid": "13b635a221fa9178f922e2ef1b946c0d45081077",
+  "body": "Documentation advice is now available as the reusable `technical-documentation` skill. It covers plain-English technical writing, structured instructions, current-behaviour guides, screenshots and evidence-based PR summaries. The skill has no Meerkritic, language-stack or hosting-service dependency.\r\n\r\nMeerkritic's writing guide retains British English, exact quality commands, research safeguards, screenshot storage/fixtures and semantic-review conventions. Agent instructions and the PR template point to both the reusable method and local requirements. Existing guide anchors and imported originals are preserved.\r\n\r\nThe repository copy is versioned; an identical personal copy was installed for use across projects. The skill keeps screenshot and PR details in optional references, so ordinary writing tasks need only its core guide.\r\n\r\n**Stacked on #22. Merge #22 before this PR.**\r\n\r\n## Review sequence\r\n\r\n| Commit | What it establishes |\r\n| --- | --- |\r\n| `87f8488` | Reusable skill, personal-discovery metadata and Meerkritic-specific guidance/instruction integration. |\r\n| `f574fad` | Backfill the documentation index and repository-structure guide. |\r\n\r\n## Validation\r\n\r\n**Standard checks: passed** at `f574fad` - [evidence](https://github.com/FinnNk/Meerkritic/tree/23dc6bcf8d9b5c2fe5f455b0a2b85505ee0694c1/records/verification-summary.json). **253 tests; 0 skipped**, using a clean locked Windows/Python 3.12 environment. No tests or application code changed.\r\n\r\n- Skill frontmatter/metadata validate; all four installed files match the repository copy by SHA-256.\r\n- [Documentation checks](https://github.com/FinnNk/Meerkritic/tree/23dc6bcf8d9b5c2fe5f455b0a2b85505ee0694c1/records/docs-check.json): 403 local links, including the skill references; all 59 imported-source hashes preserved.\r\n- [Extraction review](https://github.com/FinnNk/Meerkritic/tree/23dc6bcf8d9b5c2fe5f455b0a2b85505ee0694c1/records/review.md): general/local guidance mapping and scope checks. Author self-review; no independent behavioural evaluation claimed.\r\n\r\nThis is a routine documentation extraction. It changes no application behaviour, research decisions, model calls or repository permissions.\r\n",
+  "headRefOid": "f574faddfcc10aa774995094a998b2b2ce3db57a",
+  "mergeable": "MERGEABLE",
+  "state": "OPEN",
+  "statusCheckRollup": [],
+  "url": "https://github.com/FinnNk/Meerkritic/pull/23"
+}

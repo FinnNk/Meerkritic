@@ -1,0 +1,62 @@
+[
+  {
+    "source": "check_docs.py",
+    "source_sha256": "c5e30fdd9ea813f5e9f0ed661b1d922edc2d49ffa5efd609bce8d204ace728b7",
+    "export_sha256": "fd8ebccf832b386c10deadddcd715f4851f50fc52b7a197214ac442df1be7334",
+    "transformation": "Host/workspace paths replaced"
+  },
+  {
+    "source": "docs-check.json",
+    "source_sha256": "d3bdbc85ec3b27dd655d00bc1a63c7c92c8e5dfbc4ed7ee24b97f41ce7d4def8",
+    "export_sha256": "d3bdbc85ec3b27dd655d00bc1a63c7c92c8e5dfbc4ed7ee24b97f41ce7d4def8",
+    "transformation": "Host/workspace paths replaced"
+  },
+  {
+    "source": "final-checks.json",
+    "source_sha256": "facf532977783290c3df7d15041b13b2efdbcba9a52849d242d93e48d1f90883",
+    "export_sha256": "9276dee88e3c4fe58bbe599fc9ad5144d07e9368167df9d0ada14485fda9ae66",
+    "transformation": "Host/workspace paths replaced"
+  },
+  {
+    "source": "final-checks.log",
+    "source_sha256": "ab36931b67890ddc49f446178a81630def31bc4db86600bf60bf7c22060afe53",
+    "export_sha256": "3c51dfc281f4e850cb8e6dc4771b4b1ea8ab0e03c547cfa1f7b02772b2ff52c3",
+    "transformation": "Host/workspace paths replaced"
+  },
+  {
+    "source": "installation.json",
+    "source_sha256": "29ffa3e8d6326f788d2d92a1280d396437a30b07e09edcc0989d9ccf99a4873a",
+    "export_sha256": "eff650df6f87db6c1608647d4bff87f5c2eef34e61eb6f6f83352ff38b1495af",
+    "transformation": "Host/workspace paths replaced"
+  },
+  {
+    "source": "prior-pr.json",
+    "source_sha256": "5745c593b0c41c92d9afe9b93f5a5e20744ee854bfd697853951cac28c206f9d",
+    "export_sha256": "5745c593b0c41c92d9afe9b93f5a5e20744ee854bfd697853951cac28c206f9d",
+    "transformation": "Host/workspace paths replaced"
+  },
+  {
+    "source": "publish.py",
+    "source_sha256": "d3447845e26de0acb3e5b1e5d250c4423a3dbdafa0665b8ad7f72c316c0a4edc",
+    "export_sha256": "6bc1528c193be6de12d5b6d77a76fffd4b5bb0594ccde28a8affe1dc2b39f414",
+    "transformation": "Host/workspace paths replaced"
+  },
+  {
+    "source": "review.md",
+    "source_sha256": "3f51cfac0ce8daea2279f0fe832a21afa8fc70e27d8a617e30f45d2831a60fe9",
+    "export_sha256": "3f51cfac0ce8daea2279f0fe832a21afa8fc70e27d8a617e30f45d2831a60fe9",
+    "transformation": "Host/workspace paths replaced"
+  },
+  {
+    "source": "verification-summary.json",
+    "source_sha256": "85384a72d6e59083a414e85d7ee795193dfdc03b9e8e7604c72d48c46f4b0277",
+    "export_sha256": "7c04834e4e80e44832436fedcce9e9aca1dd907f86c73d219bfab7ea6740e12d",
+    "transformation": "Host/workspace paths replaced"
+  },
+  {
+    "source": "verify.py",
+    "source_sha256": "783effae8d8f286a06cb2938f5bb671d7cd6c05875bebca6a19f75ba54242f20",
+    "export_sha256": "3fdd8eeaa450572da0e4b43306a904b124ff35138a6b3fc9fa1a9dab4bc87c70",
+    "transformation": "Host/workspace paths replaced"
+  }
+]
