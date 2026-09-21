@@ -1,0 +1,229 @@
+{
+  "base": "796db0edc2032ed7ff0c518eecadd718b91c3e22",
+  "tip": "437220ac6186cf8e4dd100a5f32a3bef8903db8c",
+  "tree": "2432becb8f91869c8b6a4c1f653e79e3c40eb4df",
+  "commits": [
+    {
+      "commit": "594272288e08ea9b6c1e832c01cc723ad0f73558",
+      "parents": [
+        "796db0edc2032ed7ff0c518eecadd718b91c3e22"
+      ],
+      "tree": "ab63a1149e899e59e5a1401d4c1557c9cb12a4a1",
+      "subject": "feat: edit assessments using labelled form fields",
+      "change": {
+        "files": [
+          {
+            "path": "docs/development/assessment-form.md",
+            "added": 42,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/app.py",
+            "added": 36,
+            "deleted": 24
+          },
+          {
+            "path": "src/semantic_reviewer/web/assessment.py",
+            "added": 200,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/assessment_form.html",
+            "added": 60,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/base.html",
+            "added": 12,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/job.html",
+            "added": 22,
+            "deleted": 17
+          },
+          {
+            "path": "tests/test_annotation_web.py",
+            "added": 1,
+            "deleted": 1
+          },
+          {
+            "path": "tests/test_assessment_form.py",
+            "added": 249,
+            "deleted": 0
+          }
+        ],
+        "file_count": 8,
+        "added": 622,
+        "deleted": 42,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "437220ac6186cf8e4dd100a5f32a3bef8903db8c",
+      "parents": [
+        "594272288e08ea9b6c1e832c01cc723ad0f73558"
+      ],
+      "tree": "2432becb8f91869c8b6a4c1f653e79e3c40eb4df",
+      "subject": "docs: backfill assessment guides and screenshots",
+      "change": {
+        "files": [
+          {
+            "path": "docs/README.md",
+            "added": 1,
+            "deleted": 0
+          },
+          {
+            "path": "docs/development/annotations.md",
+            "added": 14,
+            "deleted": 11
+          },
+          {
+            "path": "docs/development/assessment-fields.md",
+            "added": 10,
+            "deleted": 10
+          },
+          {
+            "path": "docs/development/failed-drafts.md",
+            "added": 14,
+            "deleted": 28
+          },
+          {
+            "path": "docs/development/study-preparation.md",
+            "added": 3,
+            "deleted": 3
+          },
+          {
+            "path": "docs/images/README.md",
+            "added": 9,
+            "deleted": 2
+          },
+          {
+            "path": "docs/images/annotation-assessment.png",
+            "added": null,
+            "deleted": null
+          },
+          {
+            "path": "docs/images/assessment-save.png",
+            "added": null,
+            "deleted": null
+          },
+          {
+            "path": "docs/images/captures-assessment-form.json",
+            "added": 72,
+            "deleted": 0
+          },
+          {
+            "path": "docs/images/failed-draft-assessment.png",
+            "added": null,
+            "deleted": null
+          }
+        ],
+        "file_count": 10,
+        "added": 123,
+        "deleted": 54,
+        "binary_files": 3
+      }
+    }
+  ],
+  "linear": true,
+  "final_change": {
+    "files": [
+      {
+        "path": "docs/README.md",
+        "added": 1,
+        "deleted": 0
+      },
+      {
+        "path": "docs/development/annotations.md",
+        "added": 14,
+        "deleted": 11
+      },
+      {
+        "path": "docs/development/assessment-fields.md",
+        "added": 10,
+        "deleted": 10
+      },
+      {
+        "path": "docs/development/assessment-form.md",
+        "added": 42,
+        "deleted": 0
+      },
+      {
+        "path": "docs/development/failed-drafts.md",
+        "added": 14,
+        "deleted": 28
+      },
+      {
+        "path": "docs/development/study-preparation.md",
+        "added": 3,
+        "deleted": 3
+      },
+      {
+        "path": "docs/images/README.md",
+        "added": 9,
+        "deleted": 2
+      },
+      {
+        "path": "docs/images/annotation-assessment.png",
+        "added": null,
+        "deleted": null
+      },
+      {
+        "path": "docs/images/assessment-save.png",
+        "added": null,
+        "deleted": null
+      },
+      {
+        "path": "docs/images/captures-assessment-form.json",
+        "added": 72,
+        "deleted": 0
+      },
+      {
+        "path": "docs/images/failed-draft-assessment.png",
+        "added": null,
+        "deleted": null
+      },
+      {
+        "path": "src/semantic_reviewer/web/app.py",
+        "added": 36,
+        "deleted": 24
+      },
+      {
+        "path": "src/semantic_reviewer/web/assessment.py",
+        "added": 200,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/web/templates/assessment_form.html",
+        "added": 60,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/web/templates/base.html",
+        "added": 12,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/web/templates/job.html",
+        "added": 22,
+        "deleted": 17
+      },
+      {
+        "path": "tests/test_annotation_web.py",
+        "added": 1,
+        "deleted": 1
+      },
+      {
+        "path": "tests/test_assessment_form.py",
+        "added": 249,
+        "deleted": 0
+      }
+    ],
+    "file_count": 18,
+    "added": 745,
+    "deleted": 96,
+    "binary_files": 3
+  },
+  "statistics_note": "No rename detection; merge commit churn uses first parent. Final diff and cumulative per-commit churn are different quantities."
+}

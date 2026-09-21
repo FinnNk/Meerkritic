@@ -1,0 +1,302 @@
+[
+  {
+    "source": "r1/architecture-after.json",
+    "source_sha256": "7da6f7a5b017e702bd5f958167cb9482cb324939f75a2b7d44795be154db3e54",
+    "export_sha256": "7da6f7a5b017e702bd5f958167cb9482cb324939f75a2b7d44795be154db3e54",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/architecture-before.json",
+    "source_sha256": "295c8c6d101718e0077b1a7c970b4165c55d6b171b49090b8903412f23576028",
+    "export_sha256": "295c8c6d101718e0077b1a7c970b4165c55d6b171b49090b8903412f23576028",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/architecture-delta.json",
+    "source_sha256": "6a0cc1cbafc38b04e6a08e781f8d366a1c0382dd8a9c79d2a4f058d03f778dab",
+    "export_sha256": "6a0cc1cbafc38b04e6a08e781f8d366a1c0382dd8a9c79d2a4f058d03f778dab",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/baseline-checks.json",
+    "source_sha256": "cf22d27e4baa7637a3347fa8e2ee459e2733615b17fde996bf6d0fb01036ee69",
+    "export_sha256": "5d88447b983fa8f8e6fc63b6e998e9339f1c493258101d2f8d8fed2291e1ed4c",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/baseline-checks.log",
+    "source_sha256": "6e965a751f57db3e2798a0bdd5e2b2f50ca8133fb8af79615784185b1bc4ebab",
+    "export_sha256": "3b94a50c00a7e2075b8d8189a21ae8f20d27808518f7610bb4f47f6922de8fd2",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/browser-check.json",
+    "source_sha256": "cdf257dcec5002baf40e04d39f53e4b6cdb3d7e41b6a13a7d5411767c801b701",
+    "export_sha256": "cdf257dcec5002baf40e04d39f53e4b6cdb3d7e41b6a13a7d5411767c801b701",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/demo-setup.log",
+    "source_sha256": "f102a4e435b35e20af26a028fc751ec390287415b47adaf2301f9ff7eb3a34e6",
+    "export_sha256": "f102a4e435b35e20af26a028fc751ec390287415b47adaf2301f9ff7eb3a34e6",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/demo.stderr.log",
+    "source_sha256": "e2f46d2f42af3e56432acf55af4b02efcab3a717982998052d85f2c4a5ab78ad",
+    "export_sha256": "e2f46d2f42af3e56432acf55af4b02efcab3a717982998052d85f2c4a5ab78ad",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/demo.stdout.log",
+    "source_sha256": "8641a1a78b7ecc18c17f4c40f0658defc14e4ccffd3fb65c66e912bbc671cd5f",
+    "export_sha256": "8641a1a78b7ecc18c17f4c40f0658defc14e4ccffd3fb65c66e912bbc671cd5f",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/diary-checks.json",
+    "source_sha256": "072061eb86762aeb7473b44bdc425da070348752e5b7845d42e36942eeea9a7c",
+    "export_sha256": "c701320734d1dba5d1a372f6185de8b2559b64ec8aed0010ed5e076816a63a11",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/diary-checks.log",
+    "source_sha256": "16516dc0a78b4aa1e16636ca4ca383081e265a55a34ad132ad0fd4aff6b695fa",
+    "export_sha256": "dccb509d06f77600c4aed53ba070a0b151eeeaa68cfb946dc807226f882fb427",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/diary-final-checks.json",
+    "source_sha256": "46432e65c7180f215b8292ad31cb89e5889ff9e9df7221bee03601a9e15b6f97",
+    "export_sha256": "99d0836a4e98f8fca4b64617e824148cb7da2e26685b9919df6c23148f9b8e36",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/diary-final-checks.log",
+    "source_sha256": "a7a5b9223b134ad322d218076ae6f5ed009a67d7bfa38b2d1797682678782ee7",
+    "export_sha256": "76b03b3c76789ad300a7d51325fbf6532cc260b70f3f8bb49f4979ef0d878cd0",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/discoveries.md",
+    "source_sha256": "a5f4c284b921b5b3133d4bddcdc0f52b56d194bfb56cf602044d426d61a23ac7",
+    "export_sha256": "a5f4c284b921b5b3133d4bddcdc0f52b56d194bfb56cf602044d426d61a23ac7",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/docs-check.json",
+    "source_sha256": "30f4ef3740507daca9d6b6ee1aedaf47d440aad53b3ad70b1103175c886159e3",
+    "export_sha256": "30f4ef3740507daca9d6b6ee1aedaf47d440aad53b3ad70b1103175c886159e3",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/docs_architecture.py",
+    "source_sha256": "1503ec6de9be67e7c9aae9ebc0543d44c2f944c77faa80a6d1ea7ee28dd3b096",
+    "export_sha256": "e7ee6ef6d14bb325377d788830e3bc07612770d78ac6c95fdcf17ea71825eacd",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/equivalence.json",
+    "source_sha256": "a60047c30534b6f66e982193e4dc4f6e9e924cbeb66a8209972ba201ed82ba2c",
+    "export_sha256": "a60047c30534b6f66e982193e4dc4f6e9e924cbeb66a8209972ba201ed82ba2c",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/export_packet.py",
+    "source_sha256": "ad5335fcd18e9cbca8c20df8c983459c7c15a8e66d57a10bad4c44fb847904a6",
+    "export_sha256": "860d2bff73180f2a6150097e1a626cab9b4b417de5d7af2605c70f4a8dac283f",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/form-tests-corrected.log",
+    "source_sha256": "ecd2db01dae89ea8ed58ba0f9023784da05bd727f125ffc8372c0acc32796721",
+    "export_sha256": "97bc287412be625a7881d5ba58f33804f364e83e33c4abc134b6e201fddd9270",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/form-tests-first.log",
+    "source_sha256": "e7e4f1cf1aa535f36a5c0ec14f3a4e0eecbce81e531b219ba5d2d5c76cda7df7",
+    "export_sha256": "129eb7d7ac8f3140383d91b90260cdac2e6e5851f747f09f1de44ff84d84c594",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/host-rules.json",
+    "source_sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+    "export_sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/line-ending-review.log",
+    "source_sha256": "623adc0ff86d31ae9e40e94da86bbf0491383c933e42d1b42d52824206480f6c",
+    "export_sha256": "14ef7fc0f45c7f8c2fb4aa71a6fda091975ac3d0a97e8a7c0461b832ed53f2f6",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/live-after.json",
+    "source_sha256": "a7bee24743ab79401f9bee117107a898c596663d76c7a4cabc952f9985a1aa14",
+    "export_sha256": "a7bee24743ab79401f9bee117107a898c596663d76c7a4cabc952f9985a1aa14",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/live-before.json",
+    "source_sha256": "a7bee24743ab79401f9bee117107a898c596663d76c7a4cabc952f9985a1aa14",
+    "export_sha256": "a7bee24743ab79401f9bee117107a898c596663d76c7a4cabc952f9985a1aa14",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/live-deployment.json",
+    "source_sha256": "919ea70ba139b1635b209036ee8beb34fde88d4e9d0367ae81629fbc717e9318",
+    "export_sha256": "919ea70ba139b1635b209036ee8beb34fde88d4e9d0367ae81629fbc717e9318",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/live_guard.py",
+    "source_sha256": "a364f90c6ff56d8b3e622d15fc1ac59ff1ab034c72aca44297a94a2c66839c7b",
+    "export_sha256": "cc506d413ce50350804e6c4d8ea5550290a0519b4acb7ef9981dedd37b738589",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/materiality.md",
+    "source_sha256": "baa23d411da39ff3ba159812a54151e92966d80e5b63efc30b72fc3db9ff4b94",
+    "export_sha256": "baa23d411da39ff3ba159812a54151e92966d80e5b63efc30b72fc3db9ff4b94",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/p1-checks.json",
+    "source_sha256": "391cf1a2de57539ab21e13051416b1c3af2b4082eb24996f01247dbc78a20984",
+    "export_sha256": "fa94aa89bccd896247ece01ac0d1b16a92f049dfb86844d3fb6977bd14c0fedf",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/p1-checks.log",
+    "source_sha256": "2ae972c7a65f2e0b78a818464efb74e2ddfc1498c56052d27edc9863bec7c4c2",
+    "export_sha256": "b56ddf98d98b5c49303f456a6f2f9ec0c7be58cf9e30b0d67c7b676eaf665e01",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/p2-checks.json",
+    "source_sha256": "c96a737192ce2ea5c232ad563c0fef53ce394436a127d725f7028c6cb2923955",
+    "export_sha256": "252aaf3d0be5b29d945bff3ea6be58f1baea65c57e74ffd15162db9c39b71e30",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/p2-checks.log",
+    "source_sha256": "6780b6fcf58a42fd9e9d7375f1308f99ed76fc024bd2f8e4326f981493b7f095",
+    "export_sha256": "8830a3d503fb75ffe4644b3b4bb1571137bdbe9fcf208ad1a857f6efad9ed315",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/prepare_packet.py",
+    "source_sha256": "fe56398b3ae42de1174799b7a6cbc14d3bd2377de6fc97f52f0c55bd60a5f8c8",
+    "export_sha256": "cb574cbfc22063a3f73df632a3e46476057473bff8b5208aca4877c3802720fd",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/prepared-event.json",
+    "source_sha256": "c2d4c64f8c519092c76ee5a08237e776019ddeb2b992730a15ed619d6943f533",
+    "export_sha256": "c2d4c64f8c519092c76ee5a08237e776019ddeb2b992730a15ed619d6943f533",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/prepared-ledger.json",
+    "source_sha256": "f415d6e17cbba4285f4be5826be3bb94b576132051a8612a6f0c2ec13a21045e",
+    "export_sha256": "e4f2cc8967cb130794805db5f096373fcc54665f5d09f58db408a6f314f40eb7",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/preview.stderr.log",
+    "source_sha256": "d2d874a5fc64b5aaa5b47c169c8f51149744cf67eeb8e87733f1a6da845ff92e",
+    "export_sha256": "d2d874a5fc64b5aaa5b47c169c8f51149744cf67eeb8e87733f1a6da845ff92e",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/preview.stdout.log",
+    "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "export_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/profile.json",
+    "source_sha256": "99bd9330ed85d74a32dd8ce05de1a0b61d36c64785ab0312dc94354307acef4a",
+    "export_sha256": "bf51abe683b1322fdab6400eb70fa9e914585da5f5d27a157cb9c7cb008b9df0",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/propositions.md",
+    "source_sha256": "2d9d07f6648562c7123c9dc3bd65def029cc862138f5f9c79510684d83d871f9",
+    "export_sha256": "2d9d07f6648562c7123c9dc3bd65def029cc862138f5f9c79510684d83d871f9",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/publish.py",
+    "source_sha256": "d3b0a9930542ebfe33b6c3f3ffffd4924ad0c1a5485a9ffc56f3ae5fdd0e14da",
+    "export_sha256": "6e395dc190fed90c1b5e302cb5fc4b4de8fe92f4bc9ddeab24671b4b3164ebea",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/reconstruct.py",
+    "source_sha256": "d2b5050cd02a3dcf00d7b825a042945d0c38a63ff1dca0664351d36c8c0abc01",
+    "export_sha256": "2e5bee575206078de52bbb55d011ac032911ff9842458067601ae523f2bd91a5",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/review-notes.md",
+    "source_sha256": "52c5c42354500990216d6c93b968507314668cd91dc0f30a8a08061727fabd7d",
+    "export_sha256": "52c5c42354500990216d6c93b968507314668cd91dc0f30a8a08061727fabd7d",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/review-validation.json",
+    "source_sha256": "3952034628349aa1a8ea86ce0d46034fb4d7585c1940614b0fcab6e474e80b82",
+    "export_sha256": "3952034628349aa1a8ea86ce0d46034fb4d7585c1940614b0fcab6e474e80b82",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/review.json",
+    "source_sha256": "c3bbbc845860c62c258221765b088d369680d5a72f9b424519486904d0e0b44d",
+    "export_sha256": "c3bbbc845860c62c258221765b088d369680d5a72f9b424519486904d0e0b44d",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/round-validation.json",
+    "source_sha256": "eba14a2867f2b91075bf5989a50b5435da36929236c792a1e6706c7c3b82897b",
+    "export_sha256": "eba14a2867f2b91075bf5989a50b5435da36929236c792a1e6706c7c3b82897b",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/screenshot-check.json",
+    "source_sha256": "b505b13d33477792dbb5796b1e80bbaa78802071f4f6b0c00d960d3a03a90247",
+    "export_sha256": "b505b13d33477792dbb5796b1e80bbaa78802071f4f6b0c00d960d3a03a90247",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/semantic-commits.json",
+    "source_sha256": "b91ed1d5e8dd742665a314c5dbb859283b0e4c375f6aa0d61332dc160b99e265",
+    "export_sha256": "b91ed1d5e8dd742665a314c5dbb859283b0e4c375f6aa0d61332dc160b99e265",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/snapshot.json",
+    "source_sha256": "c0688a37812144f2bce7895e573b5d79c307f11a46ff2ba1ea359b8f12739987",
+    "export_sha256": "497763137b0119c3a829936d1bab6c392b689d7542616b80833f33ec023a0e96",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/test-change-identities.json",
+    "source_sha256": "3b7a2bf57fdc3f94a4aaebdf8417ed2a4cf82b459618db5ccc749ace8a099a94",
+    "export_sha256": "3b7a2bf57fdc3f94a4aaebdf8417ed2a4cf82b459618db5ccc749ace8a099a94",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/verification-summary.json",
+    "source_sha256": "d9c7ea0fe678f515e4cbea12962b67f4556931cd9876584660443f3bd9df685d",
+    "export_sha256": "3efce3270248d2cea1887aabec618432917674fcdab5ac0cb33bcf4c26d3fb4c",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "r1/verify.py",
+    "source_sha256": "ebaa98c011baedd647346cace79ad8c2a32fafbc0e871dfcab93432179ce30b0",
+    "export_sha256": "715e6a09548e5163d8e2b7c619f6271caf0a4a10a5b426489a0516b4541fd295",
+    "transformation": "Local workspace/user paths replaced; UTF-8 BOM removed if present"
+  }
+]

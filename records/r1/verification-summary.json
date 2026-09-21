@@ -1,0 +1,166 @@
+{
+  "status": "passed",
+  "base": "796db0edc2032ed7ff0c518eecadd718b91c3e22",
+  "head": "437220ac6186cf8e4dd100a5f32a3bef8903db8c",
+  "checkpoints": [
+    {
+      "label": "diary-final",
+      "revision": "97af70e1ad642c2e830d3eb68f9948af9b46e6ec",
+      "tree": "2432becb8f91869c8b6a4c1f653e79e3c40eb4df",
+      "tests": 241,
+      "skipped": 0,
+      "status": "passed",
+      "expected_checks": [
+        [
+          "ruff",
+          "format",
+          "--check",
+          "."
+        ],
+        [
+          "ruff",
+          "check",
+          "."
+        ],
+        [
+          "lint-imports",
+          "--no-cache"
+        ],
+        [
+          "tach",
+          "check"
+        ],
+        [
+          "<python>",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_*.py"
+        ]
+      ],
+      "observed_checks": [
+        "ruff format --check .",
+        "ruff check .",
+        "lint-imports --no-cache",
+        "tach check",
+        "WORKSPACE\\extras\\der-checkouts\\assessment-form-check-diary-final\\.venv\\Scripts\\python.exe -m unittest discover -s tests -p test_*.py"
+      ],
+      "evidence": "diary-final-checks.json"
+    },
+    {
+      "label": "p1",
+      "revision": "594272288e08ea9b6c1e832c01cc723ad0f73558",
+      "tree": "ab63a1149e899e59e5a1401d4c1557c9cb12a4a1",
+      "tests": 241,
+      "skipped": 0,
+      "status": "passed",
+      "expected_checks": [
+        [
+          "ruff",
+          "format",
+          "--check",
+          "."
+        ],
+        [
+          "ruff",
+          "check",
+          "."
+        ],
+        [
+          "lint-imports",
+          "--no-cache"
+        ],
+        [
+          "tach",
+          "check"
+        ],
+        [
+          "<python>",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_*.py"
+        ]
+      ],
+      "observed_checks": [
+        "ruff format --check .",
+        "ruff check .",
+        "lint-imports --no-cache",
+        "tach check",
+        "WORKSPACE\\extras\\der-checkouts\\assessment-form-check-p1\\.venv\\Scripts\\python.exe -m unittest discover -s tests -p test_*.py"
+      ],
+      "evidence": "p1-checks.json"
+    },
+    {
+      "label": "p2",
+      "revision": "437220ac6186cf8e4dd100a5f32a3bef8903db8c",
+      "tree": "2432becb8f91869c8b6a4c1f653e79e3c40eb4df",
+      "tests": 241,
+      "skipped": 0,
+      "status": "passed",
+      "expected_checks": [
+        [
+          "ruff",
+          "format",
+          "--check",
+          "."
+        ],
+        [
+          "ruff",
+          "check",
+          "."
+        ],
+        [
+          "lint-imports",
+          "--no-cache"
+        ],
+        [
+          "tach",
+          "check"
+        ],
+        [
+          "<python>",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_*.py"
+        ]
+      ],
+      "observed_checks": [
+        "ruff format --check .",
+        "ruff check .",
+        "lint-imports --no-cache",
+        "tach check",
+        "WORKSPACE\\extras\\der-checkouts\\assessment-form-check-p2\\.venv\\Scripts\\python.exe -m unittest discover -s tests -p test_*.py"
+      ],
+      "evidence": "p2-checks.json"
+    }
+  ],
+  "test_changes": {
+    "added": [
+      "tests/test_assessment_form.py::AssessmentFormTest::test_accept_and_reject_do_not_validate_or_use_edited_fields",
+      "tests/test_assessment_form.py::AssessmentFormTest::test_add_remove_rows_preserves_unsaved_values_and_does_not_record_events",
+      "tests/test_assessment_form.py::AssessmentFormTest::test_ambiguous_or_oversized_field_protocols_cannot_record_a_decision",
+      "tests/test_assessment_form.py::AssessmentFormTest::test_failed_unparseable_draft_starts_without_guessed_judgements",
+      "tests/test_assessment_form.py::AssessmentFormTest::test_invalid_fields_and_grounding_preserve_all_input_for_correction",
+      "tests/test_assessment_form.py::AssessmentFormTest::test_rendered_fields_save_complete_edit_and_readable_confirmation",
+      "tests/test_assessment_form.py::AssessmentFormTest::test_source_line_endings_and_leading_newlines_round_trip_without_trimming",
+      "tests/test_assessment_form.py::AssessmentFormTest::test_stale_tab_cannot_overwrite_a_saved_decision"
+    ],
+    "removed": [],
+    "altered": [
+      "tests/test_annotation_web.py::AnnotationWebTest::test_actions_persist_immediately_and_progress_survives_new_app"
+    ]
+  },
+  "retained_failure": "form-tests-first.log",
+  "failure_disposition": "CRLF duplicate matching fixed; styling no longer matches HTML button-absence assertions. Browser error visibility corrected. Further lone-CR review coverage added. Failures retained; final checkpoints pass afresh."
+}

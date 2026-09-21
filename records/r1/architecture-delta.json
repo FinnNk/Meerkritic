@@ -1,0 +1,126 @@
+{
+  "changes": {
+    "boundaries": {
+      "added": [],
+      "removed": []
+    },
+    "contracts": {
+      "added": [],
+      "removed": []
+    },
+    "imports": {
+      "added": [
+        {
+          "source": "semantic_reviewer.web.app",
+          "target": "semantic_reviewer.web.assessment"
+        },
+        {
+          "source": "semantic_reviewer.web.assessment",
+          "target": "dataclasses"
+        },
+        {
+          "source": "semantic_reviewer.web.assessment",
+          "target": "json"
+        },
+        {
+          "source": "semantic_reviewer.web.assessment",
+          "target": "pydantic"
+        },
+        {
+          "source": "semantic_reviewer.web.assessment",
+          "target": "re"
+        },
+        {
+          "source": "semantic_reviewer.web.assessment",
+          "target": "semantic_reviewer.domain.datasets"
+        },
+        {
+          "source": "semantic_reviewer.web.assessment",
+          "target": "semantic_reviewer.domain.normalisation"
+        },
+        {
+          "source": "semantic_reviewer.web.assessment",
+          "target": "urllib.parse"
+        }
+      ],
+      "removed": [
+        {
+          "source": "semantic_reviewer.web.app",
+          "target": "urllib.parse"
+        }
+      ]
+    },
+    "interfaces": {
+      "added": [
+        {
+          "declaration": "@classmethod def from_output(cls, raw: str) -> 'AssessmentForm'",
+          "kind": "callable",
+          "name": "semantic_reviewer.web.assessment.AssessmentForm.from_output"
+        },
+        {
+          "declaration": "class AssessmentForm()",
+          "kind": "class",
+          "name": "semantic_reviewer.web.assessment.AssessmentForm"
+        },
+        {
+          "declaration": "def assessment_error(error: ValueError | OSError) -> str",
+          "kind": "callable",
+          "name": "semantic_reviewer.web.assessment.assessment_error"
+        },
+        {
+          "declaration": "def change_rows(self, action: str) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.web.assessment.AssessmentForm.change_rows"
+        },
+        {
+          "declaration": "def interpretation_json(self, source: Observation) -> str",
+          "kind": "callable",
+          "name": "semantic_reviewer.web.assessment.AssessmentForm.interpretation_json"
+        },
+        {
+          "declaration": "def one(self, name: str) -> str",
+          "kind": "callable",
+          "name": "semantic_reviewer.web.assessment.AssessmentForm.one"
+        },
+        {
+          "declaration": "def parse_assessment(body: bytes) -> tuple[dict[str, str], AssessmentForm | None]",
+          "kind": "callable",
+          "name": "semantic_reviewer.web.assessment.parse_assessment"
+        },
+        {
+          "declaration": "def rows(self, name: str) -> list[str]",
+          "kind": "callable",
+          "name": "semantic_reviewer.web.assessment.AssessmentForm.rows"
+        },
+        {
+          "declaration": "unmapped_json: str = ''",
+          "kind": "field",
+          "name": "semantic_reviewer.web.assessment.AssessmentForm.unmapped_json"
+        },
+        {
+          "declaration": "values: dict[str, list[str]] = field(default_factory=dict)",
+          "kind": "field",
+          "name": "semantic_reviewer.web.assessment.AssessmentForm.values"
+        }
+      ],
+      "removed": []
+    },
+    "modules": {
+      "added": [
+        {
+          "definitions": [
+            "AssessmentForm",
+            "assessment_error",
+            "parse_assessment"
+          ],
+          "name": "semantic_reviewer.web.assessment",
+          "package": false,
+          "path": "src/semantic_reviewer/web/assessment.py"
+        }
+      ],
+      "removed": []
+    },
+    "settings": {}
+  },
+  "schema_version": 3
+}

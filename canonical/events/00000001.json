@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "sequence": 1,
+  "pair_id": "assessment-form",
+  "recorded_at": "2026-09-21T20:35:03+00:00",
+  "previous_hash": null,
+  "kind": "verification",
+  "round_id": "r1",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "/root"
+  },
+  "payload": {
+    "stage": "locally_prepared",
+    "base": "796db0edc2032ed7ff0c518eecadd718b91c3e22",
+    "diary": "97af70e1ad642c2e830d3eb68f9948af9b46e6ec",
+    "semantic": "437220ac6186cf8e4dd100a5f32a3bef8903db8c",
+    "records": [
+      "assessment-form/r1/verification-summary.json",
+      "assessment-form/r1/review.json"
+    ],
+    "note": "Chronology is retained by materiality.md, discoveries.md and diary commits; this event records completed preparation, not an earlier setup time."
+  },
+  "event_hash": "d63f5e390916b9bb54575516603a72f422b4e5586fc382ecff37c136b6b52bf4"
+}

@@ -1,0 +1,7 @@
+{
+  "status": "passed",
+  "images": 3,
+  "fixture_hash_verified": true,
+  "visual_inspection": "All crops inspected at native dimensions; annotation guide rendered at 960px content width and inspected in the browser. Both form images readable; essential steps remain in text.",
+  "capture_record": "docs/images/captures-assessment-form.json"
+}

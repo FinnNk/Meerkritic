@@ -1,0 +1,24 @@
+{
+  "revision": "f2993a8",
+  "fixture": "docs/images/create_demo.py",
+  "runtime": "extras/screenshot-demo-assessment-form",
+  "research_decisions_created": 0,
+  "checks": {
+    "labelled_fields": true,
+    "add_row_retains_issue_scope_notes": true,
+    "invalid_quote_rejected_and_inputs_retained": true,
+    "error_visible_after_correction": true,
+    "synthetic_edit_saved_and_readable": true,
+    "failed_draft_has_no_accept": true
+  },
+  "narrow": {
+    "controls": true,
+    "documentWidth": 585,
+    "viewport": [
+      600,
+      800
+    ],
+    "viewportWidth": 585
+  },
+  "limitation": "Author browser verification, not independent review. The only saved decision was explicitly synthetic."
+}

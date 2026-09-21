@@ -1,0 +1,16 @@
+{
+  "added": [
+    "tests/test_assessment_form.py::AssessmentFormTest::test_accept_and_reject_do_not_validate_or_use_edited_fields",
+    "tests/test_assessment_form.py::AssessmentFormTest::test_add_remove_rows_preserves_unsaved_values_and_does_not_record_events",
+    "tests/test_assessment_form.py::AssessmentFormTest::test_ambiguous_or_oversized_field_protocols_cannot_record_a_decision",
+    "tests/test_assessment_form.py::AssessmentFormTest::test_failed_unparseable_draft_starts_without_guessed_judgements",
+    "tests/test_assessment_form.py::AssessmentFormTest::test_invalid_fields_and_grounding_preserve_all_input_for_correction",
+    "tests/test_assessment_form.py::AssessmentFormTest::test_rendered_fields_save_complete_edit_and_readable_confirmation",
+    "tests/test_assessment_form.py::AssessmentFormTest::test_source_line_endings_and_leading_newlines_round_trip_without_trimming",
+    "tests/test_assessment_form.py::AssessmentFormTest::test_stale_tab_cannot_overwrite_a_saved_decision"
+  ],
+  "removed": [],
+  "altered": [
+    "tests/test_annotation_web.py::AnnotationWebTest::test_actions_persist_immediately_and_progress_survives_new_app"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "valid": true,
+  "pair_id": "assessment-form",
+  "round_id": "r1",
+  "manifest_sha256": "330d2c6c06b427d37800240e3b8bc213109f4531f20e29274002f267be2f40dd",
+  "scope": "archive_identity_and_equivalence_only"
+}

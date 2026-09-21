@@ -1,0 +1,21 @@
+{
+  "revision": "437220ac6186cf8e4dd100a5f32a3bef8903db8c",
+  "status": "passed",
+  "runtime_port": 8010,
+  "read_only_browser_checks": {
+    "unreviewed_failed_job": {
+      "field_editor": true,
+      "raw_editor": false,
+      "save_edit": true,
+      "accept": false
+    },
+    "saved_assessment": {
+      "recorded": true,
+      "editable": false,
+      "readable_human_fields": true
+    }
+  },
+  "integrity": "live-before.json and live-after.json are identical: all 25 tables and 56 result artefacts. One existing annotation and 332 events retained.",
+  "agent_research_decisions": 0,
+  "model_calls": 0
+}

@@ -1,0 +1,5 @@
+127.0.0.1 - - [21/Sep/2026 21:25:40] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2026 21:25:40] "GET /annotation-assessment.png HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2026 21:25:40] "GET /assessment-save.png HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2026 21:25:40] code 404, message File not found
+127.0.0.1 - - [21/Sep/2026 21:25:40] "GET /favicon.ico HTTP/1.1" 404 -
