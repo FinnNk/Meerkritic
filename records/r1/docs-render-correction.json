@@ -1,0 +1,9 @@
+{
+  "corrects": "docs-check.json rendered filenames only",
+  "actual_rendered_files": {
+    "preserved-source.html": "7cbf6ffdaef5987531d87689b74f0ae21bd0cc1658b3e6b6a35a5f7fb9c26fee",
+    "annotations.html": "a01441e806e0ed0814424dbb0a7fbc6fca3a6bf0edd4925cbc9147b8016d859b",
+    "assessment-fields.html": "859b50fd38c132044316417b80fe3fdd3bcc8d40371ec4dd549e45dbd2118efb"
+  },
+  "note": "The record retained copied filenames from an earlier checker. The actual render loop generated the three source-assessment guides. Link/hash checks and recorded revision are unaffected; original record retained."
+}

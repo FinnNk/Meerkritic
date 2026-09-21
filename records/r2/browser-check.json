@@ -1,0 +1,44 @@
+{
+  "status": "passed",
+  "revision": "cb3957a",
+  "desktop": {
+    "viewport": [
+      1280,
+      720
+    ],
+    "document_width": 1265,
+    "header_height_css": 81.6042,
+    "groups": [
+      "Research",
+      "Review",
+      "Project"
+    ],
+    "local_group": "This assessment"
+  },
+  "narrow": {
+    "viewport": [
+      375,
+      812
+    ],
+    "document_width": 360,
+    "largest_navigation_group_width": 312,
+    "rightmost_link": 306.74,
+    "all_navigation_links_visible": true
+  },
+  "keyboard": {
+    "first_tab": "Meerkritic",
+    "focus_outline": "solid"
+  },
+  "image": "docs/images/harness-navigation.png",
+  "reviewed_existing_images": [
+    "source-browser.png",
+    "frozen-selection.png",
+    "saved-review-draft.png",
+    "guidance-selection.png",
+    "discovery-group.png"
+  ],
+  "existing_image_disposition": "Overview crops begin below the header; focused panels exclude it. No unrelated recaptures.",
+  "research_decisions_submitted": 0,
+  "model_calls": 0,
+  "limitation": "Rendered-document visual preview remains unavailable under the earlier local-file browser policy block; image inspected directly and Markdown link validation retained."
+}

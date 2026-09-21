@@ -1,0 +1,246 @@
+{
+  "changes": {
+    "boundaries": {
+      "added": [],
+      "removed": []
+    },
+    "contracts": {
+      "added": [],
+      "removed": []
+    },
+    "imports": {
+      "added": [
+        {
+          "source": "semantic_reviewer.adapters.reading",
+          "target": "dataclasses"
+        },
+        {
+          "source": "semantic_reviewer.adapters.reading",
+          "target": "datetime"
+        },
+        {
+          "source": "semantic_reviewer.adapters.reading",
+          "target": "hashlib"
+        },
+        {
+          "source": "semantic_reviewer.adapters.reading",
+          "target": "json"
+        },
+        {
+          "source": "semantic_reviewer.adapters.reading",
+          "target": "os"
+        },
+        {
+          "source": "semantic_reviewer.adapters.reading",
+          "target": "pathlib"
+        },
+        {
+          "source": "semantic_reviewer.adapters.reading",
+          "target": "re"
+        },
+        {
+          "source": "semantic_reviewer.adapters.reading",
+          "target": "semantic_reviewer.adapters.observations"
+        },
+        {
+          "source": "semantic_reviewer.adapters.reading",
+          "target": "semantic_reviewer.adapters.state"
+        },
+        {
+          "source": "semantic_reviewer.adapters.reading",
+          "target": "semantic_reviewer.application.jobs"
+        },
+        {
+          "source": "semantic_reviewer.adapters.reading",
+          "target": "semantic_reviewer.application.reading"
+        },
+        {
+          "source": "semantic_reviewer.adapters.reading",
+          "target": "semantic_reviewer.domain.datasets"
+        },
+        {
+          "source": "semantic_reviewer.adapters.reading",
+          "target": "tempfile"
+        },
+        {
+          "source": "semantic_reviewer.application.annotations",
+          "target": "semantic_reviewer.application.reading"
+        },
+        {
+          "source": "semantic_reviewer.application.reading",
+          "target": "dataclasses"
+        },
+        {
+          "source": "semantic_reviewer.application.reading",
+          "target": "typing"
+        },
+        {
+          "source": "semantic_reviewer.application.selections",
+          "target": "semantic_reviewer.application.reading"
+        },
+        {
+          "source": "semantic_reviewer.bootstrap",
+          "target": "semantic_reviewer.adapters.reading"
+        }
+      ],
+      "removed": []
+    },
+    "interfaces": {
+      "added": [
+        {
+          "declaration": "class GitHubReadingSources()",
+          "kind": "class",
+          "name": "semantic_reviewer.adapters.reading.GitHubReadingSources"
+        },
+        {
+          "declaration": "class ReadingContext()",
+          "kind": "class",
+          "name": "semantic_reviewer.application.reading.ReadingContext"
+        },
+        {
+          "declaration": "class SourceReader(Protocol)",
+          "kind": "class",
+          "name": "semantic_reviewer.application.reading.SourceReader"
+        },
+        {
+          "declaration": "code: str",
+          "kind": "field",
+          "name": "semantic_reviewer.application.reading.ReadingContext.code"
+        },
+        {
+          "declaration": "code_difference: str",
+          "kind": "field",
+          "name": "semantic_reviewer.application.reading.ReadingContext.code_difference"
+        },
+        {
+          "declaration": "comment: str",
+          "kind": "field",
+          "name": "semantic_reviewer.application.reading.ReadingContext.comment"
+        },
+        {
+          "declaration": "comment_difference: str",
+          "kind": "field",
+          "name": "semantic_reviewer.application.reading.ReadingContext.comment_difference"
+        },
+        {
+          "declaration": "context_sha256: str | None = None",
+          "kind": "field",
+          "name": "semantic_reviewer.application.annotations.Annotation.context_sha256"
+        },
+        {
+          "declaration": "def __init__(self, annotations: AnnotationStore, jobs: JobReader, datasets: DatasetService, results: ResultStore, store: SelectionStore, sources: SourceReader | None=None) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.selections.SelectionService.__init__"
+        },
+        {
+          "declaration": "def __init__(self, jobs: JobReader, store: AnnotationStore, datasets: DatasetService, results: ResultStore, sources: SourceReader | None=None) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.annotations.AnnotationService.__init__"
+        },
+        {
+          "declaration": "def __init__(self, root: Path, database: Path) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.reading.GitHubReadingSources.__init__"
+        },
+        {
+          "declaration": "def attach(self, job: Job, source: Observation, response: bytes, receipt: bytes) -> ReadingContext",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.reading.GitHubReadingSources.attach"
+        },
+        {
+          "declaration": "def decide(self, job_id: str, decision: str, notes: str='', edited_json: str | None=None, *, context_sha256: str | None=None) -> Annotation",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.annotations.AnnotationService.decide"
+        },
+        {
+          "declaration": "def read(self, job_id: str) -> ReadingContext | None",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.reading.GitHubReadingSources.read"
+        },
+        {
+          "declaration": "def read(self, job_id: str) -> ReadingContext | None",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.reading.SourceReader.read"
+        },
+        {
+          "declaration": "def reading_context(self, job_id: str) -> ReadingContext | None",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.annotations.AnnotationService.reading_context"
+        },
+        {
+          "declaration": "job_id: str",
+          "kind": "field",
+          "name": "semantic_reviewer.application.reading.ReadingContext.job_id"
+        },
+        {
+          "declaration": "observation_id: str",
+          "kind": "field",
+          "name": "semantic_reviewer.application.reading.ReadingContext.observation_id"
+        },
+        {
+          "declaration": "response_sha256: str",
+          "kind": "field",
+          "name": "semantic_reviewer.application.reading.ReadingContext.response_sha256"
+        },
+        {
+          "declaration": "retrieved_at: str",
+          "kind": "field",
+          "name": "semantic_reviewer.application.reading.ReadingContext.retrieved_at"
+        },
+        {
+          "declaration": "sha256: str",
+          "kind": "field",
+          "name": "semantic_reviewer.application.reading.ReadingContext.sha256"
+        },
+        {
+          "declaration": "url: str",
+          "kind": "field",
+          "name": "semantic_reviewer.application.reading.ReadingContext.url"
+        }
+      ],
+      "removed": [
+        {
+          "declaration": "def __init__(self, annotations: AnnotationStore, jobs: JobReader, datasets: DatasetService, results: ResultStore, store: SelectionStore) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.selections.SelectionService.__init__"
+        },
+        {
+          "declaration": "def __init__(self, jobs: JobReader, store: AnnotationStore, datasets: DatasetService, results: ResultStore) -> None",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.annotations.AnnotationService.__init__"
+        },
+        {
+          "declaration": "def decide(self, job_id: str, decision: str, notes: str='', edited_json: str | None=None) -> Annotation",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.annotations.AnnotationService.decide"
+        }
+      ]
+    },
+    "modules": {
+      "added": [
+        {
+          "definitions": [
+            "GitHubReadingSources",
+            "_difference",
+            "_verify"
+          ],
+          "name": "semantic_reviewer.adapters.reading",
+          "package": false,
+          "path": "src/semantic_reviewer/adapters/reading.py"
+        },
+        {
+          "definitions": [
+            "ReadingContext",
+            "SourceReader"
+          ],
+          "name": "semantic_reviewer.application.reading",
+          "package": false,
+          "path": "src/semantic_reviewer/application/reading.py"
+        }
+      ],
+      "removed": []
+    },
+    "settings": {}
+  },
+  "schema_version": 3
+}

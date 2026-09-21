@@ -1,0 +1,9 @@
+{
+  "valid": true,
+  "mode": "changes",
+  "status": "complete",
+  "scope": "report_shape_identity_and_claimed_coverage_only",
+  "full_review_claim": false,
+  "platform_approval": false,
+  "execution_truth_verified": false
+}

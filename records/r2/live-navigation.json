@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "head": "13b635a221fa9178f922e2ef1b946c0d45081077",
+  "previous": "4e63077c389af19806317edf4b9124063927b2cd",
+  "update_method": "Jinja template reload; Python modules and runtime configuration unchanged; process retained",
+  "browser_groups": [
+    "Research",
+    "Review",
+    "Project",
+    "This assessment"
+  ],
+  "http_verified": true,
+  "counts": {
+    "annotation": 1,
+    "source_context": 54,
+    "event": 386
+  },
+  "new_decisions": 0,
+  "model_calls": 0,
+  "old_tabs": "Not refreshed or submitted"
+}

@@ -1,0 +1,20 @@
+{
+  "added": [
+    "tests/test_reading_context.py::ReadingContextTest::test_attachment_race_cannot_commit_an_unattributed_decision",
+    "tests/test_reading_context.py::ReadingContextTest::test_both_views_escape_source_and_label_additional_text",
+    "tests/test_reading_context.py::ReadingContextTest::test_changed_missing_and_corrupt_context_fail_closed",
+    "tests/test_reading_context.py::ReadingContextTest::test_exact_receipts_survive_restart_and_unchanged_model_input",
+    "tests/test_reading_context.py::ReadingContextTest::test_existing_decision_is_not_backfilled_and_sql_fences_omitted_context",
+    "tests/test_reading_context.py::ReadingContextTest::test_extra_source_quotes_cannot_replace_dataset_grounding",
+    "tests/test_reading_context.py::ReadingContextTest::test_form_context_survives_row_actions_and_is_saved_atomically",
+    "tests/test_reading_context.py::ReadingContextTest::test_import_command_uses_its_own_checkout_without_pythonpath",
+    "tests/test_reading_context.py::ReadingContextTest::test_numeric_repository_redirect_retains_receipt_without_relaxing_comment_identity",
+    "tests/test_reading_context.py::ReadingContextTest::test_selection_preserves_context_and_refuses_missing_evidence",
+    "tests/test_reading_context.py::ReadingContextTest::test_stale_form_retains_edits_without_silently_adopting_context",
+    "tests/test_reading_context.py::ReadingContextTest::test_wrong_identity_receipt_hash_and_unsafe_url_are_rejected"
+  ],
+  "removed": [],
+  "altered": [
+    "tests/test_annotation_web.py::AnnotationWebTest::test_synchronous_storage_runs_outside_the_asgi_event_loop"
+  ]
+}

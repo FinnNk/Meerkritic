@@ -1,0 +1,5 @@
+1:  d14fbf4 = 1:  d14fbf4 docs: define preserved source context for human assessments
+2:  f3e39e3 = 2:  f3e39e3 feat: preserve source reading context with human assessments
+3:  4e63077 = 3:  4e63077 docs: backfill preserved source guides and screenshot
+-:  ------- > 4:  9d2fe65 style: group harness navigation into compact labelled rows
+-:  ------- > 5:  13b635a docs: explain grouped navigation with a focused screenshot

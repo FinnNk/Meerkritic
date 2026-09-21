@@ -1,0 +1,11 @@
+{
+  "previous_round": "r1",
+  "unchanged_commits": [
+    "d14fbf45f861897351f9f049ad18af6549a77877",
+    "f3e39e3ae4c071b0e9efd4167182f6d92782e513",
+    "4e63077c389af19806317edf4b9124063927b2cd"
+  ],
+  "scope": "Carry forward exact-SHA checkpoint verification and proposition review only. No carry-forward of hosted qualification or owner approval. New navigation and docs propositions plus aggregate interactions re-reviewed.",
+  "review_sha256": "f58493a15b6e88823b53703033c9b9c2d70773b9036c4dd53e8139f99a0de540",
+  "verification_sha256": "5d823c3d192c7f79b9b465ee6054ecc290a3f8023588cd26a1a1eef2eb38768b"
+}

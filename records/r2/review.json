@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "pair_id": "source-reading",
+  "round_id": "r2",
+  "manifest_sha256": "d6dffa21418345e54aad7887bed675b8638c36fed0da58bd5dd3cc68fdde6257",
+  "semantic_tip": "13b635a221fa9178f922e2ef1b946c0d45081077",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "/root"
+  },
+  "independence": "self-review",
+  "mode": "changes",
+  "status": "complete",
+  "orientation_done": true,
+  "reviewed_commits": [
+    "9d2fe650bcf02db18e136e9158846e448bb7a063",
+    "13b635a221fa9178f922e2ef1b946c0d45081077"
+  ],
+  "aggregate_done": true,
+  "findings": [],
+  "check_records": [
+    "review-notes.md",
+    "propositions.md",
+    "verification-summary.json",
+    "test-change-identities.json",
+    "equivalence.json",
+    "docs-check.json",
+    "architecture-delta.json",
+    "browser-check.json",
+    "carry-forward.json",
+    "range-diff.txt"
+  ],
+  "limitations": [
+    "Author self-review, not independent approval",
+    "Windows/Python 3.12 only",
+    "No model rerun or human research judgement",
+    "Earlier targeted failure retained; cross-tab research-save discrepancy requires separate reconciliation"
+  ],
+  "carry_forward_record": "carry-forward.json",
+  "platform_approval": false
+}

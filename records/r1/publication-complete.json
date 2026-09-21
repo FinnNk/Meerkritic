@@ -1,0 +1,10 @@
+{
+  "pr": "https://github.com/FinnNk/Meerkritic/pull/22",
+  "stage": "owner_review_ready",
+  "head": "4e63077c389af19806317edf4b9124063927b2cd",
+  "base": "a39b989d8fbb6842c73703ff320eee81e45a1a52",
+  "archive_commit": "b129bb39d6c6b68691d1d7b4b8ddd088c0d0c371",
+  "owner_approval": false,
+  "integrated": false,
+  "verified_refs": "a39b989d8fbb6842c73703ff320eee81e45a1a52\trefs/heads/docs/repair-text-encoding\nb129bb39d6c6b68691d1d7b4b8ddd088c0d0c371\trefs/heads/evidence/source-reading-r1\n4e63077c389af19806317edf4b9124063927b2cd\trefs/heads/feat/source-reading"
+}

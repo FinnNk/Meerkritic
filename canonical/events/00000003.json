@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "sequence": 3,
+  "pair_id": "source-reading",
+  "recorded_at": "2026-09-21T22:07:18+00:00",
+  "previous_hash": "9a72970d91c85f48a96b1e1c73cd9fc687e5c6918c728ed7ab7f657a1d76d06b",
+  "kind": "verification",
+  "round_id": "r2",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "/root"
+  },
+  "payload": {
+    "stage": "locally_prepared",
+    "base": "a39b989d8fbb6842c73703ff320eee81e45a1a52",
+    "diary": "8985f91fc7b135703615ecd425a6027efbe08f9a",
+    "semantic": "13b635a221fa9178f922e2ef1b946c0d45081077",
+    "records": [
+      "source-reading/r2/verification-summary.json",
+      "source-reading/r2/review.json"
+    ],
+    "note": "Chronology is retained by materiality.md, discoveries.md and diary commits; this event records completed preparation, not an earlier setup time."
+  },
+  "event_hash": "603bb1931880c5304fb748f13ae36643211839ed388115ef8161725d691b2d8e"
+}

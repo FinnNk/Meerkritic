@@ -1,0 +1,370 @@
+{
+  "base": "a39b989d8fbb6842c73703ff320eee81e45a1a52",
+  "tip": "4e63077c389af19806317edf4b9124063927b2cd",
+  "tree": "e57714e6b14ac3edb80f6603ecb3e352ca7aba5c",
+  "commits": [
+    {
+      "commit": "d14fbf45f861897351f9f049ad18af6549a77877",
+      "parents": [
+        "a39b989d8fbb6842c73703ff320eee81e45a1a52"
+      ],
+      "tree": "29c81b4c10d68e400678f1c48cff739d839a0309",
+      "subject": "docs: define preserved source context for human assessments",
+      "change": {
+        "files": [
+          {
+            "path": "docs/adr/ADR-0015-separate-review-context-from-model-input.md",
+            "added": 75,
+            "deleted": 0
+          },
+          {
+            "path": "docs/adr/README.md",
+            "added": 1,
+            "deleted": 0
+          },
+          {
+            "path": "docs/development/assessment-contract.md",
+            "added": 6,
+            "deleted": 0
+          },
+          {
+            "path": "docs/edr/0001-discovery-grouping-method.md",
+            "added": 25,
+            "deleted": 0
+          }
+        ],
+        "file_count": 4,
+        "added": 107,
+        "deleted": 0,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "f3e39e3ae4c071b0e9efd4167182f6d92782e513",
+      "parents": [
+        "d14fbf45f861897351f9f049ad18af6549a77877"
+      ],
+      "tree": "2925beabe381da4a695b5242b1fbdfe8fb453cd9",
+      "subject": "feat: preserve source reading context with human assessments",
+      "change": {
+        "files": [
+          {
+            "path": "docs/adr/ADR-0015-separate-review-context-from-model-input.md",
+            "added": 12,
+            "deleted": 5
+          },
+          {
+            "path": "docs/adr/README.md",
+            "added": 1,
+            "deleted": 1
+          },
+          {
+            "path": "docs/development/preserved-source.md",
+            "added": 52,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/annotations.py",
+            "added": 8,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/migrations/014_source_context.sql",
+            "added": 21,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/reading.py",
+            "added": 197,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/application/annotations.py",
+            "added": 29,
+            "deleted": 1
+          },
+          {
+            "path": "src/semantic_reviewer/application/reading.py",
+            "added": 32,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/application/selections.py",
+            "added": 11,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/bootstrap.py",
+            "added": 7,
+            "deleted": 1
+          },
+          {
+            "path": "src/semantic_reviewer/web/app.py",
+            "added": 14,
+            "deleted": 1
+          },
+          {
+            "path": "src/semantic_reviewer/web/assessment.py",
+            "added": 4,
+            "deleted": 2
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/assessment_form.html",
+            "added": 1,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/job.html",
+            "added": 21,
+            "deleted": 0
+          },
+          {
+            "path": "tests/test_annotation_web.py",
+            "added": 2,
+            "deleted": 2
+          },
+          {
+            "path": "tests/test_reading_context.py",
+            "added": 270,
+            "deleted": 0
+          },
+          {
+            "path": "tools/import_source_context.py",
+            "added": 35,
+            "deleted": 0
+          }
+        ],
+        "file_count": 17,
+        "added": 717,
+        "deleted": 13,
+        "binary_files": 0
+      }
+    },
+    {
+      "commit": "4e63077c389af19806317edf4b9124063927b2cd",
+      "parents": [
+        "f3e39e3ae4c071b0e9efd4167182f6d92782e513"
+      ],
+      "tree": "e57714e6b14ac3edb80f6603ecb3e352ca7aba5c",
+      "subject": "docs: backfill preserved source guides and screenshot",
+      "change": {
+        "files": [
+          {
+            "path": "docs/README.md",
+            "added": 1,
+            "deleted": 0
+          },
+          {
+            "path": "docs/development/annotations.md",
+            "added": 6,
+            "deleted": 0
+          },
+          {
+            "path": "docs/development/assessment-fields.md",
+            "added": 5,
+            "deleted": 3
+          },
+          {
+            "path": "docs/development/operational-evidence.md",
+            "added": 1,
+            "deleted": 0
+          },
+          {
+            "path": "docs/development/preserved-source.md",
+            "added": 5,
+            "deleted": 0
+          },
+          {
+            "path": "docs/development/selections.md",
+            "added": 5,
+            "deleted": 0
+          },
+          {
+            "path": "docs/development/study-preparation.md",
+            "added": 3,
+            "deleted": 0
+          },
+          {
+            "path": "docs/images/README.md",
+            "added": 15,
+            "deleted": 0
+          },
+          {
+            "path": "docs/images/captures-source-reading.json",
+            "added": 29,
+            "deleted": 0
+          },
+          {
+            "path": "docs/images/create_demo.py",
+            "added": 36,
+            "deleted": 0
+          },
+          {
+            "path": "docs/images/preserved-source.png",
+            "added": null,
+            "deleted": null
+          }
+        ],
+        "file_count": 11,
+        "added": 106,
+        "deleted": 3,
+        "binary_files": 1
+      }
+    }
+  ],
+  "linear": true,
+  "final_change": {
+    "files": [
+      {
+        "path": "docs/README.md",
+        "added": 1,
+        "deleted": 0
+      },
+      {
+        "path": "docs/adr/ADR-0015-separate-review-context-from-model-input.md",
+        "added": 82,
+        "deleted": 0
+      },
+      {
+        "path": "docs/adr/README.md",
+        "added": 1,
+        "deleted": 0
+      },
+      {
+        "path": "docs/development/annotations.md",
+        "added": 6,
+        "deleted": 0
+      },
+      {
+        "path": "docs/development/assessment-contract.md",
+        "added": 6,
+        "deleted": 0
+      },
+      {
+        "path": "docs/development/assessment-fields.md",
+        "added": 5,
+        "deleted": 3
+      },
+      {
+        "path": "docs/development/operational-evidence.md",
+        "added": 1,
+        "deleted": 0
+      },
+      {
+        "path": "docs/development/preserved-source.md",
+        "added": 57,
+        "deleted": 0
+      },
+      {
+        "path": "docs/development/selections.md",
+        "added": 5,
+        "deleted": 0
+      },
+      {
+        "path": "docs/development/study-preparation.md",
+        "added": 3,
+        "deleted": 0
+      },
+      {
+        "path": "docs/edr/0001-discovery-grouping-method.md",
+        "added": 25,
+        "deleted": 0
+      },
+      {
+        "path": "docs/images/README.md",
+        "added": 15,
+        "deleted": 0
+      },
+      {
+        "path": "docs/images/captures-source-reading.json",
+        "added": 29,
+        "deleted": 0
+      },
+      {
+        "path": "docs/images/create_demo.py",
+        "added": 36,
+        "deleted": 0
+      },
+      {
+        "path": "docs/images/preserved-source.png",
+        "added": null,
+        "deleted": null
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/annotations.py",
+        "added": 8,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/migrations/014_source_context.sql",
+        "added": 21,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/reading.py",
+        "added": 197,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/application/annotations.py",
+        "added": 29,
+        "deleted": 1
+      },
+      {
+        "path": "src/semantic_reviewer/application/reading.py",
+        "added": 32,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/application/selections.py",
+        "added": 11,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/bootstrap.py",
+        "added": 7,
+        "deleted": 1
+      },
+      {
+        "path": "src/semantic_reviewer/web/app.py",
+        "added": 14,
+        "deleted": 1
+      },
+      {
+        "path": "src/semantic_reviewer/web/assessment.py",
+        "added": 4,
+        "deleted": 2
+      },
+      {
+        "path": "src/semantic_reviewer/web/templates/assessment_form.html",
+        "added": 1,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/web/templates/job.html",
+        "added": 21,
+        "deleted": 0
+      },
+      {
+        "path": "tests/test_annotation_web.py",
+        "added": 2,
+        "deleted": 2
+      },
+      {
+        "path": "tests/test_reading_context.py",
+        "added": 270,
+        "deleted": 0
+      },
+      {
+        "path": "tools/import_source_context.py",
+        "added": 35,
+        "deleted": 0
+      }
+    ],
+    "file_count": 29,
+    "added": 924,
+    "deleted": 10,
+    "binary_files": 1
+  },
+  "statistics_note": "No rename detection; merge commit churn uses first parent. Final diff and cumulative per-commit churn are different quantities."
+}

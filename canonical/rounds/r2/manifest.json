@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "skill_version": "0.3.0-alpha.2",
+  "method_revision": 7,
+  "method_sha256": "f4f01865a4ec5d9b9b88d1c475b076c221820eb89041ce0b0053ed5ae0661b04",
+  "stage": "archived_candidate",
+  "pair_id": "source-reading",
+  "round_id": "r2",
+  "created_at": "2026-09-21T22:07:15+00:00",
+  "object_format": "sha1",
+  "base": {
+    "diary_commit": "a39b989d8fbb6842c73703ff320eee81e45a1a52",
+    "semantic_commit": "a39b989d8fbb6842c73703ff320eee81e45a1a52",
+    "shared_tree": "d49b6eb03052e6b767aab8c3bc23d470c894e1c1"
+  },
+  "diary": {
+    "tip": "8985f91fc7b135703615ecd425a6027efbe08f9a",
+    "tree": "f5ede4e2b224e125700fe2aa1713e51db8ddbc39"
+  },
+  "semantic": {
+    "tip": "13b635a221fa9178f922e2ef1b946c0d45081077",
+    "tree": "f5ede4e2b224e125700fe2aa1713e51db8ddbc39"
+  },
+  "semantic_commits": [
+    "d14fbf45f861897351f9f049ad18af6549a77877",
+    "f3e39e3ae4c071b0e9efd4167182f6d92782e513",
+    "4e63077c389af19806317edf4b9124063927b2cd",
+    "9d2fe650bcf02db18e136e9158846e448bb7a063",
+    "13b635a221fa9178f922e2ef1b946c0d45081077"
+  ],
+  "equivalence": {
+    "trees_equal": true,
+    "direct_diff_exit_code": 0
+  },
+  "bundle": {
+    "file": "history.bundle",
+    "sha256": "89d415d3cfe4bfa6fab8b26c499756dd2425bbcc1e7dcee261e28623fd994d00",
+    "refs": {
+      "refs/heads/diary-base": "a39b989d8fbb6842c73703ff320eee81e45a1a52",
+      "refs/heads/semantic-base": "a39b989d8fbb6842c73703ff320eee81e45a1a52",
+      "refs/heads/diary": "8985f91fc7b135703615ecd425a6027efbe08f9a",
+      "refs/heads/semantic": "13b635a221fa9178f922e2ef1b946c0d45081077"
+    }
+  },
+  "verification": "not_attested",
+  "approval": "not_attested",
+  "publication": "not_attested",
+  "integration": "not_attested"
+}

@@ -1,0 +1,7 @@
+{
+  "valid": true,
+  "pair_id": "source-reading",
+  "round_id": "r1",
+  "manifest_sha256": "655f318191d5eaf14824d0361601b179634f1c0026b83d3345309625de3ed15e",
+  "scope": "archive_identity_and_equivalence_only"
+}
