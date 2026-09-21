@@ -1,0 +1,5 @@
+{
+  "status": "passed",
+  "normalisation": "GitHub API returned CRLF; prepared description uses LF. Equal after line-ending normalisation only.",
+  "earlier_exact_comparison": "failed solely because of line endings; no content difference or remote edit required"
+}
