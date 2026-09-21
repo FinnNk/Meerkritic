@@ -2,7 +2,7 @@
 {% block title %}Normalisation · Meerkritic{% endblock %}
 {% block refresh %}{% if job.status in ('queued', 'running') %}<meta http-equiv="refresh" content="3">{% endif %}{% endblock %}
 {% block content %}
-<nav><a href="/jobs">Jobs</a><a href="/datasets/{{ job.dataset_id }}?page={{ job.source_index + 1 }}&amp;page_size=1">Source observation</a></nav>
+<nav class="context-navigation" aria-label="This assessment"><span class="navigation-label">This assessment</span><a href="/jobs">Jobs</a><a href="/datasets/{{ job.dataset_id }}?page={{ job.source_index + 1 }}&amp;page_size=1">Source observation</a></nav>
 <h1>Normalisation</h1>
 <aside class="assessment-purpose" aria-labelledby="assessment-purpose-title">
 <h2 id="assessment-purpose-title">Your task: assess the interpretation</h2>

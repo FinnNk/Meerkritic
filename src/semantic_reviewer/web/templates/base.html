@@ -9,13 +9,22 @@
     :root { color-scheme: light dark; font-family: system-ui, sans-serif; line-height: 1.55; }
     body { max-width: 76rem; margin: auto; padding: 1.5rem; }
     a { color: light-dark(#1255a2, #8bc5ff); }
-    header { border-bottom: 1px solid #8886; padding-bottom: 1rem; }
+    .site-header { border-bottom: 1px solid #8886; padding-bottom: .75rem; }
+    .site-brand { display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem 1rem; }
+    .site-brand > a { font-size: 1.2rem; font-weight: 700; text-decoration: none; }
+    .global-navigation { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; margin-top: .5rem; }
+    .global-navigation nav { display: flex; flex-wrap: wrap; gap: .25rem .75rem; padding: 0; }
+    .navigation-label { font-size: .85rem; font-weight: 650; color: light-dark(#50555c, #b8bec7); }
+    .global-navigation ul { display: flex; flex-wrap: wrap; gap: .25rem 1rem; padding: 0; margin: 0; list-style: none; }
+    .global-navigation a { display: inline-block; padding: .2rem 0; }
+    .context-navigation { font-size: .9rem; gap: .5rem 1.25rem; }
+    a:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; border-radius: .1rem; }
     article { border: 1px solid #8886; border-radius: .5rem; padding: 1.2rem; margin: 1.5rem 0; }
     pre { white-space: pre-wrap; overflow-wrap: anywhere; padding: 1rem; background: #8881; }
     code { overflow-wrap: anywhere; }
     .muted { color: light-dark(#50555c, #b8bec7); }
     .columns { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-    nav { display: flex; gap: 2rem; align-items: center; padding: 1rem 0; }
+    nav { display: flex; flex-wrap: wrap; gap: .5rem 2rem; align-items: center; padding: .75rem 0; }
     dl { display: grid; grid-template-columns: max-content 1fr; gap: .3rem 1rem; }
     dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
     .assessment-purpose, .source-panel, .assessment-help { border: 1px solid #8886; border-radius: .6rem; padding: 1.2rem; margin: 1.5rem 0; }
@@ -43,14 +52,39 @@
   </style>
 </head>
 <body>
-  {% if has_architecture %}<a href="/architecture">Architecture</a>{% endif %}
-{% if has_guidance %}<a href="/guidance">Guidance</a>{% endif %}
-{% if has_workspace %}<a href="/review-workspace">Review workspace</a>{% endif %}
-{% if has_rules %}<nav><a href="/rules">Rule registry</a></nav>{% endif %}
-  {% if has_discovery %}<nav><a href="/discovery">Discovery</a></nav>{% endif %}
-  <header><a href="/">Meerkritic</a> | Code review grounded in engineering evidence</header>
-  {% if has_reviews %}<nav><a href="/reviews">Change review references</a></nav>{% endif %}
-  {% if has_selections %}<nav><a href="/selections">Frozen annotation inputs</a></nav>{% endif %}
+  <header class="site-header">
+    <div class="site-brand"><a href="/">Meerkritic</a><span class="muted">Code review grounded in engineering evidence</span></div>
+    <div class="global-navigation">
+      {% if has_selections or has_discovery or has_rules %}
+      <nav aria-label="Research">
+        <span class="navigation-label">Research</span>
+        <ul>
+          {% if has_selections %}<li><a href="/selections">Frozen annotation inputs</a></li>{% endif %}
+          {% if has_discovery %}<li><a href="/discovery">Discovery</a></li>{% endif %}
+          {% if has_rules %}<li><a href="/rules">Rule registry</a></li>{% endif %}
+        </ul>
+      </nav>
+      {% endif %}
+      {% if has_workspace or has_guidance %}
+      <nav aria-label="Review">
+        <span class="navigation-label">Review</span>
+        <ul>
+          {% if has_workspace %}<li><a href="/review-workspace">Review workspace</a></li>{% endif %}
+          {% if has_guidance %}<li><a href="/guidance">Guidance</a></li>{% endif %}
+        </ul>
+      </nav>
+      {% endif %}
+      {% if has_architecture or has_reviews %}
+      <nav aria-label="Project">
+        <span class="navigation-label">Project</span>
+        <ul>
+          {% if has_architecture %}<li><a href="/architecture">Architecture</a></li>{% endif %}
+          {% if has_reviews %}<li><a href="/reviews">Change review references</a></li>{% endif %}
+        </ul>
+      </nav>
+      {% endif %}
+    </div>
+  </header>
   <main>{% block content %}{% endblock %}</main>
 </body>
 </html>
