@@ -1,0 +1,60 @@
+{% macro text_field(name, label, value, help='', required=false, rows=3, id='') -%}
+<label for="{{ id or name }}">{{ label }}</label>
+{% if help %}<p class="muted" id="{{ name }}-help">{{ help }}</p>{% endif %}
+<textarea id="{{ id or name }}" name="{{ name }}" rows="{{ rows }}" maxlength="4000"{% if required %} required{% endif %}{% if help %} aria-describedby="{{ name }}-help"{% endif %}>{{ '\n' ~ value }}</textarea>
+{%- endmacro %}
+{% macro choice(name, label, value, options, id='') -%}
+<label for="{{ id or name }}">{{ label }}</label>
+<select id="{{ id or name }}" name="{{ name }}" required>
+<option value=""{% if not value %} selected{% endif %}>Choose…</option>
+{% if value and value not in options %}<option value="{{ value }}" selected>Needs correction: {{ value }}</option>{% endif %}
+{% for option in options %}<option value="{{ option }}"{% if value == option %} selected{% endif %}>{{ option | capitalize }}</option>{% endfor %}
+</select>
+{%- endmacro %}
+<form class="assessment-form" method="post" action="/jobs/{{ job.id }}/annotation#assessment-editor" id="assessment-editor">
+<input type="hidden" name="editor" value="fields">
+<h3>Edit the interpretation</h3>
+{% if error %}<p role="alert">{{ error }}</p>{% endif %}
+<p>Change the fields below, then choose <strong>Save edited assessment</strong>.
+Changes belong to this tab and are not saved until you choose a decision.
+Adding or removing rows keeps the unsaved form on this page.</p>
+{% if form.unmapped_json %}<p role="alert">Some original draft content could not be placed in these fields. Review the retained text and complete the fields yourself; no judgement has been chosen for you.</p>
+<details open><summary>Original draft needing correction (read only)</summary><pre>{{ form.unmapped_json }}</pre></details>{% endif %}
+{{ text_field('issue_statement', 'Issue statement', form.one('issue_statement'), 'Describe the concern and qualify what the supplied evidence cannot establish.', true) }}
+<div class="assessment-choices">
+<div>{{ choice('actionable_engineering_concern', 'Actionable concern', form.one('actionable_engineering_concern'), assessment_options.actionable_engineering_concern) }}</div>
+<div>{{ choice('generalisable', 'Generalisable', form.one('generalisable'), assessment_options.generalisable) }}</div>
+<div>{{ choice('scope', 'Impact scope', form.one('scope'), assessment_options.scope) }}</div>
+</div>
+<p class="muted">Impact scope is the affected code, not the area you need to investigate. Choose Unknown when the extent is not established.</p>
+<fieldset><legend>Categories</legend>
+<p>Broad engineering concerns. Add at least one; up to eight. Empty rows are ignored.</p>
+{% for value in form.rows('category') %}<div class="assessment-row">
+{{ text_field('category', 'Category ' ~ loop.index, value, rows=2, id='category-' ~ loop.index) }}
+<button name="form_action" value="remove:category:{{ loop.index0 }}" formnovalidate>Remove category {{ loop.index }}</button></div>{% endfor %}
+{% if form.rows('category') | length < 8 %}<button name="form_action" value="add:category" formnovalidate>Add category</button>{% endif %}
+</fieldset>
+{{ text_field('proposed_invariant', 'Candidate rule (optional)', form.one('proposed_invariant'), 'A condition suggested by this example, not a validated rule. Leave blank if none is justified. Keep your additional advice in notes.') }}
+<fieldset><legend>Evidence quotes</legend>
+<p>Copy exact text from the supplied comment or code. Keep whitespace and punctuation. At least one quote is needed for an actionable concern; up to sixteen.</p>
+{% for quote in form.rows('evidence_quote') %}{% set row = loop.index %}<div class="assessment-row">
+{{ choice('evidence_source', 'Source for quote ' ~ row, form.rows('evidence_source')[loop.index0], ['comment', 'code'], id='evidence-source-' ~ row) }}
+{{ text_field('evidence_quote', 'Evidence quote ' ~ row, quote, id='evidence-quote-' ~ row) }}
+<button name="form_action" value="remove:evidence:{{ loop.index0 }}" formnovalidate>Remove quote {{ row }}</button></div>{% endfor %}
+{% if form.rows('evidence_quote') | length < 16 %}<button name="form_action" value="add:evidence" formnovalidate>Add evidence quote</button>{% endif %}
+</fieldset>
+<fieldset><legend>Applicability limits (optional)</legend>
+<p>Exceptions or conditions under which the concern or rule does not apply. Leave empty if none are identified; up to sixteen. Put missing evidence in notes.</p>
+{% for value in form.rows('exclusion') %}<div class="assessment-row">
+{{ text_field('exclusion', 'Applicability limit ' ~ loop.index, value, rows=2, id='exclusion-' ~ loop.index) }}
+<button name="form_action" value="remove:exclusion:{{ loop.index0 }}" formnovalidate>Remove limit {{ loop.index }}</button></div>{% endfor %}
+{% if form.rows('exclusion') | length < 16 %}<button name="form_action" value="add:exclusion" formnovalidate>Add applicability limit</button>{% endif %}
+</fieldset>
+{{ text_field('notes', 'Assessment notes and evidence limitations (optional)', draft.notes if draft else '', 'Record missing evidence, investigation needs and your own additional advice. Notes are saved with the decision but are not used as interpretation text for grouping. Qualify the issue or rule too if uncertainty changes its meaning.', rows=4) }}
+<p>Each decision saves immediately and cannot be overwritten. <strong>Accept original</strong> saves the original model interpretation with your notes; it does not use your edited fields.</p>
+<div class="assessment-actions">
+<button class="assessment-save" name="decision" value="edit">Save edited assessment</button>
+{% if 'accept' in actions %}<button name="decision" value="accept" formnovalidate>Accept original</button>{% endif %}
+<button name="decision" value="reject" formnovalidate>Reject</button>
+</div>
+</form>

@@ -1,0 +1,72 @@
+{
+  "application_revision": "f2993a8",
+  "captured_on": "2026-09-21",
+  "browser": "Codex in-app browser; dark appearance; normal viewport captures",
+  "viewport_css": [
+    1280,
+    720
+  ],
+  "transformation": "Pixel crops only; no scaling or content edits",
+  "fixture_sha256": "a45883c106f901be5af60c4002f08a01313c60d34cc25b77d8e1c4174e7fcd32",
+  "images": [
+    {
+      "file": "annotation-assessment.png",
+      "raw": "form-fields-raw.png",
+      "crop_pixels": [
+        16,
+        90,
+        1248,
+        519
+      ],
+      "scroll_css": [
+        0,
+        1888.6666259765625
+      ],
+      "size": [
+        1232,
+        429
+      ],
+      "sha256": "be71469f9203a902866880c05b26b1d7371fdd93023834adb1e3f41d356b15f4"
+    },
+    {
+      "file": "assessment-save.png",
+      "raw": "form-save-raw.png",
+      "crop_pixels": [
+        16,
+        262,
+        1248,
+        600
+      ],
+      "scroll_css": [
+        0,
+        3352
+      ],
+      "size": [
+        1232,
+        338
+      ],
+      "sha256": "aba77c8b965f8c01af49e99babac54dbd5addafdb510e0fad489c5677240c676"
+    },
+    {
+      "file": "failed-draft-assessment.png",
+      "raw": "failed-form-raw.png",
+      "crop_pixels": [
+        16,
+        40,
+        1248,
+        688
+      ],
+      "scroll_css": [
+        0,
+        1270.6666259765625
+      ],
+      "size": [
+        1232,
+        648
+      ],
+      "sha256": "33cbae0155d3b8dee4031e05520968f4b8753d8479d0a0562224972efa5a00d5",
+      "application_revision": "8f8b0c7"
+    }
+  ],
+  "notes": "Separate synthetic runtime; the form spans two focused captures. Failed-draft capture shows the warning and start of editing, not all controls. No model calls or research judgements."
+}
