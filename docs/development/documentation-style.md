@@ -30,6 +30,10 @@ new document merely to shorten an existing one.
 - Use the exact UI label for a button or page; put identifiers and commands in code.
 - Write in British English. Preserve literal commands, filenames, quoted upstream
   text and standard licence wording.
+- Read and write maintained text as UTF-8 explicitly in editing scripts; do not
+  rely on shell or platform defaults. Preserve valid Unicode punctuation. If text
+  looks corrupted, inspect the saved file and rendered Markdown before repairing
+  it; a terminal display problem alone is not evidence that the file is damaged.
 
 | Avoid in an introduction | Prefer |
 | --- | --- |
@@ -192,6 +196,7 @@ Apply these before presenting a change, at semantic review and at aggregate revi
 - [ ] Can a reader recover from likely failures without reading implementation code?
 - [ ] Is current guidance free of unnecessary milestone history and duplicated policy?
 - [ ] Do links work, and does the rendered Markdown remain easy to scan?
+- [ ] Are non-ASCII characters intact in the saved UTF-8 text and rendered view?
 - [ ] Do screenshots clarify a task, use shareable data, have alt text/captions and
       capture notes, and remain legible and consistent with the current interface?
 - [ ] Are evidence claims and limitations precise without overwhelming the task?
