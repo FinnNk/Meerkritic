@@ -23,7 +23,7 @@ for path in (PAIR/'events').glob('*.json'):
  if target.exists():assert target.read_bytes()==path.read_bytes()
  else:target.write_bytes(path.read_bytes())
 index=[]
-for name in ('export-result.json','publish.py','archive-import.log','publish-archive.log','publish-branch.log','publish-pr.log','pr-url.txt','pr-body.md','published-pr.json','host-rules.json','published-refs.txt','ready-event.json','ready-ledger.json','qualify.py','description-readback.json'):
+for name in ('export-result.json','publish.py','archive-import.log','publish-archive.log','publish-branch.log','publish-pr.log','pr-url.txt','pr-body.md','published-pr.json','host-rules.json','published-refs.txt','ready-event.json','ready-ledger.json','qualify.py','description-readback.json','publication-recheck.json','publication-recovery.md','finish_publication.py'):
  raw=(E/name).read_bytes();text=raw.decode('utf-8-sig')
  for left,right in ((str(ROOT),'WORKSPACE'),(ROOT.as_posix(),'WORKSPACE'),('HOST_USER','HOST_USER'),('HOST_USER','HOST_USER')):text=text.replace(left.replace('\\','\\\\'),right).replace(left,right)
  output=text.encode('utf-8');(PUB/'records/r2'/name).write_bytes(output)

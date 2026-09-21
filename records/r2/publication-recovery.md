@@ -1,0 +1,3 @@
+# Publication recovery
+
+The archive and branch pushes succeeded, but the immediate PR read-back did not satisfy the complete expected-head/base/body assertion. The script stopped before editing the description. A fresh App read confirmed the exact expected new head and unchanged base/body. No owner amendment was overwritten; no branch rewrite or repeated archive push was used. The follow-up rechecks these identities before completing only the description and qualification reads. The first response was not retained, so transient API propagation is a possible explanation, not a proven diagnosis.

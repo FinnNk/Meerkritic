@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "sequence": 4,
+  "pair_id": "source-reading",
+  "recorded_at": "2026-09-21T22:10:28+00:00",
+  "previous_hash": "603bb1931880c5304fb748f13ae36643211839ed388115ef8161725d691b2d8e",
+  "kind": "publication",
+  "round_id": "r2",
+  "actor": {
+    "client": "Codex desktop",
+    "cli_version": "not exposed",
+    "model": "GPT-6",
+    "session": "/root"
+  },
+  "payload": {
+    "stage": "owner_review_ready",
+    "pr": "https://github.com/FinnNk/Meerkritic/pull/22",
+    "head": "13b635a221fa9178f922e2ef1b946c0d45081077",
+    "base": "a39b989d8fbb6842c73703ff320eee81e45a1a52",
+    "archive_commit": "013134fdab0851ebf5f38699fbe045353488db44",
+    "hosted_qualification": {
+      "required_contexts": [],
+      "observed_rollup": [],
+      "note": "No hosted checks required for this stack base. Owner acceptance remains project policy and main has a separate review gate. No hosted CI run claimed."
+    },
+    "owner_approval": false,
+    "integrated": false,
+    "evidence": [
+      "published-pr.json",
+      "host-rules.json",
+      "published-refs.txt",
+      "host-rules.json",
+      "verification-summary.json",
+      "review.json",
+      "equivalence.json"
+    ]
+  },
+  "event_hash": "e927fc8239e72c4061b2673d6251a613db8a123ab8d3fb5c131e8c69b0dadabf"
+}
