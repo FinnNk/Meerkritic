@@ -1,0 +1,56 @@
+[
+  {
+    "source": "check_docs.py",
+    "source_sha256": "19c8d90251a925f3019e5cc52fc7ecf3e6bd10d0fff6effd361f4247eb79c6b7",
+    "export_sha256": "e5c825a5771cb32e8e4b74e2bdcc8c1774ea2d0f8c98ec51849c61229577a839",
+    "transformation": "Host/workspace paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "docs-check.json",
+    "source_sha256": "a6ee921e42b2e639f77a81e605cca6930ae4ea47dc1db160db0bb3f4f9611e53",
+    "export_sha256": "a6ee921e42b2e639f77a81e605cca6930ae4ea47dc1db160db0bb3f4f9611e53",
+    "transformation": "Host/workspace paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "final-checks.json",
+    "source_sha256": "e1badeec53fa6906c352831e45c85fe6fd0948c57c594ef8817dfef469fa5964",
+    "export_sha256": "4b341ba038b6dc7b0692ea1c1d91619ddabd388ad191a51453144b5c228a9403",
+    "transformation": "Host/workspace paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "final-checks.log",
+    "source_sha256": "86a6f931192894c0f5be8364023faadf146e44e15d9f02c78985d17489947abd",
+    "export_sha256": "702646a09c7acd197ce6be30041c132f8493b24c76b414ac1fb0ad54feae1e45",
+    "transformation": "Host/workspace paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "installation.json",
+    "source_sha256": "f09d7e0285d90d54956f4fd9df6032f3d783373f85761758c51e2b01303f4e16",
+    "export_sha256": "06599b0641c5b5d4beadfa97a228d7a3e09f6c798c335a0468c8d8ee6df02ff3",
+    "transformation": "Host/workspace paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "publish.py",
+    "source_sha256": "d0318feb4aeea9b20c3eda860ca6ff7744e4698bad6aebdb4a0fcfe8da68a88b",
+    "export_sha256": "1162931ddd70fb78948a5e74f8ba229c7e1fac2eb2af65b5749dbbf8a576e816",
+    "transformation": "Host/workspace paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "review.md",
+    "source_sha256": "5d0e37923e9c4f4ed22044b6e6a73185f76daec8e5098817ef2b50b87099b30e",
+    "export_sha256": "5d0e37923e9c4f4ed22044b6e6a73185f76daec8e5098817ef2b50b87099b30e",
+    "transformation": "Host/workspace paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "verification-summary.json",
+    "source_sha256": "a70d29a825436ae478a23bc3827e618c1fe5f75ae0dd61f06dc2a036ce965cda",
+    "export_sha256": "9797f13e5c9eafc83c3cdd64743c345eac53df972631e8c3e35ec80cb0eff0e2",
+    "transformation": "Host/workspace paths replaced; UTF-8 BOM removed if present"
+  },
+  {
+    "source": "verify.py",
+    "source_sha256": "24ba9e55e39e6386c2c5d8d44fcf883a16f614b277c6b68ef835a7e0004317de",
+    "export_sha256": "262d6bf4fa4ef4db2b8a591fb8a348ac4f4e71971b0a1da3a68fffa81093b7e5",
+    "transformation": "Host/workspace paths replaced; UTF-8 BOM removed if present"
+  }
+]

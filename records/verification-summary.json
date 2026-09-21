@@ -1,0 +1,59 @@
+{
+  "status": "passed",
+  "revision": "f574faddfcc10aa774995094a998b2b2ce3db57a",
+  "base": "13b635a221fa9178f922e2ef1b946c0d45081077",
+  "tests": 253,
+  "skipped": 0,
+  "expected_checks": [
+    [
+      "ruff",
+      "format",
+      "--check",
+      "."
+    ],
+    [
+      "ruff",
+      "check",
+      "."
+    ],
+    [
+      "lint-imports",
+      "--no-cache"
+    ],
+    [
+      "tach",
+      "check"
+    ],
+    [
+      "<python>",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_*.py"
+    ]
+  ],
+  "observed_checks": [
+    "ruff format --check .",
+    "ruff check .",
+    "lint-imports --no-cache",
+    "tach check",
+    "WORKSPACE\\extras\\der-checkouts\\documentation-skill-check-final\\.venv\\Scripts\\python.exe -m unittest discover -s tests -p test_*.py"
+  ],
+  "test_changes": "None; documentation and skill instructions only",
+  "classification": "routine",
+  "skill_validation": "Passed with Python UTF-8 mode",
+  "docs": {
+    "status": "passed",
+    "revision": "f574faddfcc10aa774995094a998b2b2ce3db57a",
+    "documents": 74,
+    "links": 403,
+    "tables": 87,
+    "imported_files_verified": 59,
+    "skill_metadata": "passed",
+    "errors": [],
+    "rendering": "Markdown parsed/rendered to HTML; no browser visual inspection claimed"
+  }
+}
