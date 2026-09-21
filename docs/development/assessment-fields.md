@@ -12,7 +12,7 @@ that the original reviewer was right or that a proposed general rule is valid.
 | Assess the issue | Check the central concern, distinctions and uncertainty. | A plausible summary can still overstate or omit something important. |
 | Assess the remaining fields | Use the meanings below; open **How to assess the fields** beside the assessment form. | Each field answers a different question. |
 | Add notes | Identify missing evidence, investigation needs and your own additional advice. | Preserve the distinction between source evidence and your judgement. |
-| Save one decision | Accept, Edit or Reject the complete interpretation. For Edit, keep the complete JSON structure. | The buttons save immediately; they do not save individual fields. |
+| Save one decision | Use **Accept original**, **Save edited assessment** or **Reject** for the complete interpretation. | Decision buttons save immediately; list add/remove buttons only update the unsaved form. |
 
 ![The source comment and code in a distinct, open assessment panel.](../images/assessment-source.png)
 
@@ -23,14 +23,14 @@ not a research judgement.
 
 | Field in the editor | Meaning and allowed values |
 | --- | --- |
-| `issue_statement` | The source's engineering concern in plain English; qualify uncertain claims. |
-| `actionable_engineering_concern` | Does the comment identify something a developer could address? `yes`, `no` or `uncertain`. |
-| `generalisable` | Could the concern apply beyond this example? `yes`, `no` or `uncertain`; this is not proof of a rule. |
-| `coarse_categories` | A list of broad descriptive categories supported by the source. |
-| `scope` | **Impact scope**: the smallest affected unit the evidence establishes. Choose `expression`, `statement`, `function`, `class`, `file`, `module`, `repository` or `unknown`. |
-| `proposed_invariant` | **Candidate rule**: a condition suggested by the example, or `null` if none is justified. Keep advice beyond the source in notes. |
-| `exclusions` | **Applicability limits**: known exceptions or conditions under which the concern or rule does not apply. Use `[]` if none are identified. |
-| `evidence_quotes` | Exact, unique excerpts from the supplied comment or code. An actionable `yes` needs at least one. Exact matching establishes provenance, not correctness. |
+| Issue statement | The source's engineering concern in plain English; qualify uncertain claims. |
+| Actionable concern | Does the comment identify something a developer could address? `yes`, `no` or `uncertain`. |
+| Generalisable | Could the concern apply beyond this example? `yes`, `no` or `uncertain`; this is not proof of a rule. |
+| Categories | A list of broad descriptive categories supported by the source. |
+| Impact scope | **Impact scope**: the smallest affected unit the evidence establishes. Choose `expression`, `statement`, `function`, `class`, `file`, `module`, `repository` or `unknown`. |
+| Candidate rule | **Candidate rule**: a condition suggested by the example, or leave blank if none is justified. Keep advice beyond the source in notes. |
+| Applicability limits | **Applicability limits**: known exceptions or conditions under which the concern or rule does not apply. Leave the list empty if none are identified. |
+| Evidence quotes | Exact, unique excerpts from the supplied comment or code. An actionable `yes` needs at least one. Exact matching establishes provenance, not correctness. |
 
 For example, a comment about a resource being closed too early may require
 searching callers across the repository. That search does not establish that the
@@ -45,5 +45,5 @@ concepts; the improved labels do not correct them automatically.
 
 For a fixed study, follow its prepared order and record any assistance. If a
 meaning remains unclear, pause before saving and report it. See
-[reviewing and saving decisions](annotations.md), [correcting failed drafts](failed-drafts.md)
+[editing form fields](assessment-form.md), [reviewing and saving decisions](annotations.md), [correcting failed drafts](failed-drafts.md)
 and the [assessment contract for authors and reviewers](assessment-contract.md).
