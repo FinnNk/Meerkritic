@@ -1,0 +1,217 @@
+{
+  "status": "passed",
+  "base": "a39b989d8fbb6842c73703ff320eee81e45a1a52",
+  "head": "4e63077c389af19806317edf4b9124063927b2cd",
+  "checkpoints": [
+    {
+      "label": "diary-complete",
+      "revision": "070d547bf0154b12282738ea499c4cb46244fb26",
+      "tree": "e57714e6b14ac3edb80f6603ecb3e352ca7aba5c",
+      "tests": 253,
+      "skipped": 0,
+      "status": "passed",
+      "expected_checks": [
+        [
+          "ruff",
+          "format",
+          "--check",
+          "."
+        ],
+        [
+          "ruff",
+          "check",
+          "."
+        ],
+        [
+          "lint-imports",
+          "--no-cache"
+        ],
+        [
+          "tach",
+          "check"
+        ],
+        [
+          "<python>",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_*.py"
+        ]
+      ],
+      "observed_checks": [
+        "ruff format --check .",
+        "ruff check .",
+        "lint-imports --no-cache",
+        "tach check",
+        "WORKSPACE\\extras\\der-checkouts\\source-reading-check-diary-complete\\.venv\\Scripts\\python.exe -m unittest discover -s tests -p test_*.py"
+      ],
+      "evidence": "diary-complete-checks.json"
+    },
+    {
+      "label": "p1",
+      "revision": "d14fbf45f861897351f9f049ad18af6549a77877",
+      "tree": "29c81b4c10d68e400678f1c48cff739d839a0309",
+      "tests": 241,
+      "skipped": 0,
+      "status": "passed",
+      "expected_checks": [
+        [
+          "ruff",
+          "format",
+          "--check",
+          "."
+        ],
+        [
+          "ruff",
+          "check",
+          "."
+        ],
+        [
+          "lint-imports",
+          "--no-cache"
+        ],
+        [
+          "tach",
+          "check"
+        ],
+        [
+          "<python>",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_*.py"
+        ]
+      ],
+      "observed_checks": [
+        "ruff format --check .",
+        "ruff check .",
+        "lint-imports --no-cache",
+        "tach check",
+        "WORKSPACE\\extras\\der-checkouts\\source-reading-check-p1\\.venv\\Scripts\\python.exe -m unittest discover -s tests -p test_*.py"
+      ],
+      "evidence": "p1-checks.json"
+    },
+    {
+      "label": "p2",
+      "revision": "f3e39e3ae4c071b0e9efd4167182f6d92782e513",
+      "tree": "2925beabe381da4a695b5242b1fbdfe8fb453cd9",
+      "tests": 253,
+      "skipped": 0,
+      "status": "passed",
+      "expected_checks": [
+        [
+          "ruff",
+          "format",
+          "--check",
+          "."
+        ],
+        [
+          "ruff",
+          "check",
+          "."
+        ],
+        [
+          "lint-imports",
+          "--no-cache"
+        ],
+        [
+          "tach",
+          "check"
+        ],
+        [
+          "<python>",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_*.py"
+        ]
+      ],
+      "observed_checks": [
+        "ruff format --check .",
+        "ruff check .",
+        "lint-imports --no-cache",
+        "tach check",
+        "WORKSPACE\\extras\\der-checkouts\\source-reading-check-p2\\.venv\\Scripts\\python.exe -m unittest discover -s tests -p test_*.py"
+      ],
+      "evidence": "p2-checks.json"
+    },
+    {
+      "label": "p3",
+      "revision": "4e63077c389af19806317edf4b9124063927b2cd",
+      "tree": "e57714e6b14ac3edb80f6603ecb3e352ca7aba5c",
+      "tests": 253,
+      "skipped": 0,
+      "status": "passed",
+      "expected_checks": [
+        [
+          "ruff",
+          "format",
+          "--check",
+          "."
+        ],
+        [
+          "ruff",
+          "check",
+          "."
+        ],
+        [
+          "lint-imports",
+          "--no-cache"
+        ],
+        [
+          "tach",
+          "check"
+        ],
+        [
+          "<python>",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_*.py"
+        ]
+      ],
+      "observed_checks": [
+        "ruff format --check .",
+        "ruff check .",
+        "lint-imports --no-cache",
+        "tach check",
+        "WORKSPACE\\extras\\der-checkouts\\source-reading-check-p3\\.venv\\Scripts\\python.exe -m unittest discover -s tests -p test_*.py"
+      ],
+      "evidence": "p3-checks.json"
+    }
+  ],
+  "test_changes": {
+    "added": [
+      "tests/test_reading_context.py::ReadingContextTest::test_attachment_race_cannot_commit_an_unattributed_decision",
+      "tests/test_reading_context.py::ReadingContextTest::test_both_views_escape_source_and_label_additional_text",
+      "tests/test_reading_context.py::ReadingContextTest::test_changed_missing_and_corrupt_context_fail_closed",
+      "tests/test_reading_context.py::ReadingContextTest::test_exact_receipts_survive_restart_and_unchanged_model_input",
+      "tests/test_reading_context.py::ReadingContextTest::test_existing_decision_is_not_backfilled_and_sql_fences_omitted_context",
+      "tests/test_reading_context.py::ReadingContextTest::test_extra_source_quotes_cannot_replace_dataset_grounding",
+      "tests/test_reading_context.py::ReadingContextTest::test_form_context_survives_row_actions_and_is_saved_atomically",
+      "tests/test_reading_context.py::ReadingContextTest::test_import_command_uses_its_own_checkout_without_pythonpath",
+      "tests/test_reading_context.py::ReadingContextTest::test_numeric_repository_redirect_retains_receipt_without_relaxing_comment_identity",
+      "tests/test_reading_context.py::ReadingContextTest::test_selection_preserves_context_and_refuses_missing_evidence",
+      "tests/test_reading_context.py::ReadingContextTest::test_stale_form_retains_edits_without_silently_adopting_context",
+      "tests/test_reading_context.py::ReadingContextTest::test_wrong_identity_receipt_hash_and_unsafe_url_are_rejected"
+    ],
+    "removed": [],
+    "altered": [
+      "tests/test_annotation_web.py::AnnotationWebTest::test_synchronous_storage_runs_outside_the_asgi_event_loop"
+    ]
+  },
+  "retained_failure": "targeted-first.log",
+  "failure_disposition": "Existing test spy now forwards keyword arguments; selection evidence is checked; numeric GitHub redirects retained and standalone importer bound to its checkout. Failed diagnostics and incomplete rehearsals retained; final checkpoints pass afresh."
+}

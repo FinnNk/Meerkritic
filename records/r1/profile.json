@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "method_revision": 7,
+  "evidence_store": "WORKSPACE/extras/der-evidence",
+  "pair_id": "source-reading",
+  "diary_branch": "change/source-reading-diary",
+  "semantic_branch": "feat/source-reading",
+  "base_ref": "a39b989d8fbb6842c73703ff320eee81e45a1a52",
+  "verification": {
+    "baseline": [
+      [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "tools/check.py"
+      ]
+    ],
+    "per_commit": [
+      [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "tools/check.py"
+      ]
+    ],
+    "tip": [
+      [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "tools/check.py"
+      ]
+    ],
+    "external_state": []
+  },
+  "publication": {
+    "host": "github",
+    "policy": "versioned-rounds",
+    "merge_method": "rebase",
+    "remote_operations_authorised": true
+  },
+  "notes": "Owner authorised autonomous VS2 batches and PRs using App identity; owner merges. Windows/Python 3.12, each checkpoint owns source/lock/env. Absolute paths external; no credentials."
+}

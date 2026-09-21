@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "scope": "Synthetic source comparison and assessment save; no research judgement",
+  "browser_revision": "f00e4f8",
+  "capture_metadata": "docs/images/captures-source-reading.json",
+  "synthetic_job": "0109fb84-f7b4-4b79-8fa3-ac623f5195bc",
+  "synthetic_annotation": "a58fd062-651b-409b-9fd4-0f001c83fe27",
+  "context_sha256": "0acac31d0f660d08d3d57d4c8af2c0b3220b34183072db4e2663a57143df068d",
+  "observed": [
+    "Preserved GitHub source and Dataset text supplied to the model appear as separate views",
+    "Original code line breaks remain visible alongside flattened dataset text",
+    "Synthetic Accept saved the presented context digest and explicit synthetic-only notes",
+    "Saved page shows the context digest and notes after submission",
+    "At 1280px viewport width document scroll width is 1265px: no page overflow",
+    "1232x656 source-panel crop visually inspected directly"
+  ],
+  "research_decisions_submitted": 0,
+  "model_calls": 0,
+  "limits": [
+    "Browser exercised the earlier diary implementation; final exact checkpoints separately tested",
+    "No narrow-screen browser check in this batch",
+    "Rendered guide file URL was blocked by browser URL policy; no workaround attempted or visual pass claimed"
+  ]
+}

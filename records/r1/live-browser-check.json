@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "revision": "4e63077c389af19806317edf4b9124063927b2cd",
+  "job_id": "e5cf7f2f-574d-4d93-beb9-18b3f42b6c9c",
+  "context_sha256": "c7ceeabd42fd424c897999c58f41ab1f613db5178a858e9d43a9e196044eb63d",
+  "http_form_digest_matches_attachment": true,
+  "research_annotations": 1,
+  "new_research_decisions": 0,
+  "browser_observed": [
+    "Preserved GitHub source",
+    "Dataset text supplied to the model",
+    "Code whitespace differs only",
+    "Comment has other text differences",
+    "Unsubmitted form with empty notes"
+  ],
+  "note": "Browser inspection omits hidden input attributes; direct HTTP response inspection verifies the served hidden token. No form submission."
+}
