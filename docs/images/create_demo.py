@@ -7,6 +7,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 from semantic_reviewer.adapters.observations import ParquetObservations
+from semantic_reviewer.adapters.reading import GitHubReadingSources
 from semantic_reviewer.adapters.registry import SQLiteRegistry
 from semantic_reviewer.adapters.routing_journal import SQLiteRoutingJournal
 from semantic_reviewer.adapters.worker_lock import worker_lock
@@ -51,6 +52,11 @@ def main():
     """Seed a new external runtime and print routes; refuse any existing destination."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--data-root", type=Path, required=True)
+    parser.add_argument(
+        "--preserved-source",
+        action="store_true",
+        help="Add a synthetic preserved-source comparison to the unreviewed job.",
+    )
     args = parser.parse_args()
     root = runtime_path(args.data_root)
     root.mkdir(parents=True, exist_ok=False)
@@ -81,6 +87,8 @@ def main():
         }
         for i, (comment, code) in enumerate(examples)
     ]
+    if args.preserved_source:
+        rows[-1]["code"] = " ".join(rows[-1]["code"].split())
     raw = json.dumps(rows).encode()
     source = PublicDataset(
         "documentation-demo",
@@ -217,6 +225,34 @@ def main():
             ),
         ),
     )
+    if args.preserved_source:
+        terminal, _ = jobs.inspect(job.id)
+        _, source_record = datasets.observation(job.dataset_id, job.source_index)
+        repo = f"{source_record.owner}/{source_record.repository}"
+        url = f"https://api.github.com/repos/{repo}/pulls/comments/{source_record.comment_id}"
+        response = json.dumps(
+            {
+                "id": source_record.comment_id,
+                "url": url,
+                "path": source_record.file_path,
+                "pull_request_url": f"https://api.github.com/repos/{repo}/pulls/1",
+                "html_url": f"https://github.com/{repo}/pull/1#discussion_r{source_record.comment_id}",
+                "body": source_record.comment,
+                "diff_hunk": examples[-1][1],
+            }
+        ).encode("utf-8")
+        receipt = json.dumps(
+            {
+                "url": url,
+                "effective_url": url,
+                "http_status": 200,
+                "checked_at": "2026-09-21T12:00:00+00:00",
+                "response_sha256": hashlib.sha256(response).hexdigest(),
+            }
+        ).encode("utf-8")
+        GitHubReadingSources(root / "source-context", root / "state.sqlite3").attach(
+            terminal, source_record, response, receipt
+        )
     routes = {
         "observations": f"/datasets/{source.id}?page_size=1",
         "annotation": f"/jobs/{job.id}",

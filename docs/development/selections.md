@@ -4,6 +4,11 @@ A *selection* is a saved copy of explicitly chosen annotations and their source
 material. It records which interpretation to use and which records to exclude.
 Later annotations cannot change an existing selection.
 
+If an annotation records additional [preserved source context](preserved-source.md),
+freezing verifies that attachment and retains its digest in the selected annotation.
+Keep the context files with the study evidence for reproduction; their bodies are
+not added to the model input or used as interpretation text for grouping.
+
 ## Create a selection
 
 You need reviewed results from the [annotation workflow](annotations.md). No model

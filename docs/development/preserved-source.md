@@ -18,6 +18,11 @@ its form. This records availability, not proof that you read it. Earlier decisio
 are not backfilled. If context was added after you opened a form, keep your edits,
 reload the page, read the new context and reapply the edits before saving.
 
+![Preserved source keeps line breaks and identifies differences from the model input.](../images/preserved-source.png)
+
+This [synthetic demonstration](../images/README.md) shows the additional reading
+view. The dataset text continues below it and remains the source for exact quotes.
+
 ## Attach retained evidence
 
 Run from the repository root in the locked Python environment. Use an external

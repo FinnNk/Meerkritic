@@ -90,6 +90,21 @@ group-rating interface yet; the discovery image must not be described as one.
 
 ## Maintain the images
 
+The [preserved-source capture](preserved-source.png) supersedes the source-panel
+illustration for the current assessment guide. It shows additional context above
+the model input; the earlier capture remains a historical asset.
+
+1. Follow the existing fixture setup with a fresh external directory, adding
+   `--preserved-source` to `create_demo.py`.
+2. Open its `annotation` route. The response and receipt are synthetic; their URLs
+   are illustrative and no GitHub request is made.
+3. Capture the source panel with the preserved identity collapsed. Keep the
+   synthetic origin, retrieval label, difference labels and model-input heading.
+
+[Capture metadata](captures-source-reading.json) records the application revision,
+fixture hash, viewport, scroll and native pixel crop. The 1232 by 656 pixel image
+uses the existing wide-panel width. Other field-editor screenshots remain current.
+
 - Follow the [screenshot guidance](../development/documentation-style.md#screenshots-that-help-readers-act).
 - Recapture affected views when controls, labels or behaviour change. Update the
   image, crop/hash record, alt text and caption together.

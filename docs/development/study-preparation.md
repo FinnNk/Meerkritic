@@ -68,6 +68,9 @@ For each next candidate:
    A retained semantic failure can be [corrected or rejected](failed-drafts.md)
    under the agreed preparation amendment. Keep its original failed job and output;
    do not rerun the model. Infrastructure failures remain for inspection.
+   Before the review, explicitly [attach retained source context](preserved-source.md)
+   where the agreed protocol permits it. Record the additional reading context and
+   assistance; do not silently replace model inputs or infer lost formatting.
 3. Write one terminal attempt as JSON. For example, an unresolved source uses:
 
    ```json

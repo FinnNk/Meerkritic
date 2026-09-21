@@ -8,16 +8,18 @@ that the original reviewer was right or that a proposed general rule is valid.
 
 | Step | What to do | Why |
 | --- | --- | --- |
-| Read the source | Start with the open **Source for your assessment** panel. Collapse it if useful. | Establish what is supplied before assessing the model's claims. |
+| Read the source | Start with **Source for your assessment**. When attached, compare **Preserved GitHub source** with **Dataset text supplied to the model**. | Read original formatting while distinguishing the model's actual input from additional human context. |
 | Assess the issue | Check the central concern, distinctions and uncertainty. | A plausible summary can still overstate or omit something important. |
 | Assess the remaining fields | Use the meanings below; open **How to assess the fields** beside the assessment form. | Each field answers a different question. |
 | Add notes | Identify missing evidence, investigation needs and your own additional advice. | Preserve the distinction between source evidence and your judgement. |
 | Save one decision | Use **Accept original**, **Save edited assessment** or **Reject** for the complete interpretation. | Decision buttons save immediately; list add/remove buttons only update the unsaved form. |
 
-![The source comment and code in a distinct, open assessment panel.](../images/assessment-source.png)
+![A preserved source view retains code line breaks above the separately labelled model input.](../images/preserved-source.png)
 
 This [synthetic example](../images/README.md) illustrates the source panel; it is
-not a research judgement.
+not a research judgement. See [preserved source](preserved-source.md) for difference
+labels and provenance. Copy evidence quotes from the dataset view; explain in notes
+when the preserved version affects your judgement.
 
 ## Interpret the fields
 
