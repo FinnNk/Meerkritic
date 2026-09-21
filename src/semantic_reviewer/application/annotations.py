@@ -8,6 +8,7 @@ from uuid import uuid4
 from semantic_reviewer.application.artefacts import Publication, ResultStore
 from semantic_reviewer.application.datasets import DatasetService
 from semantic_reviewer.application.jobs import Job
+from semantic_reviewer.application.reading import ReadingContext, SourceReader
 from semantic_reviewer.domain.normalisation import IssueInterpretation, ground
 
 
@@ -24,6 +25,7 @@ class Annotation:
     notes: str
     created_at: str
     schema_version: int = 1
+    context_sha256: str | None = None
 
 
 class JobReader(Protocol):
@@ -152,15 +154,32 @@ class AnnotationService:
         store: AnnotationStore,
         datasets: DatasetService,
         results: ResultStore,
+        sources: SourceReader | None = None,
     ) -> None:
         """Bind source/result access and the transactional decision store."""
         self._jobs = jobs
         self.store = store
         self._datasets = datasets
         self._results = results
+        self._sources = sources
+
+    def reading_context(self, job_id: str) -> ReadingContext | None:
+        """Read verified additional human context without fetching or changing evidence."""
+        context = self._sources.read(job_id) if self._sources else None
+        if context:
+            job, _ = self._jobs.inspect(job_id)
+            if (context.job_id, context.observation_id) != (job.id, job.observation_id):
+                raise ValueError("Preserved source does not belong to this assessment.")
+        return context
 
     def decide(
-        self, job_id: str, decision: str, notes: str = "", edited_json: str | None = None
+        self,
+        job_id: str,
+        decision: str,
+        notes: str = "",
+        edited_json: str | None = None,
+        *,
+        context_sha256: str | None = None,
     ) -> Annotation:
         """Immediately persist Accept/Edit/Reject, preserving original model provenance.
 
@@ -173,6 +192,8 @@ class AnnotationService:
             decision: Lower-case accept, edit or reject.
             notes: At most 4,000 characters, retained verbatim.
             edited_json: Required only for edit; at most 256,000 UTF-8 bytes.
+            context_sha256: Additional source identity presented by this form, or
+                None when none was presented. Must match the current attachment.
 
         Returns:
             The persisted decision, including its original identity/time on a retry.
@@ -191,6 +212,12 @@ class AnnotationService:
         if (decision == "edit") != (edited_json is not None):
             raise ValueError("Only Edit requires a replacement interpretation.")
         job, result = self._jobs.inspect(job_id)
+        context = self.reading_context(job_id)
+        if context_sha256 != (context.sha256 if context else None):
+            raise ValueError(
+                "Source context changed since this form opened. Keep your edits, "
+                "reload the assessment and review both source views before saving."
+            )
         if decision not in review_actions(job, result):
             raise ValueError(
                 "This result does not support that decision. Failed drafts require Edit or Reject."
@@ -223,6 +250,7 @@ class AnnotationService:
                 digest,
                 notes,
                 datetime.now(UTC).isoformat(),
+                context_sha256=context_sha256,
             )
         )
 

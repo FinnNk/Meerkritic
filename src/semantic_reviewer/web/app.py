@@ -237,6 +237,7 @@ def create_app(
             try:
                 job, result = jobs.inspect(job_id)
                 annotation, edited = annotations.review(job_id) if annotations else (None, None)
+                reading = annotations.reading_context(job_id) if annotations else None
                 history = annotations.store.history(job.observation_id) if annotations else ()
                 actions = review_actions(job, result) if annotations else ()
                 _, source = datasets.observation(job.dataset_id, job.source_index)
@@ -268,6 +269,14 @@ def create_app(
                     "can_annotate": annotations is not None,
                     "actions": actions,
                     "source": source,
+                    "reading": reading,
+                    "presented_context": (
+                        draft.get("context_sha256", "")
+                        if draft is not None
+                        else reading.sha256
+                        if reading
+                        else ""
+                    ),
                     "initial_draft": initial_draft,
                     "annotation": annotation,
                     "edited": edited,
@@ -321,7 +330,11 @@ def create_app(
                                 _, source = datasets.observation(job.dataset_id, job.source_index)
                                 replacement = form.interpretation_json(source)
                         return annotations.decide(
-                            job_id, draft.get("decision", ""), draft.get("notes", ""), replacement
+                            job_id,
+                            draft.get("decision", ""),
+                            draft.get("notes", ""),
+                            replacement,
+                            context_sha256=draft.get("context_sha256") or None,
                         )
 
                     await run_in_threadpool(save_assessment)

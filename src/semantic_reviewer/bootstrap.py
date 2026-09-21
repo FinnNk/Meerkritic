@@ -7,6 +7,7 @@ from pathlib import Path
 from semantic_reviewer.adapters.annotations import SQLiteAnnotations
 from semantic_reviewer.adapters.jobs import SQLiteJobs
 from semantic_reviewer.adapters.observations import ParquetObservations
+from semantic_reviewer.adapters.reading import GitHubReadingSources
 from semantic_reviewer.adapters.registry import SQLiteRegistry
 from semantic_reviewer.adapters.results import JsonResults
 from semantic_reviewer.adapters.reviews import SQLiteReviewIndex
@@ -147,7 +148,11 @@ def build_annotations(data_root: Path, jobs: JobService) -> AnnotationService:
     """
     root = runtime_path(data_root)
     return AnnotationService(
-        jobs, SQLiteAnnotations(root / "state.sqlite3"), jobs.datasets, jobs.results
+        jobs,
+        SQLiteAnnotations(root / "state.sqlite3"),
+        jobs.datasets,
+        jobs.results,
+        GitHubReadingSources(root / "source-context", root / "state.sqlite3"),
     )
 
 
@@ -176,6 +181,7 @@ def build_selections(data_root: Path) -> SelectionService:
         jobs.datasets,
         jobs.results,
         JsonSelections(root / "selections", root / "state.sqlite3"),
+        GitHubReadingSources(root / "source-context", root / "state.sqlite3"),
     )
 
 

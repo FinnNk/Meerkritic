@@ -134,9 +134,9 @@ class AnnotationWebTest(unittest.TestCase):
 
         decide = self.annotations.decide
 
-        def observed_decide(*args):
+        def observed_decide(*args, **kwargs):
             storage_thread.append(get_ident())
-            return decide(*args)
+            return decide(*args, **kwargs)
 
         with patch.object(self.annotations, "decide", observed_decide):
             response = self.client.post(

@@ -34,6 +34,13 @@ class SQLiteAnnotations:
                         "This result already has a different decision; it was not changed."
                     )
                 return existing
+            context = db.execute(
+                "SELECT sha256 FROM source_context WHERE job_id=?", (annotation.job_id,)
+            ).fetchone()
+            if annotation.context_sha256 != (context[0] if context else None):
+                raise ValueError(
+                    "Source context changed; retain your edits and reload before saving."
+                )
             db.execute(
                 "INSERT INTO annotation VALUES (" + ",".join("?" for _ in values) + ")",
                 tuple(values.values()),
@@ -50,6 +57,7 @@ class SQLiteAnnotations:
                             "job_id": annotation.job_id,
                             "decision": annotation.decision,
                             "schema_version": 1,
+                            "context_sha256": annotation.context_sha256,
                         }
                     ),
                 ),

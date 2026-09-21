@@ -1,5 +1,5 @@
 ---
-status: accepted
+status: implemented
 date: 2026-09-21
 decision-makers: [Finn Newick]
 consulted: [Meerkritic agent]
@@ -63,10 +63,17 @@ only present there to the model's input.
 
 ## Confirmation
 
-Pending implementation: identity/hash failures, exact byte retention, HTML escaping,
-stale forms, annotation/event provenance, retry behaviour, old-decision compatibility
-and unchanged model inputs must be verified. Confirm the two views in the browser
-with synthetic data before enabling the preserved study receipts.
+Implemented in the source-reading candidate, before owner merge. The source-context
+tests cover identity/hash failures, exact receipt retention, HTML escaping, stale
+forms, annotation/event provenance, retries, attachment races, command execution and
+selection integrity. Browser verification saved a synthetic assessment with its
+context digest. A migration/import rehearsal retained the existing annotation,
+58 original dataset/result files and 332 events while attaching 54 unreviewed
+sources. No research decision or model call was made. Canonical verification and
+the exact reviewed identities are recorded in DER `source-reading/r1`.
+
+Revisit this contract before replacing attachments, changing model inputs or
+allowing evidence quotes from sources other than the original dataset strings.
 
 ## More information
 

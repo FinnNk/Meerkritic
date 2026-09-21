@@ -158,14 +158,16 @@ def parse_assessment(body: bytes) -> tuple[dict[str, str], AssessmentForm | None
         encoding="utf-8",
         errors="strict",
     )
-    scalars = {"decision", "notes", "edited_json", "editor", "form_action"} | set(SCALARS)
+    scalars = {"decision", "notes", "edited_json", "editor", "form_action", "context_sha256"} | set(
+        SCALARS
+    )
     if set(fields) - scalars - set(LIST_LIMITS):
         raise ValueError("Invalid annotation fields.")
     if any(len(values) != 1 for name, values in fields.items() if name in scalars):
         raise ValueError("Duplicate annotation fields.")
     draft = {key: values[0] for key, values in fields.items() if key in scalars}
     if "editor" not in fields:
-        if set(fields) - {"decision", "notes", "edited_json"}:
+        if set(fields) - {"decision", "notes", "edited_json", "context_sha256"}:
             raise ValueError("Invalid legacy annotation fields.")
         return draft, None
     if draft["editor"] != "fields" or "edited_json" in fields:
