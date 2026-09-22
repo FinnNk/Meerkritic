@@ -1,0 +1,12 @@
+{
+  "version": "1.6.0",
+  "indexed_files": 115,
+  "known_symbol": true,
+  "known_caller_verified_in_source": true,
+  "excluded_probe_absent": true,
+  "add_rename_delete_refresh": true,
+  "explore": true,
+  "status": "\nCodeGraph Status\n\nProject: D:\\codex\\semantic-reviewer\\extras\\der-checkouts\\codegraph-navigation\n\nIndex Statistics:\n  Files:     115\n  Nodes:     2,018\n  Edges:     5,275\n  DB Size:   6.31 MB\n  Backend:   node:sqlite - built-in (full WAL)\n  Journal:   wal\n\nNodes by Kind:\n  import          863\n  method          601\n  class           201\n  function        170\n  file            111\n  variable        36\n  route           30\n  constant        6\n\nFiles by Language:\n  python          110\n  yaml            4\n  javascript      1\n\n[OK] Index is up to date\n\n",
+  "branch_switch_tested": false,
+  "comparative_evaluation": false
+}

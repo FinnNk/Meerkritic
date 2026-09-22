@@ -1,0 +1,19 @@
+{
+  "revision": "ea9d8c4367b6b35806d360ecbf4187d57a410978",
+  "tree": "378e5fa62e8b06af22d2aacb2ef43e71eb5daccd",
+  "base": "4b83e54714cd6d9df32d012fade91244d693c945",
+  "materiality": "routine: optional developer navigation; no application or architecture contracts changed",
+  "standard_checks": "passed",
+  "tests": {
+    "passed": 253,
+    "failed": 0,
+    "skipped": 0
+  },
+  "environment": "Windows x64; Python 3.12.11; Node.js 24.18.0; CodeGraph 1.6.0",
+  "timing": "Quality and smoke checks ran on the candidate files before commit. Only ADR confirmation prose and its index changed afterwards. Documentation checks were repeated at the final commit.",
+  "limits": [
+    "No branch-switch or persistent watcher test",
+    "No comparative efficiency evaluation",
+    "No independent reviewer or owner PR approval claimed"
+  ]
+}
