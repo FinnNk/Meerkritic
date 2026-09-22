@@ -38,6 +38,10 @@ green checks without explicit owner approval.
 
 ## Prepare a change
 
+Use [local code navigation](code-navigation.md) to locate symbols and callers.
+The guide covers the optional pinned CodeGraph installation, per-worktree indexes
+and source verification; it does not replace the checks above.
+
 1. Identify the active batch in the maintained plan and inspect the working tree.
    Start a branch from its integrated baseline or an explicit stacked predecessor.
 2. Classify the change as routine, material or critical before substantive work.

@@ -46,6 +46,8 @@ This [synthetic assessment view](images/README.md) shows **Jobs** and **Source o
 
 ## Develop and review
 
+- [Navigate source and callers with CodeGraph](development/code-navigation.md).
+
 - [Development workflow](development/README.md), [repository boundaries](development/structure.md)
   and [test guide](../tests/README.md).
 - [Writing documentation](development/documentation-style.md),
