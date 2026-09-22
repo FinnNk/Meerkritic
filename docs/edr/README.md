@@ -124,4 +124,5 @@ The current draft is:
 
 | EDR | Decision | Status | Evidence outcome |
 | --- | --- | --- | --- |
+| [EDR-0002](0002-code-navigation-assistance.md) | Evaluate code navigation assistance | draft | pending |
 | [EDR-0001](0001-discovery-grouping-method.md) | Choose an initial discovery grouping method | draft | pending |

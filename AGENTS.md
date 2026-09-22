@@ -45,6 +45,13 @@
 
 ## Software change review
 
+- For structural code questions, use a current checkout-local CodeGraph index as
+  the first navigation aid when available; follow [code navigation](docs/development/code-navigation.md).
+  Refresh after edits/branch switches, verify consequential findings against source,
+  and use direct search when the index is absent, stale or incomplete. Do not
+  substitute graph output for quality gates or canonical architecture/research evidence.
+  Index only this application checkout; keep generated indexes out of Git.
+
 - Use the reusable [technical-documentation skill](.agents/skills/technical-documentation/SKILL.md)
   and follow the [project documentation style guide](docs/development/documentation-style.md)
   for guides, references, agent instructions and PR descriptions. Explain terms
