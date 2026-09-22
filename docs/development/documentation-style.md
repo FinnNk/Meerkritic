@@ -1,215 +1,73 @@
 # Writing documentation people can use
 
-Write for a technically aware reader who is new to Meerkritic. Help them complete
-a task or understand a decision without first learning the implementation or the
-project's delivery history. These rules apply to maintained guides, references,
-agent instructions and PR descriptions. Preserve imported originals and historical
-evidence; use the [commenting convention](code-comments.md) for Python docstrings.
+Use the reusable [technical-documentation skill](../../.agents/skills/technical-documentation/SKILL.md) for maintained guides, references, READMEs, agent instructions and PR descriptions. It contains the general writing method and author/reviewer checks. This guide adds Meerkritic's local choices and repeats useful shared reminders; both apply. Repetition here does not mean the advice is specific to this project.
 
-## Choose the reader and purpose
+The repository copy is versioned with the project. The same skill folder can be installed in a personal skills directory for other projects; it has no Meerkritic, Python or GitHub dependency. When changing the general advice, update the repository copy and deliberately refresh any personal copy. A personal installation is not required to read these instructions.
 
-| Document | Lead with | Keep elsewhere |
+## Shared advice and local choices
+
+| Topic | Shared advice | Meerkritic choice |
 | --- | --- | --- |
-| Task guide | What the reader will achieve, prerequisites and steps | Detailed implementation contracts and delivery history |
-| Operations guide | Setup, expected results, diagnosis and recovery | A chronological account of previous tests |
-| Technical reference | Purpose, terms, behaviour, constraints and examples | Instructions already owned by another guide |
-| Contribution policy | Required actions, who performs them and when | Past PR narratives |
-| PR description | The problem and resulting behaviour | The author's work diary and raw logs |
-| Plan, ADR or milestone record | The relevant decision, scope and evidence | Unrelated history; retain necessary milestone references |
+| Audience | Explain necessary terms for the intended reader. | Default to a technically aware reader unfamiliar with Meerkritic. |
+| Language and encoding | Use explicit UTF-8; preserve literals and confirm saved-text corruption before repair. | British English for maintained prose; preserve standard licence wording. |
+| Current guides | Describe current behaviour and keep delivery chronology in historical records. | Describe this checkout; retain relevant history in plans, ADRs and review records. |
+| Terminology | Explain terms where needed; a glossary supplements the explanation. | The glossary is [CONTEXT.md](../../CONTEXT.md). |
+| Code documentation | Follow the host project's docstring and comment conventions. | Use the [commenting convention](code-comments.md) and [Python style guide](python-style.md). |
+| Instructions | Use steps or tables with prerequisites, complete commands, expected outcomes and likely recovery actions. | State the working directory, shell and services; use the locked project environment. |
+| Research claims | Software checks do not establish model quality or empirical validity. | Keep hypotheses, methods, observations and decisions in [EDR records](../edr/README.md). |
+| Preserved material | Preserve imported originals and historical evidence. | This includes imported research and pinned third-party skills. |
 
-A document can serve more than one purpose if its sections make the distinction
-clear. Link to detail when it would interrupt the reader's task; do not create a
-new document merely to shorten an existing one.
+Keep useful local explanations when they prevent misunderstanding. For example:
 
-## Explain before naming
-
-- Use plain English first. Introduce a necessary specialist term where it first
-  matters; a glossary link supplements that explanation rather than replacing it.
-- Prefer concrete verbs and named objects: say what is saved, checked or changed.
-- Keep implementation names in reference sections unless they help the reader act.
-- Use the exact UI label for a button or page; put identifiers and commands in code.
-- Write in British English. Preserve literal commands, filenames, quoted upstream
-  text and standard licence wording.
-- Read and write maintained text as UTF-8 explicitly in editing scripts; do not
-  rely on shell or platform defaults. Preserve valid Unicode punctuation. If text
-  looks corrupted, inspect the saved file and rendered Markdown before repairing
-  it; a terminal display problem alone is not evidence that the file is damaged.
-
-| Avoid in an introduction | Prefer |
+| Implementation term | Plain-English explanation |
 | --- | --- |
-| Version-fenced decisions | Reject the decision if the rule changed after the draft was saved. |
-| Freeze the effective interpretation | Save a fixed copy of the accepted interpretation or its human edit. |
+| Version-fenced decision | Reject the decision if the rule changed after the draft was saved. |
+| Frozen effective interpretation | A fixed copy of the accepted interpretation or its human edit. |
 | Terminal-state fencing | Only the worker that claimed the job may record its result. |
 | Source-bound architecture projection | A saved architecture view that warns when the code has changed. |
 
-Do not replace precise terms with vague prose in technical contracts. Explain
-terms such as atomic, idempotent and compare-and-swap when readers need them.
-
-## Structure instructions for use
-
-Use **numbered steps when order matters**, bullets for independent actions and
-tables for choices, states or repeated task/result comparisons. Do not bury a
-procedure in a paragraph. Use short paragraphs for explanations and rationale.
-
-Before publishing a procedure:
-
-1. State prerequisites, working directory, required shell and services.
-2. Give complete commands. Mark placeholders and explain where their values come
-   from; use the locked project environment consistently.
-3. Say what success looks like and what the reader should do next.
-4. Place consequential cautions beside the affected step. Provide a recovery action
-   for likely failures, not just an error name.
-
-Use tables when they make information easier to compare, not to disguise long
-paragraphs inside cells. A state table should explain the meaning and next action.
-For a complex workflow, use a small diagram only if it clarifies relationships
-better than a short list. Use screenshots where recognising the interface helps;
-follow the capture and maintenance guidance below.
-
 ## Screenshots that help readers act
 
-Use a screenshot to orient readers, locate a control or recognise a meaningful
-result. Keep the steps, commands and essential explanation in text. A screenshot
-illustrates the interface; it does not prove the underlying behaviour works.
+Follow the skill's [screenshot guidance](../../.agents/skills/technical-documentation/references/screenshots.md). The distinction here is:
 
-- Prefer a few useful views to an image for every click. A README usually needs
-  one overview; a PR may need one illustration or a before/after pair when the
-  visible difference matters. Reuse the same asset across relevant guides.
-- Capture the actual application using shareable demonstration data in a separate
-  runtime. Label synthetic examples and manually prepared outputs clearly. Do not
-  create research judgements or invoke models merely to furnish an illustration.
-- Crop case by case, retaining the heading, control labels and enough context to
-  orient the reader. Prefer two types: an overview of a workflow and a focused
-  panel. Reuse a small set of capture widths where practical; vary height to fit
-  the content. Keep text legible at the document's normal display width.
-- Preserve the interface faithfully. Do not redraw controls, alter displayed
-  results or use generated images as application screenshots. Exclude private
-  data, credentials, personal browser chrome and irrelevant desktop content at
-  capture time. If redaction is unavoidable, mark it and record what was redacted.
-- Store modestly sized PNGs under `docs/images/`, with descriptive filenames.
-  Use relative image links in repository documents and immutable revision URLs
-  in PR descriptions. Add useful alt text and a short caption explaining the
-  state or action; neither should merely repeat the filename.
-- Keep capture notes beside the images: source revision, fixture and setup steps,
-  route, browser/viewport, scroll or crop, and any reproducibility limits. Retain
-  a small deterministic fixture when it makes recapture practical; keep runtime
-  databases and raw captures outside the application repository.
-- Review affected images when UI labels, layout or workflows change. Recapture
-  or remove misleading images; unrelated changes do not require new captures.
-  Preserve historical evidence and imported originals rather than backfilling them.
+- **Shared reminders:** capture the actual interface using shareable demonstration data; label prepared outputs. Use descriptive filenames, relative document links, immutable revision URLs in PRs, useful alt text and a caption explaining the state. Retain capture details and reproduction limits.
+- **Local choices:** use the synthetic harness in a separate runtime, modestly sized PNGs in `docs/images/`, and capture records beside the images. Keep runtime databases and raw captures outside application Git worktrees. Do not create research judgements or invoke models merely to furnish illustrations.
+- **Local reproduction:** reuse the [demonstration fixture and capture conventions](../images/README.md). Existing overview and focused-panel widths are useful defaults, not requirements to crop away necessary context.
+- **Shared maintenance:** review affected images after UI changes. Inspect them at the intended display size and in the rendered document when accessible; explicitly record unavailable checks. Preserve historical captures rather than rewriting their provenance.
 
-Before publication, inspect each image at its intended display size and in the
-rendered document. Check that captions match the captured state, links work, no
-controls needed by the instructions are cut off, and the instructions still work
-without seeing the image.
-
-## Describe the current system
-
-- Task guides describe the behaviour of their checkout. Remove past milestone
-  framing and PR/commit chronology; keep history in plans, ADRs and review records.
-- Mention current or future milestones sparingly, only when a limitation or next
-  step actually depends on them. File paths and test names may retain historical IDs.
-- Check unchanged documents affected by a change: counts, defaults, states, labels,
-  configuration examples and claims that an implemented feature is still proposed.
-- Distinguish working configuration from illustrative or reserved configuration.
-  Do not suggest that a file is loaded when no code reads it.
-- Put shared policy in one authoritative guide. Link from other documents and keep
-  only the qualification necessary at the point of use.
-- Retain material limits: tests do not establish model quality; research claims
-  need their evidence. Avoid repeating irrelevant disclaimers in every paragraph.
+Screenshots supplement text and behaviour checks. They do not establish that a saved judgement, model call or workflow is correct.
 
 ## PR descriptions
 
-Start with the problem and what the change lets someone do. Include a short
-before/after example where it helps. Use the [PR template](../../.github/pull_request_template.md)
-as a prompt, removing sections that do not apply.
+Use the [PR template](../../.github/pull_request_template.md), the skill's [PR guidance](../../.agents/skills/technical-documentation/references/pr-descriptions.md) and the project [review-boundary method](README.md#review-boundaries).
 
-- Describe each semantic commit by the complete behaviour or obligation it adds.
-- Keep the ordered commit map for substantial changes, plus meaningful validation
-  and unresolved limitations. Explain what the checks establish.
-- Link detailed logs, exact identities and reproduction methods in the evidence
-  archive; do not copy the implementation diary into the description.
-- State dependencies and owner decisions needed now. Use milestone codes only when
-  relevant, with their descriptive titles on first mention.
-- Rewrite the description around the final change when scope changes. Preserve
-  owner amendments and do not claim tests, independence or approval that did not occur.
+- **Shared reminders:** lead with the concrete problem and resulting behaviour. State dependencies, decisions needed now and material limitations. Read the current description before updating it, preserve owner amendments and verify the published result. A passing check or author self-review is not owner approval.
+- **Local review structure:** keep the ordered semantic-commit map for substantial changes, describing each complete promise. Name unmerged prerequisites and the review/merge order for stacked PRs.
+- **Local evidence practice:** keep logs, full identities and reproduction details in the relevant evidence archive. Retain the true diary independently of the description whenever DER applies.
 
 ### Validation summary
 
-Lead with one compact summary, populated from retained evidence:
+Lead with one compact summary populated from retained evidence for the stated revision. Use readable text and a stable evidence link; do not list each routine tool in a table. Missing checks must remain conspicuous.
 
-> **Standard checks:** Passed · revision `abc1234` · [Evidence]
+The procedure below repeats the reusable skill's validation method. The named command/tool set and DER evidence references are Meerkritic-specific; honest statuses, useful counts and preservation of owner edits apply generally.
 
-Replace the illustrative revision and evidence placeholder when publishing. State
-the environment once where relevant. Prefer text to badges: it stays readable
-without colour or an image service and can link to evidence for an exact revision.
-Do not give each routine tool a table row.
+1. Read the stated revision's `tools/check.py` and compare actual execution with every expected command: both Ruff checks, Import Linter, Tach and the test suite. An overall success flag alone is insufficient.
+2. Report **Passed** only when every required check ran and passed. Otherwise use **Failed**, **Partial**, **Not run** or **Blocked**, naming missing/skipped/failed required checks. Report skipped tests separately.
+3. State the relevant environment once. Derive counts and status from retained records; identify older integration evidence separately from current-head results. A documentation-only change generally needs the recorded test total and relevant document checks.
+4. Use recorded suite categories for a useful test breakdown. For added/removed/altered counts, state the comparison base and compare reliable test identities, accounting for moves and renames. Changed lines/files are not test counts. Explain changed coverage by behaviour where helpful.
+5. Add change-specific evidence such as documentation checks, migrations, live workflows or DER equivalence. Use tables for useful comparisons, not a row per standard tool. Link detail in the existing evidence store.
+6. Refresh affected evidence and the summary after a head change. Preserve owner text outside generated sections and read back the result.
 
-1. Read the retained records and logs for the stated revision. Compare the recorded
-   execution with every required check in that revision's `tools/check.py`, including
-   both Ruff checks, Import Linter, Tach and the test suite. An overall success flag
-   alone does not prove that all expected checks ran.
-2. Use **Passed** only when every required check ran and passed. Otherwise use
-   **Failed**, **Partial**, **Not run** or **Blocked**, naming missing, skipped or
-   failed required checks. Report skipped tests separately; do not count them as
-   passed or hide them behind a successful suite exit status.
-3. Derive statuses and counts from the evidence, not the last PR. Link immutable
-   records or logs; keep commands, detailed environments and reproduction details
-   there. Name older integration evidence separately from current-head results.
-4. Add a test breakdown only when it helps the reviewer. Use categories the suite
-   actually defines; do not infer unit/integration categories from test names.
-   A documentation-only change usually needs just the recorded test total.
-5. Explain changed coverage by behaviour when useful. Authors supply this explanation;
-   counts alone do not establish coverage. Added/removed/altered test counts are
-   optional, need a stated comparison base and reliable test-identity comparison,
-   and must account for renames or moves. Diff line counts are not test counts.
-6. Include relevant change-specific evidence, such as documentation checks, migrations,
-   live workflows or DER equivalence. Use a small table for meaningful comparisons;
-   use short prose or bullets for a single result or material exception.
-7. After a head change, refresh affected evidence and the summary. Preserve owner
-   edits outside the generated section and check the published result.
-
-For an informative test breakdown, use:
-
-| Test category | Passed | Failed | Skipped |
-| --- | ---: | ---: | ---: |
-
-For changed coverage, use:
-
-| Behaviour | Coverage change |
-| --- | --- |
-
-Fill only useful tables and remove empty ones from the PR. An agent or renderer
-may populate statuses and counts from existing evidence, but must check the expected
-checks before reporting success. The summary is not another evidence store or a
-new validation gate. Keep prose for consequential exceptions; put licence/status
-announcements and study decisions in their relevant sections.
+The summary is not another evidence store or a new gate. Follow the reusable guidance for [summary examples and table choices](../../.agents/skills/technical-documentation/references/pr-descriptions.md#compact-validation-summary).
 
 ## Author and reviewer checks
 
-Apply these before presenting a change, at semantic review and at aggregate review:
+Apply the skill's [tick-box review checklist](../../.agents/skills/technical-documentation/SKILL.md#review-before-delivery) before presenting a change, at semantic review and at aggregate review. The checks below combine shared reminders with Meerkritic's local choices so reviewers can use them directly:
 
-- [ ] Can a reader identify the purpose and first useful action from the opening?
-- [ ] Are necessary terms introduced before use, with concrete objects and verbs?
-- [ ] Are procedures steps or tables, with prerequisites and expected outcomes?
-- [ ] Do commands, paths, UI labels and stated behaviour match this revision?
-- [ ] Can a reader recover from likely failures without reading implementation code?
-- [ ] Is current guidance free of unnecessary milestone history and duplicated policy?
-- [ ] Do links work, and does the rendered Markdown remain easy to scan?
-- [ ] Are non-ASCII characters intact in the saved UTF-8 text and rendered view?
-- [ ] Do screenshots clarify a task, use shareable data, have alt text/captions and
-      capture notes, and remain legible and consistent with the current interface?
-- [ ] Are evidence claims and limitations precise without overwhelming the task?
-- [ ] Does the PR validation summary match retained evidence for its stated revision,
-      account for every expected standard check and expose missing or skipped checks?
-- [ ] Do test breakdowns use recorded categories/counts and explain useful coverage
-      changes without giving routine tools unnecessary space?
+- [ ] British English, exact UI labels and saved UTF-8 text are intact; commands use the locked project environment.
+- [ ] Current guides match this checkout, including affected unchanged guides and images. Imported originals and historical records remain intact.
+- [ ] Research claims retain their evidence limits; screenshots use shareable fixtures and retain capture provenance.
+- [ ] The PR summary accounts for every expected standard check at the stated revision, including missing or skipped checks, and links the appropriate evidence.
+- [ ] Commit boundaries follow the project's semantic review process. Apply the skill's [conditional commit advice](../../.agents/skills/technical-documentation/SKILL.md#keep-documentation-changes-reviewable): guidance changes have their own commit; existing-document backfills have separate commits. Documentation and comments required by new code normally belong with that code.
 
-Review meaning, not a word count or checklist score. Check examples against the CLI
-and relevant code; run safe examples in a disposable runtime where useful. Never
-exercise mutating instructions on a user's research data just to verify a guide.
-Do not add brittle prose-matching tests or weaken software checks for editorial work.
-
-Guidance changes have their own semantic commit. Backfills of existing documentation
-have separate commits; comments and documentation required by new code normally
-belong with that code. Preserve the true implementation diary before reconstruction.
+Review meaning, not a checklist score. Verify safe examples in disposable runtimes where useful; never mutate the owner's research data merely to validate instructions. Do not add brittle prose-matching tests or weaken software checks for editorial work. Preserve the true implementation diary whenever DER applies.

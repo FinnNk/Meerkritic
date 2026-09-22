@@ -50,6 +50,8 @@ This [synthetic assessment view](images/README.md) shows **Jobs** and **Source o
   and [test guide](../tests/README.md).
 - [Writing documentation](development/documentation-style.md),
   [Python style](development/python-style.md) and [code comments](development/code-comments.md).
+- [Reusable technical-documentation skill](../.agents/skills/technical-documentation/SKILL.md),
+  with general writing, screenshot and PR-summary guidance that can be used in other projects.
 - [Screenshot capture notes and demonstration setup](images/README.md).
 - [Routing reference](development/routing.md) and
   [interpretation contract](development/normalisation-contract.md).

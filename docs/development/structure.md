@@ -20,7 +20,7 @@ different name. Runtime data and review evidence must remain outside Git worktre
 | `tools/` | Commands, quality checks and explicit maintenance tools |
 | `tests/` | Behaviour, integration and workflow tests using permitted fixtures |
 | `docs/` | [Task guides, references, decisions and history](../README.md) |
-| `.agents/skills/` | Pinned independent review/design tooling |
+| `.agents/skills/` | Reusable documentation guidance and pinned independent review/design tooling |
 
 Create finer packages or resource directories only when real work needs them;
 empty directories are not an architecture plan.
