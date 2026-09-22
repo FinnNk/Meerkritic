@@ -1,5 +1,5 @@
 ---
-status: accepted
+status: implemented
 date: 2026-09-22
 decision-makers: [Finn Newick]
 ---
@@ -58,12 +58,14 @@ of this setup. Follow [code navigation](../development/code-navigation.md).
 
 ### Confirmation
 
-The implementing agent must verify the pinned installation, an initial index,
-a known-symbol query, index exclusions and a refresh after a disposable source
-change. Record the checkout and results in the setup guide before advancing this
-record to implemented. Confirm that generated state is ignored and the application
-quality command still passes. Revisit on stale results, missed important relations,
-Windows/worktree friction or an unfavourable EDR result.
+Implemented in the `chore/codegraph-navigation` candidate worktree on 22 September
+2026. The pinned installation, initial index, known symbol and caller, exclusions,
+and refresh after adding, renaming and deleting a disposable function passed the
+[setup checks](../development/code-navigation.md#setup-verification). Generated
+state is ignored. The canonical quality command passed all standard checks and
+253 tests. This status records working local setup, not PR approval or demonstrated
+efficiency. Revisit on stale results, missed important relations, Windows/worktree
+friction or an unfavourable EDR result.
 
 ## Pros and Cons of the Options
 

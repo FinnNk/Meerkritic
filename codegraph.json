@@ -1,0 +1,16 @@
+{
+  "exclude": [
+    ".agents/**",
+    ".github/**",
+    ".codegraph/**",
+    ".codegraph-*/**",
+    ".venv/**",
+    "docs/research/**",
+    "extras/**",
+    "data/**",
+    "runtime/**",
+    "outputs/**",
+    "der-evidence/**",
+    "**/node_modules/**"
+  ]
+}

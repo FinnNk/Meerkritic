@@ -1,0 +1,8 @@
+{
+  "name": "meerkritic-code-navigation",
+  "private": true,
+  "description": "Optional local code navigation tooling; not an application dependency",
+  "dependencies": {
+    "@colbymchenry/codegraph": "1.6.0"
+  }
+}

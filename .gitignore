@@ -8,6 +8,9 @@
 double-entry-review.profile.json
 
 # Generated Python/tool state
+node_modules/
+.codegraph/
+.codegraph-*/
 __pycache__/
 *.py[cod]
 *.egg-info/
