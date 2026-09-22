@@ -5,3 +5,5 @@ Routine documentation change at f574faddfcc10aa774995094a998b2b2ce3db57a. No DER
 Reproduce software checks from the stated commit using Python 3.12 and `uv sync --locked`, then `uv run --locked python tools/check.py`. Validate the skill with the host skill-creator quick_validate helper using Python UTF-8 mode. Paths in auxiliary records are sanitised as listed in export-index.json.
 
 Refinement r2 at 8d97bd67ddc09dbbbd9d140fb58199e6ec733ee0 adds a tick-box checklist and conditional commit advice, and clarifies shared/local project guidance. Current verification is under records/r2; earlier evidence remains unchanged.
+
+History reorganisation r3: two semantic commits at 4b83e54714cd6d9df32d012fade91244d693c945. Final tracked files exactly match r2; standard checks are inherited, not rerun. The first new checkpoint has its own documentation checks. See records/r3.

@@ -1,0 +1,13 @@
+{
+  "classification": "routine documentation history reorganisation",
+  "previous_head": "8d97bd67ddc09dbbbd9d140fb58199e6ec733ee0",
+  "base": "13b635a221fa9178f922e2ef1b946c0d45081077",
+  "commits": [
+    "befc693afa37f5bd097305c563b0f1ae4c919f7c",
+    "4b83e54714cd6d9df32d012fade91244d693c945"
+  ],
+  "tree": "9aeeb17e8d1931e32318bd68176dd79ef4a5a0f7",
+  "final_tracked_tree_identical": true,
+  "standard_checks": "Inherited from r2 at identical tracked tree; not rerun for metadata-only reorganisation",
+  "previous_verification": "https://github.com/FinnNk/Meerkritic/blob/cadad2c14018257a17d6916155ea978f10d210a7/records/r2/verification-summary.json"
+}

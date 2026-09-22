@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "revision": "befc693afa37f5bd097305c563b0f1ae4c919f7c",
+  "documents": 74,
+  "links": 392,
+  "tables": 89,
+  "imported_files_verified": 59,
+  "skill_metadata": "passed",
+  "errors": [],
+  "rendering": "Markdown parsed/rendered to HTML; no browser visual inspection claimed"
+}
