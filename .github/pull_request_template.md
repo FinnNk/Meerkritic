@@ -1,4 +1,5 @@
-<!-- Follow docs/development/documentation-style.md. Remove inapplicable sections.
+<!-- Use .agents/skills/technical-documentation/SKILL.md and the project rules in
+docs/development/documentation-style.md. Remove inapplicable sections.
 Lead with the problem and resulting behaviour; explain terms before using them.
 Retain owner amendments when updating an existing description. -->
 
