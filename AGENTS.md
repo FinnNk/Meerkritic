@@ -45,7 +45,8 @@
 
 ## Software change review
 
-- Follow the [documentation style guide](docs/development/documentation-style.md)
+- Use the reusable [technical-documentation skill](.agents/skills/technical-documentation/SKILL.md)
+  and follow the [project documentation style guide](docs/development/documentation-style.md)
   for guides, references, agent instructions and PR descriptions. Explain terms
   before using them; make instructions steps or tables; describe current behaviour.
   Apply its author/reviewer checklist before publication, including unchanged guides

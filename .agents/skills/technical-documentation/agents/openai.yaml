@@ -1,0 +1,4 @@
+interface:
+  display_name: "Technical documentation"
+  short_description: "Clear technical guides and evidence-based PR summaries"
+  default_prompt: "Use $technical-documentation to review or improve this project's technical guides and PR descriptions."
