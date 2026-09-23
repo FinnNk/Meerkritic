@@ -1,0 +1,15 @@
+{
+  "revision": "4ab131a08b6bae469b94ae8254c242a6ff1cad68",
+  "standard_checks": "passed",
+  "tests": {
+    "passed": 253,
+    "failed": 0,
+    "skipped": 0
+  },
+  "test_changes": "Three existing regression tests strengthened: initial model warning, invalid field errors, stale-context errors. No test functions added or removed.",
+  "materiality": "routine; presentation and regression assertions only, no application validation or persistence contracts changed",
+  "ui": "Synthetic failed-draft save rejected; neutral note and red error both visible; retained fields inspected. Real judgement not saved by agent.",
+  "environment": "Windows; Python 3.12.11; Codex in-app browser; dark appearance inspected",
+  "timing": "Full checks passed before the final cosmetic revision from amber panel to neutral note. All eight assessment-form tests were rerun and passed after that revision. Final-commit documentation checks passed.",
+  "limits": "No separate light-appearance capture. Earlier live save rejection cause not conclusively established; a fresh form was opened and agreed content restored. The agreed content passed schema and exact-quote validation without saving."
+}
