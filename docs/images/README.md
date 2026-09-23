@@ -66,6 +66,14 @@ form is shown in two focused views; no fields were hidden to fit it into one ima
 Use the visible landmarks below when different browser scaling makes those exact
 coordinates unsuitable. A crop must keep the relevant labels and controls readable.
 
+The failed-draft image was refreshed on 23 September 2026 for the validation-notice
+change, using the same synthetic fixture and the in-app browser's default dark
+appearance. Open `failed_annotation` and choose **Save edited assessment** with
+its deliberately invalid quote unchanged. The save must be rejected. Capture the
+complete neutral note and red error panel; no assessment is created. The focused
+478 × 215 crop supersedes that asset's older capture record; see
+[validation-notice capture details](captures-validation-notices.json).
+
 | Asset | Route key | Type / pixels | Content to retain |
 | --- | --- | --- | --- |
 | [Source browser](source-browser.png) | `observations` | Overview, 1232 × 675 | Dataset title, synthetic label, comment/code pair and Normalise action |
@@ -73,7 +81,7 @@ coordinates unsuitable. A crop must keep the relevant labels and controls readab
 | [Interpretation result](annotation-result.png) | `annotation` | Panel, 960 × 507 | Proposed issue, impact scope, candidate rule and quoted evidence |
 | [Assessment fields](annotation-assessment.png) | `annotation` | Panel, 1232 × 429 | Editor heading, issue text and judgement dropdowns |
 | [Assessment save](assessment-save.png) | `annotation` | Panel, 1232 × 338 | Notes, immediate-save explanation and all three decision buttons |
-| [Failed draft](failed-draft-assessment.png) | `failed_annotation` | Panel, 1232 × 648 | Failure explanation and start of the field editor |
+| [Failed draft](failed-draft-assessment.png) | `failed_annotation` | Panel, 478 × 215 | Neutral original-model note and red failed-save error |
 | [Saved selection](frozen-selection.png) | `selection` | Overview, 1232 × 605 | Fixture label, totals, queue action and complete first input card |
 | [Discovery group](discovery-group.png) | `discovery` | Overview, 1232 × 514 | Result heading, fixture label, totals and complete representative card |
 | [Rule definition](rule-definition.png) | `rule` | Panel, 960 × 391 | Title, fixture label, pending state, scope and exclusions |
