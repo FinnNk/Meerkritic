@@ -135,6 +135,8 @@ class AssessmentFormTest(unittest.TestCase):
         }
         invalid = self.submit(fields, decision="edit")
         self.assertEqual(invalid.status_code, 409)
+        self.assertIn('id="assessment-save-error"', invalid.text)
+        self.assertIn("Impact scope:", invalid.text)
         self.assertEqual(FormPage(invalid.text).fields, fields)
         self.assertNotIn("<script>", invalid.text)
         self.assertIsNone(self.store.get(self.job.id))
@@ -173,6 +175,8 @@ class AssessmentFormTest(unittest.TestCase):
         job = self.failed(output="<script>malformed output</script>")
         self.url = f"/jobs/{job.id}/annotation"
         page = self.client.get(f"/jobs/{job.id}")
+        self.assertIn('aria-labelledby="model-draft-warning"', page.text)
+        self.assertNotIn('id="assessment-save-error"', page.text)
         self.assertIn("&lt;script&gt;malformed output", page.text)
         self.assertNotIn('value="accept"', page.text)
         fields = FormPage(page.text).fields

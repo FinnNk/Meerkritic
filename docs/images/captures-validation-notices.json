@@ -1,0 +1,20 @@
+{
+  "date": "2026-09-23",
+  "base_revision": "ea9d8c4367b6b35806d360ecbf4187d57a410978",
+  "change": "fix/assessment-validation-notices; templates and image committed together",
+  "fixture": "docs/images/create_demo.py; fresh external runtime; no model calls or human judgements",
+  "route_key": "failed_annotation",
+  "action": "Save edited assessment with the fixture's invalid evidence quote unchanged; rejected, not recorded",
+  "browser": "Codex in-app browser; default viewport and dark appearance",
+  "capture": "Browser screenshot with document-coordinate crop; neutral note and red error inspected visually",
+  "crop": {
+    "x": 18,
+    "y": 1438,
+    "width": 478,
+    "height": 215
+  },
+  "file": "failed-draft-assessment.png",
+  "sha256": "287ab80402469321e1bfc66d31029fcb3a84e687ffc6f7383253026944faf5ce",
+  "redaction": "none",
+  "limitations": "Generated IDs and browser scaling vary; use visible landmarks when recapturing. Dark appearance visually inspected; light appearance uses explicit paired colours but was not separately captured."
+}

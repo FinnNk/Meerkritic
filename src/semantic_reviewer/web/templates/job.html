@@ -104,8 +104,10 @@ records which preserved source was presented, not whether you read it.</p>{% end
 {% if draft.notes %}<pre>{{ draft.notes }}</pre>{% endif %}</details>{% endif %}
 {% elif actions %}
 {% if job.status == 'failed' %}
-<p>This draft failed validation. Edit it using <strong>Source for your assessment</strong>, or reject it. Accept is unavailable. Each decision saves immediately.</p>
-<p>The original output and failure remain unchanged. Your correction must pass the current compatible schema and exact-quote checks.</p>
+<aside aria-labelledby="model-draft-warning">
+<p><strong id="model-draft-warning">Original model output:</strong> failed validation.
+You can edit or reject it; Accept is unavailable. This does not indicate a problem with your edits.</p>
+</aside>
 {% else %}<p>Accept the interpretation, edit it, or reject it. Each decision saves immediately.</p>{% endif %}
 {% include "assessment_form.html" %}
 {% else %}<p>No reviewable model draft is available. Only successful interpretations or retained semantic failures can be assessed; provider and interrupted failures remain for inspection.</p>{% endif %}

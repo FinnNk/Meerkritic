@@ -184,6 +184,8 @@ class ReadingContextTest(unittest.TestCase):
         self.attach()
         response = self.submit(fields, decision="reject")
         self.assertEqual(response.status_code, 409)
+        self.assertIn('id="assessment-save-error"', response.text)
+        self.assertIn("Source context changed since this form opened", response.text)
         self.assertEqual(FormPage(response.text).fields, fields)
         self.assertIsNone(self.store.get(self.job.id))
         legacy = self.client.post(self.url, data={"decision": "reject"}, headers=self.headers)

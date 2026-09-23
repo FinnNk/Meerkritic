@@ -15,7 +15,10 @@
 <input type="hidden" name="editor" value="fields">
 <input type="hidden" name="context_sha256" value="{{ presented_context }}">
 <h3>Edit the interpretation</h3>
-{% if error %}<p role="alert">{{ error }}</p>{% endif %}
+{% if error %}<div class="assessment-notice assessment-error" role="alert" aria-labelledby="assessment-save-error">
+<h3 id="assessment-save-error">Assessment not saved</h3>
+<p>{{ error }}</p><p>Your edits remain in the form below. Resolve this problem before saving again.</p>
+</div>{% endif %}
 <p>Change the fields below, then choose <strong>Save edited assessment</strong>.
 Changes belong to this tab and are not saved until you choose a decision.
 Adding or removing rows keeps the unsaved form on this page.</p>
