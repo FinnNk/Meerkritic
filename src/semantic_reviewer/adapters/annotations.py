@@ -21,7 +21,7 @@ class SQLiteAnnotations:
         with self.state.connect() as db:
             db.execute("BEGIN IMMEDIATE")
             row = db.execute(
-                "SELECT * FROM annotation WHERE job_id=?", (annotation.job_id,)
+                "SELECT * FROM current_annotation WHERE job_id=?", (annotation.job_id,)
             ).fetchone()
             if row:
                 existing = Annotation(**dict(row))
@@ -64,10 +64,64 @@ class SQLiteAnnotations:
             )
         return annotation
 
+    def correct(
+        self, annotation: Annotation, supersedes_id: str, reason: str, curator: str
+    ) -> Annotation:
+        """Fence the predecessor and append replacement/event in one short transaction."""
+        values = asdict(annotation)
+        with self.state.connect() as db:
+            db.execute("BEGIN IMMEDIATE")
+            replay = db.execute(
+                "SELECT * FROM annotation_correction WHERE supersedes_id=?", (supersedes_id,)
+            ).fetchone()
+            if replay:
+                if (
+                    any(
+                        replay[key] != value
+                        for key, value in values.items()
+                        if key not in ("id", "created_at")
+                    )
+                    or replay["reason"] != reason
+                    or replay["curator"] != curator
+                ):
+                    raise ValueError("This annotation was already corrected differently.")
+                return Annotation(**{key: replay[key] for key in values})
+            current = db.execute(
+                "SELECT id FROM current_annotation WHERE job_id=?", (annotation.job_id,)
+            ).fetchone()
+            if current is None or current[0] != supersedes_id:
+                raise ValueError("Correction requires the current annotation version.")
+            db.execute(
+                "INSERT INTO annotation_correction VALUES ("
+                + ",".join("?" for _ in range(len(values) + 3))
+                + ")",
+                (*values.values(), supersedes_id, reason, curator),
+            )
+            db.execute(
+                "INSERT INTO event(kind, subject_id, occurred_at, details_json) VALUES (?,?,?,?)",
+                (
+                    "annotation_corrected",
+                    annotation.id,
+                    annotation.created_at,
+                    json.dumps(
+                        {
+                            "job_id": annotation.job_id,
+                            "supersedes_id": supersedes_id,
+                            "reason": reason,
+                            "curator": curator,
+                            "schema_version": 1,
+                        }
+                    ),
+                ),
+            )
+        return annotation
+
     def get(self, job_id: str) -> Annotation | None:
         """Read a result's decision without loading artefact bodies."""
         with self.state.connect() as db:
-            row = db.execute("SELECT * FROM annotation WHERE job_id=?", (job_id,)).fetchone()
+            row = db.execute(
+                "SELECT * FROM current_annotation WHERE job_id=?", (job_id,)
+            ).fetchone()
             return Annotation(**dict(row)) if row else None
 
     def history(self, observation_id: str) -> tuple[Annotation, ...]:
@@ -76,7 +130,7 @@ class SQLiteAnnotations:
             return tuple(
                 Annotation(**dict(row))
                 for row in db.execute(
-                    "SELECT * FROM annotation WHERE observation_id=? "
+                    "SELECT * FROM annotation_version WHERE observation_id=? "
                     "ORDER BY created_at DESC, id DESC LIMIT 100",
                     (observation_id,),
                 )
@@ -85,7 +139,9 @@ class SQLiteAnnotations:
     def by_id(self, annotation_id: str) -> Annotation | None:
         """Resolve an explicit version without guessing the latest result for its source."""
         with self.state.connect() as db:
-            row = db.execute("SELECT * FROM annotation WHERE id=?", (annotation_id,)).fetchone()
+            row = db.execute(
+                "SELECT * FROM annotation_version WHERE id=?", (annotation_id,)
+            ).fetchone()
             return Annotation(**dict(row)) if row else None
 
     def progress(self, dataset_id: str) -> AnnotationProgress:
@@ -105,20 +161,22 @@ class SQLiteAnnotations:
             )
             decisions = dict(
                 db.execute(
-                    "SELECT a.decision, count(*) FROM annotation a JOIN job j ON j.id=a.job_id "
+                    "SELECT a.decision, count(*) FROM current_annotation a "
+                    "JOIN job j ON j.id=a.job_id "
                     "WHERE j.dataset_id=? GROUP BY a.decision",
                     (dataset_id,),
                 )
             )
             reviewed = dict(
                 db.execute(
-                    "SELECT j.status, count(*) FROM annotation a JOIN job j ON j.id=a.job_id "
+                    "SELECT j.status, count(*) FROM current_annotation a "
+                    "JOIN job j ON j.id=a.job_id "
                     "WHERE j.dataset_id=? GROUP BY j.status",
                     (dataset_id,),
                 )
             )
             sources = db.execute(
-                "SELECT count(DISTINCT a.observation_id) FROM annotation a "
+                "SELECT count(DISTINCT a.observation_id) FROM current_annotation a "
                 "JOIN job j ON j.id=a.job_id "
                 "WHERE j.dataset_id=?",
                 (dataset_id,),

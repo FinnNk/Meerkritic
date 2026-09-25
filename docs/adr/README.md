@@ -65,6 +65,7 @@ Newest first. Status here describes the decision, not the PR or vertical slice.
 
 | Record | Title | Status | Decision-makers | Date |
 | --- | --- | --- | --- | --- |
+| [ADR-0017](ADR-0017-preserve-annotation-corrections.md) | Preserve saved assessments when recording corrections | implemented | Project owner | 2026-09-25 |
 | [ADR-0016](ADR-0016-use-local-codegraph-for-navigation.md) | Use a local CodeGraph index for code navigation | implemented | Finn Newick | 2026-09-22 |
 | [ADR-0015](ADR-0015-separate-review-context-from-model-input.md) | Separate preserved review context from model input | implemented | Finn Newick | 2026-09-21 |
 | [ADR-0014](ADR-0014-clarify-assessment-field-meanings.md) | Distinguish impact, applicability and evidence limits in assessments | implemented | Finn Newick | 2026-09-20 |

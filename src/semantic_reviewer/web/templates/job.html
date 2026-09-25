@@ -96,7 +96,7 @@ records which preserved source was presented, not whether you read it.</p>{% end
 <dt>Applicability limits</dt><dd>{% if edited.interpretation.exclusions %}<ul>{% for item in edited.interpretation.exclusions %}<li>{{ item }}</li>{% endfor %}</ul>{% else %}None identified{% endif %}</dd></dl>
 <h4>Saved evidence quotes</h4>{% for span in edited.evidence_spans %}<blockquote><pre>{{ span.quote }}</pre><p>{{ span.source }} · characters {{ span.start }}–{{ span.end }}</p></blockquote>{% endfor %}
 <details><summary>Saved interpretation and provenance (JSON)</summary><pre>{{ edited | tojson(indent=2) }}</pre></details>{% endif %}
-<p>This decision is recorded. Source annotations cannot be reopened or overwritten.</p>
+<p>This decision is recorded and cannot be overwritten. An operator can record an explicitly approved correction; earlier versions remain in the assessment history.</p>
 {% if error and draft %}<details open><summary>Unsaved submission from this tab</summary>
 <p>The saved decision above was not changed. Retain these attempted changes when resolving the discrepancy.</p>
 {% if form %}<dl>{% for name, values in form.values.items() %}<dt>{{ name }}</dt><dd>{% for value in values %}<pre>{{ value }}</pre>{% endfor %}</dd>{% endfor %}</dl>{% endif %}
