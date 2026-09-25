@@ -1,0 +1,133 @@
+{
+  "base": "4ab131a08b6bae469b94ae8254c242a6ff1cad68",
+  "tip": "9178de6ae6ff5aaaaf45497c0b79fd4efa217980",
+  "tree": "fb99d1a83a65076236832825f841c54b0fcba2c3",
+  "commits": [
+    {
+      "commit": "9178de6ae6ff5aaaaf45497c0b79fd4efa217980",
+      "parents": [
+        "4ab131a08b6bae469b94ae8254c242a6ff1cad68"
+      ],
+      "tree": "fb99d1a83a65076236832825f841c54b0fcba2c3",
+      "subject": "feat: preserve history when correcting saved assessments",
+      "change": {
+        "files": [
+          {
+            "path": "docs/adr/ADR-0017-preserve-annotation-corrections.md",
+            "added": 78,
+            "deleted": 0
+          },
+          {
+            "path": "docs/adr/README.md",
+            "added": 1,
+            "deleted": 0
+          },
+          {
+            "path": "docs/development/annotations.md",
+            "added": 40,
+            "deleted": 2
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/annotations.py",
+            "added": 65,
+            "deleted": 7
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/migrations/015_annotation_corrections.sql",
+            "added": 45,
+            "deleted": 0
+          },
+          {
+            "path": "src/semantic_reviewer/adapters/results.py",
+            "added": 1,
+            "deleted": 1
+          },
+          {
+            "path": "src/semantic_reviewer/application/annotations.py",
+            "added": 65,
+            "deleted": 15
+          },
+          {
+            "path": "src/semantic_reviewer/web/templates/job.html",
+            "added": 1,
+            "deleted": 1
+          },
+          {
+            "path": "tests/test_annotation_corrections.py",
+            "added": 179,
+            "deleted": 0
+          },
+          {
+            "path": "tools/run.py",
+            "added": 19,
+            "deleted": 0
+          }
+        ],
+        "file_count": 10,
+        "added": 494,
+        "deleted": 26,
+        "binary_files": 0
+      }
+    }
+  ],
+  "linear": true,
+  "final_change": {
+    "files": [
+      {
+        "path": "docs/adr/ADR-0017-preserve-annotation-corrections.md",
+        "added": 78,
+        "deleted": 0
+      },
+      {
+        "path": "docs/adr/README.md",
+        "added": 1,
+        "deleted": 0
+      },
+      {
+        "path": "docs/development/annotations.md",
+        "added": 40,
+        "deleted": 2
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/annotations.py",
+        "added": 65,
+        "deleted": 7
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/migrations/015_annotation_corrections.sql",
+        "added": 45,
+        "deleted": 0
+      },
+      {
+        "path": "src/semantic_reviewer/adapters/results.py",
+        "added": 1,
+        "deleted": 1
+      },
+      {
+        "path": "src/semantic_reviewer/application/annotations.py",
+        "added": 65,
+        "deleted": 15
+      },
+      {
+        "path": "src/semantic_reviewer/web/templates/job.html",
+        "added": 1,
+        "deleted": 1
+      },
+      {
+        "path": "tests/test_annotation_corrections.py",
+        "added": 179,
+        "deleted": 0
+      },
+      {
+        "path": "tools/run.py",
+        "added": 19,
+        "deleted": 0
+      }
+    ],
+    "file_count": 10,
+    "added": 494,
+    "deleted": 26,
+    "binary_files": 0
+  },
+  "statistics_note": "No rename detection; merge commit churn uses first parent. Final diff and cumulative per-commit churn are different quantities."
+}

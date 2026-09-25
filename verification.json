@@ -1,0 +1,27 @@
+{
+  "head": "9178de6ae6ff5aaaaf45497c0b79fd4efa217980",
+  "base": "4ab131a08b6bae469b94ae8254c242a6ff1cad68",
+  "diary": "eca4915fee0c62e344a8d999612ed2bc0e2f9aad",
+  "tree": "fb99d1a83a65076236832825f841c54b0fcba2c3",
+  "standard_checks": "passed",
+  "tests": {
+    "passed": 259,
+    "failed": 0,
+    "skipped": 0,
+    "added": 6,
+    "altered": 0,
+    "removed": 0
+  },
+  "environment": "Windows x64, Python 3.12.11; checkpoint-local source/tests/lock/venv",
+  "command": "uv run --locked python tools/check.py",
+  "review": "author self-review; not independent or owner acceptance",
+  "architecture": "three correction interface additions; no import, module, contract or boundary changes",
+  "operational_reconciliation": "Two owner-approved drafts restored as linked corrections after backup and rehearsal. Original records and all 366 existing runtime files preserved; exact read-back and browser checks passed. Private study evidence is not in this archive.",
+  "limits": [
+    "Operator CLI supports Edit corrections only",
+    "Curator is an attribution claim, not authentication",
+    "Existing frozen selections retain their explicit versions",
+    "No empirical quality claim"
+  ],
+  "hosted": "not yet inspected; no repository CI workflow present"
+}

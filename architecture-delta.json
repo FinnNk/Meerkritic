@@ -1,0 +1,42 @@
+{
+  "changes": {
+    "boundaries": {
+      "added": [],
+      "removed": []
+    },
+    "contracts": {
+      "added": [],
+      "removed": []
+    },
+    "imports": {
+      "added": [],
+      "removed": []
+    },
+    "interfaces": {
+      "added": [
+        {
+          "declaration": "def correct(self, annotation: Annotation, supersedes_id: str, reason: str, curator: str) -> Annotation",
+          "kind": "callable",
+          "name": "semantic_reviewer.adapters.annotations.SQLiteAnnotations.correct"
+        },
+        {
+          "declaration": "def correct(self, annotation: Annotation, supersedes_id: str, reason: str, curator: str) -> Annotation",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.annotations.AnnotationStore.correct"
+        },
+        {
+          "declaration": "def correct(self, supersedes_id: str, edited_json: str, notes: str, *, reason: str, curator: str) -> Annotation",
+          "kind": "callable",
+          "name": "semantic_reviewer.application.annotations.AnnotationService.correct"
+        }
+      ],
+      "removed": []
+    },
+    "modules": {
+      "added": [],
+      "removed": []
+    },
+    "settings": {}
+  },
+  "schema_version": 3
+}
