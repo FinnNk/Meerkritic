@@ -54,6 +54,12 @@ def main() -> int:
     annotate.add_argument("decision", choices=("accept", "edit", "reject"))
     annotate.add_argument("--notes", default="")
     annotate.add_argument("--edited-json", type=Path)
+    correction = commands.add_parser("correct-annotation")
+    correction.add_argument("annotation_id")
+    correction.add_argument("--edited-json", type=Path, required=True)
+    correction.add_argument("--notes-file", type=Path, required=True)
+    correction.add_argument("--reason", required=True)
+    correction.add_argument("--curator", required=True)
     progress = commands.add_parser("progress")
     progress.add_argument("dataset_id")
     selection = commands.add_parser("freeze-selection")
@@ -110,6 +116,19 @@ def main() -> int:
                     "decisions": decisions,
                 }
             print(json.dumps(result, indent=2))
+        elif args.command == "correct-annotation":
+            composition = importlib.import_module("semantic_reviewer.bootstrap")
+            annotations = composition.build_annotations(
+                args.data_root, composition.build_jobs(args.data_root)
+            )
+            result = annotations.correct(
+                args.annotation_id,
+                args.edited_json.read_text(encoding="utf-8-sig"),
+                args.notes_file.read_text(encoding="utf-8-sig"),
+                reason=args.reason,
+                curator=args.curator,
+            )
+            print(json.dumps(asdict(result), indent=2))
         elif args.command in ("annotate", "progress"):
             composition = importlib.import_module("semantic_reviewer.bootstrap")
             annotations = composition.build_annotations(

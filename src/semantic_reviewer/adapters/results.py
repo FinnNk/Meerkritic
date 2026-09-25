@@ -75,7 +75,7 @@ class JsonResults:
             rows = db.execute(
                 "SELECT artefact_sha256, id, 'normalisation' FROM job "
                 "WHERE artefact_sha256 IS NOT NULL UNION "
-                "SELECT interpretation_sha256, job_id, 'human_edit' FROM annotation "
+                "SELECT interpretation_sha256, job_id, 'human_edit' FROM annotation_version "
                 "WHERE interpretation_sha256 IS NOT NULL"
             ).fetchall()
         for digest, job_id, kind in rows:

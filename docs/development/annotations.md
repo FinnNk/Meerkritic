@@ -36,7 +36,8 @@ no interpretation to assess.
    inspect failures. For a study, follow its prepared order instead of this queue.
 
 An identical retry returns the saved decision. A different decision for the same
-result is refused. Source annotations cannot currently be reopened; the
+result is refused. To fix an already saved mistake, use an
+[explicit correction](#correct-a-saved-assessment). Source forms cannot be reopened; the
 [review workspace](research-interaction.md) reopens **rule reviews**, not annotations.
 Edits belong to the current tab until submitted. A second tab does not contain
 your unsaved changes. Check the saved interpretation and notes after submission.
@@ -59,10 +60,13 @@ List controls do not save a judgement; the three decision buttons do.
 | Reviewed failed outputs | Reviewed failed runs out of all failed runs; some failures have no reviewable draft |
 | Reviewed results | Total outputs with a decision, including corrected or rejected failures |
 | Source coverage | Distinct original observations reviewed, regardless of repeat runs |
-| Source history | The latest 100 decisions for that source across model runs |
+| Source history | The latest 100 immutable decision versions, including corrections, across model runs |
 
 Pending pages can shift as decisions are saved. Return to the first page to refresh
 that queue. Progress counts come from one consistent database snapshot.
+Corrections replace the current decision in progress counts without adding another
+reviewed result or source. Earlier decision IDs remain available for audit and
+existing frozen selections.
 
 ## Use the command line
 
@@ -79,6 +83,40 @@ uv run --locked python tools/run.py --data-root ../extras/runtime progress <data
 Choose one annotation command per result. For an edit, `<file>` must contain the
 complete interpretation, not just changed fields. The command prints the saved
 annotation; `progress` reports result counts and distinct-source coverage.
+
+## Correct a saved assessment
+
+An operator can record a replacement **Edit** when the reviewer has explicitly
+approved the complete corrected interpretation and notes. This keeps the original
+decision and adds a linked version with a reason and curator. It does not rerun the
+model, change the source or modify existing frozen selections.
+
+1. Verify the current annotation ID on the job page, and retain the reviewer's
+   approval. Work in the same browser tab when preparing and saving assessments.
+2. Save the approved full interpretation as UTF-8 JSON and the approved notes as a
+   UTF-8 text file outside the repository. Use schema keys such as
+   `coarse_categories` and `evidence_quotes`; notes belong in the separate file.
+3. Back up the runtime database using SQLite's backup API. Copying a live database
+   file alone may miss writes in its WAL file.
+4. From the repository root, run the following command using the same external
+   runtime path as the harness. Replace the placeholders with the verified ID,
+   approved file paths, actual reason and responsible curator:
+
+   ```text
+   uv run --locked python tools/run.py --data-root <runtime> correct-annotation <annotation-id> --edited-json <approved-json> --notes-file <approved-notes> --reason "Approved edits were saved in the wrong tab" --curator "Reviewer via authorised operator"
+   ```
+
+5. Retain the returned replacement ID. Reload the job page and compare every field,
+   notes and exact quotes with the approved draft. Record the old/new IDs and the
+   assistance involved in the study log. Use the replacement ID when preparing a
+   new selection; old frozen selections deliberately keep their original contents.
+
+The command checks the same schema, evidence quotes and original source context
+as an ordinary edit. An identical retry returns the same correction, even if a
+later version now exists; it does not restore an old version. A conflicting retry
+is refused. Read the current record before requesting a further correction.
+Curator names are recorded claims, not authentication or proof of independent review.
+The command is an operator repair path; it does not add another review-page action.
 
 ## Retention and recovery
 

@@ -14,7 +14,7 @@ from semantic_reviewer.domain.normalisation import IssueInterpretation, ground
 
 @dataclass(frozen=True)
 class Annotation:
-    """Retain one terminal decision for one result; bodies remain in artefact storage."""
+    """Retain one immutable decision version; bodies remain in artefact storage."""
 
     id: str
     job_id: str
@@ -78,7 +78,18 @@ class AnnotationStore(Protocol):
         ...
 
     def get(self, job_id: str) -> Annotation | None:
-        """Return the terminal decision, if this result has been reviewed."""
+        """Return the current decision, if this result has been reviewed."""
+        ...
+
+    def correct(
+        self, annotation: Annotation, supersedes_id: str, reason: str, curator: str
+    ) -> Annotation:
+        """Append a same-result Edit and event, fenced by the current version ID.
+
+        Preserve all earlier versions. Replay identical requests without an event;
+        reject stale/conflicting requests with ValueError. Reason and curator are
+        retained claims, not authentication. The service validates and grounds edits.
+        """
         ...
 
     def by_id(self, annotation_id: str) -> Annotation | None:
@@ -184,7 +195,7 @@ class AnnotationService:
         """Immediately persist Accept/Edit/Reject, preserving original model provenance.
 
         Edits must satisfy the current compatible schema and exact source grounding. Identical
-        retries are safe; changing a completed decision requires a future workflow.
+        retries are safe; changing a completed decision requires explicit correction.
         An interrupted database write may leave an unreferenced immutable edit file.
 
         Args:
@@ -205,6 +216,47 @@ class AnnotationService:
             OSError: Evidence access/publication fails. Storage errors propagate;
                 an edit file may already exist when decision persistence fails.
         """
+        return self.store.record(
+            self._prepare(job_id, decision, notes, edited_json, context_sha256)
+        )
+
+    def correct(
+        self,
+        supersedes_id: str,
+        edited_json: str,
+        notes: str,
+        *,
+        reason: str,
+        curator: str,
+    ) -> Annotation:
+        """Record an explicitly approved replacement without erasing the original.
+
+        Name the exact current annotation and provide the complete approved edit and
+        notes. Preserve its model/source context; never run a model. Identical retries
+        return the original correction. Unknown IDs raise LookupError; stale versions,
+        invalid provenance/grounding and empty reason/curator raise ValueError.
+        Curator identifies responsibility, not an authenticated human submission.
+        """
+        if not reason.strip() or len(reason) > 4000 or not curator.strip() or len(curator) > 200:
+            raise ValueError("Provide a reason (1–4000 characters) and curator (1–200 characters).")
+        previous = self.store.by_id(supersedes_id)
+        if previous is None:
+            raise LookupError("Annotation does not exist.")
+        replacement = self._prepare(
+            previous.job_id, "edit", notes, edited_json, previous.context_sha256
+        )
+        return self.store.correct(replacement, supersedes_id, reason, curator)
+
+    def _prepare(
+        self,
+        job_id: str,
+        decision: str,
+        notes: str,
+        edited_json: str | None,
+        context_sha256: str | None,
+    ) -> Annotation:
+        # Both initial decisions and corrections share eligibility, context and
+        # grounding checks. Only the transactional storage operation differs.
         if decision not in ("accept", "edit", "reject") or len(notes) > 4000:
             raise ValueError(
                 "Choose Accept, Edit or Reject; notes must be at most 4000 characters."
@@ -240,18 +292,16 @@ class AnnotationService:
                 },
                 Publication(job.id, "human_edit"),
             )
-        return self.store.record(
-            Annotation(
-                str(uuid4()),
-                job.id,
-                job.observation_id,
-                job.artefact_sha256,
-                decision,
-                digest,
-                notes,
-                datetime.now(UTC).isoformat(),
-                context_sha256=context_sha256,
-            )
+        return Annotation(
+            str(uuid4()),
+            job.id,
+            job.observation_id,
+            job.artefact_sha256,
+            decision,
+            digest,
+            notes,
+            datetime.now(UTC).isoformat(),
+            context_sha256=context_sha256,
         )
 
     def review(self, job_id: str) -> tuple[Annotation | None, dict[str, object] | None]:
