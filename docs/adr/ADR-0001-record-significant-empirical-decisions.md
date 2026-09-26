@@ -1,6 +1,6 @@
 ---
-status: accepted
-date: 2026-09-19
+status: implemented
+date: 2026-09-26
 decision-makers:
   - Project owner
 ---
@@ -84,7 +84,7 @@ For the first applicable empirical decision, confirm that a committed plan
 precedes the deciding experiment or analysis and that the completed EDR links
 methods, data provenance, results and the decision. Revisit this process if
 actual use reveals disproportionate overhead or insufficient reproducibility.
-No such empirical decision has been completed by this ADR.
+The confirmation below records its first completed use.
 
 Status reviewed on 2026-09-19: the process documentation is present, but the
 first-use confirmation above remains outstanding. Retain `accepted` until that
@@ -97,6 +97,15 @@ commands and retained results. Both methods ran after registration; insufficient
 groups and failed candidate coverage are recorded without tuning or invented
 ratings. The owner's empirical decision is still pending, so retain `accepted`
 until the full confirmation, including that decision, is complete.
+
+First-use confirmation completed on 2026-09-26: Finn Newick agreed to no adoption
+from EDR-0001 and authorised separately scoped exploration. The completed-plan
+commit `fe91fe4f888d9b5eb29e61f056f9b647a50559e4` and registration commit
+`260a47f57e48999d7931814767b56d148e6103c9` precede both recorded method runs.
+The EDR links methods, source/annotation identities, original results, limitations
+and that decision. Status is now `implemented` for this documented first use on
+the candidate branch; this does not claim owner merge approval or independent
+reproduction. The frozen evidence and original registration remain retained.
 
 ## Pros and Cons of the Options
 
@@ -126,6 +135,6 @@ until the full confirmation, including that decision, is complete.
 - [ADR process and index](README.md).
 - This decision comes from the project owner's instruction on 2026-09-19.
   It is a prescribed process requirement, so no EDR was required to adopt it.
-- `accepted` records that instructed intent. It does not mean the owner has
-  approved the bootstrap PR, that the process has been tested in practice, or
-  that VS1 has been implemented.
+- The original `accepted` status recorded instructed intent. The current
+  `implemented` status records the first-use confirmation above; neither status
+  substitutes for owner PR approval or milestone completion.
