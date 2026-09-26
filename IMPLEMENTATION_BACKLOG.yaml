@@ -122,7 +122,7 @@ slices:
     - per-object discussion
     - batched send-to-agent
 - id: VS2
-  current_follow_up: EDR-0001 decided with no adoption; owner authorised bounded diagnostics on retained inputs before further research scope or VS3 activation.
+  current_follow_up: EDR-0001 decided with no adoption and bounded diagnostics complete; agree a developmental pair-level/eligibility study before more labelling or VS3 activation.
   name: Annotation-to-Rule Discovery
   status: ACTIVE
   plan: docs/plans/VS2-plan.md
@@ -138,8 +138,9 @@ slices:
   - input preparation integrated via PR 15 at f5b23e44e4f13237a9f505f2f8182e0561813efe; ordered trees match and 181 integrated tests pass
   - full VS2 closure pending empirical outcome and owner decision
   - 2026-09-26 input audit and registered comparison completed; primary group count insufficient and candidate coverage fails; owner decision outstanding
+  - 2026-09-26 owner agreed no adoption; diagnostics found threshold-only changes cannot yield eight groups and original groups contain no affirmative concerns
   remaining_gates:
-  - complete bounded diagnostic exploration and resolve the next research scope
+  - agree the next research scope after the completed diagnostic exploration
   - owner acceptance of pending stacked follow-ups remains separate from empirical outcome
   - explicitly scoped prospective work before further empirical investigation or VS3 activation
   revision_after: VS1

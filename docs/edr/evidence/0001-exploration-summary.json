@@ -1,0 +1,638 @@
+{
+  "purpose": "post-result exploration; no adoption threshold or human coherence ratings",
+  "scope_commit": "d1a1e39",
+  "input_identities": {
+    "comparison_sha256": "ae29d95b40481fe889ce9712a78419a169d771595c3bd6f88d478d0b168f54b8",
+    "pack_sha256": "70c523bcf2382edda3115a180e169bef65c8cdf1b2eb5ec8dc8dee21bbab0910",
+    "ratings_template_sha256": "ee9df76389c65d0562310560f9611b2bd55f9a61188cdf24af9722b0cb33a9a6",
+    "private_mapping_sha256": "08e6a4f0c9eb7ff6f776be6d24ad6afdbf55370b7a326802c1df6113830525e3",
+    "status": "insufficient",
+    "baseline_sha256": "888fdcaaf0cf0805309a11a591ec75d3f5884908b05680c9ad97ecb72950bf60",
+    "selection_sha256": "f5bc84b772da601d3a068e42cdbb77799e887628773084aa9fe9b32ca1fabdd7",
+    "embedding_result_sha256": "868dcb9a8f7f7596a3164faaf4cd93201717389d6ff549304bef303a997843d0",
+    "vectors_sha256": "1bac5f3faa1add60905e0eed0f9221d0bff51838cf1b889792d586f48dba66a1",
+    "cluster_result_sha256": "679b56d8a77a317f505bfd070f2a60e4977e04d6c1bc59c0653be8a6a038744d",
+    "members_sha256": "bafbd860d54d728475218b811637d8b573716992f6c15a5d2d4dc07f6e27c7e8"
+  },
+  "method_sha256": "7eff6e71c4c8c80187847de283063cf95227cde8fc56146771fa802672d1c4d1",
+  "verification": {
+    "synthetic_challenges_passed": true,
+    "independent_registered_partition_replay_passed": true,
+    "aligned_records": 40,
+    "dimensions": 768,
+    "duplicate_vector_rows": 0,
+    "norm_min": 1.0,
+    "norm_max": 1.0
+  },
+  "corpus": {
+    "concern_flags": {
+      "yes": 34,
+      "no": 5,
+      "uncertain": 1
+    },
+    "categories": {
+      "Code maintenance": 1,
+      "Annotation management": 1,
+      "Documentation": 7,
+      "Deprecation handling": 1,
+      "Session management": 1,
+      "Readability": 4,
+      "Logging": 2,
+      "Feature inference": 1,
+      "Python syntax": 1,
+      "String formatting": 1,
+      "Query execution": 1,
+      "Error handling": 4,
+      "Cross-references": 2,
+      "Document structure": 1,
+      "State management": 2,
+      "Serialisation": 1,
+      "Testing": 2,
+      "Change traceability": 1,
+      "API calls": 1,
+      "Asynchronous operations": 1,
+      "No concern expressed": 1,
+      "Continuous integration": 1,
+      "Runtime compatibility": 1,
+      "Change focus": 1,
+      "Code formatting": 2,
+      "Code review": 1,
+      "Imports": 1,
+      "Name resolution": 1,
+      "Runtime errors": 1,
+      "Test organisation": 1,
+      "Doctests": 1,
+      "Documentation accuracy": 3,
+      "Documentation consistency": 1,
+      "Project descriptions": 1,
+      "Geo-restriction handling": 1,
+      "Templating": 1,
+      "Code reachability": 1,
+      "UI behaviour": 1,
+      "Praise": 1,
+      "Documentation usability": 1,
+      "API contract compliance": 1,
+      "Input handling": 1,
+      "Asynchronous programming": 1,
+      "API behaviour": 1,
+      "Testability": 1,
+      "API documentation": 1,
+      "Change communication": 1,
+      "Documentation clarity": 2,
+      "Grammar": 1,
+      "Security": 1,
+      "Configuration": 1,
+      "Code consistency": 1,
+      "Positive feedback": 1,
+      "Performance": 1,
+      "Function inlining": 1,
+      "Version control": 1,
+      "Configuration management": 1,
+      "Parameter explanation": 1,
+      "Shared state": 1,
+      "Type safety": 1,
+      "API design": 1,
+      "Code readability": 1,
+      "Parameter naming": 1,
+      "Regular expression accuracy": 1,
+      "URL parsing": 1
+    },
+    "repository_counts": {
+      "ansible/ansible": 2,
+      "apache/superset": 2,
+      "dlt-hub/dlt": 1,
+      "feast-dev/feast": 2,
+      "httpie/httpie": 2,
+      "keras-team/keras": 2,
+      "langchain-ai/langchain": 2,
+      "matplotlib/matplotlib": 2,
+      "numpy/numpy": 2,
+      "openai/gym": 2,
+      "pallets/flask": 2,
+      "posthog/posthog": 2,
+      "public-apis/public-apis": 2,
+      "python/cpython": 2,
+      "reflex-dev/reflex": 2,
+      "scikit-learn/scikit-learn": 2,
+      "scrapy/scrapy": 2,
+      "streamlit/streamlit": 2,
+      "thealgorithms/python": 2,
+      "vinta/awesome-python": 1,
+      "yt-dlp/yt-dlp": 2
+    },
+    "text_character_quantiles": {
+      "0": 118.0,
+      "0.25": 273.0,
+      "0.5": 362.0,
+      "0.75": 397.0,
+      "0.9": 489.0,
+      "0.95": 542.0,
+      "1": 668.0
+    }
+  },
+  "diagnostics": {
+    "cosine_full": {
+      "pairs": 780,
+      "pair_quantiles": {
+        "0": 0.561433972761927,
+        "0.25": 0.6701206631631651,
+        "0.5": 0.6975503682087675,
+        "0.75": 0.7282586299406241,
+        "0.9": 0.7628353231495801,
+        "0.95": 0.7805092070522099,
+        "1": 0.9256467356271396
+      },
+      "nearest_neighbour_quantiles": {
+        "0": 0.6941820524368795,
+        "0.25": 0.7634990327539743,
+        "0.5": 0.7793623834972322,
+        "0.75": 0.81293137808245,
+        "0.9": 0.849885724702,
+        "0.95": 0.9221300344344042,
+        "1": 0.9256467356271396
+      },
+      "fixed_grid": [
+        {
+          "threshold": 0.6,
+          "groups": 1,
+          "group_sizes": [
+            40
+          ],
+          "covered": 40,
+          "edges": 768,
+          "chained_groups": 1,
+          "minimum_within_group_similarity": [
+            0.561433972761927
+          ]
+        },
+        {
+          "threshold": 0.7,
+          "groups": 1,
+          "group_sizes": [
+            39
+          ],
+          "covered": 39,
+          "edges": 384,
+          "chained_groups": 1,
+          "minimum_within_group_similarity": [
+            0.561433972761927
+          ]
+        },
+        {
+          "threshold": 0.75,
+          "groups": 1,
+          "group_sizes": [
+            36
+          ],
+          "covered": 36,
+          "edges": 117,
+          "chained_groups": 1,
+          "minimum_within_group_similarity": [
+            0.5746603724756308
+          ]
+        },
+        {
+          "threshold": 0.8,
+          "groups": 2,
+          "group_sizes": [
+            12,
+            3
+          ],
+          "covered": 15,
+          "edges": 19,
+          "chained_groups": 2,
+          "minimum_within_group_similarity": [
+            0.6693849880634434,
+            0.6729098363665597
+          ]
+        },
+        {
+          "threshold": 0.85,
+          "groups": 1,
+          "group_sizes": [
+            4
+          ],
+          "covered": 4,
+          "edges": 6,
+          "chained_groups": 0,
+          "minimum_within_group_similarity": [
+            0.8922161838916348
+          ]
+        },
+        {
+          "threshold": 0.9,
+          "groups": 1,
+          "group_sizes": [
+            4
+          ],
+          "covered": 4,
+          "edges": 5,
+          "chained_groups": 1,
+          "minimum_within_group_similarity": [
+            0.8922161838916348
+          ]
+        },
+        {
+          "threshold": 0.95,
+          "groups": 0,
+          "group_sizes": [],
+          "covered": 0,
+          "edges": 0,
+          "chained_groups": 0,
+          "minimum_within_group_similarity": []
+        }
+      ],
+      "breakpoint_states": 781,
+      "maximum_groups": 4,
+      "any_state_with_eight_groups_and_24_covered": false
+    },
+    "lexical_full": {
+      "pairs": 780,
+      "pair_quantiles": {
+        "0": 0.017857142857142856,
+        "0.25": 0.06741573033707865,
+        "0.5": 0.08536585365853659,
+        "0.75": 0.10638297872340426,
+        "0.9": 0.13157894736842105,
+        "0.95": 0.14444444444444443,
+        "1": 0.5909090909090909
+      },
+      "nearest_neighbour_quantiles": {
+        "0": 0.13043478260869565,
+        "0.25": 0.14666666666666667,
+        "0.5": 0.15789473684210525,
+        "0.75": 0.18181818181818182,
+        "0.9": 0.2413793103448276,
+        "0.95": 0.5,
+        "1": 0.5909090909090909
+      },
+      "fixed_grid": [
+        {
+          "threshold": 0.1,
+          "groups": 1,
+          "group_sizes": [
+            40
+          ],
+          "covered": 40,
+          "edges": 259,
+          "chained_groups": 1,
+          "minimum_within_group_similarity": [
+            0.017857142857142856
+          ]
+        },
+        {
+          "threshold": 0.15,
+          "groups": 4,
+          "group_sizes": [
+            20,
+            3,
+            2,
+            2
+          ],
+          "covered": 27,
+          "edges": 30,
+          "chained_groups": 2,
+          "minimum_within_group_similarity": [
+            0.017857142857142856,
+            0.15789473684210525,
+            0.09090909090909091,
+            0.16
+          ]
+        },
+        {
+          "threshold": 0.2,
+          "groups": 2,
+          "group_sizes": [
+            5,
+            2
+          ],
+          "covered": 7,
+          "edges": 10,
+          "chained_groups": 1,
+          "minimum_within_group_similarity": [
+            0.08888888888888889,
+            0.20408163265306123
+          ]
+        },
+        {
+          "threshold": 0.25,
+          "groups": 1,
+          "group_sizes": [
+            4
+          ],
+          "covered": 4,
+          "edges": 4,
+          "chained_groups": 1,
+          "minimum_within_group_similarity": [
+            0.20588235294117646
+          ]
+        },
+        {
+          "threshold": 0.3,
+          "groups": 1,
+          "group_sizes": [
+            3
+          ],
+          "covered": 3,
+          "edges": 3,
+          "chained_groups": 0,
+          "minimum_within_group_similarity": [
+            0.43478260869565216
+          ]
+        },
+        {
+          "threshold": 0.4,
+          "groups": 1,
+          "group_sizes": [
+            3
+          ],
+          "covered": 3,
+          "edges": 3,
+          "chained_groups": 0,
+          "minimum_within_group_similarity": [
+            0.43478260869565216
+          ]
+        },
+        {
+          "threshold": 0.5,
+          "groups": 1,
+          "group_sizes": [
+            3
+          ],
+          "covered": 3,
+          "edges": 2,
+          "chained_groups": 1,
+          "minimum_within_group_similarity": [
+            0.43478260869565216
+          ]
+        }
+      ],
+      "breakpoint_states": 297,
+      "maximum_groups": 5,
+      "any_state_with_eight_groups_and_24_covered": false
+    },
+    "lexical_issue_only": {
+      "pairs": 780,
+      "pair_quantiles": {
+        "0": 0.023255813953488372,
+        "0.25": 0.06521739130434782,
+        "0.5": 0.08333333333333333,
+        "0.75": 0.10526315789473684,
+        "0.9": 0.13636363636363635,
+        "0.95": 0.15555555555555556,
+        "1": 0.7222222222222222
+      },
+      "nearest_neighbour_quantiles": {
+        "0": 0.11594202898550725,
+        "0.25": 0.15217391304347827,
+        "0.5": 0.17647058823529413,
+        "0.75": 0.2127659574468085,
+        "0.9": 0.25925925925925924,
+        "0.95": 0.5555555555555556,
+        "1": 0.7222222222222222
+      },
+      "fixed_grid": [
+        {
+          "threshold": 0.1,
+          "groups": 1,
+          "group_sizes": [
+            40
+          ],
+          "covered": 40,
+          "edges": 240,
+          "chained_groups": 1,
+          "minimum_within_group_similarity": [
+            0.023255813953488372
+          ]
+        },
+        {
+          "threshold": 0.15,
+          "groups": 2,
+          "group_sizes": [
+            31,
+            2
+          ],
+          "covered": 33,
+          "edges": 53,
+          "chained_groups": 1,
+          "minimum_within_group_similarity": [
+            0.023255813953488372,
+            0.2127659574468085
+          ]
+        },
+        {
+          "threshold": 0.2,
+          "groups": 3,
+          "group_sizes": [
+            6,
+            5,
+            2
+          ],
+          "covered": 13,
+          "edges": 15,
+          "chained_groups": 2,
+          "minimum_within_group_similarity": [
+            0.0975609756097561,
+            0.11320754716981132,
+            0.2127659574468085
+          ]
+        },
+        {
+          "threshold": 0.25,
+          "groups": 1,
+          "group_sizes": [
+            5
+          ],
+          "covered": 5,
+          "edges": 6,
+          "chained_groups": 1,
+          "minimum_within_group_similarity": [
+            0.0975609756097561
+          ]
+        },
+        {
+          "threshold": 0.3,
+          "groups": 1,
+          "group_sizes": [
+            4
+          ],
+          "covered": 4,
+          "edges": 4,
+          "chained_groups": 1,
+          "minimum_within_group_similarity": [
+            0.21875
+          ]
+        },
+        {
+          "threshold": 0.4,
+          "groups": 1,
+          "group_sizes": [
+            3
+          ],
+          "covered": 3,
+          "edges": 3,
+          "chained_groups": 0,
+          "minimum_within_group_similarity": [
+            0.47619047619047616
+          ]
+        },
+        {
+          "threshold": 0.5,
+          "groups": 1,
+          "group_sizes": [
+            3
+          ],
+          "covered": 3,
+          "edges": 2,
+          "chained_groups": 1,
+          "minimum_within_group_similarity": [
+            0.47619047619047616
+          ]
+        }
+      ],
+      "breakpoint_states": 203,
+      "maximum_groups": 5,
+      "any_state_with_eight_groups_and_24_covered": false
+    },
+    "lexical_issue_invariant": {
+      "pairs": 780,
+      "pair_quantiles": {
+        "0": 0.0196078431372549,
+        "0.25": 0.06944444444444445,
+        "0.5": 0.08791208791208792,
+        "0.75": 0.10810810810810811,
+        "0.9": 0.1346153846153846,
+        "0.95": 0.14754098360655737,
+        "1": 0.7222222222222222
+      },
+      "nearest_neighbour_quantiles": {
+        "0": 0.13114754098360656,
+        "0.25": 0.14492753623188406,
+        "0.5": 0.1527777777777778,
+        "0.75": 0.1791044776119403,
+        "0.9": 0.25925925925925924,
+        "0.95": 0.5555555555555556,
+        "1": 0.7222222222222222
+      },
+      "fixed_grid": [
+        {
+          "threshold": 0.1,
+          "groups": 1,
+          "group_sizes": [
+            40
+          ],
+          "covered": 40,
+          "edges": 269,
+          "chained_groups": 1,
+          "minimum_within_group_similarity": [
+            0.0196078431372549
+          ]
+        },
+        {
+          "threshold": 0.15,
+          "groups": 3,
+          "group_sizes": [
+            21,
+            2,
+            2
+          ],
+          "covered": 25,
+          "edges": 33,
+          "chained_groups": 1,
+          "minimum_within_group_similarity": [
+            0.03508771929824561,
+            0.15151515151515152,
+            0.16901408450704225
+          ]
+        },
+        {
+          "threshold": 0.2,
+          "groups": 3,
+          "group_sizes": [
+            5,
+            2,
+            2
+          ],
+          "covered": 9,
+          "edges": 11,
+          "chained_groups": 1,
+          "minimum_within_group_similarity": [
+            0.0975609756097561,
+            0.20833333333333334,
+            0.20588235294117646
+          ]
+        },
+        {
+          "threshold": 0.25,
+          "groups": 1,
+          "group_sizes": [
+            5
+          ],
+          "covered": 5,
+          "edges": 6,
+          "chained_groups": 1,
+          "minimum_within_group_similarity": [
+            0.0975609756097561
+          ]
+        },
+        {
+          "threshold": 0.3,
+          "groups": 1,
+          "group_sizes": [
+            4
+          ],
+          "covered": 4,
+          "edges": 4,
+          "chained_groups": 1,
+          "minimum_within_group_similarity": [
+            0.21875
+          ]
+        },
+        {
+          "threshold": 0.4,
+          "groups": 1,
+          "group_sizes": [
+            3
+          ],
+          "covered": 3,
+          "edges": 3,
+          "chained_groups": 0,
+          "minimum_within_group_similarity": [
+            0.47619047619047616
+          ]
+        },
+        {
+          "threshold": 0.5,
+          "groups": 1,
+          "group_sizes": [
+            3
+          ],
+          "covered": 3,
+          "edges": 2,
+          "chained_groups": 1,
+          "minimum_within_group_similarity": [
+            0.47619047619047616
+          ]
+        }
+      ],
+      "breakpoint_states": 282,
+      "maximum_groups": 4,
+      "any_state_with_eight_groups_and_24_covered": false
+    }
+  },
+  "registered_groups": {
+    "cosine_full": [
+      {
+        "members": 4,
+        "concerns": 0
+      }
+    ],
+    "lexical_full": [
+      {
+        "members": 4,
+        "concerns": 0
+      }
+    ]
+  },
+  "code_commit": "d1a1e39cd59ed17708476c40c6ecfa6c6287d420"
+}

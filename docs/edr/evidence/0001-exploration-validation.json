@@ -1,0 +1,29 @@
+{
+  "command": ".venv/Scripts/python.exe tools/check.py",
+  "diagnostic_method_sha256": "7eff6e71c4c8c80187847de283063cf95227cde8fc56146771fa802672d1c4d1",
+  "environment": "Windows 11; Python 3.12.11; locked repository dependencies",
+  "quality_log_sha256": "898fe8994b2c486787b8a732767a864881a195be66755779534524035baaece1",
+  "limitations": [
+    "Checks ran on the uncommitted diagnostic method identified by its exact hash above, before the results commit.",
+    "No independent semantic review or independent reproduction is claimed."
+  ],
+  "checked_source_base": "d1a1e39cd59ed17708476c40c6ecfa6c6287d420",
+  "additional_checks": {
+    "synthetic_diagnostic_challenges": "passed",
+    "application_and_tests_unchanged": true,
+    "registered_plan_unchanged": true,
+    "independent_partition_replay": "passed"
+  },
+  "standard_checks": {
+    "ruff_lint": "passed",
+    "ruff_format": "passed",
+    "tach": "passed",
+    "import_linter": "passed",
+    "tests": {
+      "passed": 259,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "evidence_root": "extras/research/edr-0001/exploration-20260926-r2"
+}

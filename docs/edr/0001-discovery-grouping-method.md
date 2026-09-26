@@ -181,6 +181,7 @@ byte-identical model output have not been demonstrated.
 | 2026-09-26 | Running | Both research methods executed at registration commit `260a47f57e48999d7931814767b56d148e6103c9`; one attempt each, no parameter changes |
 | 2026-09-26 | Analysed; inconclusive | Descriptive results show one group per method and 10% coverage. Primary coherence cannot be evaluated under the registered minimum; owner decision remains open |
 | 2026-09-26 | Decided: no adoption | Finn Newick agreed to the recommendation and authorised bounded exploration of the retained inputs; registered results remain unchanged |
+| 2026-09-26 | Separate diagnostic exploration completed | Retained cosine/lexical scores cannot yield eight groups at any threshold; original groups contain no affirmative concerns. No new labels/model calls or change to this decision |
 
 Prior compatibility work used synthetic embeddings, grouping, rule synthesis and
 guidance under DER `vs2-rules/r1`; comparison tooling used synthetic checks under
@@ -245,3 +246,8 @@ to establish this outcome.
 new analysis. It uses the existing 40 judgements and retained vectors, with no new
 labels or model calls. This is separate from the completed registered comparison
 and does not authorise adoption, altered confirmation criteria or VS3 activation.
+
+The [completed exploration](0001-exploration.md#results) supports investigating
+discovery eligibility, pair-level ground truth and grouping that limits chaining
+before collecting more source labels. Its findings remain post-result exploration;
+they do not replace or retrospectively alter the registered comparison.

@@ -135,6 +135,6 @@ reproduction. The frozen evidence and original registration remain retained.
 - [ADR process and index](README.md).
 - This decision comes from the project owner's instruction on 2026-09-19.
   It is a prescribed process requirement, so no EDR was required to adopt it.
-- `accepted` records that instructed intent. It does not mean the owner has
-  approved the bootstrap PR, that the process has been tested in practice, or
-  that VS1 has been implemented.
+- The original `accepted` status recorded instructed intent. The current
+  `implemented` status records the first-use confirmation above; neither status
+  substitutes for owner PR approval or milestone completion.
