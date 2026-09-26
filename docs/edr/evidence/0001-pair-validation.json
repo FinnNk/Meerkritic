@@ -1,0 +1,30 @@
+{
+  "checked_source_base": "9213bbd10c2320ff8f6fb42143d8f20a961e6aba",
+  "method_sha256": "a9b1cd5f1e7809aa2e69a29b140054b4a6d7bc2ae419d61484e11092963e1297",
+  "verification_method_sha256": "72ceddacca7cba6b556b1f01748148960805e92a87be6e3870b0375e4090b1b6",
+  "command": ".venv/Scripts/python.exe tools/check.py",
+  "environment": "Windows 11; Python 3.12.11; locked repository dependencies",
+  "quality_log": "extras/research/edr-0001/development-pairs-quality-20260927.log",
+  "quality_log_sha256": "e30e455a170ea10ca4d442fac4258e56d54d2e0519eed45df1b5c7944b64ca99",
+  "standard_checks": {
+    "ruff_format": "passed",
+    "ruff_lint": "passed",
+    "import_linter": "passed",
+    "tach": "passed",
+    "tests": {"passed": 259, "failed": 0, "skipped": 0}
+  },
+  "additional_checks": {
+    "synthetic_selection_and_html_checks": "passed",
+    "replay_identical_files": 16,
+    "pack_sha256": "774cb2ae064a85f30d7d1a287722b93d1e31c12891046be40c16219559388e81",
+    "first_card_browser_inspection": "passed; real text and labelled panels readable in narrow embedded browser",
+    "application_and_existing_tests_unchanged": true,
+    "original_assessments_unchanged": true,
+    "human_pair_judgements": 0
+  },
+  "limitations": [
+    "Checks ran on the new methods identified by their exact hashes before the preparation-results commit; subsequent edits only document that evidence and update plan status.",
+    "This is local replay and author inspection, not independent reproduction or human judgement of pair relationships.",
+    "Deprecation warnings from Starlette/httpx and yoyo/SQLite remain in the passing test log."
+  ]
+}

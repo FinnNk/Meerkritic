@@ -1,6 +1,6 @@
 # VS2 — Annotation-to-Rule Discovery
 
-## Current position, 26 September 2026
+## Current position, 27 September 2026
 
 The 40 agent-assisted human input judgements are audited and frozen. The
 [registered EDR-0001 comparison](../edr/0001-discovery-grouping-method.md) completed
@@ -11,9 +11,10 @@ adoption claim have been manufactured. The owner agreed to no adoption and
 [bounded diagnostic exploration](../edr/0001-exploration.md). Both are now recorded
 and the diagnostic scope is complete. No threshold can yield eight groups from
 either retained similarity matrix; the registered groups contain no affirmative
-concerns. The proposed next step is a small, explicitly developmental pair-level
-challenge set and eligibility review, not another broad labelling batch. VS2 stays
-ACTIVE pending review of the stack and agreement on the next research scope;
+concerns. The owner authorised a [12-pair developmental review](../edr/0001-pair-review.md)
+and eligibility check using the existing inputs. The pack is prepared; human pair
+judgements are pending. VS2 stays ACTIVE pending review of the stack and this
+bounded collection; any subsequent method comparison needs a new prospective scope.
 VS3 stays DRAFT. Earlier batch narratives retain their state at the stated date.
 
 ## Earlier software delivery and preparation

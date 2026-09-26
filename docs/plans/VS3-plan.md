@@ -1,10 +1,11 @@
 # VS3 preparation and remaining-slice revision
 
-Updated 26 September 2026. Status: **DRAFT; not frozen or started**. VS2 software is accepted
+Updated 27 September 2026. Status: **DRAFT; not frozen or started**. VS2 software is accepted
 and integrated through PR #13. EDR-0001 is decided: no adoption after an inconclusive
-comparison. Bounded diagnostic exploration is complete and proposes pair-level
-ground truth and an eligibility review before more source labelling. The next
-research scope remains open. This document revises future
+comparison. Bounded diagnostic exploration is complete; an authorised
+[12-pair developmental review](../edr/0001-pair-review.md) is prepared and awaits
+human eligibility and relationship judgements. Further method comparison needs
+a new prospective scope. This document revises future
 work using observed contracts and limits, not speculative infrastructure needs.
 
 ## Entry gates
@@ -14,8 +15,9 @@ work using observed contracts and limits, not speculative infrastructure needs.
 - EDR-0001's owner decision is recorded: no adoption. Forty human-reviewed inputs were frozen and
   compared under the registered methods; each method produced only one group and
   10% coverage. Primary coherence was unevaluable and candidate coverage failed.
-  The authorised diagnostics are complete. Resolve the next research scope
-  before activation; neither method is an empirically adopted default.
+  The authorised diagnostics are complete. Collect the scoped developmental pair
+  judgements and agree the subsequent research scope before activation;
+  neither method is an empirically adopted default.
 - Identify a small candidate rule set, exact immutable versions, explicit evidence
   classifications and a repository-held-out historical sample. Promotion alone
   is not validation; source linkage alone is not a correct expected finding.

@@ -118,7 +118,10 @@ EDR-0001 has been run on 40 audited human-edited inputs. Each method produced on
 one group, below the registered minimum; the result is inconclusive and the owner
 decided not to adopt either method from it. The separate diagnostic exploration is
 complete: threshold changes alone cannot reach the original group count on these
-representations. Its original registration is preserved. EDR-0002 remains a draft.
+representations. A [12-pair developmental review](0001-pair-review.md) is prepared
+from the existing inputs, with eligibility and relationship meanings fixed before
+selection; human pair judgements are pending. Its original registration is
+preserved. EDR-0002 remains a draft.
 
 | EDR | Decision | Status | Evidence outcome |
 | --- | --- | --- | --- |
