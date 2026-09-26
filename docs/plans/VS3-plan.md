@@ -1,18 +1,19 @@
 # VS3 preparation and remaining-slice revision
 
-20 September 2026. Status: **DRAFT; not frozen or started**. VS2 software is accepted
-and integrated through PR #13. The empirical registration/adoption gate remains
-outstanding. This document revises future
+Updated 26 September 2026. Status: **DRAFT; not frozen or started**. VS2 software is accepted
+and integrated through PR #13. EDR-0001 is analysed with an inconclusive outcome;
+the owner decision gate remains outstanding. This document revises future
 work using observed contracts and limits, not speculative infrastructure needs.
 
 ## Entry gates
 
 - Software integration gate satisfied: [PR #13 integration](../slice-reviews/VS2-integration.md)
   verifies the actual proposition mapping and checks without relabelling earlier evidence.
-- Resolve EDR-0001 (Choose an initial discovery grouping method): a permitted,
-  explicitly human-labelled corpus, exact baseline/candidate method and thresholds
-  must be registered before the comparison. Record an adoption, no-adoption or
-  inconclusive outcome honestly. No automated fixture labels substitute for people.
+- Resolve EDR-0001's owner decision. Forty human-reviewed inputs were frozen and
+  compared under the registered methods; each method produced only one group and
+  10% coverage. Primary coherence was unevaluable and candidate coverage failed.
+  Record the owner's no-adoption/next-action decision before full closure; do not
+  treat either method as an empirically adopted default or quietly retune it.
 - Identify a small candidate rule set, exact immutable versions, explicit evidence
   classifications and a repository-held-out historical sample. Promotion alone
   is not validation; source linkage alone is not a correct expected finding.

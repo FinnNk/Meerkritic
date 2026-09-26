@@ -1,0 +1,174 @@
+{
+  "kind": "descriptive insufficiency summary; not a human coherence analysis",
+  "registration": {
+    "commit": "260a47f57e48999d7931814767b56d148e6103c9",
+    "plan_commit": "fe91fe4f888d9b5eb29e61f056f9b647a50559e4",
+    "registered_at": "2026-09-26T23:21:29+01:00"
+  },
+  "execution_commit": "260a47f57e48999d7931814767b56d148e6103c9",
+  "artefacts": {
+    "comparison_sha256": "ae29d95b40481fe889ce9712a78419a169d771595c3bd6f88d478d0b168f54b8",
+    "pack_sha256": "70c523bcf2382edda3115a180e169bef65c8cdf1b2eb5ec8dc8dee21bbab0910",
+    "ratings_template_sha256": "ee9df76389c65d0562310560f9611b2bd55f9a61188cdf24af9722b0cb33a9a6",
+    "private_mapping_sha256": "08e6a4f0c9eb7ff6f776be6d24ad6afdbf55370b7a326802c1df6113830525e3",
+    "status": "insufficient",
+    "baseline_sha256": "888fdcaaf0cf0805309a11a591ec75d3f5884908b05680c9ad97ecb72950bf60",
+    "selection_sha256": "f5bc84b772da601d3a068e42cdbb77799e887628773084aa9fe9b32ca1fabdd7",
+    "embedding_result_sha256": "868dcb9a8f7f7596a3164faaf4cd93201717389d6ff549304bef303a997843d0",
+    "vectors_sha256": "1bac5f3faa1add60905e0eed0f9221d0bff51838cf1b889792d586f48dba66a1",
+    "cluster_result_sha256": "679b56d8a77a317f505bfd070f2a60e4977e04d6c1bc59c0653be8a6a038744d",
+    "members_sha256": "bafbd860d54d728475218b811637d8b573716992f6c15a5d2d4dc07f6e27c7e8"
+  },
+  "runs": {
+    "embedding": {
+      "id": "6693e6e3-e17a-4ebd-b2e2-6c6223add44a",
+      "request": {
+        "kind": "embedding",
+        "selection_id": "f5bc84b772da601d3a068e42cdbb77799e887628773084aa9fe9b32ca1fabdd7",
+        "embedding_run": null,
+        "embedding_digest": null,
+        "cluster_run": null,
+        "cluster_digest": null,
+        "cluster": null,
+        "threshold": 0.85,
+        "minimum_size": 2
+      },
+      "status": "succeeded",
+      "queued_at": "2026-09-26T22:22:08.439793+00:00",
+      "worker_id": "8a8b7e1a-1175-4ba4-bb5f-0917c5a555e6",
+      "decision_id": "80b2c659-a503-40f8-83f1-c370d14f62f5",
+      "result_digest": "868dcb9a8f7f7596a3164faaf4cd93201717389d6ff549304bef303a997843d0",
+      "error": null,
+      "started_at": "2026-09-26T22:22:23.377500+00:00",
+      "completed_at": "2026-09-26T22:23:19.348405+00:00"
+    },
+    "clustering": {
+      "id": "b29a0af7-4a3a-4619-a466-ce196f0e471d",
+      "request": {
+        "kind": "clustering",
+        "selection_id": "f5bc84b772da601d3a068e42cdbb77799e887628773084aa9fe9b32ca1fabdd7",
+        "embedding_run": "6693e6e3-e17a-4ebd-b2e2-6c6223add44a",
+        "embedding_digest": "868dcb9a8f7f7596a3164faaf4cd93201717389d6ff549304bef303a997843d0",
+        "cluster_run": null,
+        "cluster_digest": null,
+        "cluster": null,
+        "threshold": 0.85,
+        "minimum_size": 2
+      },
+      "status": "succeeded",
+      "queued_at": "2026-09-26T22:23:43.292919+00:00",
+      "worker_id": "a53856ed-3377-40d1-8301-1dc27a683e3d",
+      "decision_id": null,
+      "result_digest": "679b56d8a77a317f505bfd070f2a60e4977e04d6c1bc59c0653be8a6a038744d",
+      "error": null,
+      "started_at": "2026-09-26T22:24:03.541025+00:00",
+      "completed_at": "2026-09-26T22:24:03.935633+00:00"
+    }
+  },
+  "methods": {
+    "baseline": {
+      "groups": 1,
+      "group_sizes": [
+        4
+      ],
+      "covered": 4,
+      "total": 40,
+      "coverage_fraction": 0.1,
+      "outliers": 36,
+      "attempts": [
+        {
+          "elapsed_seconds": 0.0,
+          "error": null,
+          "retry_reason": null,
+          "status": "succeeded"
+        }
+      ]
+    },
+    "candidate": {
+      "groups": 1,
+      "group_sizes": [
+        4
+      ],
+      "covered": 4,
+      "total": 40,
+      "coverage_fraction": 0.1,
+      "outliers": 36,
+      "attempts": [
+        {
+          "elapsed_seconds": 56.365513,
+          "error": null,
+          "retry_reason": null,
+          "status": "succeeded"
+        }
+      ]
+    }
+  },
+  "rating_budget_per_method": 1,
+  "minimum_required_groups_per_method": 8,
+  "human_group_ratings_collected": 0,
+  "primary_coherence": "not evaluated: insufficient groups",
+  "candidate_coverage_floor": {
+    "required": "24/40 (60%)",
+    "actual": "4/40 (10%)",
+    "passes": false
+  },
+  "relative_coverage": {
+    "maximum_shortfall_percentage_points": 10,
+    "actual_shortfall_percentage_points": 0,
+    "passes": true
+  },
+  "cap_seconds_per_method": 1800,
+  "cap_passes": true,
+  "framework": {
+    "activity": "embed selected interpretations",
+    "component": "WorkflowBuilder/executor",
+    "framework": "Microsoft Agent Framework",
+    "mitigation": "none",
+    "observation": "Typed embedding outcome retained.",
+    "outcome": "completed",
+    "reproducibility": "Use the frozen selection, deployment profile and dependency lock.",
+    "severity": "info",
+    "version": "1.19.0"
+  },
+  "usage": {
+    "currency": null,
+    "decision_id": "80b2c659-a503-40f8-83f1-c370d14f62f5",
+    "estimated_cost": "0",
+    "id": "219558f4-7740-4ff3-9f7e-8cd74527cda7",
+    "measurement": {
+      "completed_at": "2026-09-26T22:22:25.435526Z",
+      "generation_ms": null,
+      "outcome": "success",
+      "provider_currency": null,
+      "provider_reported_cost": null,
+      "queue_ms": 14970.882,
+      "started_at": "2026-09-26T22:22:08.439793Z",
+      "time_to_first_token_ms": null,
+      "tokens": {
+        "cached_input_tokens": null,
+        "input_tokens": 2868,
+        "output_tokens": 0,
+        "reasoning_tokens": null
+      }
+    },
+    "price_catalogue": null,
+    "spend_basis": "local"
+  },
+  "baseline_timing_limit": "0.0 seconds at retained timestamp resolution; not proof of zero computation time",
+  "recommendation": "Do not adopt the candidate from this study. Owner decision pending.",
+  "evidence_outcome": "inconclusive",
+  "reruns": 0,
+  "threshold_changes": 0,
+  "summary_method_sha256": "c7478ea63330eb0d242eea8dfe5025a8c6d4a32976724c1caa9b4a26f51c09f0",
+  "retained_files": {
+    "comparison-baseline-command.log": "763592ac6886c626340e70868f2d7a1256bdd84a98149f927a7b78154324f311",
+    "comparison-embedding-queue.log": "983ed043e40fc53524ba4df800549f49601d666ed5bc2bc947d89a854e4e6600",
+    "comparison-embedding-worker.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "comparison-embedding-inspection.json": "a96762a881902c85ccd8e49fe2e7929c4ea904e26c63c4ccc4a03efe0cb947c1",
+    "comparison-cluster-queue.log": "62b9a6823b7a76de06e2d9fe8c1f4ca0be836e1077bc5c4372c6c7fa36f6e672",
+    "comparison-cluster-worker.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "comparison-cluster-inspection.json": "d6baad4ae814798e4512a826acddc0221fd36ba1496884abc187529a9ca043e8",
+    "candidate-attempts.json": "03b81f12efc53bd59b3c0c3a7297c85fbe09db6d5f79010d8ebc1ab9bb268c53",
+    "comparison-pack-command.log": "1d6cb6850c7493c7fedb3eeebb8f05d74f017d854fe5ad5cbe1f91d7130f8684"
+  }
+}

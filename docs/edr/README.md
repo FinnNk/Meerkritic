@@ -114,15 +114,11 @@ rather than duplicating evidence stores.
 
 ## Index
 
-No EDR is registered yet. The owner agreed EDR-0001's proposed workload and criteria
-on 20 September 2026. Comparison commands now exist with synthetic checks;
-qualified human-reviewed inputs and exact registration identities remain prerequisites.
-The first pass yielded 33 valid drafts and 22 retained failures. The owner agreed
-to human correction/rejection of failed drafts without rerunning models. The
-40-input target still depends on human review; registration remains outstanding.
-The current draft is:
+EDR-0001 has been run on 40 audited human-edited inputs. Each method produced only
+one group, below the registered minimum; the result is inconclusive and the owner
+decision remains open. Its original registration is preserved. EDR-0002 remains a draft.
 
 | EDR | Decision | Status | Evidence outcome |
 | --- | --- | --- | --- |
 | [EDR-0002](0002-code-navigation-assistance.md) | Evaluate code navigation assistance | draft | pending |
-| [EDR-0001](0001-discovery-grouping-method.md) | Choose an initial discovery grouping method | draft | pending |
+| [EDR-0001](0001-discovery-grouping-method.md) | Choose an initial discovery grouping method | analysed | inconclusive |

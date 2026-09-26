@@ -1,0 +1,1025 @@
+{
+  "purpose": "EDR-0001 pre-registration identities; no source or interpretation text",
+  "implementation_commit": "9178de6ae6ff5aaaaf45497c0b79fd4efa217980",
+  "selection_sha256": "f5bc84b772da601d3a068e42cdbb77799e887628773084aa9fe9b32ca1fabdd7",
+  "dataset": {
+    "id": "crc-py-manual-4176ac0",
+    "parquet_sha256": "9d5b9bd1248b64417f7feff8af62644d1ca8801dcdba88c56a8c4f6f3eabe9bc",
+    "registered_at": "2026-09-20T13:31:56.920152+00:00",
+    "revision": "4176ac0013136ae3c8283fcdaf087d27159050cf",
+    "row_count": 1030,
+    "schema_version": 1,
+    "source_sha256": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83",
+    "source_url": "https://raw.githubusercontent.com/busraicoz/crc-py-dataset/4176ac0013136ae3c8283fcdaf087d27159050cf/data/manual/manual_labeled_data.json",
+    "title": "CRC-Py manual subset"
+  },
+  "selection_request": {
+    "annotation_ids": [
+      "e76aedc4-4282-4284-a2f7-f73540ff7218",
+      "0e8ac2ce-7143-485c-8ac8-2e731895c9da",
+      "9e70517d-f909-40e3-85a2-14234e606b3c",
+      "e03485b3-1859-4f77-918c-cb40870b1a40",
+      "1e6a446f-1aeb-4102-941e-3d539cd81c07",
+      "725bb12c-fff7-4370-9b35-5986d1df6cda",
+      "7e6a4219-a7c7-4195-a7fb-c4d3b9f51a06",
+      "fb434377-d307-434a-8899-88b4429e4eae",
+      "28c70cbe-d5f5-456d-a6b0-7de1786f2529",
+      "867b330d-40ab-4ab5-afa7-73abb26fc101",
+      "cae5d647-5190-4b2c-b09a-b86061da8c88",
+      "97a15495-0456-4535-b677-770fe00a0bdd",
+      "e6e43202-299f-4d8b-800a-5d5b3c3b2ad5",
+      "4ad63ba5-3fb9-4ad6-a403-11abfa68db44",
+      "187f1e74-5ce5-4232-b7ee-71f8ff26d022",
+      "02a2b310-d800-46af-8abb-7f0a5b507a29",
+      "c5f4fee6-e38d-403e-a6b4-8a861ce536bb",
+      "2b024c95-d8fb-475e-8a04-cc34e2d02743",
+      "7c422ba3-86a2-49bc-9bef-361090032d35",
+      "2a59dc22-d18f-4abf-bfb1-c88b4e005e56",
+      "a85e80d0-bb73-40e0-8b46-1dd16fbdea35",
+      "9f0e22c6-ba6f-4969-8c5c-70d7f0af6ee3",
+      "e12139e5-c987-44d4-83d1-907d99f87afd",
+      "5af53764-7d71-4ecd-b110-a08673448147",
+      "7d3feef6-99dd-4212-a9f7-8f833a4c033e",
+      "60bc897d-788a-4f5c-bd40-ee800d25ae76",
+      "0950c73d-4160-47f4-b3f8-0cd9dbecb25d",
+      "a141c2b9-3328-4bcd-bb7a-168f4df21d99",
+      "d8a24085-4554-4659-baa1-90f23f3b7482",
+      "5e4d081b-45e6-493c-af17-2889356d12f7",
+      "ae38273f-25a5-440f-86ec-a78f0b4be839",
+      "2502ff04-9673-458c-8d1c-5e3e2f81a034",
+      "5df160cc-51c8-447a-86b9-3c69e82e3d6d",
+      "37539636-7c83-4390-877b-ed826951d262",
+      "3cf38aa2-c6fa-4f07-b08a-7b498e68fdeb",
+      "bd7c6798-7766-40d8-a621-e6219ca13d73",
+      "cd5bff17-903e-427d-a1a4-9aa47b791c4c",
+      "1086978b-d0a2-4401-919f-d3ad55126999",
+      "741efe92-8c42-4c39-9aa2-3ca3cc628861",
+      "06c550fa-8cb4-4450-9a0d-a91028a1a269"
+    ],
+    "curator": "Finn Newick (agent-assisted walkthrough; recorded by Meerkritic agent)",
+    "dataset_id": "crc-py-manual-4176ac0",
+    "holdout_repositories": [
+      "karpathy/nanogpt",
+      "huggingface/transformers",
+      "perf-team/performance-lib",
+      "backend-team/data-service",
+      "psf/requests",
+      "psf/black",
+      "tiangolo/fastapi",
+      "open-mmlab/mmcv",
+      "infra-team/network-utils",
+      "oca/server-tools",
+      "pytorch/pytorch",
+      "pandas-dev/pandas"
+    ],
+    "human_review_attested": true,
+    "purpose": "research"
+  },
+  "counts": {
+    "current_assessments": 40,
+    "historical_versions": 42,
+    "distinct_observations": 40,
+    "repository_counts": {
+      "ansible/ansible": 2,
+      "apache/superset": 2,
+      "dlt-hub/dlt": 1,
+      "feast-dev/feast": 2,
+      "httpie/httpie": 2,
+      "keras-team/keras": 2,
+      "langchain-ai/langchain": 2,
+      "matplotlib/matplotlib": 2,
+      "numpy/numpy": 2,
+      "openai/gym": 2,
+      "pallets/flask": 2,
+      "posthog/posthog": 2,
+      "public-apis/public-apis": 2,
+      "python/cpython": 2,
+      "reflex-dev/reflex": 2,
+      "scikit-learn/scikit-learn": 2,
+      "scrapy/scrapy": 2,
+      "streamlit/streamlit": 2,
+      "thealgorithms/python": 2,
+      "vinta/awesome-python": 1,
+      "yt-dlp/yt-dlp": 2
+    },
+    "original_model_outcomes": {
+      "succeeded": 25,
+      "failed": 15
+    },
+    "decisions": {
+      "edit": 40
+    }
+  },
+  "preparation": {
+    "recorded_at": "2026-09-26T22:10:08.889960+00:00",
+    "method_sha256": "ab6f00f2069a86abbb249de47da959c8a2319de5b707d01021ca98d63c9fbc3e",
+    "prior_record": "0001.json",
+    "final_record": "0065.json",
+    "final_record_sha256": "5cdf78d995767fcdd609daeaa0969c3373650534b9b052dde13131b40453ebf8"
+  },
+  "preparation_progress": {
+    "state": "ready",
+    "attempted": 65,
+    "usable": 40
+  },
+  "preflight": {
+    "recorded_at": "2026-09-26T22:16:42.400778+00:00",
+    "purpose": "synthetic compatibility; no research input",
+    "python": "3.12.11 (main, Aug 18 2025, 19:17:54) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "versions": {
+      "agent-framework-core": "1.19.0",
+      "httpx": "0.28.1",
+      "duckdb": "1.5.5",
+      "pydantic": "2.13.5",
+      "fastapi": "0.141.1",
+      "ruff": "0.16.8",
+      "tach": "0.35.1",
+      "import-linter": "2.15"
+    },
+    "profile_sha256": "23854bdeae747622f408c937902149651b40a4c4843c7cd48534bf9fc02bdfb6",
+    "profile": {
+      "model_id": "nomic-embed-v1.5-local",
+      "repository": "nomic-ai/nomic-embed-text-v1.5-GGUF",
+      "revision": "0188c9bf409793f810680a5a431e7b899c46104c",
+      "sha256": "f7af6f66802f4df86eda10fe9bbcfc75c39562bed48ef6ace719a251cf1c2fdb",
+      "licence": "Apache-2.0",
+      "runtime": "llama.cpp b10964-b29c606e2; mean pooling; F16; CPU",
+      "prefix": "clustering: ",
+      "dimensions": 768,
+      "context_tokens": 2048
+    },
+    "routing_sha256": "2913a9bc42e1fa6f7a889fe277fec807341061edefed8539564543170a610f10",
+    "uv_lock_sha256": "df5791b0623310186c5c5d2b971c2968c15a70f42636dbb6118b59e99ae2dad9",
+    "server_binary_sha256": "aa2e1f5c67be55f11be26ae58d643a545ca07c6de498f6f870330ac2f4dfec73",
+    "synthetic_result_sha256": "c7d8cc4f299ae5780504e1d936da0853b97cb0c9b8452d93c26c867514b948e0",
+    "vectors": 3,
+    "dimensions": [
+      768,
+      768,
+      768
+    ],
+    "error": null,
+    "framework": {
+      "framework": "Microsoft Agent Framework",
+      "version": "1.19.0",
+      "component": "WorkflowBuilder/executor",
+      "activity": "embed selected interpretations",
+      "outcome": "completed",
+      "severity": "info",
+      "observation": "Typed embedding outcome retained.",
+      "mitigation": "none",
+      "reproducibility": "Use the frozen selection, deployment profile and dependency lock."
+    },
+    "measurement": {
+      "started_at": "2026-09-26T22:16:42.121782Z",
+      "completed_at": "2026-09-26T22:16:42.394254Z",
+      "outcome": "success",
+      "tokens": {
+        "input_tokens": 32,
+        "output_tokens": 0,
+        "cached_input_tokens": null,
+        "reasoning_tokens": null
+      },
+      "queue_ms": 8.82,
+      "time_to_first_token_ms": null,
+      "generation_ms": null,
+      "provider_reported_cost": null,
+      "provider_currency": null
+    },
+    "startup_seconds": 2.922287,
+    "model_load_seconds": 0.301998,
+    "startup_measurement": "llama-server elapsed log: load_model 2.620277s, model loaded 2.922275s, listening 2.922287s"
+  },
+  "hardware": {
+    "gpu": [
+      "NVIDIA GeForce RTX 4090 Laptop GPU",
+      "Intel(R) UHD Graphics"
+    ],
+    "os_version": "10.0.26200",
+    "os": "Microsoft Windows 11 Pro",
+    "cpu": {
+      "Name": "13th Gen Intel(R) Core(TM) i9-13980HX",
+      "NumberOfCores": 24,
+      "NumberOfLogicalProcessors": 32
+    },
+    "ram_bytes": 102673936384
+  },
+  "records": [
+    {
+      "assessment": 1,
+      "rank": 2,
+      "source_index": 285,
+      "repository": "ansible/ansible",
+      "original_model_status": "succeeded",
+      "source_receipt_sha256": "553e4e7ad83f0a87a76bdde20c33e7b0e78488bb780cd4c003618c9973434000",
+      "draft_sha256": "6ffbd482a47753c40a1ef1d8c98acd29f287e80b65106fc135b8b099afdf3ae3",
+      "annotation": {
+        "id": "e76aedc4-4282-4284-a2f7-f73540ff7218",
+        "job_id": "97251567-5b87-4ff6-87dd-5f8773e17683",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:285",
+        "result_sha256": "65d8aa26814463d02188c19a0c0beff2c4e5fb74927407b3e1126c1cc1ab0db7",
+        "decision": "edit",
+        "interpretation_sha256": "3daadc7b283d4e792536ac566334c0ad74fa2fdd9fc9e0f39c9028605bcfb31e",
+        "created_at": "2026-09-25T19:58:36.886213+00:00",
+        "schema_version": 1,
+        "context_sha256": null
+      }
+    },
+    {
+      "assessment": 2,
+      "rank": 3,
+      "source_index": 721,
+      "repository": "apache/superset",
+      "original_model_status": "failed",
+      "source_receipt_sha256": "9b43b13785a1d6d42cd5b621871924c1402dc9fa21c72c06fc11e75e8d748d6e",
+      "draft_sha256": "cdad3a7a55d38cecfe8515f4f978f97a2e98ba455c9980035c59f8ec85b38610",
+      "annotation": {
+        "id": "0e8ac2ce-7143-485c-8ac8-2e731895c9da",
+        "job_id": "e5cf7f2f-574d-4d93-beb9-18b3f42b6c9c",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:721",
+        "result_sha256": "7091be4d95c3a25801c262725e821514b44c4d268d614227230ef7e13f02e258",
+        "decision": "edit",
+        "interpretation_sha256": "3a263fbb9607fe1d512fd4ae37ad9fb71c9fb805f388c263db2147b70b8a6142",
+        "created_at": "2026-09-22T18:25:58.014021+00:00",
+        "schema_version": 1,
+        "context_sha256": "c7ceeabd42fd424c897999c58f41ab1f613db5178a858e9d43a9e196044eb63d"
+      }
+    },
+    {
+      "assessment": 3,
+      "rank": 13,
+      "source_index": 1018,
+      "repository": "dlt-hub/dlt",
+      "original_model_status": "succeeded",
+      "source_receipt_sha256": "49e1e45ea76f97c40473eddc9d25ca714c38e192a8ab8a8d9b1c26e26a2328c7",
+      "draft_sha256": "4816720aabacd038c22b1fa426ad0ddeb1ab3a7644cd720bfbb596d5350c7deb",
+      "annotation": {
+        "id": "9e70517d-f909-40e3-85a2-14234e606b3c",
+        "job_id": "1d61528e-e13a-4d58-8f74-223d439f1dec",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:1018",
+        "result_sha256": "8af126f8f91df20a0d0a486e8de9791626a91cc144c2403b1ba274a8d94360b7",
+        "decision": "edit",
+        "interpretation_sha256": "70e30acd33c7bdc94eec4b041c2ea6d748df1c15ddf1d42fcf7357978f02d9e6",
+        "created_at": "2026-09-22T18:43:51.721959+00:00",
+        "schema_version": 1,
+        "context_sha256": "232b8b364bdb20f2ea0667171d88933d70637836ea4fe38c63768812c075f2c6"
+      }
+    },
+    {
+      "assessment": 4,
+      "rank": 16,
+      "source_index": 907,
+      "repository": "feast-dev/feast",
+      "original_model_status": "failed",
+      "source_receipt_sha256": "837ccf47c9747ccb9f105e059577d59d2c58a4b95294cd5239b414bd76628785",
+      "draft_sha256": "1842ba3565ff1b9b22b594b42ca80fcfbab441f79b70d6870062a1a3a599d263",
+      "annotation": {
+        "id": "e03485b3-1859-4f77-918c-cb40870b1a40",
+        "job_id": "0c74bf22-4fa1-4036-ba4b-1f61de0422ad",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:907",
+        "result_sha256": "2baeaf8a584332ef12f02b05c6e75f17c8c5b23eea949f975f36bc1ff1dedadd",
+        "decision": "edit",
+        "interpretation_sha256": "705dfba2617a646c35d35ae964a3243bcd6ecf29d4e204168bc6a4357b741c0f",
+        "created_at": "2026-09-22T18:51:29.900184+00:00",
+        "schema_version": 1,
+        "context_sha256": "57ea87d25ef6817cce74987e38f47636c8ff6c19270ffae5e7e4fbda8f916ab0"
+      }
+    },
+    {
+      "assessment": 5,
+      "rank": 20,
+      "source_index": 295,
+      "repository": "httpie/httpie",
+      "original_model_status": "failed",
+      "source_receipt_sha256": "0d2a5185b8a57e43cec919af15b1a775482ea5a262f7ff7960a06c3e671e9889",
+      "draft_sha256": "a033070939da692c1fe213d6723c1d09fa340e5af60878be02360db794d98bb1",
+      "annotation": {
+        "id": "1e6a446f-1aeb-4102-941e-3d539cd81c07",
+        "job_id": "8b41c139-89ab-4113-b9f1-c30cb49746b7",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:295",
+        "result_sha256": "4e9a28b6b5187a0c5acebf89e41da36dd96362264e61617e6571cf3eeb303e80",
+        "decision": "edit",
+        "interpretation_sha256": "6dadb47ba73adc2bc281123da37396e375b1ba43a962761bfd66ca96fbe3a6d3",
+        "created_at": "2026-09-22T19:04:52.974587+00:00",
+        "schema_version": 1,
+        "context_sha256": "673f23a51404ca0dcb7501178d7436a0c209d937dcd4c64e05230ab9bceee61d"
+      }
+    },
+    {
+      "assessment": 6,
+      "rank": 24,
+      "source_index": 250,
+      "repository": "keras-team/keras",
+      "original_model_status": "succeeded",
+      "source_receipt_sha256": "faf1e7a950567de4f9b413c11e211b0ea726b7f84582fb9511ee20a21f4602c3",
+      "draft_sha256": "a151a24fe83c09cdee256d42765ed0d1b1167249801c27606c78d818f39e0fd8",
+      "annotation": {
+        "id": "725bb12c-fff7-4370-9b35-5986d1df6cda",
+        "job_id": "dc2061e7-f3e4-43f0-9925-8df9824172ca",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:250",
+        "result_sha256": "0a8a8f45553eb53a62a6eb854aac0acae6b37d55397f2c5f344c77c35ad2ae20",
+        "decision": "edit",
+        "interpretation_sha256": "ebbb04d2c2abb34f1ea0f05988ba41c21664b6912c75011e9a4902bc482c7bb9",
+        "created_at": "2026-09-22T19:17:50.964013+00:00",
+        "schema_version": 1,
+        "context_sha256": "5f6c7e7f06aca310462bb4ec73768814fb08946055acb4f98d3cf84be3d4a5fc"
+      }
+    },
+    {
+      "assessment": 7,
+      "rank": 25,
+      "source_index": 705,
+      "repository": "langchain-ai/langchain",
+      "original_model_status": "succeeded",
+      "source_receipt_sha256": "490aad4891724377ca80b463a99a17a0e4de12bd9ed2b9dd37319046ae70a508",
+      "draft_sha256": "2d0d0f06d1fd3277afcd89903ab4157a20f30042fef4521f699b2e334e7f63ce",
+      "annotation": {
+        "id": "7e6a4219-a7c7-4195-a7fb-c4d3b9f51a06",
+        "job_id": "380723f6-be54-425f-b86a-8a9680752971",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:705",
+        "result_sha256": "c1979f59b2d786a5df508f46349f74b643a7d414bbfc530bd4e74c3ac5a1f02a",
+        "decision": "edit",
+        "interpretation_sha256": "e37798e2903f48cb46be1d3564df6ce2bd6f32a719eafebaae52896d2a866919",
+        "created_at": "2026-09-22T19:28:41.595837+00:00",
+        "schema_version": 1,
+        "context_sha256": "f73a4810f4c0fef5b6c35ada65d903bc0e322f837b07018f1b93dffc99a0342d"
+      }
+    },
+    {
+      "assessment": 8,
+      "rank": 26,
+      "source_index": 1007,
+      "repository": "matplotlib/matplotlib",
+      "original_model_status": "failed",
+      "source_receipt_sha256": "de2ac4f141bb9e1cdae85f6f2e9cdadfe5fd89225183b129ff6ef7e2aa451303",
+      "draft_sha256": "ef070056ffcefffa1f6bc610e6359336e7428f8072977dd72d18a11104a0d338",
+      "annotation": {
+        "id": "fb434377-d307-434a-8899-88b4429e4eae",
+        "job_id": "359c4bbb-b103-4dcb-8f69-d4348d76bd1b",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:1007",
+        "result_sha256": "1b392635b8c4d3a0c6505dbdf8dc3659a8f9b0da12a125ecd7898bdd1c6cdf3e",
+        "decision": "edit",
+        "interpretation_sha256": "abfc25b1a0e52a055a495ba0ef15e7f8b4cbd5e07bde047f3f55caa14377889d",
+        "created_at": "2026-09-22T19:38:06.977400+00:00",
+        "schema_version": 1,
+        "context_sha256": "c92baf80764a302bc244c53b223056dc62feb58a3e4e1f28cf846eccb69e6e31"
+      }
+    },
+    {
+      "assessment": 9,
+      "rank": 27,
+      "source_index": 669,
+      "repository": "numpy/numpy",
+      "original_model_status": "succeeded",
+      "source_receipt_sha256": "cab7e10252248f1f37ea0df97fbd3561a32d480733775140ec14216686f7a918",
+      "draft_sha256": "c6dabbc2447eac1ff45c3a7dddf325f5bed1772bc87b5aab2875a629f02f8dc4",
+      "annotation": {
+        "id": "28c70cbe-d5f5-456d-a6b0-7de1786f2529",
+        "job_id": "9dea72c3-8a0b-469c-a16c-8a3c1500e838",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:669",
+        "result_sha256": "d2bdddccbb45086ff4490530f925522179bbdb6afbfc7286ec8e824ef7db1ad3",
+        "decision": "edit",
+        "interpretation_sha256": "a6a69a001369c54ebbdd0fa364f7b953c079a3e571414654e78c80b7484999f0",
+        "created_at": "2026-09-22T19:47:08.499275+00:00",
+        "schema_version": 1,
+        "context_sha256": "246ba6f66739060894e3c6abc0f616d1ae7eb33480fe3ed250f06e968ce81443"
+      }
+    },
+    {
+      "assessment": 10,
+      "rank": 28,
+      "source_index": 170,
+      "repository": "openai/gym",
+      "original_model_status": "succeeded",
+      "source_receipt_sha256": "9ead0ce6af0e6edaa86413687e3c5a827376a4815f2b272f945dcbfb375bca77",
+      "draft_sha256": "8719a752196953baf439e287ce230adf2280c819255d33e009badb20af1f4a8f",
+      "annotation": {
+        "id": "867b330d-40ab-4ab5-afa7-73abb26fc101",
+        "job_id": "5b0ed742-0315-446e-82d1-7238945ee335",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:170",
+        "result_sha256": "2135b57b25f41afcf9473c56763aebfa0ca40b6077a0b96ee246f56d13dd258f",
+        "decision": "edit",
+        "interpretation_sha256": "567104f1fb02b9b467c5e944871c6a86b83bf3501145e72a8d91336f1b3922c2",
+        "created_at": "2026-09-22T19:57:32.037139+00:00",
+        "schema_version": 1,
+        "context_sha256": "512a425add618f849488c5662202362733fb289d794dd800fb4046dbb79e169d"
+      }
+    },
+    {
+      "assessment": 11,
+      "rank": 31,
+      "source_index": 776,
+      "repository": "pallets/flask",
+      "original_model_status": "succeeded",
+      "source_receipt_sha256": "d23a0af5ba3ce82db93d1cf2b799d7af3c3ce8cfa97fb9c6dcb2e050c430c9fd",
+      "draft_sha256": "c2cc2801ddc2d2cce1eab1f24ece4cee47454dbd11c0e3ee2a33f38d2d0ab36b",
+      "annotation": {
+        "id": "cae5d647-5190-4b2c-b09a-b86061da8c88",
+        "job_id": "b9749056-2c23-4f0c-8a1e-4a88100ca6ee",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:776",
+        "result_sha256": "abe69cc9f50decc1accbca96c62dd4220debd284630dacdd846a023198fbdb69",
+        "decision": "edit",
+        "interpretation_sha256": "d79328eff7e16240f35aa0540828fc3152db7266aeb7cb90d26f1af986c195fc",
+        "created_at": "2026-09-22T20:05:04.974852+00:00",
+        "schema_version": 1,
+        "context_sha256": "e22abfde72c47e131a5bde5df40c30132a5aa9f734b629e47c3f2b71157b3a5b"
+      }
+    },
+    {
+      "assessment": 12,
+      "rank": 32,
+      "source_index": 1029,
+      "repository": "posthog/posthog",
+      "original_model_status": "failed",
+      "source_receipt_sha256": "8b77f7511c1df4e27fad2394dae63ec9adcd597ea54e08e0ee18068586df0d17",
+      "draft_sha256": "143ef3c1ecf48f5eb28ea8d5b62d51d93349ce6fba5b561339488c8081732f7c",
+      "annotation": {
+        "id": "97a15495-0456-4535-b677-770fe00a0bdd",
+        "job_id": "6e31ea0f-22e1-4c41-bd62-ab3f32e163fe",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:1029",
+        "result_sha256": "70d75f163420eb834ec485f3f7e1c0aee3fa4604899e4588f3de800825feb0ef",
+        "decision": "edit",
+        "interpretation_sha256": "727e958ddd079b08a5fefc32e669ed05e71463801598935164a1971671d965f1",
+        "created_at": "2026-09-22T20:21:06.095254+00:00",
+        "schema_version": 1,
+        "context_sha256": "49df04a2f82ca35717c47f516a35e8d25d8a4ed6e60e27a9880fbc9ae8c59258"
+      }
+    },
+    {
+      "assessment": 13,
+      "rank": 33,
+      "source_index": 903,
+      "repository": "public-apis/public-apis",
+      "original_model_status": "succeeded",
+      "source_receipt_sha256": "83f6b767032b91d849a185077a570207c442e319962cb73f14c3eae818712a51",
+      "draft_sha256": "ceaade3921290b2b331452c0514a791e0cbfefcc214f98157e4dca63517334ef",
+      "annotation": {
+        "id": "e6e43202-299f-4d8b-800a-5d5b3c3b2ad5",
+        "job_id": "badbe9a2-9f49-47d0-a7e9-75c794caaee9",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:903",
+        "result_sha256": "0ff91646faf346fe299196d94ce05a8aceb6d7b6dd67f5b1fd3365b0548b049a",
+        "decision": "edit",
+        "interpretation_sha256": "c0f2ebd713f1d8c5ac2c477d031650da6be93b511d5bba489443e0b88c33514c",
+        "created_at": "2026-09-22T20:29:53.067936+00:00",
+        "schema_version": 1,
+        "context_sha256": "b1779a3e836dd858f575c2cdcdf7ab3af9027de8e5317a549ebb00653d49a1ab"
+      }
+    },
+    {
+      "assessment": 14,
+      "rank": 34,
+      "source_index": 944,
+      "repository": "python/cpython",
+      "original_model_status": "failed",
+      "source_receipt_sha256": "105d3f479ee5174a79e71564a5e687c6f22f0b9399ec839e927e36a416e5f147",
+      "draft_sha256": "50e9359a22ddbfb201137405e8492438184b0d0095ec6a4c02be5d07c06a151f",
+      "annotation": {
+        "id": "4ad63ba5-3fb9-4ad6-a403-11abfa68db44",
+        "job_id": "8b228be6-b0ab-435a-a270-14ec8c93b631",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:944",
+        "result_sha256": "d3263136584b2c56ef8cb827b1c4cc3c0c7d7cfd4389f838583239a864112219",
+        "decision": "edit",
+        "interpretation_sha256": "ebee0e3253917491e2cbe77a8bccbf8b05b03af07b9765c77e90790b38492eb5",
+        "created_at": "2026-09-22T20:35:31.818912+00:00",
+        "schema_version": 1,
+        "context_sha256": "dfece6d9eac454d1809aa2b9f644e21f314a385c34d9219eb41a3bb225b4985f"
+      }
+    },
+    {
+      "assessment": 15,
+      "rank": 35,
+      "source_index": 763,
+      "repository": "reflex-dev/reflex",
+      "original_model_status": "succeeded",
+      "source_receipt_sha256": "348d039e49833f8531d628b7d8d52c123029d4ee6fe011c1d0527714d0a28a31",
+      "draft_sha256": "8df2e303465f0fffaf70cd94b4e3575ced6a47dce755536b3f51384510618606",
+      "annotation": {
+        "id": "187f1e74-5ce5-4232-b7ee-71f8ff26d022",
+        "job_id": "42752b8f-969f-451c-92f7-de13a70a4fa7",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:763",
+        "result_sha256": "7f33da404746f8340892b3623d1a5758d3e459257762d803c924a739313ad58e",
+        "decision": "edit",
+        "interpretation_sha256": "8191bb6d6a73f1da384f38eae57b9451e07bb244c36b4daa45dc29e7f6dc6f42",
+        "created_at": "2026-09-22T20:45:31.362096+00:00",
+        "schema_version": 1,
+        "context_sha256": "af63b6d5e3001923b598af7d1e466625154e5995df7c2467ec837e3529013dd3"
+      }
+    },
+    {
+      "assessment": 16,
+      "rank": 37,
+      "source_index": 980,
+      "repository": "scikit-learn/scikit-learn",
+      "original_model_status": "failed",
+      "source_receipt_sha256": "8805790c9e14ed8d00dace4b9bb364544c9c881405158d9c3437122fb0fcec03",
+      "draft_sha256": "21b99731cb77c86164702de3f15d66bcc6094f0b78eb1133d4cdef3b87bbc08b",
+      "annotation": {
+        "id": "02a2b310-d800-46af-8abb-7f0a5b507a29",
+        "job_id": "07992208-dfd8-4665-a9af-41a596629ff2",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:980",
+        "result_sha256": "95a5204826a188df98e313745b99ccc6e9f2e3a8a8203249da275f2d7f0098e1",
+        "decision": "edit",
+        "interpretation_sha256": "6b9cae82835a6d4c510ccfd849b02802f446cbbe491dc369a71d1b59c63e5ace",
+        "created_at": "2026-09-22T20:54:19.434447+00:00",
+        "schema_version": 1,
+        "context_sha256": "dd95cea94ca192f2b02c02861614653d102c1d91b924de5fa5cb65bfdae62583"
+      }
+    },
+    {
+      "assessment": 17,
+      "rank": 38,
+      "source_index": 789,
+      "repository": "scrapy/scrapy",
+      "original_model_status": "succeeded",
+      "source_receipt_sha256": "9d05ae58bd69ca7a6b427d3e9c64b344db948bf1e68728e24a66d93f80ecfdb3",
+      "draft_sha256": "6f234f5475fc10982b9a3540959470f253d3120dc0a513480d7c9f421da8309d",
+      "annotation": {
+        "id": "c5f4fee6-e38d-403e-a6b4-8a861ce536bb",
+        "job_id": "31214cd4-853c-4548-8f65-91cc63f5855a",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:789",
+        "result_sha256": "e7ad9e80626a9acb5e5b5c2b8a69eb08906d10ca58a186dfa94d56b20086ff51",
+        "decision": "edit",
+        "interpretation_sha256": "99a69e904cfd68065126523c067a50d7848354e9818c9663e19430c0cc95ff68",
+        "created_at": "2026-09-22T20:59:35.919109+00:00",
+        "schema_version": 1,
+        "context_sha256": "db74331c2255269e88e6756323116deb289de20a223852542c9a420383139683"
+      }
+    },
+    {
+      "assessment": 18,
+      "rank": 41,
+      "source_index": 718,
+      "repository": "streamlit/streamlit",
+      "original_model_status": "succeeded",
+      "source_receipt_sha256": "38350ee6fa730103f542934688e50d2abb00ea6af1844a1c64936a3e8b0c5b93",
+      "draft_sha256": "c61a4dda946f3e0095ebe606bf47cb5e0715f0351db23ad15892d105edbf83d9",
+      "annotation": {
+        "id": "2b024c95-d8fb-475e-8a04-cc34e2d02743",
+        "job_id": "6c1a0dde-0c26-49f2-b432-c68935ca17ce",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:718",
+        "result_sha256": "00ee4c9eaeb8d07fc7bc81f87d00ba7f0615344604e237ff49baa084ec766263",
+        "decision": "edit",
+        "interpretation_sha256": "1108b960e535d0b3beae4669351bab4103ac2b3543a014fe48913a377090a807",
+        "created_at": "2026-09-22T21:12:00.122049+00:00",
+        "schema_version": 1,
+        "context_sha256": "9a45ab08679d9f1c280607b5dd6bc0b8b0f23af6184f93f4944d079b2872814c"
+      }
+    },
+    {
+      "assessment": 19,
+      "rank": 42,
+      "source_index": 618,
+      "repository": "thealgorithms/python",
+      "original_model_status": "succeeded",
+      "source_receipt_sha256": "fff94713965aedb1612a27920ae806a4e5b5f46355498f237e109c8257826c9b",
+      "draft_sha256": "bdd2929817638f3fe228142a37c456c9f4e613c256fea56c16ec9c72f2fcf935",
+      "annotation": {
+        "id": "7c422ba3-86a2-49bc-9bef-361090032d35",
+        "job_id": "c873f02b-1831-448e-b600-f0a74a1ea8a2",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:618",
+        "result_sha256": "3f528fd7848760f4415c81ac56e6e06b184f6b1a26ba7a479510803b364643b5",
+        "decision": "edit",
+        "interpretation_sha256": "c972054c0da071d8eff42eddeec9818102eeb2633ac16b8274a371f0a818ca74",
+        "created_at": "2026-09-22T21:21:03.773375+00:00",
+        "schema_version": 1,
+        "context_sha256": "c9f4afa3c05c4c9031852b8732a860bd9694081b8c5ab52851987040c712348c"
+      }
+    },
+    {
+      "assessment": 20,
+      "rank": 44,
+      "source_index": 929,
+      "repository": "vinta/awesome-python",
+      "original_model_status": "succeeded",
+      "source_receipt_sha256": "adb3f04bc1a8ce1699a8449bb3266fd70ace2f69ed3878ee93319332956c2aaf",
+      "draft_sha256": "4d39497e10730d5f5e98c15735441adb8801d49bffb1eaaf6d28549246eb6980",
+      "annotation": {
+        "id": "2a59dc22-d18f-4abf-bfb1-c88b4e005e56",
+        "job_id": "6ba1b6e0-9317-4629-b286-59f01977d04e",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:929",
+        "result_sha256": "71815e58d8db080469e0afc540ab5a579f86d880d13d7c39fc60c62be5cf87cb",
+        "decision": "edit",
+        "interpretation_sha256": "e159059259a1e68264711a962d12906910dcfbf84443e4a6fefcf932f3ab4456",
+        "created_at": "2026-09-22T21:35:45.877997+00:00",
+        "schema_version": 1,
+        "context_sha256": "21eee7e9202316d029f95a7c6fb6a9132c4536bb75e513fe070c0b2e0cd5ac41"
+      }
+    },
+    {
+      "assessment": 21,
+      "rank": 45,
+      "source_index": 927,
+      "repository": "yt-dlp/yt-dlp",
+      "original_model_status": "succeeded",
+      "source_receipt_sha256": "fc50c2d3a972f34fed9f5240aa0f2b05ebf37f8d982d079c7306e41d78dd97de",
+      "draft_sha256": "befe6b5eab6a2a0449609cea32348081e2fad9c149879ee4d80b1cb8bd4f1c0b",
+      "annotation": {
+        "id": "a85e80d0-bb73-40e0-8b46-1dd16fbdea35",
+        "job_id": "c50ff644-04ff-4462-b629-da6fd8f6a3a2",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:927",
+        "result_sha256": "aa8e1c96b02d9382300abbc1547b738e6b7a2c919233fe1009b4a8e46555f04a",
+        "decision": "edit",
+        "interpretation_sha256": "a4579ef2139757bc2db8d79cabe71cb5fe8cdcd66909c791dbff8f9bb5fe9be6",
+        "created_at": "2026-09-22T21:45:08.644053+00:00",
+        "schema_version": 1,
+        "context_sha256": "b7f8d00b8a9857a3a7506125f6664f6f5a8fcf0b0d3fa41f03f047c4c59ffc44"
+      }
+    },
+    {
+      "assessment": 22,
+      "rank": 46,
+      "source_index": 287,
+      "repository": "ansible/ansible",
+      "original_model_status": "failed",
+      "source_receipt_sha256": "6f0db15bbab971bbbf94e2d5b9a5deb5373fcc0a94a7121ed5544d0aa5caa877",
+      "draft_sha256": "0191c192405444fba0b117a9e60d7e8f175c6b2166e275dfd8b4df62ca392c6c",
+      "annotation": {
+        "id": "9f0e22c6-ba6f-4969-8c5c-70d7f0af6ee3",
+        "job_id": "829e5d6b-6f4d-4736-bbe8-b37ff5138c1c",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:287",
+        "result_sha256": "0a33d7eebff13db58ce85ca757efcf3072e9746724e2740435677fd32ccb61a7",
+        "decision": "edit",
+        "interpretation_sha256": "2c80798b6343ae7a02c498017e9df8ccbe2b99beb4d60e439dd077de90a5a98f",
+        "created_at": "2026-09-23T19:21:12.425966+00:00",
+        "schema_version": 1,
+        "context_sha256": "8666a45ac74f2651d5b5dc261f48cb57407c54104f06151e34e8c2c8895ab232"
+      }
+    },
+    {
+      "assessment": 23,
+      "rank": 47,
+      "source_index": 775,
+      "repository": "apache/superset",
+      "original_model_status": "failed",
+      "source_receipt_sha256": "4753d9facce235133135e2c44f3818adb251a3971c16c88c1e0c85400449b23f",
+      "draft_sha256": "e5048aced40124566b709ee79a51696340c2c915dc268d0f93e203f2e50714e8",
+      "annotation": {
+        "id": "e12139e5-c987-44d4-83d1-907d99f87afd",
+        "job_id": "79804ad5-41a8-4bec-889c-73cc2fe7b4dc",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:775",
+        "result_sha256": "664f24c9c62441b925d18e96e41ab60035d8b08d9bbb9cf653a931db29cab32b",
+        "decision": "edit",
+        "interpretation_sha256": "c8110ad20717967148ca7a84330a15f996bde90212f95262e541dc104aa41811",
+        "created_at": "2026-09-23T19:45:46.653328+00:00",
+        "schema_version": 1,
+        "context_sha256": "8f77fc8b712ee58298409f63aac6cd7908f1754b3ad5f1f5858016aa989dad7b"
+      }
+    },
+    {
+      "assessment": 24,
+      "rank": 48,
+      "source_index": 908,
+      "repository": "feast-dev/feast",
+      "original_model_status": "succeeded",
+      "source_receipt_sha256": "22598bb4610d3e7ad22aa73bbad445dafe865e146e30139f4236d3c3c75bc903",
+      "draft_sha256": "d531e0f7705f16f4b8fd5594128b09cc73005dfc6efbfca7c4d00f43ceeeea5c",
+      "annotation": {
+        "id": "5af53764-7d71-4ecd-b110-a08673448147",
+        "job_id": "0b67e787-87c1-42f1-a9c7-d4caa386ae45",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:908",
+        "result_sha256": "f68246a11e99e36a5d5ae8f2628092da20d5b0562fbbfd045ba558efa88901b9",
+        "decision": "edit",
+        "interpretation_sha256": "d19b60049d484cb978a529f5d1b1e5a32fcae0e3b610f0894822ae953d360834",
+        "created_at": "2026-09-23T19:51:57.881677+00:00",
+        "schema_version": 1,
+        "context_sha256": "b0520af6484fe28faf1750e8aa9ebaea3b11a2a68fa4da0ea9236f9969bd10b1"
+      }
+    },
+    {
+      "assessment": 25,
+      "rank": 49,
+      "source_index": 292,
+      "repository": "httpie/httpie",
+      "original_model_status": "failed",
+      "source_receipt_sha256": "9626e2db5ca6913c48cf19cfab2134e5c896216514bfcd98c97799b426633ef1",
+      "draft_sha256": "ff49e6e23ba8a2dc1922e014e9debba294bc8f9cae632f4eaea551ddbea44a7c",
+      "annotation": {
+        "id": "7d3feef6-99dd-4212-a9f7-8f833a4c033e",
+        "job_id": "fc25013e-5dde-4560-8d56-ae417885c99c",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:292",
+        "result_sha256": "e81ed995e784c627aa618cc133865604ad830e0098947a0e5bc849225f477686",
+        "decision": "edit",
+        "interpretation_sha256": "e0fa205c81825fcd22bc26fdcdf953097add7e256b926833f5444238be8fe5d6",
+        "created_at": "2026-09-23T20:06:16.364978+00:00",
+        "schema_version": 1,
+        "context_sha256": "1fd6b38545d1c405647e44dd58e18b3fe021c735f98bcbbf1c586f666f1782af"
+      }
+    },
+    {
+      "assessment": 26,
+      "rank": 50,
+      "source_index": 202,
+      "repository": "keras-team/keras",
+      "original_model_status": "failed",
+      "source_receipt_sha256": "fbd9241df4b8c72759be226b13bb4f2c93b92d7bf3a295a5d0e24950ed0f7fdf",
+      "draft_sha256": "d711c0e14a3f3ac831c158bbb195240039146a6a00fc2e56fd3601d8bd16931d",
+      "annotation": {
+        "id": "60bc897d-788a-4f5c-bd40-ee800d25ae76",
+        "job_id": "c1dc4447-efc6-4bb4-a91e-1d7203d61351",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:202",
+        "result_sha256": "ed930bb5981ccb5521a24d293c81ab3e614b43fe7fe523760438dc2b6b603a13",
+        "decision": "edit",
+        "interpretation_sha256": "9d3a6ef4e5c2e12ae261f211bb4962188b3014be06d3e2851cf2145b6639c1c6",
+        "created_at": "2026-09-23T20:16:32.837851+00:00",
+        "schema_version": 1,
+        "context_sha256": "8fe5f19645ab0417c86e5974bcec8dee07102a956c9db51eae9751fc2cdf973c"
+      }
+    },
+    {
+      "assessment": 27,
+      "rank": 51,
+      "source_index": 716,
+      "repository": "langchain-ai/langchain",
+      "original_model_status": "failed",
+      "source_receipt_sha256": "09216e4da487dad133f40302f0953f4a5bb76175f6e23ee09d7f8a57a9428afa",
+      "draft_sha256": "bcb451d80125baec04e1b6f12b4c9b1aca4c95c4aa1bdeceda27aabc3426b3ae",
+      "annotation": {
+        "id": "0950c73d-4160-47f4-b3f8-0cd9dbecb25d",
+        "job_id": "df663a43-169e-4c9b-8956-a20c4217c5bd",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:716",
+        "result_sha256": "2559c61d7033f8ebfce7cb5af50122b480ba4718ec66c282955205fb70891b08",
+        "decision": "edit",
+        "interpretation_sha256": "b154192a3dcb277039d1b72a1d50420a84bdb2127fda96af20bdfd409ed1ea12",
+        "created_at": "2026-09-23T20:25:04.750334+00:00",
+        "schema_version": 1,
+        "context_sha256": "89594beabb195757abdfe87fd3c760d41b10f67061ba4a6562c8af9563c9def5"
+      }
+    },
+    {
+      "assessment": 28,
+      "rank": 52,
+      "source_index": 264,
+      "repository": "matplotlib/matplotlib",
+      "original_model_status": "succeeded",
+      "source_receipt_sha256": "46a1b96d1ff9ae046e1fd474e70dfa660069c9920357df846c32b0cd436f1442",
+      "draft_sha256": "fc113a459ba73cf67470be5dabd445bd6e1439517776d3339d246be0b8b20e0d",
+      "annotation": {
+        "id": "a141c2b9-3328-4bcd-bb7a-168f4df21d99",
+        "job_id": "cea6ff95-6ce6-4e4e-9001-b0756efb7fad",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:264",
+        "result_sha256": "569ca79333ec203bfe8969e6f58943f2f9692f5f96c4ee731325d18a6286342c",
+        "decision": "edit",
+        "interpretation_sha256": "4de9a492ab7137e10da0301818788508196fd622eae2132be6835b43d3de4ddb",
+        "created_at": "2026-09-23T20:31:51.033500+00:00",
+        "schema_version": 1,
+        "context_sha256": "24872a21e6da775550c71b45d4cf9a8758e2da6974ab48ced229708539e3dfde"
+      }
+    },
+    {
+      "assessment": 29,
+      "rank": 53,
+      "source_index": 668,
+      "repository": "numpy/numpy",
+      "original_model_status": "failed",
+      "source_receipt_sha256": "80ecfb0f52a8377b35a49bb4d1e907fe7ad29c76bf78dc722fc426043d0ad6c0",
+      "draft_sha256": "27abf712f87296f809f764695327fe2e8df5ba1d17926052ab0f507bd893f11f",
+      "annotation": {
+        "id": "d8a24085-4554-4659-baa1-90f23f3b7482",
+        "job_id": "1deb7acf-6ec9-467d-a445-a6add04ef0fe",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:668",
+        "result_sha256": "24e3b2278da4cd9b6b9c8875531c57611273d676837b0d8c7f19afe9d90d2c4a",
+        "decision": "edit",
+        "interpretation_sha256": "998c639da6fa7471c290fc858aa99f0d4f72f480bb8cde186cc5d4018783f45e",
+        "created_at": "2026-09-23T20:44:36.778569+00:00",
+        "schema_version": 1,
+        "context_sha256": "7e631ecee2dc84d9adb08d083d2cf97383ee4faada11eb90dee2586a5f55b542"
+      }
+    },
+    {
+      "assessment": 30,
+      "rank": 54,
+      "source_index": 175,
+      "repository": "openai/gym",
+      "original_model_status": "succeeded",
+      "source_receipt_sha256": "1f6dc0dea3f8c067e0940e724054e5b9ab60c999185401225d05fbc8e3d43714",
+      "draft_sha256": "59936a469e60de4c9f3ad7ad8b632606f9ab474a058eec9641522512065c069a",
+      "annotation": {
+        "id": "5e4d081b-45e6-493c-af17-2889356d12f7",
+        "job_id": "15280bf3-53b2-4de4-b26f-17ff4e8f6987",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:175",
+        "result_sha256": "4c84e1b818942d41794ac0a9707a40fdb30ce0ee5b9bc51c0b007995f27c6fe2",
+        "decision": "edit",
+        "interpretation_sha256": "6eb0356b3e69405d3196631a5bba40447fd806f223f0fe0e32fb51d048e6da3d",
+        "created_at": "2026-09-23T20:53:31.868587+00:00",
+        "schema_version": 1,
+        "context_sha256": "23762e579a0b665433a8f02dac5a3fd2c6e1961e0d984ea15b4ecfc6ab145abc"
+      }
+    },
+    {
+      "assessment": 31,
+      "rank": 55,
+      "source_index": 33,
+      "repository": "pallets/flask",
+      "original_model_status": "failed",
+      "source_receipt_sha256": "49397a56657ed6a56e8e0caa1da53491cff93d43da647880734c6881c6bd61ed",
+      "draft_sha256": "c4d83bba2a8ef1eddb458f31b453ed7eed8d5f44336fe077ccd375bde8f51eee",
+      "annotation": {
+        "id": "ae38273f-25a5-440f-86ec-a78f0b4be839",
+        "job_id": "ab1c4b49-4360-4586-b9af-17a4c6cbb1b7",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:33",
+        "result_sha256": "fc8947277222a22acb2a506cdbab19adb57fb6d076cff78308f86531f0f2e4a3",
+        "decision": "edit",
+        "interpretation_sha256": "318de7d52a5acc3f1f0821b5bc1fd9ef7e198899f0548ab73fc66060ab859867",
+        "created_at": "2026-09-23T20:58:28.122558+00:00",
+        "schema_version": 1,
+        "context_sha256": "503cd539e25e44a528090078cc11993d7bce7f77ed781af4c4ec154a699382c7"
+      }
+    },
+    {
+      "assessment": 32,
+      "rank": 56,
+      "source_index": 1026,
+      "repository": "posthog/posthog",
+      "original_model_status": "failed",
+      "source_receipt_sha256": "7f6b1f900c45482c04ad6118b7de55217f29aa8df167e5c1c412373713140dbc",
+      "draft_sha256": "591aeb426142f0796ba63470d7f15bda7a665fd3654caa03d791b4bcecfd47eb",
+      "annotation": {
+        "id": "2502ff04-9673-458c-8d1c-5e3e2f81a034",
+        "job_id": "910231fa-04f1-4be6-82d6-338b8790d1c9",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:1026",
+        "result_sha256": "0a3736747cc5c80a2df82192ed11e70933148c41968fe14121346a845d1b1ea1",
+        "decision": "edit",
+        "interpretation_sha256": "36a93ad304d02a5c937869957b36b3e4b39b6df702708027910903d121186c01",
+        "created_at": "2026-09-23T21:04:32.469643+00:00",
+        "schema_version": 1,
+        "context_sha256": "453b02e6952613d0dbd20692e3827850c8ece02c770aef589936c800ed67b67c"
+      }
+    },
+    {
+      "assessment": 33,
+      "rank": 57,
+      "source_index": 686,
+      "repository": "public-apis/public-apis",
+      "original_model_status": "succeeded",
+      "source_receipt_sha256": "4f6de98dfb543cfd812e4ca7be6909d886df26db4258174592abac64c5f1f0b4",
+      "draft_sha256": "b7e642ba75fec6d842a1a78e39ca4c56a8c5221920b273ef608f0100007c1b43",
+      "annotation": {
+        "id": "5df160cc-51c8-447a-86b9-3c69e82e3d6d",
+        "job_id": "d33acbf0-4e08-456d-88c0-595923ab3f33",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:686",
+        "result_sha256": "76d6ea1ccc4c14abce5d340301df148d371b00ddd56dc59e51159d8f14cd65ea",
+        "decision": "edit",
+        "interpretation_sha256": "7d87aa3f6dc61a820aaff79db9cb15b2a78db6cb3fb16bb5f77336913cdb7edc",
+        "created_at": "2026-09-23T21:08:11.563306+00:00",
+        "schema_version": 1,
+        "context_sha256": "36eb1c64a49fd97a19db9f5b29eb6a9ca7c37453849f85e75d93ca2f5dbda6a6"
+      }
+    },
+    {
+      "assessment": 34,
+      "rank": 58,
+      "source_index": 183,
+      "repository": "python/cpython",
+      "original_model_status": "succeeded",
+      "source_receipt_sha256": "956327e094d54224d5146a119ca702ebdcf3902f762bc3212c643eaa2c9f3425",
+      "draft_sha256": "19c49d7d33a6233fc855af04e99e8296f786751def52067e032b31a89d4100a1",
+      "annotation": {
+        "id": "37539636-7c83-4390-877b-ed826951d262",
+        "job_id": "9e914466-fa90-4f89-9bc6-775c4a3a8da4",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:183",
+        "result_sha256": "6416ffc9c87451da3af923e2dd480f42f897e61ae43475a8d171b3f208f35750",
+        "decision": "edit",
+        "interpretation_sha256": "e344a762ed4c7cb43a084372498c305d9439614318bdc714cc6f10c5571369d7",
+        "created_at": "2026-09-23T21:21:10.533275+00:00",
+        "schema_version": 1,
+        "context_sha256": "0151e8c595af5ed5699d66d4a1e88a0369e8286f62e6e10a1c1e3cabaa77a750"
+      }
+    },
+    {
+      "assessment": 35,
+      "rank": 59,
+      "source_index": 1016,
+      "repository": "reflex-dev/reflex",
+      "original_model_status": "succeeded",
+      "source_receipt_sha256": "33f2e9d121d2f86d9edf26da18064dc7c906ff099a096de37f9c511a957348b3",
+      "draft_sha256": "146ca403f09e7281a1f6f375a8b7461a4cee37e8935ccca7666305bd8ee30886",
+      "annotation": {
+        "id": "3cf38aa2-c6fa-4f07-b08a-7b498e68fdeb",
+        "job_id": "d69f2391-6edc-4b80-a39a-cc65ed75817c",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:1016",
+        "result_sha256": "465f3e9cffb5275f88b564ca35c6d650c6a365c0a3509d67fd7b132891b94ebf",
+        "decision": "edit",
+        "interpretation_sha256": "b24e87777d16496f749886a8c2bf673bc9cbc64188874f6b919b5c2a5d7b85f1",
+        "created_at": "2026-09-25T19:58:36.971661+00:00",
+        "schema_version": 1,
+        "context_sha256": "48d830af7c2dbc3d06c393760dcdd0ead2d7ffece5b99ea430800205ad813251"
+      }
+    },
+    {
+      "assessment": 36,
+      "rank": 60,
+      "source_index": 970,
+      "repository": "scikit-learn/scikit-learn",
+      "original_model_status": "succeeded",
+      "source_receipt_sha256": "3ac4fecb2c31d1f8b3fa441f3f8060932d229f47ae35d0af7a08618858be2b43",
+      "draft_sha256": "e125baa2ecb719d1c2ad12b7bcfafe34562a82dfc959c0c89b8711ca84ad2bcb",
+      "annotation": {
+        "id": "bd7c6798-7766-40d8-a621-e6219ca13d73",
+        "job_id": "854a191d-7d76-4b89-bd3f-ae3fd1794216",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:970",
+        "result_sha256": "43101716bb7b951511c3db93e24be0d0d81fda67d4516f1b0e0b7ef3ec8ac164",
+        "decision": "edit",
+        "interpretation_sha256": "ad9fc50a33d8fef42a890fb331b27c0741e8a0bd6c52c76de1f2fd8cc9254399",
+        "created_at": "2026-09-26T21:05:42.012842+00:00",
+        "schema_version": 1,
+        "context_sha256": "d082c81b937dd361bdca4b90f14fa37b0a9da73431efe28ca3dc83247e9ac2ac"
+      }
+    },
+    {
+      "assessment": 37,
+      "rank": 61,
+      "source_index": 65,
+      "repository": "scrapy/scrapy",
+      "original_model_status": "succeeded",
+      "source_receipt_sha256": "2690be0b78ac6c3c6698ac5f456f20557e81f668efb9c6830324f0f9f3f3aa3a",
+      "draft_sha256": "e22ff74f050d56919dea34e5bdd73dcb5004bd2d961a69281649dfa814150e46",
+      "annotation": {
+        "id": "cd5bff17-903e-427d-a1a4-9aa47b791c4c",
+        "job_id": "b4de7cba-8415-4f4b-9f75-137568bf9c1a",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:65",
+        "result_sha256": "4de6c625ac0c05587411143067a80a5af89842152659b16ff290319f5c34b86d",
+        "decision": "edit",
+        "interpretation_sha256": "6dcaf619fb7f1c57a52f36645fdf1d26cca80dc4f68e6a84aaba7638ac92438b",
+        "created_at": "2026-09-26T21:37:07.322352+00:00",
+        "schema_version": 1,
+        "context_sha256": "157b7007cfeb4616da7398a43d506da8f9156058970e434b4d587d144a72b166"
+      }
+    },
+    {
+      "assessment": 38,
+      "rank": 62,
+      "source_index": 730,
+      "repository": "streamlit/streamlit",
+      "original_model_status": "succeeded",
+      "source_receipt_sha256": "bd5392779e0ddb081630c599e4fd48c4cb3d152a267d024ca73a545f2d880f1d",
+      "draft_sha256": "9498340aa008659203d16f06bee121dac911bec3043ead04fcb4e57cc7f286e4",
+      "annotation": {
+        "id": "1086978b-d0a2-4401-919f-d3ad55126999",
+        "job_id": "06c1f008-cac2-455e-8a8e-0125cb7dcaef",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:730",
+        "result_sha256": "67fb63e578dc8b1862c211f8dfcf62f98ffabbd599984c15356e07f138fc8e68",
+        "decision": "edit",
+        "interpretation_sha256": "5612d8a3dea0f08313dd590ffb8b2548b3c9e89754912a0d47c5c8a733a7a788",
+        "created_at": "2026-09-26T21:47:15.955515+00:00",
+        "schema_version": 1,
+        "context_sha256": "0ee3b42b70c58b26e39df8dca8e10786fc2e745358e682f12e5050be2c567750"
+      }
+    },
+    {
+      "assessment": 39,
+      "rank": 63,
+      "source_index": 479,
+      "repository": "thealgorithms/python",
+      "original_model_status": "succeeded",
+      "source_receipt_sha256": "ebe4d4c9038fc59d72252ccbb4ecffbfc3bd38b644f0b81cb5a08ec9c9b45952",
+      "draft_sha256": "f32d929668a55f50eb6c2f1521a8dc4012cffeb82e1eef3f11c983991eefc58a",
+      "annotation": {
+        "id": "741efe92-8c42-4c39-9aa2-3ca3cc628861",
+        "job_id": "f330251d-8ec3-4284-91cb-166164734a83",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:479",
+        "result_sha256": "d23d05f7b81fea7ecee6df2bd54231f32ca410c7e7820f2c568902dc06813b0d",
+        "decision": "edit",
+        "interpretation_sha256": "a18ce9ed8518b08cd62fc803f6dc37ef85648849575f26739efd277d6ea6dbd1",
+        "created_at": "2026-09-26T21:54:13.940708+00:00",
+        "schema_version": 1,
+        "context_sha256": "ae66112fba85248fab4d25135e693c75b998c35667312f68112b45cd8b605ba1"
+      }
+    },
+    {
+      "assessment": 40,
+      "rank": 65,
+      "source_index": 720,
+      "repository": "yt-dlp/yt-dlp",
+      "original_model_status": "succeeded",
+      "source_receipt_sha256": "d3ba0adbc0026bc92ff2c9f2563c984e3bbc2b6b40c1d1dcc175fb259b9f94ee",
+      "draft_sha256": "56f5a92800af8b848f1c0bad6de8e77b115edd622a370c872ac93f5b3ae2264f",
+      "annotation": {
+        "id": "06c550fa-8cb4-4450-9a0d-a91028a1a269",
+        "job_id": "fae3a9ed-ddbc-4ca4-a8ac-e382d975f8ca",
+        "observation_id": "a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83:720",
+        "result_sha256": "4c9893a16fe4d4e2efdb633416584d354f514350bede99b9d84565aa3829a008",
+        "decision": "edit",
+        "interpretation_sha256": "05cc0e63f22dafd0fadb026cb137ab8754523c629d2be69eaf4e484d2bc43672",
+        "created_at": "2026-09-26T22:02:19.858412+00:00",
+        "schema_version": 1,
+        "context_sha256": "702f14aea3c0a5e5af7166baa43e418175c853b8f76b5a206d526859d68d2cdf"
+      }
+    }
+  ],
+  "evidence_files": {
+    "completed-input-audit-20260926.json": "09d314efb8affd9577623fc37fee3c2fbf9bca8a4f6decccd440d86634d4da36",
+    "completed-input-audit-20260926-initial.json": "54010c466bb80644a57f3066f7ef879528afe13d7f4d82bedae440da5ae63d7b",
+    "check-completed-inputs.py": "4ca17db88dbd695ce2682612284a4e750fcfbfbd2e0c80d939493a4640234797",
+    "preparation-reconciliation.json": "85b343d5d7945f21a5747f6c8ae2f5405fee6a44fae78c4d995a787bdb240980",
+    "complete-preparation.py": "ab6f00f2069a86abbb249de47da959c8a2319de5b707d01021ca98d63c9fbc3e",
+    "selection-request.json": "64c707673d894bf85aa9d6d7dc6bd3063f24eae7f39540914a988704b1665db6",
+    "registration-preflight.json": "f1507a8bde0a5c86f3a8156c950d5dda2060ae7cb8b2b3bde4b4daf10cdd30ac",
+    "registration-preflight.py": "f7c4d253f258fc6de6752fc7a0a0b3a743d37c1cbb3b7d925dcce33610796553",
+    "registration-hardware.json": "414805887a52d89a5747f15204d05fb1fdf6d1e26697bd7a109b5ab8b4ed59c4",
+    "registration-quality.log": "67405a975068faeaca544fb72ac10bb4b2f4ccf46671b1d5a4ac1253823b0df3",
+    "synthetic-embedding-preflight-initial.json": "fdca11b72eeac8d40a02646cfdcda1711e121912de1501fb0a3ea913100684bd",
+    "synthetic-embedding-preflight-second.json": "17972d2c19e658b375793a01cb19d1e7425c8b8a9bf00a3ddc156efe7c9cbeae",
+    "synthetic-embedding-preflight.json": "c7d8cc4f299ae5780504e1d936da0853b97cb0c9b8452d93c26c867514b948e0"
+  }
+}

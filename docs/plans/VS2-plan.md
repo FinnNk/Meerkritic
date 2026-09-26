@@ -1,5 +1,18 @@
 # VS2 — Annotation-to-Rule Discovery
 
+## Current position, 26 September 2026
+
+The 40 agent-assisted human input judgements are audited and frozen. The
+[registered EDR-0001 comparison](../edr/0001-discovery-grouping-method.md) completed
+one run per method without retries or changed thresholds. Both methods produced
+one four-item group (10% coverage): insufficient for the registered primary
+comparison, with candidate coverage below its guardrail. No coherence ratings or
+adoption claim have been manufactured. The owner decision remains open; VS2 stays
+ACTIVE and VS3 stays DRAFT. Further empirical work needs an explicit prospective
+scope. The earlier batch narratives below describe their state at the stated date.
+
+## Earlier software delivery and preparation
+
 Plan revision: 12, 20 September 2026. VS2 ACTIVE. A1 is integrated in PR #10 at
 `c9ef38f48b10d7876fe26babee36f2f15f258bf3`; its tree equals the reviewed head and
 the locked Windows baseline passes all checks and 115 tests.
@@ -32,8 +45,9 @@ The owner accepted ADR-0012 and merged PR #13 on 20 September 2026. The exact
 integrated revision preserves all nine ordered reviewed trees and passed all
 quality checks and 172 tests; see the [integration record](../slice-reviews/VS2-integration.md).
 The earlier batch narratives below retain their historical candidate status.
-Software delivery is complete. The human-reviewed corpus, registered comparison
-and owner empirical decision remain outstanding; VS2 stays ACTIVE.
+Software delivery was complete at that review. Its outstanding corpus and
+registration work is resolved in the 26 September update above; the owner
+empirical decision remains outstanding and VS2 stays ACTIVE.
 
 PR #14 is integrated at `cd0a4d8c9a254e3027513274b39ce3f65cf227d2`.
 All seven ordered reviewed commit trees are preserved; an isolated locked Windows
@@ -329,4 +343,5 @@ separate owner/empirical gates. The [milestone architecture review](../slice-rev
 records actual findings, how they were found/fixed and intended earlier detection.
 [VS3 preparation and remaining-slice revision](VS3-plan.md) leaves later slices
 unfrozen. No comparative quality claim or full slice closure is made while the
-human-labelled corpus and EDR registration/decision remain outstanding.
+owner empirical decision remains outstanding. Input collection and registration
+have since completed as recorded in the current-position update.

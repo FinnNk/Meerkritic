@@ -1,408 +1,240 @@
 # EDR-0001: Choose an initial discovery grouping method
 
-- Status: draft
+- Status: analysed
 - Created: 2026-09-20
-- Owner: Project owner
-- Decision-maker(s): Project owner
-- Protocol agreement: Finn Newick, 2026-09-20; proposed workload and criteria accepted
-- Registered on: pending
-- Registered plan: pending; this draft is not a frozen registration
-- Evidence outcome: pending
+- Owner: Finn Newick
+- Decision-maker(s): Finn Newick
+- Protocol agreement: Finn Newick, 2026-09-20; workload and criteria accepted
+- Registered on: 2026-09-26
+- Registered plan: `fe91fe4f888d9b5eb29e61f056f9b647a50559e4`
+- Evidence outcome: inconclusive
 - Implementation: not planned until a recorded adoption decision
-- Related records: [VS2 plan](../plans/VS2-plan.md), [VS1 review](../slice-reviews/VS1-review.md), [ADR-0001](../adr/ADR-0001-record-significant-empirical-decisions.md)
+- Related records: [VS2 plan](../plans/VS2-plan.md), [ADR-0001](../adr/ADR-0001-record-significant-empirical-decisions.md)
 
-## Registered plan
+## Completed prospective plan
 
-This section is a prospective draft. Registration is blocked on the concrete
-permitted human-labelled sample and runnable, pinned methods. The owner agreed the
-proposed workload and criteria on 20 September 2026. Synthetic
-local model/runtime compatibility preflight has passed; the exact evaluation method
-and sample remain unfrozen. Do not collect or analyse decision-bearing results
-until these details and the registration commit are recorded. No selection decision
-has been made from the functional VS1 data.
+The 40 input judgements are complete. The separate completed-plan commit above
+freezes the agreed comparison before either research grouping method runs. This
+registration records that commit; no grouping-quality ratings or research
+comparison outputs have been collected or inspected at registration.
 
-VS2 software compatibility also exercised pinned local embeddings, exploratory
-grouping, provisional rule synthesis and advisory guidance on explicitly synthetic
-interpretations. Insufficiency outputs and a prompt-contract clarification are
-retained in DER `vs2-rules/r1`; neither they nor automated fixture decisions are
-evaluation labels or evidence of comparative quality. This draft has not been
-registered, and no decision-bearing comparison has been run.
+- Selection: `f5bc84b772da601d3a068e42cdbb77799e887628773084aa9fe9b32ca1fabdd7`
+- Embedding profile: `23854bdeae747622f408c937902149651b40a4c4843c7cd48534bf9fc02bdfb6`
+- Implementation: `9178de6ae6ff5aaaaf45497c0b79fd4efa217980`; registration changes documentation only.
+- Identity inventory: [registration evidence](evidence/0001-registration.json).
+- Execution instructions: [registered runbook](0001-runbook.md).
 
 ### Decision and hypothesis
 
-- **Choice and significance:** decide whether a candidate local embedding/grouping
-  method merits becoming the initial discovery default. This changes the examples
-  a researcher sees together and therefore which rules are likely to be proposed.
-- **Options and comparator:** one embedding-based candidate versus a simple lexical
-  grouping baseline over the same reviewed interpretation text. Freeze exact
-  model/revision/digest, algorithm/version, preprocessing and parameters after
-  synthetic compatibility preflight and before registration. No broad benchmark grid.
-- **Hypothesis:** on the bounded development-research corpus, the candidate improves
-  human-rated grouping coherence without an unacceptable loss of coverage or
-  local execution reliability. This is not a repository-generalisation claim.
-- **Prior knowledge and exposure:** the public CRC sample was browsed in VS1 and
-  records 0 and 2 were used during live compatibility work. Model interpretations,
-  source text and unsupported extrapolations were observed. The three final VS1
-  functional annotations are automated test decisions, not eligible human labels.
-  Exclude exposed pilot records and disclose repository overlap before registration.
+Decide whether one fixed local embedding/grouping method merits becoming the
+initial discovery default. Grouping affects which examples a researcher considers
+together and which engineering rules they may propose.
 
-### Data and design
+The candidate is expected to improve human-rated group coherence over a simple
+lexical baseline without unacceptable loss of coverage or execution reliability.
+This is a small development-corpus comparison, not a repository-generalisation
+claim, a model-accuracy benchmark or a search for optimal parameters.
 
-- **Unit and target population:** a pair/group of explicitly human-reviewed
-  engineering concerns within a fixed development corpus; repository is the
-  dependence/holdout unit for any later headline claim.
-- **Sample and selection:** provisionally 40 eligible accepted/edited observations,
-  selected by a seeded, versioned query before method outputs are inspected. Exact
-  count, IDs, source revision/hashes and seed must be frozen at registration. Stop
-  rather than substituting automated judgements if human labels are insufficient.
-- **Partitions and independence:** separate synthetic compatibility fixtures,
-  disclosed pilot material and the evaluation selection. Deduplicate repeated
-  source/model runs; retain repository identities. Do not tune against the
-  evaluation selection or use the reserved VS3 repository holdout.
-- **Labels and adjudication:** the owner/researcher rates whether presented concerns
-  express a coherent reusable engineering issue, with a short written rubric.
-  Randomise and mask method identity where feasible. Record ambiguous and missing
-  ratings. A single rater limits reliability claims; do not imply inter-rater agreement.
-  Rejected interpretations are not automatically verified negative examples.
-- **Comparison procedure:** paired inputs, fixed preprocessing, fixed seed and
-  randomised presentation order. Match the review budget per method; retain
-  outliers/failures in denominator reporting. Pin the exact clustering and
-  representative-selection procedures before registration.
+### Inputs and prior exposure
 
-### Measures and decision rule
-
-| Measure | Definition and aggregation | Draft interpretation | Role |
-| --- | --- | --- | --- |
-| Coherence | Fraction of rated, budget-matched groups judged coherent under the frozen rubric; report numerator/denominator by method | Candidate must improve by a pre-agreed margin; freeze margin before registration | Primary |
-| Coverage | Unique eligible observations represented, outliers, omitted and failed records reported separately | Reject a gain obtained mainly by excluding difficult records; freeze tolerance | Guardrail |
-| Execution reliability | Failed/invalid embedding and grouping runs over attempted runs | No silent missing vectors or invalid memberships | Guardrail |
-| Cost and turnaround | Recorded local elapsed time, available usage and artefact sizes on specified hardware | Descriptive feasibility check; set any adoption limit before registration | Secondary |
-
-- **Rule:** adopt the candidate only if the frozen primary margin and all guardrails
-  pass. Retain the baseline for ties/inconclusive results, or record an explicit
-  owner decision to gather new prospectively registered evidence. Any departure
-  is recorded without rewriting this plan. Exact numerical thresholds remain a
-  registration prerequisite, not an invitation to choose them after results.
-- **Stopping rule and limits:** one frozen evaluation selection and one run of each
-  deterministic configuration; at most one technical rerun after a recorded
-  implementation failure, preserving the original. No post-hoc model/parameter
-  search. Final resource/time cap must be fixed after compatibility preflight.
-- **Analysis:** report raw paired judgements, counts, coverage and failures; describe
-  disagreements/ambiguity and repository concentration. This small exploratory
-  default-selection study does not support population-wide superiority claims.
-
-### Method and reproduction plan
-
-- **Code and commands:** `tools/study_compare.py` provides the lexical execution,
-  masked pack and analysis commands. Follow the [comparison guide](../development/study-comparison.md).
-  Freeze actual invocation commands and full code SHA before the first study run;
-  software verification does not register the study.
-- **Environment:** Python 3.12/locked dependencies, Windows and actual GPU/CPU/RAM;
-  record embedding provider/build and any nondeterminism.
-- **Configuration:** pin model weights, preprocessing, clustering, randomisation,
-  routing inventory/policy and prompts where used. Keep credentials outside Git.
-- **Data identity:** use immutable AnnotationSelection and source/result hashes;
-  record exact source licence/access constraints before sharing derived text.
-- **Outputs:** preserve original run manifests, vector/membership artefacts, raw
-  blinded ratings, analysis, failures and SHA-256 inventory under external runtime
-  evidence; commit a small permitted summary and reproduction instructions.
-- **Independent reproduction:** another researcher must be able to recover the
-  permitted inputs, execute pinned commands and inspect the same rating rubric.
-  Share methods, hashes and permitted outputs; if raw data redistribution is
-  restricted, record access instructions and limitations. Exact stochastic output
-  equality and independent reproduction are not assumed.
-
-## Concrete proposal for owner review
-
-Prepared after PR #13 integration on 20 September 2026. Everything in this section
-is **proposed, not registered or adopted**. The thresholds are prospective judgement
-calls for a small local study, not values optimised on results. The owner agreed
-the proposed workload and criteria on 20 September 2026. Qualified inputs, runnable
-tooling and exact identities are still required; that agreement is not registration.
-
-### Prepare the input sample
-
-| Choice | Proposed procedure |
+| Item | Frozen choice or observation |
 | --- | --- |
-| Source | The pinned CRC-Py manual file in `config/datasets/crc-py-manual.json`; retain its source hash and zero-based indexes. Its upstream category labels are not our evaluation labels. |
-| Prior exposure | Exclude records from the two known pilot repositories, `django/django` and `paperless-ngx/paperless-ngx`. Add any further disclosed exposure before selection. |
-| Repository holdout | Sort the remaining case-folded `owner/repository` identities by SHA-256 of UTF-8 `20260920:holdout:<identity>`; reserve the first ceiling of 20% of identities. Record the list before reading their source bodies or producing interpretations. Existing restrictions take precedence. |
-| Candidate order | Within each development repository, sort records by SHA-256 of UTF-8 `20260920:sample:<source-hash>:<source-index>`. Traverse repositories in case-folded lexical order, taking one record per repository per round. Do not use category, comment wording or later model output to select promising concerns. |
-| Source qualification | Check each candidate's repository, PR/comment identity and provenance against its original public source before annotation. Preserve supplied/preprocessed text; record the original reference and discrepancies separately. Exclude unresolved origins or unusable context with reasons. An unfamiliar repository name alone is not an exclusion. |
-| Duplicates | For repeated case-folded repository/comment identities retain the lowest source index; also exclude subsequent identical code/comment pairs. Retain the excluded identities. Do not deduplicate or rewrite the imported source file. |
-| Human-review budget | Inspect at most 80 candidate records, at most ten from any repository, stopping when 40 usable Accept/Edit interpretations have been collected. Limit the final selection to five accepted/edited observations per repository. Retain every attempted, failed, skipped and rejected record. |
-| Shortfall | If the fixed budget cannot yield 40 eligible observations, stop preparation and revise this draft prospectively. Do not substitute automated decisions or quietly extend the budget. |
+| Source | CRC-Py manual subset at revision `4176ac0013136ae3c8283fcdaf087d27159050cf`; source SHA-256 `a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83` |
+| Sample | Exactly 40 human Edit decisions from 21 repositories; maximum two per repository, within the agreed limit of five |
+| Ordering | First 40 usable source-qualified inputs in the fixed `edr-0001-inputs-v1` candidate order; no selection by grouping output |
+| Initial model outcomes | 25 successful drafts and 15 retained failed drafts; human corrections do not erase failures |
+| Audit | All saved identities, edited hashes, source/result links and approved fields checked; SQLite integrity and foreign keys pass |
+| Corrections | Assessments 1 and 35 have explicitly authorised replacement versions. Both originals remain: 42 historical versions, 40 selected observations |
+| Representation | Assessment 20 retains a previously disclosed leading space in its source quote; assessment 33 stores a blank optional rule as null. Comparison normalises CRLF/LF only |
+| Assistance | Finn Newick supplied each judgement in an agent-assisted walkthrough. These are neither unaided nor blind input labels |
+| Extra context | Some judgements used separately retained public source context absent from model inputs. Annotation context digests record availability, not proof of reading |
+| Negative concerns | Retain all 40 usable interpretations, including praise/no-concern judgements. Do not remove them after seeing group outputs |
 
-The implemented preparation procedure is `edr-0001-inputs-v1`. It partitions the
-claimed repository identities first, deduplicates by original source position,
-then applies the seeded candidate ordering. A duplicate of an earlier excluded
-record remains excluded. The fixed pool contains at most 80 positions; a later
-skip after five usable reviews from a repository consumes its position, without
-replacement from outside that pool. These operational details were fixed before
-source qualification or human input review, not selected from grouping results.
+The metadata-only plan examined 1,030 records across 59 claimed repository
+identities. It reserved 12 holdout repositories, excluded the exposed pilot
+repositories `django/django` and `paperless-ngx/paperless-ngx`, and retained 80
+candidate positions across 45 development repositories. The mutually exclusive
+excluded counts were 92 prior-exposure, 130 holdout, four duplicate and 724 outside
+the candidate budget. Exact identities and the source/plan digests remain in
+`preparation/0000.json` and the [initial preparation summary](evidence/0001-input-preparation.json).
 
-On 20 September 2026, metadata-only preparation retained 80 candidates across 45
-development repositories and reserved 12 repository identities. Of the 950 other
-records, 92 have prior-exposure precedence, 130 holdout precedence, four duplicate
-precedence and 724 fall outside the candidate budget. These are mutually exclusive
-planning reasons, not source-authenticity judgements. Automatic exact-text hashes
-were used only for deduplication; source bodies were not displayed or interpreted.
+Sampling was fixed before source inspection: hash case-folded repository identities
+with `20260920:holdout:<identity>` and reserve the first ceiling of 20%; sort
+development records by `20260920:sample:<source-hash>:<source-index>` within each
+repository, then traverse repositories in lexical order, one record per round.
+For repeated repository/comment identities keep the lowest source index; exclude
+subsequent identical code/comment pairs. Deduplication does not rewrite the source.
+The fixed pool has at most 80 positions, at most ten per repository. Stop human
+review at 40 usable Accept/Edit judgements, with at most five per repository.
 
-- Source bytes: `a36405b45b65f6a193a12e15bb9c600d6c0f46d84eb4dc891f315248a7cade83`.
-- Plan content: `de2a70fbbf1510389627e68fce37b1d49389c82bf0eb2138901fcab78a33458c`.
-- Initial external record: `bef06bf63a6f3f4f8842aa0dc0714dc8accceb18fbc36111acbcbcd80aa13cf2`.
-- Preparation code: diary `f027a95765c5309d863392509ca4594c0951b811`, retained with
-  DER `vs2-study-tools/r1`; replay with the [preparation command](../development/study-preparation.md#create-the-fixed-input-order).
+All 80 origins had already been checked and 55 qualified records normalised before
+human collection. The one fixed model pass produced 33 successful and 22 failed
+drafts. That preparation exposure includes 15 qualified but unused later records;
+it is disclosed rather than presented as collection that stopped at the fortieth
+source check. No model was rerun to improve an interpretation.
 
-The plan is retained outside Git at `extras/research/edr-0001/preparation/0000.json`
-relative to the workspace parent. That initial record contains zero attempts or
-human labels. The normalisation configuration was subsequently frozen before
-source inspection and inference; the preparation outcome is recorded below. Exact
-research annotation versions and registration remain pending. Neither the metadata
-plan nor its software verification is a grouping run.
+On 26 September the ledger was reconciled from retained receipts and saved human
+decisions, without backdating it. Records `0002.json`–`0065.json` extend the original
+two records: 40 usable decisions and 25 unresolved-source positions through the
+stopping point. The terminal state is `ready`; its byte hash is
+`5cdf78d995767fcdd609daeaa0969c3373650534b9b052dde13131b40453ebf8`.
+The frozen selection contains exactly the audited current versions and no holdout
+records. The inventory lists every selected source index, annotation and hash.
 
-Source qualification, normalisation and human input review prepare the corpus;
-they are not the grouping comparison. They follow the agreed sampling procedure.
-Group outputs and coherence ratings must not be produced before registration.
-One fixed normalisation configuration produces one initial interpretation per
-candidate; retain failures and use human Edit to correct a usable interpretation.
-Do not keep sampling model outputs until a preferred interpretation appears.
-Freeze its exact model/prompt/routing configuration before input preparation and
-include that provenance at registration.
+### Fixed methods
 
-Metadata-only preparation inspected 1,030 records and 59 claimed repository
-identities; 369 records name `TheAlgorithms/Python`. Some other identities resemble
-example repositories. These observations motivate provenance checks and a
-concentration limit; they do not prove that particular records are synthetic or
-that this sampling design is optimal. No source comments, grouping outputs or
-coherence ratings were inspected in that preparation. The upstream description
-alone does not validate every record in the manual subset. Record verification
-results before declaring any selected observation a historical example.
-
-### Compare two fixed methods
-
-| Part | Proposed fixed choice |
+| Part | Registered choice |
 | --- | --- |
-| Shared input | The existing discovery interpretation-text builder applied to exactly the same ordered, human-reviewed selection. No source taxonomy labels or extra code enter either method. Freeze the builder's code SHA. |
-| Candidate | `nomic-embed-text-v1.5.f16.gguf`, revision `0188c9bf409793f810680a5a431e7b899c46104c`, SHA-256 `f7af6f66802f4df86eda10fe9bbcfc75c39562bed48ef6ace719a251cf1c2fdb`; existing pinned llama.cpp profile, 768 dimensions and `clustering: ` prefix. Use `cosine-components-v1`, threshold 0.85, minimum size 2. |
-| Baseline | Case-fold the shared text; extract sets of ASCII tokens matching `[a-z0-9]+`. No stop-word list, stemming or fitted vocabulary. Connect pairs whose token-set Jaccard similarity is at least 0.25; groups are connected components of size at least 2. Empty token sets are reported as outliers and cannot match one another. |
-| Representatives | Select the member with greatest summed within-group similarity; ties follow frozen input order. Rate all group members, not only the representative. |
-| Reason for these settings | Candidate 0.85 is the existing documented exploratory example; baseline 0.25 is a simple untuned comparator. Neither is an adopted default. This study compares these configurations, not the best possible version of either method. |
-| Execution | One run per configuration, using an immutable embedding artefact. At most one technical rerun across the study after a diagnosed implementation failure; retain the original failure and any exposed outputs. No parameter search. |
-| Resource limit | A proposed 30-minute wall-clock cap for each method after model loading, excluding input curation and human rating. Record hardware, model loading separately, timeouts and all known usage. Synthetic preflight must establish feasibility before registration. |
+| Shared text | Issue statement, newline, invariant or empty line, newline, categories joined by comma and space. No raw source, upstream taxonomy or annotation notes enter either method |
+| Baseline | Case-fold; extract sets of ASCII tokens matching `[a-z0-9]+`; no stemming, stop-word list or fitted vocabulary. Connect pairs with Jaccard similarity ≥0.25; connected components of at least two. Empty sets are outliers |
+| Candidate | Nomic `nomic-embed-text-v1.5.f16.gguf`, repository `nomic-ai/nomic-embed-text-v1.5-GGUF`, revision `0188c9bf409793f810680a5a431e7b899c46104c`, weights SHA-256 `f7af6f66802f4df86eda10fe9bbcfc75c39562bed48ef6ace719a251cf1c2fdb` |
+| Embedding settings | Prefix `clustering: `; 768 dimensions; mean pooling; 2,048-token context; F16, CPU, eight threads; pinned llama.cpp `b10964-b29c606e2` |
+| Candidate grouping | `cosine-components-v1`, threshold 0.85, minimum size two |
+| Representatives | Greatest summed within-group similarity; ties follow input order. Human assessment covers every member |
+| Runtime | Existing routed worker and Microsoft Agent Framework adapter; `config/routing/discovery-local.json` and `config/models/nomic-embedding-fixture.json`, whose exact hashes are in the inventory |
+| Attempts | One run per configuration. At most one technical rerun across the whole study after a diagnosed implementation failure; retain original attempts. No tuning or successful reruns for different groups |
+| Cap | Sum of execution attempts ≤30 minutes per method after loading. Exclude queueing and human review; record loading separately. Stop an over-cap run and retain the failure |
 
-The baseline, rating pack and analysis commands are implemented as material DER
-change `vs2-comparison` (review round `r2`), with synthetic fixtures and the existing quality gates.
-They bind the exact selection, interpretation text, vectors and memberships; no
-new research UI or database state is required. Freeze exact commands, code, runtime
-versions and input/output formats before registration. No research comparison has run.
+These thresholds were agreed on 20 September. Candidate 0.85 was an existing
+exploratory example; baseline 0.25 is an untuned comparator. Neither is an adopted
+default. If a repair changes registered implementation, stop, record the deviation
+and amend prospectively before further research execution.
 
-The deterministic masking procedure uses canonical JSON SHA-256, seed `20260920`
-and sorted membership IDs. Rank groups independently within each method with stage
-`select`, take the equal budget, deduplicate identical membership sets, then rank
-presentation with stage `present`. The [reproduction table](../development/study-comparison.md#reproduce-the-ordering-and-report)
-specifies the complete hash input and member order. This implements the previously
-proposed seeded ordering before any research grouping or rating exposure.
+### Human rating and decision rule
 
-### Rate the groups and decide
+- Build a method-masked pack with seed `20260920`. Sort each group's member IDs,
+  hash canonical JSON `{seed, stage: "select", members}`, and rank within each
+  method. Take `k = min(12, baseline groups, candidate groups)`.
+- Fewer than eight groups per method makes the primary comparison insufficient.
+  Do not relax that threshold, tune parameters or collect replacement inputs.
+- Deduplicate identical membership sets; rate each once and reuse its judgement.
+  Rank presentation with the same recipe and `stage: "present"`; present members
+  in sorted identity order. Keep the method mapping separate.
+- Finn Newick rates every displayed member set as `coherent`, `not coherent` or
+  `uncertain`, with a short reason and any suspected unmasking. A coherent group
+  expresses one specific reusable engineering concern across all members. A broad
+  language/library/topic match is insufficient; contradictory or unrelated members
+  make it not coherent; inadequate context makes it uncertain.
+- Freeze all ratings before revealing method identities or comparative scores.
+  Agents must not substitute their own ratings. Missing ratings leave analysis
+  incomplete; similar content may compromise masking and must be disclosed.
 
-1. Create a deterministic, method-masked assessment pack. Record the randomisation
-   procedure and seed `20260920`, and keep the method mapping out of the rating pack.
-2. Match the number of assessed groups: `k = min(12, baseline groups, candidate groups)`.
-   Select groups by a documented seeded ordering. Fewer than eight groups per
-   method makes the primary comparison insufficient; do not relax this after results.
-3. Present complete member texts. Give identical membership sets one rating and
-   reuse it for both methods; retain the mapping so this is not hidden independence.
-4. Record `coherent`, `not coherent` or `uncertain`, plus a short reason. A coherent
-   group expresses one specific reusable engineering concern across every member;
-   sharing a language, library or broad topic is insufficient. Contradictory or
-   unrelated members make it not coherent; inadequate context makes it uncertain.
-5. Freeze completed ratings before revealing method identities. The named human
-   rater must supply the judgements. Similar group content may reveal the method;
-   record suspected unmasking and do not claim perfect blinding.
-
-| Criterion | Proposed decision rule |
+| Criterion | Decision rule |
 | --- | --- |
-| Primary | Candidate coherent-group fraction exceeds the baseline by at least 10 percentage points and is at least 75%. Count uncertain ratings in the assessed denominator as not established coherent. |
-| Rating completeness | Require all selected groups to be rated. Missing ratings leave analysis incomplete; do not silently drop them or substitute agent judgements. |
-| Coverage | Candidate groups of size at least 2 cover at least 60% of the 40 inputs, and coverage is no more than 10 percentage points below the baseline. Report all outliers and unassessed groups separately. |
-| Reliability and resource limits | Final method runs have complete, valid outputs and finish within the registered cap. A technical rerun does not erase the initial failure. |
-| Adoption | Recommend the candidate only when every applicable criterion passes. Otherwise record no adoption or an inconclusive result with the exact failed/unevaluable criteria; the owner makes the final decision. |
+| Coherence | Candidate ≥75% coherent and at least 10 percentage points above baseline. Uncertain ratings remain in the denominator as not established coherent |
+| Coverage | Candidate covers ≥60% of all 40 inputs and is no more than 10 percentage points below baseline. Report outliers and unassessed groups separately |
+| Completeness | Every selected group rated; all final vectors and memberships valid and complete |
+| Reliability | Both methods within the registered cap; retain every attempted failure and permitted retry |
+| Adoption | Recommend candidate only if all applicable criteria pass. Otherwise record no adoption or insufficiency; Finn Newick makes the final decision |
 
-Report raw numerators/denominators, group sizes, repository concentration, failures
-and limitations. Shared inputs do not create matched output groups. This small,
-single-rater comparison does not establish population-wide superiority. An
-inconclusive result can support an explicit decision to keep the current method
-exploratory or commission a new registered study; it cannot be relabelled success.
-Choosing the baseline does not imply it is already an application default: any
-implementation needed for that choice requires its own verification.
+Use exact fractions for thresholds; report counts, group sizes, repository
+concentration, uncertainty and failures. Shared input does not imply matched groups.
+One rater and a small exploratory corpus cannot establish inter-rater agreement
+or population-wide superiority. An insufficient result may justify another
+prospective study, but must not be relabelled success or used to adopt a default.
 
-### Registration checklist
+### Environment, evidence and reproduction
 
-- [x] Owner agrees the bounded question, workload, rubric, thresholds and limits
-  (Finn Newick, 2026-09-20: “I agree with Edr-0001’s proposed workload and criteria”).
-- [ ] Input preparation follows the agreed procedure; qualified sources, exclusions,
-  holdouts, prior exposure and 40 human-reviewed versions are frozen and permitted.
-- [ ] Exact selection/hash, normalisation configuration and curator attestation recorded.
-- [ ] Baseline/runner, masking, analysis and failure checks pass on synthetic inputs.
-- [ ] Exact code SHA, commands, hardware, versions and configuration recorded; no placeholders.
-- [ ] Commit the completed plan, then commit its SHA, date and `registered` status
-  before executing either method on the research selection or collecting group ratings.
+Windows 11 Pro `10.0.26200`, Python 3.12.11, Intel i9-13980HX (24 cores/32 logical
+processors), 102,673,936,384 bytes RAM. Embeddings use CPU; the available RTX 4090
+Laptop GPU is not used. The inventory records all relevant package versions,
+`uv.lock`, routing, profile and server-binary hashes. Floating-point equality on
+different hardware is not guaranteed.
 
-Use [the study preparation guide](../development/study-preparation.md) for the
-human and agent hand-off. Neither merging this draft nor accepting the software
-registers the experiment or adopts a method.
+The pinned synthetic live preflight returned three valid 768-dimensional vectors
+through MAF 1.19.0. Two earlier synthetic attempts also completed inference but
+the evidence helper failed while querying an absent optional package and then
+serialising a measurement; their outputs remain. The helper was corrected before
+registration. No research text was involved. Server logs show 2.922287 seconds
+from startup to listening, with 0.301998 seconds between load-start and loaded.
+The standard quality command passed Ruff formatting/lint, Import Linter, Tach and
+all 259 tests on the unchanged implementation.
 
-## Amendments and deviations
+Retain selection bytes, source/context receipts, original model results, human
+edits, vectors, memberships, attempts, framework/usage records, masked ratings and
+analysis under `extras/research/edr-0001`, outside application worktrees. Commit
+only permitted aggregate summaries, identities and reproduction instructions.
+Hosted spend is not applicable to this local run; unavailable timing components
+remain unknown. No electricity or hardware amortisation is inferred.
 
-### Preparation amendment agreed on 20 September 2026
+The pinned dataset URL is in `config/datasets/crc-py-manual.json`. Upstream README
+and licence receipts are retained. Its MIT licence does not establish rights to
+redistribute every third-party comment/code excerpt. Source receipts, annotation
+text and raw model outputs remain local pending any sharing-rights review. Hashes
+allow verification but cannot reconstruct the human labels: independent exact
+reproduction requires permitted access to that bundle. Fresh judgements or model
+runs are a new replication, not the original result. Independent reproduction and
+byte-identical model output have not been demonstrated.
 
-Finn Newick agreed to human correction of failed drafts after inspecting the
-recorded shortfall: “approved, merged and yes, please add that to the harness”.
-This is a prospective change to input preparation after exposure to its failure
-counts, before any human annotation, registration or comparative grouping result.
-It is not a retrospective amendment to a registered experiment.
+## Preparation amendments and history
 
-- Keep the fixed 80-candidate order, verified origins, holdouts, target of 40 usable
-  interpretations and maximum five per repository.
-- Keep the single frozen normalisation pass. Do not retry a model or relax source,
-  schema or exact-evidence validation.
-- Offer human Edit or Reject for a retained draft that failed semantic validation.
-  A correction must pass the same interpretation schema and source grounding as
-  an ordinary edit. Accept is unavailable for a failed model output.
-- Preserve the original job, failed status, raw output, error, telemetry and result
-  hash. Store the human decision and any corrected interpretation separately.
-- Record the terminal preparation outcome with the exact job and annotation IDs.
-  An edited failure may count towards the target; a rejected one may not. Report
-  initial model failures separately from eventual human-corrected inputs.
-- Work in the original order. Stop at 40 usable reviews or an explicit shortfall.
-  Human correction makes the target possible; it does not guarantee 40 usable inputs.
+| Date | Event | Effect and retained evidence |
+| --- | --- | --- |
+| 2026-09-20 | Finn Newick agreed workload and criteria | Fixed target, methods, budget and criteria; registration awaited actual inputs |
+| 2026-09-20 | Metadata order and initial normalisation pass | 80 candidates, 12 repository holdouts; 55 attempts, 33 valid and 22 failed drafts; no human labels then. [Initial summary](evidence/0001-input-preparation.json) |
+| 2026-09-20 | Owner permitted correction/rejection of failed drafts | Preserve one model pass and all failures; do not fabricate an empty draft or rerun until acceptable |
+| 2026-09-20 | Assessment meanings clarified before first saved judgement | [ADR-0014](../adr/ADR-0014-clarify-assessment-field-meanings.md): investigation needs are not impact scope; applicability exceptions are not missing evidence. Walkthrough feedback 01/02 retained |
+| 2026-09-21 | Owner agreed preserved source context | [ADR-0015](../adr/ADR-0015-separate-review-context-from-model-input.md): show separately retained originals, record context digests and extra human advice; preserve model inputs and earlier provenance |
+| 2026-09-26 | Forty judgements audited; ledger reconciled; selection frozen | Agent-assisted inputs, authorised corrections 1/35 and representation allowances retained. No research grouping outputs yet |
+| 2026-09-26 | Completed prospective plan | Exact code, inputs, configuration, environment and commands fixed; second commit will register this plan |
+| 2026-09-26 | Registered | Names the separate completed-plan commit before either research method runs; no change to agreed criteria |
+| 2026-09-26 | Running | Both research methods executed at registration commit `260a47f57e48999d7931814767b56d148e6103c9`; one attempt each, no parameter changes |
+| 2026-09-26 | Analysed; inconclusive | Descriptive results show one group per method and 10% coverage. Primary coherence cannot be evaluated under the registered minimum; owner decision remains open |
 
-The harness implementation and checks belong to DER `vs2-draft-repair/r1`.
-The EDR stays **draft** until the completed human-reviewed selection and all
-registration prerequisites exist.
-
-## Runs and evidence inventory
-
-### Prospective source-reading amendment, 21 September 2026
-
-During the second assisted input assessment, collapsed diff whitespace obscured
-the boundary between neighbouring upgrade notes. The downloaded JSON and harness
-Parquet matched exactly; the separately retained GitHub response preserved line
-breaks. This is a presentation observation, not a measured model-quality effect.
-Finn Newick agreed to a separate preserved-source view and recording the additional
-human context before continuing labelling.
-
-- Keep the fixed candidate order, dataset bytes, model pass and exact-quote checks.
-- Present verified retained GitHub context separately, with its retrieval date,
-  response identity and comparison to the dataset text. Do not reconstruct lines.
-- Record the context digest presented with subsequent annotations. This records
-  availability, not proof of reading; note assistance and source-only conclusions.
-- Earlier assessments retain their original provenance. The first saved assessment
-  differs from the agreed unsaved walkthrough draft; reconcile it explicitly before
-  freezing inputs. The second assessment remains unsaved at this amendment.
-- No model reruns or quality comparison are authorised by this presentation change.
-  Any later comparison of flattened and original inputs requires its own committed
-  pre-registration, paired inputs and evaluation criteria before new model runs.
-
-Implementation follows [ADR-0015](../adr/ADR-0015-separate-review-context-from-model-input.md).
-The study remains draft; this amendment precedes ensuing collection and does not
-retroactively describe earlier judgements as having the new presentation.
-
-No research grouping runs. Earlier compatibility and integration checks are prior
-exposure, not comparative study results.
-
-### Input preparation on 20 September 2026
-
-The fixed pool and one initial normalisation pass have been inspected. This is
-corpus preparation, not a grouping comparison or a model-quality benchmark.
-
-| Stage | Recorded outcome |
-| --- | ---: |
-| Fixed candidate positions inspected | 80 |
-| Public origins/context qualified for input review | 55 |
-| Origins unresolved after public comment endpoints returned 404 | 25 |
-| Initial normalisation attempts | 55 |
-| Schema- and evidence-valid drafts | 33 |
-| Retained failed outputs | 22 |
-| Failures from missing or ambiguous exact evidence quotes | 21 |
-| Failure from an affirmative concern without required source evidence | 1 |
-| Human Accept/Edit/Reject decisions | 0 |
-| Model reruns or research grouping runs | 0 |
-
-Under the rules in force at the initial pass, the target was unreachable: only
-33 valid drafts were available before human rejection. The prospective amendment
-above now permits human correction/rejection of retained failed drafts. The
-harness implements that path while preserving the one model pass and unchanged
-schema/evidence checks. Forty usable inputs remain possible, not guaranteed;
-registration still waits for the actual reviewed selection.
-
-Source checks retained the original imported bytes and separate public responses.
-Observed differences include case/formatting changes, removed suggestion blocks
-and collapsed diff whitespace, consistent with the upstream preprocessing description.
-The public `httpie/httpie` endpoint redirects to `httpie/cli`; matching comment IDs,
-PR numbers, paths and content were verified without rewriting imported identities.
-Public origin does not establish a comment's correctness. Some original comments
-were authored by bots; human assessment is still required.
-
-The [preparation summary](evidence/0001-input-preparation.json) records exact code,
-model/prompt/routing settings, counts and evidence hashes. The full per-candidate
-inventory, response receipts, failed and successful outputs, runtime files and
-validation replay remain under `extras/research/edr-0001` outside Git. Its digest
-is included in the summary. The retained initial ledger has one unresolved-source
-outcome and stops before the first human decision; it does not pretend that all
-later input reviews have occurred. Separate source/job records cover all 80 positions.
-
-Reproduce the candidate order with the preparation command and pinned source hash;
-then use the recorded configuration and normalisation code to inspect the initial
-pass. Original upstream README/licence receipts are retained. That repository's
-MIT licence is recorded, without asserting that it grants every right in the
-third-party comments/code it collected. No raw source or model output is republished
-here. Access dates, response hashes and local runtime evidence support inspection;
-independent reproduction and byte-identical model output have not been demonstrated.
+Prior compatibility work used synthetic embeddings, grouping, rule synthesis and
+guidance under DER `vs2-rules/r1`; comparison tooling used synthetic checks under
+`vs2-comparison/r2`. Exposed functional pilot annotations were automated decisions,
+not eligible human labels. Those records are prior exposure, not evidence of
+comparative quality. Earlier EDR drafts remain in Git history.
 
 ## Results and interpretation
 
-Pending. No comparison has been collected or analysed.
+The registered methods completed successfully, but each produced only one group.
+The primary coherence comparison is **insufficient**: the agreed minimum was eight
+groups per method. Candidate coverage also fails its absolute 60% guardrail.
+
+| Measure | Lexical baseline | Embedding candidate |
+| --- | ---: | ---: |
+| Eligible inputs | 40 | 40 |
+| Groups of at least two | 1 | 1 |
+| Group sizes | 4 | 4 |
+| Inputs covered | 4/40 (10%) | 4/40 (10%) |
+| Outliers | 36 | 36 |
+| Successful attempts / total | 1/1 | 1/1 |
+| Retained execution time | 0.0 s at timestamp resolution | 56.365513 s |
+
+The baseline time does not establish zero computation cost. Both methods finished
+inside the 30-minute cap. The candidate produced all 40 valid 768-dimensional
+vectors through MAF 1.19.0 and recorded 2,868 input tokens, zero generated tokens
+and local spend accounting. No research retries, threshold changes, replacement
+inputs or human group ratings were used.
+
+The equal rating budget is one group per method, below the minimum. The pack and
+blank template remain retained, but no coherence score or improvement is claimed.
+The ordinary `analyse` command was not run with invented or incomplete ratings;
+this is a descriptive insufficiency analysis of the verified partitions. Relative
+coverage is equal, but that does not compensate for the failed absolute coverage
+floor. No automatic default change follows from this result.
+
+[The outcome inventory](evidence/0001-comparison-outcome.json) records registration,
+run/result/vector/membership identities, timings, usage and retained log hashes.
+The original comparison is `ae29d95b40481fe889ce9712a78419a169d771595c3bd6f88d478d0b168f54b8`.
+Its command validated shared inputs, profile, fixed parameters and membership replay.
+To reproduce the descriptive counts, read its `value.baseline` and `value.candidate`:
+count `groups`, sum their member counts, count `outliers`, divide covered members by
+40, and sum `attempts.elapsed_seconds`. The original JSON remains outside Git.
+
+These findings concern only the registered configurations and prepared corpus.
+They neither establish that embeddings are generally ineffective nor establish a
+better threshold. Any investigation of alternative text representations, thresholds
+or sampling is now exploratory and must be recorded as such. A new confirmatory
+comparison would need prospective registration and explicit handling of this
+exposure. The 40 audited judgements remain usable evidence; they are not discarded.
 
 ## Decision
 
-Pending. No grouping method has been adopted from empirical evidence.
-
-## History
-
-| Date | Status or event | Author | Reference / reason |
-| --- | --- | --- | --- |
-| 2026-09-20 | draft | Meerkritic agent | Prospective VS2 method-selection question; no registration or run |
-| 2026-09-20 | draft elaborated | Meerkritic agent | Software integrated; proposed bounded protocol and source-qualification gate for owner agreement; no study run |
-| 2026-09-20 | protocol agreed; draft retained | Finn Newick | Explicit agreement to the proposed workload and criteria; source preparation, tooling and registration remain outstanding |
-| 2026-09-20 | input order recorded; draft retained | Meerkritic agent | Reproducible metadata-only candidate/holdout plan; no source qualification, human labels or comparison |
-| 2026-09-20 | comparison tooling prepared; draft retained | Meerkritic agent | Fixed lexical method, masking and criterion report with synthetic checks; registration and human judgements remain outstanding |
-| 2026-09-20 | input preparation infeasible; draft retained | Meerkritic agent | All 80 origins checked; 55 initial normalisations produced 33 valid drafts and 22 retained failures. No human labels or grouping results; owner amendment required before continuing. |
-
-| 2026-09-20 | preparation amendment agreed; draft retained | Finn Newick | Allow human correction/rejection of retained semantic failures, preserving the original pass and fixed sample rules; no human labels or grouping results yet. |
-
-## Preparation clarification before the first saved judgement
-
-On 20 September 2026 the first input walkthrough was paused before saving a
-judgement. The owner identified a need to trace a removed type's history. The
-agent had conflated investigation extent with impact scope and had misdescribed
-applicability exclusions as evidence limitations. The owner agreed to clarify
-these meanings before continuing; [ADR-0014](../adr/ADR-0014-clarify-assessment-field-meanings.md)
-and the [assessment contract](../development/assessment-contract.md) record the change.
-
-- Preserve the fixed candidate order, original model pass, failures and source bytes.
-- Use unknown impact scope when the supplied evidence cannot establish the affected
-  extent. Record investigation needs and evidence limitations in annotation notes.
-- Keep applicability exceptions separate. Attribute human advice beyond the source
-  to the human, rather than claiming that the comment establishes a broader rule.
-- Apply the clarified guidance to all ensuing input reviews. Retain this first
-  walkthrough as assisted preparation with prior exposure, not a blind rating.
-- Before resuming, verify that no annotation was saved during the pause. Do not
-  automatically translate the conversation into an Accept/Edit/Reject decision.
-
-The preliminary observations and the agent's corrections are retained separately
-under `extras/research/edr-0001/walkthrough-feedback-01.md` and
-`walkthrough-feedback-02.md`. Final wording, scope, applicability and quoted evidence
-still require the human's assessment. No model rerun, grouping comparison or empirical
-result justifies this clarification. The EDR remains **draft**, not registered.
+**Owner decision pending.** Recommend no adoption from this study and retention
+of the explicitly exploratory workflow. No further labelling is required to
+establish this insufficiency. The owner may choose a separately bounded exploratory
+investigation before deciding whether another registered comparison is worthwhile.
+Neither that investigation nor a changed grouping default is implied by this record.
