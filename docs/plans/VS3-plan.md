@@ -1,19 +1,20 @@
 # VS3 preparation and remaining-slice revision
 
 Updated 26 September 2026. Status: **DRAFT; not frozen or started**. VS2 software is accepted
-and integrated through PR #13. EDR-0001 is analysed with an inconclusive outcome;
-the owner decision gate remains outstanding. This document revises future
+and integrated through PR #13. EDR-0001 is decided: no adoption after an inconclusive
+comparison. Bounded diagnostic exploration is authorised before reconsidering
+the next research step. This document revises future
 work using observed contracts and limits, not speculative infrastructure needs.
 
 ## Entry gates
 
 - Software integration gate satisfied: [PR #13 integration](../slice-reviews/VS2-integration.md)
   verifies the actual proposition mapping and checks without relabelling earlier evidence.
-- Resolve EDR-0001's owner decision. Forty human-reviewed inputs were frozen and
+- EDR-0001's owner decision is recorded: no adoption. Forty human-reviewed inputs were frozen and
   compared under the registered methods; each method produced only one group and
   10% coverage. Primary coherence was unevaluable and candidate coverage failed.
-  Record the owner's no-adoption/next-action decision before full closure; do not
-  treat either method as an empirically adopted default or quietly retune it.
+  Complete the authorised diagnostic follow-up and resolve the next research
+  scope before activation; neither method is an empirically adopted default.
 - Identify a small candidate rule set, exact immutable versions, explicit evidence
   classifications and a repository-held-out historical sample. Promotion alone
   is not validation; source linkage alone is not a correct expected finding.

@@ -7,9 +7,11 @@ The 40 agent-assisted human input judgements are audited and frozen. The
 one run per method without retries or changed thresholds. Both methods produced
 one four-item group (10% coverage): insufficient for the registered primary
 comparison, with candidate coverage below its guardrail. No coherence ratings or
-adoption claim have been manufactured. The owner decision remains open; VS2 stays
-ACTIVE and VS3 stays DRAFT. Further empirical work needs an explicit prospective
-scope. The earlier batch narratives below describe their state at the stated date.
+adoption claim have been manufactured. The owner agreed to no adoption and
+[bounded diagnostic exploration](../edr/0001-exploration.md). The empirical decision
+is recorded; VS2 stays ACTIVE pending that follow-up and review of the pending
+stack, and VS3 stays DRAFT. The earlier batch narratives below describe their
+state at the stated date.
 
 ## Earlier software delivery and preparation
 

@@ -1,6 +1,6 @@
 # EDR-0001: Choose an initial discovery grouping method
 
-- Status: analysed
+- Status: decided
 - Created: 2026-09-20
 - Owner: Finn Newick
 - Decision-maker(s): Finn Newick
@@ -8,7 +8,7 @@
 - Registered on: 2026-09-26
 - Registered plan: `fe91fe4f888d9b5eb29e61f056f9b647a50559e4`
 - Evidence outcome: inconclusive
-- Implementation: not planned until a recorded adoption decision
+- Implementation: not planned; no grouping default adopted
 - Related records: [VS2 plan](../plans/VS2-plan.md), [ADR-0001](../adr/ADR-0001-record-significant-empirical-decisions.md)
 
 ## Completed prospective plan
@@ -180,6 +180,7 @@ byte-identical model output have not been demonstrated.
 | 2026-09-26 | Registered | Names the separate completed-plan commit before either research method runs; no change to agreed criteria |
 | 2026-09-26 | Running | Both research methods executed at registration commit `260a47f57e48999d7931814767b56d148e6103c9`; one attempt each, no parameter changes |
 | 2026-09-26 | Analysed; inconclusive | Descriptive results show one group per method and 10% coverage. Primary coherence cannot be evaluated under the registered minimum; owner decision remains open |
+| 2026-09-26 | Decided: no adoption | Finn Newick agreed to the recommendation and authorised bounded exploration of the retained inputs; registered results remain unchanged |
 
 Prior compatibility work used synthetic embeddings, grouping, rule synthesis and
 guidance under DER `vs2-rules/r1`; comparison tooling used synthetic checks under
@@ -233,8 +234,14 @@ exposure. The 40 audited judgements remain usable evidence; they are not discard
 
 ## Decision
 
-**Owner decision pending.** Recommend no adoption from this study and retention
-of the explicitly exploratory workflow. No further labelling is required to
-establish this insufficiency. The owner may choose a separately bounded exploratory
-investigation before deciding whether another registered comparison is worthwhile.
-Neither that investigation nor a changed grouping default is implied by this record.
+**Finn Newick, 26 September 2026: no adoption from this study.** The owner agreed
+to the recommendation and to a bounded exploratory investigation. Retain the
+explicitly exploratory workflow: neither fixed method becomes an adopted default.
+The primary comparison was insufficient and candidate coverage failed, so there
+is no departure from the registered decision rule. No more human ratings are needed
+to establish this outcome.
+
+[The diagnostic scope](0001-exploration.md) records the authorised next step before
+new analysis. It uses the existing 40 judgements and retained vectors, with no new
+labels or model calls. This is separate from the completed registered comparison
+and does not authorise adoption, altered confirmation criteria or VS3 activation.

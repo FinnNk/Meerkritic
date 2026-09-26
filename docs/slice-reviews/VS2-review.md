@@ -4,8 +4,10 @@ Update, 26 September 2026: the 40 human-edited inputs are audited and frozen, an
 [EDR-0001](../edr/0001-discovery-grouping-method.md) is **analysed / inconclusive**.
 Each fixed method produced one four-item group, below the minimum of eight groups;
 candidate coverage was 10%, below its 60% guardrail. No human coherence ratings were
-collected and no method was adopted. The owner decision remains the empirical
-closure gate. The review below retains the software findings and their original
+collected and no method was adopted. Finn Newick subsequently agreed to no adoption
+and bounded exploration; the empirical decision is now recorded. Diagnostic
+follow-up and pending stack review remain before full closure. The review below
+retains the software findings and their original
 20 September evidence; its historical outstanding-input statements are superseded
 by this update, not retrospectively rewritten as completed work.
 
