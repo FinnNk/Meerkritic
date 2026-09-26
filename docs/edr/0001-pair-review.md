@@ -1,6 +1,6 @@
 # Review engineering-concern pairs
 
-Status: preparation. Scope fixed on 27 September 2026 before selecting this pack
+Status: ready for human judgements. Scope fixed on 27 September 2026 before selecting this pack
 or collecting pair judgements. Finn Newick authorised the next step after the
 [exploratory diagnosis](0001-exploration.md). This is developmental data preparation;
 EDR-0001 remains decided with no adoption. No new method is being evaluated or
@@ -116,4 +116,63 @@ work remains a separate reviewed batch.
 
 ## Preparation record
 
-Pending pack generation. No pair judgements collected.
+Prepared on 27 September 2026 after scope commit
+`9213bbd10c2320ff8f6fb42143d8f20a961e6aba`. The pack contains **12 pairs from 17
+distinct inputs**, with every planned portion filled. No pair judgements have
+been collected. Repeated inputs are deliberate; they do not provide independent
+observations. The original 40 assessments and registered comparison are unchanged.
+
+The [manifest](evidence/0001-pair-pack.json) records the pack, frozen inputs and
+method hashes. The [generator](evidence/prepare_0001_pairs.py) uses the locked
+DuckDB dependency and standard library; it makes no model calls. Raw cards, the
+selection map and future responses stay outside Git at
+`extras/research/edr-0001/development-pairs-20260927/`, relative to the workspace.
+
+### Review a pair
+
+1. Open [the first card](http://127.0.0.1:8011/P01.html) while the local card server
+   is running. Widen the browser panel to compare the two items side by side;
+   narrower panels show them one above the other.
+2. Read the concern, candidate rule and limits for A and B. Open a source
+   assessment only when needed, and mention any extra context you consult.
+3. Reply in chat with each item's eligibility, their relationship and a brief
+   reason. The agent asks about ambiguity before saving a confirmed answer.
+4. Continue to the next numbered card. Do not save the original assessment again.
+
+The cards are read-only and do not track progress. Only confirmed responses count
+towards the running total. The agent retains each answer as a new file under
+`responses/`, using the generated `response-template.json` fields. Each correction
+names the SHA-256 of the response it supersedes; retain both files. Use UTC
+timestamps, identify the reviewer, record assistance and recognition explicitly,
+and hash the saved bytes for the response identity. Never infer an answer from
+opening a page or from a selection flag.
+
+### Reproduce the pack
+
+Permitted access to the original study files is required: hashes alone cannot
+recreate human-edited text or retained model vectors. From the application
+repository in PowerShell, with the locked dependencies installed:
+
+```powershell
+uv run --locked python docs/edr/evidence/prepare_0001_pairs.py --study D:/codex/semantic-reviewer/extras/research/edr-0001 --output D:/codex/semantic-reviewer/extras/research/edr-0001/pair-pack-reproduction
+uv run --locked python docs/edr/evidence/check_0001_pairs.py D:/codex/semantic-reviewer/extras/research/edr-0001/development-pairs-20260927 D:/codex/semantic-reviewer/extras/research/edr-0001/pair-pack-reproduction
+```
+
+- Use a new output directory; generation refuses to overwrite an existing pack.
+- Run the comparison before collection, or compare only the immutable pack/card
+  files afterwards: the verifier expects an empty response directory.
+- Expect 12 pairs and identical bytes in the 16 generated files when using the
+  recorded methods. Source-file hashes require the same file bytes, including
+  line endings. Retain the exact source with the external pack for replay.
+- Serve only `cards/` on loopback, never the parent directory containing the
+  selection map and responses. For example, from a separate terminal:
+
+```powershell
+uv run --locked python -m http.server 8011 --bind 127.0.0.1 --directory D:/codex/semantic-reviewer/extras/research/edr-0001/development-pairs-20260927/cards
+```
+
+Local replay reproduced all 16 files byte for byte. Synthetic checks cover score
+ties, selection uniqueness, input-order stability, missing control pools and HTML
+escaping without exposing original flags/categories. This is local verification,
+not independent reproduction or evidence of grouping quality. The
+[validation record](evidence/0001-pair-validation.json) records the quality checks.

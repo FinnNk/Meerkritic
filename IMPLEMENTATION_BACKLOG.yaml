@@ -122,7 +122,7 @@ slices:
     - per-object discussion
     - batched send-to-agent
 - id: VS2
-  current_follow_up: EDR-0001 decided with no adoption and bounded diagnostics complete; agree a developmental pair-level/eligibility study before more labelling or VS3 activation.
+  current_follow_up: EDR-0001 decided with no adoption; authorised 12-pair developmental eligibility/relationship pack prepared, awaiting human judgements. VS3 remains DRAFT.
   name: Annotation-to-Rule Discovery
   status: ACTIVE
   plan: docs/plans/VS2-plan.md
@@ -139,8 +139,9 @@ slices:
   - full VS2 closure pending empirical outcome and owner decision
   - 2026-09-26 input audit and registered comparison completed; primary group count insufficient and candidate coverage fails; owner decision outstanding
   - 2026-09-26 owner agreed no adoption; diagnostics found threshold-only changes cannot yield eight groups and original groups contain no affirmative concerns
+  - 2026-09-27 owner authorised developmental pair review; scope committed before selecting 12 pairs from 17 existing inputs; no new model calls or source judgements
   remaining_gates:
-  - agree the next research scope after the completed diagnostic exploration
+  - collect the 12 scoped human pair judgements or record an owner-requested early stop; preserve uncertainty, assistance and repeated-input dependence
   - owner acceptance of pending stacked follow-ups remains separate from empirical outcome
   - explicitly scoped prospective work before further empirical investigation or VS3 activation
   revision_after: VS1

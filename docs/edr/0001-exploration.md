@@ -102,7 +102,14 @@ wording. They do not prove that a revised representation would improve results.
 The existing category labels are descriptive, not a controlled vocabulary or
 verified rule taxonomy. Removing them alone did not solve the measured constraint.
 
-## Recommended next step — not yet executed
+## Follow-up
+
+On 27 September 2026 the owner authorised the first two steps below. The
+[fixed pair-review protocol and pack](0001-pair-review.md) now provide eligibility
+definitions and 12 developmental pairs from the existing inputs. Human pair
+judgements remain pending. Steps 3 and 4 still require a prospective scope.
+
+The original recommendations were:
 
 Keep the no-adoption decision. Do not request another broad batch of source labels
 or choose a threshold from this exploration.
@@ -124,9 +131,9 @@ or choose a threshold from this exploration.
    Keep the existing repository holdouts unexamined unless a new plan authorises
    their use; do not recycle this explored sample as unseen confirmation data.
 
-This follow-up needs agreement on its concrete scope before additional human
-judgements, model calls or application changes. The bounded investigation here is
-complete. VS3 has not been activated and no new grouping default is proposed.
+Further model calls or application changes need agreement on their concrete scope.
+The bounded investigation here is complete. VS3 has not been activated and no new
+grouping default is proposed.
 
 ## Reproduce and inspect
 
