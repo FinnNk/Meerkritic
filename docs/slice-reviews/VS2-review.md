@@ -1,5 +1,14 @@
 # VS2 - Annotation-to-Rule Discovery review
 
+Update, 26 September 2026: the 40 human-edited inputs are audited and frozen, and
+[EDR-0001](../edr/0001-discovery-grouping-method.md) is **analysed / inconclusive**.
+Each fixed method produced one four-item group, below the minimum of eight groups;
+candidate coverage was 10%, below its 60% guardrail. No human coherence ratings were
+collected and no method was adopted. The owner decision remains the empirical
+closure gate. The review below retains the software findings and their original
+20 September evidence; its historical outstanding-input statements are superseded
+by this update, not retrospectively rewritten as completed work.
+
 Reviewed 20 September 2026. **Software accepted and integrated; slice closure
 remains pending the empirical gate.** A1, A2/A3 and B are integrated through
 PRs #10-#12. Batch C is integrated through PR #13 at

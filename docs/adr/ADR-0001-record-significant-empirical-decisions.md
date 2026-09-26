@@ -91,6 +91,13 @@ first-use confirmation above remains outstanding. Retain `accepted` until that
 confirmation is recorded; incidental integration measurements and ordinary tests
 do not constitute an empirical decision under this process.
 
+First-use progress reviewed on 2026-09-26: [EDR-0001](../edr/0001-discovery-grouping-method.md)
+now links an exact prospective plan, separate registration commit, input identities,
+commands and retained results. Both methods ran after registration; insufficient
+groups and failed candidate coverage are recorded without tuning or invented
+ratings. The owner's empirical decision is still pending, so retain `accepted`
+until the full confirmation, including that decision, is complete.
+
 ## Pros and Cons of the Options
 
 ### Informal notes

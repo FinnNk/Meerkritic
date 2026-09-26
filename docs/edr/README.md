@@ -114,11 +114,11 @@ rather than duplicating evidence stores.
 
 ## Index
 
-EDR-0001 is registered with 40 audited human-edited inputs and a frozen selection.
-Its registration names a separate completed-plan commit; research execution can
-now begin under that plan. EDR-0002 remains a draft.
+EDR-0001 has been run on 40 audited human-edited inputs. Each method produced only
+one group, below the registered minimum; the result is inconclusive and the owner
+decision remains open. Its original registration is preserved. EDR-0002 remains a draft.
 
 | EDR | Decision | Status | Evidence outcome |
 | --- | --- | --- | --- |
 | [EDR-0002](0002-code-navigation-assistance.md) | Evaluate code navigation assistance | draft | pending |
-| [EDR-0001](0001-discovery-grouping-method.md) | Choose an initial discovery grouping method | registered | pending |
+| [EDR-0001](0001-discovery-grouping-method.md) | Choose an initial discovery grouping method | analysed | inconclusive |

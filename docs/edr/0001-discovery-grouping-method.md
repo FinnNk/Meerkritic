@@ -1,13 +1,13 @@
 # EDR-0001: Choose an initial discovery grouping method
 
-- Status: registered
+- Status: analysed
 - Created: 2026-09-20
 - Owner: Finn Newick
 - Decision-maker(s): Finn Newick
 - Protocol agreement: Finn Newick, 2026-09-20; workload and criteria accepted
 - Registered on: 2026-09-26
 - Registered plan: `fe91fe4f888d9b5eb29e61f056f9b647a50559e4`
-- Evidence outcome: pending
+- Evidence outcome: inconclusive
 - Implementation: not planned until a recorded adoption decision
 - Related records: [VS2 plan](../plans/VS2-plan.md), [ADR-0001](../adr/ADR-0001-record-significant-empirical-decisions.md)
 
@@ -178,6 +178,8 @@ byte-identical model output have not been demonstrated.
 | 2026-09-26 | Forty judgements audited; ledger reconciled; selection frozen | Agent-assisted inputs, authorised corrections 1/35 and representation allowances retained. No research grouping outputs yet |
 | 2026-09-26 | Completed prospective plan | Exact code, inputs, configuration, environment and commands fixed; second commit will register this plan |
 | 2026-09-26 | Registered | Names the separate completed-plan commit before either research method runs; no change to agreed criteria |
+| 2026-09-26 | Running | Both research methods executed at registration commit `260a47f57e48999d7931814767b56d148e6103c9`; one attempt each, no parameter changes |
+| 2026-09-26 | Analysed; inconclusive | Descriptive results show one group per method and 10% coverage. Primary coherence cannot be evaluated under the registered minimum; owner decision remains open |
 
 Prior compatibility work used synthetic embeddings, grouping, rule synthesis and
 guidance under DER `vs2-rules/r1`; comparison tooling used synthetic checks under
@@ -187,8 +189,52 @@ comparative quality. Earlier EDR drafts remain in Git history.
 
 ## Results and interpretation
 
-Pending. No research comparison has been run.
+The registered methods completed successfully, but each produced only one group.
+The primary coherence comparison is **insufficient**: the agreed minimum was eight
+groups per method. Candidate coverage also fails its absolute 60% guardrail.
+
+| Measure | Lexical baseline | Embedding candidate |
+| --- | ---: | ---: |
+| Eligible inputs | 40 | 40 |
+| Groups of at least two | 1 | 1 |
+| Group sizes | 4 | 4 |
+| Inputs covered | 4/40 (10%) | 4/40 (10%) |
+| Outliers | 36 | 36 |
+| Successful attempts / total | 1/1 | 1/1 |
+| Retained execution time | 0.0 s at timestamp resolution | 56.365513 s |
+
+The baseline time does not establish zero computation cost. Both methods finished
+inside the 30-minute cap. The candidate produced all 40 valid 768-dimensional
+vectors through MAF 1.19.0 and recorded 2,868 input tokens, zero generated tokens
+and local spend accounting. No research retries, threshold changes, replacement
+inputs or human group ratings were used.
+
+The equal rating budget is one group per method, below the minimum. The pack and
+blank template remain retained, but no coherence score or improvement is claimed.
+The ordinary `analyse` command was not run with invented or incomplete ratings;
+this is a descriptive insufficiency analysis of the verified partitions. Relative
+coverage is equal, but that does not compensate for the failed absolute coverage
+floor. No automatic default change follows from this result.
+
+[The outcome inventory](evidence/0001-comparison-outcome.json) records registration,
+run/result/vector/membership identities, timings, usage and retained log hashes.
+The original comparison is `ae29d95b40481fe889ce9712a78419a169d771595c3bd6f88d478d0b168f54b8`.
+Its command validated shared inputs, profile, fixed parameters and membership replay.
+To reproduce the descriptive counts, read its `value.baseline` and `value.candidate`:
+count `groups`, sum their member counts, count `outliers`, divide covered members by
+40, and sum `attempts.elapsed_seconds`. The original JSON remains outside Git.
+
+These findings concern only the registered configurations and prepared corpus.
+They neither establish that embeddings are generally ineffective nor establish a
+better threshold. Any investigation of alternative text representations, thresholds
+or sampling is now exploratory and must be recorded as such. A new confirmatory
+comparison would need prospective registration and explicit handling of this
+exposure. The 40 audited judgements remain usable evidence; they are not discarded.
 
 ## Decision
 
-Pending. No grouping method has been adopted from this evidence.
+**Owner decision pending.** Recommend no adoption from this study and retention
+of the explicitly exploratory workflow. No further labelling is required to
+establish this insufficiency. The owner may choose a separately bounded exploratory
+investigation before deciding whether another registered comparison is worthwhile.
+Neither that investigation nor a changed grouping default is implied by this record.
