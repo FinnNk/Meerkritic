@@ -1,22 +1,22 @@
 # EDR-0001: Choose an initial discovery grouping method
 
-- Status: draft
+- Status: registered
 - Created: 2026-09-20
 - Owner: Finn Newick
 - Decision-maker(s): Finn Newick
 - Protocol agreement: Finn Newick, 2026-09-20; workload and criteria accepted
-- Registered on: pending second registration commit
-- Registered plan: pending second registration commit
+- Registered on: 2026-09-26
+- Registered plan: `fe91fe4f888d9b5eb29e61f056f9b647a50559e4`
 - Evidence outcome: pending
 - Implementation: not planned until a recorded adoption decision
 - Related records: [VS2 plan](../plans/VS2-plan.md), [ADR-0001](../adr/ADR-0001-record-significant-empirical-decisions.md)
 
 ## Completed prospective plan
 
-The 40 input judgements are complete. This plan freezes the agreed comparison
-before either research grouping method runs. A separate registration commit must
-name this completed-plan commit before execution. No grouping-quality ratings or
-research comparison outputs have been collected or inspected.
+The 40 input judgements are complete. The separate completed-plan commit above
+freezes the agreed comparison before either research grouping method runs. This
+registration records that commit; no grouping-quality ratings or research
+comparison outputs have been collected or inspected at registration.
 
 - Selection: `f5bc84b772da601d3a068e42cdbb77799e887628773084aa9fe9b32ca1fabdd7`
 - Embedding profile: `23854bdeae747622f408c937902149651b40a4c4843c7cd48534bf9fc02bdfb6`
@@ -177,6 +177,7 @@ byte-identical model output have not been demonstrated.
 | 2026-09-21 | Owner agreed preserved source context | [ADR-0015](../adr/ADR-0015-separate-review-context-from-model-input.md): show separately retained originals, record context digests and extra human advice; preserve model inputs and earlier provenance |
 | 2026-09-26 | Forty judgements audited; ledger reconciled; selection frozen | Agent-assisted inputs, authorised corrections 1/35 and representation allowances retained. No research grouping outputs yet |
 | 2026-09-26 | Completed prospective plan | Exact code, inputs, configuration, environment and commands fixed; second commit will register this plan |
+| 2026-09-26 | Registered | Names the separate completed-plan commit before either research method runs; no change to agreed criteria |
 
 Prior compatibility work used synthetic embeddings, grouping, rule synthesis and
 guidance under DER `vs2-rules/r1`; comparison tooling used synthetic checks under

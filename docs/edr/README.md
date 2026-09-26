@@ -114,11 +114,11 @@ rather than duplicating evidence stores.
 
 ## Index
 
-EDR-0001 has 40 audited human-edited inputs and a frozen selection. Its completed
-prospective comparison plan awaits the separate registration commit. No research
-grouping run or grouping-quality rating has occurred. EDR-0002 remains a draft.
+EDR-0001 is registered with 40 audited human-edited inputs and a frozen selection.
+Its registration names a separate completed-plan commit; research execution can
+now begin under that plan. EDR-0002 remains a draft.
 
 | EDR | Decision | Status | Evidence outcome |
 | --- | --- | --- | --- |
 | [EDR-0002](0002-code-navigation-assistance.md) | Evaluate code navigation assistance | draft | pending |
-| [EDR-0001](0001-discovery-grouping-method.md) | Choose an initial discovery grouping method | draft | pending |
+| [EDR-0001](0001-discovery-grouping-method.md) | Choose an initial discovery grouping method | registered | pending |
