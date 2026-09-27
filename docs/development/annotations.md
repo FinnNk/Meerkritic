@@ -1,7 +1,7 @@
 # Review model interpretations
 
 An *annotation* is your decision on one model output. Successful interpretations
-offer Accept, Edit or Reject; retained failed drafts offer Edit or Reject. Each model run has its own decision; reviewing several runs for
+offer **Accept original**, **Save edited assessment** or **Reject**; retained failed drafts offer correction or rejection. Each model run has its own decision; reviewing several runs for
 one source still counts as reviewing one original observation.
 
 ## Review a result
@@ -17,17 +17,17 @@ no interpretation to assess.
 
    | Action | What is saved |
    | --- | --- |
-   | **Accept** | Your acceptance of the model's original interpretation |
-   | **Edit** | A complete corrected interpretation, alongside the original |
+   | **Accept original** | Your acceptance of the model's original interpretation |
+   | **Save edited assessment** | A complete corrected interpretation, alongside the original |
    | **Reject** | Your rejection; the source counts as reviewed, not accepted |
 
-3. For **Edit**, expand the structured interpretation and edit its JSON fields.
-   The current compatible schema and exact source-quote checks apply. Invalid
-   drafts stay visible for correction.
+3. To correct the interpretation, use the labelled text fields, dropdowns and
+   list controls. Follow [editing an assessment](assessment-form.md) for the steps.
+   Invalid drafts stay visible for correction.
 4. Add evidence limitations, investigation needs and any additional advice to
    **Assessment notes and evidence limitations**. Attribute advice beyond the
    source to yourself; notes are not interpretation text for grouping.
-5. Submit the decision. It is saved immediately; there is no draft/apply stage for
+5. Review the entries in this tab, then submit the decision. It is saved immediately; there is no draft/apply stage for
    source annotations. The page shows your decision separately from the model result.
 6. Open **Annotation progress and review queue** to find unreviewed outputs or
    inspect failures. For a study, follow its prepared order instead of this queue.
@@ -35,12 +35,15 @@ no interpretation to assess.
 An identical retry returns the saved decision. A different decision for the same
 result is refused. Source annotations cannot currently be reopened; the
 [review workspace](research-interaction.md) reopens **rule reviews**, not annotations.
-The JSON editor is the current editing interface.
+Edits belong to the current tab until submitted. A second tab does not contain
+your unsaved changes. Check the saved interpretation and notes after submission.
 
-![Human assessment panel with optional notes, an expandable structured editor, and Accept, Edit and Reject buttons.](../images/annotation-assessment.png)
+![The assessment form uses text fields and dropdowns for the issue and judgements.](../images/annotation-assessment.png)
 
-Each button saves immediately. Expand **Edit the structured interpretation** before
-editing. The [demonstration](../images/README.md) is awaiting a decision.
+The [synthetic demonstration](../images/README.md) is awaiting a decision.
+List controls do not save a judgement; the three decision buttons do.
+
+![Assessment notes and the explicit Save edited assessment, Accept original and Reject buttons.](../images/assessment-save.png)
 
 ## Read progress and history
 

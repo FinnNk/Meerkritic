@@ -57,6 +57,12 @@ Raw captures and runtime files remain outside Git. [captures.json](captures.json
 and [the correction captures](captures-draft-repair.json) record earlier pixel crop rectangles, scroll positions, image dimensions and SHA-256 hashes.
 The [assessment clarity captures](captures-assessment-clarity.json) supersede the
 result, assessment and failed-draft entries and add the source panel.
+The [assessment form captures](captures-assessment-form.json), taken on
+21 September 2026 from code at `f2993a8` (failed-draft wording refreshed at
+`8f8b0c7`), replace the assessment and failed-draft
+images and add the save controls. They use the same synthetic fixture in a fresh
+runtime, the normal 1280 × 720 CSS viewport and 1232-pixel-wide crops. The long
+form is shown in two focused views; no fields were hidden to fit it into one image.
 Use the visible landmarks below when different browser scaling makes those exact
 coordinates unsuitable. A crop must keep the relevant labels and controls readable.
 
@@ -65,8 +71,9 @@ coordinates unsuitable. A crop must keep the relevant labels and controls readab
 | [Source browser](source-browser.png) | `observations` | Overview, 1232 × 675 | Dataset title, synthetic label, comment/code pair and Normalise action |
 | [Assessment source](assessment-source.png) | `annotation` | Panel, 960 × 431 | Open source panel, synthetic origin, comment and code |
 | [Interpretation result](annotation-result.png) | `annotation` | Panel, 960 × 507 | Proposed issue, impact scope, candidate rule and quoted evidence |
-| [Assessment controls](annotation-assessment.png) | `annotation` | Panel, 960 × 484 | Human assessment heading, field help, evidence notes, editor and all buttons |
-| [Failed draft](failed-draft-assessment.png) | `failed_annotation` | Panel, 960 × 573 | Failure explanation, collapsed editor and Edit/Reject controls |
+| [Assessment fields](annotation-assessment.png) | `annotation` | Panel, 1232 × 429 | Editor heading, issue text and judgement dropdowns |
+| [Assessment save](assessment-save.png) | `annotation` | Panel, 1232 × 338 | Notes, immediate-save explanation and all three decision buttons |
+| [Failed draft](failed-draft-assessment.png) | `failed_annotation` | Panel, 1232 × 648 | Failure explanation and start of the field editor |
 | [Saved selection](frozen-selection.png) | `selection` | Overview, 1232 × 605 | Fixture label, totals, queue action and complete first input card |
 | [Discovery group](discovery-group.png) | `discovery` | Overview, 1232 × 514 | Result heading, fixture label, totals and complete representative card |
 | [Rule definition](rule-definition.png) | `rule` | Panel, 960 × 391 | Title, fixture label, pending state, scope and exclusions |

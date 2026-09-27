@@ -2,7 +2,6 @@
 
 import json
 from pathlib import Path
-from urllib.parse import parse_qs
 
 from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse
@@ -21,6 +20,12 @@ from semantic_reviewer.application.reviews import ReviewIndex
 from semantic_reviewer.application.rules import RuleService
 from semantic_reviewer.application.selections import SelectionStore
 from semantic_reviewer.domain.datasets import DatasetError
+from semantic_reviewer.web.assessment import (
+    OPTIONS,
+    AssessmentForm,
+    assessment_error,
+    parse_assessment,
+)
 from semantic_reviewer.web.discovery import add_discovery_routes
 from semantic_reviewer.web.guidance import add_guidance_routes
 from semantic_reviewer.web.interaction import add_interaction_routes
@@ -225,7 +230,9 @@ def create_app(
                 request=request, name="jobs.html", context={"jobs": jobs.jobs.recent()}
             )
 
-        def render_job(request: Request, job_id: str, error=None, draft=None, status=200):
+        def render_job(
+            request: Request, job_id: str, error=None, draft=None, status=200, form=None
+        ):
             """Render verified results and failures without interpreting model text as HTML."""
             try:
                 job, result = jobs.inspect(job_id)
@@ -239,6 +246,10 @@ def create_app(
                         result["model_output"]
                         if job.status == "failed"
                         else json.dumps(result["interpretation"], ensure_ascii=False, indent=2)
+                    )
+                if form is None:
+                    form = AssessmentForm.from_output(
+                        draft.get("edited_json", initial_draft) if draft else initial_draft
                     )
             except LookupError as error:
                 raise HTTPException(404, str(error)) from error
@@ -263,6 +274,8 @@ def create_app(
                     "history": history,
                     "error": error,
                     "draft": draft,
+                    "form": form,
+                    "assessment_options": OPTIONS,
                 },
             )
 
@@ -289,35 +302,34 @@ def create_app(
                     if len(body) > 1_000_000:
                         raise HTTPException(413, "Annotation form is too large.")
                 try:
-                    fields = parse_qs(
-                        body.decode("utf-8"),
-                        keep_blank_values=True,
-                        max_num_fields=4,
-                        encoding="utf-8",
-                        errors="strict",
-                    )
-                    if any(len(values) != 1 for values in fields.values()) or set(fields) - {
-                        "decision",
-                        "notes",
-                        "edited_json",
-                    }:
-                        raise ValueError("Invalid annotation fields.")
-                    draft = {key: values[0] for key, values in fields.items()}
+                    draft, form = parse_assessment(bytes(body))
                 except (ValueError, UnicodeError) as error:
                     raise HTTPException(422, "Invalid annotation form.") from error
                 try:
-                    await run_in_threadpool(
-                        annotations.decide,
-                        job_id,
-                        draft.get("decision", ""),
-                        draft.get("notes", ""),
-                        draft.get("edited_json") if draft.get("decision") == "edit" else None,
-                    )
+                    if form is not None and "form_action" in draft:
+                        form.change_rows(draft["form_action"])
+                        return await run_in_threadpool(
+                            render_job, request, job_id, None, draft, 200, form
+                        )
+
+                    def save_assessment():
+                        replacement = None
+                        if draft.get("decision") == "edit":
+                            replacement = draft.get("edited_json")
+                            if form is not None:
+                                job, _ = jobs.inspect(job_id)
+                                _, source = datasets.observation(job.dataset_id, job.source_index)
+                                replacement = form.interpretation_json(source)
+                        return annotations.decide(
+                            job_id, draft.get("decision", ""), draft.get("notes", ""), replacement
+                        )
+
+                    await run_in_threadpool(save_assessment)
                 except LookupError as error:
                     raise HTTPException(404, str(error)) from error
                 except (ValueError, OSError) as error:
                     return await run_in_threadpool(
-                        render_job, request, job_id, str(error), draft, 409
+                        render_job, request, job_id, assessment_error(error), draft, 409, form
                     )
                 return RedirectResponse(f"/jobs/{job_id}", status_code=303)
 

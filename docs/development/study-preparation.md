@@ -128,7 +128,7 @@ needs, and record any assistance or prior exposure. Pause before saving if a fie
 cannot express your judgement faithfully.
 Work through the prepared order; do not choose only promising-looking concerns.
 
-![The existing Human assessment panel offers Accept, Edit and Reject, with optional notes and a structured editor.](../images/annotation-assessment.png)
+![Text fields and dropdowns let the reviewer correct an interpretation without editing JSON.](../images/annotation-assessment.png)
 
 These are the existing input-review controls, shown with
 [synthetic demonstration data](../images/README.md). They are not the proposed
@@ -139,8 +139,8 @@ group-rating interface, and these example decisions do not enter the study.
 | Read the source | Read the supplied comment and code, with the verified original reference where available. Distinguish preprocessed text from the original. |
 | Check meaning | Does the interpretation accurately describe the concern, rather than invent an unstated requirement? |
 | Check evidence | Do the quoted excerpts support its claims? Is uncertainty or limited applicability retained? |
-| Accept | Available for successful drafts only; use when the interpretation is usable as written. This does not validate a future rule or detector. |
-| Edit | Correct a usable interpretation while keeping it grounded in the supplied source. Save the edited structured result. |
+| Accept original | Available for successful drafts only; use when the interpretation is usable as written. This does not validate a future rule or detector. |
+| Save edited assessment | Correct a usable interpretation while keeping it grounded in the supplied source. Review the changed fields and notes in this tab, save, then check the recorded result. |
 | Reject | Use when the interpretation cannot serve the study. Record a short reason; rejection is not a verified negative example. |
 
 Keep failures and skipped records in the preparation log. Follow the EDR's cap and
