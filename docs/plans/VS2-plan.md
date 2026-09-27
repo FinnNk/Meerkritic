@@ -1,4 +1,4 @@
-# VS2 â€” Annotation-to-Rule Discovery
+# VS2 — Annotation-to-Rule Discovery
 
 Plan revision: 12, 20 September 2026. VS2 ACTIVE. A1 is integrated in PR #10 at
 `c9ef38f48b10d7876fe26babee36f2f15f258bf3`; its tree equals the reviewed head and
@@ -188,7 +188,7 @@ boundaries. Avoid many tiny PRs.
 Assess materiality before each unit, keep true chronology in one external DER pair
 per material PR, and challenge semantic boundaries before freezing.
 
-### Batch A â€” reproducible discovery inputs and grouping
+### Batch A — reproducible discovery inputs and grouping
 
 Overall review question: can a reviewed, versioned corpus be grouped reproducibly
 without losing its human/source provenance?
@@ -211,7 +211,7 @@ enters SQLite. The UI shows eligible, excluded, failed and outlier denominators.
 Use synthetic deterministic fixtures for correctness; real comparative selection
 is governed by the EDR, including an inconclusive/no-adoption outcome.
 
-### Batch B â€” evidence-grounded rule synthesis and versioned registry
+### Batch B — evidence-grounded rule synthesis and versioned registry
 
 Overall review question: can a candidate rule be traced, challenged and revised
 without overstating the source evidence?
@@ -232,7 +232,7 @@ invented/missing references fail; counterexamples retain their classification an
 do not disappear on rule revision. At least one full live discovery run uses MAF
 and captures framework/usage evidence. Human rejection remains a useful result.
 
-### Batch C â€” staged research interaction and slice validation
+### Batch C — staged research interaction and slice validation
 
 Overall review question: can a researcher collect coherent decisions and guidance,
 apply them deliberately and recover from interruption without losing intent?
@@ -247,7 +247,7 @@ apply them deliberately and recover from interruption without losing intent?
   execution unless a demonstrated workflow need justifies a durable session ADR.
 - C3: end-to-end/restart/failure validation, typed architecture before/delta/after
   view, stale projection detection and slice review. Update ADR/EDR states with
-  actual evidence; revise VS3â€“VS8 before freezing VS3.
+  actual evidence; revise VS3–VS8 before freezing VS3.
 
 Acceptance: staged actions survive restart, apply exactly once on identical retry,
 and do not silently overwrite a concurrent version. Deferred/reopened/superseded
@@ -310,8 +310,8 @@ explicit baseline/prototype, without fabricating labels or declaring generalisat
 
 ## Exit and pause boundary
 
-VS2 completion requires the full annotated-selection â†’ grouping â†’ candidate rule â†’
-evidence/counterexample â†’ human decision path, real MAF use, recorded state/history,
+VS2 completion requires the full annotated-selection → grouping → candidate rule →
+evidence/counterexample → human decision path, real MAF use, recorded state/history,
 reproducible artefact identities, all quality gates, completed material DER reviews,
 an honest EDR outcome/decision where applicable, a slice review and explicit
 remaining-slice revision. PR acceptance, ADR/EDR state and slice state remain distinct.

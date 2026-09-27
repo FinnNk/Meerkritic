@@ -313,7 +313,7 @@ model_usage_telemetry:
   - provider_reported_cost
   - outcome
   local_cost_policy: zero API spend; do not estimate electricity/hardware amortisation
-  live_summary: Model Â· input/output tokens Â· estimated spend/local Â· elapsed
+  live_summary: Model · input/output tokens · estimated spend/local · elapsed
   detail_on_demand: true
 routing_subsystem:
   design: 10_MODEL_ROUTING_SUBSYSTEM_DESIGN.md
