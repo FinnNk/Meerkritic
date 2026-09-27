@@ -12,7 +12,7 @@ Accepting an interpretation does <strong>not</strong> establish that the origina
 or that a proposed general rule is valid.</p>
 <ol><li>Read the source and identify what it supports.</li>
 <li>Check the model's claims, uncertainty and quoted evidence.</li>
-<li>Record one decision for the complete interpretation. Each action saves immediately.</li></ol>
+<li>Record one decision for the complete interpretation. Each decision saves immediately.</li></ol>
 </aside>
 <p><strong>{{ job.status }}</strong>{% if job.stale %} · Heartbeat overdue; worker state needs inspection.{% endif %}</p>
 {% if job.status == 'queued' %}<p>Waiting for the local worker. This page refreshes automatically.</p>{% endif %}
@@ -57,31 +57,36 @@ or that a proposed general rule is valid.</p>
 <tr><th>Generalisable</th><td>Could the concern apply beyond this example? This does not validate a general rule.</td></tr>
 <tr><th>Categories</th><td>Which broad engineering concerns does the source describe?</td></tr>
 <tr><th>Impact scope (<code>scope</code>)</th><td>Choose the smallest affected unit supported by the evidence: expression, statement, function, class, file, module or repository. Use <code>unknown</code> if the affected extent is unclear. Searching repository history does not itself establish repository-wide impact.</td></tr>
-<tr><th>Candidate rule (<code>proposed_invariant</code>)</th><td>What condition does this example suggest should hold? Use <code>null</code> if none is justified. Put your additional advice in notes and attribute it to yourself.</td></tr>
-<tr><th>Applicability limits (<code>exclusions</code>)</th><td>What known exceptions limit the concern or rule? Use an empty list if none are identified. Put missing evidence and investigation needs in notes.</td></tr>
+<tr><th>Candidate rule (<code>proposed_invariant</code>)</th><td>What condition does this example suggest should hold? Leave the field blank if none is justified. Put your additional advice in notes and attribute it to yourself.</td></tr>
+<tr><th>Applicability limits (<code>exclusions</code>)</th><td>What known exceptions limit the concern or rule? Leave the list empty if none are identified. Put missing evidence and investigation needs in notes.</td></tr>
 <tr><th>Evidence quotes</th><td>Do the exact quoted words support the claim? Matching text alone does not establish correctness.</td></tr>
 </tbody></table></details>
-{% if error %}<p role="alert">{{ error }}</p>{% endif %}
+{% if error and (annotation or not actions) %}<p role="alert">{{ error }}</p>{% endif %}
 {% if annotation %}
 <p><strong>{{ annotation.decision | capitalize }}</strong> · {{ annotation.created_at }}</p>
 <p>Annotation ID: <code>{{ annotation.id }}</code></p>
-{% if annotation.notes %}<p>{{ annotation.notes }}</p>{% endif %}
-{% if edited %}<h3>Human interpretation</h3><p>{{ edited.interpretation.issue_statement }}</p><pre>{{ edited | tojson(indent=2) }}</pre>{% endif %}
+{% if annotation.notes %}<h3>Saved assessment notes</h3><pre>{{ annotation.notes }}</pre>{% endif %}
+{% if edited %}<h3>Human interpretation</h3><p>{{ edited.interpretation.issue_statement }}</p>
+<dl><dt>Actionable concern</dt><dd>{{ edited.interpretation.actionable_engineering_concern }}</dd>
+<dt>Generalisable</dt><dd>{{ edited.interpretation.generalisable }}</dd>
+<dt>Impact scope</dt><dd>{{ edited.interpretation.scope }}</dd>
+<dt>Categories</dt><dd><ul>{% for item in edited.interpretation.coarse_categories %}<li>{{ item }}</li>{% endfor %}</ul></dd>
+<dt>Candidate rule</dt><dd>{{ edited.interpretation.proposed_invariant or 'None proposed' }}</dd>
+<dt>Applicability limits</dt><dd>{% if edited.interpretation.exclusions %}<ul>{% for item in edited.interpretation.exclusions %}<li>{{ item }}</li>{% endfor %}</ul>{% else %}None identified{% endif %}</dd></dl>
+<h4>Saved evidence quotes</h4>{% for span in edited.evidence_spans %}<blockquote><pre>{{ span.quote }}</pre><p>{{ span.source }} · characters {{ span.start }}–{{ span.end }}</p></blockquote>{% endfor %}
+<details><summary>Saved interpretation and provenance (JSON)</summary><pre>{{ edited | tojson(indent=2) }}</pre></details>{% endif %}
 <p>This decision is recorded. Source annotations cannot be reopened or overwritten.</p>
+{% if error and draft %}<details open><summary>Unsaved submission from this tab</summary>
+<p>The saved decision above was not changed. Retain these attempted changes when resolving the discrepancy.</p>
+{% if form %}<dl>{% for name, values in form.values.items() %}<dt>{{ name }}</dt><dd>{% for value in values %}<pre>{{ value }}</pre>{% endfor %}</dd>{% endfor %}</dl>{% endif %}
+{% if draft.edited_json %}<pre>{{ draft.edited_json }}</pre>{% endif %}
+{% if draft.notes %}<pre>{{ draft.notes }}</pre>{% endif %}</details>{% endif %}
 {% elif actions %}
 {% if job.status == 'failed' %}
-<p>This draft failed validation. Edit it using <strong>Source for your assessment</strong>, or reject it. Accept is unavailable. Each action saves immediately.</p>
+<p>This draft failed validation. Edit it using <strong>Source for your assessment</strong>, or reject it. Accept is unavailable. Each decision saves immediately.</p>
 <p>The original output and failure remain unchanged. Your correction must pass the current compatible schema and exact-quote checks.</p>
-{% else %}<p>Accept the interpretation, edit it, or reject it. Each action saves immediately.</p>{% endif %}
-<form method="post" action="/jobs/{{ job.id }}/annotation">
-<label for="notes">Assessment notes and evidence limitations (optional)</label>
-<p id="notes-help">Record what the supplied material cannot establish, any investigation needed, and your own advice beyond the source. Notes are saved with your decision but are not used as interpretation text for grouping. If uncertainty changes the concern, qualify the issue or candidate rule too.</p>
-<textarea id="notes" name="notes" aria-describedby="notes-help" maxlength="4000" rows="4">{{ draft.notes if draft else '' }}</textarea>
-<details{% if job.status == 'failed' or (draft and draft.decision == 'edit') %} open{% endif %}><summary>Edit the structured interpretation</summary>
-<p>Change the fields below, retaining the complete JSON structure. Evidence quotes must exactly match the original comment or code. The original result is preserved.</p>
-<label for="edited_json">Edited interpretation</label><textarea id="edited_json" name="edited_json" rows="12" style="width:100%;font-family:monospace">{{ draft.edited_json if draft else initial_draft }}</textarea></details>
-{% for action in actions %}<button name="decision" value="{{ action }}">{{ action | capitalize }}</button>{% endfor %}
-</form>
+{% else %}<p>Accept the interpretation, edit it, or reject it. Each decision saves immediately.</p>{% endif %}
+{% include "assessment_form.html" %}
 {% else %}<p>No reviewable model draft is available. Only successful interpretations or retained semantic failures can be assessed; provider and interrupted failures remain for inspection.</p>{% endif %}
 <p><a href="/datasets/{{ job.dataset_id }}/progress">Annotation progress and review queue</a></p>
 {% if history %}<details><summary>Decision history for this source (latest 100)</summary><ul>{% for item in history %}<li><a href="/jobs/{{ item.job_id }}">{{ item.decision | capitalize }} · {{ item.created_at }}</a></li>{% endfor %}</ul></details>{% endif %}
